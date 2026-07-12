@@ -1,0 +1,3243 @@
+
+
+--- Page 1 ---
+
+Chapter # 07
+
+Skeletal System of Man
+
+Student Learning Outcomes
+
+At the end of this chapter, students will be able to:
+[B-12-R-61] Describe the structure of bone and compare it with that of cartilage.
+[8-12-R-62} Explain the functions of osteoblasts, osteoclasts and osteocytes.
+[B-12-R-63) Identify the main divisions of the human skeleton and list the bones of the appendicular and
+axial skeleton of man:
+[B-12-R-64) Describe three types of joints i.e., fibrous joints, cartilaginous joints and synovial joints and
+give example of each.
+[B-12-R-65] Describe the disorders of human skeleton (disc-slip, spondylosis, sciatica, arthritis, osteoporosis)
+and their causes.
+[B-12-R-66] State different types of fractures (simple, compound and complicated) and describe the
+repair process of simple fractures.
+[B-12-R-67] Describe the injuries in joints (dislocation and sprain) and their first aid treatment.
+{B-12-R-68] Compare smooth muscles, cardia¢ muscles and skeletal muscles.
+[B-12-R-69] Annotate the ultrastructure of the skeletal muscle.
+{B-12-R-70] Explain the sliding filaments model of muscle contraction.
+[B-12-R-71] Describe the action of antagonistic muscles in the movement of knee joint.
+{B-12-R-72] Explain muscle fatigue, cramps and tetany.
+[B-12-R-73] Differentiate between tetanus and muscle tetany.
+
+Support is a fundamental requirement for all living organisms. It is essential to maintain body shape, resist
+the pull of gravity, and withstand various external forces. As organisms evolved and increased in size, their
+structural demands became more complex. This need for support became particularly critical when animals
+transitioned from aquatic to terrestrial environments, where buoyant forces no longer assisted in maintaining
+body structure. In animals, this vital supportive function is primarily carried out by the skeleton, which provides a
+rigid framework for maintaining posture, facilitating movement, and protecting internal organs.
+
+The human skeletal system, or human skeleton, is a highly organized structure composed of bones and
+cartilage. Bones form the primary rigid framework, while cartilage provides flexible support at specific points such
+as joints. Together, these components perform several essential functions. They provide structural support to the
+body’s soft tissues, enabling posture and stability. They facilitate movement by serving as attachment sites for
+skeletal muscles, which act across joints to produce coordinated motion. In addition to support and locomotion,
+the skeletal system protects vital organs, stores essential minerals such as calcium and phosphorus, and houses
+bone marrow, which is.responsible for the formation of blood cells.
+
+Thus, the human skeleton is not merely a static framework but a dynamic system integral to movement,
+protection, and overall physiological function, reflecting the remarkable adaptability and complexity of the human
+
+body.
+cS) studyplusplus.com ¢$
+
+
+--- Page 2 ---
+
+STRUCTURE OF BONE AND COMPARISON WITH CARTILAGE
+
+NN
+1. Structure of Bone
+Bone is a highly specialized, rigid connective tissue that forms the primary component of the human
+skeleton. It provides structural support, facilitates movement, protects vital organs, stores minerals, and
+houses bone marrow. Bone tissue exhibits both strength and resilience due to its unique composition and
+organization,
+The human bone is a remarkable composite material, combining both organic and inorganic components to
+achieve a balance of strength, flexibility, and resilience. This unique composition allows bones to withstand
+mechanical stresses while maintaining a lightweight structure essential for movement.
+>» Composition of Bone
+(a) Organic Component (=30-35%)
+
+The organic portion of bone is primarily responsible for its flexibility and tensile strength, preventing
+
+bones from being brittle under stress. It consists of:
+
+© Collagen fibers: Type |.collagen is the dominant protein in bone. These long, fibrous molecules form
+a dense, interwoven network that provides tensile strength, allowing bones to resist stretching and
+bending forces. Collagen fibers also serve as a scaffold for the deposition of minerals during bone
+formation.
+
+© Non-collagenous proteins: These include osteocalcin, osteonectin, and bone sialoprotein. They play
+critical roles in regulating mineralization, binding calcium ions, and facilitating the proper
+organization of hydroxyapatite crystals within the bone matrix. Additionally, they contribute to bone
+repair and remodeling, ensuring that micro-damage from daily stress is continually repaired.
+
+© Proteoglycans and glycoproteins: These molecules, though present in smaller amounts, retain water
+within the bone matrix, adding slight compressive resilience and contributing to the elasticity of bone.
+
+(b) Inorganic Component (=65-70%)
+
+The inorganic fraction is responsible for the hardness and compressive strength of bone. It consists
+
+mainly of:
+
+© Hydroxyapatite [Ca:o(PO.)s(OH)2]: This calcium phosphate mineral is deposited in and around the
+collagen framework. Hydroxyapatite crystals form a rigid lattice that makes bones hard and capable
+of supporting body weight and resisting mechanical pressure.
+
+o Other mineral ions: Small amounts of magnesium, sodium, carbonate, and fluoride ions are also
+incorporated into the bone matrix. These ions influence the érystallinity, solubility, and overall
+strength of the mineralized bone, and help in maintaining mineral homeostasis in the body.
+
+© Function of inorganic components: By providing rigidity, the inorganic component allows bones to
+act as structural supports and levers for muscle action. The mineralized matrix also serves as a
+reservoir for essential ions like calcium and phosphate, which can be mobilized when needed for
+physiological functions such as nerve conduction, muscle contraction, and blood clotting.
+
+> Integration of Organic and Inorganic Components:
+The interplay between the organic collagen matrix and the inorganic hydroxyapatite crystals gives bone its
+unique combination of strength and toughness. Collagen fibers absorb tension, while hydroxyapatite resists
+compression. This composite nature ensures that bone is neither too brittle (like pure mineral) nor too
+flexible (like cartilage), making it ideal for the mechanical demands of the human body.
+
+» Microscopic Structure of Bone
+Bone is not a homogeneous tissue but exhibits a highly organized microscopic architecture that enables it to
+fulfill multiple structural and physiological functions. At the microscopic level, bone can be broadly
+
+categorized into compact (cortical) bone and spongy (cancellous or trabecular) bone, each with distinct
+structural features and functional significance.
+
+cs) studyplusplus.com $
+
+
+--- Page 3 ---
+
+(a) Compact (Cortical) Bone
+
+Compact bone forms the dense, outer layer of bones, providing strength and rigidity. It is most
+
+prominent in the diaphysis (shaft) of long bones. The key structural unit of compact bone is the osteon,
+
+also known as the Haversian system.
+
+© Osteons: Each osteon consists of a central Haversian canal that contains blood vessels, nerves, and
+lymphatic vessels, ensuring the supply of nutrients and removal of metabolic waste. Surrounding
+the canal are concentric layers of mineralized matrix called lamellae, which are organized in rings to
+resist torsional and compressive forces.
+
+©° Osteocytes and lacunae: Osteocytes, the mature bone cells, are embedded within small cavities
+called lacunae situated between the lamellae, These cells maintain the bone matrix and
+communicate with each other through fine, microscopic channels known as canaliculi. Canaliculi
+form an extensive network that allows the exchange of nutrients, gases, and metabolic wastes
+between osteocytes and the blood vessels in the Haversian canals.
+
+© Interconnection: Osteons are interconnected by Volkmann’s canals, which run perpendicular to the
+Haversian canals, linking adjacent osteons and integrating the vascular network throughout the
+compact bone. This organization ensures that compact bone is highly resilient and capable of
+bearing significant mechanical loads.
+
+{b) Spongy (Cancellous or Trabecular) Bone
+
+Spongy bone is found primarily at the epiphyses of long bones, within flat bones, and surrounding the
+
+medullary cavity. Unlike compact bone, it is less dense and has a porous, lattice-like arrangement that
+
+maximizes strength while'minimizing weight.
+
+© Trabeculae: The porous structure consists of thin plates and rods called trabeculae, which are
+oriented along lines of mechanical stress. This arrangement allows spongy bone to resist
+multidirectional forces efficiently while keeping the bone lightweight.
+
+© Bone marrow spaces: The spaces between trabeculae are filled with red bone marrow, the site of
+hematopoiesis (formation of red blood cells, white blood cells, and platelets). This feature makes
+spongy bone crucial not only for structural support but also for maintaining vital physiological
+processes.
+
+© Functional advantage: The trabecular architecture also provides slight flexibility, reducing the risk
+of fractures by absorbing shocks and distributing stress throughout the bone.
+
+Structural Parts and Internal Composition of Long Bone
+
+Structurally, a long bone consists of two expanded ends. epiphyses and a central shaft known as the
+diaphysis. The diaphysis encloses a medullary cavity, is usually filled with yellow bone marrow, a
+tissue primarily involved in fat storage.
+
+Periosteum: The outer surface of the bone is enveloped by the periosteum, a tough fibrous membrane
+that serves as an anchoring site for tendons and ligaments. It contains blood vessels, lymphatic vessels,
+and nerves, all of which contribute to the nourishment and repair of bone.
+
+Endosteum: The inner surfaces of bone, including the medullary cavity and spaces within spongy bone,
+are lined by the endosteum, a thin vascular membrane rich in osteogenic Cells, which plays a key role in
+bone growth, repair, and remodeling.
+
+This gross structure not only reflects the mechanical strength of bone but also its adaptability and role in
+energy storage and blood cell formation.
+
+Compact bone
+
+Proximal Epiphysis Diaphysis Distal Epiphysts
+
+cs) studyplusplus.com $
+
+
+--- Page 4 ---
+
+4
+
+Cellular Components of Bone
+Bone is a living tissue composed of specialized cells that work in a coordinated manner to maintain its
+structure, enable growth, and regulate mineral balance. The cellular components of bone can be classified
+into three main types: osteoblasts, osteocytes, and osteoclasts. Each plays a distinct and crucial role in bone
+physiology.
+(a) Osteoblasts —- The Bone-Forming Cells
+Osteoblasts are mononuclear, cuboidal cells located on the surface of developing or remodeling bone.
+They are primarily responsible for the synthesis of the organic bone matrix, known as osteoid, which is
+rich in collagen fibers (mainly type |) and non-collagenous proteins. Osteoblasts initiate the process of
+mineralization, depositing hydroxyapatite crystals within the osteoid to harden the bone.
+Functions of Osteoblasts:
+© Formation of new bone tissue during growth, repair, and remodeling.
+oO Secretion of signaling molecules that regulate osteoclast activity and overall bone homeostasis,
+© Participation in hormonal regulation of calcium and phosphate metabolism.
+(b) Osteocytes ~The Mature Bone Cells
+Osteocytes are former osteoblasts that have become embedded within the mineralized bone matrix.
+They reside in small spaces called lacunae and extend long cytoplasmic processes through canaliculi,
+forming an extensive intercellular network.
+Functions of Osteocytes:
+© Maintenance of ‘bone tissue by regulating the deposition and resorption of minerals in their
+immediate environment.
+© Sensing mechanical stress and strain on bone, thereby directing remodeling to strengthen areas
+experiencing higher loads.
+© Communiestisn with osteoblasts @nd osteoclasts to coordinate bone formation and resorption.
+(c) Osteoclasts — The Bone-Resorbing Cells
+Osteoclasts are large, multinucleated cells derived from the fusion of monocyte/macrophage
+precursors. They are primarily involved in bone resorption, a process in which the mineralized matrix is
+broken down, releasing calcium and phosphate ions into the bloodstream.
+Functions of Osteoclasts:
+
+© Remodeling of bone to adapt to mechanical stress and repair micro-damage.
+
+o Regulation of blood calcium and phosphate levels, essential for physiological functions such as nerve
+conduction and muscle contraction.
+
+o Working in tandem with osteoblasts to maintain a dynamic balance between bone formation and
+resorption, a process known as bone remodeling.
+
+Osteociast
+(develops into an (forms bone (maintains (lunctions In resorption, the:
+osteoblast) matrix) bone tissue) breakdown of bone matrix)
+
+Figure: Types of bone cells
+Integration of Cellular Functions
+The coordinated activity of osteoblasts, osteocytes, and osteoclasts ensures that bone Is a dynamic tissue—
+capable of growth, repair, and adaptation throughout life. Osteoblasts build new bone, osteocytes monitor
+and maintain it, and osteoclasts resorb old or damaged bone. This cellular interplay maintains skeletal
+strength, facilitates calcium homeostasis, and allows the skeleton to adapt to changing mechanical demands.
+Gross Structure:
+
+* Long bones consist ofa diaphysis (shaft), epiphyses (ends), and metaphysis (region between shaft and ends).
+¢  Articular surfaces are covered with a thin layer of cartilage to reduce friction.
+
+o studyplusplus.com °
+
+—l—
+os
+
+
+--- Page 5 ---
+
+Structure of Cartilage
+Cartilage is a specialized form of connective tissue that
+combines strength with flexibility. It provides support to
+various body parts, maintains structural integrity, and ensures
+smooth movements at joints by reducing friction and absorbing
+mechanical shocks. Unlike bone, cartilage is avascular—it lacks
+blood vessels, lymphatics, and nerves. Instead, nutrients and
+oxygen diffuse through the matrix from surrounding tissues.
+This limited nutrient supply makes cartilage growth and repair
+much slower than bone, contributing to the persistence of
+cartilage injuries.
+Composition of Cartilage
+Cartilage is composed of cells and extracellular matrix, both of
+which are adapted for its supportive and cushioning roles.
+1. Cells:
+© Chondroblasts: These are the immature, metabolically
+active cells located near the periphery of cartilage.
+They secrete -the extracellular matrix, including Figure: Structure of Cartilage
+collagen fibers, proteoglycans, and glycoproteins.
+Chondroblasts play a’Crucial role during cartilage development and growth.
+© Chondrocytes: These are mature cartilage cells derived from chondroblasts. They are embedded
+within small spaces called lacunae inside the matrix. Chondrocytes are responsible for maintaining
+the cartilage matrix, regulating its turnover, and ensuring structural stability.
+2. Extracellular Matrix:
+© Fibrous component: Rich in type II Collagen fibers, which provide tensile strength and prevent
+tearing under stress. In fibrocartilage, type | collagen is also abundant, contributing to its exceptional
+toughness.
+© Ground substance: Contains proteoglycans (such as aggrecan) and glycosaminoglycans (like
+chondroitin sulfate and hyaluronic acid), which trap large amounts of water. This hydrated gel-like
+consistency makes cartilage resistant to compression and ideal for absorbing shock.
+© Water content: Cartilage matrix is up to 80% water, allowing it to be resilient, elastic, and
+compressible. The high water content also facilitates the diffusion of nutrients and metabolic wastes.
+
+Types of Cartilage
+Cartilage exists in three specialized forms, each adapted for different structural and functional roles:
+1. Hyaline Cartilage (Glassy cartilage):
+© Features: The most abundant type, with a smooth, translucent matrix that appears glassy under the
+microscope. It has a moderate amount of collagen fibers and a relatively high water content.
+° oe Found at articular surfaces of long bones, ends of ribs, nasal septum, larynx, trachea, and
+b .
+© Functions: Provides a smooth, low-friction surface for joint movement; supports respiratory
+airways; and contributes to the structural framework of the nose and rib cage.
+2. Elastic Cartilage:
+© Features: Contains abundant elastic fibers interwoven with collagen, making it flexible and resilient.
+© locations: Found in the external ear (pinna), epiglottis, and auditory (Eustachian) tube.
+© Functions: Provides flexible support while maintaining shape; allows bending without permanent
+deformation.
+3. Fibrocartilage:
+© Features: Contains dense bundles of type | collagen fibers arranged in parallel, giving it exceptional
+tensile strength. it lacks a perichondrium (outer covering), making it less capable of repair.
+© Locations: Found in intervertebral discs, public symphysis, and menisci of the knee joint.
+© Functions: Acts ‘as @ tough shock absorber; resists both compression and tensile forces; provides
+
+strong support in regions subject to heavy pressure and stress.
+o studyplusplus.com °
+
+
+
+--- Page 6 ---
+
+>» Key Characteristics of Cartilage
+* Avascularity: No blood vessels; nutrients supplied by diffusion through the matrix.
+* Growth: Can grow by two methods:
+
+© Interstitial growth: Division of chondrocytes within the matrix, expanding cartilage from within
+(important in early development).
+
+© Appositional growth: Addition of new layers by chondroblasts in the perichondrium (outer layer of
+cartilage).
+* Repair: Limited due to absence of direct blood supply; injuries often heal slowly or incompletely.
+
+3. Comparison between Bone and Cartilage
+
+ee See | eee eee eee
+|___ Matrix __| Mineralized (rigid, contains hydroxyapatite) _| Non-mineralized, gelatinous (flexible) _|
+[Cells J Osteobiasts, osteocytes, osteoclasts | Chondroblasts, chondrocytes
+Highly vascular
+epiphyseal plates
+Flexibil
+p
+
+i
+
+Skeleton, supporting framework, protection
+Bone and cartilage are complementary connective tissues in the human skeletal system. Bone provides rigid
+support, mineral storage, and protection, whereas cartilage offers flexibility, cushioning, and smooth
+surfaces at articulating joints. The combination of these tissues ensures structural integrity, mobility, and
+resilience in the human body.
+
+Explain inctions of osteoblasts, osteoclasts and osteocytes.
+
+FUNCTIONS OF OSTEOBLASTS, OSTEOCLASTS, AND OSTEOCYTES
+
+Bone is a dynamic tissue that constantly undergoes remodeling, a process that involves the balanced activity
+of three major cell types: osteoblasts, osteoclasts, and osteocytes. Their coordinated tunctions ensure growth,
+repair, and mineral homeostasis throughout life.
+
+1, Osteoblasts - The Bone-Building Cells
+
+* Function in bone formation: Osteoblasts secrete the organic matrix (osteoid), which is composed
+primarily of type | collagen and non-collagenous proteins. They also initiate the deposition of calcium
+phosphate crystals, leading to the mineralization and hardening of bone, .
+
+« Role in growth and repair: Osteoblasts are active during bone growth, ire healing, and remodeling.
+They form new bone tissue on surfaces where additional strength is 2
+
+* Endocrine function: Osteoblasts release signaling molecules such as osteocalcin, which not only regulate
+bone mineralization but also influence energy metabolism and glucose regulation.
+
+« Fate of osteoblasts: Once their bone-forming activity declines, they may become inactive bone-lining
+cells, undergo apoptosis, or differentiate into osteocytes.
+
+2. Osteocytes — The Bone-Maintaining Cells
+
+* Function in maintenance: Osteocytes are embedded within lacunae of the bone matrix and maintain
+the surrounding mineralized tissue by regulating ion exchange between bone and blood.
+
+« Role as mechanosensors: Osteocytes detect mechanical stress and strain placed On bone. Through their
+cytoplasmic extensions in canaliculi, they signal osteoblasts and osteoclasts to strengthen or resorb bone
+in ronpsiee to changing loads.
+
+* Coordination of remodeling: By releasing chemical messengers, osteocytes act as the "command
+center" of bone tissue, directing remodeling processes to ensure skeletal strength and integrity.
+
+« Nutrient and waste exchange: Their canalicular network allows exchange of nutrients and removal of
+waste products, ensuring survival in the mineralized matrix.
+
+1
+
+cs) studyplusplus.com $
+
+
+--- Page 7 ---
+
+3.  Osteoclasts - The Bone-Resorbing Cells
+
+© Function in bone resorption: Osteoclasts secrete acids and enzymes that dissolve the inorganic mineral
+and digest the organic collagen matrix, breaking down old or damaged bone.
+
+© Role in remodeling: By removing weakened bone, osteoclasts create space for osteoblasts to deposit
+new matrix, thereby maintaining skeletal strength.
+
+e Calcium regulation: Osteoclast activity releases calcium and phosphate ions into the bloodstream,
+playing a critical role in maintaining mineral balance for essential physiological functions such as nerve
+impulse conduction, muscle contraction, and blood clotting.
+
+¢ Repair and adaptation: Osteoclasts work in concert with osteoblasts to reshape bone according to
+mechanical stresses, ensuring bones remain efficient structures without unnecessary weight.
+
+> Integration of Functions
+
+The coordinated actions of osteoblasts, osteocytes, and osteoclasts ensure that bone remains a living,
+
+adaptable tissue:
+
+* Osteoblasts build new bone.
+
+® Osteocytes monitor and maintain the existing bone matrix.
+
+© Osteoclasts resorb bone, allowing remodeling and mineral release.
+
+Together, they maintain skeletal integrity, enable growth and repair, and regulate calcium homeostasis—
+
+functions that are essential for overall health and survival.
+
+Oe ee | ogee
+cells macrophage lineage
+— Seen | Reside in lacunae within | Found on bone. surfaces in
+recrpon be
+bone matrix (osteoid) gulate mineral content_| resorption)
+| Nucleus |
+
+Active during bone growth and repair | Metabolically less active; | Highly active during bone
+
+communicate via cafaliculi | remodeling and calcium
+regulation
+
+le, centrally located [ Single, central located PMultinucleated
+
+SLOs Based (IMCQs)
+
+1. Which of the following bone cells is responsible | 4. The matrix of cartilage is primarily:
+
+for bone formation? A. Rigid and highly mineralized
+
+A. Osteocyte B. Osteoblast B. Flexible with elastic and collagen fibers
+
+C. Osteoclast D. Chondrocyte C. Composed of caicium phosphate only
+2. Osteocytes are located in: D. Made of adipose tissue
+
+A. Periosteum 8. feversiancenal 5. The outer fibrous covering of cartilage Is called:
+
+C. Lacunae within the bone matrix peeked payeeeanlt
+
+D m “ C. Perichondrium D. Endosteum
+
+. Perichondrium 6. Which cartilage type is most abundant in the
+
+3. The function of osteoclasts is to: human body? ‘
+
+A. Maintain bone matrix B. Form new bone A. Fibrocartilage B. Elastic cartilage
+
+C. Break down bone tissue 0). Produce cartilage CrnyemeCertioge ——_D. Caleified carthaga
+
+cs) studyplusplus.com $
+
+
+--- Page 8 ---
+
+™
+
+Which of the following statements about bone is
+correct?
+
+A. Bone is avascular and heals slowly.
+
+B. Bone matrix contains only elastic fibers.
+
+C. Bone is highly vascularized and heals quickly.
+D. Bone does not contain living cells.
+Chondrocytes obtain nutrients through:
+
+A. Direct blood supply
+
+B. Active transport from the bone
+
+C. Diffusion through the cartilage matrix
+
+D. Canaliculi
+
+9. Which type of cartilage is found in intervertebral
+discs?
+
+A. Hyaline cartilage 8, Fibrocartilage
+
+C. Elastic cartilage D. Calcified cartilage
+The mineral primarily responsible for bone
+hardness is:
+
+A. Sodium chloride 8. Calcium phosphate
+C. Magnesium sulfate D. Potassium carbonate
+Which cartilage type contains both collagen and
+a high number of elastic fibers?
+
+A. Hyaline cartilage B. Elastic cartilage
+
+C. Fibrocartilage D. Calcified cartilage
+Osteology refers to the:
+
+A. Study of joints
+
+B. Study of cartilage only
+
+C. Study of muscles
+
+D. Study of bones and cartilage
+
+The function of osteocytes includes all of the
+following except:
+
+A, Maintaining bone tissue
+
+B. Regulating calcium release
+
+C. Bone matrix resorption
+
+D. Secreting enzymes
+
+@
+
+14,
+
+17.
+
+19.
+
+Cartilage is avascular. Which of the following isa
+
+consequence of this?
+
+A. Cartilage is easily broken
+
+B. Cartilage resists compression
+
+C. Cartilage heals slowly
+
+D. Cartilage becomes rigid with age
+
+Periosteum is: .
+
+A. A vascular membrane lining the bone marrow
+cavity
+
+B. A protective covering around cartilage
+
+C. The outer fibrous layer of a bone
+
+D. A cavity where osteocytes reside
+
+Which of the following pairs Is correctly
+
+matched?
+
+A. Elastic cartilage — intervertebral disc
+
+B. Fibrocartilage — ear pinna
+
+C. Hyaline cartilage — ends of long bones
+
+D. Hyaline cartilage — meniscus of knee
+
+The concentric arrangement of lacunae around a
+
+central canal is found in:
+
+A. Cartilage only B. Spongy bone
+
+C. Compact bone D. All connective tissues
+Cartilage cells are called:
+
+A. Osteocytes ~ B. Fibrocytes
+
+C. Chondrocytes D. Leukocytes
+
+Which feature is common to both bone and
+cartilage?
+
+A. Rich blood supply B. Presence of lacunae
+C.Concentric lamellae D. High mineral content
+Which cartilage type Is found in the epiglottis?
+A. Hyaline B, Elastic
+
+C. Fibrocartilage D. Articular
+
+}1.8]2c/3.c]4e]scléecl7¢] sc] 9.6 | 10.8)
+[11.6 | 42.0 [43.¢ | 44.c] 1s.c]16.c]17.c[18.c] 79.8 | 20.8 |
+
+Q.1 Whatis the function of osteoblasts in bone tissue?
+
+Ans. Osteoblasts are specialized bone-forming cells found on the surface of
+
+bone tissue. They secrete osteoid, an organic matrix made of collagen
+and proteins, which later becomes mineralized with calcium and
+
+MARKING SCHEME (3 Marts)
+© 1 mark each for three main functions
+
+phosphate salts. Osteoblasts are highly active during bone growth,
+
+fracture repair, and remodeling. They also regulate mineral deposition, helping bones gain strength and
+rigidity. Once surrounded by the matrix, many osteoblasts differentiate into osteocytes. Overall, osteoblasts
+ensure the continuous renewal and development of healthy bone.
+
+Q.2 How do osteocytes help in maintaining bone health?
+
+Ans. Osteocytes are mature bone cells that originate from osteoblasts and
+reside in small spaces called lacunae. They extend long cytoplasmic
+processes through tiny canals (canaliculi), forming a communication
+
+°
+
+studyplusplus.com
+
+MARKING SCHEME (3 Marks)
+1. mark each for three main functions
+
+°
+
+
+--- Page 9 ---
+
+network within bone. Their functions include: maintaining mineral homeostasis by regulating calcium and
+phosphate exchange between bone and blood, secreting enzymes to remodel surrounding matrix, and
+sensing mechanical stress to signal when bone strengthening is required. Thus, osteocytes act as the
+“caretakers” of bone, maintaining its strength and integrity over time.
+
+Q.3 Describe the role of osteoclasts in bone metabolism.
+
+Ans. Osteoclasts are large, multinucleated cells derived from monocytes and
+
+located on bone surfaces. They specialize in bone resorption, breaking MARKING SCHEME (3 Marks)
+down bone tissue to release calcium and phosphate into the ‘mark each for three main functions
+
+bloodstream. They achieve this by secreting enzymes and hydrochloric
+
+acid, which dissolve the organic matrix and mineral salts. Their activity is vital in bone remodeling, balancing
+bone formation by osteoblasts, and ensuring bones adapt to stress or injury. Without osteoclasts, bones
+would become abnormally dense, fragile, and unable to remodel properly.
+
+Q.4 Why does cartilage heal more slowly than bone?
+
+Ans, Cartilage heals slowly because it is avascular, meaning it lacks direct blood vessels. Instead, nutrients and
+oxygen must diffuse through the dense matrix to reach chondrocytes (cartilage cells). This diffusion is slow
+and limits the rate of cell division and repair. In contrast, bone is richly supplied with blood vessels, allowing
+rapid delivery of nutrients, growth factors, and immune cells for healing. As a result, fractured bones may
+heal in weeks to months, whereas cartilage injuries, such as those in joints, often take years or remain
+permanent.
+
+Q.5 What is the perichondrium, and what is its function?
+
+Ans. The perichondrium is a dense connective tissue sheath surrounding
+most types of cartilage (except articular cartilage and fibrocartilage). It MARKING SCHEME (3 Marks)
+consists of two layers: an outer fibrous layer containing collagen and | © Definition 1 mark, functions 2 marks
+blood vessels, and an inner chondrogenic layer with progenitor cells.
+Functions include: (1) nourishing cartilage, since blood vessels in the perichondrium supply nutrients by
+diffusion, (2) supporting growth through chondrogenic cells that can differentiate into chondroblasts, and
+
+(3) aiding repair by providing new cells afterinjury. Thus, the perichondrium is essential for cartilage survival
+and regeneration.
+
+Q6 Differentiate between the mineral content of bone and cartilage.
+
+Ans. Bone is a rigid connective tissue with high mineral content, primarily
+calcium phosphate (hydroxyapatite crystals) and calcium'carbonate. | | Panes pach preci a
+These minerals give bone its hardness, compressive strength, and mineral content of cartilage 1.5 marks
+
+weight-bearing capacity. This mineralization also makes’ bone»an
+
+important reservoir for calcium and phosphate in the body.
+
+In contrast, cartilage has a low mineral content. Its matrix is mostly made up of water, proteoglycans, and
+collagen fibers, giving it a gel-like, resilient, and flexible structure. The absence of significant mineral salts
+makes cartilage softer and better suited for cushioning and flexibility rathet than rigidity.
+
+Q7 Describe the structural differences between compact and spongy bone.
+
+Ans. Compact bone (dense bone) is the hard, outer layer of bone. It is
+organized into osteons or Haversian systems, with concentric lamellae | | sce aye geenehcarey
+surrounding central canals containing blood vessels and nerves. This con paibeaiess cane
+dense structure makes compact bone strong and ideal for providing
+protection and support.
+Spongy bone (cancellous bone), on the other hand, is lightweight and porous. It consists of a network of
+trabeculae, leaving spaces that are often filled with red bone marrow, where blood cell formation occurs.
+Its structure reduces overall bone weight while maintaining strength, making it particularly important in the
+ends of long bones and flat bones.
+
+Q8 State the main locations and functions of hyaline cartilage.
+
+Ans. Location: Hyaline cartilage is the most common type of cartilage. It Is
+larynx, trachea, and bronchi, and forms the embryonic skeleton before : saoioeacre
+bone development.
+
+cs) studyplusplus.com $
+
+
+--- Page 10 ---
+
+Functions: It provides smooth surfaces at joints, reducing friction and enabling easy movement. It also
+supports respiratory structures like the trachea and bronchi, preventing collapse, and forms a template for
+bone formation in early development. Its balance of resilience and strength makes it vital for both structural
+support and smooth joint movement. -
+
+Q.9 What are the functional roles of fibrocartilage and where is it found?
+
+Ans. Location: Fibrocartilage is found in intervertebral discs, the pubic ae
+symphysis, and the menisci of the knee joint. These are areas subjected
+to strong pressure and compressive forces.
+Functions: Fibrocartilage contains thick bundles of collagen fibers, making it the toughest type of cartilage.
+It provides shock absorption, resists both compression and tensile stresses, and helps stabilize joints. For
+example, intervertebral discs cushion the vertebrae, and menisci in the knee distribute body weight evenly -
+across the joint. Its unique combination of strength and resilience makes it ideal for high-stress regions.
+
+Q.10 Compare the flexibility and location of elastic cartilage with other types.
+
+Ans. Flexibility: Elastic cartilage is the most flexible type of cartilage because
+its matrix contains abundant elastic fibers in addition to collagen. This
+allows it to bend repeatedly without losing shape, unlike hyaline or
+fibrocartilage, which are less elastic. p
+Location: Elastic cartilage is found in body parts that require flexibility and shape retention, such as the
+external ear (pinna), epigiottis, and auditory (Eustachian) tube. These locations demand a structure that
+can withstand movement and bending while maintaining its original form. This sets it apart from hyaline
+cartilage (more rigid) and fibrocartilage (more supportive).
+
+;
+Identify the main divisions of the human skeleton and list the bones of the appendicular and axial
+
+skeleton of man.
+
+DIVISIONS OF THE HUMAN SKELETON
+
+The human skeletal system consists of 206 bones, which are:structurally organized into two major divisions:
+
+(1) Axial Skeleton (2) Appendicular Skeleton.
+
+This division reflects the dual functions of the skeleton: stability and protection of vital organs (axial
+skeleton), and facilitation of movement through the limbs (appendicular skeleton).
+
+1. Axial Skeleton
+
+The axial skeleton forms the central axis of the body and includes 80 bones. it provides protection for the
+brain, spinal cord, and organs within the thoracic cavity. The axial skeleton consists of three major regions:
+> = Skull
+a) Vertebral column b) Thoracic cage
+{i) Skull (29 bones):
+The skull is a complex structure that protects the brain and forms the framework of the face. It is
+categorized into four groups:
+o Cranial bones (8): Form the cranium, which encases and protects the brain.
+= Unpaired bones: Frontal, Occipital, Sphenoid, Ethmoid
+* Paired bones: Parietal (2), Temporal (2)
+© Facial bones (14): Form the facial structure and provide attachment sites for muscles of expression
+and mastication.
+* Paired bones (6 pairs): Maxillae, Zygomatic, Nasal, Lacrimal, inferior nasal conchae, Palatine
+* Unpaired bones: Mandible, Vomer
+© Ear ossicles (6): The three tiny bones of the middle ear in each side, the smallest bones in the body
+— Malleus, Incus, Stapes.
+© Hyoid bone (1): A unique, U-shaped bone located below the tongue. Unlike other bones, it does not
+articulate with any other bone. It provides attachment for tongue and neck muscles, aiding in
+swallowing and speech,
+
+cs) studyplusplus.com $
+
+
+--- Page 11 ---
+
+Figure: Human Skull (side view)
+(li) Vertebral Column (26 bones):
+The vertebral column extends from the skull to the pelvis, forming the backbone. It protects the spinal
+cord and provides structural support.
+Vertebral Column:
+The vertebral column comprises 33 vertebrae, arranged into five distinct regions:
+
+|_Region | Number of Vertebrae Description
+[Cervical | 7» ~~ __| Vertebrae of the neck (includes atlas and axis)
+
+[Thoracic | __—«:12_~—S__| Rilb-bearing vertebrae of the chest
+|tumbar_[ S| Vertebrae of the lower back
+|sacral__[ _S(fused) __|Fusetoformthesacrum
+
+Fuse to form the coccyx (tailbone)
+
+Atlas (C1) is the first cervical vertebra, supporting the skull.
+
+Axis (C2) is the second cervical vertebra, allowing rotation of the head.
+
+The sacrum articulates with the iliac bones of the pelvis.
+
+Sacral and coccygeal vertebrae collectively form the pelvic vertebrae.
+Side View Back View
+
+oooo
+
+12 Thoracic
+vertebrae
+
+5 fused vertebrae
+
+Coccyx
+4 fused vertebrae
+Figure: Human vertebral column
+
+cs) studyplusplus.com $
+
+
+--- Page 12 ---
+
+(iil) Thoracic Cage (25 bones):
+The thoracic cage protects the heart and lungs while supporting respiration.
+© Sternum (1)
+oO Ribs (24; 12 pairs)
+Rib cage
+The rib.cage consists of 12 pairs of ribs, all of which articulate posteriorly with the thoracic vertebrae. The
+rib pairs are categorized as follows:
+¢ True ribs (1st-7th pairs): Directly connected to the sternum via individual costal cartilages.
+¢ False ribs (8th-10th pairs): Connected to the sternum indirectly through a shared costal cartilage.
+e Floating ribs (11th-12th pairs): Not connected to the sternum at all.
+The rib cage encloses and protects vital organs and forms the chest cavity, a semi-vacuum chamber essential
+for respiration.
+
+Appendicular Skeleton
+The appendicular skeleton consists of 126 bones that form the limbs and their supporting girdles. it enables
+locomotion and manipulation of the environment.
+{i) Pectoral (Shoulder) Girdle (4 bones):
+© Clavicle (2) (collarbones): Each articulates medially with the sternum and laterally with the scapula.
+© Scapula (2) (shoulder blades): Broad, flat bones that provide muscle attachment sites.
+(li) Upper Limbs (60 bones):
+o Arm: Humerus (2)
+=» Humerus: The long bone of the upper arm. its head fits into the glenoid cavity of the scapula
+forming the shoulder joint.
+© Forearm: Radius (2), Ulna (2)
+* Radius: The outer bone of the forearm on the thumb side.
+* Ulna: The inner bone of the forearm, slightly longer than the radius.
+o Hand: Carpals (16), Metacarpals (10), Phalanges (28)
+*  Carpals: Eight small bones arranged in two rows, forming the wrist.
+= Metacarpals: Five bones forming the palm.
+= Phalanges: Bones of the fingers. Each finger has three-phalanges (proximal, middle, distal),
+except the thumb, which has two.
+(ili) Pelvic Girdle (2 bones):
+o Coxal (hip) bones (2) — each formed by fusion of ilium, ischium, and pubis
+The two hip bones meet anteriorly at the pubic symphysis and articulate posteriorly with the
+sacrum. A deep socket called the acetabulum accommodates the head of the femur.
+
+cs) studyplusplus.com $
+
+
+--- Page 13 ---
+
+(iv) Lower Limbs (60 bones):
+© Thigh: Femur (2)
+= Femur: The longest and strongest bone of the body; articulates with the acetabulum to form
+the hip joint.
+oO Kneecap: Patella (2)
+* Patella: A triangular sesamoid bone (kneecap) embedded in the quadriceps tendon.
+© Leg: Tibia (2), Fibula (2)
+= Tibia: The larger, weight-bearing bone of the lower leg (shin bone).
+= Fibula: A thinner bone lateral to the tibia; provides muscle attachment but bears little weight.
+© Foot: Tarsals (14), Metatarsals (10), Phalanges (28)
+*  Tarsals: Seven tightly connected bones forming the ankle.
+* Metatarsals: Five bones forming the sole of the foot.
+= Phalanges: Bones of the toes. Each toe has three phalanges, except the big toe, which has two.
+Divisions of Human Skeleton
+
+|__Division__| Number of Bones |
+
+Skull (29), Hyoid (1), Ear ossicles (6), Vertebral column (26),
+Thoracic cage (25)
+a 1|O, | Pectoral girdle (4), Upper limbs (60), Pelvic girdle (2), Lower
+Skeleton limbs (60)
+‘Skull
+
+o studyplusplus.com °
+
+
+--- Page 14 ---
+
+Bones of Axial Skeleton
+
+Bones
+Frontal, Parietal (x2), Temporal (x2), Occipital,
+Ethmoid, Sphenoid
+
+Nasal (x2), Lacrimal (x2), Zygomatic (x2),
+Facial Bones | Maxilla (x2), Palatine (x2), Inferior nasal concha
+(2), Mandible, Vomer
+
+| Ear Ossicles | Malleus (x2), Incus (x2), Stapes (x2) .
+Hyoid (does notarticulate with anyotherbone)|  —=s.1 |
+
+Vertebral | Cervical (7), Thoracic (12), Lumbar (5), Sacral (5 33(24+9
+Column fused), Coccygeal (4 fused) fused)
+12 pairs of ribs: True ribs (1st-7th), False ribs.
+Rib Cage (8th—10th), Floating ribs (11th—12th); Sternum:
+manubrium, body, xiphoid process
+
+Total Axial Skeleton :
+
+Bones of Appendicular Skeleton
+
+Number of
+Bones
+|_Pectoral Girdle | Shoulder Girdle [Clavicle (x2), Scapula(x2) |
+
+Scaphoid, Lunate, Triquetrum, Pisiform,
+Trapezium, Trapezoid, Capitate, Hamate (x2
+
+of each = 8 bones per hand)
+Palm Metacarpal bones I-V in/each hand (x5 per
+(Metacarpals) | hand)
+i langes in each
+Fingers Piveswadeiiges with 2h ie phalanges
+(Phalanges) per hand
+Coxal bones (x2), each formed by fusion of
+three bones: Ilium, Ischium, arid Pubis
+
+Thigh 7
+p ee
+Leg 2 a
+Calcaneus, Talus, Navicular, Cuboid, Medial,
+Ankle (Tarsals) | Intermediate, and Lateral cuneiforms (x2 of p » |
+each = 7 per foot) .
+foot)
+L126 |
+
+Proximal, Middle, Distal phalanges in each
+Toes (Phalanges) | toe (except big toe with 2); 14 phalanges per
+foot
+Total appendicular skeleton
+
+Describe three types of joints Le., fibrous joints, cartilaginous joints and synovial joints and give
+example of each.
+
+cs) studyplusplus.com $
+
+
+--- Page 15 ---
+
+JOINTS
+
+A joint, or articulation, is the site where two bones, or a bone and cartilage, meet. Joints enable movement
+and provide mechanical support. The scientific study of the structure and function of joints is known as arthrology.
+Joints are broadly classified into three categories based on the type of connective tissue and the degree of
+movement they allow:
+
+Fibrous joints
+
+1. ‘Fibrous Joints (Immovable Joints) @
+In fibrous joints, adjacent bones are directly connected by fibrous connective tissue primarily composed of
+collagen fibers. These joints lack a joint cavity, and the bones are either tightly fitted or slightly spaced. They
+allow virtually no movement. = *
+Examples of fibrous joints:
+© Sutures between most cranial bones of the skull,
+* Syndesmoses between the shafts of the radius and ulna in the forearm, and tibia and fibula in the leg.
+* Gomphosis, a peg-and-socket joint between the root of a tooth and its socket in the maxilla or mandible,
+
+Una: ws
+Fibrous joint
+
+(a) (b) ()
+
+2.  Cartilaginous Joints (Slightly Movable Joints)
+These joints connect bones via cartilage, a tough yet
+flexible connective tissue. Like fibrous joints, cartilaginous
+joints lack a joint cavity. The bones are united by either
+hyaline cartilage or fibrocartilage, allowing limited
+movement. .
+Examples of cartilaginous joints:
+* Costal cartilages, which connect ribs to the sternum.
+¢ Intervertebral discs between the vertebrae of the
+spinal column.
+* Pubic symphysis, where the two hip bones meet
+anteriorly.
+3. Synovial Joints (Freely Movable Joints)
+Synovial joints permit a wide range of movements. They
+feature:
+©  Hyaline cartilage covering the articulating surfaces of
+the bones to minimize friction.
+¢ Ajoint capsule surrounding the joint, composed of:
+© An outer fibrous layer reinforced by ligaments.
+© An inner synovial membrane, which secretes
+synovial fluid for lubrication and nourishment.
+
+Examples of synovial joints:
+
+© ‘Hinge joints —atiow flexion and extension (e.g., elbow,
+knee, fingers).
+
+* Ball-and-socket joints — rotational and mutti-
+directional -g., Shoulder, hip).
+
+cs) studyplusplus.com $
+
+
+--- Page 16 ---
+
+© Pivot joints — permit rotation (e.g., between the atlas and axis vertebrae in the neck).
+* Gliding joints — allow sliding movements (e.g., carpals in the wrist, tarsals in the ankle, and facet joints
+in the spine).
+
+[Feature Fibrous Joints | —Cartllaginous loins | _Synovialoints —_]
+[immovable [Slightly movable
+[absent [Absent [Present]
+
+ue Connecting Cartilage (hyaline or Hyaline cartilage + joint
+tissue (mainly collagen) fibrocartilage} capsule with synovial fluid
+imples Sutures in skull, joints | Intervertebral discs, pubic | Elbow, knee, hip, shoulder,
+between radius & ulna, | symphysis, costal cartilage | wrist, ankle
+gomphosis (tooth in socket)
+fluid and cartilage}
+
+HUMAN SKELETON AND JOINTS)
+1. Which bones form the cranium?
+
+!
+|
+
+g
+
+¢
+
+9. The bones of the pelvic girdle fuse to form which
+A. Frontal, Parietal, Maxilla structure?
+B. Frontal, Parietal, Temporal, Occipital, Ethmoid, A. Acetabulum 8. Coxa
+Sphenoid C. lium D. Pubis
+C. Mandible, Vomer, Maxilla 10. Which bone fits into the acetabulum of the
+D. Scapula, Clavicle, Humerus pelvis?
+2. Which of the following bones is unpaired inthe A. Tibia B. Femur
+skull? C. Patella D. Fibula
+A. Parietal 8. Temporal 11. The bone forming the kneecap Is called:
+C. Frontal D. Zygomatic A. Tibia B. Fibula
+3. Which bone does not articulate with any other C. Patella O. Tarsal
+bone? 12,. How many carpal bones are present in one
+A. Hyoid B. Maxilla wrist?
+C. Mandible D. Zygomatic AS B.7
+4. How many bones make up the human vertebral C8 D.10
+column? 13. Which bones make up the forearm?
+A.28 8.30 A, Humerusand Radius B. Radius and Uina
+C.33 0. 36 C. Scapula and Clavicle —_D. UIna and Femur
+5. The first and. second cervical vertebrae are | 44. which bones form the pectoral girdle?
+called: A. Ilium and Ischium 8. Femur and Tibia
+A. Atlas and Axis B. Axis and Atlas
+
+C. Clavicle and Scapula © D. Humerus and Radius
+
+C. Sacrum and Coccyx D. Cervix and Cranium 15. How many bones are found in both hands
+
+6. The number of thoracic vertebrae is:
+
+together?
+AS 8.7 A.54 B.27
+C12 D.10 c.20 ~ 0. 48
+7. The rib cage in humans is composed of how | 46, which of the following is the longest bone in the
+many pairs of ribs? human body?
+A.10 B. 12 A. Tibia B. Radius
+c.14 0.7 C. Humerus D. Femur
+8. Which ribs are known as floating ribs? 17. Which vertebrae articulate ith the ribs?
+A. 1 and 24 B.5® and 6” A Canieal me 8, Thorade
+12% and 12" D. 8 and 9" C. Lumbar D. Coceygeal
+
+cs) studyplusplus.com $
+
+
+--- Page 17 ---
+
+18. Which bone of the forearm is onthe thumb side? | 22. The joint between the root of a tooth and the
+
+A. Ulna B. Radius Jawbone Is an example of:
+
+C. Humerus D. Carpals A. Synovial joint B. Cartilaginous joint
+19. The human foot has how many phalanges in C. Fibrous joint D. Hinge joint
+
+total? 23. Which structure secretes synovial fluid in a
+
+A.14 B. 28 : synovial joint?
+
+c.10 D. 20 A. Ligament B. Perichondrium
+20. The metatarsals are found in the: C. Synovial membrane —_—D. Tendon
+
+A. Ankle B. Palm 24. Cartilaginous joints are best described as:
+
+C. Sole D. Wrist A. Freely movable B. Fixed and rigid
+21. Which type of Joint allows the greatest range of C. Slightly movable D. Rotational joints
+
+movement? 25. Anexample of a cartilaginous joint is:
+
+A. Fibrous joint B. Cartilaginous joint A. Knee joint B. Elbow joint
+
+C, Synovial joint D. Suture C. Pubic symphysis D. Suture
+
+[ae [2c [3Av[ac [sa [ec [78 [ec [98 [108 [irc {2c [13.8 |
+[14.¢ [asa | 16.0 [37.8 |18.'8 [29.8 [20.c [21.c [22¢ |2ac [aac [25.¢ |
+
+Short Questions
+Q.1_ Whatis the axial skeleton?
+
+Ans. The axial skeleton forms the central axis of the body. it is made up of
+the skull, vertebral column, and ribcage (including sternum). in total, MARKING SCHEME (3
+it consists of about 80 bones. its main function is to protect vital organs
+such as the brain (skull), spinal cord (vertebralcolumn), heart, and lungs
+(rib cage). It also provides structural support and posture by forming the upright framework of the body.
+Additionally, it serves as an attachment site for muscles involved in movement, breathing, and head
+support. By forming the body's central core, the axial skeleton ensures stability and protection while
+allowing limited flexibility.
+
+Q.2_Name the bones of the cranium.
+
+Ans. The cranium consists of eight bones that enclose and protect the brain.
+Four of thern are unpaired bones: the frontal bone, occipital/bone, | _ Pare cst paved a
+ethmoid bone, and sphenoid bone. These occur singly in the skull. The ‘mek "
+remaining four are paired bones: two parletal bones and two temporal
+bones, which occur on both sides of the skull. Together, these bones forma strong protective casing around
+the brain, provide attachment for facial and neck muscles, and house structures such as the ear. The cranium
+also plays a role in determining the shape of the head and face.
+
+Q.3 What is the function of the vertebral column?
+
+Ans, The vertebral column, or backbone, is made up of 33 vertebrae
+arranged into cervical, thoracic, lumbar, sacral, and coccygeal regions.
+Its primary function is support—it forms the main structural framework | * 1 ark each for three main functions
+of the body, bearing the weight of the head and trunk. Secondly, it
+Protects the spinal cord, which runs through the vertebral canal, safeguarding it from injury. Thirdly, it
+provides flexibility and mobility, allowing bending, twisting, and other movements while maintaining
+strength. in addition, it serves as an attachment site for muscles and ribs, contributing to posture and
+locomotion,
+
+Q.4 What is the significance of the hyoid bone?
+
+Ans. The hyoid bone is a U-shaped bone located in the neck, just below the
+mandible (lower jaw) and above the larynx. it is unique because it does
+not articulate with any other bone, being suspended by muscles and
+
+\igaments. \ts ‘main role is to support the tongue and provide
+cs) studyplusplus.com $
+
+
+
+--- Page 18 ---
+
+importance, any damage to the hyoid can impair speaking or swallowing.
+Q5 Whatis the difference between true, false, and floating ribs?
+
+Ans. The human rib cage consists of 12 pairs of ribs, classified into three
+groups. True ribs (1st-7th pairs) attach directly to the sternum through MARKING SCHEME (3 Marks)
+their own costal cartilages, providing strong protection and stability. | + 1 mark for each type
+False ribs (8th-10th pairs) do not connect directly; instead, their
+cartilages join with the cartilage of the 7th rib before reaching the sternum. Floating ribs (11th-12th pairs)
+have no anterior attachment to the sternum at all; they are only attached posteriorly to the vertebrae. True
+ribs mainly protect thoracic organs, while false and floating ribs provide teeny and protect deeper
+structures such as the kidneys.
+
+Q.6 What bones form the pectoral girdle?
+
+Ans. The pectoral girdle is made up of two clavicles (collarbones) and two
+scapulae (shoulder blades), one on each side of the body. The clavicles MARKING SCHEME (3 Marks)
+are long, slender bones that connect the sternum to the scapulae, | + Names ofthe bones 3 marks
+providing support for the shoulders, The scapulae are large, flat,
+triangular bones located at the back of the rib cage. Together, they form a strong yet flexible framework that =
+supports the upper limbs, allows attachment of muscles, and enables a wide range of shoulder and arm
+movements. This mobility is essential for daily activities such as lifting, pushing, and throwing. .
+
+Q.7_ What are carpals, metacarpals, and phalanges?
+
+Ans. The bones of the hand are divided into three groups. Carpals are the
+small bones of the wrist, arranged in two rows, with 8 bones in each | , Peony:pdiciginctaaises me
+hand. Metacarpals form the palm of the hand, consisting of 5 long phalanges 1 mark .
+bones, one for each digit. Phalanges aré the bones of the fingers, with
+14 in each hand (three in each finger and two in the thumb). This arrangement provides both strength and
+flexibility, allowing precise hand movements, gripping, and manipulation of objects. s
+
+Q8 Describe the structure of the pelvic girdle.
+
+Ans. The pelvic girdle supports the weight of the body and connects the
+lower limbs to the axial skeleton, Each half of the girdle isformed bya | , ,,MN™MeSttim Comrie 3
+hip bone, which is the fusion of three bones: the ilium (broad, upper nak
+part), the ischium (posterior, lower part), and the pubis (anterior part).
+
+. The two hip bones meet at the pubic symphysis, a cartilaginous joint at the midline. On the-outer side of
+each hip bohe lies the acetabulum, a deep socket that forms the joint with the femur. This structure provides
+strength, supports body weight, and protects pelvic organs.
+
+Q9 Which bones make up the lower limb?
+Ans. The lower limb consists of several major bones adapted for strength,
+support, and movement. The fernur (thigh bone) is the Jongest and MARKING SCHEME (3 Marks)
+
++ strongest bone in the body. The patella (kneecap) protects the knee | * Names ofthe bones 3 marks
+joint. The tibia (shin bone) and fibula form the lower leg, with the tibia
+bearing most of the weight. The tarsals (7 bones) form the ankle, the metatarsals (S-bones) form the foot
+arch, and the phalanges (14 bones) form the toes. Together, these bones enable standing, walking, running,
+and balancing the body.
+
+Q,10 What is the difference between tibia and fibula?
+Ans. The tibia, commonly known as the shin bone, is the larger and stronger
+bone of the lower leg. It is the main weight-bearing bone, forming the MARKING SCHEME (3 Marks)
+knee joint with the femur above and the ankle joint with the talus | * Tes2Smarks: ula 1.5 marks
+below. In contrast, the fibula is a slender bone located laterally to the
+tibia. Although it does not bear significant weight, it provides muscle attachment sites and contributes to
+
+the stability of the ankle joint. Thus, the tibia is essential for support and movement, while the fibula assists
+in muscle function and balance.
+
+cs) studyplusplus.com $
+
+
+--- Page 19 ---
+
+20
+
+Q.11 What are fibrous joints and where are they found?
+
+Ans. Fibrous joints are immovable joints where bones are held tightly
+together by dense fibrous connective tissue rich in collagen fibers. They
+have no joint cavity, which restricts movement and provides stability. | * Definition 1 mark; locations 2 marks
+These joints are mainly found in areas requiring firmness and
+protection. Examples include the sutures of the skull, which protect the brain; the syndesmosis between
+the radius and ulna shafts, allowing limited twisting; and the gomphosis joint between teeth and their
+sockets in the jaw.
+
+Q.12 How do synovial joints differ from other types of joints?
+
+Ans. Synovial joints are the freely movable joints of the body. They differ
+from fibrous and cartilaginous joints because they have a joint cavity MARKING SCHEME (3 Marks)
+filled with synovial fluid, which lubricates and nourishes the joint. The | * Definition 1 mark; differences 2 marks
+articulating bone surfaces are covered with hyaline cartilage to reduce
+friction. These bones are enclosed within a fibrous capsule lined by a synovial membrane, ensuring smooth
+movement. Unlike immovable fibrous or slightly movable cartilaginous joints, sisi joints allow the
+widest range of motion, such as bending, rotation, and gliding.
+
+Q.13 Give two examples of cartilaginous joints and state their function.
+
+Ans. Cartilaginous joints are joints where bones are joined by cartilage,
+allowing slight but limited movement. Examples include intervertebral MARKING SCHEME (3 Marks)
+discs between vertebrae and the pubic symphysis joining the two Lavahah cabanas snenardana
+halves of the pelvis. Their primary function is to act as shock absorbers,
+reducing the impact of movement. on bones. They also provide flexibility while maintaining, strong
+connections between bones, making them important for stability in the spine and pelvis.
+
+GY AND SOCIETY CONNEC
+
+Techniques for Joint Replacement (Arthroplasty)
+
+Joint replacement, medically termed arthroplasty, involves replacing damaged or diseased
+joints with artificial components. A wide range of joints, including the hip, knee, shoulder, and
+elbow, can be surgically replaced. The artificial joints are typically composed of metals such as
+stainless steel or titanium alloys, combined with modern polymers like high-density polyethylene,
+silastic, or elastomer.
+
+There are two main techniques used in joint replacement surgery:
+
+* Partial Joint Replacement (Hemi-replacement Technique): in this procedure, the damaged
+articular surface of the bone on only one side of the joint is removed and replaced with an
+artificial component.
+
+© Total Joint Replacement Technique: In this method, the articular surfaces on both sides of
+the joint are removed and replaced with prosthetic components to restore full function.
+
+The prosthetic components are typically affixed to the bone using a synthetic adhesive, most
+commonly methyl methacrylate, to ensure secure attachment.
+
+Relationship Between Bipedal Posture and the Human Skeleton and Musculature
+The bipedal posture of humans is supported by specific adaptations in both the skeletal and
+
+muscular systems:
+
+* Vertebral Column Curvatures: The natural curvatures of the vertebral column contribute to
+body balance in the upright stance and help distribute body weight evenly.
+
+«Intervertebral Discs: These fibrocartilaginous structures provide flexibility to the spine and
+serve as shock absorbers during bipedal locomotion.
+
+* Pelvic Structure: The shape and orientation of the pelvis, especially its articulation with the
+vertebral column, allow for an upright posture and efficient weight transfer during walking.
+Postural Muscles: Certain muscles, especially those along the spine and lower limbs, act as
+
+anti-gravity muscles, continuously contracting to oppose gravitational forces. These include strong,
+
+complex erector spinae muscles and gluteal muscles, which maintain body alignment and stability.
+
+cs) studyplusplus.com $
+
+
+--- Page 20 ---
+
+SLO [B-12-R-65)
+
+Describe the disorders of human skeleton (disc-slip, spondylosis, sciatica, arthritis, osteoporosis) and
+
+their causes.
+
+COMMON DISORDERS OF THE HUMAN SKELETON
+
+The human skeletal system, though highly resilient, is susceptible to a variety of disorders that impair
+movement, posture, and overall health. These disorders may arise from aging, injury, poor posture, degenerative
+changes, nutritional deficiencies, or autoimmune conditions. Important disorders are discussed below:
+
+1. Slipped Disc (Herniated Disc)
+Each intervertebral disc is a cushion-like structure located between adjacent vertebrae. It is composed of
+two distinct parts:
+* Nucleus pulposus: a soft, gelatinous central region that provides elasticity and compressibility.
+¢ Annulus fibrosus: a tough outer ring of fibrocartilage that firmly anchors the vertebrae together.
+These discs act as shock absorbers during movement. A slipped disc (more accurately called a herniated
+disc) occurs when the annulus fibrosus ruptures, allowing the nucleus pulposus to protrude outward. This
+herniation may compress the spinal cord or nearby spinal nerves, leading to severe back pain, nerve
+irritation, numbness, or even loss of motor function.
+Note: The term “slipped disc” is misleading, since the disc itself does not slip out of place; only its inner
+contents bulge abnormally.
+
+2. Spondylosis
+Spondylosis is a degenerative disorder of the vertebral column that results in stiffness, pain, and reduced
+mobility. It is associated with the gradual wear and tear of intervertebral discs, ligaments, and vertebral
+Joints. In advanced stages, it may lead to immobility and even fusion of vertebrae.
+* Cervical spondylosis is a common type, involving degeneration of cervical vertebrae. It often results in
+neck pain, stiffness, headaches, and sometimes compression of spinal nerves.
+© — Risk factors include aging, repetitive strain, and Jong-term poor posture.
+
+aa |
+Degenerated SS
+a i
+Buying LOK
+Hermiated
+disc
+
+Disc Degeneratio
+with osteophyte
+
+Formation’
+
+Figure: Structure of (a) intervertebral disc (b) slipped disk
+
+3. Sciatica
+
+Sciatica refers to pain and discomfort caused by pressure on the sciatic nerve, the longest nerve in the
+
+human body. The pain typically radiates from the lower back through the buttocks and down the legs, and
+
+may be accompanied by numbness, tingling, or muscle weakness.
+
+* Causes: Most commonly a herniated disc, but also spinal stenosis, bone spurs, pelvic fractures, or tumors
+Pressing on the nerve.
+
+* Symptoms: Sharp, shooting pain down the leg, sometimes so severe that normal walking or sitting
+becomes difficult.
+
+cs) studyplusplus.com $
+
+wr
+oc
+
+
+--- Page 21 ---
+
+4. Arthritis
+
+Arthritis is a general term for inflammation of joints, leading to pain, stiffness, swelling, and difficulty in
+
+mobility. It can significantly impair everyday activities such as walking, climbing stairs, or standing up from a
+
+seated position.
+
+Major Types Include:
+
+Osteoarthritis: The most common type, caused by progressive degeneration of articular cartilage. It
+typically affects weight-bearing joints such as the knees, hips, and spine, producing pain after movement
+and a “grating” sound in joints. :
+
+© Rheumatoid arthritis: An autoimmune disease in which the immune system attacks the synovial
+membrane, causing swelling, deformity, and chronic pain.
+
+© Gouty arthritis: Caused by excessive uric acid in the blood. Crystals of sodium urate deposit in joints,
+especially the big toe, leading to sudden episodes of severe pain, redness, and swelling.
+
+5. Osteoporosis
+
+Osteoporosis is a skeletal disorder characterized by low bone mass, increased bone fragility, and a high risk
+of fractures. Bones become porous and brittle, particularly in the spine, hip, and wrist.
+® Why it occurs:
+© Bone mass normally peaks between ages 20-25 years.
+© With advancing age—especially after menopause in women—bone resorption exceeds bone deposition.
+o This imbalance gradually weakens the bones.
+© Risk factors: Aging, deficiency of calcium and vitamin D, hormonal changes (low estrogen in women),
+sedentary lifestyle, and prolonged use of corticosteroid medications.
+* Prevention:
+© Ensuring adequate calcium and vitamin D intake during childhood and adolescence, when bone
+mass is being built.
+o Engaging in weight-bearing exercises to strengthen bones.
+o Attaining a high peak bone mass in early adulthood helps tolerate natural age-related bone loss
+later in life.
+The major disorders of the skeletal system—slipped disc, spondylosis, sciatica, arthritis, and osteoporosis—
+demonstrate the importance of maintaining skeletal health through proper nutrition, posture, exercise, and
+preventive care. Early diagnosis and treatment can reduce the severity of these conditions and improve
+quality of life.
+
+SLO [B-12-R-66)]
+
+State different types of fractures (simple, compound and complicated) and describe the repair process
+
+of simple fractures.
+
+BONE FRACTURES
+
+A fracture is the medical term for a broken bone. They occur
+when the physical force exerted on the bone is stronger than the bone
+itself. So bones break when they cannot withstand a force or trauma
+applied to them.
+
+Common types of fractures
+A fracture is a break in bone integrity caused when the applied
+force exceeds the bone's mechanical strength.
+> Common Types Include:
+© Simple (closed) fracture — The bone is broken, but the skin
+femains intact.
+* Compound (open) fracture — Bone ends pierce the skin,
+increasing the risk of infection.
+© Complicated fracture —A'fracture that damages surrounding tissues or organs.
+
+cs) studyplusplus.com $
+
+
+--- Page 22 ---
+
+>» Bone Repair
+Bone Is a dynamic, living tissue capable of self-repair following injury. The process of bone repair after a
+fracture involves a highly coordinated sequence of biological events that restore the bone’s original
+structure and function. The healing process typically proceeds through four overlapping stages:
+1, Haematoma Formation (Clot Formation) =
+© Immediately after a bone fractures, blood vessels within the bone and surrounding periosteum are
+ruptured, resulting in hemorrhage at the fracture site.
+© This leads to the formation of a haematoma, a localized mass of clotted blood. The haematoma
+causes swelling, inflammation, and cellular death in the area due to loss of blood supply.
+2. Fibrocartilaginous Callus Formation (Soft Callus Formation)
+© Within a few days, capillaries grow into the haematoma and phagocytic cells begin clearing dead
+cells and debris.
+© Fibroblasts and chondroblasts invade the area and produce collagen fibers and fibrocartilage.
+© Osteoblasts begin to proliferate from the periosteum and endosteum, forming a fibrocartilaginous
+{soft) callus that temporarily stabilizes the fracture. This phase lasts about 3-4 weeks.
+3. Bony Callus Formation (Hard Callus/Ossification)
+© As healing progresses, the soft callus is gradually replaced by a bony (hard) callus composed of
+spongy bone.
+© Osteoblasts convert the cartilage into woven bone through endochondral ossification. This hard
+callus formation strengthens the fracture site and typically spans 6-8 weeks, depending on age,
+bone type, and overall health.
+4. Bone Remodelling
+© Inthe final phase, the bony callus is remodeled into compact bone.
+© Osteoclasts resorb excess bone tissue, and osteoblasts lay down new lamellar bone, restoring the
+bone’s original shape and internal structure.
+
+© The remodeling phase may take several months and ensures that the repaired bone can withstand
+normal mechanical stresses.
+
+TD i
+
+trabeculae
+
+Fibrocartilaginous Bony callus
+Callus formation formation
+
+Figure: Bone repair
+
+Relate improper posture to bone/joint problems
+Improper posture causes increased stress on joints and their supporting structures resulting in injury,
+pain and early degeneration of bones and joints.
+
+Describe the injuries in joints (dislocation and sprain) and their first ald treatment.
+
+INJURIES IN JOINTS
+
+Joints, being the points of articulation between bones, are particularly vulnerable to injury. Torsion (twisting
+forces) or a sudden impact from the side of a joint can severely compromise its structural integrity. Two of the
+most common joint injuries are dislocation and sprain, both of which differ in mechanism and severity but can
+cause significant pain and functional limitation.
+
+cs) studyplusplus.com $
+
+
+--- Page 23 ---
+
+3.
+
+Dislocation of Joints
+A dislocation occurs when the bones forming a joint are forcibly displaced from their normal alignment. This
+injury usually results from sudden trauma, such as a fall, sports accident, or violent twist, that overwhelms
+the stabilizing structures of the joint. In severe cases, dislocation may be accompanied by tearing of the
+ligaments, tendons, and muscles surrounding the joint.
+* Causes:
+
+© Direct trauma (falls, road accidents, or sports injuries).
+
+© Congenital weakness of ligaments or shallow joint cavities.
+
+@ Underlying conditions such as rheumatoid arthritis, which weaken joint stability.
+
+Symptoms:
+
+© Intense pain and tenderness.
+
+© Visible deformity or abnormal bone positioning.
+
+© Swelling around the joint.
+
+© Limited or complete loss of movement.
+
+¢ Treatment:
+
+© Dislocations must be reduced (manually repositioned) only by trained medical personnel. Improper
+handling may worsen tissue damage or injure nerves and blood vessels. In some cases, surgical
+intervention is required to repair or tighten overstretched ligaments. Rehabilitation is often
+necessary to restore mobility and strength.
+
+Sprain
+A sprain is an injury involving the stretching or tearing of ligaments, the fibrous tissues that connect bones
+within a joint. Unlike dislocation, the bones remain in their proper alignment, but the ligaments become
+Cornanee due to excessive force or sudden twisting.
+Commonly Affected Joints:
+© Ankle (most frequent in sports:or missteps).
+© Knee (often during sudden pivots:or impact).
+© Wrist (common in falls on an outstretched hand).
+© Symptoms: '
+© Pain and tenderness.
+© Swelling and bruising around the joint.
+© Difficulty in moving or bearing weight on the affected limb.
+© Treatment:
+Most sprains are treated conservatively using the R.1.C.E. protocol:
+© Rest the joint to prevent further damage.
+©. Ice application to reduce swelling and pain.
+© Compression with an elastic bandage or brace for support.
+© Elevation of the injured limb above heart level to minimize swelling.
+Severe sprains, where ligaments are completely torn, may require prolonged immobilization or surgical
+repair, followed by physiotherapy.
+First Aid Treatment for Skeletal Injuries
+Prompt and appropriate first aid is crucial for improving recovery outcomes in skeletal injuries, including
+dislocations, sprains, and fractures.
+First Aid Guidelines:
+* immobilize the injured joint or limb using a sling, splint, or bandage. Do not attempt to realign a
+dislocated joint or fractured bone.
+* Apply ice packs intermittently to reduce pain, swelling, and inflammation.
+© Keep the injured person in a comfortable position and provide reassurance to minimize anxiety and
+shock.
+Observe for signs of circulatory or nerve damage, such as numbness, pallor, or loss of sensation below
+the injury.
+¢ For serious injuries such as compound fractures or dislocations of weight-bearing joints (hip, ankle, or
+knee), seek immediate emergency medical assistance for safe transport and treatment.
+
+o studyplusplus.com °
+
+
+--- Page 24 ---
+
+1.
+
+2.
+
+7.
+
+10.
+
+SLOs Based (MCQs)
+
+Which cells are primarily responsible for bone | 11.
+
+repair?
+A. Osteocytes B. Osteoclasts
+C. Osteoblasts D. Chondrocytes
+
+The first step in bone repair involves:
+
+A. Callus formation B. Bone remodeling
+
+C. Hematoma formation _D. Cartilage deposition
+Which structure helps stabilize joints and may
+be torn during dislocation?
+
+A. Tendon B. Ligament
+
+C. Periosteum D. Synovial membrane
+Adislocated joint results when:
+
+A. Abone breaks B. A tendon tears
+
+C. Bones move out of alignment at a joint
+
+D. Cartilage degenerates
+
+A sprain Is an injury to the:
+
+A. Muscle B. Bone
+
+C. Ligament D. Tendon
+
+Which of the following is not a symptom of joint
+dislocation?
+
+A. Swelling B. immobility
+
+C. Red rash D. Intense pain
+Rheumatoid arthritis may lead to:
+
+A. Bone fracture B. Muscle paralysis
+C. Joint dislocation D. Tendon rupture
+The correct order of bone repair is:
+
+A. Callus formation + Hematoma — Remodeling
+
+B.Hematoma -> Callus formation -» Bone
+remodeling
+
+C. Inflammation — Cartilage growth — Repair
+
+D. Bone remodeling — Hematoma — Fibrosis
+
+Immobilization of a dislocated joint should be:
+
+A. Attempted by a friend
+
+B. Done after manual reduction
+
+C. Done without manipulation
+
+D. Avoided entirely
+
+What is the function of an ice pack in first aid for
+
+Joint injuries?
+
+A. Promote blood flow
+
+B. Prevent infection
+
+C. Reduce swelling and pain
+
+D. Increase joint mobility
+
+13.
+
+14,
+
+19.
+
+20.
+
+Which joint injury often requires surgery to
+repair torn ligaments?
+
+A. Minor sprain B. Bone bruise
+
+C. Severe dislocation D. Synovial inflammation
+Which term refers to the manual return of a
+dislocated bone to its position?
+
+A. Dislocation B. Realignment
+C. Reduction D. Rotation
+A compound fracture:
+
+A. |s a small crack in the bone
+
+B. Involves dislocation
+
+C. Breaks the skin surface
+
+D. Only affects cartilage
+
+During which phase of bone healing does
+
+fibrocartilage form?
+A. Hematoma B. Callus formation
+C. Remodeling D. Ossification
+
+What is the main role of ligaments in joints?
+
+A. Connect bone to muscle B. Produce synovial fluid
+C. Connect bone to bone _D. Cushion the joint
+Which first aid method provides support to an
+
+injured joint?
+A, Ice application B. Sling or splint
+C. Painkiller D. Massage
+
+Which joint disorder results from overstretching
+of ligaments without bone displacement?
+
+A. Arthritis B. Sprain
+
+C. Dislocation D. Fracture
+
+Which of the following is not a cause of joint
+dislocation?
+
+A. Trauma B. Congenital defect
+
+C. Tendon inflammation D/Rheumatoid arthritis
+After dislocation, the Joint becomes:
+
+A. More rigid B. lmmobile and painful
+C. Easily stretched D. Stronger
+
+The long-term phase of bone healing involves:
+A. Reduction B. Remodeling
+
+C. Fracture D. Hematoma
+
+Pic [ze] 38 ac] sc f6c] 7c] 88 | 9c [10]
+[13.¢ | 12.¢ | 13.¢ | 14.8 | | 16.68 | 17.8 | 18.¢ | 19.8 | 20.8 |
+
+°
+
+studyplusplus.com
+
+¢
+
+
+--- Page 25 ---
+
+Q.1 Whatis the correct sequence of events during bone healing after a fracture?
+Ans. Bone healing occurs in three main stages. First, a hematoma forms at
+the fracture site due to ruptured blood vessels, bringing inflammatory MARKING SCHEME (3 Marks)
+cells to start repair. Next, a fibrocartilaginous callus develops, bridging | * Names ofall steps with brief description
+the broken bone ends with cartilage and collagen. Finally, the callus is
+
+replaced by a bony callus, and the bone undergoes remodeling, where compact bone restores the original
+shape and strength.
+
+Q.2 How does a dislocation occur and what are its symptoms?
+
+Ans. A dislocation occurs when bones in a joint are pushed out of their
+normal position, usually from trauma, falls, or sudden force. The main
+symptoms include intense pain, swelling and immobility, and often a
+visible deformity of the affected joint. Immediate immobilization and
+medical treatment are essential to avoid nerve or blood vessel damage.
+
+Q.3 What is the difference between a sprain and a fracture?
+
+Ans. A sprain is an injury to ligaments caused by excessive stretching or
+tearing, without displacement of bones. It leads to pain, swelling, and | , pone a seared
+reduced joint mobility. In contrast, a fracture is an actual break in the definition of fracture 1.5 marks
+bone, which may be simple (closed) or compound (open, piercing the
+skin). Unlike sprains, fractures require longer healing and immobilization of the bone.
+
+uscles, cardiac muscles and
+
+Muscles are specialized contractile tissues that enable movement of body parts or the entire body. They are
+also responsible for maintaining posture, moving body fluids, and generating heat. The scientific study of muscles
+is known as myology. Muscle tissue is classified into three main-types: smooth muscle, cardiac muscle, and
+skeletal muscle.
+
+Types of Muscles
+There are three types of muscle tissues: smooth, cardiac and skeletal.
+> Smooth Muscles
+* Smooth muscles are found in the walls of internal organs such as the digestive tract, reproductive
+organs, urinary tract, and blood vessels.
+e These muscles are involuntary and not under conscious control.
+* Each smooth muscle cell is spindle-shaped, with a single, centrally located nucleus.
+* Myofilaments in smooth muscle are not arranged into sarcomeres, hence they appear non-striated
+under the microscope.
+© These cells also contain non-contractile intermediate filaments, contributing to their structural support.
+> Cardiac Muscles
+e Found exclusively in the heart, cardiac muscles are involuntary and function to pump blood throughout
+the body.
+e Theyare striated, like skeletal muscles, due to the organized arrangement of myofilaments into sarcomeres.
+© Cardiac muscle cells are branched, usually with a single nucleus near the center.
+® Adjacent cardiac cells are connected by intercalated discs, which contain gap junctions. These allow
+action potentials to pass rapidly from cell to cell, enabling coordinated contractions.
+
+> Skeletal Muscles
+© Skeletal muscles are attached to bones and are responsible for voluntary movements and locomotion.
+
+cs) studyplusplus.com $
+
+
+--- Page 26 ---
+
+*® They are composed of long, cylindrical, multinucleated cells called muscle fibres.
+
+* These fibres exhibit a characteristic striated appearance due to the alternating light (| bands) and dark
+{A bands) regions.
+
+* Each muscle fibre is enclosed by a plasma membrane called the sarcolemma, and contains cytoplasm
+
+(@) Smooth muscles —_(b) Skeleta! muscles {e) Cardiac muscles
+Figure: Types of muscles
+Comparison of Three Types of Muscle Tissues
+[Muscle appearance Unstriped | Irregularsstriped _| Regular striped
+[Celishape | Spindle Branched | Spindle or cylindrical
+
+Branched
+Controls movement of substances | Pumps blood
+through hollow organs
+
+Usvally no eoatrol [Usvaly no control __|
+
+Annotate the ultrastructure of keletal muscle.
+
+ULTRASTRUCTURE OF SKELETAL MUSCLES
+
+Skeletal muscles are the organs of voluntary movement. They are highly organized structures, both at the
+macroscopic and microscopic levels, enabling them to generate précise and powerful contractions.
+
+Externally, a skeletal muscle is wrapped in a connective tissue sheath called the epimysium. Each muscle is
+composed of multiple bundles known as fascicles, each fascicle being surrounded by perimysium. Within a
+fascicle, individual muscle fibers (muscle cells) are elongated, cylindrical, multinucleated cells. Every muscle fiber
+is encased in a thin connective tissue covering called the endomysium. This hierarchical arrangement provides
+both structural strength and efficient force transmission during contraction.
+
+Ultrastructure of Skeletal Muscle
+
+1. Muscle Fiber and Sarcolemma
+Each muscle fiber is bounded by the sarcolemma, a specialized plasma membrane that not only encloses
+the cell but also plays a crucial role in impulse conduction. The sarcolemma folds inward to form transverse
+tubules (T-tubules), which carry electrical impulses deep into the cell, ensuring synchronized contraction of
+the entire fiber. The cytoplasm, known as sarcoplasm, contains abundant mitochondria, glycogen, and the
+oxygen-binding pigment myoglobin, all of which support the high energy demands of contraction.
+
+2. Myofibrils and Sarcomeres
+The bulk of the sarcoplasm is occupied by myofibrils, which are long, thread-like contractile elements
+running the length of the muscle fiber. Myofibrils are composed of even smaller protein filaments, termed
+myofilaments, of two main types: ; .
+* Thin filaments (“7-8 nm): Composed of actin, tropomyosin, and troponin.
+* Thick filaments (~16 nim): Composed primarily of myosin,
+Myofibrils are organized into repeating units called sarcomeres, the fundamental contractile units of skeletal
+
+and cardiac muscle. Each sarcomere is bounded by 2-lines. The specific arrangement of thin and thick
+filaments produces the characteristic striations seen in skeletal muscle:
+
+cs) studyplusplus.com $
+
+
+--- Page 27 ---
+
+1.
+
+1 band: Contains only thin filaments (appears light).
+
+A band: Spans the entire length of thick filaments, including overlap with thin filaments (appears dark).
+H zone: Central lighter region within the A band where only thick filaments are present.
+
+M line: Found in the middle of the H zone; contains proteins that stabilize thick filaments.
+
+This structural arrangement allows for the sliding filament mechanism, where thin filaments slide past thick
+filaments to shorten the sarcomere and generate contraction.
+
+Molecular Components of Myofilaments
+Thick Filaments (Myosin)
+
+Each myosin molecule consists of six polypeptide chains,
+organized into a long tail and two protruding globular heads.
+
+The heads project outward, forming cross-bridges with actin
+during contraction.
+
+Each head possesses ATPase activity, enabling hydrolysis of
+ATP to power contraction.
+
+A thick filament contains about 300 myosin molecules, with
+their tails aligned to form the shaft and heads projecting
+outward at opposite ends, a design crucial for bidirectional
+interaction with actin.
+
+Thin Filaments (Actin, Tropomyosin, and Troponin)
+
+Actin: Exists initially as G-actin (globular actin), each subunit
+bearing a myosin-binding site. These monomers polymerize
+into F-actin (filamentous actin) chains, which intertwine to
+form the helical backbone of the thin-filament.
+Tropomyosin: A rod-shaped protein that wraps around actin
+filaments, covering the myosin-binding sites when the
+muscle is at rest.
+
+Troponin: A regulatory protein complex with three subunits:
+© Troponin I (Tni): Binds to actin, inhibiting contraction,
+
+© Troponin T (TnT): Binds to tropomyosin, anchoring the complex.
+
+Heads.
+
+Flexible hinge region
+(a) Myosin molecule
+
+(b) Portion of a thick filament
+
+‘Troponin complex Tropomyosin Actin
+
+{c) Portion of a thin filament
+
+© Troponin C (TnC): Binds calcium ions, initiating conformational changes that expose the binding sites
+
+for myosin.
+
+This finely. tuned arrangement ensures that contraction occurs only upon stimulation, preventing
+unnecessary energy expenditure.
+Sarcoplasmic Reticulum and Triad System
+
+Surrounding each myofibril is a network of sarcoplasmic reticulum (SR),
+a specialized organelle that stores and releases calcium ions. At the
+junction of A and | bands, the SR forms enlarged sacs called terminal
+cisternae, which flank the T-tubules. Together, two terminal cisternae
+and one T-tubule form a triad, a structure critical for coupling electrical
+
+excitation with calcium release, thereby initiating contraction.
+Functional Significance
+
+The ultrastructure of skeletal muscle reflects its specialization for rapid,
+powerful, and voluntary contractions. The hierarchical arrangement—
+from connective tissue coverings to sarcomeres and molecular
+proteins—ensures strength, efficiency, and precise regulation. The
+
+Externally muscle is covered in a
+connective tissue wrapping called
+epimysium. Each skeletal muscle
+consists of hundreds to thousands of
+muscle fibres (muscle cells). Each
+muscle Is divided into discrete
+
+bundles of muscle cells called
+fascicles. The fascicle Is surrounded
+by perimysium. Each fibre within the
+fascicle is covered Is covered by a
+layer of connective tissue called the
+endomysium.
+
+sliding filament mechanism, Supported by ATP hydrolysis and calcium regulation, makes skeletal muscle
+uniquely suited to perform tasks ranging from fine motor activities to vigorous exertion.
+
+cs) studyplusplus.com
+
+°
+
+
+--- Page 28 ---
+
+°
+
+Action filament i
+ne M line
+
+Myosin filament
+ra
+
+z iis zline
+
+‘A band (-band
+Figure: Structure of Skeletal Muscle
+
+studyplusplus.com ¢$
+
+
+--- Page 29 ---
+
+Actin
+Figure: The Troponin Complex
+
+ling filaments model of muscle contraction.
+
+MUSCLE CONTRACTION - SLIDING FILAMENT MODEL
+
+The sliding filament model is the widely accepted explanation of how skeletal muscle contracts. It was
+independently proposed in the 1950s by Hugh Huxley and Jean Hanson, and it remains fundamental to modern
+muscle physiology. According to this model, muscle contraction does not involve shortening of individual
+filaments, but rather a sliding of thin filaments (actin) past thick filaments (myosin) within the sarcomere. This
+sliding action shortens the sarcOmere and thereby the entire muscle fiber, producing contraction.
+
+Sequence of Events in the Sliding Filament Model
+1. Resting State
+® Ina relaxed muscle, thin and thick filaments overlap only partially.
+* Tropomyosin covers the myosin-binding sites on actin, preventing cross-bridge formation.
+2. Stimulation and Calcium Release
+© Anerve impulse triggers the release of the neurotransmitter acetylcholine at the neuromuscular junction,
+* This generates an action potential that travels along the sarcolemma and into the muscle fiber via T-
+tubules.
+* The action potential stimulates the sarcoplasmic reticulum (SR) to release calcium ions (Ca**) into the
+sarcoplasm.
+3. Binding of Calcium to Troponin
+* Calcium ions bind to troponin C (TnC) on the thin filaments.
+* This induces a conformational change in the troponin complex, which shifts tropomyosin away from the
+active sites on actin.
+* The myosin-binding sites on actin are now exposed.
+Cross-Bridge Formation
+* Energized myosin heads (containing ADP and inorganic phosphate) attach to the exposed sites on actin,
+forming cross-bridges.
+5. Power Stroke
+«The myosin head pivots, pulling the thin filament toward the centre of the sarcomere (M line).
+* This action is powered by the energy released from ATP hydrolysis.
+ADP and phosphate are released from the myosin head at the end of the stroke.
+6. Detachment of Cross-Bridge
+* Anew molecule of ATP binds to the myosin head.
+© This causes the cross-bridge to detach from actin.
+
+>
+
+cs) studyplusplus.com $
+
+
+--- Page 30 ---
+
+Reactivation of Myosin Head
+
+* ATP is hydrolyzed into ADP and phosphate, re-cocking the myosin head into its high-energy position.
+© If calcium remains available, the cycle repeats, leading to continued contraction.
+
+Action filament M-disk Myosin filament
+
+PA
+
+Relaxed
+
+Zine ‘ f Zine
+
+Partially
+‘contracted
+Fully
+contracted
+| Seema
+|
+|
+H zone
+
+—_— ADAN ee |
+Figure: Sliding filament model of muscle contraction
+
+Structural Changes during Contraction
+As thin filaments slide inward between thick filaments:
+
+® Sarcomere length shortens overall.
+
+1 bands (actin only) shorten.
+
+H zone (myosin only) narrows or may disappear completely.
+
+A band (entire length of thick filaments) remains unchanged.
+
+Z lines move closer together, compressing the sarcomere.
+
+Thus, contraction results not from a change in filament length but from filament sliding.
+
+Relaxation Phase
+
+© When neural stimulation ceases, calcium ions are actively pumped back into the sarcoplasmic reticulum.
+
+* Troponin and tropomyosin return to their resting positions, again covering the myosin-binding sites on
+actin,
+
+© Without cross-bridge interaction, the sarcomere lengthens back to its resting state, either passively (due
+to antagonistic muscles) or by elastic recoil.
+
+Functional Significance
+
+The sliding filament model illustrates how microscopic molecular interactions translate into macroscopic
+
+muscle movement. The cycle of cross-bridge formation, power stroke, detachment, and reactivation allows for
+repetitive, forceful contractions essential for locomotion, posture, and voluntary activities.
+
+cs) studyplusplus.com $
+
+
+--- Page 31 ---
+
+(d) New ATP binds to myosin, causing
+detachment of myosin from action;
+hydrolysis of ATP to ADP and P,
+causes recocking of the (b) Ca” binds to trpponin;
+
+myosin head / ADP myosin binds to actin
+2K myosin P,
+S23 |.
+S Lr to
+a —
+
+Figure: Sliding filament model of muscle contraction
+
+ANTAGONISTIC ARRANGEMENT OF SKELETAL MUSCLES
+
+Bones are joined together by strong connective tissues called ligaments, which stabilize the joints. Skeletal
+muscles are attached to bones at two points: the origin and the insertion. The origin is the fixed attachment point,
+while the insertion is the movable attachment, which is drawn toward the origin when the muscle contracts. The
+thick, central part of the muscle between origin and insertion is known as the belly, and it is this region that
+contracts during movement.
+
+Muscles act on bones to produce movement by crossing joints. When a flexor muscle contracts, it bends the
+joint (e.g., bending the elbow or knee), whereas an extensor muscle straightens the joint. These muscles typically
+work in antagonistic pairs, where the contraction of one muscle (e.g., flexor) is accompanied by the relaxation of
+its counterpart (e.g., extensor), allowing controlled, bidirectional movement.
+
+Movement in knee joint
+
+The knee joint, or tiblofemoral joint, is a complex hinge joint located between the femur (thigh bone) and
+
+tibia (shin bone). It allows flexion and extension, as well as limited rolling and gliding movements.
+
+* Flexion of the knee is primarily performed by the hamstring muscles, located at the back of the thigh.
+The major hamstring muscle, biceps femoris, originates from both the pelvic girdle and the femur. its
+tendon divides and attaches to the upper parts of the tibia and fibula.
+
+* Extension of the knee is carried out by the quadriceps femoris, a group of extensor muscles situated at
+the front of the thigh. These muscles originate from the ilium and femur, converge around the patella
+(kneecap), and insert into the tibia. They are crucial for walking, running, standing, and maintaining
+posture.
+
+Other notable muscles involved in knee movement include;
+© Semitendinosus: a fusiform muscle in the posterior thigh compartment.
+* Semimembranosus: another hamstring muscle in the same region.
+
+cs) studyplusplus.com $
+
+
+--- Page 32 ---
+
+Quadricep
+muscles
+(contract)
+
+Hamstring
+(contract)
+
+Extension Flexion
+Figure: Movement at knee joint
+
+muscle fatigue, cramps and tetany.
+
+MUSCLE FATIGUE, CRAMPS, AND TETANY
+
+Skeletal muscles are capable of powerful and sustained contractions, but they are also subject to limitations
+
+when energy demand exceeds supply or when physiological imbalances develop. Three important conditions
+associated with muscle performance are fatigue, cramps, and tetany.
+
+1.
+
+Muscle Fatigue
+
+Definition:
+
+Muscle fatigue is the decline in the ability of a muscle to generate force after prolonged or intense activity,
+
+even though stimulation from the nervous system continues.
+
+Causes and Mechanism:
+
+© Energy depletion: Continuous contraction consumes large amounts of ATP. When ATP resynthesis
+cannot keep pace, contractile efficiency declines.
+
+* _ Lactic acid accumulation: During anaerobic respiration, glucose is broken down into lactic acid, lowering
+the pH of muscle fibers. This acidic environment interferes with enzyme function and cross-bridge cycling.
+
+* lon imbalance: Prolonged activity disrupts calcium (Ca**), sodium (Na*), and potassium (K*) gradients
+across membranes, impairing excitation-contraction coupling:
+
+* Reduced blood flow and oxygen supply further limit aerobic ATP production.
+
+Symptoms:
+
+* Weakness in contraction force.
+
+© Slower responses.
+
+* Burning sensation in the working muscle.
+
+¢ Temporary inability to maintain activity.
+
+Recovery:
+
+Fatigue is usually reversible. Rest restores oxygen and ATP levels, while lactic acid is removed via tne
+
+bloodstream and metabolized in the liver.
+
+Muscle Cramps
+
+Definition:
+
+A muscle cramp is a sudden, involuntary, and often painful contraction of a muscle or muscle group, usually
+
+lasting from a few seconds to several minutes.
+
+Causes:
+
+* Electrolyte imbalance: Low levels of sodium, potassium, magnesium, or calcium interfere with norma)
+neuromuscular transmission. <
+
+¢ Overexertion or dehydration during exercise or hot weather.
+
+o studyplusplus.com °
+
+
+--- Page 33 ---
+
+[ Condition | Definition __—_| Major Cause(s)__'[ Symptoms
+
+Sudden involuntary Electrolyte imbalance, | Sharp pain, temporary | Stretching, massage,
+contraction dehydration, overuse | stiffness dration
+
+* Inadequate blood supply to working muscles.
+
+© Nerve compression (e.g., in spinal disorders).
+
+Symptoms:
+
+® Sudden tightening and hardening of the muscle.
+
+© Sharp pain and temporary immobility,
+
+Relief and First Aid:
+
+© Gentle stretching of the affected muscle.
+
+© Massaging the area.
+
+Adequate hydration and electrolyte replacement.
+
+Tetany
+
+Definition:
+
+Tetany is a condition characterized by sustained, involuntary, and painful muscle contractions due to
+
+increased excitability of nerves and muscles.
+
+Causes and Mechanism:
+
+¢ Hypocalcemia (low blood calcium levels): Calcium normally stabilizes the resting membrane potential
+of excitable cells. When calcium levels fall, sodium channels become overly active, ‘causing uncontrolled
+nerve firing and continuous muscle contractions. \
+
+* Parathyroid hormone deficiency (hypoparathyroidism) can lead to tetany due to its role in regulating
+calcium balance.
+
+* Vitamin D deficiency may also contribute.
+
+Symptoms:
+
+* Continuous, painful spasms of muscles,
+
+«Tingling sensations in hands, feet, or faces
+
+* Severe cases may cause laryngospasm. (spasms of the ror etcatiog the! Pbecrpars ve saat
+laryngeal muscles), which can interfere with breathing and | peyromuscular function.
+become life-threatening.
+
+Treatment:
+
+« Immediate calcium supplementation (oral or intravenous).
+
+* Treatment of underlying cause (e.g., vitamin D deficiency, parathyroid disorder).
+
+Summary Table
+[Management
+
+SCIENCE TITBITS
+
+Unlike fatigue and cramps, tetany is not
+simply due to overwork of muscles—it is
+
+Decline in muscle ATP depletion, lactic Weakness, burning Rest, oxygen
+force after prolonged | acid buildup, ion sensation replenishment
+act imbalance
+
+Sustained involuntary | Low calcium Painful spasms, Calcium therapy,
+contraction (hypocalcemia), tingling, possible treating cause
+parathyroid disorders | breathing difficult
+
+SCIENCE, TECHNOLOGY AN’
+Justify why do the muscles pull but do not push.
+Bones act as the levers, while joints perform as living fulcrums. Muscle, attached to bones by
+tendons and other connective tissue, exerts force by converting chemical energy into tension and
+contraction. When a muscle contracts, it shortens, in many cases pulling a bone like a lever across
+its hinge. Muscles move and by their motions we move. We are capable of performing a wide variety
+of actions, but despite this, muscle itself moves only by becoming shorter. They shorten and then
+they rest - in otherwords, @ Muscle can pull but it cannot push.
+
+cs) studyplusplus.com $
+
+
+--- Page 34 ---
+
+2.
+
+3.
+
+5.
+
+7.
+
+SCIENCE, TECHNOLOGY AND SOCIETY CONNECTIONS
+
+Reason out the rigor mortis.
+
+When death occurs, ATP is no longer made. itis a short-lived chemical and so it runs out fairly quickly.
+This causes the muscles to lock into position as cross-bridges that formed between actin and myosin
+
+filaments before death can no longer be broken. The skeletal muscles undergo a partial contraction
+that causes the joints to become fixed. This condition, rigor mortis (rigidity of death), happens in all
+body muscles. It appears about four hours after death and lasts about 34 hours. After this time,
+
+muscles proteins are destroyed by enzymes within the cells and so rigor mortis disappears.
+
+SLOs Based (MCQs)
+
+MUSCLES
+
+What type of connective tissue joins bone to
+bone?
+
+A. Tendon B. Ligament
+
+C. Cartilage D. Fascia
+
+Which term describes the fixed attachment
+point of a muscle?
+
+A. Belly 8B. Tendon ©
+
+C. Insertion D..Origin
+
+The contractile part of a skeletal muscle Is called:
+A. Origin B. Insertion
+
+C. Belly D. Joint
+
+When a flexor muscle contracts, it:
+
+A. Straightens the bone
+
+B. Rotates the joint
+
+C. Bends the bone at the joint
+
+D. Fixes the joint in place
+
+Which muscle group Is primarily responsible for
+knee flexion?
+
+A. Quadriceps femoris —_B. Gluteal muscles
+
+C. Hamstring muscles D. Calf muscles
+
+The quadriceps femoris muscle group is involved
+ins
+
+A. Knee flexion B. Leg rotation
+
+C. Hip flexion D. Knee extension
+Which of the following is an example of
+antagonistic muscle action?
+
+A. Biceps and triceps
+
+B. Flexors and extensors
+
+C. Hamstrings and quadriceps
+
+D. All of the above
+
+Which of these is a main flexor of the knee?
+
+A. Biceps femoris B, Vastus lateralis
+
+C, Rectus femoris D. Gastrocnemius
+
+What is the role of semimembranosus muscle?
+A. Knee extension B. Hip abduction
+C. Knee flexion D. Ankle rotation
+
+°
+
+10.
+
+11.
+
+12.
+
+13.
+
+14,
+
+15.
+
+16.
+
+17.
+
+studyplusplus.com
+
+The quadriceps femoris muscle inserts at the:
+A. Femur B. Tibia
+
+C. Pelvis D. Patella
+
+During muscle contraction, the myosin heads
+bind to:
+
+A. Tropomyosin B. Calcium ions
+
+C. G actin active sites D. Z line
+
+Which structure gives thin filaments their
+
+twisted appearance?
+A. Tropomyosin B. Myosin chain
+C. Factin D. Sarcolemma
+
+Which of the following statements is true about
+
+the sliding filament model?
+
+A. Actin filaments shorten
+
+B. Myosin filaments shorten
+
+C. Filaments remain the same length but slide
+past one another
+
+D.The sarcomere expands
+
+Muscle contraction involves energy supplied by:
+
+A. Glucose only B. Oxygen only
+
+Cc. ATP D. Lactic acid
+
+Which of the following best describes antagonistic
+
+muscles?
+
+A. Muscles that contract together
+
+B. Muscles with the same insertion
+
+C. Muscles that perform opposite actions
+
+D. Muscles controlled by different nerves
+
+Which statement best describes the origin of
+
+biceps femoris?
+
+A. It originates from tibia
+
+B. It originates from fibula
+
+C. It originat.s from fernur and pelvic girdle
+
+D. It originates from patella
+
+The patella is enclosed in the tendon of which
+
+muscle group?
+
+A. Hamstrings
+
+C. Quadriceps femoris
+
+°
+
+B. Gastrocnemius
+D. Adductors
+
+
+--- Page 35 ---
+
+18. What gives the actin filament its “pearl-like" C. Quadriceps femoris D. Sartorius
+
+appearance?
+A. Myosin chains B. G actin monomers 20. In a relaxed muscle, which protein blocks the
+C. Sarcoplasmic reticulum D. Troponin myosin-binding sites on actin?
+19. Which muscle extends the leg at the knee joint? A. Troponin B. Tropomyosin
+A. Semitendinosus B. Biceps femoris C. Myoglobin D. Actomyosin
+
+Short Questions
+
+Q.1 Define the terms origin and insertion of a muscle.
+
+Ans. The origin of a muscle refers to the fixed attachment point, usually
+located on a bone that remains stationary during muscle contraction. It | PC crop niin e bell -
+serves as the. anchor from which the muscle pulls. The insertion of a definition of insortion—2.5 marks
+muscle is the attachment on the bone that moves when the muscle
+contracts. During contraction, the insertion is drawn towards the origin, producing motion at the joint. This
+arrangement provides mechanical advantage and enables coordinated movement. For example, in the
+biceps brachii, the origin is at the scapula while the insertion is on the radius. Understanding these points is
+essential in studying muscle actions and body mechanics.
+
+Q.2 Explain the function of antagonistic muscles with an example.
+
+Ans. Antagonistic muscles are muscle pairs that work in opposition to
+Produce controlled and reversible movements at a joint. When one MARKING SCHEME (3 Marks)
+muscle contracts, the opposing muscle relaxes. For example, in bending | * Definition -1 mark; function ~2 marks
+the arm at the elbow, the biceps brachif (flexor) contracts while the
+triceps brachii (extensor) relaxes. Conversely, when straightening the arm, the triceps contracts and the
+biceps relaxes. This antagonistic relationship prevents uncontrolled motion, protects joints from injury, and
+ensures precision in body movements. Without such coordination, movement would be jerky and unstable.
+Thus, antagonistic muscles are essential for smooth locomotion, posture maintenance, and controlled motor
+activities in the body.
+
+Q.3 Describe the structure of actin filaments in skeletal muscles,
+
+Ans. Actin filaments are a key component of the thin filaments in muscle [- wanna
+
+fibers. They are composed of globular actin (G-actin) subunits, which |. 6 .sctin - 1 bach galery ae
+polymerize into long chains called fibrous actin (F-actin). Two F-actin twisted double strand — 1 mark
+
+strands intertwine around each other, forming a helical, twisted
+double-stranded structure that looks like a string of pearls. Along these filaments, specific binding sites exist
+for myosin heads, which are exposed during contraction. Actin filaments also interact with regulatory
+proteins like tropomyosin and troponin, which control access to the myosin binding sites. This structural
+organization allows actin filaments to play a central role in the sliding filament model of muscle contraction.
+
+Q.4 Explain how the sliding filament model accounts for muscle contraction.
+
+Ans. According to the sliding filament model, muscle contraction results
+from the interaction between actin (thin filaments) and myosin (thick | , ,,ARKINGSCMEME® Marks)
+filaments) within the sarcomere. During contraction, myosin heads myosin ~ 1.5 marks 7
+attach to binding sites on actin, forming cross-bridges. Using energy
+from ATP hydrolysis, the myosin heads pivot and pull the actin filaments inward, causing them to slide past
+the myosin filaments. This action shortens the sarcomere, leading to overall muscle contraction.
+Importantly, the filaments themselves do not shorten; only their relative position changes. The coordinated
+sliding of millions of sarcomeres in muscle fibers produces the force and movement necessary for body activities.
+
+Q5 State the main muscles involved in knee joint flexion and extension. MARKING SCHEME (3 Marks)
+Ans. The movement of the knee Joint Involves two major muscle groups. For | * Names of muscles ~ 1 mark; roles ~ 2
+
+flexion of the knee, the hamstring group—consisting of the biceps
+
+cs) studyplusplus.com $
+
+
+--- Page 36 ---
+
+femoris, semitendinosus, and semimembranosus—contracts to bend the leg backward. These muscles are
+located at the back of the thigh and provide strength during activities such as running or squatting. For
+extension of the knee, the quadriceps femoris group, located on the front of the thigh, contracts to
+straighten the leg. This group includes the rectus femoris, vastus lateralis, vastus medialis, and vastus
+intermedius. Together, these muscles ensure smooth, controlled flexion and extension necessary for
+walking, standing, and jumping.
+
+Q.6 Describe the function of the quadriceps femoris muscle group.
+
+Ans. The quadriceps femoris is a large muscle group located at the front of
+
+the thigh. It originates from the ilium and femur and inserts into the MARKING SCHEME.
+tibia through the quadriceps tendon, which encloses the patella. Its | + Location-1 mark; funct
+primary function is to extend the leg at the knee joint, making it
+
+essential for movements such as standing upright, walking, running, and jumping. It stabilizes the knee
+during weight-bearing activities and prevents the leg from collapsing when standing. Without its coordinated
+action, basic locomotor tasks like climbing stairs or rising from a sitting position would not be possible. The
+quadriceps is therefore one of the most powerful and functionally significant muscles of the lower limb.
+
+Q.7 Explain the role of ATP in muscle contraction.
+
+Ans. ATP (adenosine triphosphate) is the immediate source of energy for
+muscle contraction: During the sliding filament mechanism, ATP first MARKING SCHEME (3 Marks)
+binds to the myosin head, allowing it to detach from actin after a power | * Power stroke—3 marks
+stroke. Hydrolysis of ATP then re-cocks the myosin head into a high-
+energy state, ready for the next cycle. When the myosin head binds to actin again, the release of ADP and Pi
+generates the power stroke, pulling the actin filament inward. This continuous cycle, powered by ATP,
+shortens the sarcomere and produces contraction. Without ATP, muscles would remain stiff, as seen in rigor
+mortis. Thus, ATP is indispensable for contraction, relaxation, and prevention of fatigue.
+
+Q.8 Explain why muscles work in pairs around a joint.
+
+Ans. Muscles have the unique ability to pull when they contract, but they
+cannot push a bone back to its original position. Therefore, movements | | Peeve aig het =
+at a joint require antagonistic muscle pairs, where one muscle 2 marks; Lionas: =. mark
+contracts while the opposing muscle relaxes. For example, at the elbow
+joint, the biceps brachii flexes the forearm while the triceps brachii extends it back. This arrangement
+ensures controlled, smooth, and reversible motion, preventing damage to joints. Antagonistic pairs also
+provide stability and maintain posture by balancing opposite forces. Without such coordination, movements
+would become uncontrolled and jerky. Hence, paired muscle action is crucial for precision and flexibility in
+human locomotion.
+
+Q.9 Describe the structure of myosin in thick filaments.
+
+Ans. Myosin is the main protein of thick filaments in muscle fibers. Each
+myosin molecule has a long tail and two globular heads, which function | j f isp paanay tones ae for
+as cross-bridges during contraction. The heads contain binding sites for ‘3étin, bundle of thick laments ~3 marks
+actin and ATP, enabling them to attach, pivot, and release during the
+sliding filament cycle. About 300 myosin molecules assemble together to form one thick filament. Their tails
+align in parallel to form the filament’s shaft, while the heads project outward in all directions, ready to
+interact with surrounding actin filaments. This structural arrangement allows efficient force generation and
+coordinated shortening of the sarcomere, making myosin essential for muscle contraction.
+
+Q.10 Explain the significance of the knee joint’s structure.
+
+Ans. The knee joint, also known as the tibio-femoral joint, isa complex hinge
+joint formed between the femur, tibia, and patella. Structurally, it
+allows flexion and extension, but also limited rolling and gliding, giving,
+it more versatility than a simple hinge. The joint is stabilized by strong
+ligaments such as the anterior and posterior cruciate ligaments, as well as the menisci, which cushion and
+distribute weight. Its structure enables both stability for weight-bearing and flexibility for movement,
+
+making it vital for activities such as walking, running, and squatting. Without its unique design, humans
+would not be able to balance efficiently or perform powerful lower limb movements.
+
+cs) studyplusplus.com $
+
+wird
+
+
+--- Page 37 ---
+
++
+1.
+
+3.
+
+Exercise
+
+Select the correct Answer.
+
+Ribs originate from vertebral column at:
+
+A. lumbar region B. cervical region
+
+C. thoracic region D. pelvic region
+Skeletal muscles contain dark band, which are
+anisotropoic, are called
+
+A. Aband B. I band
+
+C.Zband D. Miine
+
+The acetabulum provides the articular surface
+for the
+
+A. humerus B.femur °
+C. pelvis Defibula
+Scapula is connected with sternum by
+A. ribs B. carpals
+C. clavicle D. atlas
+
+Which statement correctly describes the smooth
+muscles?
+
+A. Unstriated involuntary with spindle shape cells
+B. Unstriated involuntary with multinucleate cells
+C. Unstriated voluntary with uninucleate cells
+
+D. Striated involuntary with spindle shape cell
+Thin myofilaments consist of
+
+A. actin, myosin, troponin
+
+B. actin, tropomyosin, troponin
+
+C. actin, tropomyosin, fibrin
+
+D. actin, myoglobin, troponin
+
+Which of the following changes occur when
+skeletal muscle contracts?
+
+A. The A-bands shorten
+
+B. The I-bands shorten
+
+C. The Z-lines move further apart
+
+D. The H-zone becomes more visible
+
+A human internal organs are protected mainly
+by the
+
+A. hydrostatic skeleton
+
+8. axial skeleton
+
+C. exoskeleton
+
+D. appendicular skeleton
+
+Arm and leg muscles are arranged in
+antagonistic pairs. How does this affect their
+functioning
+
+°
+
+11,
+
+17.
+
+18.
+
+studyplusplus.com
+
+y=
+
+A.it provides a backup if one of the muscles is
+injured
+
+B. one muscle of the pair pushes while the other
+pulls
+
+C.it allows the muscles to produce opposing
+movements
+
+D.it doubles the strength of contraction
+
+Which of the following bones in the human arm
+
+would correspond to the femur in the leg?
+
+A. radius B. ulna
+
+C. tibia D. humerus
+
+The deep infolding of the muscle fibre membrane
+
+is called
+
+A. sarcoplasmic reticula 8. Z lines
+
+C. T-tubules D. sarcomeres
+
+Bone dissolving cells are called
+
+A. chondrocytes B. osteoblasts
+
+C. osteoclasts D. osteocytes
+
+Which of the following cartilage is found at the
+end of long bones?
+
+A. calcified B. fibrous
+
+C. elastic D. hyaline
+
+At times ligaments are overstretched or torn. It
+iscalled
+
+A, sprain B. dislocation
+
+C. fracture D. tension
+
+Which ion is essential for muscle contraction?
+A.Na B.K
+
+c.Ca D.cL
+
+The tough layer of connective tissue surrounding
+each bone Is called
+
+A. tendon Bs ligament
+
+C. periosteum D. cartilage
+
+The network of tubes that run through compact
+bone is called the
+
+A. periosteum B. joint
+
+C. Haversian canals D. marrow
+
+Strips of tough connective tissue that hold bones
+together are known as
+A. tendon
+
+C. Striated muscles
+
+B. smooth muscles
+D. ligaments
+
+°
+
+
+--- Page 38 ---
+
+19. Joints that allow circular movements are 20. Two proteins that are involved in the
+A. gliding joints contraction of muscles are
+8. ball-and-socket joints A. sarcomere and microfibril
+C. hinge joints B. actin and myosin
+x C. periosteum and cartilage
+Ds pk ns D. ATP and acetylcholine
+
+[ac] 2a] 3.8] 4c]s.a] 6.8 | 7.8 | 8.6 | 9c [10.0]
+[a1.¢]12.c [13.0 | 14a] 15. c[16.¢]17.c] 18. | 19.8 | 20. 6 |
+Dd Short Answer Questions
+
+Q.1 How do compact bone and spongy bone differ in structure?
+
+Ans. Compact bone is the dense, solid form of bone that makes up the outer
+layer of most skeletal structures. It is composed of tightly packed | , Poesy caren pt sv ha
+osteons (Haversian systems), each containing concentric lamellae bone~15 marks
+arranged around a central canal with blood vessels and nerves. This
+organization provides rigidity, strength, and resistance to compression. In contrast, spongy bone, also called
+cancellous bone, has a lightweight, porous architecture made up of trabeculae. These trabeculae form a
+lattice that creates spaces filled with red bone marrow, supporting hematopoiesis. Spongy bone is found at
+the ends of long bones and in flat bones, where it reduces overall weight while still providing structural
+support. Thus, compact bone offers»strength, while spongy bone provides flexibility and blood cell
+formation.
+
+Q.2 Name three types of cells associated with bone and write their functions.
+Ans. Bone tissue is maintained and remodeled by three main types of
+specialized cells. Osteoblasts are responsible for bone formation. They | . , yergerag ls ong
+secrete osteoid, a protein-rich matrix, which later-mineralizes with osteoclasts, and osteocytes
+calcium salts to form hard bone tissue. Osteoclasts are large,
+multinucleated cells that break down bone by secreting acids and enzymes. This process, called bone
+resorption; releases calcium and phosphate into the bloodstream and is vital for bone remodeling.
+Osteocytes are mature bone cells that originate from osteoblasts once they become embedded in the
+matrix. They reside in lacunae and maintain bone health by regulating mineral baiance and communicating
+
+with other cells via canaliculi. Together, these cells ensure growth, repair, and continuous renewal of bone
+tissue.
+
+Q,3 Compare the structure of bone with that of cartilage.
+Ans. Bone and cartilage are both connective tissues but differ greatly in
+
+structure and function. Bone is rigid, mineralized, and vascular. Its | , gone -structure — pega Seas
+hardness comes from calcium salts such as calcium phosphate and structure ~ 1.5 marks
+
+calcium carbonate, embedded in a collagen fiber framework. Bones :
+
+contain osteocytes in lacunae, organized into osteons, and have a rich blood supply, which allows rapid
+repair and remodeling. In contrast, cartilage is flexible, non-mineralized, and avascular. It has a gel-like
+extracellular matrix made of collagen and elastic fibers, giving it resilience and flexibility. The cells, called
+chondrocytes, are located in lacunae and receive nutrients by diffusion. Thus, while bone provides structural
+strength and protection, cartilage cushions joints, supports structures, and allows flexibility.
+
+Q.4 Name the bones of the axial and appendicular skeleton.
+
+Ans. The human skeleton is divided into two major parts: axial skeleton and
+appendicular skeleton. The axial skeleton forms the central framework | | Pi csvonseskgeyaasd sees :
+of the body. It includes the skull (cranium and facial bones), the skeleton —1.5 marks
+vertebral column (33 vertebrae), and the rib cage (sternum and ribs).
+
+This division provides support, posture, and protection for vital organs such as the brain, spinal cord, heart,
+and lungs. The appendicular skeleton consists of the bones of the limbs and girdles, It includes the pectoral
+
+cs) studyplusplus.com $
+
+
+--- Page 39 ---
+
+girdle (clavicle and scapula), upper limbs (humerus, radius, ulna, carpals, metacarpals, phalanges), pelvic
+girdle (ilium, ischium, pubis), and lower limbs (femur, tibia, fibula, tarsals, metatarsals, phalanges).
+Together, these bones allow locomotion and manipulation of the environment.
+
+Q.5 Name the bones of the cranium.
+
+Ans. The cranium forms the upper part of the skull and encloses the brain,
+providing protection and shape to the head. It is composed of eight | | coyuepaehe ringed
+bones, which are classified into paired and unpaired groups. The paired tenes <3 mark :
+
+bones include the parietal bones (2) and the temporal bones (2). These
+
+form the sides and roof of the cranial cavity. The unpaired bones include the frontal bone, which forms the
+forehead, the occipital bone, which forms the back and base of the skull, the sphenoid bone, which lies at
+the base of the cranium and connects with all other cranial bones, and the ethmoid bone, located between
+the eyes and contributing to the nasal cavity. Collectively, these bones protect the brain and support sensory
+structures.
+
+Q6 Describe the five groups of vertebrae.
+
+Ans. The vertebral column is the central supporting structure of the skeleton
+and is divided into five groups of vertebrae, totaling 33 in number. The | | ,, Rin anirigmtble yt ie
+cervical vertebrae (7) form the neck region, supporting the skull and sacral, coccygeal - 1.5 marks
+allowing head movement. The thoracic vertebrae (12) are attached to
+the ribs and make up the mid-back, contributing to the rib cage. The lumbar vertebrae (5) are the largest
+and strongest, supporting most of the body’s weight in the lower back. The sacral vertebrae (5) are fused
+together to form the sacrum, connecting the spine to the pelvis. Finally, the coccygeal vertebrae (4) fuse to
+form the coccyx or tailbone, which provides attachment to ligaments and small muscles.
+
+Q.7 What is the structure of the human rib cage?
+Ans. The rib cage is a bony framework that protects vital organs such as the
+* heart and lungs while assisting in breathing, It is made up of 12 pairs of | | senha sive ca aesbiner at mn
+
+ribs, the sternum, and the thoracic vertebrae. The ribs are divided into Siseks
+three categories. The true ribs (first 7 pairs) are directly attached to the
+sternum through costal cartilages, providing firm protection. The false ribs (next 3 pairs, 8th-10th) are
+attached indirectly to the sternum via cartilage of the 7th rib, offering partial flexibility. The floating ribs
+(last 2 pairs, 11th and 12th) are not attached to the sternum at all, ending freely in the abdominal wall.
+Together, the rib cage provides both rigidity and elasticity, ensuring effective respiration.
+
+Q.8 Name the bones that form (a) the pectoral girdle and (b) the pelvic girdle.
+
+Ans. The human skeleton contains two major girdles that connect the limbs
+to the axial skeleton. (a) The pectoral girdle consists of two bones: the | , Riiiuegiyhs see lgherka Sr
+clavicle (collarbone) and the scapula (shoulder blade). These bones girdle — 1.5 marks
+support the upper limbs and allow wide ranges of motion at the
+shoulder joint. (b) The pelvic girdle is formed by the fusion of three bones on each side: the ilium, ischium,
+and pubis. Together, they form the hip bone, which unites with its counterpart at the pubic symphysis. The
+pelvic girdle provides strong support for the lower limbs, bears the weight of the body, and protects pelvic
+organs such as the bladder and reproductive structures.
+
+Q.9 Name the bones of the upper limb and lower limb.
+
+Ans. The limbs of the human skeleton are specialized for mobility and
+support. The upper limb consists of the humerus (upper arm), radius _ :
+and ulna (forearm), carpals (8 wrist bones), metacarpals (5 palm beacons again oe
+bones), and phalanges (14 finger bones). These bones provide
+flexibility for tasks such as grasping, lifting, and writing. The lower limb includes the femur (thigh bone, the
+longest bone in the body), tibia and fibula (leg bones), patella (kneecap), tarsals (7 ankle bones),
+metatarsals (5 foot bones), and phalanges (14 toe bones). These bones are adapted for weight-bearing,
+balance, and locomotion, making them stronger and larger compared to the bones of the upper limb.
+
+Q.10 What are the main types of joints found in bones (human skeleton)?
+Ans. Joints are structural connections between bones that allow varying degrees of movement. They are classified
+into three major types.
+
+cs) studyplusplus.com $
+
+
+--- Page 40 ---
+
+Fibrous joints are immovable, where bones are held together by dense
+connective tissue, such as the’sutures of the skull, Cartilaginous joints MARKING SCHEME (3 Marks)
+
+are slightly movable, where bones are connected by cartilage, such as | * pr a Se ll
+
+subtypes, such as hinge joints (knee, elbow), ball-and-socket joints (shoulder, hip), pivot joints (atlas-axis),
+gliding joints (wrist), and saddle joints (thumb).
+
+Q.11 What is fibrous joint?
+Ans. A fibrous joint is an immovable type of joint where bones are directly
+
+connected by dense connective tissue rich in collagen fibers, without a RE 2 ae a =
+joint. cavity. ‘This structure ensures stability but does not allow . = pe a
+
+movement. Fibrous joints are important in protecting delicate organs,
+such as the brain, by keeping bones firmly in place. The best example is the sutures of the skull, where
+cranial bones are tightly interlocked and fused, ensuring the skull remains strong and rigid. Another type of
+fibrous joint is the syndesmosis, where bones are joined by a ligament, such as between the tibia and fibula.
+Overall, fibrous joints emphasize protection and strength over mobility.
+
+Q.12 What are the four steps required for bone fracture repair?
+Ans. The healing of a bone fracture is a cornplex, stepwise process that
+restéres both structure and function.
+1. Hematoma formation: immediately after fracture, blood vessels
+rupture, forming a clot that stabilizes the area and initiates inflammation.
+2. Fibrocartilaginous callus formation: Fibroblasts and chondroblasts invade, producing collagen and
+cartilage that temporarily bridge the broken ends.
+3. Bony callus formation: Osteoblasts gradually replace the soft callus with a hard bony callus made of
+spongy bone.
+4. Bone remodeling: Over weeks to months, Osteoclasts and osteoblasts reshape the bone, replacing
+spongy bone with compact bone, restoring the bone to near-original shape and strength.
+
+Q.13 What skeletal structures are affected from the osteoarthritis?
+
+Ans. Osteoarthritis is a degenerative joint disorder that primarily affects
+synovial joints. The disease begins with the gradual breakdown of | , cafthca ahaa Weak ones
+articular cartilage, which normally cushions and allows smooth structures and symptoms — 2 marks
+movement of bones. As cartilage erodes, the joint space narrows, and
+bones may rub against each other, causing pain and stiffness. In response, bones may develop osteophytes
+(bone spurs) at joint margins. Additionally, changes occur in the underlying subchondral bone, which
+becomes denser and less elastic. The surrounding ligaments and jointcapsule may also thicken, further
+restricting mobility. Commonly affected joints include the knees, hips, hands, and spine. Thus, osteoarthritis
+disrupts multiple skeletal structures, ultimately impairing normal joint function.
+
+Q.14 List the major parts of skeletal muscle fiber and write the function of each part.
+Ans. Askeletal muscle fiber is a specialized, multinucleated cell designed for
+contraction. Its main parts include:
+® Sarcolemma: The cell membrane that conducts electrical impulses
+{action potentials) to trigger contraction,
+© Sarcoplasm: The cytoplasm containing glycogen, mitochondria, and myoglobin to provide energy.
+* Myofibrils: Long contractile elements composed of actin and myosin filaments, responsible for
+
+MARKING SCHEME (3 Marks)
+© All four steps correctly explained -3
+
+MARKING SCHEME (3 Marks)
+Naming parts ~ 1.5 marks; functions ~
+5 marks
+
+generating force.
+
+* Sarcoplasmic reticulum (SR): A network that stores calcium ions and releases them when contraction is
+initiated.
+
+* T-tubules: invaginations of the sarcolemma that transmit action potentials deep into the fiber, ensuring
+coordinated contraction.
+
+* Together, these structures allow skeletal muscles to contract efficiently, respond rapidly to stimuli, and
+sustain body movements,
+
+cs) studyplusplus.com $
+
+
+--- Page 41 ---
+
+Q.15 What is Z line and M line and what are their functions?
+
+Ans. The sarcomere is the functional unit of a muscle fiber, and two
+
+important structural features within it are the Zline and M line. TheZ | , , Paracas ety ppiaere
+line marks the boundary between adjacent sarcomeres and serves as function —1.5 marks
+the anchoring site for thin filaments (actin). It maintains the structural
+
+integrity of the sarcomere during contraction and relaxation. The M line, located in the center of the
+sarcomere within the H zone, anchors the thick filaments (myosin) and keeps them aligned during
+contraction. Together, the Z line and M line ensure proper filament organization, efficient sliding of actin
+and myosin, and overall stability of the contractile process.
+
+Q.16 How the arrangement of actin filaments and myosin filaments produce | band, A band, and H zone? =
+
+Ans. The microscopic arrangement of actin (thin) and myosin (thick)
+filaments within a sarcomere creates distinct regions visible under a | , nang —1 mark: A band -1 mark; H
+microscope. The | band appears as a light region because it contains zone—1. mark
+only thin filaments (actin), anchored at the Z line. The A band is darker
+and corresponds to the entire length of the thick filaments (myosin). Within the A band, there is overlap
+where actin and myosin interact during contraction. At the center of the A band lies the H zone, which
+contains only myosin filaments without overlap of actin. This structural arrangement is fundamental to the
+sliding filament mechanism of muscle contraction, where bands shorten or disappear during contraction,
+but filaments themselves remain the same length.
+
+——
+
+Q.17 Describe the antagonistic arrangement of skeletal muscles.
+
+Ans. Skeletal muscles are arran in antagonistic pairs because a single
+muscle can only pull when por! oe not push. In this arrangement, Sa pe Ss
+one muscle contracts to produce movement in one direction, while the
+opposing muscle relaxes. When movement needs to be reversed, the
+roles switch. For example, at the knee joint, the quadriceps femoris contracts to extend the leg, while the
+hamstring group relaxes. Conversely, when the hamstrings contract to flex the knee, the quadriceps relax.
+This coordination ensures smooth, controlled, and reversible movements. Antagonistic action also prevents
+damage to joints by balancing forces, allowing stability. Thus, antagonistic muscle pairs are essential for
+efficient locomotion and postural control in the human body.
+
+Q.18 Why are ligaments elastic and why does the tendon need to be inelastic.
+
+Ans. Ligaments and tendons are both connective tissues, but they differ in
+function and structure. Ligaments connect bone to bone at joints. They
+are elastic because limited stretching allows flexibility and controlled
+movement, while still preventing excessive displacement of bones that
+could damage the joint. Their elasticity ensures stability combined with mobility. In contrast, tendons
+connect muscle to bone. They must be inelastic to transmit the full force of muscle contraction directly to
+bones without energy-loss due to stretching. If tendons were elastic, movements would become weak,
+imprecise, and delayed. Therefore, ligaments provide flexibility and joint Stability, while tendons provide
+strength and efficiency in force transfer, ensuring precise and powerful skeletal movements.
+
+Q.19 Draw a diagram of sarcomere and label its parts.
+
+(MARKING SCHEME (3 Marks)
+
+© Definition ~ 1 mark; example and
+explanation ~ 2 marks
+
+nts = 1.5 marks; tendons = 1.5
+
+Ans.
+Sercomere
+Fi
+Zune
+| MARKING SCHEME (3 Marks)
+Correct outline of sarcomere with Z
+lines and filaments — 1 mark
+Accurate labeling of major parts (Z
+fine, M line, | band, A band, H zone) ~
+Imark *
+Neatness and correct positioning of
+‘actin & myosin filaments - 1 mark
+eee
+Darker A Band Ughter! Band
+
+cs) studyplusplus.com $
+
+
+--- Page 42 ---
+
+Q.20 Write the difference between:
+
+(a) _Epiphysis and diaphysis for a long bone
+
+Ans. The epiphysis refers to the rounded ends of a long bone, found at both
+the proximal and distal ends. It is made up mainly of spongy bone that | | Pcrssacap son asec “a
+contains red bone marrow, which is important for hematopoiesis mark; function/location ~ 1 mark
+(blood cell production). Epiphyses are covered by articular cartilage
+and participate in joint formation, helping bones move smoothly against each other. In contrast, the
+diaphysis is the long, cylindrical shaft of the bone located between the two epiphyses. It consists mostly of
+compact bone surrounding a hollow medullary cavity, which usually contains yellow marrow for fat storage.
+Its primary role is to provide strength, leverage, and weight-bearing support for the skeleton.
+
+(b) Periosteum and Endosteum
+
+Ans. The periosteum is a tough, dense, fibrous membrane that covers the
+
+outer surface of bones except at articular cartilage. It consists of two | , nner Poet ons sabes - =
+layers: an outer fibrous layer that protects the bone and allows mark; function/location ~ 1 mark
+
+attachment of ligaments and tendons, and an inner osteogenic layer
+
+containing osteoblasts, which aid in bone growth and repair. On the other hand, the endosteum is a thin,
+delicate, vascular membrane lining the inner surface of the bone’s medullary cavity. It contains osteoblasts
+and osteoclasts, which actively participate in bone growth, remodeling, and repair. While the periosteum
+is external and provides mechanical protection, the endosteum is internal and directly regulates bone
+turnover from within.
+
+{c) Compact bone and Spongy bone
+Ans. Compact bone is the dense, tightly packed type of bone tissue forming
+
+the outer layer of all bones. Its structure is based on repeating | , Siero met Some iad
+cylindrical units called osteons or Haversian systems, which contain functlon/vascularity — 1 mark i
+
+blood vessels and nerves, making it/highly vascular. Its function is to
+provide strength, rigidity, and resistance to stress, ensuring structural support for the body. In contrast,
+spongy bone (cancellous bone) has a porous, lattice-like network of trabeculae. It is found mainly at the
+ends of long bones and inside flat bones suchas the sternum. Spongy bone reduces the overall weight of
+bones while also housing red marrow, which is essential for blood cell production.
+
+(d) Axial skeleton and Appendicular skeleton
+
+Ans. The axial skeleton consists of the bones along the central axis of the
+body, including the skull, vertebral column, sternum, and ribs. Itismade | , uareanieapa at —
+up of 80 bones and its primary function is to provide support.and mark; number/location - 1 mark
+protection for vital organs such as the brain, heart, and lungs. The
+appendicular skeleton, on the other hand, consists of 126 bones, including those of the limbs as well as the
+pectoral (shoulder) and pelvic (hip) girdles. Its main function is to facilitate movement, locomotion, and
+manipulation of the environment. Thus, while the axial skeleton maintains body posture and protection,
+the appendicular skeleton provides mobility and interaction with surroundings.
+
+(e) True ribs and False ribs
+
+Ans. True ribs are the first seven pairs (1-7) of ribs, also known as
+vertebrosternal ribs. They are directly attached to the sternum through | , Paes | feslysegse ae
+their own costal cartilages. Their function is to provide firm protection function/alternate name —1 mark
+to the heart, lungs, and major blood vessels by forming a strong thoracic
+cage. In contrast, false ribs are the last five pairs (8-12). The 8th to 10th pairs, called vertebrochondral ribs,
+attach indirectly to the sternum via the cartilage of the 7th rib, while the 11th and 12th pairs, called floating
+ribs, have no anterior attachment. False ribs provide flexibility to the lower thoracic cage and allow for
+expansion during breathing movements.
+
+(f) _ False ribs and Floating ribs
+
+Ans. False ribs are the 8th, 9th, and 10th pairs of ribs, also called
+vertebrochondral ribs. They do not attach directly to the sternum but | , Pecans ae
+instead connect through the cartilage of the 7th rib. Their function is to function/type - 1 mark
+contribute to the flexibility and expansion of the rib cage during
+
+cs) studyplusplus.com $
+
+
+--- Page 43 ---
+
+breathing. In contrast, floating ribs are the 11th and 12th pairs, also known as vertebral ribs. These ribs are
+not attached to the sternum at all; they are only connected posteriorly to the thoracic vertebrae. Floating
+ribs mainly help protect the kidneys and allow for greater flexibility and torsional movement of the torso.
+Both play important roles in thoracic function but differ in structure and attachment.
+
+(g) Atlas (C1) and Axis (C2) vertebrae
+
+Ans. The atlas (C1) is the first cervical vertebra and has a ring-like structure
+
+without a body. It articulates superiorly with the occipital condyles of sro orcecn ako tesut eS
+the skull, supporting the head, and inferiorly with the axis. Its primary . pera tories as
+
+function is to allow the nodding motion of the head (as in “yes”), The
+
+axis (C2), on the other hand, is the second cervical vertebra. It is characterized by a unique upward projection
+called the dens or odontoid process, which acts as a pivot for rotation of the atlas and skull. This enables
+the side-to-side movement of the head (as in “no”). Together, atlas and axis form a specialized joint essential
+for head mobility.
+
+(h) Rheumatoid arthritis and Gouty arthritis
+
+Ans. Rheumatoid arthritis (RA) is an autoimmune disorder in which the
+body’s immune system attacks the synovial membrane, causing chronic
+inflammation. Symptoms include joint stiffness, swelling, deformity,
+and fatigue, often affecting multiple small joints of the hands and feet.
+It is systemic and may involve other organs. In contrast, gouty arthritis is caused by accumulation of uric
+acid crystals in joints. It is characterized by sudden, severe pain, redness, swelling, and warmth, commonly
+in the big toe, knees, or ankles. Unlike RA, it is usually localized and not systemic. While RA is long-term and
+progressive, gout often occurs in acute attacks triggered by diet, metabolism, or kidney inefficiency.
+
+(i) Simple fracture and Compound fracture
+
+Ans. A simple fracture refers to a bone break in which the bone does not
+pierce the skin. It remains an internal injury, with minimal risk of
+infection, and is usually treated by immobilization with a cast or splint
+to allow natural healing. In contrast, a compound fracture involves a
+bone break where the broken end protrudes through the skin. This creates an open wound, visible
+externally, and carries a high risk of infection due to exposure to bacteria. Treatment is more complicated,
+often requiring surgical intervention, alignment, and sterilization to prevent complications. While both are
+fractures, compound fractures are more dangerous due to their severity and potential complications.
+
+(j) _Tropomyosin and Troponin
+
+Ans. Tropomyosin is a rod-shaped protein that winds around the actin
+filament, covering the myosin-binding sites in a resting muscle. Its | . Pret savor wisingho ame
+primary role is to block contraction by preventing myosin from role in contraction/calcium binding -1
+attaching to actin. Troponin, on the other hand, is a globular protein mark
+complex attached to tropomyosin at intervals along the actin filament.
+It has calcium-binding sites and acts as a regulatory switch. When calcium ions bind to troponin, it undergoes
+a conformational change that shifts tropomyosin, thereby exposing the binding sites on actin. This enables
+myosin heads to attach and initiate contraction. Thus, tropomyosin maintains inhibition at rest, while
+troponin regulates contraction through calcium sensitivity.
+
+({k) _Tendons and Ligaments
+
+Ans. Tendons are strong bands of connective tissue that attach muscle to
+bone. They are made of dense regular connective tissue arranged in MARINE SCHEME (8 Marka)
+parallel bundles, which makes them tough and resistant to stretching. | * Foseara Se! earl ed
+Because tendons are inelastic, they can transmit the full pulling force
+generated by muscles directly to bones, enabling precise and powerful movement. Ligaments, however,
+connect bone to bone at joints, They also consist of dense regular connective tissue, but with more elastic
+fibers, which provide limited flexibility. Their main function Is to stabilize joints, prevent dislocation, and
+restrict excessive or abnormal movement. Thus, tendons facilitate movement transmission, while ligaments
+
+provide joint stability and controlled flexibility.
+cs) studyplusplus.com $
+
+
+
+--- Page 44 ---
+
+(i) Callus and Bony callus in Bone Repair
+
+Ans. During bone healing, a callus is the initial soft bridge that fons
+tween the broken bone ends. It consists mainly of fibrocartilaginot m sees papa sessed
+
+tissue and appears during the intermediate stage of healing. Its rae i is /stage — 1 mark; function ~ 1 mark
+to stabilize the fracture site and provide a temporary scaffold for new
+bone formation. Later, the callus is gradually replaced by a bony callus, which is made of spongy bone tissue,
+The bony callus is stronger and appears in the later stage of healing, helping to restore the continuity of the
+bone. Eventually, this spongy bone is remodeled into compact bone, completing the repair. Thus, the callus
+begins stabilization, while the bony callus restores structural strength.
+
+(m) Tetany and Tetanus
+
+Ans. Tetany is a medical condition caused 7 low blood calcium levels
+(hypocalcemia). This imbalance increases neuromuscular excitability, | , PR csypacchepovions —
+leading to involuntary sustained muscle spasms, cramps, and —{1 mark treatment - 1 mark
+twitching. Tetany is not infectious and is usually treated by correcting
+calcium levels through supplements or intravenous calcium. In contrast, tetanus is an infectious disease
+caused by the bacterium Clostridium tetani, which produces a powerful toxin. The toxin blocks inhibitory
+neurotransmitters in the nervous system, causing severe muscle stiffness and spasms, often starting in the
+jaw (“lockjaw”) and spreading to the body. Treatment involves administration of antitoxin, antibiotics, and
+muscle relaxants. Hence, tetany arises from electrolyte imbalance, whereas tetanus results from bacterial
+infection.
+
+Ans. Please See SLO [B-12-R-61)
+Q.2 Explain the structure of cartilage with diagram.
+Ans. Please See SLO [B-12-R-61]
+Q.3 Give a detail account of bone repair.
+Ans. Please See SLO [B-12-R-66]
+Q.4 Describe three types of muscle tissues in man.
+Ans. Please See SLO [B-12-R-68]
+Q:5 Explain the ultra structure of skeletal muscle.
+Ans. Please See SLO [B-12-R-69)
+Q6 Explain the sliding filament model of muscle contraction.
+Ans. Please See SLO [B-12-R-70]
+Q.7 Explain the action of antagonistic muscles in the movement of knee joint in man.
+Ans. Please See SLO [B8-12-R-71]
+Q.8 Describe the following muscle disorders:
+a. Muscle fatigue b. Cramp c. Tetany
+Ans. Please See SLO (B-12-R-72]
+
+2000s om yh Dooroe
+
+cs) studyplusplus.com $

@@ -1,0 +1,3330 @@
+
+
+--- Page 1 ---
+
+Chapter # 09
+
+Immunity
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+
+° {8-12-1-01) List the structural features of human skin that make it an impenetrable barrier ' against
+invasion by microbes. (1st line of defence).
+[B-12-1-02] Explain how oil and sweat glands within the epidermis inhibit the growth and also kill
+microorganisms, (1st line of defence).
+[B-12-1-03] Recognize the role of the acids of the digestive tract as killing bacteria present in food.
+[B-12-1-04] State the role of the ciliated epithelium of the nasal cavity and the mucous of the bronchi
+and bronchioles in trapping airborne microorganisms.
+[B-12-1-05] Describe the role of macrophages and neutrophils in killing bacteria.
+[B-12-1-06] Explain how Natural Killer (NK) cells kill cells infected by microbes and cancer cells.
+{B-12-1-07] State the way proteins of the complement system kill bacteria and that interferons inhibit
+viruses from infecting cells.
+{B-12-1-08] State the events of the inflammatory response as a generalized, nonspecific defence.
+{B-12-1-09] Outline the release of pyrogens by microbes and their effect on the hypothalamus to boost
+the body's temperature.
+[B-12-1-10] List the ways that fever affects microbes.
+[B-12-1-11] Define the specific immune system as providing specific defence and acting as the most
+powerful means of resisting infection.
+[8-12-1-12) Identify monocytes, T cells, and B-cells as components of the immune system.
+{B-12-1-13] State inborn and acquired immunity as the two basic types of immunity.
+[B-12-1-14] Differentiate between active and passive immunity as the two types of acquired immunity.
+[B-12-1-15} Describe the role of T-cells in cell-mediated immunity.
+[B-12-1-16] Describe the role of B-cells in antibody-mediated immunity.
+[B-12-1-17] Discuss the role of T -cells and B -cells in transplant rejections.
+[8-12-1-18] Evaluate the discovery of monoclonal! antibodies and justify how this accomplishment
+revolutionized many aspects of biological research.
+{8-12-1-19] Identify the process of vaccination as a means to develop active acquired immunity.
+[B-12-1-20) Draw the structural model of an antibody molecule.
+[8-12-I-21] Explain the role of memory cells in long term immunity.
+[8-12-1-22] Define allergies and correlate the symptoms of allergies with the release of histamines.
+[B-12-1-23] Describe the autoimmune diseases with examples.
+
+Every living organism is constantly exposed to a variety of harmful agents in its environment, such as
+bacteria, viruses, fungi, parasites, and toxins. To survive and remain healthy, the body must defend itself against
+these threats. This defense /s carried out by a highly coordinated system known as the immune system, and the
+protective response it provides is called iitimunity.
+
+cS) studyplusplus.com ¢$
+
+
+--- Page 2 ---
+
+Immunity ensures that the body can recognize, neutralize, and eliminate harmful substances without
+damaging its own healthy cells. A key feature of this system is its ability to distinguish between self (the body's
+own cells and molecules) and non-self (foreign invaders), This recognition is vital, as it prevents unwanted attacks
+on the body's own tissues.
+
+The immune system employs different lines of defense. The first line of defense includes physical and
+chemical barriers such as skin, mucous membranes, and secretions that prevent pathogens from entering the
+body. If these barriers are breached, the second line of defense provides rapid but non-specific responses, such
+as inflammation and phagocytosis. Beyond these, the body also possesses a third line of defense, the adaptive
+immune system, which produces highly specific responses involving lymphocytes and antibodies. Importantly,
+adaptive immunity has memory, meaning it responds more quickly and strongly to repeated infections by the
+same pathogen.
+
+Immunity can be classified as innate (present from birth, providing general defense) or acquired (developed
+after exposure to pathogens or through vaccination). Together, these mechanisms protect the body from disease,
+ensure recovery after infection, and contribute to long-term survival.
+
+The study of immunity not only explains how the body defends itself but also underlies important
+applications such as vaccines, allergy treatments, and organ transplantation. Understanding this system is
+therefore crucial for both biology and medicine.
+
+IMMUNITY
+
+Living organisms are constantlyexposed to disease-causing agents such as bacteria, viruses, fungi, parasites,
+and their toxins. To survive, the human body has evolved complex defence mechanisms that prevent or fight
+infections. The study of these protective processes is known as immunology, while the protective ability itself is
+called immunity.
+
+Immunity
+Immunity is defined as the bodys ability to resist or eliminate damage caused by harmful microbes or toxic
+substances. \t ensures that invading pathogens are destroyed before they can cause disease.
+Immune Response
+The immune response refers to the body's coordinated reaction to foreign substances (antigens). This may
+involve non-specific actions such as inflammation or phagocytosis, or highly specific responses like the production
+of antibodies by lymphocytes.
+Lines of Defence in Humans
+The human body protects itself through three lines of defence:
+1, First Line of Defence (Physical and Chemical Barriers)
+* This includes the skin and mucous membranes, which act as physical barriers to block the entry of
+pathogens.
+= ‘The skin is the most important structural defence, providing an almost impenetrable shield. Its
+outermost layer, the epidermis, is composed of tightly packed cells and a protective layer of dead,
+keratinized cells that resist microbial invasion.
+« Additional protective features of the skin include:
+© Sebum (oil secreted by sebaceous glands), which lowers skin pH and inhibits microbial growth.
+co Sweat, containing lysozyme and salts, which break down bacterial cell walls and create unfavorable
+conditions for microbes.
+© Normal skin flora, beneficial microbes that outcompete harmful pathogens.
+© Together, these features make the skin a powerful barrier and the body's first line of defence against
+infection.
+
+2. Second Line of Defence (Non-Specific Internal Responses)
+
+© Activated if pathogens bypass physical barriers.
+* Includes processes such as phagocytosis, inflammation, fever, and the activity of certain white blood cells.
+
+cs) studyplusplus.com $
+
+
+--- Page 3 ---
+
+3. Third Line of Defence (Specific/Adaptive Immunity)
+« Provides highly targeted responses against specific pathogens.
+* Involves lymphocytes (B and T cells) and the production of antibodies.
+« Creates immunological memory, ensuring faster and stronger responses during repeated infections.
+
+> Innate vs. Specific Immunity
+« The first and second lines of defence together form the innate immune system, which provides
+immediate but non-specific protection.
+e The third line of defence is the specific (adaptive) immune system, capable of precision targeting and
+
+long-term memory.
+IMMUNE RESPONSE
+
+Pathogens
+(bacteria, virus, fungi, etc.)
+
+8S
+SAY a 4 oes
+
+y Firat line of defense
+Mechanical fronepecnte)
+f po Snag _Reftexes
+‘Second line of defense
+
+/ prot ee
+
+Ff eres Third oe,
+
+Phagocytos' ‘Specific (acquired) immunity
+
+Coll-mediated “J oy __,
+Life
+
+teu The five drug development phases
+
+SLO [B-12-1-01)
+
+List the structural features of human skin that make it an impenetrable barrier * against invasion by
+
+microbes. (1st line of defence).
+
+SKIN: AN IMPENETRABLE BARRIER AGAINST MICROBIAL INVASION
+
+The skin serves as the body's largest organ and a critical component of the first line of defence. It acts as a
+multilayered barrier against microbial invasion through a combination of physical, chemical, and immunological
+mechanisms.
+
+Structurally, the skin is composed of two primary layers:
+
+1. Epidermis
+
+The epidermis is the outermost layer, consisting of tightly packed epithelial cells that form a robust physical
+
+barrier against pathogen entry, Most epidermal cells produce keratin, a fibrous protein that provides
+
+mechanical strength and reduces water loss, further limiting microbial survival. The skin’s outer surface is
+composed primarily of dead, keratinized cells, creating a dry environment that is inhospitable to most
+microorganisms; which require moisture and nutrients for survival.
+
+The skin also maintains a slightly acidic pH (~5.5) due to secretions from sebaceous and sweat glands. This
+
+acidity inhibits the growth of many bacteria and fungi. Additionally, the process of desquamation—the
+
+continuous shedding of dead skin cells—helps remove surface microbes that may have adhered to the skin.
+
+2. Dermis
+
+Beneath the epidermis lies the dermis, a thicker, vascularized layer containing hair follicles, nerve endings,
+glands, and blood vessels. Within the dermis, sebaceous glands secrete sebum, an olly substance rich in
+
+fatty acids that lower skin pH and exhibit antimicrobial activity.
+cs) studyplusplus.com $
+
+
+--- Page 4 ---
+
+Sweat glands produce sweat, a watery secretion that plays a thermoregulatory role but also contributes to
+defence. Sweat contains lysozyme, an enzyme capable of degrading bacterial cell walls, and has a high salt
+concentration, which can dehydrate bacteria and inhibit their growth.
+
+‘The combined action of sebum and sweat forms a protective chemical layer over the skin. These secretions
+contain natural antimicrobial agents, such as lactic acid, that deter colonization by harmful microbes.
+
+Hair
+
+Figure: Skin as an impenetrable barrier against microbial invasion
+SLO [B-12-1-02}
+Explain how oil and sweat glands within the epidermis inhibit the growth and also kill microorganisms.
+
+(1st line of defence).
+
+ROLE OF OIL AND SWEAT GLANDS IN DEFENCE AGAINST MICROORGANISMS
+
+The epidermis of human skin is not only a physical barrier but also’an active chemical defence system. Two
+specialized exocrine glands—sebaceous (oil) glands and sweat glands~secrete substances that inhibit microbial
+growth and, in many cases, directly kill pathogens.
+
+Role of Oil and Sweat Glands in the First Line of Defence
+
+The skin is not only a physical shield against microbial invasion but also a. chemical barrier. Two specialized
+glands within the epidermis—the sebaceous (oil) glands and the sweat glands—produce secretions that inhibit
+or kill microorganisms, making the skin a powerful part of the body’s first line of defence.
+
+1. Sebaceous (Oil) Glands
+
+The sebaceous glands secrete an oily substance called sebum onto the skin surface. This secretion has
+
+multiple protective roles:
+
+¢ Antimicrobial Action: Sebum contains fatty acids that lower the skin’s pH to about 4-6, creating an
+
+acidic environment that is unfavorable for the survival of many bacteria and fungi. The oily layer also
+prevents microbes from adhering to and colonizing the skin surface. In addition, certain components of
+sebum have direct bactericidal properties, capable of destroying harmful microorganisms.
+
+* Moisturizing Effect: Sebum keeps the skin soft and supple, reducing the risk of cracks and abrasions
+
+that could otherwise serve as entry points for pathogens.
+2. Sweat Glands
+
+The sweat glands release sweat (perspiration) through pores on the skin. Sweat strengthens the skin's
+defence in the following ways:
+
+cs) studyplusplus.com $
+
+
+--- Page 5 ---
+
+« Antimicrobial Action: Sweat contains lysozyme, an enzyme that breaks down the peptidoglycan of
+bacterial cell walls, leading to bacterial lysis. Additionally, the high salt concentration in sweat creates
+osmotic stress, dehydrating and killing many microbes.
+
+* Mechanical Cleansing: Sweat also helps to wash away pathogens from the skin surface, reducing the
+likelihood of colonization.
+
+Together, oil and sweat glands create an unfavorable environment for invading microbes by:
+
+Lowering skin pH (acidic conditions).
+
+« Producing antimicrobial substances like fatty acids and lysozyme.
+
+e Increasing salt concentration, leading to dehydration of microbes.
+
+« Reducing microbial colonization on the skin surface.
+
+Thus, the combined action of oil and sweat glands strengthens the first line of defence, ensuring that the
+
+skin acts not only as a physical barrier but also as a chemical shield against infections.
+
+ROLE OF DIGESTIVE TRACT ACIDS IN KILLING BACTERIA
+
+The digestive tract is constantly exposed to foreign substances through the intake of food and water. Along
+
+with nutrients, these ingested materials often carry microorganisms, including bacteria, fungi, and sometimes
+viruses. To protect the body from infection, the digestive system is equipped with strong chemical barriers, the
+most important of which are gastric acids.
+
+1.
+
+Hydrochloric Acid in the Stomach
+
+One of the most important chemical barriers of the digestive tract is hydrochloric acid (HCI), secreted by the
+
+parietal cells of gastric glands in the stomach lining. Its presence ensures that food entering the stomach is
+
+not only digested but also disinfected from harmful microorganisms.
+
+© Low pH Environment: Hydrochloric acid lowers the stomach pH to around 1.5-3.5, creating a highly
+acidic environment. Such conditions are lethal for most bacteria, fungi, and other microbes ingested
+with food and water.
+
+* Denaturation of Proteins and Microbial Structures; The strong acidity denatures proteins, unfolding
+them and disrupting their structure. This effect also damages microbial cell walls and plasma
+membranes, leading to the inactivation or death of pathogens:
+
+* Activation of Digestive Enzymes: Hydrochloric acid converts pepsinogen (inactive form) into pepsin, a
+powerful enzyme that digests proteins. This enzymatic breakdown further disrupts microbial proteins,
+weakening their ability to survive in the stomach.
+
+Together, these functions make gastric hydrochloric acid a critical defence mechanism of the digestive
+
+system, preventing most harmful microbes from reaching the intestines and causing infection.
+
+Protective Role against Foodborne Pathogens
+
+Food and water often contain harmful microorganisms that can cause serious gastrointestinal diseases if
+
+they are not neutralized. The acidic environment of the stomach plays a vital rdle'in preventing these
+
+infections by killing or inactivating most pathogens before they reach the intestines.
+
+¢ Destruction of Foodborne Bacteria: Many common foodborne microbes, including Escherichia coli,
+Salmonella, and Vibrio cholerae, cannot survive prolonged exposure to gastric acid. The extremely Jow
+pH disrupts their cellular structures and halts their metabolic processes, effectively eliminating them.
+
+* Prevention of Intestinal Infections: By destroying harmful organisms at the stomach level, hydrochloric
+acid prevents them from entering the intestines, where conditions are more favorable for microbial
+growth. Without this protective mechanism, these pathogens could multiply rapidly, leading to food
+poisoning, diarrhea, or more severe infections.
+
+« First Chemical Barrier: In this way, gastric acid serves as an essential first chemical barrier in the
+
+digestive tract. It ensures that most ingested microbes are neutralized early, reducing the risk of disease
+and safeguarding the body’s internal environment.
+
+cs) studyplusplus.com $
+
+
+--- Page 6 ---
+
+3. Variations in Acid Protection
+
+The protective role of gastric acid can vary among individuals depending on the amount of acid secreted in
+
+the stomach. This directly influences the body’s ability to defend itself against foodborne pathogens.
+
+* High Acidity (Normal Secretion): In healthy individuals with normal gastric acid secretion, the stomach
+maintains a highly acidic environment (pH 1.5-3.5). This provides strong protection by killing most
+ingested bacteria and preventing infections.
+
+* Reduced Acidity (Hypochlorhydria or Achlorhydria): In some individuals, the production of stomach
+acid is significantly reduced.
+© Hypochlorhydria refers to abnormally low levels of gastric acid.
+© Achlorhydria refers to a complete absence of gastric acid secretion. These conditions may arise due
+
+to aging, long-term use of antacids or proton pump inhibitors, or certain medical disorders.
+
+* Consequences of Low Acidity: When acidity is reduced, many pathogens that would normally be
+destroyed can survive the stomach environment and reach the intestines. This increases susceptibility
+to gastrointestinal infections, food poisoning, and other digestive disorders.
+
+4. Additional Acidic Secretions in the Digestive Tract
+
+While hydrochlori¢ acid in the stomach is the primary
+antimicrobial factor, other parts of the digestive
+system also contribute:
+
+* Fatty acids and bile salts in the small intestine
+interfere with bacterial membranes.
+
+* The acidic environment of the stomach works
+synergistically with digestive enzymes and
+intestinal secretions to reduce microbial
+survival.
+
+The acids of the digestive tract, especially
+
+hydrochloric acid secreted in the stomach, serve as
+
+a powerful barrier against infection by:
+
+¢ Creating an acidic environment hostile \to
+microbes.
+
+« Denaturing microbial proteins and damaging cell
+structures.
+
+* Killing or inactivating many bacteria present in Figure: Respiratory epithelium of trachea
+food and water.
+
+Thus, gastric acids form an essential part of the body’s first line of defence, ensuring that harmful microbes
+
+rarely reach the intestines to cause disease.
+
+SLO [B-12-1-04]
+
+State the role of the ciliated epithelium of the nasal cavity and the mucous of the bronchi and
+
+bronchioles in trapping airborne microorganisms.
+
+ROLE OF THE RESPIRATORY TRACT IN TRAPPING AIRBORNE
+MICROORGANISMS
+
+The respiratory system is constantly exposed to the external environment, making it vulnerable to airborne
+dust, allergens, and microorganisms. To protect against these threats, specialized structural features such as
+ciliated epithelium and mucus secretions form part of the body’s first line of defence.
+
+1. Ciliated Epithelium of the Nasal Cavity
+
+The nasal cavity Is the first part of the respiratory tract that comes into contact with inhaled air. Its inner
+
+surface is lined with a ciliated epithelium, a specialized tissue made up of epithelial cells bearing numerous
+
+microscopic, hair-like projections called cilia.
+
+* — Structure of Cilia: These cilia are fine, flexible structures that extend outward from the cell surface. They
+are arranged in dense rows and are capable of beating in a rhythmic and coordinated fashion.
+
+cs) studyplusplus.com $
+
+
+--- Page 7 ---
+
+« Role in Defence: As air enters the nasal passages, it often carries dust, pollen, and airborne
+microorganisms such as bacteria, fungal spores, and viruses. These particles become trapped in the thin
+layer of mucus that coats the nasal lining.
+
+* Mechanism of Action: The rhythmic beating of cilia acts like a conveyor belt, pushing the mucus, along
+with the trapped microbes and dust particles, slowly backward towards the pharynx.
+
+¢ Final Clearance: Once in the pharynx, the mucus is either:
+
+° Swallowed, so that the microbes are destroyed by the strong hydrochloric acid in the stomach, or
+o Expelled through defensive reflexes such as sneezing or coughing.
+
+Thus, the ciliated epithelium of the nasal cavity provides a mechanical barrier that prevents harmful
+
+microorganisms from reaching the lower respiratory tract and causing infections.
+
+2. Mucus of the Bronchi and Bronchioles
+
+The bronchi and bronchioles form the conducting airways that carry air deeper into the lungs. These
+
+passageways are lined with epithelial cells, including goblet cells and mucous glands, which secrete a thick
+
+and sticky fluid known as mucus.
+
+* Composition and Properties: The mucus is rich in glycoproteins, which give it a viscous and adhesive
+nature. This sticky layer acts as a biological trap for inhaled particles such as dust, pollen, allergens, and,
+most importantly, airborne microorganisms like bacteria, viruses, and fungal spores.
+
+* Protective Coating: By coating the internal lining of the bronchi and bronchioles, mucus prevents
+pathogens from coming into direct contact with the delicate epithelial tissues, thereby acting as the first
+barrier within the lower respiratory tract. =
+
+* Mucociliary Escalator: Once pathogens and debris are trapped, the cilia lining the bronchi and
+bronchioles beat in a coordinated upward motion, This continuous movement, often called the
+mucociliary escalator, carries the mucus layer together with its trapped particles toward the pharynx.
+
+* Final Removal: in the throat, the mucus may either be swallowed, allowing stomach acid to destroy the
+pathogens, or expelled by coughing, sneezing, or spitting.
+
+* Functional Significance: This protective mechanism is crucial in ensuring that harmful microorganisms
+and irritants do not reach the alveoli, the delicate air sacs of the lungs where gas exchange occurs.
+Protection of the alveoli is vital because even minor infections at this site can severely impair
+breathing efficiency.
+
+Thus, the mucus of the bronchi and bronchioles, in coordination with ciliary action, provides an active defence
+
+system that maintains the sterility of the lower respiratory tract and safeguards efficient respiration.
+
+Together, the ciliated epithelium and mucus secretions provide an effective mechanical barrier against
+
+airborne microorganisms. They work to trap, immobilizeyand expel pathogens before these can establish
+
+infections in the respiratory tract.
+
+‘When pathogens successfully cross the first line of defence (skin, mucous membranes, and secretions), the
+body activates the second line of defence. This line consists of non-specific internal responses that aim to
+eliminate invaders regardless of their identity. Among these defences, a critical role is played by phagocytic and
+killing cells of the blood, which actively engulf and destroy invading microbes. The two most important
+phagocytes are macrophages and neutrophils.
+
+Macrophages and Dendritic Cells
+
+Both macrophages and dendritic cells are specialized phagocytic cells that arise from monocytes, a type of
+white blood cell produced in the bone marrow. After circulating in the blood for 1-3 days, monocytes migrate
+into tissues, where they differentiate into these long-lived defence cells. They play a central role in the second
+line of defence by engulfing microbes and linking the innate immune system with the adaptive immune system.
+
+Functions of Macrophages
+
+1. Distribution and Presence
+Macrophages are widely distributed throughout the body, particularly in tissues such as the lungs, liver,
+spleen, kidneys, and lymph nodes. They are long-lived cells that act as permanent sentinels of he earn
+system. By patrolling interstitial spaces, they continuously monitor for invading pathogens, damaged ce))s,
+and cellular debris. This widespread distribution ensures that infections can be detected and dealt with
+
+Fapidly at multiple sites in the body.
+cs) studyplusplus.com $
+
+
+--- Page 8 ---
+
+4
+
+Phagocytosis
+
+The primary role of macrophages is phagocytosis, the process of engulfing and destroying harmful microbes.
+
+They extend cytoplasmic projections (pseudopodia) around a bacterium or particle, enclosing it in a vesicle
+
+called a phagosome. The phagosome then fuses with lysosomes to form a phagolysosome. Inside this
+
+structure, destructive enzymes and highly reactive oxygen species break down the microbe, effectively
+
+neutralizing the threat.
+
+Antigen Presentation
+
+In addition to killing bacteria, macrophages serve as antigen-presenting cells (APCs). After digestion, they
+
+process microbial fragments and display them on their cell surface bound to special proteins (MHC
+
+molecules). These presented antigens are recognized by T lymphocytes, which become activated and launch
+
+@ specific adaptive immune response. Through this function, macrophages act as a bridge between innate
+
+immunity and adaptive immunity.
+
+Secretion of Signalling Molecules
+
+Macrophages also play a vital role in coordinating immune responses through the secretion of signalling molecules:
+
+« Cytokines are released to recruit and activate more immune cells at the site of infection.
+
+*  Interleukin-1 (IL-1) is secreted to act on the hypothalamus, raising body temperature and producing
+fever, which slows bacterial growth.
+
+* Growth factors secreted by macrophages stimulate tissue repair and wound healing once the infection
+is under control.
+
+Functions of Dendritic Cells
+
+1
+
+Location
+Dendritic cells are found mainly in epithelial tissues that are directly exposed to the external environment,
+making them one of the first immune Cells to encounter invading pathogens. They are present in the skin
+(where they are known as Langerhans ¢ells), the respiratory tract mucosa, and the intestinal lining. Their
+strategic positioning allows them to detect microbes at common entry points into the body. ~
+Phagocytosis and Antigen-Presenting Role
+Like macrophages, dendritic cells are capable of phagocytosis, engulfing bacteria, viruses, and other
+antigens. However, they are regarded as professional antigen-presenting cells (APCs) because they are
+exceptionally efficient in processing and displaying microbial antigens on their surface using MHC
+molecules. This ability makes them one of the most critical immune cells for communication between the
+innate and adaptive immune systems.
+Activation of Adaptive immunity
+A distinctive feature of dendritic cells is their ability to migrate. After capturing antigens in peripheral tissues,
+they travel to nearby lymph nodes, where they present the processed antigens to naive T lymphocytes. This
+interaction is crucial for initiating adaptive immune responses. By activating T cells, dendritic cells not only
+trigger immediate defense mechanisms but also help establish immunological memory, ensuring long-term
+protection against future infections by the same pathogen.
+
+= Macrophage enguits
+
+bacterium and displays
+parts on surface
+
+Laceern
+ga| Bacteria
+J) \ | Se Specific immune
+temperature
+bog
+or pe) fo onaae wee
+into macrophages
+
+ae nee Response of macrophages to foreign particles
+
+cs) studyplusplus.com $
+
+
+--- Page 9 ---
+
+Neutrophils
+
+(WBCs) and represent the most abundant type of
+phagocytes circulating in the blood. They are short-lived
+but highly motile, making them one of the first immune
+
+Neutrophils are granulocytic white. blood cells
+
+cells to reach the site of infection. Their rapid response
+allows them to serve as the frontline defenders in the
+sécond line of defence. :
+
+1.
+
+2.
+
+4.
+
+5.
+
+Abundance and Rapid Response
+
+Neutrophils are the most numerous WBCs in human . -
+circulation. They are the first wave of phagocytes “) “b : —-
+recruited to an infection site. Unlike macrophages, N “NS ae
+
+which are long-lived, neutrophils survive only a
+
+short time but act as highly efficient killers during | Phagocytosis Extracellular Extracellular
+acute infections. ny . | degranulation trap (NET)
+Amoeboid Movement and Diapedesis =
+
+Neutrophils display amoeboid movement, which Phagosome for
+
+enables them to actively move through tissues. They 5 *:} intracellular degradation
+
+can undergo diapedesis, a process where they oF
+
+squeeze through the walls of capillaries to reach Figure: Neutrophils Immune response
+infected or inflamed tissues quickly.
+
+Phagocytosis
+
+Once at the infection site, neutrophils engulf pathogens into phagosomes, which then fuse with lysosomes.
+This fusion releases digestive enzymes, antimicrobial peptides, and reactive oxygen species (ROS) that
+effectively destroy the microbes.
+
+Degranulation
+
+Neutrophils can also undergo degranulation, releasing stored antimicrobial substances directly into the extracellular
+space. These toxic compounds attack and neutralize nearby microbes without the need for engulfment.
+
+Neutrophil Extracellular Traps (NETs)
+
+Apart from phagocytosis, neutrophils can release Neutrophil Extracellular Traps (NETs), which are web-like
+structures made of DNA fibers coated with antimicrobial, proteins. NETs immobilize and kill pathogens
+outside the cell, preventing their spread.
+
+Role in Inflammation and Pus Formation
+
+During infection, neutrophils contribute to the inflammatory response by releasing enzymes and signaling
+molecules. Their accumulation at infection sites leads to the formation of pus, which consists largely of dead
+neutrophils, bacterial fragments, and tissue debris.
+
+Together, macrophages and neutrophils form the core cellular defence ofthe second line of defence.
+Macrophages provide sustained phagocytosis and immune signalling, while neutrophils act as rapid, short-
+lived bacterial killers. Their combined activity ensures that bacterial invaders are destroyed quickly,
+preventing the spread of infection and buying time for the activation of the third line of defence (adaptive
+immunity).
+
+be you know that Dendritic cells, macrophages, cells can function as antigen-presenting cells
+
+(APCs)?
+
+Antigen-presenting cells (APCs): These are immune cells that process antigens and present them on
+
+their surface bound to MHC (Major Histocompatibility Complex) molecules to activate T-cells.
+Dendritic cells — the most potent APCs, specialized in capturing antigens and migrating to lymph
+Nodes to activate naive T-cells.
+
+Macrophages — phagocytose pathogens and present their antigens to helper T-cells, especially
+during infections.
+
+8 cells — recognize specific antigens via their surface immunoglobulins, internalize them, and
+present processed peptides to helper T-cells.
+All three—dendritic cells, macrophages, and 8 cells—are professional APCs because they not only
+present antigens but also provide the co-stimulatory signals required for T-cell activation.
+
+cs) studyplusplus.com $
+
+
+--- Page 10 ---
+
+Variable regions
+
+fon
+
+<¥i
+V
+
+(1) Virus and toxin
+neutralization
+
+Macrophage
+| — tage pomenn
+Prevents @) mer fixation
+and formation of the
+an A membrane attack complex |
+NK-induced
+Phagocytosis apoptosis
+
+or lysis
+Figure: The major cells of Adaptive Immunity and their roles in the immune system
+
+ral Killer (NK) cells kill cells infected by microbes and cancer cells.
+
+NATURAL KILLER (NK) CELLS
+
+Natural Killer (NK) cells are large granular lymphocytes that form an essential part of the second line of
+
+defence in the innate immune system. Unlike phagocytes, which engulf microbes, NK cells directly target and kill
+virus-infected cells and cancer (tumour) cells without prior sensitization.
+
+Mechanism of Action
+
+1.
+
+Recognition of Abnormal Cells:
+
+Natural Killer (NK) cells constantly patrol the body, scanning tissues for infected or cancerous host cells.
+Unlike cytotoxic T lymphocytes, which require antigen presentation through MHC molecules, NK cells
+recognize abnormalities more directly. Healthy cells normally display sufficient levels of MHC class | proteins
+on their surface, acting as “self-markers.” However, many virus-infected.and tumour cells reduce or lose
+these MHC class | molecules or present unusual stress-induced ligands. NK cells are able to detect these
+changes, allowing them to distinguish abnormal cells from healthy ones and target them for destruction.
+
+Release of Cytotoxic Molecules
+
+Once an abnormal cell is recognized, NK cells form a specialized contact point known as the immunological
+synapse and release toxic granules stored in their cytoplasm. These granules contain perforins and
+granzymes, which work together to induce cell death. Perforins insert themcalvoc into the plasma
+membrane of the target cell, where they assemble into pores that compromise membrane integrity.
+Through these pores, granzymes enter the cell’s cytoplasm and initiate a cascade of molecular events that
+trigger apoptosis, or programmed cell death. This controlled mechanism ensures that the infected or tumour
+cell is dismantled without causing extensive damage to surrounding tissues.
+
+Removal of Dead Cells
+
+Following apoptosis, the dying cell breaks apart into smaller membrane-bound fragments called apoptotic
+bodies. These fragments are then efficiently removed by macrophages and other phagocytic cells. This
+process not only prevents the release of harmful intracellular substances that could damage nearby tissues
+but also ensures that pathogens do not spread further within the body.
+
+cs) studyplusplus.com $
+
+
+--- Page 11 ---
+
+NK cells act rapidly and non-specifically, providing immediate protection while the adaptive immune system
+
+is still being activated. This makes them vital for early defence against viral infections and tumour formation,
+NK cell Pertorins Granzymes
+Enemy cell 3 +>
+
+NK cell releases Granzymes from
+perforins, which NK ceil enter
+
+ize and perforin hole and
+form a hole in the degrade enemy
+‘enemy cell cell enzymes.
+membrane.
+
+Figure: NK cells attack on enemy cells (Cancerous cell/ Virus infected cell)
+
+State the way proteins of the complement system kill bacteria and that interferons inhibit viruses from
+
+infecting cells.
+
+PROTECTIVE PROTEINS OF COMPLEMENT SYSTEM
+
+Complement System
+The complement system is a cascade of over 50 small proteins circulating in the blood in an inactive form.
+These proteins are primarily produced by the liver and are activated upon detection of pathogens. Once initiated,
+the cascade amplifies the response in a chain-reaction manner.
+Key outcomes of complement activation include:
+© Opsonization: Coating of microbes to enhance phagocytosis.
+* Chemotaxis: Recruitment of phagocytic cells to the infection site.
+* Formation of Membrane Attack Complexes (MACS); A ring of proteins that inserts into microbial
+membranes, forming pores that disrupt osmotic balance, leading to cell lysis.
+* Promotion of inflammation: Complement fragments stimulate vascular permeability and leukocyte
+activation.
+The complement system thus bridges innate and adaptive immunity and enhances the effectiveness of both.
+
+ag ES aa
+@) Activated complement @ Water and sais @ The bactenum swells and
+proteins form complexes diffuse into the eventually bursts.
+of proteins that croate bacterium through
+holes in the bacterial coll wall the holes
+
+Figure: Action of the complement system against a bacterium
+
+cs) studyplusplus.com $
+
+
+--- Page 12 ---
+
+Interferons
+
+Interferons (IFNs) are cytokines released primarily by virus-infected
+cells. They play a crucial role in limiting viral replication and alerting
+neighbouring cells to the viral threat.
+
+Major actions of interferons include:
+
+* Antiviral state induction: Stimulate neighbouring cells to produce
+
+antiviral proteins that degrade viral RNA and inhibit viral protein
+
+A cytokine is 3a chemical
+messenger that regulates cell
+differentiation, production, and
+gene expression to affect
+
+synthesis. immune responses. At least 40
+* Immune cell activation: Stimulate natural killer cells and | types of cytokines exist in
+macrophages. humans that differ in terms of the
+
+« Apoptosis induction: Promote programmed death of infected cells.
+« Inhibition of viral release: Restrict budding of new viruses from
+host cells.
+Different types of interferons (e.g., IFN-a, IFN-B, IFN-y) perform varied
+functions, including roles in bacterial and parasitic infections, immune
+regulation, and modulation of cell growth and differentiation.
+
+cell type that produces them, the
+cell type that responds to them,
+and the changes they produce.
+Interferon is one type of cytokine.
+
+inected 1 cals to
+
+undergo apoptosis.
+
+Figure: Action of interferon to control virus
+
+ints of the inflammatory response as a generalized, nonspecific defence.
+
+INFLAMMATORY RESPONSE
+
+The inflammatory response is one of the key components of the body’s second line of defence. It is a
+nonspecific reaction that occurs whenever body tissues are injured by physical trauma, chemical irritation, or
+infection by pathogens. The purpose of inflammation is to isolate the harmful agent, prevent further tissue
+damage, and promote healing.
+
+1. Recognition of Injury or Infection: The process begins when damaged cells, invading microbes, or activated
+immune cells release chemical signals such as histamine, prostaglandins, and cytokines. These molecules
+alert the body to the presence of injury or infection and initiate the cascade of events that characterize
+inflammation. °
+
+2. Vasodilation and Increased Blood Flow: Histamine and related mediators cause the arterioles in the
+affected area to dilate. As a result, more blood flows into the injured tissue. This produces two of the classic
+
+signs of inflammation redness (rucz) and heat (calor). The increased blood flow brings immune cells and
+nutrients to the site of injury.
+
+cs) studyplusplus.com $
+
+bet
+
+
+--- Page 13 ---
+
+4.
+
+5.
+
+Increased Vascular Permeability: The capillary walls in the inflamed region become more permeable,
+allowing plasma proteins, antibodies, and clotting factors to leak into the tissue. This fluid accumulation
+causes swelling (tumor) and exerts pressure on surrounding nerves, resulting in pain (dolor).
+
+-Migration of Leukocytes (Phagocytes): Chemical signals (chemokines) attract white blood cells, mainly
+neutrophils and monocytes, to the site of injury. Neutrophils arrive first, squeezing through the capillary
+walls in a process known as diapedesis. These cells engulf and destroy microbes through phagocytosis.
+Monocytes follow later, differentiating into macrophages that provide ‘long-lasting defence and tissue
+cleanup.
+
+Elimination of Pathogens and Tissue Repair: As phagocytes destroy invading pathogens, platelets and
+clotting proteins work to form barriers, preventing the spread of infection. Growth factors released by
+macrophages stimulate fibroblasts and other cells to repair the damaged tissue. Eventually, swelling
+subsides and normal tissue function is restored.
+
+The Four Cardinal Signs of Inflammation: The inflammatory response is typically recognized by four cardinal
+signs: redness, heat, swelling, and pain. Sometimes a fifth sign, loss of function, is also included, reflecting
+the temporary impairment of the affected tissue during the response.
+
+Tissue injury; release of
+@ chemical signals such as
+histamine
+
+Figure: The Inflammatory Response
+
+SLO [B-12-1-09}
+
+Outline the release of pyrogens by microbes and their effect on the hypothalamus to boost the body's
+temperature.
+
+PYROGENS AND FEVER: ELEVATING BODY TEMPERATURE
+
+Fever is a systemic, nonspecific defence mechanism in which the body raises its core temperature to inhibit
+
+microbial growth and enhance immune function. This response is triggered by the release of pyrogens, substances
+that affect the hypothalamic thermoregulatory center. Fever, or pyrexia, refers to.an elevation in body
+temperature above the normal physiological range, typically exceeding 37°C (98.6°F). It is a non-specific immune
+
+re:
+1.
+
+sponse that plays a supportive role in controlling microbial infections.
+Release of Pyrogens by Microbes
+Fever is typically triggered by the presence of infectious agents such as bacteria, viruses, or their by-
+products, These invading microorganisms often release substances known as exogenous pyrogens (eg.,
+bacterial endotoxins), which stimulate immune cells, particularly macrophages and other white blood cells,
+to produce endogenous pyrogens. These endogenous pyrogens include cytokines such as:
+*  Interleukin-1 (IL-1)
+* — Interleukin-6 (IL-6)
+* Tumour Necrosis Factor-alpha (TNF-a)
+
+cs) studyplusplus.com $
+
+
+--- Page 14 ---
+
+:
+
+Action on the Hypothalamus
+
+Endogenous pyrogens travel through the bloodstream to the hypothalamus, the brain’s temperature-
+regulating center. They stimulate the hypothalamus to increase the set point for body temperature above
+the normal 37 °C.
+
+3. Physiological Changes Leading to Fever
+To achieve the new set point, the body initiates heat-conserving and heat-generating mechanisms:
+* Vasoconstriction of skin arterioles reduces heat loss through the skin, causing chills and pale skin.
+« Shivering and increased skeletal muscle activity generate additional heat.
+« Increased metabolic rate mediated by thyroid hormones contributes to internal heat production.
+
+4. Purpose of Fever
+The elevated body temperature inhibits the replication of many pathogens, enhances phagocytosis by
+neutrophils and macrophages, and accelerates immune reactions, such as antibody production. Fever thus
+represents a critical nonspecific defence mechanism that complements other components of innate immunity.
+
+List the ways that fever affects microbes.
+
+PROTECTIVE ROLES OF FEVER
+
+Although fever is energetically costly, it provides several advantages during infection:
+
+° Enhancement of Immune Function: Elevated body temperature increases the activity of phagocytic
+leukocytes, particularly neutrophils and macrophages, enhancing the engulfment and destruction of
+pathogens.
+
+. Iron Sequestration: Fever-associated cytokines reduce the availability of free iron in the blood, as many
+bacteria require iron for replication. The reduced iron levels, especially at temperatures around 38-39°C,
+impair microbial proliferation,
+
+* - Stimulation of Interferon Production: Higher temperatures promote the synthesis of interferons, which
+increase resistance of surrounding uninfected cells to viral entry and replication.
+
+. Speeds Up Tissue Repair: The increased metabolic fate during fever accelerates immune responses and
+tissue repair mechanisms.
+
+. Direct Inhibition of Microbes:
+© Enveloped viruses, which are more heat-sensitive, may be structurally damaged at elevated
+
+temperatures.
+o Fever can slow viral replication by disrupting optimal conditions required for viral enzyme activity and
+genome synthesis.
+Thus, fever acts as a systemic response that enhances immune efficien¢y,and:suppresses microbial survival
+and replication.
+
+Risks Associated with High Fever
+
+Despite its protective role, excessively high fever can be detrimental. When body temperature rises beyond
+40°C (104°F), enzymatic and metabolic processes may become impaired, leading to:
+
+* Protein denaturation
+
+¢ Disruption of cellular functions
+
+« Dehydration
+
+* Neurological dysfunction ‘
+
+In extreme cases, uncontrolled fever may result in systemic collapse, particularly in vulnerable individuals
+
+such as infants, the elderly, or patients with underlying health conditions.
+
+Medical Management
+
+To mitigate the harmful effects of high-grade fever, antipyretic drugs such as paracetamol (acetaminophen)
+and ibuprofen are commonly administered. These medications inhibit cyclooxygenase enzymes (COX-1 and COX-
+
+2) involved in prostaglandin synthesis in the hypothalamus, thereby lowering the temperature set point and
+restoring normal thermoregulation,
+
+cs) studyplusplus.com $
+
+
+--- Page 15 ---
+
+Justification for the Use of Antipyretic Drugs
+
+Although fever is a non-specific defence mechanism that enhances immune activity and inhibits pathogen
+growth, excessively high or prolonged fever can be harmful. Physicians prescribe antipyretic drugs to prevent
+complications such as dehydration, metabolic disruption, or neurological damage.
+
+Antipyretics work by inhibiting prostaglandin production in the hypothalamus, blocking the rise in
+temperature set point. This helps restore normal body temperature without completely suppressing the immune
+response, ensuring both patient safety and effective recovery.
+
+SLO (B-12-1-11
+
+Define the specific immune system as providing specific defence and acting as the most powerful
+
+means of resisting infection.
+
+THE SPECIFIC IMMUNE SYSTEM
+
+The specific immune system, also referred to as the adaptive or acquired immune system, is a highly
+specialized component of the body's defences that provides targeted and powerful protection against pathogens.
+Unlike the innate immune system, which offers immediate but generalized defence, the specific immune system
+recognizes and responds to particular antigens—unique molecular structures present on the surface of microbes,
+abnormal cells, or foreign substances.
+
+This system operates through two main mechanisms: humoral immunity, mediated by B lymphocytes that
+produce antibodies against extracellular pathogens, and cell-mediated immunity, mediated by T lymphocytes
+that destroy infected or abnormal cells. The hallmark of the specific immune system is its ability to remember
+previous encounters with pathogens. This immunological memory allows for a faster, stronger, and more precise
+response upon subsequent exposures, making it the most effective means of resisting infection.
+
+In summary, the specific immune system provides specificity, memory, and amplification, enabling the body
+to selectively target and eliminate pathogens, while also establishing long-term protection against diseases. Its
+precision and adaptability make it the most powerful line of defence in the human immune system.
+
+Do you remember, the antigens A and B on red blood cells, you learned in ABO blood group system?
+and other pathogen have specific antigens on their surface, Since, the third line of defence respond
+against particular infections and acts as the most powerful means of resisting infections therefore, it
+Is also called specific defence. Its response can be of two types: HUmoral immune response and cell-
+mediated immune response. These immune responses are particularly carried out by two
+components: B-lymphocytes or B cells and T-lymphocytes or T cells, However, third line of defence
+also involves role of monocytes (macrophages) that participate in activation of these lymphocytes.
+
+Identify monocytes, T cells,
+
+id B-cells as components of the immu
+
+* CELLULAR COMPONENTS OF THE IMMUNE SYSTEM
+
+The human immune system relies on a diverse population of white blood cells (leukocytes) that work
+together to detect, neutralize, and eliminate pathogens. Among these, monocytes, T lymphocytes (T cells), and
+B lymphocytes (B cells) play central roles in both innate and adaptive immunity.
+
+1. Monocytes .
+
+Monocytes are large, mononuclear white blood cells produced in the bone marrow and circulating in the
+blood. They are precursors to macrophages and dendritic cells, which migrate into tissues to perform
+phagocytosis, antigen presentation, and secretion of signalling molecules (cytokines). By linking innate
+immunity to adaptive immunity, monocytes serve as essential mediators of the body's defence against
+infection,
+
+cs) studyplusplus.com $
+
+
+--- Page 16 ---
+
+2.
+
+3.
+
+T Lymphocytes (T Cells)
+
+T cells are a critical component of the cell-mediated adaptive immune system. They mature in the thymus
+
+and differentiate into several subtypes, each with specialized functions:
+
+« Helper T cells (CD4*): Activate B cells and cytotoxic T cells, and coordinate the immune response through
+cytokine secretion.
+
+« Cytotoxic T cells (CD8*): Directly destroy virus-infected or abnormal cells by inducing apoptosis.
+
+« Regulatory T cells: Suppress overactive immune responses to maintain immune tolerance and prevent
+autoimmunity.
+
+B Lymphocytes (B Cells)
+
+B cells are the main effectors of humoral immunity. They mature in the bone marrow and, upon
+
+encountering a specific antigen, differentiate into plasma cells that secrete antibodies. These antibodies
+
+bind to extracellular pathogens or toxins, neutralizing them or marking them for destruction by other
+
+immune cells. Memory B cells are also formed, providing long-term immunological memory for rapid
+
+responses upon subsequent exposure to the same pathogen.
+
+Together, monocytes, T cells, and B cells form the backbone of the human immune system, integrating
+
+innate and adaptive mechanisms to provide both immediate and long-term protection against infections.
+
+TYPES OF IMMUNITY
+
+The human body defends itself against wide variety of pathogens, including bacteria, viruses, fungi, and
+
+parasites, through two fundamental types of immunity: inborn (innate) immunity and acquired (adaptive)
+immunity. These two systems function together to provide comprehensive protection, yet they differ in speed,
+specificity, and the ability to remember previous encounters with pathogens.
+
+1.
+
+Inborn (Innate) Immunity
+
+Inborn or innate immunity is present from birth and forms the body’s first line of defence against infection.
+It provides rapid, generalized protection against a wide array of harmful agents. Innate immunity is
+nonspecific, meaning it does not distinguish between different types of pathogens. Key components include
+physical barriers like the skin and mucous membranes, which prevent microbial entry, and chemical barriers
+such as gastric acid in the stomach, lysozymes in saliva, and antimicrobial fatty acids in sebum. Cellular
+elements of innate immunity include phagocytic cells like neutrophils and macrophages, which engulf and
+destroy microbes, as well as natural killer (NK) cells, which target virus-infected and cancerous cells. Inborn
+immunity is critical for immediate response, acting within minutes to hours after infection, but it lacks
+immunological memory, meaning that repeated exposure to the same pathogen elicits a similar response
+each time.
+
+Acquired (Adaptive) Immunity
+
+Acquired or adaptive immunity develops gradually after birth in response to exposure to specific pathogens.
+It is highly specific, targeting unique antigens present on microbes or foreign substances. The two main
+branches of adaptive immunity are humoral immunity, mediated by B lymphocytes that produce antibodies,
+and cell-mediated immunity, mediated by T lymphocytes that destroy infected or abnormal cells. A defining
+feature of acquired immunity is Immunological memory: once the body encounters a pathogen, it
+“remembers” it, allowing for a faster and stronger response upon subsequent exposures. Acquired immunity
+can be naturally acquired, as through infection, or artificially acquired, as through vaccination. Vaccines
+stimulate the immune system to produce memory B and T cells without causing the disease, providing long-
+term protection.
+
+Complementary Roles
+
+Inborn and acquired immunity are not independent; they work synergistically. Innate immunity provides
+immediate defence, containing the infection and signaling the adaptive system. Components of the innate
+system, such as macrophages and dendritic cells, also present antigens to T lymphocytes, effectively
+
+cs) studyplusplus.com $
+
+
+--- Page 17 ---
+
+bridging innate and adaptive responses. Acquired immunity, in turn, provides specificity, amplification, and
+long-term protection, ensuring that subsequent infections are neutralized more efficiently. Together, these
+two types of immunity form a comprehensive defence network, protecting the body from the vast array of
+pathogenic challenges it encounters throughout life.
+
+SCIENCE TITBITS) A
+
+In 1717 Mary Montagu, the wife of an English ambassador to the Ottoman Empire, observed local
+
+women inoculating their children against smallpox. Edward Jenner observed and studied Miss Sarah
+a milkmaid who had previously caught cowpox and was found to be immune to smallpox.
+
+etween acti
+
+ind passive immunity as the two types of acquired immunity.
+
+TYPES OF ACQUIRED IMMUNITY: ACTIVE VS. PASSIVE
+
+Acquired immunity, also called adaptive immunity, can be further classified into active and passive immunity,
+depending on whether the immune system itself produces the protective response or receives it from another source.
+Both forms provide specific defence’ against pathogens, but they differ in onset, duration, and mechanism.
+
+1. Active Immunity
+
+Active immunity arises when an individual's immune system actively produces antibodies and memory cells
+in response to exposure to a specificantigen. This can occur naturally, such as after infection by a pathogen,
+or artificially, such as through vaccination. In active immunity, the immune system is directly engaged: B
+lymphocytes are stimulated to produce antibodies, and T lymphocytes are activated to recognize and
+destroy infected cells. The primary advantage of active immunity is that it generates long-term or even
+lifelong protection, due to the formation of memory B and T cells. However, the development of full
+immunity requires time, often several days to weeks, before antibody levels peak.
+Examples of Active Immunity:
+* Natural: Recovery from diseases like measles or chickenpox.
+¢ Artificial: immunization with vaccines such as polio; hepatitis B, or tetanus toxoid.
+
+2. Passive Immunity
+Passive immunity occurs when an individual receives preformed antibodies from another source rather than
+producing them. This provides immediate protection, but it is short-lived, as the transferred antibodies are
+gradually degraded and no memory cells are formed. Passive immunity can be naturally acquired, such as
+through maternal antibodies transferred via the placenta (IgG) or breast milk (IgA), or artificially, such as
+through administration of antiserum or monoclonal antibodies to treat infections or prevent disease.
+Examples of Passive Immunity:
+« » Natural: Antibodies received by a newborn from the mother.
+* Artificial: Injection of antivenom for snake bites or immunoglobulins for hepatitis exposure.
+
+> Comparison and Significance
+Active immunity is slow to develop but long-lasting, providing durable protection, while passive immunity
+
+is rapid but temporary, useful in immediate threat situations or for short-term protection. Together, these
+
+two forms of acquired immunity allow the immune system to respond effectively to both long-term
+Prevention and acute exposure scenarios.
+
+Immunity developed by the body's own | Immunity provided by transfer of ready
+immune system after exposure to an antigen. | - made antibodies from another source.
+
+Source of Antibodies | Produced by the individual’s own B| Received from an external source
+lymphocytes. ‘another individual or animal).
+
+Takes time to develop (days to weeks), Provides immediate protection.
+o studyplusplus.com $
+
+Definition
+
+
+
+--- Page 18 ---
+
+Long-lasting, sometimes lifelong (due to | Short-term (antibodies degrade over
+memory cell formation). time).
+
+Natural: After recovering from measles Natural: Antibodies passed from mother
+Artificial: Vaccination to baby via placenta or breast milk
+
+Artificial: Injection of antiserum (e.g. for
+rabies or snake venom}
+
+PRIMARY AND SECONDARY IMMUNE RESPONSES
+
+The immune system responds to pathogens in two phases:
+
+. Primary Immune Response: This occurs upon the first exposure to a specific antigen. It is relatively slow and
+weak, as the immune system takes time to recognize the antigen and activate B and T cells. Memory cells
+are generated during this phase.
+
+. Secondary Immune Response: Upon subsequent exposures to the same antigen, memory B and T cells
+facilitate a much faster and more robust immune response. This forms the basis of long-term immunity and
+
+the effectiveness of vaccines.
+. Primary Secondary
+immuneresponse immune response
+
+a
+Peak of antibody, Pay
+roduction
+
+Secondary
+Peak of antibody exposure
+production aA
+
+Antibody
+response
+
+First infection o&
+
+Ch. drovcevenseecoronnsnsnsnaeacnsnnnenocnseoen
+
+C) z >300 ‘Time (days) >30
+
+Figure: Primary vs Secondary immune response
+
+e role of T-cells in cell-mediated immunity.
+
+ROLE OF T CELLS IN THIRD LINE OF DEFENCE
+(CELL MEDIATED IMMUNE RESPONSE)
+
+T lymphocytes (T cells) originate from stem cells in the bone marrow and mature in the thymus, where they
+become immunocompetent, i.e., capable of recognizing specific antigens. The response involving T cells is called
+the cell-mediated immune response.
+
+Activation of T Cells
+
+During infection: -
+
+1. Macrophages or dendritic cells present pathogen-derived antigens on their surface using MHC molecules,
+
+2. These antigen-presenting cells secrete interleukin-1, which recruits helper T.cells (CD4*) to the site.
+
+3. Each helper T cell has a unique T cell receptor (TCR) specific to a particular antigen. Upon antigen
+
+recognition, IL-1 stimulates the helper T cells to secrete interleukin-2.
+
+cs) studyplusplus.com $
+
+
+--- Page 19 ---
+
+4. IL-2 promotes:
+
+o Clonal expansion of helper T cells,
+
+© ‘Activation and proliferation of cytotoxic T cells (CD8*),
+
+© Activation of B cells (involved in humoral immunity).
+This highly regulated interaction initiates cell-mediated immunity, enabling the immune system to eliminate
+infected or abnormal host cells.
+
+Antigon trom microbe
+(nonselt molecule)
+
+Figure: Activation of cell mediated immune response
+> Types of T Cells and Their Functions
+Upon activation, T cells differentiate i
+yp
+Cytotoxic T Cells (CD8*) | Recognize and kill infected or abnormal cells by releasing:
+© Perforins, which form pores in target cell membranes.
+
+o four main types, each with a specific function:
+
+Helper T Cells (CD4*) Secrete interieukin-2:to activate other T cells and stimulate B cell proliferation
+
+and antibody production. coordinate the overall immune response.
+Inhibit T cell activity after infection is resolved by secreting regulatory
+TCells proteins. help prevent autoimmune reactions.
+
+@eyrotoxic T cei binds OPrerorin makes holes in © intectes cott
+to infected cell Infected cat's membrane (a destroyed
+and enzyme enters
+
+oe
+9
+
+Figure: Mode of action of cytotoxic T cells,
+
+cs) studyplusplus.com $
+
+
+--- Page 20 ---
+
+Describe the role of B-cells in antibody-mediated immunity.
+
+ROLE OF B CELLS IN THIRD LINE OF DEFENCE: HUMORAL! ANTIBODY
+MEDIATED IMMUNE RESPONSE
+
+B-lymphocytes (B-cells) are central to the body's antibody-mediated (humoral) immune response, which
+targets pathogens circulating in body fluids such as blood and lymph. Unlike T-cells, which primarily act on infected
+cells, B-cells are specialized for producing antibodies that neutralize extracellular microbes and their toxins.
+Role of B-cells in antibody-mediated immunity
+1. Activation of B-Cells
+
+B-cells originate in the bone marrow, where they mature and acquire specific receptors (B-cell receptors,
+
+BCRs) that recognize unique antigens. Upon encountering their specific antigen, B-cells become activated.
+
+This activation often requires assistance from helper T-cells (CD4+ T-cells), which release cytokines to
+
+stimulate B-cell proliferation and differentiation.
+2. Clonal Expansion and Differentiation
+
+Once activated, B-cells undergo'¢lonal expansion, producing a large population of identical cells. These cells
+
+differentiate into:
+
+* Plasma Cells: Short-lived effector cells that secrete large quantities of antibodies specific to the invading
+
+antigen.
+
+* Memory B-Cells: Long-lived cells that remain in the body, ensuring a faster and stronger antibody
+
+response upon re-exposure to the same pathogen.
+3. Antibody Production and Action
+The antibodies secreted by plasma cells circulate in the bloodstream and lymph, where they bind specifically
+to the antigens of pathogens. Their defensive actions include:
+* Neutralization: Antibodies block the attachment of microbes or toxins to host cells.
+* Opsonization: Antibodies coat microbes, marking them for phagocytosis by macrophages and
+neutrophils. x
+* Complement Activation: The antibody-antigen complex activates the complement system, leading to
+microbial lysis.
+© Agglutination and Precipitation: Antibodies cause microbes or toxins to clump together, making them
+easier targets for immune cells,
+Immunological Memory
+The formation of memory B-cells ensures long-term immunity. This is the basis of vaccination, where
+exposure to harmless forms of antigens trains the immune system to respond rapidly upon later infection.
+In summary, B-cells play a vital role in antibody-mediated immunity by recognizing antigens, differentiating
+into plasma cells and memory cells, producing antibodies, and providing long-lasting protection against
+reinfection.
+
+Development and Characteristics of B Cells
+
+B cells originate and mature in the bone marrow. Each B cell displays unique membrane-bound receptors
+known as B cell receptors (BCRs), which are specific to a particular antigen. These BCRs enable B cells to recognize
+
+and bind to antigens with high specificity. The human immune system contains millions of B cells, each capable of
+recognizing a different antigen.
+
+Pp
+
+cs) studyplusplus.com $
+
+
+--- Page 21 ---
+
+Precursor Cells in Bone Marrow
+
+B Cells © @ ©® T Cells
+
+Nees eae
+if activated by foreign molecules differentiate in thymus
+divide and differentiate, producing producing four types of cell
+Memory B Cell Plasma Cells Chote, | Hemet Suppregsor rene Celt
+long-lived, provide secrete antibodies destroy cancer rea shut down long-lived,
+future immunity into bloodstream amie fee. eee: oe
+th viruses: immunity
+
+Figure: The major cells of Adaptive immunity and their roles in the immune system
+
+ROLE OF T-CELLS AND B-CELLS IN TRANSPLANT REJECTIONS
+
+‘When an organ or tissue is transplanted from one individual to another, the recipient's immune system often
+recognizes the graft as “foreign” because of genetic differences in surface proteins, particularly the major
+histocompatibility complex (MHC) molecules (also known as human leukocyte antigens, HLA, in humans). This
+immune recognition leads to a complex response in which both T-cells and B-cells play critical roles in graft
+rejection.
+
+1. Role of T-Cells
+
+T-lymphocytes are the primary mediators of transplant rejection.
+
+* Cytotoxic T-Cells (CD8* T-cells): These cells directly recognize foreign MHC molecules on the donor’.
+transplanted tissue. Once activated, they attack and destroy the graft cells by releasing perfc.ins and
+granzymes, causing cell lysis and apoptosis.
+
+© Helper T-Cells (CD4* T-cells): These cells recognize antigens presented by antigen-presenting cells (APCs)
+and release cytokines that amplify the immune response. They fecrulit macrophages, activate cytotoxic
+T-cells, and stimulate B-cell activity.
+
+* Result: T-cell-mediated destruction is the main mechanism behind acute cellular rejection, often
+occurring days to weeks after transplantation,
+
+2. Role of B-Cells
+
+B-yiepionyies contribute mainly through antibody-mediated rejection (AMR).
+
+Antibody Production: Once activated, B-cells differentiate into plasma cells and/secrete antibodies
+against donor antigens, particularly the foreign MHC proteins.
+
+* Antibody Action: These antibodies bind to graft endothelial cells, activating the complement system.
+This leads to inflammation, vascular damage, and thrombosis, ultimately impairing blood supply to the
+graft.
+
+* Result: Antibody-mediated rejection Is a major factor in hyperacute rejection (within minutes to hours)
+and chronic rejection (months to years after transplantation).
+
+3. Combined Response
+
+Since both T-cells and B-cells are activated, transplant rejection is the result of a coordinated immune attack:
+
+* T-cells destroy graft cells directly and recruit more immune cells,
+
+* B-cells produce antibodies that damage graft vasculature and enhance inflammation.
+
+cs) studyplusplus.com $
+
+
+--- Page 22 ---
+
+4. Clinical Implication %
+* Understanding the role of T-cells and B-cells in transplant rejection forms the basis of using
+immunosuppressive drugs (e.g., cyclosporine, corticosteroids, monoclonal antibodies) in transplant
+patients to dampen the immune response and promote graft survival.
+
+1-18) %
+Evaluate the discovery of monoclonal antibodies and justify how this accomplishment revolutionized
+
+many aspects of biological research.
+
+DISCOVERY AND SIGNIFICANCE OF MONOCLONAL ANTIBODIES
+
+Discovery of Monoclonal Antibodies
+Monoclonal antibodies (mAbs) were first developed in 1975 by Georges Kéhler and César Milstein, who
+were later awarded the Nobel Prize in Physiology or Medicine (1984) for this groundbreaking achievement. They
+developed a method called hybridoma technology, wiiich involves fusing a specific antibody-producing B-cell with
+a rapidly dividing myeloma (cancer) cell. The resulting hybridoma can:
+1. Grow indefinitely in laboratory culture.
+2. Produce large quantities of a single, identical (monoclonal) antibody that targets one specific antigen.
+This discovery was revolutionary because it overcame the limitations of traditional polyclonal antibodies,
+which are heterogeneous and less specific.
+Why Monoclonal Antibodies Revolutionized Biological Research
+The discovery of monoclonal antibodies brought an unprecedented transformation to biological research,
+diagnostics, and medicine. Their unique ability to recognize a single epitope with high precision has made them
+one of the most powerful tools in modern sciences -
+1, Unprecedented Specificity
+Monoclonal antibodies exhibit remarkable precision by binding to a single epitope on an antigen. This high
+specificity allows researchers to track, measure, and manipulate particular proteins, cells, or molecules with
+minimal cross-reactivity. Such accuracy has made them indispensable in both experimental and clinical
+applications.
+2. Biomedical Research
+In the field of research, monoclonal antibodies are widely employed to identify and isolate specific cell types,
+such as T-cells, B-cells, or stem cells. They are also fundamentalin advanced molecular biology techniques.
+For instance, in immunohistochemistry, flow cytometry, and western blotting, monoclonal antibodies serve
+as essential tools for detecting and analyzing proteins within tissues and.cells.
+3. Medical Diagnostics
+One of the greatest impacts of monoclonal antibodies has been in medical diagnostics. They form the
+foundation of diagnostic kits such as ELISA tests, which are used for detecting viral infections like HIV and
+hepatitis. More recently, monoclonal antibodies have been central to the development of rapid antigen
+tests for diseases such as COVID-19. By enabling accurate and early disease detection, these tools
+significantly improve patient outcomes.
+Therapeutics and Clinical Use
+Monoclonal antibodies have revolutionized treatment strategies through their role as targeted therapies. In
+oncology, drugs like trastuzumab (for breast cancer) and rituximab (for lymphoma) specifically target cancer
+cells, reducing collateral damage to healthy tissue. They are also invaluable in managing autoimmune
+diseases, such as rheumatoid arthritis and Crohn’s disease, by neutralizing inflammatory molecules.
+Additionally, monoclonal antibodies are now used as antiviral agents, such as therapies developed against
+SARS-CoV-2 during the COVID-19 pandemic.
+
+5. Safer Alternatives
+
+Compared to whole serum therapies, monoclonal antibodies offer a safer and more reliable option. Their
+production is standardized and reproducible, ensuring consistency between batches. Furthermore, they are
+less likely to cause allergic or adverse immune reactions, making them a preferred therapeutic choice.
+
+cs) studyplusplus.com $
+
+>
+
+
+--- Page 23 ---
+
+6. Industrial and Agricultural Applications
+Beyond medicine, monoclonal antibodies have proven valuable in industry and agriculture. In food safety,
+they are employed to detect toxins, pathogens, and contaminants, ensuring consumer protection. In
+agriculture, they are used to diagnose plant diseases and contribute to the development of disease-resistant
+crops, supporting sustainable farming practices.
+
+Evaluation
+
+The discovery of monoclonal antibodies marked a turning point in Immunology, medicine, and
+biotechnology. Their production provided researchers with a reliable and renewable source of highly specific
+antibodies, transforming not only laboratory research but also diagnostics, therapeutics, and industrial
+applications. The hybridoma technique remains one of the most important innovations in biomedical science,
+laying the foundation for modern targeted therapies and precision medicine.
+
+The development of monoclonal antibodies by Kéhler and Milstein revolutionized biology because it
+provided a precise, renewable tool for detecting, diagnosing, and treating diseases. Their impact spans from
+research laboratories to hospitals, making them one of the most powerful tools in modern science.
+
+Monoclonal antibodies Once attached, they
+bind to their target make it harmless
+Figure: Action of mAbs onCOVID-19 virus to control the disease
+
+VACCINATION AND ACTIVE ACQUIRED IMMUNITY
+
+Vaccination is a scientific method used to stimulate the body's immune system to develop active acquired
+immunity without causing-disease. It is one of the most important achievements im medical science, responsible
+for controlling and even eradicating deadly infectious diseases worldwide.
+
+The Process of Vaccination ;
+In vaccination, a harmless form of a pathogen or its components is deliberately introduced into the body.
+These may include:
+1. Antigen Selection: Scientists choose a safe form of the pathogen (the antigen) that can train the immune
+system without causing disease. Common formats include:
+© Inactivated (killed) pathogen
+© Attenuated (live, weakened) pathogen
+© Toxoid (inactivated bacterial toxin)
+© Subunit/Recombinant antigen (purified protein or polysaccharide; may be conjugated to a carrier protein)
+2. Formulation with Adjuvants and Stabilizers: The antigen is formulated with adjuvants (e.g., aluminum
+salts) to enhance immune recognition, plus stabilizers/preservatives to maintain potency and safety
+during storage.
+3. Administration (Exposure): The vaccine is delivered (typically intramuscular, subcutaneous, intradermal, or
+intranasal). This introduces the antigen to immune cells in skin/muscle and lacal tyrnphatics.
+
+cs) studyplusplus.com $
+
+
+--- Page 24 ---
+
+4. Innate Immune Sensing: Dendritic cells and macrophages at the injection site detect the antigen (and
+adjuvant) via pattern-recognition receptors, leading to local inflammation, cytokine release, and
+antigen uptake.
+
+5. Antigen Processing and Presentation: Dendritic cells process the antigen and migrate to draining lymph
+nodes, presenting antigen fragments on MHC Ill (to CD4* T cells) and, for some vaccines/antigens, on
+MHC | (cross-presentation to CD8" T cells).
+
+6. T-Cell Priming (Helper and Cytotoxic): CD4* helper T cells are activated and differentiate (e.g.,
+Thi/Th2/Th17), secreting cytokines that guide B-cell responses. With certain vaccine types (notably
+attenuated), CD8* cytotoxic T cells may also be primed to kill infected cells in future exposures.
+
+7. B-Cell Activation and Clonal Expansion: B cells that bind the antigen via their BCR internalize and
+present It to helper T cells. Receiving T-cell help (CD40-CD40L plus cytokines), B cells proliferate and
+form germinal centers.
+
+8. Differentiation: Plasma Cells and Antibody Secretion
+° Activated B cells differentiate into plasma cells, producing high levels of antibodies (initially IgM,
+
+then class-switched IgG/IgA/IgE depending on vaccine and route).
+o Antibodies neutralize toxins/viruses, opsonize pathogens for phagocytosis, activate complement,
+and agglutinate antigens.
+
+9. Affinity Maturation and Class Switching: In germinal centers, B cells undergo somatic hypermutation
+and class switching, yielding high-affinity antibodies optimized for protective function and tissue
+distribution.
+
+10. Memory Formation: A subset becomes long-lived memory B cells and memory T cells (and, for some
+vaccines, long-lived plasma cells in bone marrow), establishing active acquired immunity.
+
+11. Booster Doses (If Required); Boosters re-expose the immune system to the antigen, expanding memory
+pools and increasing antibody titer and affinity, prolonging protection.
+
+12. Protective Response on Real Exposure: Upon encountering the actual pathogen, memory cells respond
+rapidly with a faster, stronger (anamnestic) response, preventing or markedly reducing disease.
+
+Where Vaccine Types Fit in
+
++ Inactivated and Subunit/Recombinant Vaccines: These vaccines primarily stimulate the humoral
+immune response, leading to the production of protective antibodies. Since they cannot replicate, they
+often require adjuvants to enhance immunogenicity and booster doses to maintain long-term protection.
+
+e Toxoid Vaccines: These are based on Inactivated bacterial toxins. They train the immune system to
+produce antitoxin antibodies that neutralize the harmful effects of toxins rather than the pathogen
+itself. Examples include tetanus and diphtheria vaccines.
+
+* Attenuated (Live, Weakened) Vaccines: Because these mimic natural infections, they activate both
+humoral (antibody-mediated) and cell-mediated immune responses, This dual stimulation generates
+stronger and long-lasting memory, often providing protection with fewer doses. Examples include
+measles, mumps, and rubella (MMR) vaccines.
+
+Development of Active Acquired Immunity
+
+The immunity that results from vaccination is termed active acquired immunity. This process involves:
+
+1. Active Production of Antibodies —The immune system is stimulated by the harmless antigen introduced
+through the vaccine, leading to the body’s own production of antibodies against the pathogen.
+
+2. Formation of Memory Cells — Along with antibodies, the immune response generates memory B and T
+cells. These cells “remember” the antigen and ensure a faster, stronger, and more effective response if
+the pathogen invades again.
+
+3. Long-Term Protection — Because of the establishment of immunological memory, the protection gained
+is long-lasting, and in some cases (such as measles or hepatitis B vaccination), it can be lifelong,
+depending on the vaccine type.
+
+importance of Vaccination
+
+* Prevents serious infectious diseases such as smallpox, measles, polio, and hepatitis B.
+« Reduces the spread of pathogens in the community (herd immunity).
+
+cs) studyplusplus.com $
+
+
+--- Page 25 ---
+
+7.
+
+10.
+
+* Protects vulnerable individuals, such as infants, elderly, and immunocompromised patients.
+* Contributes to global disease eradication campaigns (e.g., eradication of smallpox, near elimination
+
+SLOs Based (MCQs)
+
+LINES OF DEFENCE
+
+of polio).
+
+First Line of Defence
+
+Which of the following is a component of the
+first line of defence?
+
+A. Natural killer cells B. Saliva
+
+C. Interleukin-2 D. Cytotoxic T cells
+Lysozyme, an enzyme that digests bacterial cell
+walls, is found in:
+
+A. Red blood cells B. Lymph nodes
+
+C. Sweat and tears D. Bone marrow
+Which structure prevents the entry of pathogens
+into the lower respiratory tract?
+
+A. Epigiottis B. Nasal hair
+
+C. Cilia in trachea D. Vocal cords
+
+Which of the following is not part of the physical
+barriers in the first line of defence?
+
+A.Mucous membranes __B. Skin
+
+C. Stomach acid D. Tears
+
+The acidity of the stomach primarily serves to:
+A. Digest proteins B. Absorb nutrients
+
+C. Destroy pathogens D. Neutralize enzymes
+Which cells are directly involved in the third line
+but not the first line of defence?
+
+A. Skin cells B. B cells
+
+C. Goblet cells D. Ciliated epithelial cells
+The first line of defence is:
+
+A. Specific B. Adaptive
+
+C. Immediate and non-specific
+
+D, Delayed and specific
+
+Second Line of Defence
+
+Which of the following is a phagocytic white
+
+blood cell?
+
+A. Basophil B. Monocyte
+
+C. Eosinophil D. Platelet
+
+Fever is beneficial to the host because:
+
+A. It increases pathogen growth
+
+B, It slows down immune responses
+
+C. It enhances phagocytic activity and interferon
+production
+
+D. It suppresses B cell activity
+
+Interferons primarily help the body by:
+°
+
+11.
+
+12.
+
+14,
+
+A. Destroying bacteria
+
+B. Inhibiting viral replication
+
+C. Producing antibodies
+
+D. Activating the complement system
+
+Which of the following cells release histamine
+during inflammation?
+
+A. Macrophages
+
+B. Basophils and mast cells
+
+C. Neutrophils D. Lymphocytes
+Natural killer (NK) cells destroy infected cells by:
+A. Producing antibodies
+
+B. Releasing perforin and granzymes
+
+C. Phagocytosis
+
+D. Antigen presentation
+
+Which system involves plasma proteins that
+enhance the immune response?
+
+A. Lymphatic system B. Complement system
+C, Endocrine system D. Respiratory system
+Which is not a feature of inflammation?
+
+A. Redness B. Swelling
+
+C. Memory cell formation D. Heat
+
+The function of phagocytes in the second line of
+
+. defence is to:
+
+16.
+
+17.
+
+18.
+
+studyplusplus.com
+
+A. Produce antigens
+
+B. Kill infected host cells
+
+C. Engulf and digest pathogens
+
+D. Secrete antibodies
+
+Which of the following best describes endogenous
+
+pyrogens?
+
+A. Toxins from bacteria
+
+B. Interleukin-1 from white blood cells
+
+C. Viral particles
+
+D. Antibodies
+
+Why do physicians prescribe antipyretic drugs?
+
+A. To kill viruses directly
+
+B. To enhance inflammation
+
+C. To inhibit prostaglandin production and reduce
+fever
+
+D. To increase iron availability
+
+Third Line of Defence
+
+The third line of defence is characterized by:
+A. Non-specific responses B. Rapid response
+
+C. Specificity and memory 0. Phagocytosis only
+
+°
+
+
+--- Page 26 ---
+
+19,
+
+20.
+
+21,
+
+23.
+
+24,
+
+What activates helper T cells during an immune
+
+response?
+
+A. Direct contact with bacteria
+
+B. Cytokines from B cells
+
+C. Antigen presentation by macrophages
+
+D. Histamine release
+
+The function of cytotoxic T cells is to:
+
+A. Produce antibodies
+
+B. Release histamine
+
+C. Destroy infected cells by releasing perforin
+D. Activate macrophages
+
+Plasma cells are derived from:
+
+A. Helper T cells B. Cytotoxic T cells
+C. Bcells D. Macrophages
+The first step in B cell activation is:
+
+A. Binding with antigen via BCR
+
+B, Secretion of interferons
+
+C. Production of histamine
+
+D. Formation of memory T cells
+
+Which cytokine activates both B cells and
+cytotoxic T cells?
+
+A. Interferon-gamma B. Interleukin-1
+
+C. Interleukin-2 D. Perforin
+Memory B cells function to:
+
+A. Digest pathogens
+
+B. Stimulate neutrophils
+
+C. Provide long-term immunity
+
+D. Secrete histamine
+
+26.
+
+27.
+
+The term “antigen” refers to:
+
+A. A substance that triggers an immune response
+B. A type of antibody
+
+C. A type of white blood cell
+
+D. An enzyme in the stomach
+What does "MHC" stand for
+presentation?
+
+A. Major Histo Compatibility
+
+B. Minor Histamine Compound
+
+C. Microbial Host Carrier
+
+D. Macrophage Hematopoietic Complex
+
+Which of the following is true about helper T
+cells?
+
+A. They destroy pathogens directly
+
+B. They suppress the immune system
+
+C. They activate other immune cells
+
+D. They secrete perforin
+
+Which T cell is responsible for downregulating
+immune responses?
+
+in antigen
+
+A. Cytotoxic T cell B. Helper T cell
+
+C. Suppressor T cell D. Memory T cell
+Which immune cell acts as an antigen-
+presenting cell (APC)?
+
+A. Basophil B. Platelet
+
+C. Macrophage D. Plasma cell
+
+Antibody production occurs in:
+A. Helper T cells B, Macrophages
+C. Plasma cells D. Cytotoxic T cells
+
+le
+[1.8 [2c [3.c Jac |s5.c ]68 [7c | [9.c- | 10-8 | [22.6 | 13.8 [ 14. | 15.¢|
+[16.8 [a7.c[18.c]a9.c | 20.¢[21.¢| 22. | 23.¢| 24. c[25.A| 26.4 | 27.C | 28.c | 29.¢ | 30.€|
+
+Q.1 What is the function of the first line of defence?
+
+Ans. The first line of defence acts as the body's initial protective barrier
+
+against pathogens.
+
+It consists of both physical and chemical
+components that prevent harmful microorganisms from entering the
+
+MARKING SCHEME (3 Marks)
+Definition mark; functions ~2 marks
+
+body. The skin provides a tough, impermeable layer, while mucous
+
+membranes trap and expel microbes through secretions such as mucus and cilia movement. Chemical
+barriers include enzymes in saliva and tears (lysozyme) that break down bacterial cell walls, and stomach
+acid that kills most ingested microbes. These defences are non-specific, meaning they protect against a wide
+range of pathogens without targeting any particular one. Their role is to minimize infection risk before more
+
+specialized immune responses are activated.
+
+Q.2. What are pyrogens and how do they contribute to fever?
+
+‘Ans. Pyrogens are fever-inducing substances that reset the body's
+thermostat located in’ the hypothalamus. They may originate from
+pathogens such as bacteria (exogenous pyrogens) or from the host’s
+immune cells like macrophages (endogenous pyrogens). By raising the
+
+MARKING SCHEME |3 Marks)
+
+* Definition — 1 mark; contribution to
+fever ~2 marks
+
+hypothalamic set point, pyrogens trigger heat conservation responses
+
+°
+
+studyplusplus.com
+
+°
+
+
+--- Page 27 ---
+
+25
+
+such as vasoconstriction and shivering, as well as heat production through increased metabolism. This
+results in an elevated body temperature, known as fever. Fever plays a protective role by slowing the growth
+of pathogens, enhancing the activity of white blood cells, and stimulating processes like phagocytosis and
+interferon production. Thus, pyrogens contribute to both direct pathogen inhibition and improved immune
+function.
+
+Q.3_ How do phagocytes work in the immune response?
+
+Ans. Phagocytes, including neutrophils and macrophages, are vital cells of
+the innate immune system that defend against pathogens through the MARKING SCHEME (3 Marks)
+process of phagocytosis. They identify microbes via surface receptors, | * Definition—1 mark; functions —2 marks
+engulf them into vesicles called phagosomes, and fuse these vesicles
+with lysosomes containing digestive enzymes. The pathogens are then broken down and destroyed. In
+addition to eliminating invaders, macrophages can act as antigen-presenting cells by displaying pathogen
+fragments on their surface, thereby activating lymphocytes in the adaptive immune response. Phagocytes
+are fast-acting, non-specific defenders that provide an immediate response to infection. Their dual role of
+direct destruction and communication with the third line of defence makes them central to overall
+immunity.
+
+Q.4 Whatis the role of natural killer cells?
+
+Ans. Natural killer (NK) cells are specialized lymphocytes of the innate -
+immune system that target abnormal body cells. Unlike other MARKING SCHEME (3 Marks)
+lymphocytes, NK cells do not require prior exposure to a pathogen or | * Definition mark; functions ~ 2 marks
+antigen. They recognize cells that are infected by viruses or have
+become cancerous, often by detecting low levels of “self” surface markers such as MHC | proteins. Once
+identified, NK cells release cytotoxic substances, including perforin, which creates pores in the target cell
+membrane, and granzymes, which trigger programmed cell death (apoptosis). This rapid response prevents
+the spread of infection and eliminates potentially harmful cells early. NK cells therefore serve as a crucial
+first barrier against cancer and viral infections.
+
+Q.5 Why is inflammation considered part of the second line of defence?
+
+Ans. Inflammation is a protective biological response that occurs when
+tissues are injured or infected, making it a key feature of the body's MARKING SCHEME (3 Marks)
+second line of defence. It is initiated by the release of histamine and_ | * Definition 1 mark; function ~2 marks
+other chemicals from damaged cells or mast cells, which increase blood
+flow and capillary permeability at the affected site. This allows immune cells, antibodies, and proteins like
+clotting factors to reach the area more effectively. The redness; swelling, heat, and pain associated with
+inflammation signal immune activity. Inflammation not only helpS isolate and destroy pathogens but also
+clears damaged tissue and initiates repair. By creating localized immune activity, it enhances healing and
+prevents further spread of infection.
+
+Q.6 How doB cells recognize specific antigens?
+
+Ans. 8 cells recognize antigens through specialized proteins on their surface
+called B cell receptors (BCRs). Each BCR is highly specific to a particular MARKING SCHEME (3 Marts)
+antigen, allowing B cells to detect unique foreign molecules such as | + betinition—1 mark; function -2 marks
+proteins, polysaccharides, or toxins. When a BCR binds to its matching
+antigen, the B cell becomes activated. This activation is often strengthened by signals from helper T cells.
+Activated B cells then differentiate into plasma cells, which produce large amounts of antibodies specific to
+the antigen, and into memory B cells, which remain in circulation to provide long-term protection. This
+process links pathogen detection directly to antibody production, forming a vital component of adaptive
+immunity.
+
+Q.7_ What are memory T cells and their role in immunity?
+Ans. Memory T cells are a subset of T lymphocytes that persist long after the
+initial immune response. They are generated following the first MARKING SCHEME (3 Mat
+: rks}
+exposure to a specific antigen during an infection or vaccination. Unlike | + veiition-2 more: pho i auarks
+naive T cells, memory T cells are primed for rapid action. If the same
+antigen re-enters the body, they quickly recognize it and mount a faster and stronger response comnared
+
+o studyplusplus.com °
+
+
+--- Page 28 ---
+
+to the primary exposure. This quick reaction prevents reinfection or reduces the severity of disease. Memory
+T cells are central to long-lasting immunity and form the biological basis for vaccination, which trains the
+immune system to respond effectively to future infections.
+
+Q.8 Differentiate between helper T cells and cytotoxic T cells.
+
+Ans, Helper T cells (CD4*) and cytotoxic T cells (CD8*) are distinct subtypes
+of T lymphocytes that coordinate different immune functions. Helper T
+cells do not kill pathogens directly but secrete cytokines such as | + Definition of both ~1.5 marks each
+interleukin-2, which stimulate the activation and proliferation of B cells,
+cytotoxic T cells, and macrophages. They are essential in bridging innate and adaptive immunity. Cytotoxic
+T cells, on the other hand, directly destroy infected or abnormal body cells. They release perforin, which
+forms pores in the target cell membrane, and granzymes, which induce apoptosis. Together, these two T cell
+
+types ensure effective immune regulation—helper T cells coordinate responses, while cytotoxic T cells
+eliminate compromised cells.
+
+Q.9 Whatis the function of interleukin-2 in immune response?
+
+Ans. Interleukin-2 (IL*2) is a cytokine secreted mainly by activated helper T
+cells, and it plays a pivotal role in immune regulation. IL-2 functions as
+a growth signal that stimulates the proliferation and differentiation of | * Definition—1 mark; function ~2marks
+both T cells and B cells.!t amplifies the immune response by promoting
+clonal expansion of cytotoxic T cells, which are necessary for killing infected or cancerous cells, and also
+enhances antibody production by B cells. Additionally, IL-2 helps sustain memory cell formation, ensuring
+
+long-term immunity. Because of its central role, IL-2 is sometimes used therapeutically in immunotherapy
+to boost immune function in certain diseases like cancer.
+
+Q.10 Why are antipyretics used despite fever being a defence mechanism?
+
+Ans. Fever is a natural defence mechanism that slows pathogen growth and
+boosts immune activity. However, when body temperature rises MARKING SCHEME (3 Marks)
+excessively, it can damage tissues, disrupt enzyme function, and-place | + Definition—3 mark; function~2 marks
+strain on vital organs such as the heart and brain. Antipyretics, such as
+paracetamol and ibuprofen, are used to safely lower dangerously high fevers. They act by inhibiting
+prostaglandin synthesis in the hypothalamus, which resets the elevated body temperature to normal. This
+prevents harmful effects of prolonged or extreme fever while allowing the immune system to continue
+fighting infection. Thus, antipyretics provide comfort and protection without negating the overall benefits
+of immune activity.
+
+SLO[B-12-1-21)
+
+Explain the role of memory cells in long term immunity.
+
+ROLE OF MEMORY CELLS IN LONG-TERM IMMUNITY
+
+One of the most remarkable features of the immune system is its ability to “remember” a pathogen once
+the body has been exposed to it. This capacity is due to the formation of memory cells, which belong to both B
+lymphocytes and T lymphocytes. Unlike short-lived effector cells that disappear once the infection is cleared,
+memory cells remain in the body for years or even a lifetime. Their presence ensures that the body is primed for
+a rapid and powerful response if the same pathogen tries to invade again.
+1. Formation of Memory Cells
+During the primary immune response, when the body first encounters a pathogen, Band T lymphocytes are
+activated. While most of these cells become short-lived effector cells to fight the infection, a portion
+differentiates into long-lived memory cells.
+2. Persistence in the Body .
+Memory cells remain in the lymphoid tissues and bloodstream for years, sometimes for a lifetime. Unlike
+effector cells, they do not die quickly after the infection subsides, ensuring that the body retains
+“immunological memory.”
+
+cs) studyplusplus.com $
+
+
+--- Page 29 ---
+
+3. Rapid Secondary Immune Response
+If the same pathogen invades again, memory cells quickly recognize its antigens. They trigger a secondary
+immune response, which is:
+« Faster (immediate recognition of antigen)
+* Stronger (higher production of antibodies and cytotoxic T cells)
+* More specific (better targeting of the same pathogen).
+4. Role in Vaccination and Long-Term Protection
+The effectiveness of vaccines relies on the formation of memory cells. By priming the immune system with
+harmless antigens, vaccines ensure that memory cells are available to mount a rapid defense if the real
+pathogen is encountered later.
+Memory cells are the foundation of active acquired immunity, providing long-term protection nena
+reinfection and ensuring that the immune system “remembers” past encounters.
+
+STRUCTURAL MODEL OF AN ANTIBODY MOLECULE
+
+Antibodies, also referred to.as immunoglobulins (Ig), are specialized Y-shaped glycoproteins produced by B
+lymphocytes in response to the presence of foreign antigens. They circulate in the bloodstream and lymphatic
+fluid and are transported to sites of infection where they bind specifically to antigens on pathogens, thereby
+facilitating their neutralization or destruction.
+
+Atypical antibody molecule consists of four polypeptide chains:
+
+* Two identical heavy (H) chains
+
+* Two identical light (L) chains
+
+These chains are linked by disulfide bonds, giving rise to a characteristic Y-shaped structure. Each chain
+comprises three regions:
+
+* Variable (V) region: Located at the amino-
+terminal ends of both heavy and light chains, the
+variable region contains unique amino acid
+sequences that determine antigen-binding
+specificity. Each antibody has two antigen-
+binding sites, one at the tip of each arm, allowing
+it to bind specifically to its target epitope.
+
+Constant (C) region: Found in the remaining
+portion of the polypeptide chains, the constant
+region has an amino acid sequence conserved
+within a specific immunoglobulin class (e.g., IgG,
+IgA). It mediates effector functions such as
+binding to immune cells or activation of the
+complement system.
+
+* Hinge region: This flexible segment connects the
+arms (Fab regions) of the antibody to the stem
+(fe region), allowing movement and spatial
+flexibility necessary for effective antigen binding. Figure: Structure of an antibody
+
+The antibody can be divided functionally into:
+
+« Fab (Fragment antigen-binding) region: Contains the variable regions that bind specifically to antigens.
+
++ Fe (Fragment crystallisable) region: Comprises the constant regions of the heavy chains and interacts
+with immune effector cells and molecules, initiating immune responses.
+
+Mode of Action of an Antibody
+Antibodies contribute to immune defence through multiple mechanisms:
+1. Neutralization: Antibodies bind directly to toxins or the surface proteins of viruses and bacteria, blocking
+
+their interaction with host cells and rendering them harmless.
+
+cs) studyplusplus.com $
+
+
+
+--- Page 30 ---
+
+2. Opsonization: Antibodies coat pathogens by forming antigen-antibody complexes, which enhances
+their recognition and uptake by phagocytes such as macrophages.
+
+3. Complement Activation: The Fc region of bound antibodies can activate the complement system,
+resulting in the formation of the membrane attack complex (MAC). This leads to cell lysis or facilitates
+further phagocytosis.
+
+4. Antibody-Dependent Cell-Mediated Cytotoxicity (ADCC): Antibodies bound to virus-infected or tumour
+cells recruit natural killer (NK) cells, which bind to the Fc region and induce apoptosis in the target cell.
+
+Define allergies and correlate the symptoms of allergies with the release of histamines.
+
+ALLERGIES AND THE ROLE OF HISTAMINES
+
+An allergy is an exaggerated immune response of the body to normally harmless substances, called
+allergens. Common. allergens include pollen, dust, animal dander, insect stings, and certain foods. In allergic
+individuals, the immune system mistakenly identifies these allergens as threats and activates defense mechanisms
+that lead to uncomfortable or, harmful symptoms.
+
+{mmunological Basis
+
+When allergens enter the body, they stimulate the production of IgE antibodies. These antibodies bind to
+the surface of mast cells and basophils. Upon re-exposure to the same allergen, these cells rapidly release
+chemical mediators, most importantly histamine, into surrounding tissues and the bloodstream:
+> Role of Histamine in Allergy Symptoms
+
+Histamine is the principal chemical mediator released by mast cells and basophils during an allergic reaction.
+
+Once released, it binds to histamine receptors (H1, H2, H3, H4) on various tissues of the body, producing a
+
+wide range of physiological effects that account for most allergy symptoms.
+
+1. Vasodilation: Histamine causes the smooth muscles of blood vessels to relax, leading to dilation of
+capillaries and small blood vessels. This results in increased blood flow to the affected area, which
+appears as redness (erythema) and localized warmth. This is especially noticeable in the skin during
+conditions like hives (urticaria).
+
+2. Increased Capillary Permeability: By making the endothelial lining of capillaries more permeable,
+
+~ histamine allows plasma proteins and fluid to escape into surrounding tissues. This produces swelling
+(edema) and a feeling of puffiness in allergic sites, such as swollen eyelids or lips after allergen exposure.
+
+3. Smooth Muscle Contraction: In the respiratory tract, histamine stimulates contraction of smooth
+muscles in the bronchioles. This narrows the airways and results in difficulty breathing, wheezing, and
+chest tightness, commonly seen in allergic asthma. In the gastrointestinal tract, smooth muscle
+contraction can cause abdominal cramps and diarrhea in food allergies.
+
+4. Stimulation of Nerve Endings: Histamine directly irritates sensory nerve endings, giving rise to
+sensations of itching (pruritus) and irritation. This explains the intense itch associated with skin allergies
+such as eczema and insect bite reactions.
+
+5. Excess Mucus Secretion: Histamine promotes secretion of mucus from epithelial cells lining the
+respiratory tract. This leads to nasal congestion, runny nose (rhinorrhea), sneezing, and watery eyes,
+all characteristic features of hay fever (allergic rhinitis).
+
+» Correlation of Symptoms with Histamine Release
+
+The release of histamine during an allergic reaction explains the wide range of symptoms observed:
+
+« Sneezing, watery eyes, and runny nose: These symptoms occur due to histamine-induced irritation of
+mucous membranes in the nose and eyes. At the same time, histamine increases mucus secretion, which
+contributes to nasal discharge and eye watering.
+
+¢ Swelling and redness of skin (hives/urticaria): Histamine causes vasodilation of small blood vessels and
+increases capillary permeability, allowing fluid to leak into the tissues. This results in localized swelling,
+raised patches (wheals), and redness of the skin.
+
+cs) studyplusplus.com $
+
+
+--- Page 31 ---
+
+© Difficulty in breathing (allergic asthma): In the respiratory tract, histamine triggers contraction of
+smooth muscles in the bronchioles. This airway narrowing makes breathing difficult and leads to
+wheezing, chest tightness, and shortness of breath.
+
+Thus, allergies occur due to the body’s hypersensitive reaction to harmless substances. The release of histamines
+
+from mast cells directly explains the symptoms such as redness, itching, swelling, and respiratory distress.
+
+immune diseases with examples.
+
+AUTOIMMUNE DISEASE
+
+Autoimmune diseases are disorders in which the body's immune system mistakenly attacks its own healthy
+cells, tissues, or organs. Normally, the immune system recognizes “self” (body's own cells) and “non-self” (foreign
+invaders like bacteria or viruses). In autoimmunity, this recognition fails, and the immune system mounts a
+destructive response against self-antigens.
+
+Mechanism
+
+The development of autoimmune diseases is primarily due to a failure in the immune system’s ability to
+recognize the difference between self and non-self. Normally, immune cells undergo a selection process to
+eliminate or inactivate those that react against the body's own tissues. When this system of regulation breaks
+down, the following events occur;
+
+© Loss of Self-Tolerance: The immune system loses its ability to tolerate self-antigens. As a result, body
+tissues are mistakenly identified as foreign.
+
+* Immune Response Against Self: Both lymphocytes (especially T cells) and autoantibodies mount an
+immune attack against the body's own cells. This leads to persistent inflammation, destruction of
+tissues, and impaired organ function.
+
+* Chronic Nature of the Disorder: Since the self-antigens remain in the body, the immune response
+becomes continuous and recurring. This explains why autoimmune diseases are usually long-lasting,
+Progressive, and difficult to cure completely.
+
+Examples of Autoimmune Diseases
+
+1, Rheumatoid Arthritis (RA): In this chronic autoimmune disorder, the immune system mistakenly attacks
+the synovial membranes lining the joints. This causes persistent inflammation, pain, stiffness, and
+swelling. Over time, cartilage and bone erosion can occur, leading to joint deformity and loss of
+mobility. RA may also produce systemic effects, such as fatigue and cardiovascular complications.
+
+2. Type 1 Diabetes Mellitus: Here, cytotoxic T cells target and destroy the B-cells of the pancreas, which
+are responsible for insulin secretion. The destruction of these cells leads to insulin deficiency, causing
+elevated blood glucose levels (hyperglycemia). If untreated, this condition results in severe metabolic
+disturbances, and patients require lifelong insulin therapy.
+
+3. Multiple Sclerosis (MS): in MS, the immune system attacks the myelin sheath that insulates nerve fibers
+in the brain and spinal cord. Loss of myelin disrupts nerve conduction, leading to muscle weakness,
+numbness, impaired coordination, and vision problems. In advanced cases, paralysis and cognitive
+decline may develop.
+
+4, Systemic Lupus Erythematosus (SLE): SLE is a multisystem autoimmune disease in which
+autoantibodies attack tissues and organs throughout the body, including the skin, kidneys, joints, blood
+vessels, and heart. Its hallmark symptom is a “butterfly-shaped” rash across the cheeks and nose. Other
+manifestations include joint pain, anemia, kidney dysfunction, and extreme fatigue.
+
+5. Vitiligo: Vitiligo is an autoimmune skin disorder in which the
+immune system destroys melanocytes, the pigment-producing
+cells in the skin. As a result, patients develop patches of
+depigmented (white) skin, often symmetrically distributed. While
+vitiligo does not cause"physical pain, it can have significant
+psychological and social impact due to visible skin changes.
+
+cs) studyplusplus.com $
+
+The first antibody-based therapies.
+
+were used to treat snake bites ahd |
+were called antivenoms!
+
+
+
+--- Page 32 ---
+
+1.
+
+2.
+
+4
+
+5.
+
+7.
+
+Autoimmune diseases arise from a breakdown in the body’s ability to recognize its own tissues as “self.” This
+leads to self-destruction by immune cells and antibodies, causing chronic and often debilitating conditions. Early
+diagnosis and management are important to control immune overactivity. and prevent long-term damage.
+
+Figure: Vitiligo causes pigment-less patches on skin
+
+a
+
+SLOs Based (MCQs)
+
+What is the primary reason for administering | 3.
+
+immunosuppressive drugs to transplant recipients?
+A. To improve blood circulation
+
+B, To reduce allergic responses
+
+C. To prevent immune rejection of donor tissue
+D. To promote cell regeneration
+
+Transplant rejection is primarily mediated by:
+
+A. Antibodies only B. T lymphocytes
+
+C. Platelets D. Natural killer cells
+Which of the following best describes transplant
+rejection?
+
+A. Autoimmune response against self-antigens
+
+B. Non-specific inflammatory response
+
+C. Delayed hypersensitivity reaction mediated by
+lymphocytes
+
+D. Immediate allergic reaction
+
+Which cells are primarily responsible for recognizing
+and attacking foreign transplanted tissues?
+
+A. Basophils B. Erythrocytes
+
+C. Thelper cells D. Neutrophils
+
+Which type of immunity is suppressed by
+immunosuppressive drugs in transplant patients?
+A. Passive immunity 8. Innate immunity
+
+C. Adaptive immunity D. Artificial immunity
+{mmunosuppressive drugs enhance:
+
+A. Graft tolerance B. Immune sensitivity
+
+C. Histamine release —_D. Natural killer cell activity
+Which of the following is a common side effect
+of immunosuppressive therapy?
+
+A. Hyperglycemia 8. Hypotension
+
+C. Leukopenia D. Hyperthyroidism
+
+°
+
+10.
+
+11.
+
+12.
+
+14,
+
+studyplusplus.com
+
+Which condition may result from immune-
+suppressant-induced suppression of immune
+surveillance?
+
+A. Stroke B. Lymphoma
+
+C. Scurvy D. Osteoporosis
+Which electrolyte imbalance is commonly
+associated with immunosuppressive therapy?
+A. Hypokalemia B. Hypernatremia
+
+C. Hyperkalemia D. Hypocalcemia
+
+‘One major long-term risk of immunosuppressive
+therapy in transplant recipients is:
+
+A. Dehydration B. Autoimmunity
+
+C. Opportunistic infections D. Hormonal imbalance
+Which of the following symptoms is directly
+linked to newrotoxicity caused by immuno-
+
+suppressants?
+
+A. Coughing B. Tremors
+
+C. Skin blisters D. Weight loss
+
+Why Is lifelong monitoring necessary for organ
+transplant recipients?
+
+A. To ensure drug tolerance
+
+B. To prevent pain recurrence
+
+C. To detect rejection or drug side effects early
+D. To avoid blood pressure changes
+
+Which immune molecules are primarily involved
+
+in antibody-mediated rejection?
+A. Cytokines B. Histamines
+C. Antibodies D. Interferons
+
+Which class of drug is commonly used in
+transplant recipients to inhibit T-cell activation?
+A. Beta blockers B.Corticosteroids
+
+C. Calcineurin inhibitors _D. Antibiotics
+
+°
+
+
+--- Page 33 ---
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+21.
+
+22.
+
+Graft rejection due to antibody involvement is
+called:
+
+A. Humoral rejection B. Autoimmunity
+
+C. Innate reaction D. Active immunity
+‘What component of the donor tissue is primarily
+recognized as foreign by the host immune
+
+system?
+A. Hormones B. DNA
+C. MHC antigens D. Enzymes
+
+What is the role of lymphokines during transplant
+rejection?
+
+A, Neutralize toxi. 5
+
+8. Promote antibody production
+
+C. Recruit and activate immune cells
+
+D. Reduce inflammation
+
+Which of the following is not a known side effect
+of immunosuppressive drugs?
+
+A. Hypertension B. Hyperkalemia
+
+C. Seizures D. Hypoglycemia
+
+The immune suppression caused by these drugs
+often leads to:
+
+A. Improved metabolism
+
+8B. Decreased allergic response
+
+C. Increased susceptibility to infections
+
+D. Better oxygen uptake
+
+What organ transplant is most commonly
+associated with the use of immunosuppressants?
+A. Brain B. Heart
+
+C. Skin D. Pancreas
+
+Which condition is not caused directly by
+immunosuppressant side effects?
+
+A. Leukopenia B. Thrombocytopenia
+C. Astigmatism D. Neurotoxicity
+Which immune cell helps 8 cells produce
+antibodies during rejection?
+
+A. Macrophage B. Helper T cell
+
+C. Plasma cell D. Natural killer cell
+
+|7.¢ [se [9c |
+
+23.
+
+27.
+
+28.
+
+30.
+
+Pain, fatigue, and weakness in transplant
+recipients are often due to:
+
+A. Infection only B. Surgical trauma
+
+C. System-wide drug effects D. Vitamin deficiency
+Histocompatibility refers to:
+
+A. Compatibility of hormones
+
+B. Compatibility of skin tone
+
+C. Compatibility of MHC antigens
+
+D. Compatibility of blood volume
+
+Anaphylactic reactions in transplant patients are
+most likely caused by:
+
+A. Nervous system injury 8. High fever
+
+C. Drug hypersensitivity D, Organ swelling
+Why are antibodies insufficient in preventing
+transplant rejection alone?
+
+A. They are not specific to MHC
+
+B. T cells are primarily responsible
+
+C. Antibodies are not produced post-transplant
+D. Antibodies enhance tissue growth
+
+Which organ system is commonly affected by
+neurotoxic side effects of immunosuppressants?
+A. Respiratory system B. Nervous system
+
+C. Muscular system D. Digestive system
+What is the term for drugs that reduce immune
+function to allow graft acceptance?
+
+A. Antibiotics B. Immunostimulants
+C. Immunosuppressants D. Cytotoxins
+
+A transplant recipient who develops tremors
+and hallucinations is likely experiencing:
+
+A. Acute rejection B. Bacterial infection
+
+C. Neurotoxicity D.. Autoimmune flare-up
+Which of the following statements best
+describes immunosuppressive therapy?
+
+A. It boosts innate immunity to resist infections.
+B. It suppresses the immune’system to prevent graft
+
+rejection.
+
+C. It prevents the production of digestive enzymes.
+D. It strengthens the blood-brain barrier.
+
+[s.c_| [42.¢ | 13.¢ |
+Sond Soe [22.8 | 23.c | 24.¢ | Peeters tetaetaee
+
+Short Questions
+
+Q.1 Explain why transplant recipients are given immunosuppressive drugs.
+rr
+Ans. Immunosuppressive drugs are administered after organ transplantation to prevent the recipient's immune
+
+system from recognizing donor tissue as non-self and mounting an attack that would destroy the graft. the
+principal target is T-cell mediated immunity: drugs (e.g., calcineurin inhibitors, corticosteroids, antiproliferatives)
+
+°
+
+studyplusplus.com
+
+°
+
+
+--- Page 34 ---
+
+reduce antigen presentation, inhibit T-cell activation/proliferation and
+
+blunt cytokine production, By lowering cellular and humoral immune | _ MARKING SCHEME (3 Marks)
+
+responses, these agents curb acute and chronic rejection, improving | *. e#s0n for __ immunasuppression
+graft survival and function, However, suppression must be balanced to chat bogey’ Biarscgpwhtac
+avoid under-immunosuppression (rejection) or over-immuno- effects (reduce T-cell activity /
+suppression (infection, malignancy). Therapeutic regimens are promote graft survival) — 1.00 mark.
+
+therefore individualized, often combining agents with complementary
+mechanisms to maximize graft tolerance while minimizing adverse effects.
+
+Q2_ Define transplant rejection and identify the immune cells primarily involved.
+Ans. Transplant rejection is the immune-mediated destruction or
+dysfunction of transplanted tissue because the recipient's immune MARKING SCHEME (3 Marks)
+system recognizes donor antigens (mainly mismatched MHC molecules) | * Definition of transplant rejection —
+as foreign. Rejection can be classified clinically as hyperacute (antibody- 2.00 marks; names/identification of
+
+mediated immediately), acute (cell-mediated within weeks-months), ieamntend call Invaivad — 1.00 mort,
+or chronic (progressive vascular and fibrotic damage). The key immune
+effectors are.T lymphocytes—helper (CD4”) T cells that orchestrate responses and cytotoxic (CD8*) T cells
+that directly kill graft cells. B cells and plasma cells generate alloantibodies contributing to antibody-
+mediated rejection, while macrophages and NK cells also participate in tissue injury. Accurate identification
+of the pathways guides immunosuppressive strategy and graft management.
+
+Q3 Explain how immunosuppressive drugs Increase the risk of infection; give examples of opportunistic
+infections.
+
+Ans. Immunosuppressive drugs blunt innate and adaptive immune defenses
+essential for controlling pathogens, By inhibiting T-cell activation, MARKING SCHEME (3 Marks)
+reducing cytokine signalling, impairing neutrophil function, or | * "«2s0n (how _immunosuppression
+decreasing antibody responses, these agents lower the body’s ability to cok as ea tiewis
+detect and clear microbes. As a result, patients become susceptible to infections (any two or more) — 2 marks.
+opportunistic organisms that are typically controlled by intact
+immunity. Common opportunistic infections in transplant recipients include cytomegalovirus (CMV) and
+Epstein-Barr virus (EBV) (viral), Pheumocystis jirovecil (fungal/atypical), invasive Candida or Aspergillus
+species (fungal), and bacterial sepsis or Listeria. Prophylactic antimicrobials and close monitoring are
+therefore standard parts of post-transplant care.
+
+Q4 List commen side effects of immunosuppressive ep explain their clinical relevance,
+
+Ans. Immunosuppressive regimens produce multiple advel effects *
+because they affect normal. physiological systems. Common problems Lc repentmimenige apr
+include leukopenia (reduced white cells — increased infection:risk)>| * fey Sve coment an prored ana
+nephrotoxicity {particularly with calcineurin inhibitors + impaired nephrotoxicity, Increased cancer risk),
+renal function), hypertension and hyperkalemia (electrolyte and
+cardiovascular effects), gastrointestinal disturbances such as diarrhoea, Neurotoxicity (tremor, seizures),
+metabolic derangements (hyperglycaemia), and a higher long-term risk of malignancy (e.g., post-transplant
+lymphoproliferative disorder). Clinically, these side effects require dose adjustments, switching agents, and
+proactive monitoring (blood counts, renal function, blood pressure, malignancy screening) to maintain
+patient safety while preserving graft function.
+
+Q.5 Describe, step by step, how helper T cells contribute to transplant rejection.
+Ans. Helper T (CD4*) cells drive rejection through a sequence of events. (1)
+
+Recognition: donor antigens (directly on graft antigen-presenting cells AAARIINS SCHEME (3 Otorhe)
+or indirectly after host APCs present processed donor peptides) are | * “its stepwise mechanism covering
+recognized by-CD4* T-cell receptors. (2) Activation: costimulatory release > effectot sctieadion —> grat
+
+signals and antigen recognition activate helper T cells, triggering Injury — total 3.00 marks,
+proliferation (clonal expansion). (3) Cytokine secretion: activated
+helper T cells release cytokines (e.g., IL-2, IFN-y) that amplify immune responses. (4) Effector recruitment:
+cytokines activate cytotoxic CD8* T cells, macrophages, and B cells; B cells differentiate into plasma cells
+producing alloantibodies. (5) Tissue injury: cytotoxic cells, antibody-dependent mechanisms, and
+inflammatory mediators attack graft cells, causing cell death, inflammation and vascular damage leading to
+graft dysfunction.
+
+o studyplusplus.com °
+
+
+--- Page 35 ---
+
+Q.6 Explain the role of B cells in transplant rejection.
+Ans. B cells play a central role in antibody-mediated (humoral) transplant
+
+rejection, Once helper T cells recognize donor MHC antigens, they Losereapendae eat es
+activate B cells through cytokines and costimulatory signals. Activated | * nacer? fore paper th aac
+B cells differentiate into plasma cells, which secrete alloantibodies + complement activation /
+directed against donor antigens. These antibodies initiate several phagocytosis / vascular injury.
+
+damaging processes: (1) complement activation, leading to cell lysis
+and inflammation; (2) opsonization, which enhances phagocytosis of graft cells by macrophages and
+neutrophils; and (3) vascular injury, as antibodies target endothelial cells, causing thrombosis and ischemia.
+Collectively, these processes compromise blood supply and tissue integrity, resulting in graft dysfunction
+and failure if uncontrolled.
+
+Q.7 Explain why long-term immunosuppressive therapy often leads to fatigue and weakness.
+
+Ans. Chronic use of immunosuppressive drugs affects multiple organ
+systems, producing cumulative effects that manifest as fatigue and
+weakness. Hematological effects such as leukopenia or anemia reduce
+oxygen transport.and immune capacity. Gastrointestinal effects like
+diarrhoea and poor nutrient absorption impair energy levels.
+Neurological effects including tremors, headaches, or neurotoxicity directly contribute to exhaustion.
+Additionally, suppressed immunity predisposes patients to recurrent or chronic infections, which keep the
+body in a state of physiological stress. Persistent inflammation, metabolic derangements (e.g., electrolyte
+imbalance, hyperglycaemia),.and drug-related toxicity further drain energy reserves. Together, these
+interconnected disturbances explain the chronic fatigue seen in transplant patients on long-term
+immunosuppressive regimens:
+
+Q.8 Describe how modern medicine has improved transplant outcomes.
+Ans. Modern medicine has transformed transplantation into a highly
+
+successful clinical practice. First, advances in surgical techniques MARKING SCHEME (3 Marks)
+ensure safer operations with better vascular connections, reducing | * percincrinberae tprcbenge aa rac
+
+complications during and after surgery. Second, precise tissue typing suppressive drugs (1 mark each).
+and cross-matching of donor and recipient MHC-antigens minimize
+immunological incompatibility, lowering the risk. ofsrejection. Third, the development of targeted
+immunosuppressive drugs (e.g., calcineurin inhibitors, corticosteroids, antiproliferatives, biologics) has
+significantly improved graft survival by controlling rejection episodes. Additional innovations such as
+improved organ preservation methods, post-transplant monitoring, and infection prophylaxis have further
+boosted success rates. Collectively, these improvements have made organ transplantation routine, with
+many patients achieving long-term survival and improved quality of life.
+
+Q.9 What precautions are necessary during immunosuppressive therapy, and why are they important?
+
+Ans. Patients on immunosuppressive therapy require continuous medical [-
+supervision to. balance graft protection against harmful side effects. |) f csxacpncseslenpatd sion
+Regular monitoring includes infection surveillance (blood tests, ‘of theiceffects/advantages — 3.00 marks.
+cultures, imaging) because lowered immunity increases vulnerability to
+opportunistic pathogens. Blood pressure and electrolyte checks are essential since drugs like calcineurin
+inhibitors can cause hypertension and hyperkalemia. Renal and hepatic function tests detect early toxicity,
+preventing organ damage. Adjusting drug dosage and adding prophylactic antibiotics, antivirals, or
+antifungals are common strategies. Vaccination (non-live) and lifestyle precautions, such as hygiene and
+avoiding exposure to infections, also support safety. These precautions help maximize graft survival while
+reducing complications, enabling patients to maintain long-term health and quality of life.
+
+Q.10 Explain how the immune system recognizes transplanted tissue 3s foreign.
+
+Ans. The immune system identifies transplanted tissue as foreign primarily
+through differences in major histocompatibility complex (MHC) MARKING SCHEME (3 Marks)
+molecules. Donor cells express MHC antigens that are distinct from | * Mechanism of recognition via foreign
+those of the recipient. Host antigen-presenting cells or donor-derived MHC ~» T-cell activation > immune
+
+cells present these foreign antigens to recipient helper T cells. This
+recognition activates helper T cells, which release cytokines that
+
+cs) studyplusplus.com $
+
+
+
+--- Page 36 ---
+
+stimulate cytotoxic T cells, B cells, and macrophages. Cytotoxic T cells attack graft cells directly, while B cells
+produce antibodies that initiate antibody-mediated rejection. Macrophages and other immune effectors
+amplify tissue damage through inflammation. This cascade of cellular and humoral responses ultimately
+leads the immune system to perceive the graft as a threat, triggering rejection.
+
+Exercise
+
+* Select the correct Answer.
+
+1.
+
+7.
+
+Plasma cells are
+
+A. the same as memory cells
+
+B. formed from blood plasma
+
+C. B cells that are actively secreting antibody
+D. inactive T cells carried in the plasma
+Antibodies combine with antigens
+
+A. at variable regions
+
+B. at constant region
+
+C. only if macrophages are present
+
+D. both A and C are correct
+
+In addition to the immune system, we, are
+protected from disease by
+
+A. normal body temperature
+
+B. hormones
+
+C. antigens
+
+D. mucous membrane and cilia
+
+Fever decrease the
+
+A. interferon production
+
+B. concentration of iron in the blood
+C. activity of phagocytes
+
+D. inflammation
+
+Tand B cells are
+A. lymphocytes B. macrophages
+C. natural killer cells D. red blood cells
+
+When B-cells are presented with antigen they
+differentiate into
+
+A. T-cells B. helper T-cells
+
+C. plasma cells D. bursa cells
+
+When one receives a booster shot for polio
+which type of cell is most directly stimulated?
+
+A. killer T-cells B. memory cells
+
+C. phagocytes D. suppressor cells
+Natural killer cells kill virus infected and
+cancerous cells by:
+
+A. phagocytosis B. complement proteins
+
+C. perforins and granzymes D. antibodies
+
+°
+
+10.
+
+11,
+
+12.
+
+13.
+
+14,
+
+studyplusplus.com
+
+y=
+
+Colostrum provides
+
+A. natural active immunity
+
+8. artificial active immunity
+
+C. natural passive immunity
+
+D. artificial passive immunity
+
+mAbs can help to combat diseases like:
+
+A. measles B. cancer
+
+C. anorexia D. haemophilia
+
+A patient has a severe burn injury, compromising
+
+their skin barrier. Which of the following is most
+
+likely to occur?
+
+A.Increased risk of infection due to loss of
+chemical and physical barriers
+
+B. Decreased risk of infection due to increased
+immune response
+
+C. No change in infection risk
+
+D. Increased risk of autoimmune disease
+
+Dendritic cells are crucial for initiating an adaptive
+
+immune response. What would happen if
+
+dendritic cells were unable to present antigens?
+
+A.The adaptive immune response would be
+enhanced
+
+B. The innate immune response would be impaired
+
+C.The adaptive immune response would be
+impaired
+
+D. There would. be no impact on the immune
+response
+
+Neutrophils use extracellular traps to kill
+
+pathogens. What is the primary advantage of
+
+this mechanism?
+
+A. Targeted killing of specific pathogens
+
+B. Ability to phagocytose large pathogens
+
+C. immobilization of pathogens in a localized area
+
+D. Activation of complement system
+
+NK cells play a crucial role in controlling viral
+
+infections and cancer. What would happen if NK
+
+cell function was impaired?
+
+A. Increased risk of bacterial infections
+
+B. Increased risk of viral infections and cancer
+
+C. Decreased risk of autoimmune disease
+
+D. No impact on immune function
+
+°
+
+
+--- Page 37 ---
+
+15.
+
+Interferons released by virus-infected cells | 18. Vitiligo is an autoimmune disease characterized
+
+trigger a response in neighboring cells. What Is by skin depigmentation. What would be a
+the primary purpose of this response? potential consequence of vitiligo, in majority of
+A. To induce apoptosis in uninfected cells patients, if left untreated?
+
+B. To destroy RNA in infected cells A. Increased risk of skin cancer
+
+C. To activate the adaptive immune response B. Decreased risk of autoimmune disease
+
+C. Increased risk of infection
+D. Emotional distress due to cosmetic impact
+
+19. Transplant rejection occurs due to the immune
+system's ability to recognize foreign antigens.
+What would happen if a patient received a
+transplant from an identical twin?
+A, Increased risk of graft-versus-host disease
+
+D. To prevent viral replication in neighboring cells
+Antibodies can bind to an antigen, forming an
+antigen-antibody complex. What would be the
+most likely outcome if antibodies were unable to
+opsonize bacteria?
+
+A. Increased phagocytosis of bacteria
+
+B. Decreased phagocytosis of bacteria B. Decreased risk of transplant rejection
+
+C. Increased activation of complement system C. Increased risk of autoimmune disease
+
+D. Decreased activation of NK cells D. No impact on immune function
+
+Monoclonal antibodies have revolutionized the | 20, Lymphokines, such as interleukins, play a crucial
+field of immunotherapy, What is a potential role in coordinating the immune response. What
+benefit of using monoclonal antibodies in cancer would be the consequence of impaired
+treatment? lymphokine production?
+
+A. Increased killing of virus infected cells A. Enhanced activation of cytotoxic T-cells =,
+
+B. Targeted killing of cancer cells B. Reduced activation of immune cells
+
+C, Enhanced tumor growth C. Increased production of antibodies
+
+D. Increased risk of infection D. Enhanced phagocytic activity of neutrophils
+
+y=
+
+Q.1_ What is immune response?
+
+Ans. The immune response is the coordinated defensive reaction of the body
+
+against harmful agents such as bacteria, viruses, fungi, and toxins. It Aare a ne enna ts
+
+J OH in
+begins when foreign antigens are recognized by immune receptors. This Sedfs: description of mecheniams sed
+triggers activation of innate immunity, including phagocytes, natural significance — 1.5 marks.
+
+Killer cells, and inflammation, which act rapidly but non-specifically. If
+the threat persists, the adaptive immune response is activated. 8 lymphocytes produce antibodies that bind
+and neutralize pathogens, while T lymphocytes either assist other immune cells (helper T cells) or directly
+destroy infected cells (cytotoxic T cells). The adaptive system also develops immunological memory,
+ensuring faster and stronger responses upon re-exposure. Thus, immune responses maintain health by
+eliminating invaders and preventing disease progression.
+
+Q.2 Name the three lines of defence against microbial attack.
+
+Ans. The human body protects itself against infections through three levels
+
+of defence. The first line of defence consists of physical and chemical MARKING SCHEME (3 Marks)
+
+barriers, such as intact skin, mucous membranes, saliva, tears, stomach | * S@rest identification of first line — 1
+acid, and secretions from sweat and oil glands, which prevent pathogen parr pa ——
+entry. The second line of defence is the innate immune response, a
+non-specific mechanism including phagocytes, natural killer cells, inflammation, and fever. These act quickly
+
+once pathogens bypass external barriers. The third line of defence is the adaptive immune response,
+o studyplusplus.com ¢$
+
+
+
+--- Page 38 ---
+
+mediated by B and T lymphocytes. This system is highly specific, capable of antigen recognition, antibody
+production, and memory formation. Together, these defences form a layered protection that ensures both
+immediate and long-term immunity.
+
+Q.3 How oil and sweat glands take part in defence against microorganisms?
+
+Ans. Oil and sweat glands are important components of the body’s first line
+
+of defence against microbial invasion. Sebaceous (oil) glands secrete | | Prag perdcgmai etn éf
+
+sebum onto the skin surface. Sebum contains fatty acids that lower the = ¢
+
+pH of the skin, creating an acidic environment thet inhibits the growth seanranene: i = sai
+of most bacteria and fungi. This biochemical barrier is particularly
+effective in preventing colonization of harmful microbes. Sweat glands produce sweat, which contains
+antimicrobial substances such as lysozyme. Lysozyme is an enzyme capable of breaking down the
+peptidoglycan layer of bacterial cell walls, leading to bacterial lysis. Additionally, sweat helps wash away
+microbes mechanically. Together, oil and sweat secretions form a protective chemical barrier that supports
+skin’s role as a physical shield. ‘
+
+Q4 Name the parts of antibody molecule.
+
+Ans. An antibody. molecule has a characteristic Y-shaped structure
+composed of two heavy chains and two light chains, held together by MARKING SCHEME (3 Marks)
+disulfide bonds. Each antibody has two distinct regions. The variable | * V#rlable regions/antigen-binding site
+regions are located at the tips of the Y-shape. They differ in amino acid = aren eek aa aig ora
+
+sequence among antibodies and form the antigen-binding sites, structure — 1 mark,
+
+allowing recognition of specific antigens with high precision. The
+
+constant regions, found in the stem and lower parts of the Y, are similar among antibodies of the same class
+
+and determine their effector function, such as complement activation or binding to immune cells. This
+structure enables antibodies to both specifically recognize pathogens and recruit other immune mechanisms
+
+for pathogen destruction.
+
+Q.5 How interferons control spread of virus in the body?
+Ans. Interferons are specialized proteins produced by virus-infected cells to
+
+protect neighboring cells from viral spread. When a cell is invaded by a panne Sens see
+virus, it releases interferons into the surrounding tissue. These ® aalrasel plier orien iene
+
+molecules bind to receptors on adjacent uninfected cells, stimulating immune-enhancing role — 1 mark.
+them to synthesize antiviral proteins. These proteins interfere with viral
+replication by degrading viral RNA or inhibiting protein synthesis. In addition to direct antiviral activity,
+interferons enhance the immune response by stimulating natural killer (NK) cells and macrophages, which
+target and destroy infected cells. They also increase antigen presentation, making infected cells more visible
+to cytotoxic T cells. Thus, interferons act as important messengers in, the innate immune system, containing
+viral infections until adaptive immunity develops.
+
+Q.6 How do antibodies kill pathogens?
+
+‘Ans. Antibodies defend the body by binding specifically to antigens present
+on the surface of pathogens, forming antigen-antibody complexes. This MARKING SCHEME (3 Marks)
+binding can neutralize pathogens directly by blocking their attachment | * Neutralization — 1 mark; opsonization
+to host cells, rendering them harmless. Antibodies also facilitate and comprumagt vec gpa)
+opsonization, where pathogens are “tagged” for easier recognition and | __ *snston/sombined effect —
+engulfment by phagocytes such as macrophages and neutrophils.
+Another major mechanism is activation of the complement system, a cascade of plasma proteins that results
+in membrane damage and lysis of invading microbes. Additionally, antibodies can cause agglutination,
+where multiple pathogens are clumped together, making them more easily removed by phagocytosis.
+Through these combined actions, antibodies play a central role in adaptive immunity.
+
+Q.7 Why does each antibody bind only to a specific antigen?
+
+Ans. Each antibody molecule contains a variable region located at the
+antigen-binding site, which is uniquely shaped due to differences in MARKING SCHEME (3 Marks)
+amino acid sequences. This region is complementary to a specific | * Structure of variable region — 1 mark;
+epitope, the precise portion of an antigen that it binds. The lock-and-
+key type interaction ensures specificity, allowing an antibody to
+
+cs) studyplusplus.com $
+
+binding to epitope/specificity — 1 mark;
+importance of specificity — 1 mark.
+
+
+
+--- Page 39 ---
+
+recognize and attach only to its corresponding antigen. This prevents cross-reactions with the body's own
+cells and ensures precise targeting of pathogens. Specific binding also initiates appropriate immune
+responses such as neutralization, opsonization, or complement activation. Without this high degree of
+specificity, immune responses would be random and harmful. Thus, antibody—antigen specificity is essential
+for effective and safe immunity.
+
+Q.8 Why is passive immunity temporary?
+
+Ans. Passive immunity arises when pre-formed antibodies are transferred
+into the body from an external source, such as maternal antibodies
+crossing the placenta, antibodies in breast milk, or therapeutic antibody
+injections. Unlike active immunity, the recipient's immune system does
+not produce its own antibodies or memory cells. The borrowed
+antibodies provide immediate but short-lived protection against infection. Over time, these externally
+supplied antibodies are naturally broken down and eliminated by the body. Since no immunological memory
+is established, the individual remains unprotected once antibody levels decline. Therefore, passive immunity
+is temporary, serving as a short-term defense mechanism until the individual’s own adaptive immune system
+develops or an active vaccination can be administered.
+
+Q.9 Name the disorders of immune system.
+Ans. The immune system may malfunction, resulting in several disorders.
+
+One group is autoimmune diseases, where the immune system attacks MARKING SCHEME (3 Marks) ‘
+self-tissues. Examples include’ systemic lupus erythematosus, | * Aviclmmune diseases — 1 Seen
+
+rheumatoid arthritis, type 1 diabetes, and multiple sclerosis. Another allergies/transplant rejection — 1 mark,
+category is immunodeficiency disorders, in which the immune system
+fails to respond adequately. These may be primary (genetic) or secondary (acquired), such as AIDS caused
+by HIV infection. Allergies and hypersensitivity reactions represent exaggerated immune responses to
+harmless substances like pollen, dust, or food. Finally, complications such as graft rejection occur when the
+immune system recognizes transplanted tissue as foreign. Each of these conditions reflects an imbalance in
+immune regulation, either overactivity, underactivity, or misdirected activity.
+
+Q.10 What are the autoimmune diseases?
+Ans. Autoimmune diseases are medical conditions in which the immune
+
+system loses self-tolerance and begins to recognize the body’s own MARKING SCHEME (3 Marks)
+cells and tissues as foreign. As a result, it launches immune attacks | * Peliton/seliclerancs fale —
+
+against healthy organs, leading to chronic inflammation and, tissue tissues — 1 mark; examples — 1 mark.
+damage. The exact causes may involve genetic predisposition,
+molecular mimicry, or environmental triggers that confuse immune recognition. For example, in type 1
+diabetes, immune cells destroy insulin-producing pancreatic cells. In multiple sclerosis, myelin sheaths of
+nerve cells are damaged. Other examples include rheumatoid arthritis (joints), vitiligo (skin), and systemic
+lupus erythematosus (multi-organ). Since self-antigens are constantly present, autoimmune diseases are
+usually long-lasting and require medical management to suppress overactive immunity.
+
+Q.11 Write the differences between:
+
+(a) Sebaceous Glands and Sweat Glands
+
+Ans. Sebaceous glands and sweat glands are both exocrine glands of the skin
+but differ in structure and function. Sebaceous glands secrete an oily
+substance called sebum, which lubricates skin and hair, and lowers skin
+PH to inhibit microbial growth. They usually open into hair follicles and
+are distributed throughout the body, except on the palms and soles.
+In contrast, sweat glands produce sweat, composed mainly of water, salts, and small amounts of urea. Sweat
+is released directly onto the skin surface and plays a major role in thermoregulation through evaporative
+cooling. It also aids in excretion and contains lysozyme, providing antimicrobial defense. Thus, sebaceous
+glands protect and condition, while sweat glands regulate temperature and excrete wastes.
+
+cs) studyplusplus.com $
+
+
+--- Page 40 ---
+
+(b) Macrophages and Neutrophils
+Ans. Macrophages and neutrophils are both phagocytic white blood cells but
+
+= R MARKING SCHEME (3 Marks)
+differ in origin, lifespan, and role. Neutrophils arise from myeloid stem i ssnsea= 4 wean a
+cells in bone marrow and are short-lived, surviving only a few days. They — Limarkk role in immunity — 1 mark,
+
+circulate in the blood and are the first responders during infection,
+
+rapidly engulfing and destroying pathogens.
+
+Macrophages, on the other hand, are long-lived cells derived from circulating monocytes that migrate into
+tissues, Besides engulfing pathogens, they also process and present antigens to T lymphocytes, linking innate
+and adaptive immunity. Macrophages remain resident in tissues like the liver, lungs, and spleen, providing
+long-term defense, whereas neutrophils specialize in acute, rapid responses at infection sites. Together, they
+ensure both immediate and sustained immunity.
+
+(c) Antibody-mediated and Cell-mediated Immune Responses
+
+Ans, The immune system operates through two complementary pathways.
+The antibody-mediated immune response involves B lymphocytes,
+which, upon activation, differentidte into plasma cells that secrete
+antibodies. These antibodies neutralize extracellular pathogens like
+bacteria, viruses in body fluids, and toxins, and mark them for
+destruction by phagocytes or complement proteins. Memory B cells
+also form, ensuring faster responsés on re-exposure.
+In contrast, the cell-mediated immune response is carried out by T lymphocytes, mainly cytotoxic T cells.
+This pathway targets intracellular pathogens, such as viruses within host cells, and abnormal cells like
+cancerous ones. Cytotoxic T cells directly kill infected cells by releasing perforin and granzymes. Memory T
+cells provide long-term surveillance, ensuring lasting immunity against intracellular threats.
+
+(d) Cytotoxic T Cells and Suppressor T Cells
+
+Ans. Cytotoxic T cells (Tc) and suppressor T cells (Ts), also-called regulatory T
+cells, perform opposite roles in immunity. Cytotoxic T cells are CD8* MARKING SCHEME (3 Marks)
+cells activated by antigen presentation with MHC class 4 molecules.
+Once activated, they directly kill virus-infected cells and tumor cells by
+releasing perforin and granzymes, which induce lysis and apoptosis.:They are critical in defending against
+intracellular pathogens and cancers.
+In contrast, suppressor T cells (CD4* or CD25* phenotype) function primarily toregulate the immune system.
+They inhibit overactivation of immune cells, preventing excessive inflammation and autoimmune reactions,
+Ts cells become active in later stages of an immune response, ensuring balance between defense and
+tolerance. Thus, Tc destroy threats, while Ts prevent self-damage.
+
+{e) Plasma Cells and Memory Cells
+
+Ans. Plasma cells and memory cells are both derived from activated B
+lymphocytes but serve distinct functions. Plasma cells are short-lived | | Piesqesn parcial a.
+effector cells that immediately produce and secrete large quantities of 4A mark; role in immunity — 2 mark.
+antibodies to combat current infections. They play a critical role during
+the first exposure to a pathogen, but once the infection resolves, most plasma cells die off.
+In contrast, memory cells (both B and T types) are long-lived and persist in the body after the infection
+subsides. They do not actively secrete antibodies but retain information about the specific antigen. Upon re-
+exposure, memory cells rapidly differentiate and trigger a stronger, faster immune response, ensuring long-
+term immunity. Plasma cells provide immediate defense, while memory cells ensure future protection.
+
+MARKING SCHEME (3 Marks)
+
+cs) studyplusplus.com $
+
+
+--- Page 41 ---
+
+(f) Antibodies and Antigens
+
+Ans; Antibodies and antigens are complementary components of the
+immune system but differ fundamentally in nature and function.
+Antibodies are specialized Y-shaped proteins produced by activated B
+cells (plasma cells). They have variable regions that bind specifically to
+antigen epitopes, and constant regions that determine their class and role. Their main function is to
+neutralize, opsonize, or eliminate pathogens through immune mechanisms.
+In contrast, antigens are foreign molecules such as proteins, polysaccharides, or lipids that trigger an
+immune response when detected by the body. They contain specific sites, called epitopes, recognized by
+antibodies or T cell receptors. Thus, antibodies act as effector molecules of the adaptive immune system,
+while antigens serve as the stimulus for immune activation.
+
+(g) inborn immunity and Acquired Immunity
+
+Ans. inborn (innate) immunity and acquired (adaptive) immunity differ in
+onset, specificity,and memory. Inborn immunity is present at birth and
+acts as the body’s first and non-specific defense. It includes physical
+barriers (skin, mucous membranes), chemical barriers (lysozyme,
+stomach acid), and cellular defenses such as phagocytes and natural killer cells. It provides immediate but
+generalized protection, without memory of past infections.
+In contrast, acquired immunity develops after exposure to pathogens or through vaccination. It is highly
+specific to particular antigens and involves T and B lymphocytes. Acquired immunity also provides long-term
+protection by forming memory cells, which €nable faster and stronger responses on re-exposure. Together,
+these systems ensure both immediate and Jasting defense against infections.
+
+{h) Primary and Secondary Immune Responses
+
+Ans. The primary immune response occurs during the first exposure to a
+specific antigen. It is slow, often taking several days to weeks for B and
+T lymphocytes to become fully activated. Antibody levels are-relatively
+tow and short-lived, and symptoms of illness are more noticeable.since
+the immune system requires time to build defense. Memory cells are
+formed during this phase but do not act immediately.
+In contrast, the secondary immune response occurs upon subsequent exposure to the same antigen. It is
+much faster, often within hours, and produces higher and longer-lasting levels of antibodies. Memory B and
+T cells are reactivated, ensuring efficient pathogen clearance. As a result, symptoms are milder or absent.
+
+=
+
+Q.1 Describe the human skin as an impenetrable barrier against invasion by microbes.
+Ans. Please see SLO [B-12-1-01)
+
+Q.2 Whats the role of macrophages and neutrophils in killing bacteria?
+
+Ans. Please see SLO [B-12-1-05]
+
+Q.3 Explain the protective proteins of complementary system with diagram.
+Ans. Please see SLO (8-12-1-07]}
+
+MARKING SCHEME (3 Marks)
+Definition — 1 mark; structure / function
+specificity/role — 1 mark.
+
+cs) studyplusplus.com $
+
+
+--- Page 42 ---
+
+Q4 Explain in detail inflammatory response with diagram.
+Ans. Please see SLO [B-12-1-08)
+
+Q5 Explain temperature response against infection.
+
+Ans. Please see SLO [B-12-1-09]
+
+Q.6 What are the ways fever kills microbes?
+
+Ans. Please see SLO [B-12-1-10]
+
+Q.7 Describe the role of monocytes in immune system.
+Ans. Please see SLO [B-12-1-1}
+
+Q.8 What is the role of T cells in cell mediated response.
+Ans. Please see SLO [B-12-1-15]
+
+Q.9 Describe the role of B cells in humoral antibody mediated immune response.
+
+z
+z
+§
+8
+&
+3
+
+Q.10 Describe the types of acquired immunity.
+
+Ans. Please see SLO [B-12-1-14]
+
+Q.11 Describe the role of T cells and B cells in transplant rejection.
+Ans. Please see SLO [8-12-1-17]
+
+Q.12 Explain why a transplant recipient is given immune suppressant drugs and determine what implications
+this has on his life.
+
+Ans. Please see SLO [B-12-1-17]
+
+Q,.13 Evaluate the discovery of monoclonal antibodies and justify how this accomplishment revolutionized
+many aspects of biological research.
+
+Ans. Please see SLO [B-12-1-18]
+
+soece@eho@eooros
+
+o studyplusplus.com ¢$

@@ -1,0 +1,2642 @@
+
+
+--- Page 1 ---
+
+Chapter # 06
+
+Endocrine System of Man
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+[B-12-G-23] State the role of hormones as chemical messengers.
+[B-12-G-24] Describe the chemical nature of hormones and correlate it with important hormones.
+[B-12-G-25] Locate the endocrine glands in human body name the hormones they release and their
+
+functions; (pituitary, thyroid, parathyroid, pancreas, adrenal, gonads).
+
+[B-12-G-26] Relate problems associated with the imbalance of these hormones.
+
+[B-12-G-27] Explain the neurosecretory role of hypothalamus.
+
+[B-12-G-28] Outline the concept of Feedback mechanism of hormones. Describe positive feedback with
+reference to oxytocin and negative feedback with reference to insulin and glucagon.
+
+The human body depends on precise regulation of its internal environment to maintain homeostasis and
+support life processes. This regulation occurs through two major systems: the nervous system, which uses rapid
+electrical impulses, and the endocrine system, which relies on chemical coordination.
+
+Chemical coordination is the regulation of body functions through hormones rather than nerve impulses.
+Unlike the nervous system, which can directly control only certain tissues, most body cells need regulation without
+direct neural contact. To meet this need, the endocrine system secretes hormones into the bloodstream, allowing
+communication with target cells and organs throughout the body. In this way, the endocrine system acts as a
+powerful and specialized mechanism for long-term regulation.
+
+Importance of Chemical Coordination
+
+Hormones influence almost every aspect of human physiology. They regulate metabolic activities, control
+the rate of biochemical reactions, assist in the transport of molecules across cell membranes, and stimulate or
+inhibit glandular secretions. In addition, hormones play a vital role in growth and development, reproductive
+functions, and the maintenance of overall body balance. Without chemical coordination, the internal stability of
+the body would be disrupted, threatening survival.
+
+Hormones — Messengers of the Endocrine System
+
+Hormones are organic chemical messengers secreted by specific cells, usually located in endocrine glands.
+Once released into the blood, they travel to distant targets where they modify the activity of cells, tissues, or
+organs. Although often present in very small amounts, hormones have profound effects, either stimulating or
+suppressing essential biological processes.
+
+To date, scientists have identified more than 50 distinct hormones in the human body. They regulate diverse
+functions such as metabolism, blood pressure, blood glucose level, body temperature, fluid and electrolyte
+balance, sleep-wake cycles, and even mood and emotional state.
+
+Chemical Nature of Hormones
+
+Most hormones fall into well-defined categories based on their chemical structure:
+
+e Amines (derived from amino acids)
+
+¢ Peptides and proteins
+
+e Glycoproteins
+
+e Steroids (derived from cholesterol)
+
+This chemical diversity allows hormones to act in highly specific ways, ensuring that the body’s internal
+environment remains stable and that organ systems work in coordination.
+
+9S studyplusplus.com S$
+
+
+--- Page 2 ---
+
+State the role of hormones as chemical messengers.
+
+ROLE OF HORMONES AS CHEMICAL MESSENGERS
+
+Hormones and Chemical Coordination
+
+The human body requires continuous regulation to maintain homeostasis and to coordinate the activities
+of different organs. While the nervous system provides rapid control through electrical impulses, another equally
+important system works more slowly but with longer-lasting effects—the endocrine system. It functions through
+hormones, which act as chemical messengers to communicate between cells, tissues, and organs.
+
+Definition and Nature of Hormones
+
+Hormones are organic chemical substances secreted in minute quantities by endocrine glands. Unlike
+exocrine glands, which release their secretions into ducts, endocrine glands are ductless and pour hormones
+directly into the bloodstream. The blood then transports these hormones to target organs or tissues, where they
+bind to specific receptors and regulate cellular activities.
+
+Role of Hormones as Messengers
+
+The role of hormones is to act as messengers that transmit information
+chemically from one part of the body to another. By doing so, they:
+¢ Control the rate of metabolic reactions (e.g., thyroid hormones
+regulating metabolism).
+* Maintain homeostasis, such as the regulation of blood glucose
+levels by insulin and glucagon.
+¢ Influence growth and development, as seen with growth hormone
+and sex hormones.
+e Regulate reproduction, including sexual differentiation, menstrual
+cycle, and pregnancy.
+¢- Adjust mood, emotions, and biological rhythms, such as the sleep-wake cycle influenced by melatonin.
+Key Features of Hormonal Communication
+
+Unlike nerve impulses, which are fast and localized, hormonal communication is:
+
+¢ Slower in action but has more prolonged effects.
+
+© Widespread, as hormones can reach almost all parts of the body through the bloodstream.
+
+* Highly specific, because only cells with the right receptors can respond to.a given hormone.
+
+In summary, hormones act as chemical messengers that enable the body to coordinate complex activities
+and maintain stability of the internal environment. They ensure that different organ systems function in harmony,
+supporting survival, growth, reproduction, and overall health.
+
+In 1902, Bayliss and Starling,
+Prepared an extract from the
+duodenum which _ stimulated
+secretion of pancreatic digestive
+juices when it was injected into
+the bloodstream. They called the
+product ‘secretin’, and coined the
+term ‘hormone’, meaning ‘to
+excite’ or ‘to set in motion.’
+
+ical nature of hormones and correla’ with important hormones.
+
+CHEMICAL NATURE OF HORMONES AND THEIR CORRELATION WITH
+IMPORTANCE
+
+1. Chemical Nature of Hormones
+Hormones are specialized organic compounds secreted in minute quantities by endocrine glands. Despite
+being present in very small amounts, they exert powerful effects on specific target cells. Their chemical
+nature determines many key aspects of their function: how they are transported in the bloodstream, how
+
+they interact with receptors, and how quickly or slowly they bring about physiological responses. Broadly,
+hormones can be classified into the following categories:
+
+S$ studyplusplus.com S$
+
+
+--- Page 3 ---
+
+(a)
+
+(b)
+
+(c)
+
+(d)
+
+(e)
+
+Steroid Hormones .
+
+Steroid hormones are lipid-soluble molecules synthesized from cholesterol. Because they are non-
+
+polar, they can easily diffuse through cell membranes and bind to intracellular receptors in the
+
+cytoplasm or nucleus. Once bound, the hormone-receptor complex directly influences gene expression
+and protein synthesis, producing long-lasting effects.
+
+© Source: Secreted mainly by the adrenal cortex, gonads (testes and ovaries), and the placenta.
+
+© Examples: Cortisone and aldosterone (adrenal cortex), which regulate stress responses and salt-
+water balance; testosterone (testes), estrogen and progesterone (ovaries), which control sexual
+development, reproduction, and pregnancy.
+
+Because of their action on gene regulation, steroid hormones usually act more slowly than peptide
+
+hormones, but their effects are longer lasting.
+
+Proteinaceous Hormones (Peptides and Polypeptides)
+
+Proteinaceous hormones include peptides, polypeptides, and proteins, all of which are composed of
+
+chains of amino acids. These hormones are water-soluble, meaning they cannot pass directly through
+
+the lipid bilayer of cell membranes. Instead, they bind to receptors on the cell surface and activate
+secondary messenger systems (such as cyclic AMP), leading to rapid changes in cell activity.
+
+© Source: Produced by a wide range of endocrine glands, especially the anterior pituitary and the
+pancreas.
+
+© Examples: Growth hormone (GH) stimulates body growth; thyroid-stimulating hormone (TSH)
+regulates thyroid gland activity; follicle-stimulating hormone (FSH) and luteinizing hormone (LH)
+regulate reproductive cycles; insulin (pancreas) lowers blood glucose by promoting glucose uptake
+in cells.
+
+These hormones generally act faster than steroid hormones, but their effects are often short-lived.
+
+Catecholamines
+
+Catecholamines are small, water-soluble hormones derived from the amino acid tyrosine. They are
+
+secreted by the adrenal medulla and play a crucial role in the “fight or flight” response during stressful
+
+situations. Because they are water-soluble, catecholamines bind to cell surface receptors and trigger
+rapid metabolic changes.
+
+o Examples: Adrenaline (epinephrine) increases heart rate, blood pressure, and glucose availability,
+preparing the body for emergency action. Noradrenaline (norepinephrine) complements these
+effects by constricting blood vessels and maintaining blood pressure.
+
+Catecholamines act very quickly, but their effects are relatively short in duration, making them ideal for
+
+immediate stress responses.
+
+Amino Acid Derivatives
+
+Some hormones are simple derivatives of single amino acids, such as tyrosine. These hormones may
+
+behave like peptides (water-soluble, acting on surface receptors) or like steroids (lipid-soluble, acting
+
+inside cells), depending on their structure.
+
+© Source: Secreted mainly by the thyroid gland.
+
+© Example: Thyroxine (T4), which regulates metabolic rate, growth, and energy balance. Because of
+its lipid-like nature, thyroxine can enter cells and influence long-term metabolism.
+
+Other Peptide Hormones
+
+This group includes hormones made of short or intermediate chains of amino acids. They show great
+
+diversity in function and are secreted by the pituitary gland and other endocrine organs.
+
+o Examples: Melanocyte-stimulating hormone (MSH) controls pigmentation; oxytocin stimulates
+uterine contractions and milk ejection; vasopressin (antidiuretic hormone, ADH) regulates water
+balance; adrenocorticotrophic hormone (ACTH) stimulates adrenal cortex activity; calcitonin
+lowers blood calcium levels; parathormone (PTH) raises blood calcium levels.
+
+These hormones act rapidly and play vital roles in maintaining homeostasis, reproduction, and stress
+
+adaptation.
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+2. Correlation Between Chemical Nature and Importance
+The chemical nature of a hormone largely determines how it acts in the body and the specific physiological
+processes it controls. Understanding this correlation helps explain why different hormones produce rapid
+or long-lasting effects, act locally or throughout the body, and regulate particular biological functions.
+(a) Steroid Hormones and Long-Term Regulation
+
+Steroid hormones are lipid-soluble, allowing them to diffuse across cell membranes and bind to
+
+Intracellular receptors in the cytoplasm or nucleus. Once bound, they influence gene expression,
+
+resulting in the synthesis of specific proteins that modify cellular function. Because of this mechanism,
+
+steroid hormones generally act slowly but produce long-lasting effects.
+
+© Physiological importance: They are critical for stress regulation (cortisone), salt and water balance
+(aldosterone), and reproductive functions (testosterone, estrogen, progesterone). These hormones
+coordinate metabolism, reproductive development, and adaptation to stress, making them
+essential for long-term homeostasis.
+
+Proteinaceous Hormones and Rapid Responses
+
+Proteinaceous hormones, including peptides and polypeptides, are water-soluble and cannot pass
+through the lipid membrane of target cells. Instead, they act on surface receptors, activating secondary
+messenger systems such as cyclic AMP or calcium ions. This mechanism enables rapid responses to
+physiological changes.
+© Physiological importance: Proteinaceous hormones regulate growth (growth hormone, GH), blood
+glucose levels (insulin), and reproductive cycles (FSH and LH). Their fast action is crucial for
+processes that require immediate adjustment, such as blood sugar control after meals or rapid
+hormonal feedback in reproduction.
+(c) Catecholamines and Emergency Action
+
+Catecholamines are small, water-soluble hormones derived from tyrosine, secreted by the adrenal
+
+medulla in response to stress. They act almost instantly on cell surface receptors, triggering metabolic
+
+and cardiovascular changes.
+
+© Physiological importance: Adrenaline (epinephrine) and noradrenaline (norepinephrine) initiate
+the “fight or flight” response, increasing heart rate, blood pressure, and energy supply. Their rapid
+action prepares the body to cope with emergency situations, demonstrating the importance of
+water-soluble hormones for immediate physiological adjustments.
+
+(d) Amino Acid Derivatives and Metabolic Control
+
+Some hormones, such as thyroxine, are amino acid derivatives that exhibit both peptide- and steroid-
+
+like properties. They often enter target cells and influence long-term metabolic activities.
+
+© Physiological importance: Thyroxine, secreted by the thyroid gland, regulates metabolism, growth,
+and energy balance. Its slow but prolonged action ensures consistent metabolic rate, proper growth,
+and development, highlighting the significance of hormones that act over extended periods.
+
+(e) Other Peptide Hormones and Diverse Functions
+
+Agroup of short or intermediate peptide hormones regulate highly specialized physiological processes.
+
+© Physiological importance: Oxytocin stimulates uterine contractions during childbirth and milk
+ejection during lactation. Vasopressin (ADH) maintains water balance by controlling kidney
+function. Calcitonin and parathormone (PTH) regulate blood calcium levels, and ACTH stimulates
+the adrenal cortex to release stress-related steroid hormones. These hormones exemplify how
+peptides mediate specific, rapid, and targeted regulatory functions throughout the body.
+
+Each class of hormone differs in its solubility, mode of transport in the bloodstream, receptor interaction,
+and mechanism of action. This chemical diversity enables hormones to regulate a broad spectrum of physiological
+processes throughout the body. In summary, hormones can be classified into steroids, proteinaceous hormones,
+catecholamines, amino acid derivatives, and other peptide hormones. Their chemical structure determines their
+
+mode of action and their physiological importance, from rapid stress responses to long-term regulation of
+metabolism, growth, reproduction, and homeostasis.
+
+(b)
+
+PS) studyplusplus.com S$
+
+17
+
+7
+
+
+--- Page 5 ---
+
+10.
+
+SLOs Based (MCQs)
+
+HORMONES, THEIR COMPOSITION AND ROLE
+
+Which of the following best defines a hormone?
+
+A. An enzyme that catalyzes cell reactions
+
+B. Anerve impulse carrier
+
+C. An organic chemical messenger secreted into
+the blood
+
+D. A neurotransmitter acting at a synapse
+
+What characteristic allows hormones to act even
+
+at very low concentrations?
+
+A. They are stored in large quantities
+
+B. They act only on muscle cells
+
+C. They bind specifically to high-affinity receptors
+
+D. They are insoluble in blood
+
+Hormones reach their target cells through:
+
+A. Lymph B. Direct diffusion
+
+C. Nerve fibers D. Bloodstream
+
+Which gland secretes thyrold-stimulating hormone
+(TSH)?
+
+A. Thyroid gland B. Adrenal cortex .
+
+C. Pancreas D. Pituitary gland
+Which of the following is a steroid hormone?
+
+A. Insulin B. Adrenaline
+
+C. Cortisone D. Oxytocin _
+
+What is the source of adrenaline and
+noradrenaline?
+
+A. Adrenal cortex B. Thyroid gland
+
+C. Adrenal medulla D. Pancreas
+Thyroxine is chemically classified as a:
+
+A. Peptide B. Protein
+
+C. Amino acid derivative D. Steroid
+
+Hormones affect only specific target cells because:
+A. They are universal messengers
+
+B. Target cells have specific receptors
+
+C. All cells respond to all hormones
+
+D. They are distributed through lymph
+
+Which of the following hormones is secreted by
+
+the pancreas?
+A. Vasopressin B. Insulin
+C. Thyroxine D. Aldosterone
+
+Which of the following is a peptide hormone?
+B. Testosterone
+D. Cortisone
+
+A. Estrogen
+C. Oxytocin
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+18.
+
+19,
+
+20.
+
+Ahormone secreted by the thyroid gland is:
+A. Insulin B. Thyroxine
+
+C. TSH D. Cortisol
+
+What is the function of TSH in the body?
+
+A, Stimulates growth of bone
+
+B. Stimulates adrenal medulla
+
+C. Stimulates the thyroid gland to secrete hormones
+D. Regulates blood glucose levels
+
+Which hormone controls water balance in the
+
+body?
+A. Vasopressin B. Insulin
+C. Adrenaline D, Progesterone
+
+Estrogen and progesterone are produced by:
+
+A. Adrenal cortex B. Ovaries
+
+C. Anterior pituitary D. Thyroid gland
+
+The “lock and key” model is used to describe:
+A. Hormonal degradation
+
+B. Hormone-receptor specificity
+
+C. Hormone secretion
+
+D. Neural transmission
+
+Which of the following is NOT a proteinaceous
+hormone?
+
+A. FSH B. Insulin
+
+C. Testosterone D. TSH
+
+Which hormone is responsible for lowering
+
+blood glucose?
+
+A. Cortisol B. Glucagon
+C. Insulin D. Adrenaline
+ACTH is secreted by:
+
+A. Thyroid gland B. Adrenal medulla
+
+C. Posterior pituitary ‘D. Anterior pituitary
+Which of these Is a catecholamine?
+
+A. Aldosterone B. ‘Testosterone
+
+C. Noradrenaline D. Oxytocin
+Hormonal communication between two glands,
+such as the pituitary and thyroid, is an example
+of:
+
+A. Autocrine signaling
+
+B. Neural feedback
+
+C. Endocrine-to-endocrine communication
+
+D. Paracrine control
+
+studyplusplus.com
+
+°
+
+
+--- Page 6 ---
+
+ort Questions
+Q.1 What is a hormone?
+
+Ans. A hormone is a chemical messenger secreted by endocrine glands
+directly into the bloodstream. It travels to specific target tissues or MARKING SCHEME (3 Marks)
+organs and binds to specific receptors, even in minute concentrations, | * Definition (2 marks), function (1 mark)
+to regulate physiological activities. Hormones control growth, metabolism,
+reproduction, and-homeostasis, ensuring that various body systems function in a coordinated manner.
+
+Q.2 Whatis meant by chemical coordination?
+
+Ans. Chemical coordination refers to the regulation and integration of
+bodily functions through hormones. Unlike nerve impulses, which are een a me
+rapid and short-lived, hormonal signals are slower but longer-lasting.
+Hormones travel via the bloodstream to reach distant target organs or
+tissues, modulating processes such as metabolism, growth, reproduction, and homeostasis in a coordinated
+
+_ Manner across the body.
+
+* Definition {2 marks), role of hormones
+(1mark)
+
+Q.3 Name four important functions regulated by hormones.
+Ans. Hormones regulate: : :
+1. Metabolism — controlling energy production and utilization.
+2. Growth and development — influencing body size, tissue |° 1™2rkeachforany three main functions
+differentiation, and maturation.
+3. Fluid and electrolyte balance — maintaining proper water and salt levels.
+4, Reproductive processes and mood regulation — controlling fertility, sexual development, and emotional
+behavior.
+5. These functions ensure homeostasis and coordinated physiological responses throughout the body.
+
+Q.4 Differentiate between steroid and peptide hormones.
+
+Ans. Steroid hormones are lipid-soluble molecules derived from
+
+cholesterol, such as estrogen, testosterone, and cortisol. They can
+diffuse through cell membranes and bind to intracellular receptors, | « steroid hormones (1.5 marks), peptide
+influencing gene expression. hormones (1.5 marks)
+Peptide hormones are water-soluble chains of amino acids, like insulin,
+glucagon, and TSH. They cannot cross cell membranes and bind to surface receptors, triggering secondary
+messenger pathways. Steroid hormones generally have longer-lasting effects, while peptide hormones act
+rapidly but briefly.
+
+Q.5 Give the source and function of insulin.
+
+Ans. Insulin is a peptide hormone secreted by the beta cells of the pancreas.
+. Its primary function is to lower blood glucose levels by promoting MARKING SCHEME (3 Marks)
+glucose uptake into liver, muscle, and fat cells. It also stimulates Source (1 mark), function (2 marks)
+glycogen synthesis, inhibits gluconeogenesis, and ensures proper
+energy storage and utilization in the body.
+
+MARKING SCHEME (3 Marks)
+
+Q.6 What are catecholamines? Give examples.
+
+Ans. Catecholamines are hormones derived from the amino acid tyrosine,
+secreted mainly by the adrenal medulla. They are involved in the fight- MARKING SCHEME (3 Marks)
+or-flight response, preparing the body for stress by increasing heart | * ee (2 marks),
+rate, blood pressure, and glucose levels. Examples include adrenaline
+(epinephrine) and noradrenaline (norepinephrine).
+
+Q.7 Explain hormone action using the lock and key model.
+
+Ans. In the lock and key model, the hormone acts as a key that binds
+specifically to a receptor (lock) on the target cell membrane or inside MARKING SCHEME (3 Marks)
+the cef. Only cells with the correct receptor respond to the hormone, | ° Hormone specificity (2 mark),
+ensuring specificity of action. This mechanism explains how hormones
+trigger precise physiological responses in target tissues without
+affecting other cells.
+
+explanation of lock and key model (2
+marks)
+
+S$ studyplusplus.com S$
+
+
+--- Page 7 ---
+
+Q.8 How does the pituitary gland control the thyroid gland?
+
+Ans. The anterior pituitary gland secretes thyroid-stimulating hormone
+(TSH), which binds to receptors on the thyroid gland, stimulating it to TSH and its role (2 mar
+produce thyroxine (T4) and triiodothyronine (T3). These thyroid and its role (1,mark)
+hormones regulate metabolism, growth, development, and energy
+éxpenditure, thus linking the pituitary’s hormonal control to body-wide. metabolic functions.
+
+Q,.9 What is endocrine-to-endocrine communication?
+
+Ans. Endocrine-to-endocrine communication occurs when one endocrine
+gland regulates the activity of another gland through hormone MARKING SCHEME (3 Maris)
+secretion. For example, TSH from the pituitary gland stimulates the | * Definition (2 marks), example (1 mark)
+thyroid gland to release thyroxine, which in turn affects metabolic
+processes. This mechanism ensures coordinated regulation of multiple physiological systems.
+
+MARKING SCHEME (3 Marks)
+
+thyroxine
+
+SLO [B-12-G-25]
+
+Locate the endocrine glands in human body name the hormones they release and their functions;
+
+(pituitary, thyroid, parathyroid, pancreas, adrenal, gonads)
+
+ENDOCRINE SYSTEM OF MAN
+
+ee
+Endocrine system is the type of glandular system, consists of some 20 ductless glands lying in different parts of
+the body. Some of the major endocrine glands, their locations and hormonal secretions are shown in the given figure.
+
+Preston a ADH, Kisistosan
+
+axytocin
+
+regulatory hormones
+Thyroid gland
+Trovothtenine 7)
+i
+
+eter bbe: ACTH Gxictonn (er)
+
+TSH, GH, PRL, FSH, LH
+‘and MSH.
+
+of oxytocin and ADH
+Adrenal glands
+Eech adrenal gland is
+Suddivided into:
+‘Adrenal medulla
+ee,
+Pancreatic islets * Adrenal cortex: y}
+neu, glucagon .
+aldosterone, androgens.
+eo =
+glands Gonads
+Stee Testet ve:
+[Androgens (etpecialiy
+Parathyroid hormone (PTH) Yestosierone), inniow
+“Ovaries (femaiel
+Estrogens, progestines,
+iontin
+
+Figures Major endocrine glands and their locations in turnan
+
+S$ studyplusplus.com S$
+
+
+--- Page 8 ---
+
+The Pituitary Gland: Master Regulator of the Endocrine System:
+Why called master gland:
+
+The pituitary gland, often referred to as the "master gland", plays a central role in the regulation of the
+
+endocrine system. It is located at the base of the brain and is anatomically connected to the hypothalamus, which
+controls its secretory activity through releasing and inhibiting hormones.
+
+4,
+
+5.
+
+The gland is divided into three functional lobes:
+
+e Anterior lobe (adenohypophysis)
+
+e Intermediate lobe (pars intermedia)
+
+© Posterior lobe (neurohypophysis)
+
+Anterior Lobe (Adenohypophysis)
+
+The anterior pituitary secretes six major peptide hormones, most of which regulate the activity of other
+
+endocrine glands. It is thus a key component in hypothalamic-pituitary-target gland axes.
+
+Growth Hormone (GH) / Somatotropic Hormone (STH)
+
+e Secretion isstimulated by growth hormone-releasing factor (GHRF) and inhibited by somatostatin, both
+from the hypothalamus.
+
+e GH promotes growth and development by stimulating:
+o Cell division and cellular growth
+© Amino acid uptake
+© Protein synthesis
+
+Disorders:
+
+e - Deficiency during childhood causes ‘pituitary dwarfism, characterized by proportionate short stature
+with normal intelligence.
+
+e Over-secretion during childhood leads to gigantism, marked by excessive linear bone growth.
+
+© ‘Over-secretion in adults results in acromegaly, where bones no longer elongate but thicken, causing
+enlargement of the hands, feet, skull, jaw, and facial features.
+
+Thyroid-Stimulating Hormone (TSH)
+
+e Controlled by thyrotropin-releasing factor (TRF) from the hypothalamus.
+
+e TSH regulates the activity of the thyroid gland, promoting:
+o. Increase in size and number of thyroid cells
+© Synthesis and release of thyroid hormones (Ts and T,)
+
+Disorders:
+
+e Over-secretion leads to hyperthyroidism.
+
+e Under-secretion results in hypothyroidism.
+
+Adrenocorticotropic Hormone (ACTH)
+
+¢ Stimulated by corticotropin-releasing factor (CRF) from the hypothalamus, especially in response to
+stress (e.g., cold, pain, infection).
+
+e ACTH stimulates the adrenal cortex to release corticosteroids, including cortisol and aldosterone.
+
+Follicle-Stimulating Hormone (FSH)
+
+e  Infemales, FSH stimulates follicular development in the ovaries.
+
+e Inmates, it stimulates spermatogenesis in the seminiferous tubules.
+
+Luteinizing Hormone (LH) / Interstitial Cell-Stimulating Hormone (ICSH)
+
+¢ In females, LH induces ovulation and promotes corpus luteum formation.
+
+e  Inmales, ICSH stimulates testosterone secretion from interstitial (Leydig) cells in the testes.
+
+Prolactin (PRL) / Luteotropic Hormone (LTH)
+
+© Promotes milk production (lactogenesis) in mammary glands following childbirth.
+
+© Itsrelease is modulated by prolactin-inhibiting hormone (dopamine) from the hypothalamus.
+
+Intermediate Lobe (Pars Intermedia)
+
+The intermediate lobe is poorly developed in humans and forms a thin layer between the anterior and
+posterior lobes. It secretes:
+
+S studyplusplus.com S$
+
+
+--- Page 9 ---
+
+Melanocyte-Stimulating Hormone (MSH):
+
+® Regulated by MSH-inhibiting hormone from the hypothalamus.
+
+® Stimulates melanin production by melanocytes in the skin and hair.
+
+e MSH secretion increases during pregnancy, contributing to pigmentation changes.
+
+Posterior Lobe (Neurohypophysis)
+
+The posterior lobe is not glandular. It does not synthesize hormones but serves as a storage and release site
+
+for hormones produced by neurosecretory cells of the hypothalamus. These hormones are transported
+
+down axons and released into the bloodstream in response to neural signals.
+
+Antidiuretic Hormone (ADH) / Vasopressin
+
+e Released during dehydration, low blood volume, or hypotension.
+
+© Promotes water reabsorption in the renal collecting ducts, thereby conserving water and maintaining
+blood pressure.
+
+Disorders:
+
+© Under-secretion causes diabetes insipidus, characterized by:
+©. Excessive dilute urine (polyuria)
+Oo. Intense thirst (polydipsia)
+
+© Over-secretion may impair kidney function and contribute to fluid retention and hyponatremia.
+
+Oxytocin
+
+e Released in pulses during childbirth, stimulating uterine contractions to facilitate labor.
+
+e In nursing mothers, oxytocin triggers milk ejection (let-down reflex) in response to infant suckling by
+stimulating contraction of myoepithelial cells in the mammary glands.
+
+Disorders:
+
+@  Under-secretion may delay or inhibit labor and milk release.
+
+« Excessive secretion during delivery may cause uterine rupture if not medically managed.
+
+Exocrine Glands
+
+In contrast to endocrine glands, exocrine glands secrete substances through ducts onto body surfaces or
+
+into cavities. Examples include:
+
+e Salivary glands (saliva)
+
+Sweat glands (perspiration)
+
+Mammary glands (milk)
+
+Lacrimal glands (tears)
+
+Digestive glands (enzymes)
+
+Thyroid gland (©
+Adrenal gland Testis
+Ovary
+Figure: Role of pituitary hormones
+
+S$ studyplusplus.com S$
+
+
+--- Page 10 ---
+
+Thyroid Gland
+
+Thyroid Gland and Its Hormonal Functions
+
+The thyroid gland is a biloved endocrine organ situated on either side of the trachea, just inferior to the
+
+larynx. It consists of two lateral lobes connected by a narrow isthmus. The gland synthesizes and secretes
+
+three biologically active hormones: triiodothyronine (Ts), thyroxine (T, or tetraiodothyronine), and calcitonin.
+
+Triiodothyronine (T3) and Thyroxine (Ts)
+
+Ts and T, are iodine-containing hormones synthesized by follicular cells of the thyroid gland. Triiodothyronine
+
+(Ts) contains three iodine atoms, while thyroxine (T4) contains four, hence their names. Their secretion is
+
+regulated by thyroid-stimulating hormone (TSH) from the anterior pituitary.
+
+These hormones exert widespread physiological effects, including:
+
+¢ Increasing the basal metabolic rate of cells throughout the body.
+
+© Stimulating glucose catabolism and cholesterol synthesis in the liver.
+
+e Supporting the development and maturation of the nervous system, particularly in the fetus and during
+infancy.
+
+¢ Facilitating muscle development and function.
+
+* Promoting skeletal growth and maturation.
+
+* Enhancing gastrointestinal motility for effective digestion and absorption.
+
+Disorders Related to Ts and Ts
+
+Hyperthyroidism:
+
+Definition:
+
+¢ Hyperthyroidism is a condition marked by
+excessive secretion of T3 and Ts.
+
+Example:
+
+One common form is Graves’ disease. It is
+
+“an autoimmune disorder characterized by
+
+increased: metabolic rate, weight loss,
+irritability, and exophthalmos. (protruding
+eyes).
+
+Hypothyroidism:
+
+Definition:
+
+¢  Itresults from under-secretion of thyroxine.
+
+Example:
+
+e  Inadults, this condition is termed myxedema.
+
+Symptoms:
+
+Reduced metabolic rate,
+
+sensitivity to cold,
+
+puffiness of the face (including periorbital edema),
+
+dry and thickened skin,
+
+thinning of hair (including loss from the scalp and eyebrows),
+
+constipation,
+
+Swelling of the tongue.
+
+Myxedema may also cause goiter, an enlargement of the thyroid gland, often due to lodine deficiency.
+
+Cretinism:
+
+¢ — Ininfants and young children, congenital hypothyroidism causes a condition known as cretinism,
+
+Symptoms:
+
+e Characterized by severe mental retardation,
+
+Stunted physical growth,
+
+* Disproportionate body size.
+
+°
+
+.
+
+Thyroid cartilage a
+
+Thyroid gland
+
+Trachea
+
+(a) «
+Figure: Thyroid and parathyroid gland
+
+Delayed bone maturation, late onset of puberty,
+Infertility are commonly observed in untreated individuals.
+
+S$ studyplusplus.com S$
+
+
+--- Page 11 ---
+
+Calcitonin
+
+Releases from:
+
+Calcitonin is a peptide hormone secreted by the parafollicular (C) cells of the thyroid gland in response to
+
+elevated blood calcium levels.
+
+Functions:
+
+Functions of calcitonin include:
+
+e Enhancing calcium deposition in the bone matrix by stimulating osteoblastic activity.
+
+e = Inhibiting intestinal absorption of calcium.
+
+e Reducing renal reabsorption of calcium, thereby promoting its excretion in the urine.
+
+* Calcitonin plays a more prominent role during childhood, when skeletal growth is rapid, and bone
+remodeling is active.
+
+Deficiency:
+
+In cases of calcitonin deficiency, calcium may not be efficiently deposited into bones, leading to hyper-
+
+calcemia, which can disrupt neuromuscular function and contribute to the formation of kidney stones.
+
+Parathyroid Glands and Calcium Regulation
+
+>»
+
+Location:
+
+In humans, the parathyroid glands are four small, oval-shaped endocrine glands embedded in the posterior
+
+surface of the thyroid gland, typically arranged as two pairs—one pair on each lobe of the thyroid. These
+
+glands are usually light-colored and are crucial for calcium homeostasis.
+
+Secretion:
+
+The principal hormone secreted by the parathyroid glands is parathormone (PTH), also known as parathyroid
+
+hormone. It is the single most critical regulator of blood calcium levels.
+
+© — Secretion of PTH is stimulated by low blood calcium concentrations and is inhibited when blood calcium
+levels are high.
+
+e PTH acts antagonistically to calcitonin, the hormone secreted by the thyroid gland.
+
+Functions of Parathormone
+
+Parathormone maintains blood calcium homeostasis through multiple mechanisms:
+
+© Bone: PTH stimulates osteoclasts, increasing bone resorption and releasing calcium into the bloodstream.
+
+¢ Kidneys: It enhances calcium reabsorption in the renal tubules and reduces phosphate reabsorption.
+
+¢ Intestines: PTH indirectly promotes calcium absorption by stimulating the production of calcitriol (active
+vitamin Ds), which enhances dietary calcium absorption from the gut.
+
+Disorders Related to Parathormone
+
+Over-secretion (Hyperparathyroidism)
+
+ Hyperparathyroidism is often caused by a tumor of the parathyroid gland (parathyroid adenoma).
+
+e Excessive PTH causes increased calcium release from bones, leading to bone demineralization,
+softening, and increased risk of spontaneous fractures.
+
+© Blood calcium levels become abnormally high (hypercalcemia), which may:
+o Depress the activity of the central nervous system, causing fatigue and muscle weakness.
+o Result in the formation of kidney stones due to the precipitation of excess calcium salts in the
+
+urinary tract.
+
+Under-secretion (Hypoparathyroidism)
+
+© . Hypoparathyroidism results in hypocalcemia, a condition where blood calcium levels fall below normal.
+
+e Low calcium levels increase the excitability of neurons, which may lead to tetany—a condition
+characterized by prolonged, involuntary muscle contractions.
+
+Pancreas: Dual Role in Digestion and Endocrine Regulation
+
+>
+
+The pancreas is a unique organ that performs both exocrine and endocrine functions.
+Exocrine Function
+
+The majority of pancreatic tissue is exocrine in nature. This portion of the gland is composed of acinar cells,
+which produce and secrete digestive enzymes into the duodenum through the pancreatic duct. These
+enzymes are essential for the breakdown of carbohydrates, proteins, and lipids in the smat! intestine.
+
+S$ studyplusplus.com S$
+
+
+--- Page 12 ---
+
+> — Endocrine Function
+Scattered throughout the exocrine tissue are clusters of specialized endocrine cells known as the Islets of
+Langerhans. These islets are responsible for the secretion of hormones that regulate blood glucose levels.
+There are two principal types of hormone-secreting cells within the islets:
+
+Beta (B) cells: More numerous, they secrete insulin.
+
+Alpha (a) cells: Fewer in number, they secrete glucagon.
+
+Both cell types respond directly to fluctuations in blood glucose concentrations.
+
+Insulin
+
+Insulin is secreted by B-cells in response to elevated blood glucose levels, such as those observed after a
+carbohydrate-rich meal.
+
+> Functions of Insulin:
+
+Lowers blood glucose by facilitating glucose uptake into most body cells, especially skeletal muscle and
+adipose tissue.
+
+Stimulates glycogenesis (conversion of glucose to glycogen) in the liver and muscles.
+
+Enhances cellular respiration by promoting the utilization of glucose.
+
+Promotes the conversion of excess glucose into lipids for storage.
+
+Inhibits gluconeogenesis, the synthesis of glucose from non-carbohydrate sources.
+
+>» Disorders Associated with Insulin:
+
+Under-secretion of insulin leads to diabetes mellitus, a metabolic disorder characterized by
+hyperglycemia (elevated blood glucose), and the presence of glucose in the urine (glycosuria).
+
+Excess insulin secretion can result in hypoglycemia, where glucose levels fall below the normal range,
+potentially impairing neuromuscular function, leading to confusion, weakness, and in severe cases,
+unconsciousness.
+
+Glucagon
+
+Glucagon is secreted by a-cells when blood glucose levels fall, such as during fasting or between meals. Its
+secretion is also stimulated by the sympathetic nervous system. Conversely, high glucose levels, insulin, and
+somatostatin inhibit glucagon release.
+
+> Functions of Glucagon:
+
+Increases blood glucose by stimulating:
+
+© Glycogenolysis (breakdown of glycogen to glucose) in the liver.
+
+© Gluconeogenesis (formation of glucose from non-carbohydrate sources).
+
+Acts antagonistically to insulin, counteracting its glucose-lowering effects and maintaining glucose
+homeostasis.
+
+Figure: Pancreas and Islets of Langerhans
+
+S$ studyplusplus.com $
+
+
+--- Page 13 ---
+
+Adrenal Glands and Their Hormonal Functions
+
+>
+
+Location:
+The adrenal glands are a pair of endocrine glands located on top of each kidney, hence also known as
+suprarenal glands. Each adrenal gland consists of two distinct regions:
+© The adrenal medulla (inner region)
+e The adrenal cortex (outer region)
+These regions differ in structure, function, and embryological origin, and they secrete different classes of
+hormones.
+Adrenal Medulla
+The adrenal medulla is composed of chromaffin cells, which are modified sympathetic neurons. It functions
+as part.of the sympathoadrenal system, secreting catecholamines in response to acute stress, particularly
+under stimulation by the sympathetic nervous system.
+Hormones of the Adrenal Medulla:
+¢ Epinephrine (adrenaline)
+© Norepinephrine (noradrenaline)
+These hormones are secreted during emergency or “fight-or-flight” situations. They prepare the body for
+immediate physical action by producing a synergistic effect—both hormones target similar systems but
+differ in their intensity and specific actions.
+e Epinephrine is the more potent stimulator of:
+© Metabolic rate (increased glucose availability)
+o Bronchodilation (widening of airways)
+© Increased blood flow to skeletal muscles and the heart
+Norepinephrine exerts a stronger effect on:
+©. Peripheral vasoconstriction, leading to increased systemic vascular resistance
+The combined result is a rise in heart rate, respiratory rate, blood pressure, and energy availability to meet
+the demands of stress.
+Disorders Related to Medullary Hormones:
+© Over-secretion may lead to persistent hypertension, tachycardia, and aggressive behavior, even in the
+absence of stress stimuli.
+© Under-secretion impairs the body's ability to cope with acute stress, resulting in reduced emergency
+responsiveness.
+Adrenal Cortex
+The adrenal cortex produces steroid hormones, collectively known as corticosteroids, under the reguiation
+of adrenocorticotropic hormone (ACTH) from the anterior pituitary.
+Major Hormonal Classes:
+(i) Glucocorticoids (e.g., cortisol, cortisone):
+o Regulate carbohydrate, protein, and lipid metabolism.
+© Maintain blood glucose levels during fasting or stress.
+© Suppress inflammatory and immune responses.
+(ii) Mineralocorticoids (e.g., aldosterone):
+© Regulate the-balance of sodium, potassium, and water.
+© Promote sodium reabsorption and potassium excretion in the kidneys.
+© Play acritical role in blood volume and pressure regulation.
+(ill) Adrenal androgens (e.g., small amounts of testosterone):
+© Contribute to the development of secondary sexual characteristics, especially in females.
+oO In males, their role is minimal due to the dominant production of testosterone by the testes.
+Disorders Related to Cortical Hormones:
+« Under-secretion of adrenal cortical hormones causes Addison’s disease, characterized by:
+© General metabolic disturbances.
+© Muscle weakness.
+© Electrolyte imbalance, especially sodium loss.
+© Extreme sensitivity to stress, such as exposure to cold, which may result in collapse or death,
+
+S$ studyplusplus.com S$
+
+
+--- Page 14 ---
+
+¢ Over-secretion, particularly of glucocorticoids, leads to Cushing’s syndrome, marked by:
+Excessive protein catabolism.
+
+Muscle wasting and bone demineralization.
+
+Redistribution of body fat (e.g., "moon face" and "buffalo hump").
+
+Suppression of the immune system.
+
+o000
+
+Kidney
+
+Cortex
+Figure: Adrenal gland
+
+Gonads (Testes and Ovaries)
+> Testes:
+
+The testes are the male reproductive organs responsible for the production of sperm and the secretion of
+
+the male sex hormone, testosterone. Testosterone is synthesized by the interstitial (Leydig) cells located
+
+between the seminiferous tubules, under the influence of interstitial cell-stimulating hormone (ICSH), a
+
+gonadotropin secreted by the anterior pituitary.
+
+e During puberty, testosterone promotes the maturation of male reproductive organs and the emergence
+of secondary sexual characteristics such as increased facial and body hair, deepening of the voice, and
+greater muscle mass.
+
+e It plays a central role in initiating and maintaining the male libido (sex drive).
+
+e Testosterone is essential for the process of spermatogenesis and the maintenance of the male
+reproductive system in its fully functional adult state.
+
+e Under-secretion of testosterone may lead to the development of feminized features, reduced libido,
+impaired sperm production, and male infertility.
+
+> Ovaries (Female Gonads)
+
+The ovaries are the female reproductive organs that produce ova and secrete the sex hormones estrogen
+
+and progesterone.
+
+e Estrogen is primarily responsible for the development of female secondary sexual characteristics such
+as breast development, widening of the pelvis, and the distribution of body fat. It also regulates the
+menstrual cycle by promoting the proliferation of the uterine lining (endometrium).
+
+e Progesterone plays a vital role in preparing the uterus for inplatary’ of a fertilized egg and in
+maintaining pregnancy.
+
+> Role of Progesterone
+
+e Progesterone is secreted by the corpus luteum in response to luteinizing hormone (LH) during the
+second half of the menstrual cycle.
+
+* Inpregnancy, the placenta becomes the major source of progesterone.
+
+This hormone thickens and vascularizes the uterine lining to support implantation and sustains the pregnancy.
+
+¢ _ Italso suppresses ovulation by inhibiting the secretion of follicle-stimulating hormone (FSH), preventing
+the maturation of additional follicles during the pregnancy cycle.
+
+e Under-secretion of progesterone during the menstrual cycle may result in insufficient endometrial
+development, reducing the chances of implantation and potentially leading to early menstruation.
+
+« Under-secretion during pregnancy may cause failure to maintain the uterine lining, increasing the risk
+of miscarriage.
+
+Pineal Gland
+¢ The pineal gland is a small structure located in the brain.
+
+S$ studyplusplus.com S$
+
+
+
+--- Page 15 ---
+
+e It secretes melatonin, which regulates circadian rhythms and sleep-wake cycles. Its production is
+influenced by light exposure.
+
+Thymus Gland
+e The thymus is located behind the sternum and is more prominent in children.
+e It secretes thymosins, which play a role in the development and differentiation of T lymphocytes,
+essential for adaptive immunity.
+
+Under certain conditions, such as severe blood loss, exceptionally large amounts of ADH are
+released, causing a rise in blood pressure. The alternative name for this hormone, vasopressin,
+reflects this particular effect.
+
+Ta (also known as thyroxin) is the major hormone, about 90%, secreted by the thyroid; Ts is only 10%
+Ts is four times more potent than Ts; however, action duration of Ts is four times more than Ts.
+Graves’ disease is believed to be an autoimmune disease. The serum of patients contains
+abnormal antibodies that mimic TSH and continuously stimulate thyroxin release. The symptoms
+include high metabolic rate, rapid and irregular heartbeat, increased breathing rate, increased
+body temperature, sweating and weight loss despite adequate food intake. Mostly exophthalmia
+(protrusion of the eyeballs) results from Graves's disease and is a classic symptom of
+hyperthyroidism.
+
+Hormones released from kidney
+
+Renin monitors blood pressure and takes corrective action if it drops.
+
+Erythropoietin acts on the bone marrow to increase the production of red blood cells. Stimuli such
+as bleeding or moving to high altitudes (where oxygen is scarcer) trigger the release of EPO.
+Calcitriol acts on the cells of the intestine to promote the absorption of calcium from the diet.
+Pancreatic acinar cells are functional units of the exocrine pancreas. They synthesize, store, and
+secrete inactive digestive enzymes into the lumen of the acinus.
+
+Table: Summary of Endocrine Glands in Humans
+
+[Endocrine Gland Location | Hormones Secreted | MajorFunctions
+Pituitary Gland Base of brain, e@ GrowthHormone (GH)— | © Stimulates body growth and
+(Anterior lobe) below Thyroid protein synthesis
+hypothalamus © Stimulating Hormone (TSH) | ¢ Regulates thyroid gland
+e Adrenocorticotropic activity
+Hormone (ACTH) © Stimulates adrenal cortex
+e Follicle-Stimulating © Controls gamete production
+Hormone (FSH) and gonadal hormone
+e Luteinizing Hormone secretion
+(LH/ICSH) © Promotes milk production
+e Prolactin (PRL)
+(intermediate lobe) | and posterior lobes Hormone (MSH) production in skin and hair
+Pituitary Gland Base of brain, © Antidiuretic Hormone ¢ Promotes water reabsorption
+(Posterior lobe) stores hormones (ADH) — Oxytocin in kidneys
+from hypothalamus © Triggers uterine contractions
+and milk ejection
+© Increases metabolic rate
+© Supports nervous system
+development
+¢ Regulates blood calcium by
+promoting deposition in
+bones
+
+Thyroid Gland In the neck, around
+trachea below
+
+larynx
+
+© Triiodothyronine (Ts)
+© Thyroxine (Ts)
+© Calcitonin
+
+S$ studyplusplus.com S$
+
+
+--- Page 16 ---
+
+Parathyroid Glands | Posterior surface of Parathyroid Hormone Increases blood calcium levels.
+(4) thyroid gland. (PTH) Stimulates bone resorption,
+calcium absorption from
+intestines, and reabsorption
+
+Adrenal Glands Inner part of 3 Epinephrine (adrenaline) Initiates “fight-or-flight”
+(Medulla) adrenal gland, on Norepinephrine response
+top of each kidney (noradrenaline) Increases heart rate, blood
+pressure, respiration rate, and
+glucose release
+Adrenal Glands Outer layer of Glucocorticoids (e.g., Regulate metabolism and
+(Cortex) adrenal gland, on cortisol) immune response
+top of each kidney Mineralocorticoids (e.g., Control electrolyte and water
+aldosterone) balance
+Androgens (e.g., Contribute to secondary sexual
+testosterone in small characteristics (minor role)
+amounts) :
+Pancreas (Islets of | Behind the Insulin (from B-cells) Insulin lowers blood glucose
+Langerhans) stomach Glucagon (from a-cells) by promoting uptake into cells
+Glucagon raises blood glucose
+by stimulating glycogen
+breakdown in the liver
+
+Pelvic cavity e Estrogen e Regulate menstrual cycle
+Progesterone Promote development of
+female secondary sexual
+characteristics
+Maintain pregnan
+Testes (in males) © Testosterone Stimulates development of
+male secondary sexual
+characteristics
+Promotes sperm production
+Deep in the brain, Regulates circadian rhythms
+near the center, (sleep-wake cycle)
+above the midbrain Influences seasonal biological
+Thymus Gland Upper chest, e Thymosins Stimulate maturation and
+behind the differentiation of T
+sternum, between lymphocytes
+lungs Support immune function
+
+Relate problems associated with the imbalance of these hormones.
+
+Table: Disorders Associated with Human Endocrine Glands
+
+Endocrine Gland | Disorder| Description ———
+
+Under-secretion of growth hormone (GH) during childhood
+Anterior Pituitary Dwarfism i
+
+results in short stature with normal body proportions and
+Sg studyplusplus.com S$
+
+mental development.
+
+
+
+--- Page 17 ---
+
+Impaired labour
+Lay contractions during childbirth.
+i strong contractions and
+Uterine rupture Excess oxytocin may cause dangerously iB
+rupture of the uterine wall.
+
+Under-secretion of antidiuretic hormone (ADH) leads to
+Diabetes insipidus fon ae - E Z
+excessive dilute urine and persistent thirst.
+Kidney dysfunction Over-secretion of ADH may cause water retention and interfere
+Posterior Pituita with kidney function. ¢
+Ad | Impaired abour | Deficient oxytocin secretion disrupts normal uterine
+i ii sed metabolic rate,
+Hyperthyroidism Overproduction of thyroxine causes increa:
+weight loss, and nervousness.
+i i i low metabolism, weight
+Thyroid Gland Hypothyroidism Deficient thyroxine secretion leads to slo’ ig
+gain, and fatigue.
+
+| Gigantisin | Over-secretion of GH during childhood causes abnormal
+increase in height before bone growth plates close.
+
+Abnormal enlargement of the thyroid gland, often due to iodine
+deficiency.
+
+Hypercalcemia Over-secretion of parathyroid hormone (PTH) increases blood
+
+calcium, weakening bones and causing kidney stones.
+
+Under-secretion of PTH results in low calcium levels, leading to
+muscle spasms and cramps.
+
+x 3 3 ii i ie causes fatigue,
+Addison's disease Under- secretion of cortisol and aldosteron igue,
+hypotension, and electrolyte imbalance.
+
+Cushing’s syndrome Excess cortisol leads to central obesity, high blood sugar, and
+muscle weakness.
+i nsic
+Hyperaldosteronism Overproduction of aldosterone results in hypertension and low
+potassium levels.
+Tumor causing overproduction of adrenaline and
+Pheochromo ‘i
+noradrenaline, leading to episodic hypertension.
+
+Parathyroid Glands
+
+Adrenal Medulla = 5
+Persistent Sustained high blood pressure due to excessive catecholamine
+hypertension secretion.
+
+Diabetes mellitus Insufficient insulin or insulin resistance causes chronic high
+blood glucose levels.
+Hypoglycemia Excessive insulin lowers blood sugar to dangerous levels,
+causing confusion, weakness, or coma.
+Irregular menstrual | Hormonal imbalance in estrogen and progesterone disrupts
+cles menstrual regulation.
+Infertility Failure to ovulate due to insufficient gonadotropic hormone
+secretion.
+Polycystic ovary Hormonal disorder with ovarian cysts, irregular menstruation,
+ndrome (PCOS) and elevated androgens.
+Delayed puberty Low testosterone secretion delays onset of secondary sexual
+characteristics.
+
+S studyplusplus.com S$
+
+Pancreas (Islets of
+Langerhans)
+
+
+
+--- Page 18 ---
+
+Infertility Reduced sperm production-due to hormonal imbalance affects
+fertility.
+Underdeveloped Deficiency of testosterone results in poor development of male
+male features physical traits.
+Sleep disorders Imbalance in melatonin secretion disrupts circadian rhythms,
+Pineal Gland leading to insomnia or excessive sleepiness.
+Seasonal affective | Reduced melatonin production during winter months may
+disorder (SAD) contribute to depressive symptoms.
+Immunodeficiency Underactivity of thymus impairs-T cell maturation, weakening
+immune defense especially in early life.
+Autoimmune Thymic dysfunction may cause the immune system to attack the
+conditions body’s own tissues. 7
+
+SLOs Based (MCQs)
+
+ENDOCRINE SYSTEM OF MAN
+Which hormone is responsible for stimulating
+
+Over-secretion of parathormone leads to: j
+
+body growth and cell division? A. Tetany * B. Acromegaly
+A. TSH B. GH C. Hypercalcemia D. Hypoglycemia
+C. ACTH D. ADH 10. The hormone oxytocin is released in response to:
+2. | Which hormone increases melanin production in A. Stress B. Dehydration
+the skin and hair? C. Suckling D. Low calcium levels
+A. MSH B. ACTH 11. Which of the following glands secretes melatonin?
+C. FSH D. TSH ‘A. Thymus B. Adrenal
+3. Which gland is referred to as the “master C. Pineal D. Pancreas
+gland”? 12. Which hormone increases the metabolic rate of
+A. Thyroid B. Hypothalamus the body? R
+C. Adrenal gland D. Anterior pituitary A. ADH B.Ts
+4. — Gigantism is caused by: C.LH D. PRL
+A. Over-secretion of thyroxine 13, Under-secretion of insulin causes: :
+B, Over-secretion of GH in childhood A. Tetany B. Diabetes mellitus
+C. Under-secretion of GH in childhood C. Diabetes insipidus D. Addison’s disease
+D. Over-secretion of ACTH 14. ACTH stimulates: ae
+5.  Whatis the primary function of ADH? a Ad renal grax 8. Adrenal medulla
+A. Stimulates ovulation C. Pineal gland D. Pancreas
+B. Promotes water reabsorption in kidneys 15. heviatasiae 2. Le eee hormone?
+C. Increases metabolic rate ADH 5. calehontn
+
+D. Triggers labor contractions
+6. Hypocalcemia is a result of:
+A. Over-secretion of PTH
+
+16. ‘Which hormone is ‘associated with the
+development of secondary sexual characteristics
+
+: in males?
+
+B. Under-secretion of calcitonin A. LH B, FSH.
+
+C. Under-secretion of PTH C. Testosterone D. ACTH
+
+D. Excess insulin 17. Cretinism results from under-secretion of:
+7. Diabetes insipidus is caused by deficiency of: A.GH B.T.
+
+A. ADH B. Insulin C. Insulin D. ADH
+
+C. Cortisol D. TSH 18. What is the function of prolactin?
+8. Which gland produces hormones involved in the A. Stimulate ovulation
+
+fight-or-flight response? B. Promote milk production
+
+A. Pancreas B. Adrenal medulla C. Control calcium levels
+
+C. Thyroid D. Pineal gland D. Regulate adrenal cortex
+
+Sg studyplusplus.com $
+
+
+--- Page 19 ---
+
+19. The thymus gland is involved in: A. Oxytocin B. FSH
+A. Releasing digestive enzymes c.LH D. PRL
+B. Regulating calcium 25. Which hormone is regulated -by melatonin
+C. Maturation of T-lymphocytes production in a circadian rhythm?
+D. Metabolism A. ADH B. Cortisol
+20. Acromegaly is due to: C. Melatonin - D. Ts;
+A. Under-secretion of GH in adults 26. Ahormone that increases blood calcium level is:
+B. Over-secretion of GH in adults A. Calcitonin B. PTH
+C. Under-secretion of insulin C. TSH D. Cortisol
+D. Over-secretion of thyroxine 27. Graves’ disease is caused by:
+21. Addison's disease results from: A. Over-secretion of insulin
+A. Over-secretion of adrenal cortex hormones Hs ee
+B Deficieney of esulln D. Over-secretion of testosterone
+C. Under-secretion of adrenal cortex hormones
+D. Over-secretion of PTH 28. Which hormone regulates water balance in the
+22. The hormone calcitonin is secreted by: reel odin B. ADH
+A. Parathyroid gland B. Thyroid gland CLH D. Cortisol
+C. Pituitary gland D. Adrenal cortex 29. Tetany results from:
+
+23. Which endocrine disorder involves spontaneous
+fractures and kidney stones?
+
+A. Diabetes mellitus B. Acromegaly
+
+C. Hyperparathyroidism _D. Addison's disease
+Which hormone triggers labor contractions?
+
+St A ote ee ea ee ead
+[11.¢ [12.8 13.8 [ 14. a | 15.8 | 16. |
+ce ae aecctaen [eacet Ee
+
+Short Questions
+
+Q.1 Why is the anterior pituitary called the “master gland”?
+
+Ans. The anterior pituitary is called the master gland because it secretes
+multiple hormones that regulate the activity of other endocrine glands,
+thus controlling overall endocrine function. Key hormones include
+Growth Hormone (GH), which stimulates body growth; Thyroid-
+Stimulating Hormone (TSH), which controls thyroid hormone production; Adrenocorticotropic Hormone
+(ACTH), which regulates adrenal cortex activity; Follicle-Stimulating Hormone (FSH) and Luteinizing
+Hormone (LH), which control reproductive organs; and Prolactin (PRL), which stimulates milk production.
+
+A. Low levels of thyroxine B. Low calcium levels
+
+C. Excess growth hormone D. High blood sugar
+30. The thymus gland secretes:
+
+A. TSH
+
+C. Oxytocin
+
+B. Thymosin
+
+24, D. Cortisol
+
+MARKING SCHEME (3 Marks)
+mark), mames of
+
+© Definition (1
+hormones (2 marks)
+
+Through these hormones, the anterior pituitary indirectly influences metabolism, growth, stress response,
+and reproductive processes, establishing its central role in endocrine coordination and homeostasis.
+Q.2 What is the function of growth hormone and what disorders are linked to its imbalance?
+Ans. Growth hormone (GH), secreted by the anterior pituitary, stimulates
+cell growth, division, and protein synthesis, promoting overall body MARKING SCHEME (3 Marks)
+growth, muscle development, and bone elongation. It also influences | * Function (1 mark), disorders (2 marks)
+metabolic activities, including fat breakdown and glucose regulation.
+Deficiency of GH in childhood results in dwarfism, characterized by reduced stature and delayed
+development. Conversely, over-secretion in children causes gigantism, with excessive height and body size,
+while in adults it leads to acromegaly, marked by enlarged hands, feet, and facial features. Proper GH levels
+are critical for normal growth, metabolism, and tissue repair.
+
+°
+
+S$ studyplusplus.com
+
+
+--- Page 20 ---
+
+Q.3 Describe the role of ADH in the human body.
+
+Ans. Antidiuretic hormone (ADH), produced by the posterior pituitary,
+promotes water reabsorption in the kidney’s collecting ducts, MARKING SCHEME (3 Marks)
+reducing urine volume and preventing dehydration. It helps maintain | * Function (15 marks), imbalance
+blood osmolarity and fluid balance. ADH secretion is triggered by high disorder (1.5 marks)
+blood osmolarity or low blood volume. Deficiency of ADH causes
+diabetes insipidus, characterized by excessive urination (polyuria), extreme thirst (polydipsia), and risk of
+dehydration. Overproduction of ADH can lead to water retention, hyponatremia, and edema. Through
+
+precise regulation of water balance, ADH ensures homeostasis, stabilizing blood pressure and osmotic
+conditions critical for cell function.
+
+Q.4 ‘How does parathormone regulate calcium levels th the blood?
+
+Ans. Parathormone (PTH), secreted by the parathyroid glands, raises blood
+calcium levels through multiple mechanisms. It stimulates osteoclast Saxeners Stems 6 eens)
+activity, breaking down bone to release calcium. It enhances intestinal
+calcium absorption by activating vitamin D, and reduces renal calcium
+excretion, conserving calcium in the blood. PTH also indirectly affects phosphate balance by increasing
+phosphate excretion. Deficiency of PTH can cause hypocalcemia, leading to muscle cramps and tetany,
+while excess PTH leads to hypercalcemia, causing weakened bones, kidney stones, and abnormal heart
+
+rhythms. By finely tuning calcium levels, PTH is vital for neuromuscular function, bone integrity, and blood
+clotting.
+
+Q.5 What happens in the body during hyperparathyroidism?
+
+Ans. Hyperparathyroidism occurs when excess parathormone (PTH) is
+secreted, causing elevated blood calcium levels. This leads to bone MARKING SCHEME (3 Marks)
+softening and increased risk of fractures due to excessive calcium | * 1markeach for three main effects
+resorption. Muscle weakness and fatigue occur as calcium imbalances
+affect neuromuscular function. Additionally, calcium deposition in the kidneys can cause kidney stones, and
+hypercalcemia may result in abdominal pain, nausea, and cognitive disturbances. Chronic
+
+hyperparathyroidism can lead to osteoporosis, hypertension, and cardiovascular complications. Early
+diagnosis and treatment are-essential to prevent severe skeletal and renal complications.
+
+Q.6 Describe the symptoms of hypothyroidism in children.
+
+Ans. Hypothyroidism in children is marked by cretinism, a condition arising
+from insufficient thyroid hormone secretion. Key symptoms include MARKING SCHEME (3 Marks)
+stunted growth, resulting in short stature and delayed skeletal | * 1markeach for three main symptoms
+development; mental retardation, causing cognitive impairment,
+learning difficulties, and delayed language acquisition; and delayed physical development, such as late
+eruption of teeth, slow reflexes, and underdeveloped muscles. Additional signs may include dry skin, puffy
+face, a protruding tongue, and lethargy. Early diagnosis and thyroid hormone replacement therapy are
+
+crucial to prevent irreversible developmental delays. Monitoring hormone levels during infancy ensures
+normal physical and mental growth, highlighting the thyroid’s essential role in childhood development.
+
+Q.7_ What are the functions of the adrenal medulla hormones?
+
+Ans. The adrenal medulla secretes epinephrine (adrenaline) and
+norepinephrine (noradrenaline), catecholamine hormones that MARKING SCHEME (3 Marks)
+regulate the body’s response to stress. They initiate the fight-or-flight 1 mark each for three main functions
+response by increasing heart rate, ensuring adequate blood supply to ; .
+muscles. They raise blood pressure through vasoconstriction, supporting circulatory demands during
+emergencies. They also stimulate glucose release from the liver, providing immediate energy for
+heightened physical activity. Additionally, these hormones enhance respiratory rate, pupil dilation, and
+alertness, preparing the body to respond rapidly to threats. Their coordinated action allows quick adaptation
+to stressors, maintaining homeostasis during acute challenges.
+
+Q.8 How do insulin and glucagon work antagonistically?
+
+Ans, Insulin and glucagon, secreted by the pancreas, maintain blood ‘glucose homeostasis through opposing
+actions. Insulin, released by B-cells, lowers blood glucose by stimulating glucose uptake in muscle and
+
+© Function (1.5 marks), imbalance
+disorder (1.5 marks)
+
+S$ studyplusplus.com $
+
+ele
+
+
+--- Page 21 ---
+
+adipose tissues and promoting glycogen synthesis in the liver.
+
+Glucagon, secreted by a-cells, raises blood glucose by stimulating MARKING SCHEME (3 Marks)
+glycogen breakdown (glycogenolysis) and glucose production | « Role of insulin (1.5 marks), role of
+(gluconeogenesis) in the liver. Their antagonistic interplay ensures glucagon (2.5 marks)
+
+stable glucose levels between meals and during fasting. A proper
+balance prevents hyperglycemia or hypoglycemia, supporting energy supply for cells, particularly the brain.
+Dysregulation can lead to diabetes mellitus or other metabolic disorders.
+
+Q.9 Describe the role of oxytocin in childbirth and lactation.
+
+Ans. Oxytocin, secreted by the posterior pituitary, plays a critical role in
+childbirth and lactation. During labor, it stimulates uterine | , Aiepapereng rasan in
+contractions, facilitating the progressive dilation of the cervix and lactation (1.5 marks) ‘
+delivery of the fetus. Its pulsatile release is enhanced by. cervical
+stretching, creating a positive feedback loop. In lactation, oxytocin triggers milk ejection from mammary
+alveoli in response to infant suckling, enabling efficient breastfeeding. It also promotes maternal bonding
+and may reduce postpartum bleeding by contracting uterine muscles. Oxytocin’s dual role ensures successful
+parturition and nourishment of the newborn, illustrating the hormone’s essential functions in reproduction.
+
+Q.10 What is the function of melatonin and where is it secreted from?
+
+Ans.: Melatonin is a hormone secreted by the pineal gland in response to
+darkness, regulating the sleep-wake cycle or circadian rhythm. It
+promotes restful sleep by signaling to the body that it is nighttime,
+thereby influencing body temperature, hormone secretion, and
+alertness. Melatonin also has antioxidant properties, supports immune function, and may play a role in
+reproductive timing in seasonal breeders. Its secretion decreases with light exposure and increases in
+darkness, coordinating daily physiological rhythms. Proper melatonin levels are essential for healthy sleep
+patterns, mental alertness, and overall circadian balance.
+
+MARKING SCHEME (3 Marks)
+‘© Function (2 marks), location (1 mark)
+
+Explain th rosecretory role of hypothalamus.
+
+NEUROSECRETORY ROLE OF THE HYPOTHALAMUS
+
+The hypothalamus is a small but critical region of the brain, located below the thalamus and forming the
+floor of the third ventricle. It serves as a link between the nervous and endocrine systems, integrating neural
+signals and hormonal responses to regulate homeostasis, growth, reproduction, and stress responses.
+
+Neurosecretory Cells of the Hypothalamus
+Specialized neurons, called neurosecretory cells, in the hypothalamus produce hormones that influence the
+activity of the pituitary gland. Unlike typical neurons that transmit electrical impulses, these cells synthesize and
+release chemical messengers directly into the bloodstream, functioning as both neurons and endocrine cells.
+> Hypothalamic Hormones and Their Functions
+The hypothalamus releases two main types of hormones: releasing/inhibiting hormones and directly
+secreted neurohormones.
+1, Releasing and Inhibiting Hormones:
+These hormones are secreted into the hypophyseal portal system to control the anterior pituitary
+gland. Examples include:
+© Thyrotropin-releasing hormone (TRH): Stimulates secretion of thyroid-stimulating hormone (TSH).
+© Corticotropin-releasing hormone (CRH): Stimulates adrenocorticotrapic hormone (ACTH) release.
+© Growth hormone-releasing hormone (GHRH) and Growth hormone-inhibiting hormone (GHIH or
+somatostatin): Regulate growth hormone secretion.
+° eanauouopln relecsing hormone (GnRH): Stimulates FSH and LH release, controlling reproductive
+1. Directly Secreted Neurohormones:
+Some hypothalamic hormones are stored in the posterior pituitary and released into the bloodstream
+as needed. Examples include:
+© Antidiuretic hormone (ADH): Regulates water balance by acting on the kidneys.
+©. Oxytocin: Stimulates uterine contractions during childbirth and milk ejection during lactation.
+
+S$ studyplusplus.com S$
+
+
+--- Page 22 ---
+
+>
+
+Significance of the Neurosecretory Function
+
+Through its neurosecretory role, the hypothalamus acts as the master regulator of the endocrine system.
+It ensures that hormonal secretions are coordinated with neural signals, allowing the body to respond to
+internal and external stimuli effectively. This integration is essential for maintaining homeostasis, regulating
+growth and metabolism, controlling reproductive functions, and managing stress responses. é
+The hypothalamus, through its neurosecretory cells, bridges the nervous and endocrine systems. By
+releasing both regulatory and direct hormones, it controls the pituitary gland and indirectly governs many
+other endocrine glands, making it a central coordinator of the body’s chemical communication network.
+
+Table 6.2 Hypothalamic hormones and their effect on pituitary gland
+
+Hormone from the hypothalamus Anterior pituitary response
+Growth hormone releasing factors (GHRF) _| Secretion of growth hormone (GH)
+
+Secretion of adrenocorticotrophic hormone (ACTH
+Secretion of FSH and.LH
+
+The pineal gland is’ a small, pea-shaped
+endocrine organ located deep within the brain,
+attached to the roof of the third ventricle near
+the hypothalamus. Its principal hormone is
+melatonin, which plays a key role in regulating
+the circadiar ~ —the body's internal clock
+that controls sleep-wake cycles and other daily
+physiological processes. aN a (a
+The thymus gland, situated behind the sternum and between the lungs, is most active and reaches its
+maximum size during childhood. It secretes a group of hormones collectively referred to as thymosins,
+which are essential for the development of the immune system. Immature lymphocytes, produced in
+the bone marrow, migrate to the thymus, where thymosin facilitates their differentiation into T
+lymphocytes (T cells)—a vital component of adaptive immunity.
+
+SCIENCE TITBITS
+Other Endocrine Tissues/Cells ;
+
+Apart from classical endocrine glands, various other organs and tissues also produce hormones,
+although their primary function may not be endocrine in nature. These include the following:
+© Gastrointestinal Hormones:
+
+© Gastrin is secreted by the stomach wall. It enhances the secretion of pepsinogen and
+hydrochloric acid, aiding in digestion.
+
+o  Secretin and cholecystokinin (CCK) are produced by the epithelial cells of the duodenum.
+These hormones regulate pancreatic enzyme secretion and stimulate bile release from the
+liver and gallbladder.
+
+e Placenta:
+The placenta, a temporary organ formed during pregnancy, acts as an endocrine gland by
+secreting hormones such as progesterone, which is crucial for the maintenance of pregnancy.
+
+e Prostaglandins:
+
+Prostaglandins are a group of locally acting lipid-based hormones synthesized in various tissues.
+
+They are involved in diverse physiological functions including inflammation, pain regulation,
+
+smooth muscle contraction, and protection during infections.
+
+e Endorphins:
+
+These peptide hormones are produced by neurons in the brain and spinal cord. Endorphins bind
+
+to opioid receptors and inhibit pain perception, thereby acting as natural analgesics.
+
+S$ studyplusplus.com S$
+
+
+--- Page 23 ---
+
+SLO [B-12-G-28]
+Outline the concept of Feedback mechanism of hormones. Describe positive feedback with reference
+
+to oxytocin and negative feedback with reference to insulin and glucagon.
+
+FEEDBACK MECHANISM OF HORMONES
+
+Feedback mechanisms are fundamental contro! processes in biological systems, where the output or
+product of a process regulates the process itself. These mechanisms operate by detecting deviations from a set
+point and initiating responses to either correct or reinforce the change. In the endocrine system, feedback
+mechanisms are essential for maintaining homeostasis and regulating hormone levels. There are two primary
+types: negative feedback, which opposes the change, and positive feedback, which amplifies it.
+
+Positive Feedback Mechanism
+Positive feedback occurs when the end product of a process enhances or accelerates its own production.
+Unlike negative feedback, positive feedback responses are typically not homeostatic and are less common, usually
+operating in processes that require a definitive, self-amplifying outcome.
+> Example: Childbirth and Oxytocin
+During labor, early uterine contractions push the baby’s head against the cervix, causing it to stretch and dilate.
+®  Stretch-sensitive receptors in the cervix detect this pressure and send signals to the hypothalamus.
+® Inresponse, the hypothalamus stimulates the posterior pituitary to release oxytocin.
+* Oxytocin strengthens and increases the frequency of uterine contractions, producing further pressure
+on the cervix and causing additional oxytocin release.
+This self-amplifying cycle continues until the baby and placenta are expelled, at which point the stimulus is
+removed, terminating the feedback loop. Positive feedback ensures a rapid and coordinated completion of
+childbirth, unlike negative feedback, which primarily maintains stability.
+
+(2) (3)
+Nerve impulses fror Brain stimulates
+corix transmitied y, Brain eu gland to
+to brain secreté oxytocin
+(1) (4)
+Pasties agartst Qtech eam
+ean cea
+(5),
+Oxytocin stimulates
+towards cervix is
+
+Figure: Positive feedback mechanism
+
+Negative Feedback Mechanism
+Negative feedback is the most common regulatory mechanism in the body and plays a central role in
+maintaining stability. In this system, the accumulation of an end product reverses or counteracts the original
+stimulus, restoring the system to its set point.
+> Example: Regulation of Blood Glucose
+The endocrine control of blood glucose demonstrates negative feedback:
+* When blood glucose levels rise after.a meal, B (beta) cells in the islets of Langerhans of the pancreas
+detect the increase and secrete insulin. i
+© Insulin increases cellular glucose uptake by activating glucose transporters.
+co Italso stimulates enzymes that convert glucose into glycogen for storage in liver and muscle cells.
+
+Q These actions collectively lower blood glucose levels to normal,
+
+PS) studyplusplus.com S$
+
+
+--- Page 24 ---
+
+« Conversely, when blood glucose levels fall, a (alpha) cells release glucagon, which stimulates glycogen
+breakdown in the liver and the release of glucose into the bloodstream.
+
+Through this tightly regulated negative feedback loop, insulin and glucagon act antagonistically to maintain
+
+glucose homeostasis.
+
+(1) a
+Stimulus:
+rising blood
+lucose level
+@
+High blood glucose
+
+level is detected by
+insulin secreting cells
+of pancrease
+(3)
+Pancreas secretes the hormone insulin
+causing liver cells to take up glucose
+and store it as glycogen
+
+6 BO 88.4 PES
+Return to Nrioscehdle sSetSewovees
+As body cells take up blood (4)
+glucose, glucose levels in Most body cell also
+the blood decline, and take up more glucose
+insulin release stop
+(negative feedback)
+Figure: Negative feedback mechanism
+
+Significance of Feedback Mechanisms
+
+Feedback mechanisms allow the endocrine system to maintain
+internal balance while enabling amplified responses when necessary.
+Negative feedback stabilizes physiological processes such as blood
+glucose, hormone secretion, and metabolism, while positive feedback
+facilitates events requiring progressive amplification, such as childbirth.
+Together, these mechanisms ensure that hormones act efficiently as
+chemical messengers, keeping the body’s internal environment in harmony.
+
+Table: Comparison between Positive and Negative Feedback Mechanisms
+
+[Feature [Positive Feedback Mechanism |___ Negative Feedback Mechanism ___|
+amplifies or accelerates the original change. | reverses or reduces the original change.
+eae | Enhances or intensifies the initial stimulus. | Counteracts or inhibits the initial stimulus.
+
+Is the sensation of thirst associated
+with a negative or positive-
+feedback mechanism?
+
+Role in Generally does not maintain homeostasis; | Plays a central role in maintaining
+Homeostasis | often used to complete a specific | homeostasis by stabilizing physiological
+physiological event. conditions.
+
+the Body systems of the body.
+Outcome until a specific goal is achieved. normal set point.
+
+Le
+Uterine contractions during childbirth } Regulation of blood glucose levels by insulin
+amplified by oxytocin release. and glucagon.
+Termination of | Ends only when the triggering event is | Ends automatically once normal conditions
+Response completed. are restored.
+
+S$ studyplusplus.com S$
+
+
+--- Page 25 ---
+
+HYPOTHALAMUS AS NEUROENDOCRINE CONTROL CENTER AND FEEDBACK MECHANISM
+Which of the following best defines a feedback
+mechanism in biological systems?
+A. A method of nutrient absorption
+
+A. It raises blood glucose by promoting glycogen
+breakdown.
+B. It inhibits glucose transport into cells.
+
+B, A response that enhances blood circulation c. s increases blood glucose by triggering
+A process where the product of a system mluconeogeness.
+
+ee s e ta sy D.It lowers blood glucose by enhancing cellular
+regulates its own production
+
+uptake and glycogen formation.
+
+7. Which cells release glucagon in response to low
+blood glucose levels?
+
+D. A mechanism of enzyme denaturation
+2. Which of the following is a characteristic of a
+
+positive feedback mechanism? A. Alpha cells of the islets of Langerhans
+
+A. It restores the original state. B. Beta cells of the islets of Langerhans
+
+B. It maintains internal stability. C. Hepatic cells
+
+C. It amplifies the initial stimulus. D. Neurons in the hypothalamus
+
+D. It occurs frequently in all body systems. 8. How does glucagon help restore blood glucose
+3. Which hormone is released during childbirth as levels?
+
+part of the positive feedback mechanism? A. By storing glucose as glycogen
+
+A. Insulin B. Glucagon B. By increasing insulin secretion
+
+C. Progesterone D. Oxytocin C. By stimulating glucose uptake into muscle cells
+4. What Initiates the release of oxytocin during D.By activating enzymes that convert glycogen
+
+labour? into glucose
+
+A. High levels of glucose 9. Which statement is true about negative feedback?
+
+B. Pressure on the cervix A.It amplifies changes and is generally not
+
+C. Low blood pressure homeostatic. k i
+
+D. Placental hormone production B. It is triggered only during emergencies.
+
+C. It reverses deviations to maintain internal balance.
+
+5. Which of the following processes is regulated by D. It functions independently of endocrine glands.
+
+a negative feedback mechanism?
+
+10. Which of the following best describes the
+A. Onset of labour termination of a positive feedback loop during
+B. Ovulation childbirth?
+C. Blood glucose regulation A. When oxytocin reaches a threshold level
+D. Lactation B. When the placenta begins to produce insulin
+6. What is the role of insulin in the negative C. When the baby and placenta are expelled
+feedback control of blood glucose? D. When cervical dilation stops
+
+La.c]2c[3.o[4.e[5.c]6o]7.als.o]9.c]10.¢]
+Short Questions
+
+Q.1_Define a feedback mechanism and describe its role in homeostasis.
+
+Ans. A feedback mechanism is a biological process in which the output or
+product of a system influences its own activity. In homeostasis, . MARKING SCHEME (3 Marks)
+feedback mechanisms detect deviations from a physiological set point | + befinition (2 marks), role in
+and trigger responses to restore balance. Negative feedback reverses homeostasis (1 mark)
+deviations, such as insulin lowering blood glucose when it rises,
+stabilizing internal conditions. Positive feedback amplifies a response until a specific physiological outcome
+is achieved, like oxytocin-induced uterine contractions during childbirth. Feedback mechanisms are essentia’
+for maintaining stable internal environments, regulating temperature, pH, blood pressure, and hormone
+levels. Without feedback control, the body would be unable to respond effectively to internal or external
+
+Changes, disrupting homeostasis.
+
+Sg studyplusplus.com S$
+
+
+--- Page 26 ---
+
+Q.2 Differentiate between positive and negative feedback mechanisms.
+
+Ans. Positive feedback enhances an initial change, creating a self-amplifying
+loop until a specific event occurs. An example is childbirth: cervical ane Gr aie on eae
+stretching triggers oxytocin release, which intensifies contractions until feedback (1.5 marks each)
+delivery. Negative feedback, in contrast, reverses deviations from a set
+point to maintain stability. For instance, blood glucose regulation involves insulin lowering glucose when
+high and glucagon raising it when low. Positive feedback temporarily drives processes toward completion,
+whereas negative feedback continuously stabilizes internal conditions. Both mechanisms are crucial: positive
+feedback ensures certain physiological events occur efficiently, and negative feedback maintains
+homeostasis. Understanding their differences helps explain how the body adapts to changing demands while
+remaining balanced.
+
+Q.3 How does oxytocin function in the positive feedback loop during childbirth?
+Ans. During labor, stretch receptors in the cervix detect pressure from the
+MARKING SCHEME (3 Marks)
+
+fetus. These receptors send signals to the hypothalamus, stimulating | « stretch receptors, oxytocin release,
+the release of oxytocin from the posterior pituitary. Oxytocin increases cae Cervical’ pressure (2 maori
+the strength and frequency of uterine contractions, which raises
+cervical pressure. This further stimulates stretch receptors, creating a self-amplifying positive feedback
+loop. The cycle continues until the baby is delivered, after which the feedback loop ends. This mechanism
+ensures efficient and timely childbirth by coordinating hormonal and muscular activity, demonstrating the
+role of positive feedback in amplifying physiological processes to achieve a critical outcome.
+
+Q.4 Explain how insulin and glucagon maintain blood glucose levels.
+
+Ans. Insulin and glucagon maintain blood glucose through negative
+feedback regulation. When blood glucose rises after a meal, beta cells | | hole oF insatin’ {25' the); rote oF
+in the pancreas release insulin, promoting glucose uptake by muscle glucagon (1.5 marks)
+and fat cells and its storage as glycogen in the liver. When blood glucose
+falls, alpha cells release glucagon, stimulating glycogen breakdown into glucose and glucose release from
+the liver. This antagonistic hormonal interplay ensures blood glucose remains within a narrow physiological
+range, providing a stable energy supply for cells, particularly the brain. Disruption of this balance can lead to
+hyperglycemia or hypoglycemia, highlighting the importance of insulin and glucagon in homeostasis.
+
+MARKING SCHEME (3 Marks)
+
+Q.5 Why is negative feedback considered a stabilizing mechanism?.
+Ans. Negative feedback is considered stabilizing because it counteracts
+7 MARKING SCHEME (3 Marks)
+
+deviations from a physiological set point, restoring internal balance.
+For example, in thermoregulation, if body temperature rises,
+mechanisms such as sweating and vasodilation lower it. In blood glucose regulation, insulin towers elevated
+glucose, while glucagon raises it when low. By reducing excessive fluctuations, negative feedback ensures
+homeostasis is maintained despite environmental or internal changes. It operates continuously, adjusting
+responses based on feedback signals, which protects the body from extreme conditions and maintains
+optimal function of vital organs and systems.
+
+S$ studyplusplus.com S$
+
+
+--- Page 27 ---
+
+ry
+1.
+
+bad
+
+>
+
+Ww
+
+Exercise
+
+==
+
+Select the correct Answer.
+
+Steroid hormones are secreted by
+
+A. the adrenal cortex B. the gonads
+
+C. the thyroid D. both A and B
+Examples of posterior pituitary hormones are
+
+A. FSH and LH
+
+B. prolactin and parathormone
+
+C. melatonin and prostaglandin
+
+D. ADH and oxytocin
+
+The primary targets for FSH are cells in the
+
+A. hypothalamus B. ovary
+
+C. thyroid D, pituitary
+
+Which of the following controls the activity of all
+others?
+
+A. thyroid B. pituitary
+
+C. adrenal cortex D. gonads
+
+Which of the following have antagonistic
+(opposing) effects?
+
+A. parathyroid hormone and calcitonin
+
+B. glucagons and thyroxine
+
+C. growth hormone and epinephrine
+
+D. cortisone and ACTH
+
+Which of the following hormones has broadest
+
+range of targets?
+A. ADH B. oxytocin
+C. TSH D. epinephrine
+
+The pancreas increases its output of insulin:in
+response to
+
+A. an increase in body temperature
+
+B. changing cycle of dark and light
+
+C. a decrease in blood glucose
+
+D. an increase in blood glucose
+
+Name the gland that is located at the base of the
+throat, just inferior to the laryngeal prominence
+(Adam's apple).
+
+A. pituitary B. pineal gland
+
+C. hypothalamus D. thyroid
+
+Action of parathormone in the human body
+
+A. decreases blood sodium level
+
+B. increases blood sodium level
+
+C. decreases blood calcium level
+
+D. increases blood calcium level
+
+o
+
+10.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+16.
+
+17.
+
+18.
+
+studyplusplus.com
+
+Which of the following endocrine glands secretes
+growth hormones?
+
+A. thyroid gland B. pituitary gland
+
+C. adrenal gland D. testes
+
+Which of the following pair of endocrine glands
+is located in the brain?
+
+A. hypothalamus and thymus
+
+B. pituitary and parathyroid
+
+C. thyroid and pineal
+
+D. hypothalamus and pineal
+
+What gland is located just superior to the kidneys?
+A. pituitary B. adrenal
+
+C. pancreas D. ovaries
+
+Which if the following gland which can be classified
+as an endocrine and an exocrine gland?
+
+‘A. thyroid B. thymus
+
+C. pancreas D. pituitary
+
+Which of these hormones is made by the posterior
+pituitary?
+
+A. FSH B. LH
+
+C. ACTH D. ADH
+
+Which one of the following is the smallest in the
+
+human body?
+
+A. pineal gland B, pituitary gland
+
+C. adrenal gland D. parathyroid glands
+Which of the following hormones are responsible
+for the "fight-or-flight" response?
+
+A. epinephrine and norepinephrine
+
+B. insulin and glucagon
+
+C. esrtogen and progesterone
+
+D. thyroxin and melatonin
+
+Calcitonin is a hormone of which of following:
+A. adrenal cortex B, thyroid gland
+
+C. pituitary gland D. thymus gland
+
+All of the following are hormones of the anterior
+pituitary except:
+
+A. human growth hormone (GH)
+
+B. follicle-stimulating hormone (FSH)
+
+C. parathyroid hormone (PTH)
+
+D. thyroid-stimulating hormone (TSH)
+
+°
+
+
+--- Page 28 ---
+
+19. The secretions from which of these glands | 20. Calcium level in the blood is regulated by the:
+differs between males and females? A. thyroid B. parathyroid
+
+A. adrenal B. parathyroid C. posterior pituitary D. Aand B
+
+C. gonadal D. pancreas
+[4.0] 20] 3.8 [48 [s5.a[6o]7.0] 80] 9.0 [108]
+[11.0 [12.8 [ 33.¢] 44.0] 15.a] a6. a[ 17.8] 18.c[19.¢] 20.0 |
+Dd Short Answer Questions
+
+Q.1 Why are hormones called chemical messengers?
+
+Ans. Hormones are called chemical messengers because they are secreted
+
+by endocrine glands and travel through the bloodstream to distant © Definition (2 marks), role in regulation
+target organs. They convey information that regulates vital (a mark)
+Physiological processes such as growth, metabolism, reproduction,
+water balance, and stress responses. Hormones act at low concentrations and bind to specific receptors on
+target cells, ensuring precise communication. This signaling allows organs and tissues to coordinate their
+activities without direct nervous control. By facilitating communication between different parts of the body,
+hormones maintain homeostasis and coordinate complex body functions, complementing neural control
+mechanisms.
+
+eee
+
+Q.2 What are neurosecretory cells?
+
+Ans. Neurosecretory cells are specialized neurons that produce and release
+hormones rather than neurotransmitters, Located mainly in the
+
+"i . Definition (1.5 irks), function/role
+hypothalamus, they transmit chemical signals directly into the | * aanaun — 2
+bloodstream through the pituitary stalk. These cells bridge the nervous
+and endocrine systems, translating neural stimuli into hormonal output. For example, they secrete oxytocin
+and ADH, which act on the kidneys, uterus, and mammary glands. Neurosecretory cells enable the central
+nervous system to contro! distant physiological processes via hormonal signals, ensuring integration
+between neural activity and endocrine regulation.
+
+(MARKING SCHEME (3 Marks)
+
+(MARKING SCHEME (3 Marks)
+
+Q.3 Name the hormones of the anterior pituitary gland.
+Ans. The anterior pituitary gland secretes several trophic and non-trophic
+
+. >. [MARKING SCHEME (3 Marks)
+hormones, including: . ‘+, Name of hormones (1 mark each, total
+1. Growth Hormone (GH) — stimulates growth and protein synthesis. 6 marks)
+
+2. Thyroid-Stimulating Hormone (TSH) — regulates thyroid hormone
+production.
+
+Adrenocorticotropic Hormone (ACTH) — stimulates adrenal cortex secretion.
+
+Follicle-Stimulating Hormone (FSH) — controls gamete production.
+
+Luteinizing Hormone (LH) — triggers ovulation and sex hormone production.
+
+Prolactin (PRL) — promotes milk synthesis in mammary glands.
+
+These hormones regulate growth, metabolism, reproduction, and other endocrine glands’ activities,
+emphasizing the anterior pituitary’s role as a central controller of endocrine function.
+
+Q.4 Whyis the anterior lobe of the pituitary gland called the master gland?
+
+Ans. The anterior pituitary is termed the master gland because it regulates MARKING SCHEME (3 Marks)
+the function of multiple other endocrine glands through the secretion | « pefinition (A mark), hormones controling
+of trophic hormones. These hormones include TSH, ACTH, FSH, LH, and ‘other glands (2 marks)
+GH, which contro) the thyroid, adrenal cortex, gonads, and growth
+processes. By influencing growth, metabolism, reproduction, and stress responses, the anterior pituitary
+ensures coordination among various endocrine organs. Its ability to control other glands makes it central to
+maintaining homeostasis and regulating complex physiological processes.
+
+S$ studyplusplus.com $
+
+oy ay
+
+
+
+--- Page 29 ---
+
+Q.5 Describe the median lobe of the pituitary gland.
+
+Ans, The median lobe or intermediate lobe of the pituitary gland is small and ss aennin ie seal
+relatively underdeveloped in humans. It lies between the anterior and essccrosr tothe ee
+posterior lobes. The main hormone secreted is melanocyte-stimulating produced and function (2 marks)
+hormone (MSH), which regulates melanin production in’ skin
+melanocytes, affecting pigmentation. Although less prominent than the anterior lobe, the median lobe
+contributes to the endocrine system by influencing pigmentation and potentially modulating appetite and
+energy balance. Its function illustrates the diversity of hormonal control within the pituitary gland.
+
+Q.6 How is the secretion of ADH controlled?
+Ans. The secretion of antidiuretic hormone (ADH) is controlled primarily by
+
+osmoreceptors located in the hypothalamus, which monitor the | , Crasome heat tte) A
+osmolarity of the blood. When blood osmolarity rises, such as during mark, mechanism 1 mark, role In
+dehydration, these osmoreceptors detect the increased concentration kidneys 1 mark
+
+of solutes and stimulate the posterior pituitary to release ADH into the
+bloodstream. ADH then acts on the kidney’s collecting ducts, increasing water reabsorption back into the
+circulation and reducing urine volume. Conversely, when blood osmolarity falls due to excess water, ADH
+secretion is inhibited, allowing more water to be excreted. This negative feedback mechanism maintains
+blood osmotic balance, controls fluid homeostasis, and prevents excessive dehydration or overhydration.
+
+Q.7 Write the differences between:
+(a) Exocrine and Endocrine glands
+
+Ans. Exocrine glands release their secretions through ducts onto external or
+internal surfaces. Their products are usually enzymes or non-hormonal sortie cibeort eoreri i
+substances and act locally. Examples include salivary and sweat glands. product 1 mark, action/target 1 mark
+In contrast, endocrine glands secrete hormones directly into the
+bloodstream without ducts. These hormones act on distant target organs to regulate physiological processes
+such as growth, metabolism, and reproduction. Examples include the pituitary and thyroid glands. The key
+distinction lies in mode of secretion, type of product, and range of action, with endocrine glands functioning
+as chemical messengers and exocrine glands performing localized effects.
+
+(b) Steroid hormones and Proteinous hormones
+Ans. Steroid hormones are lipid-soluble, derived from cholesterol, and can
+
+“cross cell membranes to bind intracellular receptors. They act directly MARKING SCHEME (3 Marks)
+on DNA in the nucleus to regulate gene expression. Examples include | * Solubility/source 1 mark, mech7...u
+cortisol, estrogen, and testosterone. of action 2 mark, examples 1 mark
+
+Proteinous -hormones are water-soluble, made of amino acids, and
+cannot cross membranes. They bind to cell-surface receptors and trigger secondary messenger pathways,
+like CAMP, to induce cellular responses. Examples include insulin, FSH, and ADH. Steroid hormones produce
+slower but longer-lasting effects, while proteinous hormones act rapidly but transiently.
+
+(c) First messenger and Second messenger
+
+Ans. A first messenger is the hormone itself that binds to a receptor on the
+target.cell membrane, initiating the signal but unable to enter the cell.
+Examples include adrenaline and glucagon.
+The second messenger is an intracellular molecule activated by the
+hormone-receptor interaction; it transmits and amplifies the signal inside the cell to elicit a response.
+Examples include cyclic AMP (cAMP) and calcium ions. The first messenger starts the communication from
+outside the cell, whereas the second messenger ensures the signal spreads and triggers cellular effects
+efficiently.
+
+(d) Receptors of proteinous hormones and Steroid hormones
+
+Ans. Proteinous hormone receptors are located on the cell membrane MARNING SCHEME (3 Marta]
+because these water-soluble hormones cannot cross the membrane. Location 1. mark, mechanism 1 mark,
+Binding triggers secondary messenger cascades to elicit effects. example 1 mark ‘
+
+Example: insulin receptor.
+
+MARKING SCHEME (3 Marks)
+* Definition 1 mark, role/mechanism 1
+mark, examples 1 mark
+
+S studyplusplus.com S$
+
+
+--- Page 30 ---
+
+Steroid hormone receptors are intracellular, in the cytoplasm or nucleus, since lipid-soluble hormones can
+enter cells. Binding directly affects gene transcription and protein synthesis. Example: estrogen receptor.
+The main difference lies in location, solubility of the hormone, and mechanism of action, with proteinous
+hormones acting via indirect pathways and steroid hormones producing direct genomic effects.
+
+(e) Hypothyroidism and Hyperthyroidism
+
+Ans. Hypothyroidism results from under-secretion of thyroid hormones,
+slowing metabolism. Symptoms include fatigue, weight gain, and cold
+intolerance. Common causes are iodine deficiency and Hashimoto’s
+disease. Treatment involves hormone replacement therapy.
+Hyperthyroidism is due to excessive thyroid hormone secretion, increasing metabolism. Symptoms include
+weight loss, anxiety, and heat intolerance. Causes include Graves’ disease and thyroid nodules, treated with
+anti-thyroid drugs or surgery. The key differences lie in hormone levels, metabolic effects, clinical
+manifestations, causes, and treatments, affecting overall physiological activity and requiring opposite
+management approaches.
+
+(f) Calcitonin and Parathormone (PTH)
+
+Ans. Calcitonin is secreted by the thyroid gland and lowers blood calcium
+
+levels by inhibiting-bone resorption and promoting calcium storage in
+bones. It plays a minor role in calcium regulation.
+Parathormone (PTH) is secreted by the parathyroid glands and
+increases blood calcium levels by stimulating bone resorption, enhancing calcium reabsorption in the
+kidneys, and promoting intestinal calcium absorption indirectly. PTH plays a major role in calcium
+homeostasis. The key difference is that calcitonin reduces calcium levels and PTH raises them, balancing
+calcium metabolism and maintaining bone and kidney functions.
+
+MARKING SCHEME (3 Marks)
+
+‘© Hormone imbalance 1-mark, symptoms
+A mark, cause/treatment 1 mark
+
+MARKING SCHEME (3 Marks)
+
+© Source 1 mark, effect on calcium 1
+mark, role in regulation 1 mark
+
+(g) Beta and Alpha cells of islets of Langerhans
+
+Ans. Beta cells secrete insulin, lowering blood glucose by promoting cellular
+uptake and glycogen formation, and are more numerous. iets ytocesscerreley ot oa
+Alpha cells secrete glucagon, raising blood glucose by stimulating glucose 1 mark, function 1 mark
+glycogen breakdown and glucose release, and are fewer in number. 5
+Both work antagonistically to maintain glucose homeostasis. Beta cells act after meals to reduce glucose,
+while alpha cells act during fasting or hypoglycemia to restore blood sugar levels.
+
+(h) Insulin and Glucagon
+
+Ans. Insulin is secreted by pancreatic beta cells after meals, lowering blood
+glucose by enhancing cellular uptake and glycogen formation. S peep popchgrineen te pees
+Glucagon is secreted by alpha cells during fasting, raising blood glucose timing/eondition 1 mark
+by stimulating glycogenolysis in the liver. Insulin primarily acts to store
+nutrients, whereas glucagon mobilizes energy reserves. Their antagonistic action maintains glucose
+homeostasis, preventing hypo- or hyperglycemia.
+
+ea AR A se Ae Aaa EE
+
+(i) Diabetes insipidus and Diabetes mellitus
+
+Ans. Diabetes insipidus is caused by ADH deficiency, resulting in excessive MARKING SCHEME (3 Marks)
+urination and thirst without glucose in urine, a disorder of water | . cause 1 mark, main symptom 1 mark,
+balance, treated with ADH replacement. treatment 1 mark
+Diabetes mellitus is caused by lack of insulin or insulin resistance,
+leading to high blood glucose and glucose in urine,.a disorder of carbohydrate metabolism, managed with
+insulin or oral hypoglycemics. The main difference is the affected hormone and metabolic pathway.
+
+(j) _ Estrogen and Progesterone
+
+Ans. Estrogen is secreted mainly by developing ovarian follicles, promoting
+female secondary sexual characteristics and endometrial growth,
+peaking before ovulation. role in menstrual cycle/pregnancy 1 mark
+Progesterone is secreted by the corpus luteum and placenta, preparing
+and maintaining the endometrium for implantation and supporting pregnancy, peaking after ovulation.
+
+Estrogen stimulates growth, while progesterone stabilizes tissue, ensuring proper menstrual cycle regulation
+and reproductive function.
+
+MARKING SCHEME (3 Marks)
+* Source 1 mark, main function 1 mark,
+
+S$ studyplusplus.com S$
+
+
+--- Page 31 ---
+
+(k) Positive and Negative Feedback
+
+Ans. Positive feedback amplifies the original stimulus, producing rapid, self-
+reinforcing effects, e.g., childbirth and blood clotting. It is less common
+in biological systems.
+Negative feedback counteracts deviations, maintaining stability and
+homeostasis, e.g., blood glucose regulation by insulin/glucagon or thyroid hormone regulation. Negative
+feedback is the predominant mechanism in the body, ensuring physiological parameters remain within
+optimal ranges. Positive feedback is used for events needing escalation until completion.
+
+Q.8 Whatis the relationship between a hormone and a target cell?
+
+Ans. A hormone is a chemical messenger secreted by endocrine glands into
+the bloodstream. Target cells contain specific receptors that recognize MARKING SCHERGE (3 Marka)
+
+; A * Hormone definition 1 mark, receptor
+and bind to a hormone. This binding activates intracellular processes, Interaction 1 mark effect on torgetcell
+such as enzyme activation, ion channel modulation, or gene expression mark
+changes, producing a physiological response. Only cells with the correct
+receptor for a hormone respond, ensuring specificity. For example, insulin acts only on cells with insulin
+receptors, promoting glucose uptake, while thyroxine affects cells with thyroid hormone receptors to
+regulate metabolism. This receptor-hormone interaction underlies precise hormonal regulation throughout
+
+the body.
+
+Q.9 Locate the endocrine glands in the human body.
+
+Ans. Major endocrine glands are located as follows:
+
+e Pituitary gland: base of the brain
+Hypothalamus: below the thalamus
+Thyroid gland: front of the neck, over the trachea
+Parathyroid glands: behind the thyroid
+Adrenal glands: atop each kidney
+Pancreas (Islets of Langerhans): behind the stomach
+Gonads: ovaries in females, testes in males
+Pineal gland: near the center of the brain
+Thymus: behind the sternum, prominent in children
+These glands secrete hormones regulating growth, metabolism, reproduction, and homeostasis...
+Pha ns nS SS SS ES
+
+Q.10 How does a feedback mechanism regulate the activity of the endocrine system?
+Ans. Feedback mechanisms maintain hormone levels within physiological
+
+ranges. In negative feedback, a rise in hormone concentration inhibits sees clrenedors io)
+further secretion, e.g., high thyroxine reduces TSH release to prevent | * Neve vga Leqitel eerectns
+
+3 ‘ A feed-back 1 mark, role in homeostasis
+overproduction. In positive feedback, hormone release is amplified pet
+
+until a specific event occurs, e.g., oxytocin during childbirth increases
+uterine contractions. These mechanisms ensure hormonal
+homeostasis, prevent excessive fluctuations, and coordinate complex physiological processes. Negative
+
+feedback predominates in maintaining stability, while positive feedback is used for transient, critical events.
+er eT
+
+Q.11 Make a diagram of positive feedback involving the hormone oxytocin.
+Ans. (Flowchart): :
+
+Head of baby pushes against cervix MARKING SCHEME (3 Marks)
+© 1 mark each for stimulus, nerve
+
+impulse, oxytocin release, uterine
+contraction, feedback loop
+
+Stretch receptors send nerve impulses to hypothalamus
+L
+Hypothalamus signals posterior pituitary to release oxytocin
++
+Oxytocin enters bloodstream
+
+Oxytocin stimulates stronger uterine contractions
+
+Increased cervical pressure +> more oxytocin released
+Cycle continues until childbirth is complete.
+
+S$ studyplusplus.com S$
+
+
+--- Page 32 ---
+
+Q.12 Predict the effects that insufficient amounts of FSH and LH will have on the menstrual cycle.
+Ans. Low FSH impairs ovarian follicle development and reduces estrogen Mancnen sorte (Sr)
+secretion, preventing proper endometrial growth. Low LH blocks
+ovulation and corpus luteum formation, reducing progesterone | ~* Ges ol ioe a ree creel oe
+production. These deficiencies disrupt the menstrual cycle, causing
+irregular or absent periods, poor endometrial preparation, and
+infertility. Over time, hormonal imbalance may lead to delayed puberty or amenorrhea. Proper levels of FSH
+
+and LH are essential for the coordinated cycle of follicular development, ovulation, and luteal phase
+maintenance.
+
+Day emer
+
+Q.1 Describe the function of the endocrine system in the human body.
+Ans. Please See SLO [B-12-G-25]
+
+LH 1 mark, consequence for menstrual
+cycle/fertility 1 mark
+
+Q.2 State the role of hormone as chemical messenger.
+Ans. Please See SLO [B-12-G-23)
+
+Q.3 Describe chemical nature of hormone and correlate it with important hormones.
+Ans. Please See SLO [B-12-G-24]
+
+Q.6 Name the hormones, their functions and imbalance of the Pituitary gland.
+Ans. Please See SLO [B-12-G-25]
+
+Q.7_Name the hormones, their functions, and imbalances of the thyroid gland.
+Ans. Please See SLO [B-12-G-25]
+
+Q.8 Name the hormones, their functions, and imbalances of the parathyroid glands.
+Ans. Please See SLO [B-12-G-25]
+
+Q.9 Name the hormones, their functions, and imbalances of the pancreas.
+Ans. Please See SLO [B-12-G-25]
+
+Q.10 Name the hormones, their functions, and imbalances of the adrenal glands.
+Ans. Please See SLO [B-12-G-25]
+
+la) Name the hormones, their functions, and imbalances of the gonads.
+ns. Please See SLO [B-12-G-25]
+
+>
+
+Q.11 Describe the neurosecretory role of hypothalamus.
+Ans. Please See SLO [B-12-G-27]
+
+Q.12 What is feedback mechanism? Describe the positive and negative feedback mechanism with reference to
+oxytocin, insulin and glucagon.
+
+Ans. Please See SLO [B-12-G-28]
+
+029 @Olo@eoeos
+
+Sg studyplusplus.com S$

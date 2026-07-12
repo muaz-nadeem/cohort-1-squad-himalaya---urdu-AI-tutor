@@ -1,0 +1,3024 @@
+
+
+--- Page 1 ---
+
+Chapter # 04
+
+Urinary System of Man
+
+Student Learning Outcomes
+
+At the end of this chapter, students will be able to:
+[B-12-R-09] List various nitrogenous compounds excreted during the process of excretion.
+[B-12-R-10] Explain the nature of excretory products in relation to habitats.
+[B-12-R-11] Outline different organs of the urinary system.
+[B-12-R-12] Describe the structure of the kidney.
+[B-12-R-13] Relate the structure of kidney with its function.
+[B-12-R-14] Explain the detailed structure of a nephron.
+[B-12-R-15] Explain the process of glomerular filtration, selective re-absorption and tubular secretion
+ass the events in kidney functioning.
+[B-12-R-16] Explain regulatory mechanism involved in concentration of urine.
+17) Justify the functioning of kidneys as both excretion and osmoregulation.
+18] Compare the function of two’major capillary beds in kidneys i.e., glomerular capillaries and
+peritubular capillaries.
+[B-12-R-19] List the urinary tract infections and the bacteria responsible.
+[B-12-R-20] Explain the causes and treatments of kidney stones.
+[B-12-R-21] Outline the causes of kidney failure.
+[B-12-R-22] Explain in detail the mechanism and problems related to dialysis.
+[B-12-R-23] Describe the principles and the problems associated with kidney transplant.
+
+Metabolic activities within body cells generate a range of waste products, many of which can become
+harmful if allowed to accumulate. To prevent toxicity, these wastes must be efficiently removed. Body fluids such
+as blood and lymph serve as transport mediums, carrying waste materials away from active tissues to excretory
+organs.
+
+Different systems play distinct roles in excretion. The respiratory system eliminates carbon dioxide, a major
+waste product of cellular respiration, from the bloodstream. The urinary system is responsible for filtering blood
+to remove nitrogenous wastes (such as urea), excess salts, and water.
+
+In addition to excretion, the urinary system performs several vital regulatory functions. It maintains the
+osmotic balance of body fluids by adjusting water and electrolyte concentrations, regulates blood pH and fluid
+volume, and contributes to the control of blood pressure and red blood cell production through the secretion of
+hormones like renin and erythropoietin.
+
+List various nitrogenous compounds excreted during the process of excretion.
+
+NITROGENOUS COMPOUNDS EXCRETED DURING EXCRETION.
+
+The breakdown of proteins and nucleic acids in the body produces nitrogenous wastes. These substances
+are toxic if allowed to accumulate, so they must be removed efficiently through the process of excretion. The main
+nitrogenous compounds excreted by humans include urea, uric acid, creatinine, and small amounts of ammonia.
+Each of these compounds originates from different metabolic processes and is eliminated mainly through urine.
+
+So studyplusplus.com S$
+
+
+--- Page 2 ---
+
+1. Urea
+
+Urea is the primary nitrogenous waste in humans. It is formed in the liver through the urea cycle, where
+ammonia (a highly toxic by-product of protein breakdown) is converted into a less toxic, water-soluble form.
+Urea is then transported by the blood to the kidneys and excreted in urine. On average, about 80-90% of
+the nitrogen excreted from the body is in the form of urea. For example, after eating a protein-rich meal,
+urea levels in the blood and urine rise because more amino acids are broken down.
+
+2. Uric Acid
+
+Uric acid is produced during the breakdown of nucleic acids (DNA and RNA). It is less soluble in water
+compared to urea. Normally, only a small quantity of uric acid is excreted in urine, but if its concentration
+becomes too high, it can crystallize and deposit in joints, causing a painful disorder called gout. Birds and
+reptiles excrete uric acid as their main nitrogenous waste, which conserves water since it is eliminated as a
+paste-like substance.
+
+3. Creatinine
+
+Creatinine is formed in musc'es as a by-product of the breakdown of creatine phosphate, a compound that
+stores energy for muscle contractions. It is produced at a relatively constant rate, depending on muscle
+activity and mass. Because the kidneys efficiently filter creatinine from the blood, measuring its level in urine
+or blood is an important clinical test of kidney function. Elevated creatinine levels may indicate impaired
+kidney performance.
+
+4. Ammonia
+
+Ammonia is a direct by-product of amino acid metabolism. It is extremely toxic and must be removed quickly
+from the body. In humans, most ammonia is converted into urea in the liver before excretion. However,
+small amounts of free ammonia are excreted directly into urine, where they also help maintain the acid—
+base balance of the body.
+
+5. Other Nitrogenous Compounds
+
+In addition to the main wastes, trace amounts of other nitrogen-containing substances such as amino acids,
+
+peptides, and nitrogenous bases may also appear in urine. Their presence in significant amounts, however,
+
+can be a sign of metabolic or renal disorders. For instance, excessive amino acids in urine (aminoaciduria)
+may indicate defects in amino acid metabolism.
+
+Doctors often perform a urinalysis to measure nitrogenous waste levels. For example, the blood urea
+nitrogen (BUN) and creatinine test are routinely used to evaluate kidney health. Elevated levels of urea or
+creatinine in blood may signal kidney disease, dehydration, or other metabolic problems. The nitrogenous
+compounds excreted during excretion include urea (major form), uric acid, creatinine, and small amounts of
+ammonia. Together, these wastes help the body maintain chemical balance and prevent toxic buildup. “
+
+Explain the nature of excretory products in relation to habitats.
+
+EXCRETORY PRODUCTS AND THEIR RELATION TO HABITATS
+
+Different animals excrete nitrogenous wastes in forms that reflect both their metabolism and the availability
+of water in their environment. The three main types of excretory products are ammonia, urea, and uric acid, and
+each type is associated with particular habitats and survival strategies. This adaptation ensures that organisms
+can efficiently remove toxic wastes while conserving water and energy.
+
+1. Ammonotelic Animals: Ammonia Excretion
+
+Ammonia is the most primitive and highly toxic nitrogenous waste. Because it is very soluble in water, it
+
+must be excreted quickly and ina diluted form. Therefore, animals that live in aquatic habitats, where water
+
+is abundantly available, usually excrete ammonia. To safely excrete just one gram of nitrogen as ammonia,
+an organism requires approximately 500 mL of water, making this strategy feasible only for organisms in
+water-rich environments.
+
+¢ Examples: Many freshwater invertebrates and vertebrates, such as protozoans, sponges, cnidarians,
+
+echinoderms, crustaceans, and most bony fishes, amphibians, and aquatic animals, adopt this method
+of excretion. These organisms are termed ammonotelic.
+
+S$ studyplusplus.com S$
+
+
+--- Page 3 ---
+
+2.
+
+* Advantage: Ammonia can be released directly into surrounding water through gills or body surfaces
+without requiring much energy.
+
+* Limitation: It requires a continuous supply of water for dilution, which is why this mode is not suitable
+for terrestrial habitats.
+
+Ureotelic Animals: Urea Excretion
+
+Urea is less toxic than ammonia and can be stored in the body for a short time before being excreted. It is
+
+approximately 100,000 times less toxic than ammonia. It is highly soluble in water and requires less water
+
+for excretion compared to ammonia, making it suitable for land-dwelling animals. Urea is synthesized in the
+
+liver through the urea cycle and excreted mainly through urine.
+
+¢ Examples: Humans and most mammals (e.g., dogs, lions, cows) are ureotelic.
+
+¢ Advantage: Reduces water loss while maintaining effective waste removal.
+
+© Real-life link: Desert mammals like the kangaroo rat concentrate their urine to conserve maximum
+water while excreting urea.
+
+Uricotelic Animals: Uric Acid Excretion
+
+Uric acid is the least toxic form of nitrogenous waste and is excreted as a paste or crystals, requiring very
+
+little water. This adaptation is highly beneficial in arid environments, where water is scarce, and for animals
+
+that develop within shelled eggs, where nitrogenous wastes cannot be excreted in liquid form.
+
+¢ Examples: Birds, reptiles, and insects are uricotelic.
+
+e Advantage: Saves water and prevents accumulation of soluble toxic waste inside the egg.
+
+e Real-life link: The white paste often seen in bird droppings is uric acid.
+
+Comparative Adaptation to Habitats
+
+© Aquatic habitats: Favor ammonotelism, as water is available to dilute ammonia.
+
+© Terrestrial habitats with moderate water: Favor ureotelism, as animals can afford some water loss but
+must regulate it.
+
+© Arid habitats or egg-laying sp ‘avor uricotelism, as water conservation is critical.
+
+Teme” | Totty eetezne | emeercne |
+ee ee
+SS OS ES Ee
+The form of nitrogenous waste excreted by an organism (ammonia, urea, or uric acid) is closely related to
+
+its habitat and water availability. Aquatic animals are ammonotelic, terrestrial mammals are ureotelic,
+while birds, reptiles, and insects are uricotelic.
+
+Relationship between Excretory Products and Habitats
+
+The nature of nitrogenous waste excreted by an organism is closely linked to its habitat and the availability
+
+of water in its environment. Since nitrogenous wastes vary in toxicity and water solubility, different organisms
+have evolved excretory strategies that reflect their ecological conditions.
+
+® Ammonia -— excreted primarily by aquatic organisms.
+
+© Urea—excreted by both aquatic and terrestrial organisms.
+© Uric acid — excreted mainly by terrestrial organisms.
+Ammonia sci
+Ammonia is the most toxic of all nitrogenous wastes. It readily increases | Humans excrete small quantities of
+the pH of body fluids and disrupts membrane transport systems, posing | Ufc acid but this is produced from
+an immediate threat to cellular function. However, it is highly water- | the breakdown of nucleic acid and
+soluble and diffuses rapidly across biological membranes, allowing for
+quick elimination—provided water is abundantly available.
+
+Urea
+
+In environments where water is more limited, especially on land or in marine conditions where conserving
+
+ICE TITBITS
+
+not from breakdown of proteins.
+‘Approximately one gram of uric acid
+is excreted in urine per day. ‘
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+3.
+
+4.
+
+water is essential, organisms convert ammonia into urea—a compound that is about 100,000 times less
+toxic than ammonia. Although this conversion requires additional energy, it allows for safer storage and
+
+delayed excretion.
+
+Excreting one gram of nitrogen as urea requires only 50 mL of water, making it a more efficient strategy for
+
+water conservation.
+
+Organisms that primarily excrete urea, are called ureotelic. This group includes mammals (e.g., humans),
+
+amphibia
+
+ins, and certain marine species such as sharks.
+
+Where do you think the carbon dioxide used in the formation of urea comes from? Where
+does the remainder of excess carbon dioxide go to be excreted?
+
+The carbon dioxide involved in urea formation comes from cellular respiration. Inside the
+mitochondria of body cells carbohydrates, fats, and proteins are broken down to produce
+energy (ATP). A majo; :-y-product of this process is carbon dioxide (C02).
+
+In the urea cycle (whic. mainly takes place in the liver), some of this CO2 combines with
+ammonia (NHs) to form carbamoyl phosphate, which then enters the cycle and eventually
+contributes to the production of urea: Urea is later excreted in urine.
+
+The remainder of the excess CO2, which is not used in the urea cycle, does not stay in the liver.
+Instead, it dissolves in the blood, is carried to the lungs (mainly as bicarbonate fons, HCOs*),
+
+and is exhaled during breathing.
+
+SLOs Based (MCQs)
+
+EXCRETION, RELATIONSHIP BETWEEN EXCRETORY PRODUCTS AND HABITATS
+
+Which nitrogenous waste product is the most
+toxic and requires the greatest amount of water
+for excretion?
+
+6.
+
+Which of.the following best describes ureotelic
+animals? ‘
+A. Excrete urea in water-rich habitats
+
+A. Urea B. Uric acid B. Use large amounts of water for ammonia removal
+C. Ammonia D. Creatinine C. Excrete urea in moderate water availability
+Which of the following organisms is most likely D. Store nitrogen as uric acid in solid form
+to be ammonotelic? 7. How much wateris required to excrete one gram
+A. Human B. Frog of nitrogen as urea?
+C. Bony fish D. Bird A.SmL B. SO mL
+Which excretory product is most suitable for Cc. 150 mL D. 500 mL
+organisms living in arid conditions? 8. Which of the following nitrogenous wastes Is
+A. Ammonia B. Urea produced during the breakdown of nucleic acids
+C. Uric acid D. Nitric oxide in humans?
+Which of the following statements correctly. A. Ammonia B. Urea
+distinguishes excretion from egestion? C: Creatinine D. Uric acid
+A. Excretion eliminates undigested food 9. Which waste is removed from the body through
+B. Excretion removes digestive juices the respiratory system?
+C. Excretion eliminates metabolic waste; egestion A. Ammonia B, Urea
+
+removes undigested food C. Carbon dioxide D. Uric acid
+D. Both refer to removal of waste via the anus 10. What is the main function of renin released by
+
+What is the function of erythropoietin secreted
+by the kidneys?
+
+A. Regulates glucose levels
+
+B. Enhances breathing rate
+
+C. Stimulates red blood cell production
+
+D. Filters nitrogenous waste
+
+the kidneys?
+
+A. Dilates bronchi
+
+B. Regulates blood pressure
+
+C. Increases uric acid excretion
+D. Neutralizes stomach acid
+
+S$ studyplusplus.com
+
+°
+
+
+--- Page 5 ---
+
+10
+
+hort Questions
+
+Q.1 What is excretion and how is it different from egestion?
+Ans. Excretion is the process of eliminating metabolic wastes such as urea,
+‘ -carbon dioxide, and ammonia from the body. It maintains the internal | | A onnition of both terms (tea),
+chemical balance and prevents the toxic buildup of waste products. difference (1).
+Egestion, however, is the removal of undigested and unabsorbed food
+from the digestive tract in the form of feces. It is not related to cellular metabolism.
+Thus, excretion deals with metabolic waste products, while egestion involves undigested food residues.
+—___ EEE
+
+Q.2 Why must nitrogenous wastes be eliminated from the body?
+
+Ans. Nitrogenous wastes suchas ammonia, urea, and uric acid arise from the
+breakdown of proteins and nucleic acids. If allowed to accumulate, theycan: | . 1markeach for three reasons.
+1. Prove toxic to cells by interfering with biochemical functions.
+2. Disturb pH balance, making body fluids either too acidic or alkaline.
+3. Disrupt enzyme activity and membrane function, impairing normal physiology.
+4. Therefore, elimination of nitrogenous wastes is essential to maintain homeostasis and ensure the stable
+functioning of the body.
+Q.3 What are ammonotelic animals? Give two examples. 5
+Ans. Ammonotelic animals are organisms that excrete nitrogen mainly in the
+form of ammonia, a highly toxic but water-soluble compound. Since | . pctnya racemose
+ammonia can diffuse directly into water, this strategy is effective for examples (1).
+aquatic organisms where water is abundantly available to dilute and
+eliminate the waste.
+Examples of ammonotelic animals include protozoans and most bony fishes.
+
+MARKING SCHEME (2 Marks)
+
+Q.4 Whyisureaa preferred excretory product for terrestrial animals?
+
+Ans. Urea is the major nitrogenous waste in mammals and many terrestrial
+animals because: MARKING SCHEME (3 Marks)
+e © Three reasons, 1 mark each.
+
+1. It is less toxic than ammonia and can be stored temporarily in body
+fluids.
+
+2. It requires less water for elimination—only about 50 mL per gram of nitrogen—helping in water
+conservation. :
+
+3. Although its synthesis in the liver requires energy, this trade-off allows safe and efficient waste removal
+in environments where water is limited.
+
+4. Thus, urea formation is particularly suited for terrestrial habitats.
+
+Q.5 Describe the role of the urinary system in homeostasis.
+
+Ans. The urinary system plays a central role in maintaining homeostasis. Its MARKING SCHEME (3 Marks)
+kidneys: © Three roles, 1 mark each.
+
+1, Filter blood to remove nitrogenous wastes, excess salts, and water.
+
+2. Regulate osmotic balance, pH, and fluid volume to keep the internal environment stable.
+
+3. Secrete hormones such as renin, which helps control blood pressure, and erythropoietin, which
+stimulates red blood cell production.
+
+4. In this way, the urinary system ensures both waste elimination and physiological regulation.
+
+Q.6 What is the significance of uric acid excretion in birds and insects?
+
+Ans. Uric acid is almost insoluble in water and is excreted as a semi-solid
+Paste or crystals. This property allows maximum conservation of water,
+
+‘MARKING SCHEME (3 Marks)
+
+making it highly efficient in‘dry habitats. For birds, reptiles, and insects, z Steel picker amas
+
+uric acid excretion minimizes water loss and enables survival in arid
+environments where water is scarce,
+
+S$ studyplusplus.com S$
+
+
+--- Page 6 ---
+
+Q.7 How are excretory products related to an organism’s habitat?
+Ans. The type of nitrogenous waste produced by an organism depends
+
+" MARKING SCHEME (3 Marks!
+largely on its habitat and water availability: =i helation 46 pal aR types
+© _ Ammonotelic animals (e.g., protozoans, most bony fishes) excrete with examples (2).
+
+ammonia, suitable for aquatic habitats where water is abundant.
+
+Ureotelic animals (e.g., mammals, amphibians) excrete urea, which conserves water compared to
+ammonia.
+
+© Uricotelic animals (e.g., birds, reptiles, insects) excrete uric acid, minimizing water loss in dry
+environments.
+
+Thus, excretory products are closely adapted to the ecological conditions of each organism.
+Q.8 Why is ammonia not a suitable excretory product for land animals?
+Ans. Ammonia is highly toxic and requires about 500 mL of water per gram
+
+of nitrogen to be safely excreted. Such large water requirements are MARKING SCHEME (3 Marks)
+impractical for terrestrial animals that often face limited water | * Terrestrial conditions (2), requirement
+availability. Therefore, land animals detoxify ammonia by converting it j aiaeatonec mesic
+
+into urea or uric acid, which are less toxic and require less water for
+
+elimination.
+
+Q.9 What are the main nitrogenous waste products in humans?
+
+Ans. Humans excrete three main nitrogenous wastes: i
+1. Urea-the chief excretory product, formed from amino acid breakdown.
+2. Uric acid — produced in small amounts from nucleic acid metabolism. $1 mark each for three waste products,
+3. Creatinine — generated from muscle metabolism.
+4. All these products are eliminated through the urine by the kidneys.
+
+Q.10 Why does the conversion of ammonia to urea require energy?
+
+oo ——————————————
+
+Ans. Ammonia is produced directly during protein metabolism. To reduce its
+toxicity and water demand, it is converted into urea in the liver via the MARKING SCHEME (3 Marks)
+urea cycle. This biochemical process involves several enzymatic | * Ammonia production (1), ATP
+reactions that consume ATP. Although energy is. required, the ertorren eoriene Gy
+conversion allows safer storage and efficient excretion with reduced
+water loss—an essential adaptation for terrestrial animals.
+
+SLO [B21 1)
+
+Outline different organs of the urinary system.
+
+SCG Se ee
+
+ORGANS OF THE URINARY SYSTEM
+——$
+The urinary system plays a central role in excretion and osmoregulation, ensuring removal of nitrogenous
+wastes while maintaining water, electrolyte, and acid—base balance. The system consists of specialized organs
+
+that work in coordination to filter blood, form urine, and eliminate it from the body. The major organs are:
+kidneys, ureters, urinary bladder, and urethra.
+
+1. Kidneys — The Main Excretory Organs
+
+The kidneys are two bean-shaped organs, located on either side of the vertebral column in the abdominal
+cavity. Each kidney is about 10-12 cm long and highly vascular, receiving blood from the renal arteries.
+¢ Function:
+
+“© Filter blood to remove metabolic wastes such as urea, uric acid, and creatinine.
+© Regulate water balance, electrolytes (Na*, K*, Cl“), and pH.
+
+© Produce hormones such as erythropoietin (stimulates red blood cell production). and renin
+(regulates blood pressure).
+
+Damage to kidneys (renal failure) may require dialysis, an artificial method of filtering the blood.
+
+S$ studyplusplus.com $
+
+
+--- Page 7 ---
+
+Ureters — Urine Transport Tubes
+The ureters are two narrow muscular tubes (25-30 cm long) that carry urine from each kidney to the urinary
+bladder. They use peristaltic contractions (wave-like muscular movements) to ensure continuous flow of
+
+urine, regardless of body position.
+
+e Function: Safely transport urine without backflow.
+
+© Example: Blockage of ureters by kidney stones can cause severe pain (renal colic) and obstruction of
+urine flow.
+
+Urinary Bladder — Temporary Storage Organ
+
+The urinary bladder is a hollow, muscular sac located in the pelvic cavity. It temporarily stores urine until it
+
+is excreted. The inner wall of the bladder is lined with a special tissue called transitional epithelium, which
+
+allows stretching as the bladder fills.
+
+« Capacity: In adults, the bladder can hold about 400-600 mL of urine.
+
+© Function: Provides voluntary control of urination (micturition) through relaxation of sphincter muscles.
+
+Urinary tract infections (UTIs) often begin in the bladder (cystitis), especially in females due to their shorter
+
+urethra.
+
+Urethra — The Exit Passage
+
+The urethra is a narrow tube that carries urine from the urinary bladder to the outside of the body.
+
+© Inmates: It is about 20 cm long and also serves as a passage for semen during reproduction.
+
+© In females: It is much shorter (about 4 cm), which makes females more prone to urinary infections.
+
+© Function: Provides the final passageway for urine elimination.
+
+Figure: Excretory system of man.
+
+structure of the kidney.
+
+STRUCTURE OF THE KIDNEY
+
+The kidneys are the primary excretory organs of humans, responsible for filtering blood, maintaining water
+
+and electrolyte balance, and excreting nitrogenous wastes. Each kidney is a highly specialized organ with a
+complex structure that supports these vital functions. Understanding the structure of the kidney is crucial for
+appreciating how it performs its role in excretion and homeostasis.
+
+1.
+
+External Structure
+Shape, Size, and Location:
+
+Each kidney is bean-shaped, reddish-brown in color, and measures about 10-12 cm in length, 5-7 cm in
+width, and 3-4 cm in thickness in adults. They weigh approximately 120-150 grams each. The kidneys are
+located in the posterior abdominal cavity on either side of the vertebral column, just below the ribcage. The
+right kidney is usually slightly lower than the left due to the presence of the liver.
+
+S$ studyplusplus.com S$
+
+
+--- Page 8 ---
+
+4.
+
+Hilum and Renal Capsule:
+
+On the inner (medial) surface of each kidney is a vertical depression called the hilum. Through the hilum,
+the renal artery enters, and the renal vein and ureter exit. The entire kidney is enclosed in a tough fibrous
+capsule called the renal capsule, which provides protection against physical trauma and infections.
+Surrounding this capsule is a layer of adipose (fatty) tissue, known as the perirenal fat, which cushions and
+holds the kidney in place.
+Internal Structure
+When cut longitudinally, the kidney reveals three distinct regions: renal cortex, renal medulla, and renal
+pelvis.
+(a) Renal Cortex:
+The outermost region is called the renal cortex, which appears granular due to the presence of
+numerous renal corpuscles and convoluted tubules of nephrons. This is the site where blood filtration
+begins.
+(b) Renal Medulla:
+Beneath the cortex lies the renal medulla, a-darker, striated region arranged into renal pyramids. Each
+pyramid is cone-shaped, with its broad base facing the cortex and its tip (called renal papilla) projecting
+into minor calyces. The striated appearance is due to the presence of loops of Henle and collecting ducts
+running parallel.
+(c) Renal Pelvis:
+At the innermost part of the kidney lies a funnel-shaped chamber called the renal pelvis. It collects urine
+from the calyces and narrows down to form the ureter, which carries urine to the bladder.
+©  Calyces (minor and major): The renal papillae drain urine into small cup-like cavities called minor
+calyces. These join to form major calyces, which then open into the renal pelvis.
+Nephrons — The Functional Units
+The nephron is.the microscopic structural and functional unit of the kidney. Each kidney contains about 1—
+1.5 miltion nephrons, collectively responsible for.urine formation.
+Components of a Nephron:
+© Renal Corpuscle: Consists of the Bowman’s capsule (a double-walled cup-like structure) surrounding a
+tuft of capillaries known as the glomerulus. This is the site of blood filtration.
+e Renal Tubule: After the Bowman’s capsule, the filtrate passes through:
+©. Proximal convoluted tubule (PCT): Responsible for Websgppton of water, glucose, amino acids, and
+ions.
+© Loop of Henle: A U-shaped structure dipping into’the medulla; crucial for concentrating urine.
+o Distal convoluted tubule (D¢cT): Involved in selective reabsorption and secretion. i
+© Collecting duct: Receives urine from many nephrons.and drains into renal pelvis. .
+Blood Supply of the Kidney
+The kidney is richly supplied with blood, receiving about 20-25% of cardiac output. Blood enters through
+the renal artery, which branches into smaller arterioles leading to the glomerulus. After filtration, blood
+exits via the renal vein. The unique arrangement of two capillary beds in series (glomerular and peritubular
+capillaries) ensures efficient filtration and reabsorption.
+Protective and Supportive Features
+The kidneys are protected by multiple layers:
+1. Renal capsule — tough fibrous layer directly covering the kidney.
+2. Perirenal fat — cushions the organ.
+3. Renal fascia — connective tissue anchoring the kidneys to surrounding structures.
+These ensure the kidney remains securely in place and safe from mechanical shocks.
+The kidney is a highly organized organ consisting of an external cortex, an inner medulla with pyramids, and
+
+a central pelvis that collects urine. Its microscopic units, the nephrons, are specialized for filtration, reabsorption,
+and secretion, ensuring waste removal and homeostasis. The complex structure of the kidney directly relates to
+its essential role in maintaining the internal environment of the body.
+
+S$ studyplusplus.com S$
+
+
+--- Page 9 ---
+
+Renal Cortex
+
+Renal papilia
+ea Renal medulla
+
+Renal capsule
+
+Renal artery
+Hilum
+
+Renal vein
+Renal pelvis
+
+Ureter
+
+Figure: Internal anatomy of the kidney
+
+Relate the structure of kidney with its function.
+
+RELATIONSHIP BETWEEN STRUCTURE AND FUNCTION OF KIDNEY
+
+The human kidney is a structurally complex organ designed for the precise filtration of blood and
+maintenance of internal chemical balance. Each anatomical component of the kidney plays a specific role in the
+processes of filtration, reabsorption, secretion, and excretion. The major anatomical parts of the kidney and their
+corresponding functions are outlined below:
+
+1. Renal Capsule
+
+The renal capsule is the outermost protective covering of the kidney. It comprises three layers—the renal
+
+fascia, perirenal fat, and the fibrous capsule—which collectively:
+
+Shield the kidney from mechanical injury and infections.
+
+« Anchor the kidney in place within the abdominal cavity.
+
+¢ Provide structural support and insulation.
+
+2. Renal Artery
+
+The renal artery is a major blood vessel that delivers oxygenated, unfiltered blood from the abdominal aorta
+
+to the kidneys. It:
+
+Branches extensively within the kidney to supply blood to each nephron.
+
+e Delivers approximately 1.2 liters of blood per minute to the kidneys at rest, allowing continuous
+
+filtration of plasma and waste removal.
+3. Renal Cortex
+
+The renal cortex forms the outer region of the kidney and is richly vascularized. It serves as the primary site for:
+
+© Filtration of blood via structures known as nephrons, specifically the Bowman's capsules and glomeruli.
+
+© Production of erythropoietin (EPO), a hormone that stimulates red blood cell formation in the bone
+marrow in response to low oxygen levels.
+
+4. Renal Medulla
+Located deep to the cortex, the renal medulla contains cone-shaped structures known as renal pyramids. It
+
+functions in:
+* Concentration and collection of urine through nephron segments such as the loops of Henle and
+collecting ducts.
+
+© Osmoregulation, through the countercurrent mechanism that concentrates urine and conserves water.
+
+S$ studyplusplus.com S$
+
+
+--- Page 10 ---
+
+5. Renal Papilla
+The renal papilla is the tapered apex of each renal pyramid. It:
+«Serves as the point where urine produced in the medulla is drained into the minor calyces.
+¢ Acts asa functional interface between the medullary collecting ducts and the renal pelvis.
+6. Renal Pelvis
+
+The renal pelvis is a funnel-shaped cavity situated in the.renal hilum. It:
+© Collects urine from the major calyces and channels it into the ureter.
+e Functions as the final receiving chamber before urine leaves the kidney.
+7. Renal Vein
+The renal vein carries filtered, deoxygenated blood away from the kidney and returns it to the inferior vena
+cava. Each kidney has its own renal vein. This vessel:
+e Completes the renal circulation loop after blood has been processed by nephrons.
+e Ensures metabolically balanced blood returns to systemic circulation.
+This structural organization enables the kidneys to efficiently perform their roles in filtration, homeostasis,
+blood pressure regulation, and hormone secretion. Each component contributes to the integrated function
+of this vital organ system.
+
+the detailed structure of a nephron.
+
+STRUCTURE OF A NEPHRON
+
+The nephron is the fundamental structural and functional unit of the kidney, responsible for the filtration of
+blood and the formation of urine. Each human kidney contains approximately 1 to 1.5 million nephrons, which
+operate collectively to maintain fluid and electrolyte balance, remove waste products, and regulate blood pH.
+Structure of the Nephron
+
+Atypical nephron consists of two main parts:
+
+e Renal corpuscle
+
+¢ Renal tubule
+1. Renal Corpuscle
+
+The renal corpuscle is located in the renal cortex and is the site of initial blood filtration. It comprises:
+
+* Glomerulus — A dense, tuft-like network of capillaries that receives blood from the afferent arteriole.
+
+* Bowman’s capsule — A double-walled, cup-like structure that encases the glomerulus. It marks the
+
+beginning of the renal tubule and collects the filtrate from the glomerular capillaries.
+2. Renal Tubule and Associated Structures
+
+After the filtrate is collected in Bowman's capsule, it passes through a series of specialized tubules where
+
+selective reabsorption and secretion occur:
+
+a. Proximal Convoluted Tubule (PCT)
+
+Immediately following Bowman’s capsule, the filtrate enters the proximal convoluted tubule, a highly
+coiled segment located in the cortex. This region is responsible for the reabsorption of water, ions,
+glucose, and amino acids into the surrounding capillaries.
+
+b. Loop of Henle
+
+The PCT descends into the renal medulla to form the loop of Henle, which has two distinct limbs:
+
+© Descending limb — Permeable to water, facilitating water reabsorption.
+
+© Ascending limb — impermeable to water but actively transports salts out of the filtrate.
+
+This arrangement enables the kidney to concentrate urine through the countercurrent multiplier mechanism.
+¢. Distal Convoluted Tubule (DCT)
+
+As the loop of Henle ascends back toward the cortex, it transitions into the distal convoluted tubule,
+
+another coiled segment. The DCT fine-tunes ion concentration and contributes to acid-base balance and
+
+secretion of certain wastes.
+
+S$ studyplusplus.com S$
+
+
+--- Page 11 ---
+
+d. Collecting Duct System
+
+The DCT opens into a collecting duct, which receives filtrate from multiple nephrons.
+© Several collecting ducts merge to form larger ducts that drain into the renal pelvis via the renal
+
+o The collecting system plays a key role in water reabsorption under hormonal control (e.g.,
+
+antidiuretic hormone).
+
+Blood Circulation through the Nephron
+
+An efficient and specialized blood supply supports nephron function, ensuring continuous filtration and
+
+reabsorption.
+.
+
+Renal artery branches into afferent arterioles, each supplying a glomerulus within a renal corpuscle.
+
+© Efferent arterioles, which emerge from the glomerulus, do not carry blood directly to veins. Instead,
+they form a peritubular capillary network around the proximal and distal tubules in the cortex.
+
+© In nephrons with long loops of Henle (juxtamedullary nephrons), specialized capillaries called the vasa
+recta descend into the medulla, running parallel to the loops of Henle. This arrangement aids in the
+maintenance of the medullary osmotic gradient.
+
+© The peritubular capillaries and vasa recta eventually drain into venules, which converge into the renal
+vein, returning filtered blood to the inferior vena cava.
+
+<P: Renal corpuscie
+
+Afferent
+arteriole from
+
+renal artery
+
+Efferent
+arteriole from
+glomerulus
+
+Branch of
+renal vein
+
+técnue Descending limb
+sioo
+
+woe Ascending limb:
+
+Sel
+Glomerulus fe 2) Proximal convoluted tubule
+
+@ Distal
+tubule
+
+Figure: Structure of nephron
+
+SLOs Based (MCQs)
+
+STRUCTURE OF KIDNEY AND NEPHRON
+1. Which of the following is the functional unit of
+
+the kidney?
+A. Glomerulus B. Nephron
+C. Bowman’s capsule D. Loop of Henle
+2. Whatis the main function of Bowman’s capsule?
+A. Reabsorption of glucose B. Secretion of waste
+C. Filtration of blood plasma D. Transport of urine
+3. Inwhich region of the nephron does the majority
+of selective reabsorption occur?
+A. Collecting duct B. Loop of Henle
+C. Proximal convoluted tubule
+
+D. Distal convoluted tubule
+
+4.
+
+Which blood vessel carries blood out of th
+
+glomerulus? i
+A. Afferent arteriole B. Renal artery
+C. Renal vein D. Efferent arteriole
+
+The loop of Henle primarily functions in:
+
+A. Filtering blood B. Secreting waste
+
+C. Producing hormones __D. Concentrating urine
+What is the role of the renal pelvis?
+
+A. Filters nitrogenous waste
+
+B. Stores urine
+
+C. Collects urine and funnels it into the ureter
+
+D. Produces erythropoietin
+
+S$ studyplusplus.com S$
+
+
+--- Page 12 ---
+
+7. The vasa recta Is functionally associated with: 9. Which kidney structure encases and protects the
+
+A. Bowman's capsule 8. Renal artery kidney?
+C. Proximal tubule D. Loop of Henle A. Renal pelvis B. Renal capsule
+8. Which part of the nephron is directly connected C. Renal medulla O:fenal cortex
+ba daclter laanraap ers 10. Blood from the kidney eventually drains into:
+B. Loop of Henle C. Glomerulus A. Hepatic vein B. Pulmonary vein
+D. Distal convoluted tubule C. Inferior vena cava D. Superior vena cava
+
+[ae [zc[sc[ao|s.o[6.c]7o][a0[ a8] i0¢]
+
+Short Questions
+
+Q.1 Whatis a nephron, and what are its main parts?
+
+Ans. A nephron is the functional unit of the kidney, responsible for blood
+filtration and urine formation. Each nephron has two main components:
+1. Renal corpuscle - made up of the glomerulus and Bowman’s |_*_Defiaition(2) parts named (2).
+capsule, where filtration occurs.
+2. Renal tubule — consisting of the proximal convoluted tubule (PCT), loop of Henle, distal convoluted
+tubule (DCT), and the collecting duct, where reabsorption and secretion take place.
+Q.2 What happens in the proximal convoluted tubule (PCT)?
+Ans, The PCT is the first part of the renal tubule, located after Bowman’s
+capsule. It is the site of extensive reabsorption, where essential MARKING SCHEME (3 Marks)
+substances such as glucose, amino acids, ions (Na*, CL“, HCO3~), and a | « Location (2), fu 5 (2).
+significant amount of water are reabsorbed into the surrounding
+capillaries. This process ensures that useful materials are returned to the bloodstream.
+Q.3 Describe the loop of Henle and its function.
+Ans. me loop of Henle is a U-shaped section of the nephron tubule. It has
+- © Location i hi 1), ft tions (2).
+e Descending limb — permeable to water but not salts; water diffuses bu peenren Lk resons
+out.
+e Ascending limb — impermeable to water but actively transports salts into the medulla.
+
+Together, these create a concentration gradient in the medulla, which is crucial for water conservation and
+producing concentrated urine.
+
+Q.4 Whatis the role of the distal convoluted tubule (DCT)?
+
+Ans. The DCT, located after the loop of Henle, fine-tunes urine composition.
+It reabsorbs ions such as Na* and Ca**, helps maintain acid-base MARKING SCHEME (3 Marks)
+balance by secreting H* of reabsorbing HCO3~, and contributes to | * lecetion (2), functions (2).
+selective secretion of wastes. It also responds to hormones such as
+aldosterone, which regulates sodium reabsorption.
+Q.5 Explain the structure and function of the collecting duct.
+Ans. The collecting duct is a long tubular structure that receives urine from
+multiple nephrons and carries it through the renal medulla to the renal MARKING SCHEME (3 Mat
+pelvis. Its walls are responsive to antidiuretic hormone (ADH), which Structure (1), functions
+increases water reabsorption. This allows the body to regulate urine
+concentration and volume, especially during dehydration.
+Q.6 How is blood supplied to and from the nephron?
+Ans. Blood enters the nephron through the afferent arteriole, which delivers
+
+blood to the glomerulus for filtration. The filtered blood leaves via the MARKING SCHEME (3 Marks)
+efferent arteriole, which branches into the peritubular capillaries and | + Role of efferent & afferent arteriole
+the vasa recta. These capillaries surround the nephron, allowing (1), pathway (2). ;
+reabsorption and secretion, before draining into venules and eventually
+
+the renal vein.
+
+S$ studyplusplus.com S$
+
+
+--- Page 13 ---
+
+Q.7 Whatis the role of Bowman’s capsule?
+
+Ans. The Bowman’s capsule is a double-walled cup-like structure located in
+the renal cortex. It surrounds the glomerulus and serves as the initial MARKING SCHEME (3 Marks)
+site of urine formation. Its main function is to collect the filtrate Location (1), function (2).
+produced during glomerular filtration and direct it into the renal tubule
+for further modification,
+
+Q.8 Whatis the vasa recta and its function?
+
+Ans. The vasa recta is a specialized network of capillaries that runs parallel
+to the loop of Henle in juxtamedullary nephrons. Its primary role is to MARKING SCHEME (3 Marks)
+maintain the osmotic gradient in the medulla through countercurrent Structure (1), function (2).
+exchange, which is vital for concentrated urine formation and water
+conservation.
+
+Q.9 Describe the renal corpuscle and its function.
+
+Ans. The renal corpuscle, located in the renal cortex, consists of two parts: 7
+the glomerulus (a tuft of capillaries) and Bowman’s capsule (the
+surrounding cup-like structure). Its main function is filtration of blood [_* ‘tion (2) function
+plasma, producing the initial filtrate that enters the nephron for further
+processing into urine.
+Q.10 What role does the renal pelvis play in the urinary system?
+Ans. The renal petvis is a funnel-shaped cavity located at the center of the.
+kidney. It collects urine from the major calyces and channels it into the
+ureter. Thus, it acts as the final collecting site within the kidney before won (is ecine
+urine passes to the bladder for storage.
+
+SLO [B-12-R-15)
+
+Explain the process of glomerular filtration, selective re-absorption and tubular secretion ass the
+
+events in kidney functioning.
+
+URINE FORMATION
+
+Urine formation in the nephron is a highly coordinated process that ensures the removal of metabolic wastes
+and the regulation of blood composition. It involves three main stages:
+1. Glomerular Filtration 2. Tubular Reabsorption 3. Tubular Secretion
+1. Glomerular Filtration (Ultrafiltration under Pressure)
+Location: Renal corpuscle (Glomerulus + Bowman's capsule)
+Mechanism: Passive filtration under pressure
+Glomerular filtration is the first step in urine formation. It occurs in the Bowman's capsule, where blood
+from the afferent arteriole enters a bundle of capillaries known as the glomerulus.
+» Hydrostatic Pressure Drives Filtration
+Filtration occurs due to high hydrostatic pressure, which is generated by the incoming blood. This pressure
+is unusually high in the glomerulus—significantly higher than in other capillary beds of the body.
+This is achieved because the efferent arteriole (outgoing) is narrower than the afferent arteriole (incoming).
+As blood is forced into a narrower vessel, pressure builds up, pushing plasma and small solutes out of the
+capillaries and into the Bowman’s capsule.
+
+Substances which are filtered:
+
+Filtered into the capsule:
+
+e Water
+
+e tons (e.g., Na*, Cé-, K*)
+
+© Glucose
+
+ - Amino acids >
+
++ Urea ard small nitrogenaus Waste Molecules
+
+S$ studyplusplus.com S$
+
+
+--- Page 14 ---
+
+2.
+
+Remain in the blood (not filtered):
+
+© Proteins (too large)
+
+¢ Red blood cells and platelets (cellular components)
+
+The resulting fluid in the Bowman's capsule is called glomerular filtrate. It resembles blood plasma in
+composition, except that it lacks proteins and blood cells.
+
+Tubular Reabsorption (Selective Reabsorption)
+
+Location: Mainly proximal convoluted tubule (PCT); also in loop of Henle, DCT, and collecting duct
+Mechanism: Active and passive transport
+
+After filtration, the body must recover useful substances that were accidentally filtered out. This is
+accomplished through selective reabsorption—a process by which essential solutes are actively or passively
+transported back into the blood via the surrounding capillaries. -
+
+Substances Reabsorbed Include:
+
+© 100% of glucose and most amino acids
+
+e Vitamins
+
+© Inorganic salts (e.g., Na*, Cl“, HCO3")
+
+e Variable amounts of water, depending on hydration status FI
+The proximal convoluted tubule is the major site of reabsorption. The loop of Henle and distal convoluted
+tubule further fine-tune the absorption of salts and water.
+
+Tubular Secretion (pH Regulation and Waste Elimination)
+
+Location: Primarily in the distal tubule and loop of Henle
+
+Mechanism: Active secretion by epithelial cells
+
+Tubular secretion is the final step in urine formation. It involves the active transport of certain substances
+from the peritubular capillaries directly into the renal tubule. These substances were not removed during
+filtration or were produced in the tubule cells themselves.
+
+Substances Secreted:
+
+© Hydrogen ions (H*) — help regulate blcod and urine pH
+
+e Ammonium ions (NH,*) — detoxify nitrogenous waste
+
+© Potassium ions (K*) and certain drugs/toxins
+
+This process is essential for:
+
+e Acid-base balance
+
+e  Fine-tuning of electrolyte levels
+
+e Excretion of substances in excess
+
+The normal urine pH ranges from 4.8 to 7.5, reflecting the body’s dynamic response to acid-base fluctuations.
+
+Vanable reabsorption of water
+Sodium tons, and calcium ions
+
+\under hormonal contrat)
+NEPHRON
+‘Glomeruius
+Etferent aneriole — \ ( COLLECTING SYSTEM
+Afferent artenole ‘Ascending LN A ae
+“ ‘Descending Collecting duct
+Bowman's capsule’ | £ heeepetimrrenncim sha)
+alot and veabecrsion 6
+-secrebon of sedan.
+Renal corpus potassium. hydrogen
+[Prods and bearbonate 08 _
+
+f
+
+1) SPapiiny aie
+ibys DK (Sener
+
+Ss as i
+| Loop of Henle calyx
+| Further reabsorpton of water
+
+| (Sescandeng ind) and both
+sodum and chioade ons
+
+[(aicendeg lend)
+
+Figure: Urine formation
+
+$ studyplusplus.com S$
+
+
+--- Page 15 ---
+
+There are two types of nephrons, cortical nephrons and juxtamedullary nephrons. Cortical nephrons
+are found in the cortex. They have their renal corpuscle in the superficial renal cortex and have
+relatively short loops of Henle. 70 to 80% nephrons in human kidney are cortical. Under normal
+conditions of water availability, the cortical nephrons deal with the control of blood volume by
+forming diluted urine. Juxtamedullary nephrons have their renal corpuscle close to the junction of the
+cortex and medulla. They have long loop of Henle which extends deep into the medulla. These types
+of nephrons are relatively rare and only comprise 20-30% of the nephrons in the human kidney. When
+water is in short supply, increased water retention occurs through juxtamedullary nephrons.
+
+Explain regulatory mechanism involyed in concentration of urine.
+
+MECHANISM OF URINE CONCENTRATION
+
+Mechanism of Urine Concentration: The Countercurrent Multiplier System
+
+The kidneys must conserve water when the body is dehydrated and remove excess water when it is
+overhydrated. The ability to produce concentrated (hypertonic) urine is essential for water balance and survival
+in terrestrial environments. 2
+
+This is made possible by a specialized mechanism called the countercurrent multiplier, which operates in
+the loop of Henle and is supported by the vasa recta—the capillary network surrounding the nephron.
+
+Role of the Loop of Henle and the Vasa Recta
+
+The loop of Henle plays a.central role in creating a gradient of solute concentration in the kidney medulla.
+The descending and ascending limbs of the loop differ in their permeability:
+
+¢. Descending limb: Permeable to water, but not to solutes.
+
+* Ascending limb: Impermeable to water but actively transports sodium chloride (NaCl) into the
+
+surrounding tissue. *
+
+This arrangement establishes a countercurrent system, where filtrate flows in opposite directions in the two
+limbs of the loop. Simultaneously, blood in the vasa recta flows counter to-the flow in the nephron, helping
+maintain the osmotic gradient.
+
+Steps of the Countercurrent Multiplier Mechanism
+
+1. Active NaCl Transport:
+Sodium chloride is actively pumped out of the sscanaing limb into the medullary interstitium. This increases
+the solute concentration in the surrounding tissue, making it hypertonic.
+
+2. Water Reabsorption by Osmosis:
+As filtrate flows down the descending limb, water moves out into the hypertonic interstitial fluid by osmosis,
+concentrating the filtrate.
+3. Flow Continuation and Exchange:
+This continuous flow and differential permeability create a vertical
+osmotic gradient in the medulla. As a result, about 99.5% of water is NCE TITBITS
+reabsorbed before urine reaches the ureter. In addition to their excretory and
+4. Role of Hormones: osmoregulatory role, kidneys also
+
+* Aldosterone: Regulates sodium reabsorption, especially in the help. to contin) ithe fed. Good call
+
+distal tubule and collecting duct.
+e Antidiuretic Hormone (ADH): Secreted from the posterior
+
+formation by secreting the hormone
+erythropoietin ‘and help to regulate
+
+blood pressure by secreting the (EPO)
+pituitary, ADH increases the permeability of the collecting duct to earicrnin ees
+
+water, allowing more water to be reabsorbed into the bloodstream.
+
+Formation of Hypertonic Urine
+
+In dehydration or water deficiency, high ADH levels promote maximum water reabsorption in the collecting
+duct, producing a small volume of concentrated urine. This is critical for conserving body fluids.
+
+So studyplusplus.com S$
+
+
+--- Page 16 ---
+
+In contrast, during overhydration, ADH secretion is suppressed, leading to less water reabsorption and the
+production of dilute urine.
+
+Summary of Process of Urine Concentration
+fir Ee Compendit = Apia [i at 01 Role ee a
+
+SLO [B-1 17}
+
+Justify the functioning of kidneys as both excretion and osmoregulation.
+
+KIDNEYS AS ORGANS OF EXCRETION AND OSMOREGULATION
+
+The kidneys are vital organs of the urinary system that play a dual role in maintaining the body’s internal
+balance. They function not only as excretory organs, removing waste products of metabolism, but also as
+osmoregulatory organs, regulating the concentration of water and salts in body fluids. These two roles are closely
+linked, as efficient excretion requires controlled regulation of fluid and electrolyte balance.
+
+Kidneys as Excretory Organs :
+
+Excretion is the process of removing metabolic wastes from the body. The kidneys filter blood through
+specialized structures called nephrons, which separate useful substances from harmful wastes.
+1. Removal of Nitrogenous Wastes:
+
+¢ Proteins and nucleic acids are metabolized to produce nitrogenous wastes such as urea, creatinine, and
+
+uric acid.
+
+* These compounds are toxic if allowed to accumulate, so the kidneys filter them out and excrete them in
+
+urine.
+2. Detoxification of the Blood:
+
+© Drugs, toxins, and by-products of metabolism (e.g., ammonia converted to urea in the liver) are
+
+eliminated.
+
+¢ This purification ensures that blood leaving the kidneys is free from harmful metabolic end products.
+3. Acid-Base Balance:
+
+¢ By excreting hydrogen ions (H*) and reabsorbing bicarbonate (HCOs*), kidneys maintain the blood pH
+
+within a narrow range (around 7.35-7.45).
+
+© Without this, metabolic acidosis or alkalosis could impair cellular functions.
+
+Thus, the kidneys serve as highly efficient filters, protecting the body from toxic buildup and maintaining
+chemical stability.
+
+Kidneys as Osmoregulatory Organs
+Osmoregulation refers to the control of water and salt balance in the body to ensure homeostasis. Kidneys
+maintain the osmotic pressure of blood plasma and regulate extracellular fluid composition.
+1. Regulation of Water Balance:
+e Theantidiuretic hormone (ADH) increases the permeability of the collecting ducts, allowing more water
+to be reabsorbed into the bloodstream during dehydration.
+e  Inconditions of excess water intake, less ADH is secreted, resulting in dilute urine.
+2. Regulation of Salt (Electrolyte) Balance:
+e The kidneys control the levels of sodium, potassium, chloride, and calcium ions.
+
+® The hormone aldosterone,. secreted by the adrenal cortex, promotes sodium reabsorption and
+potassium excretion in the distal tubule, which also indirectly regulates water retention.
+
+S$ studyplusplus.com S$
+
+
+--- Page 17 ---
+
+3. Maintenance of Blood Pressure and Volume:
+© Specialized kidney cells release renin, which triggers the renin-angiotensin—aldosterone system (RAAS).
+This pathway increases blood pressure by vasoconstriction and stimulating sodium and water
+reabsorption.
+e Inthis way, kidneys play a central role in long-term regulation of blood pressure.
+> Integration of Excretion and Osmoregulation
+The excretory and osmoregulatory functions of kidneys are interdependent. For example:
+When waste products are excreted, water is also removed. The kidneys must regulate the amount of
+water lost to prevent dehydration.
+© Similarly, regulation of sodium ions not only maintains osmotic balance but also determines the volume
+of urine produced and the concentration of wastes.
+This dual role allows the kidneys to maintain homeostasis — a stable internal environment despite external
+changes. For instance, during intense exercise, increased metabolic wastes (urea, lactic acid) must be
+excreted, while at the same time water and electrolytes lost in sweat must be balanced by kidney regulation.
+
+Distal
+convoluted tubule
+
+Medullary fluid
+
+Urea Urea
+
+Figure: Counter current mechanism
+
+Compare the function of two major capillary beds in kidneys i.e., glomerular capillaries and peritubular
+
+capillaries.
+
+CAPILLARY BEDS OF THE KIDNEY
+
+The kidney is unique in having two successive capillary networks associated with each nephron:
+
+© Glomerular capillaries — specialized for filtration.
+
+¢ Peritubular capillaries (including vasa recta in juxtamedullary nephrons) — specialized for reabsorption
+
+and exchange. he
+
+These capillaries are connected by efferent arterioles, unlike most organs where arterioles connect
+capillaries to venules. This arrangement ensures both efficient filtration and recovery of useful substances,
+1. Glomerular Capillaries
+
+Structure
+
+* Located inside the Bowman’s capsule of the nephron.
+
+$ studyplusplus.com S$
+
+
+--- Page 18 ---
+
+© Composed of fenestrated capillaries, supported by a basement membrane and podocytes.
+
+Supplied by the afferent arteriole (wider) and drained by the efferent arteriole (narrower), maintaining
+high pressure.
+
+Function
+
+e Specialized for ultrafiltration of blood.
+
+e High hydrostatic pressure (~55 mmHg) forces water, electrolytes, glucose, amino acids, and urea out of
+blood into Bowman’s capsule.
+
+« Large molecules such as proteins and blood cells remain in the capillaries.
+
+Glomerular capillaries act like a biological sieve, forming glomerular filtrate that resembles blood plasma
+
+but is protein-free.
+
+2. Peritubular Capillaries
+
+Structure
+
+e Network of capillaries surrou: ding the proximal tubule, loop of Henle, distal tubule, and collecting duct
+in the renal cortex.
+
+e Arise from the efferent arteriole of the glomerulus.
+
+e Pressure here is low, favouring reabsorption.
+
+¢ In juxtamedullary nephrons, specialized long capillaries called the vasa recta run parallel to the loop of
+Henle into the medulla.
+
+Function
+
+e Major role is reabsorption and secretion.
+
+© Reabsorb nearly 99% of water and useful solutes (like glucose, amino acids, sodium, and bicarbonate)
+from filtrate back into the blood.
+
+© Participate in secretion of waste products (e.g., hydrogen ions, potassium, drugs) into the tubules.
+
+© Vasa recta maintain the osmotic gradient of the renal medulla, crucial for urine concentration.
+
+Peritubular capillaries act as recovery channels, ensuring that essential substances are reclaimed and only
+
+wastes are excreted.
+
+Comparison of Functions
+
+Glomerular Capillaries
+[Location | inside Bowman’scapsule | Around renal tubules (cortex and medulla) _|
+[Pressure | High(=5SmmHg) | Low(=20-15 mmHg)
+| Specialization [Filtration =| Reabsorption & secretion
+
+Recovery of water, nutrients, ions; final urine
+composition
+
+Vasa recta help maintain.osmotic gradient in
+medulla
+
+Glomerular filtrate
+
+Unique
+Adaptation
+
+Fenestrated structure with podocytes
+
+“SLOs Based (MCQs)
+URINE FORMATION & COUNTER CURRENT MULTIPLIER MECHANISM
+
+What is the primary force responsible for
+glomerular filtration in the renal capsule?
+
+A. Blood enters from renal vein
+B. Afferent arteriole is narrower than efferent
+
+A. Osmotic pressure arteriole
+B. Atmospheric pressure C. Efferent arteriole is narrower than afferent
+C. Hydrostatic pressure arteriole
+
+D. Renal tubular pressure
+
+2. Which of the following substances is not
+normally filtered into the glomerular filtrate?
+A. Glucose B. Sodium ions
+C. Plasma proteins D. Urea
+
+3. Why is the blood pressure in glomerular
+capillaries unusually high?
+
+D. Presence of valves in renal capsule
+4. Which part of the nephron is primarily
+responsible for selective reabsorption?
+A. Glomerulus
+B, Proximal convoluted tubule
+C. Descending limb of loop of Henle
+D. Renal pelvis
+
+S$ studyplusplus.com S$
+
+
+--- Page 19 ---
+
+11,
+
+12.
+
+13.
+
+14,
+
+bh
+
+Which hormone increases the permeability of D. Movement of ions along a concentration gradient
+
+the collecting duct to water? 8. In which part of the nephron Is sodium chloride
+
+A. Aldosterone actively transported out into the medullary
+
+B. ADH (antidiuretic hormone) interstitium?
+
+C. Renin D. Insulin A. Descending limb of loop of Henle
+
+What is the main function of tubular secretion? B. Ascending limb of loop of Henle
+
+A. To remove glucose from the filtrate C. Proximal convoluted tubule
+
+B. To balance oxygen concentration D. Renal capsule
+
+C.To eliminate substances like hydrogen and | 9, Which of the following contributes to. the
+ammonium ions formation of hypertonic urine?
+
+D. To absorb proteins back into the blood A. Increased blood glucose
+
+Which statement best explains the term B. Reduced filtration pressure
+
+“countercurrent” in the kidney? C. Increased ADH secretion
+
+A. Movement of water against gravity D. Decreased Na* reabsorption
+
+B. Flow of filtrate and blood in the same direction | 10, What is the pH range of normal urine?
+
+C. Opposite flow of filtrate in nephron and blood A.6.8-9.5 B.4.8-7.5
+in vasa recta C.3.0-4.5 D.7.0-9.0
+
+Which of the following correctly describes the pressure filtration mechanism in the renal corpuscle?
+
+fe PR a ee
+C__| Filtration occurs due to active transport of solutes into the Bowman's capsule.
+
+:
+c
+Which table best describes the direction of flow in the countercurrent exchange system of the kidney?
+
+[Option] FiltrateinLoopofHenle | Blood inVasaRecta
+| 8 [| Descending—> Ascending | Descending—> Ascending |
+Lo [ Ascending» Descending | Descending—> Ascending |
+
+All substances are reabsorbed by simple diffusion.
+
+Water and urea are reabsorbed by active transport in the loop of Henle.
+
+Useful substances like glucose, amino acids, and salts are reabsorbed vy active and passive means.
+Only waste products are reabsorbed to maintain osmotic balance.
+
+[1.c J2.c [3.c [ae [se [ec [7c [as [9c [108116 (i2clisc [14a 15.cl
+
+S$ studyplusplus.com S$
+
+
+--- Page 20 ---
+
+Short Questions
+
+Q.1 Define glomerular filtration. Where does it occur?
+
+Ans. Glomerular filtration is the process in which blood plasma is filtered
+under pressure across the glomerular capillaries into Bowman’s
+capsule. It is driven by hydrostatic pressure, which forces water and
+small solutes (like glucose, amino acids, and ions) into the filtrate while
+leaying larger molecules, behind. This process takes place in the renal corpuscle (Bowman's capsule).
+
+Q.2. Why are proteins and blood cells not found in glomerular filtrate?
+
+Ans. Proteins and blood cells are too large to pass through the filtration
+membrane formed by the glomerular capillary walls, basement MARKING SCHEME (3 Marks)
+membrane, and podocyte slits. Therefore, they remain in the | © Importance of process (1
+bloodstream. This selectiv2 filtration ensures that only small, useful
+molecules enter the filtrate while essential blood components are retained.
+
+Q.3 What is selective reabsorption and where does it primarily take place?
+
+Ans. Selective reabsorption is the process of actively and passively
+reclaiming essential substances such as glucose, amino acids, vitamins,
+salts, and most water from the filtrate back into the blood. This prevents
+the loss of valuable nutrients. It primarily occurs in the proximal
+convoluted tubule (PCT) of the nephron.
+
+Q.4 What is the function of tubular secretion?
+
+Ans. Tubular secretion is the active transfer of specific substances (e.g.,
+hydrogen ions, potassium ions, ammonium ions, drugs, and toxins)
+from the blood into the tubular fluid. Its main functions are to maintain
+blood pH, remove waste products not filtered earlier, and aid in
+regulating electrolyte balance.
+
+Q.5 Describe the role of the loop of Henle in-urine concentration.
+
+Ans. The loop of Henle establishes an osmotic gradient in the renal medulla aasvina Scene [5 Marks)
+through the countercurrent multiplier mechanism. In this process:
+© The descending limb is permeable to water, allowing it to move out _L* Location Ell: mechentem expieings (2)
+by osmosis. x
+
+© The ascending limb actively transports sodium and chloride ions into the interstitial fluid but is
+impermeable to water.
+
+© This gradient enables the kidney to produce concentrated.urine and conserve water.
+
+Q.6 What is the function of ADH in the nephron?
+Ans. ADH (antidiuretic hormone) increases the permeability of the
+
+collecting duct to water. This enables more water reabsorption into the _MARKING SCHEME (3 Marks)
+bloodstream, reducing water loss. As a result, concentrated urine is | * Permeability acted Reames
+produced, particularly during dehydration, helping the body conserve (2), urine concentration (1).
+
+water.
+
+Q.7 What is meant by “countercurrent” in the kidney’s nephron system?
+
+Ans. The term “countercurrent” refers to the opposite direction of fluid
+flow in the descending and ascending limbs of the loop of Henle, as well
+as between the nephron and the vasa recta. This arrangement allows
+efficient exchange of water and solutes, which is crucial for establishing
+the osmotic gradient that enables urine concentration.
+
+Q.8 How does aldosterone affect the composition of urine?
+‘Ans. Aldosterone acts on the distal convoluted tubule and collecting duct,
+
+where it promotes reabsorption of sodium ions and secretion of MARKING SCHEME (3 Marks)
+potassium ions. As sodium reabsorption increases, water follows | * Functions (2), effect on urine
+osmotically, leading to water retention. This process helps maintain concentration (1).
+
+blood pressure and fluid balance, while making urine more
+
+concentrated.
+
+S$ studyplusplus.com S$
+
+
+--- Page 21 ---
+
+. Q.9 How does the kidney regulate water balance in different hydration states?
+
+Ans. e During dehydration: ADH secretion increases, which raises the
+permeability of the collecting ducts. This: causes more water
+reabsorption and the production of concentrated urine.
+
+e During overhydration: ADH secretion decreases, lowering water
+reabsorption. This results in the production of dilute urine,
+preventing excess water retention.
+
+Thus, the kidney regulates water balance by adjusting urine concentration according to hydration state.
+
+Q.10 Why is the ascending limb of the loop of Henle impermeable to water, and what is the significance of this?
+
+MARKING SCHEME (3 Marks)
+
+‘* Role of ADH in dehydration (1.5), role
+of ADH in overhydration (1.5).
+
+Ans. The ascending limb of the loop of Henle is impermeable to water, but
+it actively transports sodium and chloride ions into the surrounding MARKING SCHEME (3 Marks)
+medulla. This raises the, solute concentration of the interstitial fluid, | * . Reason (1), effect (2), significance (1).
+which draws water out of the descending limb and collecting ducts. This
+
+mechanism is significant for establishing the osmotic gradient that allows the kidney to produce
+concentrated urine when needed.
+
+URINARY TRACT INFECTIONS (UTIS) AND THEIR CAUSATIVE BACTERIA
+
+Urinary tract infections (UTIs) are among the most frequent bacterial infections in humans, affecting millions
+of people worldwide each year. The urinary system, which includes the kidneys, ureters, bladder, and urethra, is
+normally kept sterile by various defense mechanisms such as regular urination, mucosal barriers, and immune
+responses. However, when bacteria gain entry and begin to multiply within this system, infection occurs. UTIs are
+more common in women due to their shorter urethra and its close proximity to the anal opening, which facilitates
+the transfer of bacteria.
+
+From a medical perspective, UTIs can be classified according to the site of infection: urethritis (infection of
+the urethra), cystitis (infection of the bladder), and pyelonephritis (infection of the kidneys). In some cases,
+bacteria may be present in urine without obvious symptoms; this condition is called asymptomatic bacteriuria.
+Each type of infection has distinct clinical significance and is caused by characteristic groups of bacteria.
+
+1. Urethritis
+
+Urethritis refers to the infection of the urethra, the narrow tube that carries urine from the bladder to the
+outside. It often presents with painful urination (dysuria), itching, or discharge. While Escherichia coli (E.
+coli), a common bacterium of the gut, can cause urethritis, two other important bacterial agents are sexually
+transmitted: Chlamydia trachomatis and Neisseria gonorrhoeae. These pathogens are responsible for a
+large proportion of sexually acquired urethral infections in young adults. If untreated, such infections may
+spread to the reproductive tract, causing complications such as pelvic inflammatory disease in females or
+infertility in males.
+
+Cystitis
+
+When the infection spreads upward from the urethra into the bladder, it leads to cystitis. This condition is
+especially common in women and is characterized by urinary urgency, frequent urination in small amounts,
+pain during urination, and cloudy or foul-smelling urine. The most common bacterium responsible is
+Escherichia coli, which accounts for nearly 80-85% of all bladder infections. Another bacterium,
+Staphylococcus saprophyticus, is frequently implicated in young, sexually active females. Less common
+agents include Klebsiella pneumoniae and Proteus mirabilis, which are often associated with hospital-
+acquired infections.
+
+3. Pyelonephritis
+{f the infection continues to ascend, it can reach the kidneys, causing pyelonephritis. This is a serious
+condition marked by fever, chills, back pain (flank pain), and sometimes nausea or vomiting. Escherichia coli
+remains the primary cause, but other bacteria such as Proteus mirabilis, Klebsiella pneumoniae, and
+Pseudomonas aeruginosa are also involved, especially in patients with long-term catheters or structural
+abnormalities of the urinary tract. Pyelonephritis can lead to permanent kidney damage if not treated
+
+promptly with antibiotics.
+
+N
+
+S$ studyplusplus.com S$
+
+
+--- Page 22 ---
+
+4. Asymptomatic Bacteriuria
+In some individuals, bacteria can be present in the urine without causing noticeable symptoms. This
+condition, known as asymptomatic bacteriuria, is most commonly caused by Escherichia coli, but may also
+involve Enterococcus faecalis or Group B Streptococcus. Although it usually does not require treatmentin |
+healthy individuals, it is clinically significant in pregnant women, as untreated bacteriuria may progress to |
+kidney infections, potentially leading to complications for both the mother and the fetus.
+> Major Causative Bacteria of UTIs
+While different bacteria are associated with different forms of UTIs, some species stand out as the most
+important pathogens:
+e Escherichia coli > the single most common.cause of all types of UTIs.
+e Staphylococcus saprophyticus — frequently causes bladder infections in young women.
+e Klebsiella pneumoniae and Proteus mirabilis > cause. complicated UTIs and are often linked with
+hospital patients.
+© Pseudomonas aeruginosa —> a dangerous pathogen in catheterized or immunocompromised patients.
+e Chlamydia trachomatis and Neisseria gonorrhoeae — cause urethritis, particularly as sexually
+transmitted infections.
+Enterococcus faecalis > occasionally implicated in persistent UTIs.
+
+Escherichia coli, Chlamydia Often sexually
+trachomatis, Neisseria . transmitted (Chlamydia,
+gonorrhoeae Gonorrhea)
+Escherichia coli (80-85%),
+Staphylococcus saprophyticus,
+Klebsiella pneumoniae, Proteus
+mirabilis
+Escherichia coli, Proteus Can lead to permanent
+mirabilis, Klebsiella pneumoniae, | kidney damage if
+Pseudomonas aeruginosa untreated
+Asymptomatic Clinically important in
+bacteriuria (bacteria Escherichia coli, Enterococcus pregnancy; may lead to
+in urine, no faecalis, Group B Streptococcus | complications if
+mptoms) untreated
+
+Explain the causes and treatments of kidney stones.
+
+Kidney Stones (Renal Calculi)
+
+Kidney stones, medically termed renal calculi, are hard crystalline
+
+Urethritis (infection |, Painful urination,
+of urethra) burning, discharge
+
+Urgency, frequent
+urination, cloudy urine,
+pelvic pain
+
+More common in
+women; S. saprophyticus
+often in young females
+
+Cystitis (bladder ~
+infection)
+
+Pyelonephritis Fever, back/flank pain,
+(kidney infection) chills, nausea
+
+Usually none
+
+deposits that form within the kidneys or urinary tract. They are a Calyceal
+common disorder of the urinary system and can cause severe pain and k stone
+complications if not treated. Stones are usually composed of minerals
+
+and salts, and their size can vary from tiny grains resembling sand to WSs Renal pelvic
+large masses that obstruct the urinary tract. \ stone
+
+The development of kidney stones is influenced by dietary habits,
+dehydration, infections, genetic predisposition, and certain metabolic
+disorders. Understanding the causes and treatments is essential for
+both prevention and management.
+> Causes of Kidney Stones
+
+1. Dehydration
+
+One of the primary causes of stone formation is insufficient water intake. When urine becomes highly
+concentrated due to dehydration, dissolved salts such as calcium, oxalate, and uric acid crystallize and
+form stones. Hot climates, excessive sweating, or neglecting adequate fluid intake increase this risk.
+
+S$ studyplusplus.com S$
+
+Figure: Kidney Stone
+
+
+
+--- Page 23 ---
+
+2. High Mineral and Salt Levels
+© Calcium Stones: The most common type, often formed when calcium combines with oxalate or
+phosphate. Excessive dietary salt increases calcium excretion in urine, promoting stone formation.
+© Uric Acid Stones: Develop in people with high-protein diets or conditions like gout, where uric acid
+levels are elevated.
+
+© Struvite Stones: Associated with chronic urinary tract
+
+Haag by bacteria that produce urease, which The scence "concerned adth “the
+
+© Cystine Stones: Rare, but occur in individuals with a structure, uneons racial ore
+genetic disorder (cystinuria) that causes cystine, an amino Micneys |s called nephrology:
+acid, to leak into urine.
+
+3. Medical Conditions
+Certain conditions predispose individuals to kidney stones, such as hyperparathyroidism (excess calcium
+release), obesity, diabetes, and chronic UTIs.
+
+4. Family History and Genetics
+A family history of stones increases susceptibility. Inherited conditions like cystinuria directly contribute
+to stone formation.
+
+Symptoms of Kidney Stones
+
+While small stones may pass unnoticed, larger ones can cause distressing symptoms, including:
+
+Severe, sharp pain in the lower back or side (renal colic).
+
+Pain radiating to the lower abdomen or groin.
+
+Blood in urine (hematuria).
+
+Frequent and painful urination.
+
+Nausea and vomiting due to pain.
+
+These symptoms often.occur suddenly when a stone obstructs the flow of urine.
+
+Types of Urinary Stones
+
+Urinary stones, or renal calculi, are solid mineral and salt aggregates that form within the urinary tract. Based
+
+on their chemical composition, urinary stones are classified into five major types:
+
+© Calcium Oxalate Stones: These are the most common type, typically formed when urine contains high
+levels of calcium and oxalate. They are often hard and irregular in shape.
+
+© Calcium Phosphate Stones: These stones usually develop in alkaline urine and may be associated with
+conditions such as renal tubular acidosis.
+
+© Magnesium Ammonium Phosphate Stones (Struvite Stones): Commonly seen in individuals with
+recurrent urinary tract infections (UTIs), these stones form in alkaline urine and can grow rapidly. Large
+struvite stones may form branching structures known as staghorn calculi, which can occupy a major
+portion of the renal pelvis and calyces.
+
+* Uric Acid Stones: These stones are formed in persistently acidic urine and are often linked to conditions
+such as gout or high purine intake. Many uric acid stones contain a combination of uric acid and calcium
+oxalate.
+
+e Cystine Stones: These are rare and typically seen in individuals with a hereditary disorder called
+cystinuria, where cystine—a type of amino acid—accumulates in the urine.
+
+Most urinary stones range from 2-3 mm in diameter, although their size and surface texture (smooth or
+
+uneven) can vary depending on their composition and site of formation. Large, branching stones resembling
+
+the horns of a stag are termed staghorn stones, and they often require surgical intervention.
+
+Treatments of Kidney Stones
+
+1. Increased Fluid Intake
+For small stones, the simplest and most effective treatment is drinking large amounts of water (2-3
+liters daily) to flush the stones naturally through urine,
+
+2. Medications '
+© Pain Relievers: Nonstaroldtet anti-inflammatory drugs (NSAIDs) help manage severe pain.
+
+oO. Alpha-blockers (e.g., tamsulosin): Relax the ureter muscles, making it easier for stones to pass.
+
+© Antibiotics: Given if stones are associated with urinary infections.
+
+S$ studyplusplus.com S$
+
+
+--- Page 24 ---
+
+3. Medical Procedures
+© Extracorporeal Shock Wave Lithotripsy (ESWL): High-energy sound waves break large stones into
+smaller fragments that pass naturally.
+© Ureteroscopy: A thin scope inserted through the urethra and bladder into the ureter to locate and
+remove stones. :
+© Percutaneous Nephrolithotomy: A minimally invasive surgical procedure to remove very large or
+stubborn stones directly from the kidney.
+4, Preventive Measures
+© Maintaining proper hydration.
+© Reducing salt, oxalate-rich foods (like spinach, nuts, and tea), and animal proteins in diet.
+© Using prescribed medications to reduce recurrence in people prone to frequent stone formation.
+
+SLO [B-12-R-21]
+
+Outline the causes of kidney failure.
+
+Kidney Failure
+Renal failure refers to a decline in the kidneys’ ability to filter waste and
+maintain homeostasis.
+A. Chronic Renal Failure
+© Progressive and irreversible loss of renal function, developing over
+months to years.
+* May lead to end-stage renal disease (ESRD) requiring dialysis or
+transplantation.
+Major Causes:
+1. Chronic bacterial infections of the renal pelvis.
+2. Nephritis (inflammation of glomeruli).
+3. Uncontrolled hypertension (high blood pressure).
+4, Diabetes mellitus (leading to diabetic nephropathy).
+B. Acute Renal Failure
+e Sudden loss of kidney function, often reversible if treated early.
+
+[sis Rector Sus |AGe Tee eee eg peanation aes ee
+Severe hemorrhage | Reduces blood supply to kidneys
+Dehydration Due to vomiting, diarrhea, or excessive sweating
+
+Chronic kidney failure can progress
+to end-stage renal disease (ESRD)
+and uremia, which is fatal unless
+artificial filtering (dialysis) or a
+kidney transplant. p
+
+Common Causes:
+
+Stones or tumors blocking urinary flow
+Acute inflammation of kidney tissue.
+
+[Feature _| Chronic Renal Failure ‘Acute Renal Failure
+Reversible if treated ear!
+
+Hemorrhage, dehydration, obstruction
+
+Diabetes, hypertension, nephritis
+
+Hypothesize kidney stone by studying the urine test of relevant patient.
+
+. When urine is acidic (low pH) the stone is of calcium oxalate.
+
+. When the urine is alkaline (high pH) the stone is of calcium phosphate.
+
+° When urine is persistently acidic the stone is of uric acid type.
+
+Ans. By analyzing the pH of the patient's urine sample, one can infer the likely type of kidney stone:
+
+. If the urine is acidic (low pH), the patient is most likely forming calcium oxalate or uric acid
+stones.
+
+If the urine is persistently acidic, it is highly suggestive of uric acid stones.
+
+If the urine is alkaline (high pH), the stone is most likely composed of calcium phosphate.
+
+S$ studyplusplus.com S$
+
+
+--- Page 25 ---
+
+SLOs Based (MCQs)
+
+KIDNEY STONES AND KIDNEY FAILURE
+
+A patient with persistent acidic urine is likely to
+develop which type of kidney stone?
+A. Calcium phosphate stone
+
+B. Calcium oxalate stone
+
+C. Cysteine stone D. Uric acid stone
+
+Which statement best explains the working of
+
+Extracorporeal Shock Wave Lithotripsy (ESWL)?
+
+A.Shock waves are generated from inside the
+bladder
+
+B. Laser beams are used through a catheter
+
+2. Which of the following explains why urinary C. External shock waves break kidney stones into
+tract infections are more’ common in females fragments
+than males? x D. Surgical removat of stones through open incision
+A. Higher rate of bacterial exposure rae fe din alkaline urine is most likel
+B. Larger urinary bladder sible iy -~— v
+C. Shorter urethra allowing easier bacterial entry rane on 7 B Uric’acid
+D. Hormonal differences affecting immunity a Ste ie abet FS oe ee
+
+3. Inkidney stone patients, which of the following 2 Salclim phosphate en yereine
+combinations is most commonly responsible for Which condition most likely leads to acute renal
+stone formation? failure? =
+A. Hyperuricemia and acidic urine A. Slow glomerular decline due to diabetes
+B. Hypercalciuria and hyperoxaluria B. Haemorrhage due to trauma
+C. Dehydration and low phosphate levels C. Long-term hypertension
+D. Hyperkalemia and high blood pressure D. Bladder infections
+
+4. Which condition is a major cause of chronic renal. What is a likely outcome of nephrolithiasis if left
+
+failure?
+
+A. Acute trauma
+
+B. Vomiting and diarrhoea
+
+C. Nephritis or diabetic complications
+D. Kidney stone dislodgement
+
+untreated?
+
+A. Bladder cancer
+
+B. Kidney regeneration 5
+
+C. Obstruction and kidney failure
+D. Glomerular enlargement
+
+[1.0] 2.c[3.8[4.c]s.c]6.c]7.8[8.c]
+
+= Short Questions
+
+Q.1 Whatis nephrolithiasis and what causes it?
+
+Ans. Nephrolithiasis is the medical term for the formation of. kidney
+stones—solid crystalline deposits that develop inside the kidneys. The MARKING SCHEME (3 Marks)
+main causes include excess calcium in urine (hypercalciuria), high | * efinition (2), causes (2).
+oxalate (hyperoxaluria), or increased uric acid (hyperuricemia).
+Dehydration is a major risk factor, as it reduces urine volume and increases mineral concentration.
+
+Q.2 Urine pH influences the type of kidney stone formed. Justify.
+Ans. The pH of urine plays a key role in determining which type. of stone
+
+forms: MARKING SCHEME (3 Marks)
+. © Stones in acidic urine (1.5), stones in
+¢ Acidic urine favors the formation of uric acid and calcium oxalate alkaline urine (1.5). Lia
+stones.
+
+¢ Alkaline urine promotes the development of calcium phosphate stones.
+Thus, maintaining a balanced urine pH through hydration and dietary control reduces the likelihood of
+1. Severe flank or lower back pain (renal colic).
+
+stone formation.
+2. Blood in urine (hematuria). © Six symptoms (3).
+
+So studyplusplus.com S$
+
+Q.3_ What are the main symptoms of kidney stones?
+Ans. Symptoms commonly include:
+
+
+
+--- Page 26 ---
+
+3. Nausea and vomiting.
+
+4. Cloudy or foul-smelling urine.
+
+5. Urinary urgency or difficulty passing urine.
+
+6. Fever and chills (if infection occurs).
+
+In severe cases, stones may obstruct urine flow, leading to complications.
+
+Q.4 Describe the ESWL technique used for kidney stone treatment.
+Ans. Extracorporeal Shock Wave Lithotripsy (ESWL) is a non-invasive
+
+treatment for kidney stones. It uses focused high-energy shock waves
+directed from outside the body to break stones into smaller fragments. Seon iis eye
+
+These fragments can then pass naturally through the urinary tract.
+
+ESWL is usually recommended for stones less than 2 cm in size.
+
+Q.5 Whatis the role of PCNL in stone removal?
+Ans. Percutaneous Nephrolithotomy (PCNL) is a minimally invasive surgical
+procedure used for removing large or complex kidney stones. A small
+incision is made in the back to create a tract into the kidney. Through [_* Definition (2), principle (2),
+this tract, instruments and ultrasound probes are inserted to fragment
+and extract the stones directly.
+
+Q.6 Differentiate between acute and chronic kidney failure.
+
+Ans. ¢ Acute kidney failure: sudden loss of kidney function, often due to -
+trauma, severe dehydration, shock, or ‘obstruction. It is usually MARKING SCHEME (3 Niarks)
+reversible if treated promptly. $ penne (2), causes (2), effects (3) for
+
+© Chronic kidney. failure: gradual, decline in kidney function over acl ea
+years, commonly caused by diabetes, hypertension, or chronic
+glomerulonephritis. It leads to irreversible damage requiring dialysis or transplantation.
+
+Q.7 ‘What are the main causes of urinary tract infections (UTIs)?
+
+Ans. The majority of UTIs are caused by Escherichia coli (E. coli) entering the
+urinary tract from the anal region. Women are more prone due to their
+short urethra..Other causes include poor hygiene, prolonged catheter
+use, incomplete bladder emptying, or obstruction. UTIs may affect the
+urethra (urethritis), bladder (cystitis), or kidneys (pyelonephritis).
+
+Q.8 How can kidney stones be prevented?
+Ans. Kidney stones can be prevented by:
+1. Increasing fluid intake (especially water) to dilute urine. MARKING SCHEME {3 Marks)
+2. Dietary control: reducing oxalate-rich foods (e.g., spinach), limiting | _* Ary three preventive measures (3).
+salt, and moderating animal protein.
+
+3. Maintaining healthy body weight and physical activity.
+4. Monitoring urine pH and treating underlying metabolic conditions.
+
+Explain in detail the mechanism and problems related to dialysis.
+
+DIALYSIS: MECHANISM
+
+Renal dialysis is a medical procedure used to remove toxins, excess water, and waste products from the
+blood when the kidneys can no longer perform these vital functions adequately. Although dialysis mimics the
+natural function of kidneys, it is comparatively less efficient and cannot entirely replicate their complex processes.
+There are two primary types of dialysis: haemodialysis and peritoneal dialysis.
+
+Haemodialysis
+
+Haemodialysis involves the removal of waste materials and excess fluids by circulating the patient’s blood
+through an external filtration system known as a dialyzer. This system uses tubes made of semipermeable
+membranes that allow the selective exchange of substances.
+
+S$ studyplusplus.com S$
+
+
+--- Page 27 ---
+
+A catheter is inserted into a large blood vessel, usually in the arm, through which blood is withdrawn and
+passed into the dialysis machine. The blood pump directs the blood into the dialyzer from the top. Inside the
+dialyzer, blood flows through synthetic cellophane tubing, while a special fluid called dialysate flows around these
+tubes in the opposite direction. The dialysate, which does not contain waste products, draws out urea, creatinine,
+excess ions, and other metabolic wastes from the blood via diffusion across the semipermeable membrane.
+
+Once filtered, the cleaned blood exits from the bottom of the machine and is returned to the patient's body
+through a second catheter. The used dialysate exits from the top of the machine, carrying the filtered waste
+materials with it.
+
+Cant 5
+@@ woman
+Temperature Bath
+Figure: Haemodialysis
+
+Peritoneal Dialysis
+
+Peritoneal dialysis utilizes the body's own peritoneal membrane—a natural semipermeable lining of the
+abdominal cavity—as the filtration surface. In this method, two surgically placed catheters serve as channels for
+the introduction and removal of dialysate.
+
+During the process, dialysate is infused into the peritoneal cavity. As blood flows through the capillaries
+lining the peritoneum, waste products and excess ions move across the membrane into the dialysate by diffusion
+and osmosis. After a set dwell time, the fluid containing these wastes is drained out and replaced with fresh
+dialysate. This exchange may be repeated several times a day, depending on the patient's clinical needs.
+
+Movement of waste products from capiianes
+Into perttoneat cavity
+
+Figure: Peritoneal dialysis
+
+S$ studyplusplus.com S$
+
+
+--- Page 28 ---
+
+Comparison of Dialysis Methods
+
+[Feature [| —Haemodialysis | Peritoneal Dialysis |
+Location of Usually in a hospital or dialysis center Can be performed at home
+eee
+
+Blood remains inside the bod
+
+Performed daily (multiple exchanges)
+
+igher (peritonitis if hygiene is poor)
+
+Problems and Complications Related to Dialysis
+
+While dialysis is life-saving, it is not a perfect substitute for kidney function and is associated with several
+challenges:
+
+1. Medical Complications
+e Infections: Hemodialysis access sites and peritoneal catheters are prone to infection. Peritoneal dialysis
+may cause peritonitis, a serious abdominal infection.
+e Hypotension: Rapid removal of fluid during hemodialysis can cause sudden drops in blood pressure.
+
+e Electrolyte Imbalances: Incorrect dialysate composition may lead to dangerous levels of potassium,
+sodium, or calcium.
+
+¢ Anemia and Bone Disease: Dialysis cannot replace the kidney’s hormonal functions, such as producing
+erythropoietin (for red blood-cells) or activating vitamin D. Patients often develop anemia and weak
+bones.
+2. Lifestyle Challenges
+e Time-Consuming: Hemodialysis requires long sessions multiple times a week, interfering with work and
+daily life.
+e Dietary Restrictions: Patients must limit intake of fluids, salt, potassium, and phosphorus.
+e Dependence on Machines: Dialysis cannot fully restore health; patients remain dependent on treatment
+for survival unless they receive a kidney transplant.
+3. Emotional and Financial Burden
+e Dialysis treatment is costly and requires regular hospital visits.
+© Long-term patients may experience psychological stress, depression, and reduced quality of life.
+> Real-Life Relevance
+In Pakistan and many other countries, thousands of patients rely on dialysis due to the rising incidence of
+diabetes and hypertension, the two major causes of kidney failure. While dialysis prolongs life, it is not a
+cure. Kidney transplantation remains the most effective long-term solution, but limited availability of donors
+and high costs make dialysis the only option for many.
+
+Advances in portable and home-based dialysis are improving quality of life, but prevention of kidney diseases
+through healthy lifestyle, proper hydration, and early treatment of diabetes and hypertension remains the
+best strategy. :
+
+Describe the principles and the problems asso: with kidney transplant.
+
+KIDNEY TRANSPLANT: PRINCIPLES AND ASSOCIATED PROBLEMS
+
+When kidneys fail permanently and can no longer perform their vital functions of excretion and
+osmoregulation, patients require artificial support through dialysis or surgical replacement of the kidney. Kidney
+transplantation is the most effective long-term treatment for end-stage renal disease (ESRD). It involves surgically
+placing a healthy kidney from a donor into a patient whose kidneys are no longer functioning. Unlike dialysis,
+which only partially replaces kidney function, transplantation restores most natural kidney activities, including
+hormone production, waste removal, and osmoregulation.
+
+S$ studyplusplus.com S$
+
+
+--- Page 29 ---
+
+Principles of Kidney Transplant
+
+Kidney transalantation is the most effective long-term treatment for patients suffering from end-stage renal
+failure. However, the success of this procedure depends on several biological, medical, and surgical principles.
+Understanding these principles helps explain why some transplants succeed for decades, while others fail within
+
+a short time.
+
+1. Donor-Recipient Matching
+The most crucial factor in a successful kidney transplant is ensuring compatibility between the donor and
+recipient.
+
+Human Leukocyte Antigen (HLA) Matching: The HLA system is a group of proteins found’on the surface
+of white blood cells and other tissues. They act like "biological ID cards" that help the immune system
+distinguish between self and non-self. A closer HLA match between donor and recipient reduces the risk
+of the body rejecting the transplanted kidney. For example, siblings often make better donors because
+they share more HLA genes.
+
+Blood Group Compatibility: Matching the ABO blood group system (A, B, AB, O) between donor and
+recipient is equally important. A mismatch in blood type can trigger immediate rejection (hyperacute
+rejection), making transplantation impossible.
+
+Careful donor-recipient matching is therefore the foundation of transplant success.
+Source of Donor Kidneys
+Kidneys for transplantation can come from either living donors or deceased donors.
+
+Living Donors: Often, close relatives such as parents, siblings, or even children donate a kidney. Living
+donor kidneys are usually healthier and function more effectively after transplantation. They also allow
+the surgery to be planned in advance, minimizing waiting time. Importantly, humans can live normally
+with one kidney, making living donation safe in most cases.
+
+Deceased Donors: These are individuals who have suffered brain death or cardiac death but whose
+kidneys are still healthy. Such kidneys.can be transplanted if the individual consented to organ donation
+during their lifetime, or if their family permits it after death. Deceased donor programs expand the pool
+of available kidneys but outcomes may sometimes be slightly less favorable than with living donors.
+
+In countries like Pakistan, deceased donor programs are limited, which adds to the shortage of kidneys and
+prolongs patient waiting times.
+
+Surgical Procedure
+
+The surgical placement of a transplanted kidney follows specific principles to ensure both function and safety.
+
+Placement of the Kidney: The new kidney is placed in the lower abdomen (iliac fossa), near the pelvis,
+rather than in the original position of the natural kidneys. This location provides easier access to blood
+vessels and the bladder.
+
+Connection of Blood Vessels: The donor kidney’s renal artery and renal vein are surgically attached to
+the recipient's iliac artery and iliac vein, ensuring proper blood flow.
+
+Connection of the Ureter: The donor kidney’s ureter is connected directly to the recipient's bladder,
+allowing urine to pass out normally.
+
+Retention of Diseased Kidneys: In most cases, the patient's damaged kidneys are not removed. They
+are left in place unless they cause complications such as recurrent infections, severe hypertension, or
+kidney cancers.
+
+This surgical strategy minimizes risks and ensures the transplanted kidney can function quickly after blood
+flow is restored.
+
+Immunosuppression
+
+Since the transplanted kidney comes from another individual, the recipient’s immune system naturally
+recognizes it as foreign. Without intervention, the immune system would attack the graft, leading to
+rejection. To prevent this, patients must take immunosuppressive drugs for life.
+
+Common Immunosuppressants: Drugs such as cyclosporine, tacrolimus, azathioprine, and
+corticosteroids are given in combination. These reduce the activity of immune cells that would
+otherwise damage the graft.
+
+Balancing Risks: While these drugs are essential for graft survival, they also weaken the patient's
+defense against infections and cancers. Doctors must carefully adjust doses to balance the risk of
+rejection with the side effects of long-term immunosuppression.
+
+Without immunosuppressive therapy, no kidney transplant could succeed.
+
+S$ studyplusplus.com S$
+
+
+--- Page 30 ---
+
+Problems Associated with Kidney Transplant
+
+Kidney transplantation is considered the gold standard treatment for end-stage renal failure because it
+
+restores natural kidney function more effectively than dialysis. However, despite its advantages, it is not free from
+challenges. Medical, surgical, and social complications can affect the success of the procedure and the patient's
+
+. long-term survival. The following are the major problems associated with kidney transplantation:
+1.
+
+Organ Rejection
+
+The immune system is designed to protect the body from foreign invaders..Unfortunately, a transplanted
+
+kidney is also recognized as “foreign,” even if it comes from a close relative. This immune attack is known as
+
+rejection.
+
+e  Hyperacute Rejection: This occurs within minutes to hours after transplantation if the donor and
+recipient tissues are poorly matched. The patient's antibodies attack the kidney immediately, causing
+clotting within the blood vessels of the graft. Hyperacute rejection is rare today because careful tissue
+and blood matching is done before surgery.
+
+e Acute Rejection: This typically develops days to weeks after the operation. It is caused by the recipient's
+immune cells (T lymphocytes) attacking the kidney tissue. Modern immunosuppressive drugs can often
+reverse acute rejection if detected early.
+
+@ Chronic Rejection: This is a slow, progressive rejection that occurs months or years after transplantation.
+The blood vessels of the transplanted kidney gradually thicken and scar tissue forms, leading to a steady
+decline in kidney function. Unlike acute rejection, chronic rejection is usually irreversible and is the
+leading cause of long-term graft failure.
+
+Even with strong immunosuppressive therapy, rejection remains the most serious complication of kidney
+
+transplantation and requires lifelong monitoring.
+
+Side Effects of Immunosuppressive Drugs
+
+To prevent rejection, patients must take immunosuppressive drugs for life. While. these medicines: are
+
+lifesaving, they also create new health challenges:
+
+® Weak Immune Defense: Immunosuppressants reduce the body’s ability to fight infections. Patients are
+more prone to bacterial, viral, and fungal infections, including pneumonia, urinary tract infections, and
+
+shingles. Even minor infections can become life-threatening.
+
+© Delayed Healing: Surgical wounds and minor injuries take longer to heal because of weakened immune
+activity.
+
+e Cancer Risk: Prolonged suppression of immunity increases the likelihood of certain cancers, especially
+skin cancers and lymphomas.
+
+Metabolic Side Effects: Drugs such as corticosteroids and calcineurin inhibitors may cause high blood
+pressure, diabetes, osteoporosis (bone weakness), and excessive hair growth.
+
+¢ Thus, while immunosuppressive drugs protect the graft, they also create a delicate balance between
+preventing rejection and maintaining overall health.
+
+Shortage of Donor Kidneys
+
+The demand for kidney transplantation far exceeds the supply of donor organs worldwide.
+
+¢ Long Waiting Lists: Thousands of patients remain dependent on dialysis for years, waiting for a
+compatible kidney. In many countries, the waiting period can stretch from 3 to 7 years.
+
+* Limited Donor Sources: Living donors (usually relatives) are more successful, but not always available.
+Deceased donor programs exist, but cultural beliefs and lack of awareness about orga. donation often
+limit participation.
+
+e Ethical and Social Concerns: The shortage has led to unethical practices such as illegal organ trade and
+exploitation of the poor, especially in developing countries. International guidelines now Promote strict
+regulation of organ donation to prevent exploitation.
+
+This shortage remains a major barrier to successful transplantation programs, particularly in countries like
+
+Pakistan where awareness about cadaveric donation is still low.
+
+Surgical and Medical Complications
+
+As with any major surgery, kidney transplantation carries inherent risks, both during and after the procedure.
+
+«Intraoperative Risks: Complications during surgery may include bleeding, blood clots, or injury to
+surrounding structures. These are managed with careful surgical techniques and monitoring.
+
+e Postoperative Infections: Surgical wounds and urinary tract infections are common due to
+immunosuppression.
+
+S$ studyplusplus.com S$
+
+
+--- Page 31 ---
+
+® Delayed Graft Function (DGF): In some cases, the transplanted kidney does not start working
+immediately. The patient may need dialysis in the first few days or weeks until the new kidney recovers.
+
+e Recurrence of Original Kidney Disease: In certain conditions (e.g., glomerulonephritis), the disease that
+damaged the original kidneys can also affect the transplanted one.
+
+Kidney transplantation has dramatically improved survival and quality of life for patients with ESRD. In
+
+Pakistan and many other countries, however, limited availability of donors, high costs, and lack of awareness
+
+about organ donation programs restrict access to this treatment. Patients often rely on living related donors,
+
+which raises ethical and medical challenges.
+
+Modern advances such as paired kidney exchange programs (where families swap donors for better
+
+compatibility) and xenotransplantation research (using genetically modified animal organs) may help
+
+address the shortage in the future.
+
+Os Based (MCQs)
+DIALYSIS AND KIDNEY TRANSPLANT.
+1. Which structure is used as a semipermeable | 5. Which of the following must be matched
+
+membrane in haemodialysis? between a kidney donor and recipient?
+
+A. Cellulose sheet B. Capillary endothelium A. Platelet count
+
+C. Cellophane tube D. Dialysate bag B. Blood glucose level
+2. In peritoneal dialysis, which natural membrane C. ABO blood group and HLA
+
+serves the role of filtration? D. Hemoglobin level
+
+A. Renal capsule B, Peritoneum
+
+C. Glomerilus D. Ureter 6. one is given to kidney transplant
+3. Which of the following statements is true A. Enhance urine output
+
+regarding haemodialysis?
+
+B. Stimulate erythropoietin production
+C. Suppress the immune response
+D. Prevent blood clotting
+
+A. Blood is filtered inside the body through the liver
+B. Dialysate and blood flow in the same direction
+C. Blood circulates outside the body through a
+
+dialyzer 7. The risk of rejection in kidney transplant
+D. No membrane is involved in the process increases when the patient:
+4. Which condition most commonly necessitates A. Eats protein-rich food
+kidney transplantation? B. Misses immunosuppressive medication
+A. Gallstones B. Acute appendicitis C. Drinks excess water
+C. Chronic kidney failure D. Bladder infection D. Exercises too much
+
+[1.c[2.8[3.c[4c[s.c[6c]7.8]
+
+Short Questions
+
+Q.1 What is haemodialysis and how does it work?
+
+Ans. Haemodialysis is an artificial method of filtering blood when the
+kidneys fail. The patient’s blood is circulated through a dialyzer, which
+contains cellophane tubes acting as a semipermeable membrane.
+Waste products and excess water diffuse out into the dialysis fluid, and
+the purified blood is returned to the patient’s body.
+
+Q.2 What is kidney transplantation and when is it required?
+
+Ans. Kidney transplantation is a surgical procedure in which a healthy kidney
+from a donor is implanted into a patient. It is required in cases of MARKING SCHEME (3 Marks)
+chronic or end-stage kidney failure, where kidneys have permanently | ¢ Definition (2), reasons for transplant (2).
+lost their filtering function. Compared to dialysis, transplantation offers
+better long-term survival and quality of life.
+
+Q.3 What are the key requirements for a successful kidney transplant?
+Ans. A successful kidney transplant requires:
+
+S$ studyplusplus.com S$
+
+
+--- Page 32 ---
+
+1. ABO blood group compatibility between donor and recipient.
+2. HLA (human leukocyte antigen) matching to reduce immune
+
+rejection risk.
+
+3. Asuitable donor (living or deceased), since one healthy kidney is sufficient for normal life.
+
+Q.4 Why are immunosuppressive drugs necessary after a kidney transplant?
+
+Ans. Immunosuppressive drugs (e.g., cyclosporine) are necessary to prevent
+
+the immune system from rejecting the transplanted kidney. These
+drugs suppress immune responses, allowing the graft to function.
+
+MARKING SCHEME (3 Marks)
+‘© Importance (2), precaution (1).
+
+Patients must take them lifelong, as stopping medication can lead to
+
+late rejection even years after surgery.
+
+Q.5 What complications are associated with kidney transplantation?
+
+Ans, 1.
+
+kidney as foreign and attack it.
+
+2. Drug toxicity — immunosuppressive drugs may cause side effects
+
+Graft rejection— the immune system may recognize the transplanted
+
+such as infections, liver damage, or high blood pressure.
+3. Ongoing medical monitoring is essential to balance both risks.
+
+Exercise
+
+% Select the correct Answer.
+
+1,
+
+Excretion of hypotonic urine in humans is
+associated best with the:
+
+A. glomerular capsule
+
+B. proximal convoluted tubule
+
+C. loop of the Henle
+
+D. distal convoluted tubule
+
+The walls of the are made more or
+less permeable to water, depending on the need
+to conserve water:
+
+A. ureter B. urethra
+
+C. fibrous capsule D. collecting duct
+Which of the following will cause a decrease in
+ADH production?
+
+A. dehydration
+
+B. an increase in osmotic pressure of blood
+
+C. drinking water
+
+D. abnormally \ow blood pressure
+
+The function of glomerulus and Bowman's
+capsule of the nephron Is to:
+
+A. reabsorb water into the blood
+
+B. eliminate ammonia from the body
+
+C. reabsorb salts and amino acids
+
+D. filter the blood and capture the filtrate
+
+5.
+
+In man, glucose is present in blood plasma but not
+
+in urine. This is because glucose molecules are:
+
+A.actively transported from the proximal
+convoluted tubule to blood capillaries
+
+B, oxidised to supply energy for ultrafiltration
+
+C. stored in the kidney
+
+D. too large to enter Bowman's capsule
+
+Evidence for glomerular filtration in the kidney
+
+could be obtained by comparing the sizes of the
+
+molecules present in Bowman's capsule with
+
+those in the:
+
+A. afferent blood vessel B. collecting duct
+
+C. loop of Henle D. proximal tubule
+
+The site and principal mechanism for the passage
+
+of glucose into the bloodstream in the human
+
+kidney is the
+
+A. collecting duct, by active secretion
+
+B. glomerulus, by selective reabsoption
+
+C. glomerulus, by ultrafiltration
+
+D.proximal convoluted tubule, by selective
+reabsorption
+
+A drug reduces mitochondrial activity in kidney
+
+nephrons. Which chemical will be present in
+increased amounts in the urine?
+
+A. ammonia B. glucose
+
+C. uric acid D. urea
+
+Sg studyplusplus.com S$
+
+
+--- Page 33 ---
+
+10.
+
+11.
+
+12.
+
+13.
+
+14,
+
+The water content of human blood is regulated
+
+by ADH. In which part of the nephron does
+
+regulation occur?
+
+A. ascending limb of loop of Henle
+
+B. descending limb of the loop of Henle
+
+C. Bowman's capsule
+
+D. proximal convoluted tubule
+
+The reason why the right kidney Is slightly lower
+
+than the left is:
+
+A. the left kidney is bigger than right
+
+B. considerable space occupied by the heart
+
+C. considerable space occupied by the liver on the
+right side
+
+D. the right kidney is bigger than the left
+
+Which of the following is known as the
+
+functional unit of the kidney and is found in the
+
+cortex?
+
+A. calyces B. renal pyramids
+
+C. nephrons D. medulla
+
+This artery passes blood to the kidney:
+
+A. common iliac B. cystic
+
+C. renal D. coeliac
+
+Which structure carries urine from the kidneys
+
+to the bladder?
+
+A. nephron B. ureter
+
+C. bladder D. urethra
+
+The blood vessel which carries blood to the
+
+glomerulus is the:
+
+15.
+
+17.
+
+18.
+
+Du) Short Answer Questions
+
+A. renal artery B. afferent arteriole
+
+C. renal vein D. peritubular capillaries
+The basic unit of the renal system is the:
+
+A. cortex B. neuron
+
+C. nephron D. medulla
+
+The centre of the kidney where urine collects
+before leaving the kidneys is the:
+
+A. glomerulus B. proximal tubule
+
+C. distal tubule D. renal pelvis
+
+An organ or structure that is not a component of
+the urinary system is the:
+
+A. urethra B. urinary bladder
+
+C. ureter D. adrenal gland
+
+All of the following belong to the urinary system
+except:
+
+A. urethra B. ureter
+
+C. bladder D. prostate
+
+What portion of the nephron extends into the
+medulla?
+
+A. nephron loop
+
+B. proximal convoluted tubule
+
+C. distal convoluted tubule
+
+D. papillary duct
+
+Fibrous connective tissue that surrounds each
+
+kidney is the:
+A. cortex B. hilum
+C. medulla D. renal capsule
+
+Q.1 Name the organs of the urinary system and write their major functions.
+
+Ans. The urinary system is composed of four main organs: the kidneys,
+ureters, urinary bladder, and urethra. The kidneys are paired bean-
+shaped organs located in the abdominal cavity that filter the blood,
+remove nitrogenous wastes such as urea and creatinine, regulate pH,
+
+MARKING SCHEME (3 Marks)
+* Names of organs (1.5), major functions
+(1.5).
+
+and maintain water-salt balance. From each kidney arises a ureter, a muscular tube that transports urine to
+the urinary bladder, a hollow muscular organ that temporarily stores urine until it is convenient to expel it.
+Finally, urine exits the body through the urethra, a tube that functions in micturition. Together, these organs
+maintain homeostasis by excreting wastes and regulating the internal environment of the body.
+
+Q.2 Describe glomerular filtration.
+
+Ans. Glomerular filtration is the initial step in urine formation and occurs in
+the renal corpuscle of the nephron. Blood enters the glomerulus
+through the afferent arteriole under relatively high pressure. This
+hydrostatic pressure forces water, glucose, salts, amino acids, and
+
+o
+
+studyplusplus.com
+
+MARKING SCHEME (3 Marks)
+
+* Definition (1.25), site of occurrence
+(0.75), substances fikered/retained (1).
+
+°
+
+
+--- Page 34 ---
+
+nitrogenous wastes through the filtration membrane of the glomerular capillaries into the Bowman’s
+capsule. Larger molecules such as proteins and blood cells are too big to pass through the pores, so they
+remain in the bloodstream. The fluid that enters the capsule is called glomerular filtrate, which resembles
+blood plasma but, is protein-free. This process ensures that wastes and excess solutes are removed from
+blood while essential macromolecules are retained.
+
+Q.3 Describe the counter current multiplier mechanism.
+
+Ans. The countercurrent multiplier mechanism occurs in the loop of Henle
+and is vital for the concentration of urine. The descending limb of the MARHING SCHEME (2 Marta)
+loop is permeable to water but not to solutes. As the filtrate descends,
+water moves out into the surrounding hyperosmotic medulla,
+concentrating the filtrate. In contrast, the ascending limb is impermeable to water but actively transports
+sodium and chloride ions into the interstitial fluid. This dual action creates a steep osmotic gradient in the
+medulla, a process called the countercurrent multiplier effect. This gradient allows the collecting ducts to
+reabsorb more water under ti:> influence of ADH, ensuring that urine can be concentrated when the body
+needs to conserve water.
+
+Q.4 Name the parts of a nephron and trace the blood supply to the nephron.
+
+Ans. A nephron, the functional unit of the kidney, consists of two main
+regions: the renal corpuscle and the renal tubule. The renal corpuscle DAA REINS SCHEMAS (8 Marte
+includes the glomerulus-and Bowman's capsule, while the tubule is
+divided into the proximal convoluted tubule (PCT), loop of Henle,
+distal convoluted tubule (DCT), and collecting duct. Blood reaches the nephron via the renal artery, which
+branches into afferent arterioles supplying each glomerulus. After filtration, blood exits through the
+efferent arteriole, which then forms either the peritubular capillaries around cortical nephrons or the vasa
+recta surrounding juxtamedullary nephrons. Finally, the blood is drained into the renal vein, returning to
+circulation. This close blood supply ensures efficient exchange during urine formation.
+
+* Descending limb role (1), ascending
+limb role (3), significance (2).
+
+* Nephron. parts (1.5), blood supply
+sequence (1.5).
+
+Q5 Name general processes which are involved with urine formation.
+Ans. Urine formation involves three essential processes that together
+ensure waste removal and conservation of useful substances. RAARTING ScateaAe (2 Merts)
+1. Glomerular filtration — occurs in the renal corpuscle, where blood
+plasma is filtered into the Bowman’s capsule under pressure,
+forming filtrate. b a
+2. Tubular reabsorption — in the PCT, loop of Henle, DCT, and collecting duct, essential substances such as
+glucose, amino acids, salts, and most water are reabsorbed back into the blood through active and
+passive mechanisms.
+3. Tubular secretion — additional wastes, ions (like H* and K*), and drugs are actively secreted from
+peritubular capillaries into the nephron tubules.
+4. These processes work together to maintain homeostasis by removing toxic products while conserving
+water and nutrients.
+
+ee eEeeeeeeeeeEeeeeeSFSS
+
+Q.6 Describe urinary tract infection.
+
+Pin i ole adhd Abate
+Ans. Urinary tract infection (UTI) is a bacterial infection of any part of the
+urinary system such as urethra, bladder, or kidneys. It occurs when | | Definition of UTI (2)
+bacteria enter and multiply in the urinary tract. UTIs are more COMMON | «sites of infection (1)
+in women because of their shorter urethra and proximity to the anal | + Cause or prevalence in women (1)
+opening.
+
+Glomerular filtration (1), reabsorption
+(1), secretion (1).
+
+MARKING SCHEME (3 Marks)
+
+Q.7_ Name the three urinary tract infections and the bacteria responsible.
+Ans. Urethritis — caused by Escherichia coli, Chlamydia trachomatis,
+Neisseria gonorrhoeae.
+«Cystitis - mainly by Escherichia coli (80-85%), Staphylococcus
+saprophyticus, Klebsiella pneumoniae, Proteus mirabilis.
+e Pyelonephritis — caused by Escherichia coli, Proteus mirabilis,
+Klebsiella pneumoniae, Pseudomonas aeruginosa.
+
+(MARKING SCHEME (3 Marks)
+© Correctly naming three UTIs (1)
+© Correctly linking bacteria to each (2)
+
+S$ studyplusplus.com S$
+
+
+--- Page 35 ---
+
+Q.8 What are the causes of kidney failure?
+
+Ans. Kidney failure may result from:
+1. Uncontrolled diabetes and high blood pressure, which damage
+nephrons.
+2. Infections or blockages like repeated UTIs or kidney stones.
+3. Exposure to toxins or drugs that impair kidney function.
+
+causes with
+explanation (1 mark each
+
+Q.9 By what physical processes do solutes enter or leave the blood during dialysis?
+
+Ans. In dialysis, solutes move by diffusion, where wastes like urea pass from
+blood into dialysate. Some ions move by osmosis, depending on fear ose feu
+concentration gradients. Larger molecules remain in the blood because (1) & Selective permeability role (1)
+the membrane is selectively permeable.
+
+Q.10 Why do blood and dialysate flow in opposite direction?
+Ans. Blood and dialysate flow in opposite directions to maintain a MARKING SCHEME (3 Marks)
+concentration gradient along the entire dialysis membrane. This | + Opposite flow mentioned (1)
+ensures continuous removal of waste and efficient exchange of solutes. | ° Pnehissaridoaeci preety
+
+It allows maximum clearance of toxins from the blood.
+
+Q.11 Suggest two problems that might occur if the dialysate was pure water.
+
+Ans. Using pure water as dialysate in haemodialysis would be extremely MAARDONG SCIBIAE (3 Marks)
+dangerous because it would create serious osmotic and electrolyte | . osmotic imbalance (1.5), electrolyte
+imbalances. Firstly, since the solute concentration of pure water is loss (1.5).
+essentially zero, an osmotic gradient would drive water rapidly into the
+patient’s blood. This excessive influx could lead to hemolysis (bursting of red blood cells), dilution of plasma,
+and fluid overload in tissues, potentially causing swelling or pulmonary edema. Secondly, the absence of
+essential solutes in the dialysate would cause vital electrolytes such as sodium, potassium, calcium, and
+chloride to diffuse out of the blood into the dialysate. This would lead to severe electrolyte imbalance,
+disrupting nerve transmission, heart rhythm, and muscle function. Therefore, dialysate must always be
+carefully balanced to mimic plasma composition.
+
+Q.12 Why are women more likely to acquire UTI as compared to men?
+
+Ans. Women are ata higher risk of developing urinary tract infections (UTIs) MARKING SCHEME (3 Maria) |
+due to specific anatomical and physiological factors. The female | . short urethra roximity to anus
+urethra is much shorter (around 4 cm) compared to the male urethra (1), other contributing factors (2).
+(about 20 cm). This reduced length provides bacteria with a shorter
+distance to travel in order to reach the bladder, making infections more likely. Additionally, the urethral
+opening in women is located closer to the anus, where bacteria such as Escherichia coli are abundant. This
+close proximity increases the chance of bacterial contamination of the urethra. Other contributing factors
+include hormonal influences, sexual activity, and improper hygiene practices, which further predispose
+women to recurrent infections. These differences explain why UTIs are significantly more common in
+
+females than in males.
+a Oe
+
+Q.13 Write the differentiate between:
+
+(a) _ Osmoregulation and Osmoconformers. ‘
+— a
+
+Ans. Osmoregulation refers to the active physiological processes by which
+organisms regulate water and solute concentrations in their body fluids, ~ sort © Mam)
+maintaining a relatively constant internal environment despite external . fii chsecermts sate
+changes. Humans and freshwater fishes are classic osmoregulators, as example (1.5).
+
+they actively excrete or conserve salts and water using kidneys, gills,
+and other mechanisms. In contrast, osmoconformers ate organisms, mostly marine invertebrates, whose
+internal osmotic pressure changes with the external environment. They do not spend energy on active
+regulation but allow their body fluids to match seawater osmolarity. This strategy saves energy but limits
+survival to stable habitats. Thus, osmoregulators achieve homeostasis at an energetic cost, while
+
+osmoconformers adapt passively,
+
+S$ studyplusplus.com $
+
+
+--- Page 36 ---
+
+a wT gO in mar LR ESN ag TE fl LN aaa Ne en Te ce Da os Ta i
+
+(b)__Ammonotelic and Ureotelic Organisms.
+
+SS
+
+Ans. Ammonotelic organisms excrete nitrogenous waste directly as
+ammonia, which is highly toxic but very soluble in water. Since ammonia | | a monotelic (definition + example) 25,
+must be eliminated quickly, ammonotelism is seen in aquatic organisms ureotelic (definition + example) 15.
+such as bony fishes, amphibians, and aquatic invertebrates. In contrast,
+ureotelic organisms excrete urea, a less toxic compound formed in the liver through the urea cycle. Urea
+requires more energy to produce but is safer for storage and excretion, as it requires less water. Mammals,
+amphibians, and some marine fishes are ureotelic. The key difference lies in water availability and habitat:
+ammonotelic organisms live in water-rich environments, whereas ureotelic animals are adapted to conserve
+water.
+
+(c) _Ureotelic and Uricotelic Organisms.
+
+Ans. Ureotelic organisms excrete nitrogenous wastes primarily as urea, .
+which is moderately soluble and | ss toxic than ammonia. This strategy | , Pussarappescenychaneay 1s,
+balances water conservatior with energy use, as seen in mammals, uricotelic (definition + example) 1.5.
+amphibians, and some marine fishes. On the other hand, uricotelic
+organisms excrete uric acid, an almost insoluble compound that precipitates out as a paste or crystals. This
+adaptation minimizes water loss, which is crucial for survival in arid environments. Birds, reptiles, and insects
+are classic uricotelic animals. Producing uric acid requires higher energy investment compared to urea, but
+
+it provides a significant advantage in water conservation.
+ee  ———————— —————
+(d) _ Proximal and Distal Convoluted Tubule.
+OO
+Ans. The proximal convoluted tubule (PCT) is the first tubular structure of
+
+the nephron after Bowman's capsule. It is responsible for the bulk of | Pannen ae
+reabsorption, reclaiming about 65-70% of water, sodium, chloride, (location + function) 1.5.
+
+glucose, amino acids, and bicarbonates, The PCT has a brush border
+
+with microvilli, which increases surface area for absorption. In contrast, the distal convoluted tubule (DCT)
+lies further along the nephron, after the loop of Henle. Its main function is selective reabsorption and
+secretion, particularly under hormonal control. For example, aldosterone enhances sodium reabsorption
+and potassium secretion, while parathyroid hormone regulates calcium. Unlike the PCT, the DCT has fewer
+microvilli and specializes in fine-tuning urine composition.
+
+(e) Afferent and Efferent Arterioles.
+
+Ans. The afferent arteriole is the blood vessel that delivers blood into the
+glomerulus of the nephron. It has a larger diameter compared to the 5 peu prbstionh eed 2
+efferent arteriole, creating high hydrostatic Pressure that drives efferent (definition + function) 1.5.
+ultrafiltration in Bowman’s capsule. The efferent arteriole, on the other
+hand, carries blood away from the glomerulus. Since it is narrower, it maintains pressure in the glomerular
+capillaries but reduces blood volume, which helps in efficient filtration. Furthermore, efferent arterioles give
+rise to peritubular capillaries and vasa recta that are crucial for reabsorption and concentration of urine. In,
+summary, the afferent arteriole regulates entry into the glomerulus, while the efferent controls outflow and
+maintains pressure balance.
+
+(f) Hypercalcemia and Hyperuricemia.
+Ans. Hypercalcemia refers to an abnormally high concentration of calcium in
+
+MARKING SCHEME (3 Marks)
+
+the blood, typically above 10.5 mg/dl. It may be caused by | | Piwaarcctaprina slaendes)
+hyperparathyroidism, excessive vitamin D intake, bone diseases, or ten) ee ee
+
+certain cancers. Symptoms include kidney stones, bone pain, abdominal (definition + cause + symptom) 25.
+discomfort, and irregular heartbeat. In contrast, hyperuricemia is
+defined as elevated levels of uric acid in the blood, usually above 7 mg/dL. It results from either increased
+production or reduced excretion of uric acid and is commonly associated with gout, kidney stones, and
+metabolic disorders. While hypercalcemia mainly affects calcium metabolism and bones, hyperuricemia
+relates to purine metabolism and can trigger painful joint inflammation.
+
+(g)__ Extracorporeal Shock Wave Lithotripsy (ESWL) and Percutaneous: Nephrolithotomy (PCNL).
+
+Ans. Extracorporeal shock wave lithotripsy (ESWL) is a non-invasive treatment for kidney stones, in which high-
+energy sound waves are focused externally onto the stone, breaking it into small fragments that pass
+
+S$ studyplusplus.com $
+
+
+
+--- Page 37 ---
+
+naturally through urine. It is best suited for stones smaller than 2 cm.
+
+On the other hand, percutaneous nephrolithotomy (PCNL) is a | , Sete reach re: PCNL
+minimally invasive surgical technique used for large, complex, or hard- (definition + method) 1.5.
+
+to-reach stones. In PCNL, a small incision is made in the patient's back
+to access the kidney, and instruments are inserted to directly break and remove stones. While ESWL is safer
+
+and less invasive, PCNL is more effective for large stone burdens.
+_——
+
+(h) Chronic Renal Failure and Acute Renal Failure.
+
+Ans. Acute renal failure, also called acute kidney injury (AKI), is a sudden loss MARKING SCHEME (3 Marks)
+
+of kidney function over hours or days. It is usually caused by trauma, | «. Acute (definition + cause + effect) 15,
+blood loss, dehydration, obstruction, or toxins, and can often be chronic (definition + cause + effect) 1,
+
+reversed with timely treatment. Symptoms include reduced urine
+output, fluid retention, and electrolyte imbalance. Chronic renal failure (CRF), however, develops gradually
+over months or years due to long-standing conditions like diabetes mellitus, hypertension, or chronic
+glomerulonephritis. The damage is irreversible, progressively leading to end-stage renal disease. Symptoms
+include persistent fatigue, anemia, bone weakness, and accumulation of wastes. Thus, acute failure is abrupt
+
+and potentially reversible, whereas chronic failure is gradual and permanent.
+—————
+
+(i) Peritoneal Dialysis and Haemodialysis.
+
+Ans. Haemodialysis uses an artificial dialyzer machine to filter wastes and MARKING SCHEME (3 Marks)
+excess fluid from the blood. Blood is withdrawn from the patient, | . jaemodialysis (definition + method)
+passed through a semipermeable membrane in the dialyzer, and then 1.5, peritoneal dialysis (definition +
+returned: It requires regular hospital visits and specialized equipment. method) 1.5.
+
+In contrast, peritoneal dialysis uses the patient’s own peritoneal
+
+membrane (lining of the abdominal cavity) as the natural filter. A cleansing dialysate fluid is introduced into
+the abdominal cavity, where waste products diffuse across the peritoneal membrane, and then drained out
+after several hours. Peritoneal dialysis can be performed at home and offers more independence, but carries
+risks of infection (peritonitis).
+
+(j) Renal Cortex and Renal Medulla.
+
+Ans. The renal cortex is the outer regi idney, appearing granular
+due to the-presence of pale yale con Subes Bownan’s Lirgacancetliond peartasl
+
+© Cortex (structure + function) 1.5,
+
+capsules) and convoluted tubules. It is the primary site of filtration and medulla (structure + function) 1.5.
+much of tubular reabsorption. The renal medulla, by contrast, is the
+inner region, consisting mainly of renal pyramids and loops of Henle. It appears striated due to parallel
+arrangement of tubules and blood vessels. The medulla plays a vital role in concentrating urine through the
+countercurrent multiplier system and in water reabsorption under antidiuretic hormone (ADH) control.
+Thus, the cortex initiates urine formation, while the medulla fine-tunes its concentration.
+
+(k) _Vasodilation and Vasoconstriction.
+
+Ans. Vasodilation is the widening of blood vessels due to relaxation of
+smooth muscles in the vessel wall, especially in arterioles. This | , Bie. watson 15,
+decreases vascular resistance, lowers blood pressure, and increases vasoconstriction (definition + effect) 1.5.
+blood flow to tissues. It is promoted by factors such as nitric oxide, low
+oxygen levels, or high carbon dioxide. In contrast, vasoconstriction is the narrowing of blood vessels due to
+contraction of smooth muscles. This increases resistance, raises blood pressure, and diverts blood away from
+less active tissues. It is triggered by sympathetic stimulation and hormones such as norepinephrine.
+Together, vasodilation and vasoconstriction regulate tissue perfusion, thermoregulation, and blood pressure
+homeostasis.
+
+())__ Dialyzer and Dialysate.
+Ans. A dialyzer is the artificial kidney device used in haemodialysis to filter
+
+blood. It contains thousands of fine cellophane or synthetic fibers acting 5 Plas rire geal s
+as a semipermeable membrane. Blood flows on one side of the alate (Gerwoace >
+
+membrane, while dialysate flows on the other, allowing waste products
+and excess ions to pass out of the blaod, Dialysate, in contrast, is the specially prepared fluid that surrounds
+
+PS) studyplusplus.com S$
+
+
+--- Page 38 ---
+
+the dialyzer membrane. It contains controlled concentrations of salts, glucose, and bicarbonate to mimic
+plasma and create gradients for diffusion. Dialysate removes urea, creatinine, and extra electrolytes while
+maintaining proper pH and osmotic balance. Thus, the dialyzer provides the surface, while dialysate provides
+the medium for exchange.
+
+Q.1 Discuss relationship between excretory products and habitats.
+Ans. Please See SLO [B-12-R-10]
+
+Q.2 Describe the structure and function of human kidney.
+
+Ans. Please See SLO [B-12-R-12] & [B-12-R-13]
+
+Q.3 Describe the structure of human nephron.
+
+Ans. Please See SLO [B-12-R-14]
+
+Q.4 Discuss the ‘urine formation 'and mechanism of urine concentration in man.
+
+Ans. Please See SLO [B-12-R-16)
+
+Q,.5 What are kidney stones? Discuss the causes and treatment of kidney stones?
+
+Ans. Please See SLO [B-12-R-20)
+
+Q.6 What is renal dialysis? Describe the two types of renal dialysis.
+
+Ans. Please See SLO [B-12-R-22]
+
+Q.7_ What is kidney transplantation? Describe principles of kidney transplant. What are the problems associated
+with kidney transplant? g
+
+Ans. Please See SLO [B-12-R-23]
+
+S$ studyplusplus.com S$
+
+in
+
+|
+
+|
+iS)

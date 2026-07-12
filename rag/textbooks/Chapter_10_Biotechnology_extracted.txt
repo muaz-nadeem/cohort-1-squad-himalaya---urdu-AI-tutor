@@ -1,0 +1,3044 @@
+
+
+--- Page 1 ---
+
+Chapter # 10
+Biotechnology
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+[B-12-J-01] Introduce genetic engineering.
+[B-12-J-02] Explain polymerase chain reaction (PCR).
+[B-12-J-03] Outline the function of restriction enzymes.
+[B-12-J-04] Describe plasmid as vector prokaryotes and explain how recombinant plasmids can be formed.
+
+[B-12-J-06] Explain the formation of human insulin protein in bacteria.
+
+[B-12-J-07) Describe how vertical food farms (soil free) work.
+
+[B-12-J-08] Compare and contrast the advantages of vertical food farms with general agricultural
+Practices prevalent in Pakistan.
+
+.
+.
+°
+.
+° [8-12-J-05] Define genetically modified organism.
+°
+°
+°
+
+Biotechnology is an innovative field that bridges biology and technology, focusing on the use of living
+organisms, cells, and biological systems to develop products and solutions that improve human life and the
+environment. At its core, biotechnology is about understanding the molecular and cellular mechanisms of life and
+applying this knowledge in practical, often transformative ways. Unlike traditional practices that rely on
+observation or trial and error, biotechnology employs precise scientific methods to manipulate biological
+components with specific objectives.
+
+The history of biotechnology dates back to the earliest stages of human civilization. Even in ancient times,
+societies applied basic biotechnological principles when they learned to cultivate crops and domesticate animals,
+ensuring a more stable and continuous food supply. These early practices, although unrecognized at the time as
+biotechnology, laid the groundwork for the sophisticated techniques used today. The formal term “biotechnology”
+was introduced in the late 20th century and is defined as the use of living organisms—particularly
+microorganisms—or their biological processes and products for the benefit of humanity.
+
+Historically, humans have unknowingly used biotechnological methods in everyday life. For example,
+fermented foods such as yogurt and cheese were produced from milk using microbial activity, while alcoholic
+beverages like wine and beer were derived from the fermentation of fruit juices, sugarcane, or malted barley.
+Even leather tanning involved specific bacterial action, demonstrating an early understanding of microbial utility.
+These ancient applications established the foundation for modern biotechnology, which now spans agriculture,
+medicine, industry, and environmental management.
+
+Modern biotechnology builds upon these historical principles, relying heavily on genetics and molecular
+biology. By studying genes, proteins, and cellular pathways, scientists can identify the mechanisms underlying
+diseases, crop traits, and industrial processes. This understanding enables targeted interventions, such as
+modifying the genetic makeup of organisms to express desired traits, producing therapeutic proteins, or designing
+microbes capable of degrading pollutants. Working at the molecular level has led to innovations that were
+unimaginable just a few decades ago.
+
+Applications of biotechnology are wide-ranging. In healthcare, it has revolutionized medicine through the
+development of vaccines, antibiotics, monoclonal antibodies, and personalized therapies. Recombinant DNA
+technology and gene editing enable the production of insulin, growth hormones, and other essential drugs more
+efficiently and safely than ever before. In agriculture, genetically modified crops resistant to pests, diseases, or
+harsh environmental conditions enhance food security and sustainability. Industrial biotechnology harnesses
+microorganisms and enzymes to produce biofuels, biodegradable plastics, and other eco-friendly materials.
+
+9S studyplusplus.com S$
+
+
+--- Page 2 ---
+
+Environmental biotechnology uses living systems to treat wastewater, clean up oil spills, and manage waste
+through processes such as bioremediation.
+
+Despite its tremendous potential, biotechnology also raises ethical, social, and safety concerns.
+Manipulation of genetic material, creation of genetically modified organisms (GMOs), and use of stem cells or
+cloning techniques require careful regulation. Responsible application is essential to balance innovation with
+public welfare.
+
+In conclusion, biotechnology is a dynamic and interdisciplinary field that harnesses the principles of biology
+to create solutions for human and environmental needs. From its earliest use in food production and leather
+tanning to modern genetic engineering and industrial applications, biotechnology has continuously evolved to
+transform medicine, agriculture, industry, and environmental management. By combining historical knowledge
+with modern scientific advancements, biotechnology continues to improve health, sustain resources, and address
+pressing global challenges, making it one of the most exciting and impactful areas of modern science.
+
+Introduce genetic engineering.
+
+GENETIC ENGINEERING
+
+Genetic engineering is a transformative branch of biotechnology that allows scientists to deliberately
+modify the genetic material of an organism to alter its characteristics for the benefit of humanity. While
+biotechnology as a field is vast and multidisciplinary, genetic engineering stands out for its precision and potential
+to revolutionize medicine, agriculture, industry, and environmental management.
+
+Why Genetic Engineering is Needed
+
+The rapid growth of the global human population, now exceeding 8 billion, has put unprecedented pressure
+on food production, healthcare, industry, and the environment. Traditional methods of agriculture, medicine,
+and industrial manufacturing often struggle to keep pace with these rising demands. Crops can fail due to pests,
+diseases, or extreme weather conditions; livestock may be susceptible to infections; and industrial processes can
+be resource-intensive and environmentally damaging. In this context, genetic engineering emerges as a powerful
+tool to provide sustainable, efficient, and targeted solutions.
+
+© Enhancing Living Organisms: Genetic engineering allows scientists to directly modify the genetic
+makeup of organisms to introduce desirable traits. For example, crops can be engineered to tolerate
+drought, salinity, or high temperatures, ensuring stable yields even in harsh climates. Similarly, livestock
+can be enhanced to exhibit faster growth, disease resistance, or improved milk and meat quality,
+reducing losses and increasing productivity. These enhancements make food systems more resilient,
+reliable, and capable of feeding a growing population.
+
+* Improving Nutritional Quality and Resistance: Another critical application is the development of
+nutritionally enriched and pest-resistant crops. Staple crops like rice, wheat, and maize can be fortified
+with essential vitamins and minerals, addressing malnutrition in vulnerable populations. At the same
+time, genes that confer resistance to insects or pathogens can be introduced, reducing the need for
+chemical pesticides and minimizing environmental damage. For instance, Bt cotton and Bt maize
+produce a natural insecticidal protein that protects crops from pest attacks, demonstrating how genetic
+engineering can improve both yield and sustainability.
+
+* Advancing Healthcare and Industrial Applications: Beyond agriculture, genetic engineering enables the
+creation of microorganisms capable of producing life-saving medicines, such as insulin, vaccines, and
+antibiotics. Industrial biotechnology also benefits, with engineered microbes producing biofuels,
+biodegradable plastics, enzymes, and other eco-friendly products, reducing dependence on non-
+renewable resources and minimizing pollution. This capability makes industrial processes more
+sustainable while providing environmentally conscious solutions to global challenges.
+
+* Sustainable Solutions for the Future: By integrating genetic engineering into agriculture, healthcare,
+and industry, humanity can achieve efficient, high-yield, and environmentally sustainable solutions.
+This technology not only addresses immediate needs, such as food security and medical treatment, but
+also lays the groundwork for long-term sustainability, helping societies adapt to climate change,
+resource limitations, and emerging global health challenges.
+
+S$ studyplusplus.com S$
+
+oN
+
+liv
+
+
+--- Page 3 ---
+
+In essence, genetic engineering is not just a scientific advancement—it is a strategic tool for meeting the
+demands of the 21st century, offering precision, efficiency, and sustainability in ways traditional methods cannot
+match. Its ability to enhance organisms, improve nutrition, protect ecosystems, and innovate industrial processes
+makes it an indispensable component of modern biotechnology.
+
+Genetic Engineering and Recombinant DNA Technology
+
+Genetic engineering is the deliberate modification of an organism’s genetic material to change its
+characteristics in a controlled manner. The practice is largely based on Recombinant DNA (rDNA) Technology,
+which involves combining DNA from different sources to form novel genetic combinations.
+
+Recombinant DNA (rDNA) Technology forms the molecular basis of genetic engineering. It involves a series
+of in vivo steps to isolate, combine, and express DNA segments from different sources. This allows scientists to
+produce multiple copies of a desired gene and synthesize its corresponding protein on an industrial scale.
+
+Core Components of Recombinant DNA Technology
+
+1. Gene of Interest — The DNA fragment to be cloned and expressed. It can be obtained through:
+e Artificial Gene Synthesis — Chemical synthesis in vitro without a DNA template.
+e Reverse Transcription of mRNA — Using reverse transcriptase to create a complementary DNA (cDNA).
+© Direct Isolation from Genomic DNA — Using restriction endonucleases to excise specific genes.
+
+2. Molecular Scissors (Restriction Endonucleases) — Enzymes that cut DNA at specific sequences.
+
+3. Molecular Carriers (Vectors) — DNA molecules, such as plasmids, used to deliver the gene of interest into
+host cells.
+
+4. Molecular Glue (DNA Ligase) — Enzyme that joins DNA fragments together.
+
+5. Expression System (Host Cell) —The organism in which the gene is expressed to produce the desired protein
+or trait.
+
+Approaches in Genetic Engineering
+
+Genetic engineering provides scientists with precise tools to manipulate the DNA of organisms, allowing
+them to enhance traits, correct defects, or introduce entirely new capabilities. Unlike traditional breeding
+methods, which rely on random genetic recombination over multiple generations, genetic engineering allows for
+targeted, predictable, and rapid modifications at the molecular level. The main approaches used in genetic
+engineering include:
+1. Addition of New Genes
+
+One of the primary approaches is to introduce new genes into an organism’s genome to confer desirable
+
+traits. This is also known as gene insertion or gene augmentation. For example:
+
+e Crops like Bt cotton or Bt maize are engineered by adding genes from the bacterium Bacillus
+thuringiensis, which produce proteins toxic to specific insect pests. This makes the plants naturally pest-
+resistant, reducing the need for chemical pesticides.
+
+* In medicine, bacteria can be engineered to carry the human insulin gene, enabling large-scale
+production of insulin for diabetes treatment.
+
+By adding genes from other species or even synthetic genes, scientists can introduce entirely new functions
+
+that the organism did not naturally possess.
+
+2. Removal of Unwanted Genes
+Genetic engineering also allows for the removal or silencing of genes responsible for harmful Waits,
+
+process called gene knockout or gene silencing. Examples include:
+© Eliminating genes in crops that make them susceptible to viral or fungal infections, resulting in disease-
+
+resistant varieties.
+© Deactivating genes in livestock that contribute to inherited disorders, improving animal health and
+
+productivity.
+This approach not only prevents undesirable traits from being expressed but also contributes to higher yield,
+
+better quality, and reduced economic losses.
+3. Editing Existing Genes
+
+The third major approach is gene editing, which involves modifying existing genes to enhance or alter their
+function without necessarily adding or removing them. Advanced tools like CRISPR-Cas9 allow scientists to:
+
+© Correct genetic mutations responsible for inherited diseases in humans.
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+¢ Improve drought tolerance, nutrient content, or growth rates in-crops.
+
+* Fine-tune industrial microbes to produce higher quantities of enzymes, biofuels, or biodegradable
+products.
+
+Gene editing provides precision at the nucleotide level, making it possible to make subtle, highly targeted
+
+changes that were impossible with earlier techniques.
+
+Goals of Genetic Engineering
+
+Genetic engineering is a purpose-driven science that aims to manipulate the genetic material of organisms
+
+to achieve specific, beneficial outcomes. By directly targeting DNA, scientists can design organisms to meet human
+needs in agriculture, medicine, industry, and environmental management. The primary goals of genetic
+engineering include:
+
+1.
+
+2.
+
+3.
+
+4.
+
+Enhancing Existing Traits
+
+One major objective is to improve traits that organisms already possess. For example:
+
+© Crops can be engineered to produce higher yields, grow faster, or resist environmental stresses like
+drought, salinity, or extreme temperatures.
+
+e Livestock can be enhanced for better growth, milk production, or disease resistance, increasing
+productivity and sustainability.
+
+By refining existing traits, genetic engineering ensures that organisms perform more efficiently, helping
+
+meet the demands of a growing population.
+
+Introducing New Capabilities
+
+Another key goal is to add entirely new traits or functions to an organism. This can include:
+
+e Introducing genes that provide resistance to pests, viruses, or harmful microorganisms in plants and
+animals.
+
+e Enriching crops with essential nutrients, such as Vitamin A in Golden Rice, to combat malnutrition.
+
+e Equipping microorganisms to synthesize medicines, enzymes, or biofuels that they could not naturally
+produce.
+
+This ability to introduce new capabilities opens up solutions that were previously impossible with traditional
+
+breeding or chemical methods.
+
+Eliminating Harmful Characteristics
+
+Genetic engineering also targets traits that are detrimental to the organism, humans, or the environment.
+
+Examples include:
+
+e Removing genes that make plants susceptible to fungal infections or insect attacks, reducing crop loss.
+
+© Correcting or silencing mutated genes in humans responsible for genetic disorders.
+
+e Engineering livestock to minimize hereditary diseases, improving animal health and productivity.
+
+Eliminating harmful traits not only protects organisms but also ensures safer, higher-quality food and
+
+resources for human use.
+
+Engineering Microorganisms for Human Benefit
+
+Microbes are among the most versatile organisms used in genetic engineering. Scientists can:
+
+e Produce life-saving medicines, such as insulin, vaccines, and antibiotics.
+
+¢ Perform bioremediation, breaking down pollutants in water, soil, or industrial waste.
+
+¢ Manufacture biofuels, biodegradable plastics, and industrial enzymes, Providing environmentally
+sustainable alternatives to conventional products.
+
+By harnessing microorganisms, genetic engineering creates tools for health, industry, and environmental
+
+sustainability, making it a cornerstone of modern biotechnology.
+
+Major Applications of Genetic Engineering
+
+1.
+
+2.
+
+Agriculture
+
+© Development of genetically modified (GM) crops resistant to pests, diseases, drought, or salinity.
+
+e Improvement in crop yield and nutritional content, ensuring better food security.
+
+Medicine
+
+© Gene therapy to treat inherited genetic disorders.
+
+® Production of biopharmaceuticals including insulin, vaccines, and antibiotics.
+
+© Exploration of novel treatments for diseases like cancer, hepatitis, and other life-threatening conditions.
+
+S$ studyplusplus.com S$
+
+
+--- Page 5 ---
+
+3. Industry and Environment
+
+e Engineering microorganisms to produce biofuels, biodegradable plastics, and other eco-friendly materials.
+
+¢ Bioremediation, using microbes to degrade industrial pollutants and sewage.
+
+e Synthesis of environmentally safe industrial chemicals.
+
+A Promising Future:
+
+Genetic engineering is one of the fastest advancing areas of science. Dr. Craig Venter, a pioneer in synthetic
+biology, famously said, “The 21st century is the Century of Biology.” In Pakistan, biotechnology has been
+recognized as a priority area by the National Commission on Science and Technology, highlighting its importance
+for national progress. With ongoing research, genetic engineering promises far-reaching benefits for human
+health, food security, industry, and environmental sustainability.
+
+Outline the function of restriction enzymes.
+
+RESTRICTION ENZYMES: MOLECULAR SCISSORS OF GENETIC ENGINEERING
+
+Restriction enzymes, also called restriction endonucleases, are specialized proteins that cleave the
+phosphodiester bonds of both DNA strands at specific nucleotide sequences known as restriction sites. Originally
+discovered in bacteria, these enzymes serve as a natural defense mechanism against invading viruses
+(bacteriophages) by “restricting” viral replication.
+
+Function in Nature
+In bacterial cells, restriction enzymes digest foreign DNA, preventing viral infection. To avoid cutting their
+own genomic DNA, bacteria protect themselves through methylation, where methyl groups are added to
+nucleotides in their recognition sequences by methyltransferase enzymes. This selective protection allows the
+enzymes to target only foreign DNA while leaving the host genome intact.
+Naming Convention
+Restriction enzymes are named after the genus, species, and strain of the bacteria from which they were isolated:
+© EcoRI — Escherichia coli
+
+© —Hindli/Hindlll — Haemophilus influenzae
+© Xhol — Xanthomonas holcicola
+
+Recognition Sequences
+
+Restriction sites are usually palindromic sequences of 4-8 base pairs, meaning they read the same backward
+and forward on complementary DNA strands. For example, EcoRI recognizes GAATTC and cuts between G and A.
+The recognition of these specific sequences ensures precision in DNA manipulation.
+Bacteriophage DNA
+
+Restriction Endonuclease
+Cleaving Viral DNA
+
+Cleaved Viral DNA
+“restricted” from infection
+
+Host Bacterial
+
+Protective Methyl Groups at
+‘ Restriction Sites of Host ONA
+Figure: Functioning of Restriction Endonucleases in Bacterial Cell
+
+S$ studyplusplus.com S$
+
+
+--- Page 6 ---
+
+Types of Cuts by Restriction Enzymes
+Restriction enzymes cut DNA in precise ways, producing
+
+If restriction endonuclease enzymes
+
+fragments that can later be manipulated in genetic engineering. The | ,
+
+two main types of cuts are sticky ends and blunt ends. Understanding are capable of destroying the DNA of
+
+these types is crucial because they determine how DNA fragments can bacteriophage, then why they do not.
+be joined, cloned, or expressed in host organisms. break down the genomic DNA of host
+1. Sticky Ends (Staggered Cuts) cell i.e. bacteria?
+
+Sticky ends, also called cohesive ends, are produced when The restriction “enzymes that form
+
+sticky ends are more useful in genetic
+engineering. Why? isolated. For
+example, EcoR! was isolated from
+
+restriction enzymes cut DNA staggeredly, leaving short single-
+stranded overhangs at each end of the fragment. These
+overhangs are complementary to each other, allowing base Escherichia coli, Hind-l and Hind-IIl
+pairing with matching sequences from other DNA fragments. from Haemophilus influenzae and
+Key Features and Importance: Xhol from Xanthomonas holcicola.
+e The overhangs can be 5’ or 3’ single-stranded sequences,
+depending on the enzyme. For example:
+© EcoRI produces a 5’ overhang.
+© Kpni produces a 3’ overhang.
+© Sticky ends facilitate the precise joining of DNA fragments from different sources, which is essential in
+creating recombinant DNA molecules.
+© They allow efficient ligation using the enzyme DNA ligase, ensuring that the fragments are joined in the
+correct orientation and sequence.
+* Sticky ends are especially useful when combining genes from different organisms or inserting a gene
+into a plasmid vector for cloning.
+Example Applications:
+e In medicine, sticky ends help insert the human insulin gene into bacterial plasmids, enabling bacteria
+to produce insulin efficiently.
+e In agriculture, genes conferring pest resistance or enhanced nutrition can be inserted into plant
+genomes using sticky-ended DNA fragments.
+2. Blunt Ends
+Blunt ends are produced when restriction enzymes cut straight across both DNA strands, leaving no
+overhangs. The cut ends are flush, meaning both strands terminate at the same nucleotide position.
+Key Features and Importance:
+©  Blunt-end fragments do not require complementary overhangs for ligation.
+They are versatile because any blunt-ended fragment can, in principle, be joined with any other blunt-
+ended fragment.
+* However, ligation of blunt ends is generally less efficient than sticky ends because there is no
+complementary base pairing to guide the process.
+Example:
+©  Haelll produces blunt-ended DNA fragments used in genome mapping, DNA sequencing, and other
+molecular cloning techniques where precise sticky-end pairing is not necessary.
+Comparison and Significance in Genetic Engineering
+Sticky Ends
+Yes (single-stranded)
+High, guided by complementary
+sequences
+
+Blunt Ends
+No (flush ends)
+Lower, no guiding overhang
+
+Moderate
+Haelll
+
+DNA assembly, blunt-end cloning
+
+Overhang
+Ligation Efficiency
+
+Precision in Recombinant DNA
+Common Enzymes
+Applications
+
+High
+EcoRI, Kpnt
+Gene cloning, plasmid insertion
+
+S$ studyplusplus.com S$
+
+
+--- Page 7 ---
+
+Sticky ends are particularly valuable in genetic engineering because they allow efficient, accurate, and
+directional joining of DNA fragments from different organisms. Blunt ends, though less efficient, offer flexibility
+when overhangs are unnecessary. By selecting the appropriate type of cut, scientists can manipulate DNA with
+precision, creating recombinant molecules for medicine, agriculture, and industrial biotechnology.
+
+Applications of Restriction Enzymes in Genetic Engineering
+
+Restriction enzymes are essential tools in recombinant DNA (rDNA) technology. By acting as precise
+molecular scissors, they allow scientists to manipulate DNA in.controlled and targeted ways, enabling a wide
+range of applications in medicine, agriculture, and industry. Their ability to cut DNA at specific sequences makes
+them indispensable for gene cloning, expression, and modification. i
+
+1. Isolating Genes of Interest
+
+Restriction enzymes allow scientists to cut out specific genes from the genome of an organism. This is the
+first step in creating recombinant DNA molecules, as the gene of interest can then be studied, cloned, or
+expressed in another organism. Isolation of genes also enables the study of gene function, identification of
+disease-causing mutations, and understanding of regulatory sequences in DNA.
+Example: The human insulin gene is isolated using restriction enzymes before being inserted into a bacterial
+plasmid for mass production.
+
+2. Inserting Genes into Vectors
+
+Once a gene of interest is isolated, it must be inserted into a DNA vector—such as a plasmid, bacteriophage,
+or artificial chromosome—to be replicated and expressed in a host organism. Restriction enzymes generate
+compatible sticky or blunt ends in both the gene and the vector, allowing precise insertion using DNA ligase.
+Vectors such as pBR322 plasmid contain multiple restriction sites and selectable markers, which help in
+efficient gene insertion and selection of transformed cells.
+
+Example: In genetically modified crops, a gene conferring pest resistance can be inserted into a plant
+plasmid vector, which is then introduced into plant cells to create'a transgenic plant.
+
+3. Production of Medicines, Vaccines, and GM Crops
+
+Restriction enzymes enable the creation of recombinant organisms capable of producing therapeutic
+
+proteins, vaccines, and industrial enzymes.
+
+@ Medicines: Human insulin, growth hormones, clotting factors, and monoclonal antibodies are produced
+by bacteria or yeast engineered using recombinant DNA technology.
+
+© Vaccines: Genes encoding viral proteins can be inserted into vectors to produce safe and effective
+vaccines, such as the hepatitis B vaccine.
+
+© Genetically Modified (GM) Crops: Crops like Bt cotton, Bt maize, and Golden Rice are created using
+restriction enzymes to insert genes that confer pest resistance, enhanced nutrition, or stress tolerance.
+
+4. Other Research and Industrial Applications
+
+Restriction enzymes are also used in DNA mapping, genome sequencing, and forensic analysis. In industry,
+they allow for the engineering of microbes that produce biofuels, biodegradable plastics, and industrial
+enzymes, supporting sustainable and environmentally friendly solutions. These enzymes help scientists
+study gene regulation, understand genetic disorders, and develop novel biotechnological tools for research
+and innovation.
+
+In essence, restriction enzymes form the foundation of genetic engineering. By enabling the isolation,
+insertion, and recombination of genes, they allow scientists to design organisms with desired traits, produce
+life-saving medicines and vaccines, and develop genetically modified crops for a sustainable future. Their
+precision, reliability, and versatility make them indispensable in modern biotechnology, opening the door to
+innovative solutions across medicine, agriculture, and industry.
+
+Vectors: Molecular Carriers in Genetic Engineering
+
+: After DNA is cut using restriction enzymes, the next critical step in genetic engineering is to insert the gene
+of interest into a vector. Vectors are DNA molecules that serve as transport vehicles, carrying recombinant DNA
+into host cells where it can be replicated and expressed. They are essential tools in recombinant DNA technology,
+enabling the production of proteins, enzymes, and genetically modified organisms.
+
+Plasmids: The Most Common Vectors
+
+: Plasmids are small, circular, double-stranded DNA molecules naturally found in bacteria. They are
+particularly suited as vectors because they replicate independently of the bacterial chromosome and can carry
+additional genes. Scientists often engineer plasmids to carry foreign genes for research, medicine, or agriculture.
+
+S$ studyplusplus.com S$
+
+
+--- Page 8 ---
+
+> Key Features of Plasmid Vectors
+1. Origin of Replication (Ori):
+o Allows plasmids to replicate independently within the host cell.
+o Ensures that multiple copies of the recombinant plasmid are present in each cell, increasing gene
+expression efficiency.
+
+2. Selectable Markers:
+
+o Genes such as antibiotic resistance markers (e.g., ampicillin or tetracycline) allow researchers to
+identify cells that have successfully taken up the plasmid.
+
+3. Multiple Cloning Sites (MCS):
+
+o Short sequences containing unique restriction enzyme sites, enabling easy insertion of foreign DNA.
+o Allow scientists to cut and insert genes precisely without disrupting other plasmid functions.
+
+4. Promoter Regions:
+
+o Sequences that initiate transcription of the inserted gene, enabling the host cell to produce the
+desired protein.
+
+5. Small Size:
+
+o Facilitates manipulation in the laboratory, as smaller plasmids are easier to isolate, cut, and
+recombine.
+
+6. High Copy Number:
+
+o Some plasmids can exist in multiple copies per cell, ensuring efficient amplification of the inserted
+gene.
+> Example: pBR322 Plasmid,
+
+e Developed in 1977 by Bolivar and Rodriguez, pBR322 is one of the earliest and most widely used plasmid
+
+vectors.
+
+Origin of replication: Derived from pMB1.
+
+Size: 4,361 base pairs, allowing efficient transformation into bacterial cells.
+
+Antibiotic resistance genes: Ampicillin (AmpR) and tetracycline (TetR) for selection.
+
+Multiple restriction sites: Pst!, Pvul, Sacl (AmpR); BamHI, Hindill (TetR), enabling precise gene insertion.
+> vier Types of Vectors
+
+While plasmids are the most common, other vectors are used depending on the application:
+© Bacteriophage A DNA: A viral vector that can carry larger DNA fragments than plasmids.
+© Cosmids: Hybrids of plasmid and phage DNA, allowing the cloning of very large DNA fragments.
+
+o Yeast Artificial Chromosomes (YACs): Used to clone extremely large DNA fragments in yeast cells,
+ideal for genomic studies.
+o Bacterial Artificial Chromosomes (BACs): Can carry large DNA fragments in bacterial cells, used in
+genome sequencing projects.
+> Integration with Restriction Enzymes
+
+Restriction enzymes and vectors work hand in hand in genetic
+engineering:
+
+e Restriction enzymes act as molecular scissors, cutting DNA at
+precise palindromic sequences and generating sticky or blunt
+ends.
+
+© These cut fragments are then inserted into vectors like plasmids
+using DNA ligase.
+
+e The recombinant DNA can be introduced into host cells, which
+will replicate and express the inserted gene.
+
+This combination. allows scientists to. produce medicines (e.g.,
+insulin), genetically modified crops (e.g., Bt cotton), industrial enzymes, and
+environmentally friendly products, highlighting the central role of vectors
+and restriction enzymes in modern biotechnology.
+
+SCIENCE TITBITS
+
+Bacteria methylate their DNA
+shortly after synthesis during binary
+fission, by adding methyl (CHs)
+groups to the nucleotides in the
+recognition sequences. This process
+is called methylation and is carried
+out by the modifying enzyme
+methyl-transferase present in the
+
+bacterial cell.
+
+S$ studyplusplus.com S$
+
+
+--- Page 9 ---
+
+Te t Sil
+wide eras dicey renee Blunt end produced in
+‘Sugar-Phosphate Backbone
+
+S' end, send
+
+Figure: Recognition of palindromic sequence by restriction endonuclease enzyme Haell
+and production of blunt ends in Sugar-Phosphate backbone of double stranded DNA
+
+Restriction
+endonuclease
+
+Palindromic | Same sequence GAATTC
+‘order in both
+sine tn evga ores
+
+Stend . 3'end
+TUTTTTTTTTTTTTTGAATIC TIT titi itT
+CTTAAG LLLLLL LLL tL
+
+S' end
+
+|
+
+stend
+
+Cleavage
+
+3' end
+
+Sticky ends:
+5'end Fa, 3'end
+
+Send
+
+2 ends Bane
+Figure: Recognition of palindromic sequence by restriction endonuclease EcoR1 and
+production of sticky ends at 5'end in both complementary DNA strands
+
+PLASMIDS AS VECTORS IN PROKARYOTES
+
+Plasmids are small, circular, double-stranded DNA molecules naturally found in many bacteria. Unlike
+chromosomal DNA, plasmids replicate independently and often carry genes that provide advantages to the host,
+such as antibiotic resistance or metabolic traits. In genetic engineering, plasmids are widely used as vectors—
+molecular carriers that transport foreign DNA into prokaryotic host cells for replication and expression.
+> Key Features of Plasmid Vectors
+
+Plasmids are preferred vectors because of their size, flexibility, and replication efficiency. Important
+
+features include:
+
+1, Origin of Replication (Ori):
+
+° peer 9 ismids to replicate independently of the bacterial chromosome, producing multiple copies
+per cell. °
+
+PS) studyplusplus.com S$
+
+
+--- Page 10 ---
+
+2. Selectable Markers:
+o Genes such as antibiotic resistance markers (e.g., ampicillin or tetracycline) help identify bacteria
+that have successfully taken up the plasmid.
+3. Multiple Cloning Sites (MCS):
+o Short sequences with unique restriction enzyme sites, allowing the precise insertion of foreign DNA.
+4. Promoter Regions:
+© Enable transcription and expression of inserted genes within the host cell.
+5. Small Size:
+© Facilitates easy manipulation in the laboratory.
+6. High Copy Number:
+o Ensures efficient amplification of inserted genes, producing abundant recombinant DNA or protein.
+Example: pBR322 is one of the earliest plasmids engineered for recombinant DNA studies:
+Origin of replication: Derived from pMB1.
+Size: 4,361 base pairs, compact and easy to manipulate.
+Antibiotic resistance genes: Ampicillin (AmpR) and tetracycline (TetR).
+Multiple restriction sites: Enable insertion of foreign DNA into either AmpR or TetR regions.
+Formation of Recombinant Plasmids
+Arecombinant plasmid is created when a gene of interest is inserted into a plasmid vector, forming a hybrid DNA
+molecule capable of replication and expression in a bacterial host. The process involves several steps:
+1. Isolation of the Gene of Interest
+o The target gene is obtained from genomic
+DNA or cDNA using restriction enzymes,
+which cut DNA at specific palindromic
+sequences, producing sticky or blunt ends.
+2. Preparation of the Plasmid Vector
+o The plasmid is cut with the same restriction
+enzyme as the gene of interest to produce
+complementary ends.
+0 This ensures that the gene can be inserted in
+the correct orientation.
+3. Ligation
+o The gene and plasmid are joined using DNA
+ligase, forming covalent bonds in the sugar-
+phosphate backbone
+o Sticky ends enhance the efficiency and
+specificity of ligation, while blunt ends allow
+flexible joining without overhangs.
+4. Transformation into Host Cells
+o The recombinant plasmid is introduced into prokaryotic cells (commonly €. coli) via transformation
+techniques such as heat shock or electroporation.
+o Only bacteria that take up the recombinant plasmid survive if selectable markers are used (e.g.,
+antibiotic resistance).
+5. Selection and Screening
+
+o Bacteria carrying recombinant plasmids are selected using antibiotic-containing media.
+o Additional techniques, such as blue-white screening, can differentiate colonies containing
+recombinant plasmids from those with empty vectors.
+
+$ studyplusplus.com S$
+
+Origin of
+replication
+(ori) Puvil
+
+Figure: E. coli cloning vector (pBR322 plasmid)
+having origin of replication (ori), restriction site and
+antibiotic-resistant genes
+
+
+
+--- Page 11 ---
+
+Plasmids are versatile vectors in prokaryotes that allow scientists to replicate, express, and manipulate
+genes of interést. Through restriction enzyme cutting, ligation, and transformation, recombinant plasmids can
+be formed, making them essential tools in modern genetic engineering and biotechnology. They enable the
+production of medicines, industrial products, and genetically modified organisms, highlighting their critical role
+in science and industry.
+
+Types of Plasmids as Vectors
+
+1. Cloning Vectors: These are used for the cloning of DNA fragments. They contain essential
+elements like Ori, selectable markers, and cloning sites.
+
+2. Expression Vectors: These are designed for the expression of a gene in a host organism. They
+include promoters, ribosome binding sites, and termination sequences.
+
+3. Shuttle Vectors: Plasmids that can replicate in multiple host species, such as in both prokaryotic
+and eukaryotic cells, are known as shuttle vectors. These are useful for gene transfer between
+different biological systems.
+
+Applications of Plasmids
+
+Gene Cloning: Plasmids are extensively used for cloning of genes of interest for further study and.
+manipulation,
+
+Protein Production: Expression vectors are used for the production of proteins by expressing
+inserted genes.
+Gene Therapy: Plasmids are used to deliver therapeutic genes into cells of organisms with a
+genetic disease.
+
+Vaccine Development: Most of the DNA vaccines are Plasmid based and are effectively used to
+prevent diseases.
+
+Plasmid
+Human
+DNA C
+Bacterium
+
+Restriction
+Human cell enzyme ]
+cleaves DNA
+
+Gene of
+
+interest cw \ yy
+
+DNA ligase seals human gene and plasmid
+
+Recombinant DNA
+
+Host cell takes up recombined plasmid
+
+Figure: Steps for the formation of recombinant plasmid
+
+PS) studyplusplus.com S$
+
+
+--- Page 12 ---
+
+SLO [B-12-J-06]
+
+Explain the formation of human insulin protein in bacteria.
+
+PRODUCTION OF HUMAN INSULIN IN BACTERIA
+
+The production of human insulin in bacteria is one of the most famous and important applications of genetic
+engineering. It allows diabetic patients to obtain insulin that is biologically identical to natural human insulin,
+avoiding the risks associated with animal-derived insulin. Bacteria such as Escherichia coli are used as bioreactors
+to produce insulin efficiently and on a large scale.
+
+Steps in the Formation of Human Insulin in Bacteria
+1. Identification and Isolation of the Insulin Gene
+
+The insulin gene (INS), responsible for producing human insulin, is
+located on chromosome 11 at position 11p15.5. The gene spans
+approximately 1.5 kilobase pairs (Kbp), comprising three exons and
+
+Insulin was discovered by Edward S.
+Schafer in 1916. It is the major regulator
+
+two introns. Insulin is a peptide hormone composed of two chains—
+chain A (21 amino acids) and chain B (30 amino acids)—linked by
+disulfide bonds. It is naturally produced by the B-cells of the islets of
+Langerhans in the pancreas. To begin recombinant insulin
+production, the INS gene is identified and isolated from human DNA.
+However, since prokaryotes such as Escherichia coli cannot process
+eukaryotic introns, synthetic complementary DNA (cDNA) sequences
+or intron-free versions of the a and B chain genes are typically used.
+
+of. blood sugar in the body. Fredrick
+Sanger and his team in 1954 first time
+described the complete structure of
+insulin. Initially, B-cells synthesize pre-
+pro-insulin polypeptide, having 109
+amino acids. Out of 109 amino acids, 23
+amino acids act as signal molecules
+needed for entry of the pre-pro-insulin
+through cell membrane. When inside the
+cell, it become inactive pro-insulin with
+86 amino acids, that finally converted to
+
+active insulin with 51 amino acids by
+some proteolytic enzymes. Active insulin
+consists of two polypeptide chains, chain
+a has 21 amino acids and chain B has 30
+amino acids, both linked together by
+disulphide bonds.
+
+2. — Selection of suitable plasmid for insertion of insulin gene
+Plasmids are circular DNA molecules used as vectors to carry foreign
+genes into bacterial cells. For insulin production, plasmids are
+chosen based on their compatibility with bacterial hosts and their
+features that support gene insertion and expression. Commonly
+used plasmids include:
+¢ pBR322: A widely used plasmid containing antibiotic resistance genes for ampicillin and tetracycline. It
+
+has multiple restriction sites and a moderate copy number.
+
+* pUC18/pUC19: Derivatives of pBR322, these plasmids are engineered for high-efficiency cloning. They
+include an ampicillin resistance gene and a multiple cloning site within the /acZ gene for blue-white
+screening.
+
+These plasmids serve as carriers for the synthetic genes encoding the insulin chains, The A and B chain genes
+
+are inserted into plasmids separately and often adjacent to a bacterial gene such as, /acZ (B-galactosidase),
+
+which facilitates the fusion and expression of insulin polypeptides.
+3. Creation of Recombinant DNA
+
+Bacteria e.g. E. coli are not so advanced cells so cannot directly produce eukaryotic proteins like insulin, so
+
+two separate synthetic genes are created for the a and B chains of insulin. These genes for both chains of
+
+insulin and separately inserted into two separate bacterial plasmid vectors i.e. pBR322 plasmid. These
+genes are inserted into the plasmid by the side of B galactosidase gene. The plasmids are engineered with
+
+a promoter sequence that helps to initiate the auto- production of insulin chains when inside the bacterial
+cells,
+
+° °
+
+studyplusplus.com
+
+
+--- Page 13 ---
+
+B-galactosidase
+
+B-galactosidase
+Promoter, gene Promoter. gene
+paerrerares
+4 B-galactosidase.
+Insulin gene Insulin gene
+forchain-A for chain-A
+Antibiotic. Antibiotic
+resistant resistant
+gene | gene |
+E.coli are transformed with
+recombinant expression
+vectors, then trans,
+celis are selected by their
+O C8) ae °
+B-galactosidase+insulin-A B-galactosidase+insulin-B
+| fusion protein | fusion protein
+
+3 3
+3
+
+Pro-insulin, che: - Sinks chain-B
+——_—_A—__, “5° Coenen |=)
+
+Disulfide Pro-insulin chains Aand B
+
+Insulin ‘poly ide chains
+Aand B are chemically
+detached from
+
+bridge are chemically joined in-vitro}
+Functionally to form the function insulin
+active insulin
+Packaged
+for storage
+and use
+
+Insulin ready for
+
+Insp ma Lepr 2
+c Ulin injection to patients
+
+Figure: Steps for synthesis of human insulin in bacteria by recombinant DNA technology
+
+4. Insertion of recombinant plasmids into host Cells
+Once constructed, the recombinant plasmids carrying the genes for insulin’ A and B chains.are introduced
+separately into competent Escherichia coli cells through a process known as transformation. This involves
+inducing the bacterial cells to take up plasmid DNA from their surroundings, often facilitated by calcium
+chloride treatment or electroporation. The transformed bacteria, now containing the recombinant plasmids,
+are referred to as recombinant bacteria.
+
+5. Production of insulin chains
+The recombinant E. coli cells are cultured in large-scale fermentation tanks under sterile conditions, using
+nutrient-rich media and optimal environmental parameters (temperature, pH, aeration). As the bacteria
+multiply, the plasmid DNA replicates, resulting in the amplification (cloning) of the inserted insulin genes.
+
+S$ studyplusplus.com S$
+
+
+--- Page 14 ---
+
+Each bacterial culture produces either the A or B chain of insulin as a fusion protein with B-galactosidase.
+This fusion approach enhances the stability of insulin peptides by protecting them from bacterial proteases
+during intracellular synthesis.
+
+6. Extraction and Purification
+For extraction of insulin, the bacterial cells are harvested and the pro-insulin chains combined with fusion
+proteins (B-galactosidase) are isolated. These pro-insulin chains A and B are separated from Fusion proteins,
+B-galactosidase by chemical treatment with cyanogen bromide. The removal of pro-insulin chains from
+fusion protein B-galactosidase is possible because, an extra codon is added before methionine codon at N-
+terminal of each gene for A and B-chain.
+
+7. Folding and disulphide bridging of both insulin chains
+Once a sufficient biomass is achieved, the bacterial cells are harvested by centrifugation, and the fusion
+proteins containing either the A or B insulin chains are isolated. The fusion proteins are engineered such
+that an additional codon encoding methionine is placed at the N-terminal of the insulin chain genes. This
+allows for the chemical cleavage of the fusion protein using cyanogen bromide, which selectively cleaves at
+methionine residues, thereby separating the insulin chains from the B-galactosidase component.
+
+8. Purification and testing
+The reconstituted insulin is purified through a series of chromatographic techniques, including ion-
+exchange and reverse-phase chromatography, to eliminate bacterial proteins, endotoxins, and other
+impurities. The final product undergoes rigorous quality control tests, including assessments of structural
+integrity, biological activity, sterility, safety, and the absence of adverse immunogenic reactions.
+
+9. Packaging for storage, shipment and usage
+Following quality validation, the purified recombinant human insulin is formulated and packaged into sterile
+vials, cartridges, or prefilled insulin pens. Packaging includes labeling with instructions for dosage, storage
+conditions (typically refrigeration), and method of administration. Recombinant human insulin produced in
+this manner is structurally identical to natural human insulin, offering superior purity, reduced risk of
+allergic reactions, and improved glycemic control compared to earlier animal-derived preparations.
+
+Polymerase Chain Reaction (PCR)
+
+The Polymerase Chain Reaction (PCR) is a revolutionary molecular biology technique that allows scientists
+to amplify specific segments of DNA rapidly and precisely. Developed by Kary Mullis in 1983, PCR has become a
+cornerstone of genetic research, diagnostics, and biotechnology, enabling the study of genes from extremely
+small DNA samples.
+
+Definition
+PCR is a method used to produce millions of copies of a specific DNA segment in vitro (outside a living
+
+organism) using a thermostable DNA polymerase, primers, nucleotides, and a thermal cycler. This amplification
+allows even a single DNA molecule to be analyzed, cloned, or used in diagnostics.
+
+> Principle of PCR
+PCR relies on the natural process of DNA replication, but it is performed artificially in cycles. It involves:
+1. Denaturation:
+© Double-stranded DNA is heated to around 94-98°C, causing the strands to separate into single strands.
+2. Annealing:
+o The temperature is lowered (50-65°C) to allow short synthetic primers to bind (anneal) to their
+complementary sequences on the target DNA.
+3. €xtension (Elongation):
+oA thermostable DNA polymerase (commonly Tag polymerase) synthesizes new DNA strands by
+adding nucleotides complementary to the template.
+© The extension is typically carried out at 72°C, the optimal temperature for Taq polymerase activity.
+This cycle is repeated 25-35 times, resulting in exponential amplification of the target DNA segment.
+
+PS) studyplusplus.com S$
+
+
+--- Page 15 ---
+
+Essential Components of a PCR Reaction Mixture
+
+Polymerase Chain Reaction (PCR) requires a carefully prepared reaction mixture containing all the necessary
+
+molecular components for DNA amplification. The success of PCR depends on the correct composition and
+concentration of each element. These components include:
+
+1. Taq DNA Polymerase
+A thermostable DNA-polymerase, Taq polymerase is the central enzyme used in PCR. It is isolated from the
+thermophilic bacterium Thermus aquaticus, which inhabits hot springs. This enzyme remains stable and
+catalytically active at high temperatures (up to 95 °C), making it ideal for the repeated thermal cycling required
+in PCR. Tag polymerase synthesizes new DNA strands by extending primers using deoxyribonucleotides.
+
+2. Template DNA
+The template DNA is the segment of DNA that contains the target sequence to be amplified. It provides the
+original sequence that the primers bind to and which is copied during the extension phase. The quantity and
+purity of template DNA affect the specificity and yield of the amplification.
+
+3. Primers
+Primers are short, single-stranded DNA oligonucleotides that are complementary to the sequences flanking
+the target DNA region. Two primers are required for each PCR reaction:
+© Forward primer
+e Reverse primer
+They provide starting points for DNA synthesis by binding to opposite strands of the template DNA.
+
+4. dNTPs (Deoxyribonucleoside Triphosphates)
+These are the building blocks used by Taq polymerase to synthesize new DNA strands. The four types of
+dNTPs (dATP, dTTP, dGTP, and dCTP) must be present in balanced concentrations to ensure accurate and
+complete DNA replication.
+
+5. Reaction Buffer
+A suitable buffer system is essential to maintain the optimal pH and ionic strength required for the
+enzymatic activity of Taq polymerase. The buffer typically contains magnesium ions (Mg?*), which act as
+cofactors for the enzyme. Some buffers may also include additives to enhance enzyme performance or DNA
+stability.
+
+6. Thermocycler (PCR Machine)
+The thermocycler, also known as a PCR machine, is an automated instrument programmed to precisely
+control the temperature changes required during the PCR cycles—denaturation, annealing, and extension.
+It ensures rapid and accurate temperature transitions, critical for the efficiency and specificity of the
+reaction.
+
+Mechanism of PCR Reaction
+
+selective and exponential amplification of a DNA fragment. Each
+cycle typically includes three main steps:
+
+called a thermal cycler (thermocycler), which precisely regulates
+temperature and timing.
+
+1.
+
+PCR involves a series of thermal cycling steps that enable the
+
+1, Denaturation
+
+2. Primer annealing
+
+3. Extension (polymerization)
+
+These steps are carried out using a programmable device
+
+Denaturation
+a. Initial Denaturation
+o Pu : To fully denature the DNA template b
+renting ili bonds between the two Serene Figure: PCR machine (Thermocycler)
+© Conditions: 94-95°C for 4-5 minutes.
+© Rationale: Necessary to disrupt stable secondary structures, especially in GC-rich regions, and to
+ensure that the entire template becomes single-stranded before cyclic amplification begins.
+
+S$ studyplusplus.com S$
+
+
+--- Page 16 ---
+
+b. Cyclic Denaturation 3 Parental ds DNA
+© Purpose: To separate DNA strands before each 5!
+amplification cycle. (a) Denaturation
+© Conditions: 94 °C for ~1 minute. (1 Minute)
+o Outcome: Double-stranded DNA (dsDNA)
+becomes single-stranded DNA (ssDNA), providing
+a template for primer binding and extension in
+subsequent steps. Anneak
+2. Primer Annealing ©) 2 Minutes) 3,
+Purpose: To allow short, sequence-specific primers
+(forward and reverse) to bind to their complementary
+regions on the single-stranded DNA templates.
+¢ Conditions: 55-65 °C for ~2 minutes (temperature
+depends on primer length and GC content).
+* Outcome: Primers hybridize to their target
+sequences, flanking the DNA region to be amplified.
+
+3. Extension or Polymerization
+
+Cyafie Extension
+Purpose: To synthesize new DNA strands using the =)
+primers as starting points. ‘Two Daughter 5
+¢ Conditions: 72 °C for ~1 minute per cycle. asDNA 3) {TT >.
+e¢ Enzyme: Taq DNA polymerase, a thermostable PCR Cycle
+enzyme isolated from Thermus aquaticus, catalyzes Figure: Mechanism of PCR reaction P1 Is
+the addition of deoxyribonucleotides (dNTPs) to the forward primer and P2 is reverse primer
+
+3" end of each primer.
+Outcome: Complementary strands are synthesized, forming new double-stranded DNA.
+Final Extension
+* Purpose: To complete any partially synthesized DNA strands.
+* Conditions: 72 °C for S~7 minutes (performed once, after all cycles).
+¢ Rationale: Ensures full-length product generation, improving PCR yield and reliability.
+
+1
+1-hold | ~—2535 cycles —=—+ | 1-hold | 1-hold
+Initial denaturation | Denaturation I alk
+inal extensi
+
+94°C 94°C Annealing sf
+
+| |
+
+= | t
+
+45min | 1min mo | G9 \
+H
+
+wees 1-2 min } 5-7 min |
+
+!
+
+|
+
+Temperature
+
+55°C to 65°C
+2min
+
+Infinity
+
+Time
+Figure: Steps of PCR mechanism as set in thermocycler (PCR machine)
+
+> Cycle Repetition and Amplification
+
+At the end of the first cycle, one double-stranded DNA (dsDNA) molecule becomes two. In the second cycle,
+each of the two DNA molecules is denatured again and serves as a template, producing four DNA copies, and so
+on. This results in exponential amplification, with the DNA quantity doubling after every cycle. -
+
+The process is typically repeated for 25~35 cycles, depending on the desired amount of -mplified DNA.
+>» Storage of PCR Products
+
+After completion of the final extension, the reaction is held at 4°C to preserve the PCR products. This
+temperature prevents degradation of amplified DNA until it is retrieved and stored in a refrigerator or used for
+downstream applications such as gel electrophoresis, cloning, or sequencing.
+
+$ studyplusplus.com S$
+
+
+--- Page 17 ---
+
+Summary of PCR Steps and Conditions
+
+[step | Purpose | Typical Temperature | Duration]
+Initial Denaturation Denature template DNA completely 94-95 °C
+Cyclic Denaturation Separate dsDNA into ssDNA
+i Cc
+
+i 94°C
+Allow primers to bind to complementary
+regions y
+rel = RA
+polymerase
+72°C
+ALG
+
+~1 minute per cycle
+
+Final Extension _| Complete any unfinished DNA synthesis |__—=—s 72°C —_—i| 5-7 minutes
+Hold/Storage Preserve PCR products | 4c _—_[ Indefinite (until use)
+
+SCIENCE TITBITS
+
+Q. Why heat is used in PCR technique to denature the target DNA instead of using DNA helicase
+and DNA gyrase enzymes?
+
+Ans. Heat is used in PCR to break the hydrogen bonds between DNA strands because enzymes like
+helicase and gyrase are not stable at high temperatures and cannot function efficiently in vitro.
+Heating to ~94°C rapidly separates the DNA strands without the need for enzymatic unwinding.
+
+Q. Why human DNA polymerase cannot be used in PCR technique?
+
+Ans. Human DNA polymerase is not thermostable and becomes denatured at the high temperatures
+required during the denaturation step of PCR. In contrast, Taq polymerase from Thermus
+aquaticus remains active at high temperatures, making it suitable for thermal cycling in PCR.
+
+Q. Why already synthesized primers are used in PCR technique instead of using primase
+enzyme? _
+
+Ans. Primase is not used in PCR because it functions only in vivo and is not stable during high-
+
+temperature cycles. Instead, synthetic DNA primers are added to the reaction. These primers
+
+are designed to specifically bind to the target sequence and remain intact throughout the
+thermal cycling process
+
+SLO [B-12-J-05]
+
+Define genetically modified organism.
+
+GENETICALLY MODIFIED. ORGANISMS (GMOS)
+
+A Genetically Modified Organism (GMO) is an organism whose genetic material (DNA) has been
+deliberately altered using modern biotechnology techniques. This modification is done to introduce, remove, or
+edit specific genes, resulting in traits that may not occur naturally in the organism.
+
+Definition
+"An organism whose genome has been altered by the insertion, deletion, or modification of specific genes
+using recombinant DNA technology, gene editing, or other molecular techniques."
+Purpose of Creating GMOs
+Genetic modification allows scientists to improve organisms for human benefit by:
+1. Enhancing Agricultural Traits:
+o Crops that are pest-resistant, drought-tolerant, or nutritionally enriched.
+o © Examples: Bt cotton (insect-resistant), Golden Rice (vitamin A enriched).
+2. Medical Applications:
+© Bacteria engineered to produce human insulin, growth hormones, and vaccines.
+3. Industrial and Environmental Uses:
+o - Microbes modified for biofuel production, biodegradation of pollutants, or industrial enzyme
+synthesis.
+
+v
+
+S$ studyplusplus.com S$
+
+
+--- Page 18 ---
+
+Key Characteristics of GMOs *
+
+Genetically Modified Organisms (GMOs) are unique because of several defining characteristics that
+distinguish them from naturally occurring organisms. These features make GMOs highly valuable in
+agriculture, medicine, and biotechnology.
+
+1. Precision:
+
+°
+°
+
+Genetic modifications in GMOs are highly specific, targeting only the desired genes.
+
+Modern techniques such as recombinant DNA technology, CRISPR-Cas9, and gene cloning allow
+scientists to add, remove, or edit particular genes without affecting other parts of the genome.
+Example: In Bt cotton, the gene for insect resistance is precisely inserted without altering other plant
+traits like growth or fiber quality.
+
+2. Novel Traits:
+
+GMOs often exhibit traits that do not naturally occur in the species.
+These new characteristics can provide enhanced nutrition, resistance to pests or diseases, faster
+growth, or environmental tolerance.
+
+Example: Golden Rice is genetically modified to produce beta-carotene (vitamin A precursor), a
+trait not naturally found in traditional rice varieties.
+
+3. Reproducibility:
+
+°
+
+Once a genetic modification is successfully incorporated, the trait can be stably inherited by the
+next generation, provided the modification is integrated into the organism’s germline.
+
+This’ allows GMOs to maintain their enhanced characteristics across generations, ensuring long-
+term bench.
+
+Example: Bt corn produces the insecticidal protein in every generation, protecting crops consistently
+without repeated intervention.
+
+4. Versatility and Adaptability:
+
+°
+
+°
+
+GMOs can be designed for specific environments or purposes, making them highly adaptable for
+different climates, industrial needs, or medical applications.
+
+Example: Engineered bacteria can survive in industrial reactors to produce biofuels or
+pharmaceuticals efficiently.
+
+5. Controllability:
+
+°
+
+Scientists can control when and where the introduced genes are expressed using regulatory
+sequences such as promoters and enhancers.
+
+This ensures that the GMO expresses the desired trait only under certain conditions or in specific
+tissues.
+
+Example: Pest-resistant genes may be expressed only in leaves to target herbivorous insects without
+affecting other plant parts.
+
+The key characteristics of GMOs—precision, novel traits, reproducibility, versatility, and controllability—
+make them powerful tools in modern biotechnology. These features enable the creation of organisms with
+enhanced or entirely new properties, offering solutions for food security, medical theraples, industrial
+processes, and environmental sustainability.
+
+Examples of GMOs
+[Plants [at cotton, Golden Rice __ Pest resistance, enhanced nutrition |
+|___Animais__| AquAdvantage salmon ___| Fastergrowth |
+
+$ studyplusplus.com S$
+
+nN
+~
+
+u
+
+
+--- Page 19 ---
+
+1.
+
+2.
+
+Both strains of Pseudomonas syringae occur naturally, but recombinant DNA technology has allowed
+
+for the synthetic removal or alteration of specific genes, enabling the creation of the ice- minus strain.
+
+Modifying P. syringae may have unexpected consequences for climate. A study has shown that its ice
+
+nucleating proteins may play an important part in causing ice crystals to form in clouds. If humans.
+
+increase the frequency of bacteria lacking these proteins then it could potentially affect rainfall.
+
+The first genes available for genetic engineering of crop plants for pest resistance were known as Bt
+
+genes from a bacterium Bacillus thuringiensis. These are specific to particular group of insect pests
+
+and are not harmful to other useful insects like butter flies and silk worms. Transgenic crops with Bt
+
+genes (e.g. cotton, rice, maize, potato, tomato, brinjal, cauliflower, cabbage, etc.) have been
+
+developed. This has proved to be an effective way of controlling the insect pests and has reduced the
+
+pesticide use.
+
+Concerns about the Genetically Modified Organisms (GMOS)
+
+The main areas of consideration for safety aspects in biotechnology are the following:
+
+a. How to dispose-off spent microbial biomass and purify the effluents from biotechnological processes?
+
+b. The toxicity of the allergy associated with microbial production.
+
+¢. How to deal with the increase in the number of antibiotic resistant pathogenic microorganisms?
+
+d. How to evaluate the pathogenicity of the genetically engineered microorganisms to infect humans,
+plants and animals?
+
+e. How to prevent contamination, infection or mutation of the processed strains?
+
+Transgenic Bacteria
+
+Due to their simple genetic. makeup and rapid growth, bacteria are highly amenable to genetic
+transformation. The first successful example was reported in 1978 when the.human insulin gene was
+inserted into Escherichia coli, enabling the bacterial synthesis of recombinant human insulin. Since then,
+transgenic bacteria have been widely employed not only in the production of therapeutic human proteins
+but also in diverse applications such as enhancing plant growth, bioremediation of environmental pollutants,
+and bioleaching of metals from low-grade ores.
+
+Transgenic Plants
+
+The first field trials of genetically modified (GM) plants.took place in 1986 in France and the United States,
+using herbicide-resistant tobacco plants. The primary goal of developing transgenic plants is to introduce
+beneficial traits that do not naturally exist within the species. These traits include resistance to pests,
+diseases, herbicides, or environmental stressors, as well as the ability to produce enhanced nutrients or
+pharmaceutical compounds.
+
+A landmark advancement in crop protection was the introduction of Bt genes from the soil bacterium
+Bacillus thuringiensis. These genes code for proteins that are toxic to specific insect pests but are harmless
+to beneficial insects such as butterflies and silkworms. Bt genes have been incorporated into various crops,
+including cotton, maize, rice, potato, tomato, brinjal, cauliflower, and cabbage. These genetically modified
+crops have significantly reduced the need for chemical pesticides and improved pest resistance.
+
+Transgenic Animals
+
+Transgenic animals are those into which foreign genes have been deliberately introduced using recombinant
+DNA technology. Genetic engineering in animals aims to enhance desirable traits in livestock, such as growth
+rate, milk production, or disease resistance. Moreover, certain transgenic animals have been engineered to
+produce pharmaceutical proteins in their milk, blood, or eggs. These animals, known as "transpharmer”
+animals, serve as bioreactors for the cost-effective production of biologically active human drugs.
+
+SCIENCE, TECHNOLOGY AND SOCIETY CONNECTIONS
+
+Global Transgenic Crops
+
+Since 1996, the cultivation of transgenic crops has expanded rapidly. In 2005, transgenic crops were
+planted globally on 90 million hectares, which increased to 190.4 million hectares by 2019. Major GM
+crops include herbicide tolerance and insect resistance soybean, maize, cotton, and canola. Leading
+
+Producers are the United States, Brazil, Argentina and Canada. Transgenic Crops in Pakistan
+commercially adopted Bt cotton in 2010, which is now grown over 2.3 million hectares ( 95% of the
+cotton area). New triple gene cotton varieties, resistant to pests and herbicides, have been introduced
+in 2023. GM maize production increased sharply, from 1 million metric tons in 2013 to 10,5 million
+metric tons in 2023, Recently, GM varieties of sugarcane has also been approved for cultivation.
+(Discourse: 2024, PIDE, Islamabad)
+
+S$ studyplusplus.com S$
+
+
+--- Page 20 ---
+
+SCIENCE TITBITS
+
+Most of the countries of the world are signatories to the Biological Weapons Conventions of 1972. As
+a signatory, it is a voluntary pledge by a nation "never to produce microbial or other biological agents
+or toxins, whatever may be their method of production, for use in wars. However, many people have
+expressed their concerns about the possible use of genetic manipulations for military purposes in the
+near future.
+
+SCIENCE, TECHNOLOGY AND SOCIETY CONNECTIONS
+
+Justify the need of genetic counselling.
+
+Genetic counselling is a service that provides information and advice about genetic conditions.
+Counselling is conducted by healthcare professionals who have been specially trained in the
+science of human genetics (a genetic counsellor or a clinical geneticist). The counsellor will discuss
+the risks, benefits and limitations of genetic testing with you. They will also explain how the
+information found as a result of genetic testing could have implications for both you and your family.
+Investigate careers that require an understanding of biotechnology and genetic engineering.
+Many careers require an understanding of biotechnology and genetic engineering. Such as:
+Healthcare professionals, Teachers of biological sciences, biomedical engineers, crime lab analyst,
+crime scene investigator, environmental impact analyst, forensic scientist, genetic engineer,
+molecular biologist etc. P
+
+Describe briefly the accomplishments of the renowned genetic engineers working in private and
+public sector institutions in her or his province.
+
+It is advised to the administration that they should arrange study tour of student to public and
+Privet sector institutions of genetic engineering so that students can meet with renowned genetic
+engineers and can directly ask about their accomplishments.
+
+Suggest ineasure she/he would take to solve related problems by using knowledge gained in
+this chapter.
+
+Students should evaluate themselves to know what they have learnt in this chapter and should
+apply this knowledge to solve related problems under the guidance of their class teacher.
+Describe the role of genetic screening.
+
+Genetic screening includes all those diagnostics. tests which are used to determine whether a
+Person or a new born baby is at risk of genetic diseases or not. Generally there are two types of
+genetic screening, screening of children and adults, and screening of unborn children. Genetic
+screening of children and adults has two purposes: first it can confirm whether the person has a
+mutated gene of certain disease or characteristics. The second purpose is to test adults to see if
+their children will be at risk of certain disease. Knowing that one or both parents carries a
+dominant allele for a genetic disease might affect the decision of parents about having birth of
+affected children. Now a days, genetic screening is used for approval of marriage licenses in some
+countries, like Denmark.
+
+LOs Based (MCQs)
+
+GENETIC ENGINEERING AND PCR
+Which of the following is used as a vector in Which enzyme is used to cut DNA at specific
+
+genetic engineering? sequences in genetic engineering?
+A, Ribosome B. Plasmid A. DNA ligase
+C. Nucleosome D. Lysosome B. Restriction endonuclease
+
+2. The term “recombinant DNA” refers to:
+A. DNA extracted from recombinant proteins
+B. DNA that mutates naturally
+C.DNA formed by combining genetic material
+from two.different sources
+D. DNA synthesized by ribosomes
+
+C. DNA polymerase D. Helicase
+4. Which of the following is not a feature of a
+plasmid used in genetic engineering?
+A. Origin of replication _B. Restriction sites
+C. Ribosomal genes
+D. Antibiotic resistance genes
+
+S$ studyplusplus.com $
+
+
+--- Page 21 ---
+
+10.
+
+11,
+
+12.
+
+13.
+
+14,
+
+‘15.
+
+In insulin gene cloning, which organism is
+commonly used as a host cell?
+
+A. Saccharomyces cerevisiae
+
+B.E. coli
+
+C. Bacillus subtilis D. Rhizobium
+
+Which of the following enzymes joins DNA
+fragments?
+
+A. Reverse transcriptase B. RNA polymerase ©
+C. DNA ligase D. DNA helicase
+
+A gene inserted next to the lacZ gene in a
+plasmid allows:
+
+A. Elimination of unwanted proteins
+
+B. Expression as a fusion protein
+
+C. Replication of the host cell
+
+D. Cell wall synthesis
+
+The codon inserted before the methionine
+codon in insulin gene expression is to:
+
+A. Start protein synthesis
+
+B. Improve ribosome binding
+
+C. Facilitate cleavage by cyanogen bromide
+
+D. Stop protein synthesis
+
+Recombinant human insulin differs from animal
+insulin by: .
+
+A. Having a different amino acid sequence
+
+B. Being inactive C. Being less pure
+
+D. Being identical to natural human insulin
+
+The restriction enzyme EcoRI recognizes which
+
+sequence?
+
+A. AGCT B. GAATTC
+
+C. AAGGTT D. GCGC
+
+Which enzyme is used in PCR?
+
+A. Helicase B. DNA polymerase |
+
+C. Taq polymerase
+
+PCR is primarily used to:
+A.Join DNA fragments _B. Clone cells
+
+C. Amplify DNA D. Transcribe RNA
+What is the typical temperature for primer
+annealing in PCR?
+
+A. 25°C B.94°C
+
+C7z¢ D. 55-65°C
+
+The initial denaturation step in PCR is carried out:
+A. In every cycle
+
+B. Only once at the beginning
+
+C. At the end of the process
+
+D. In alternate cycles
+
+The final extension step ensures:
+
+A. DNA degradation B. Primer removal
+
+C. Complete synthesis of DNA strands
+
+D. Transformation
+
+D. RNA polymerase
+
+°
+
+16.
+
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+
+22.
+
+23.
+
+24,
+
+25.
+
+26.
+
+studyplusplus.com
+
+Cyanogen bromide is used in insulin production to:
+A. Break disulfide bonds _B. Join DNA fragments
+C. Cleave fusion proteins at methionine residues
+D. Denature DNA
+
+Which of the following
+component of a PCR reaction?
+
+is an essential
+
+A. RNA polymerase B. Ligase
+
+C. dNTPs D. Ribosomes
+
+What is the optimal temperature for Taq
+polymerase activity?
+
+A. 55°C B. 94°C
+
+C.72°C D. 37°C
+
+Which feature of Taq polymerase makes it
+suitable for PCR?
+
+A. It synthesizes RNA
+
+B. It is stable at high temperatures
+
+C. It breaks down proteins
+
+D. It removes introns
+
+What happens to DNA during the denaturation
+step of PCR?
+
+A. It is transcribed into RNA
+
+B. It is broken down into nucleotides
+
+C. It becomes double-stranded
+
+D. It separates into single strands
+
+PCR differs from natural DNA replication in that it:
+A. Requires a host cell
+
+B. Does not need primers
+
+C. Is performed in vitro
+
+D. Occurs only during cell division
+
+The exponential nature of PCR means:
+
+A. Each cycle produces linear DNA increase
+
+B. DNA amount remains constant
+
+C. DNA quantity doubles with each cycle
+
+D. Only one strand is amplified
+
+What is the purpose of primers in PCR?
+
+A. To synthesize new DNA
+
+B. To break DNA strands
+
+C. To bind and initiate DNA synthesis
+
+D. To degrade unwanted DNA
+
+Which of the following occurs at 94°C in PCR?
+
+A. Primer binding B. DNA strand synthesis
+C. DNA denaturation D. Protein folding
+After PCR, DNA products are stored at:
+
+A. 94°C : 8B. Room temperature
+c.4°c D. 100°C
+
+The number of DNA molecules after 10 PCR
+cycles from 1 copy is:
+A. 100
+
+Cc. 1024
+
+B.512
+D. 2048
+
+°
+
+
+--- Page 22 ---
+
+27. InPCR, the final product is: 29. The first step of PCR cycle is:
+
+A. RNA copies B. Protein fragments A. Annealing B. Denaturation
+
+C. Amplified DNA D. Fusion proteins C. Extension D. Replication
+28. The thermocycler is used in PCR to: 30. PCR is especially useful in:
+
+A. Separate proteins A. Protein synthesis
+
+B. Maintain bacterial cultures B. DNA fingerprinting and diagnostics
+
+C. Regulate temperature for DNA amplification C. Lipid metabolism
+
+D. Clone cells D. Photosynthesis studies
+
+[2.¢ [3.8 [ac [5.8 [ec [7.8 [ac [9p [108] | 12.¢ | 13.0 | 14.8 | 25.¢ |
+[ 16.¢ | [18.c | 19.8 [ 20.0 | [ 22.¢ [ 23.¢ | | 25.¢ [ 26.¢ | 27.c [ 28.c [29.8 | 30.8 |
+Short Questions
+
+Q.1_What is recombinant DNA technology?
+
+Ans. Recombinant DNA technology is the process of combining DNA from
+two different sources to create a novel DNA molecule. This technology MARKING SCHEME (3 Marks)
+allows specific genes to be inserted into vectors such as plasmids, which
+can then be introduced into host organisms like bacteria or yeast. Once
+inside the host, the gene can be expressed, enabling the production of desired proteins, enzymes, or
+hormones. A key application is the production of human insulin, where synthetic insulin genes are expressed
+in E. coli to produce large quantities of the hormone for diabetic patients. This technology also underpins
+
+vaccine development, gene therapy, and agricultural biotechnology, making it a cornerstone of modern
+molecular biology.
+
+Q.2 What are the basic steps of genetic engineering?
+
+Ans. The main steps of genetic engineering begin with the identification and
+isolation of a gene of interest from a donor organism. Next, the gene is MARKING SCHEME (3 Marks)
+inserted into a suitable vector, such as a plasmid, using molecular tools | * Names of ll steps—3 marks
+like restriction enzymes and ligases. The recombinant vector is then
+introduced into a host organism through transformation, allowing the host to replicate and express the gene.
+The expressed protein or product is subsequently extracted, purified, and tested for activity. These steps
+
+enable scientists to manipulate genetic material for applications such as producing therapeutic proteins,
+enhancing crop traits, or studying gene function, forming the foundation of biotechnology and molecular medicine.
+
+Q.3 Why is E. coli used in genetic engineering?
+
+ins. E. coli is widely used as a host in genetic engineering due to its well-
+characterized genetics, rapid growth rate, and ability to efficiently
+replicate plasmid DNA. Its cells are easy to transform with foreign DNA, $ d pai OF E008 erty a5 8 yorker
+and they can express inserted genes at high levels. Additionally, E. coli
+can be cultured inexpensively in large quantities, making it ideal for industrial-scale protein production..|ts
+safety profile and extensive research background provide a reliable platform for gene cloning, protein
+expression, and recombinant DNA studies. These properties make E. coli one of the most commonly used
+organisms in molecular biology, biotechnology, and pharmaceutical manufacturing.
+
+ee
+a MARKING SCHEME (3 Marks)
+
+Q.4 How is human insulin produced using recombinant DNA?
+
+Ans. Human insulin production using recombinant DNA involves inserting
+synthetic genes for insulin chains A and B into separate plasmids, which
+are introduced into E. coli cells. The bacteria express the chains as
+fusion proteins, which are then extracted and purified. The fusion
+Proteins are cleaved to release the individual A and B chains, which are chemically combined to form active
+insulin identical to human insulin. This method allows mass production of insulin that is safe, consistent, and
+Cost-effective compared to earlier methods using animal Pancreas extracts. Recombinant insulin has
+
+transformed diabetes treatment and illustrates the power of genetic engineering in producing therapeutic
+proteins. ‘
+
+S$ studyplusplus.com $
+
+
+--- Page 23 ---
+
+Q.5 What is the role of restriction enzymes in genetic engineering?
+
+Ans. Restriction enzymes, also called restriction endonucleases, are proteins
+that cut DNA at specific nucleotide sequence$. They act like molecular MARKING SCHEME (3 Marks)
+scissors, enabling precise cutting of DNA fragments: In genetic Definition - 1 mark, role - 2 marks
+engineering, these enzymes allow scientists to remove or insert genes
+into vectors, forming recombinant DNA molecules. By generating compatible ends on DNA fragments and
+vectors, restriction enzymes facilitate the ligation and assembly of new genetic constructs. They are essential
+tools for cloning, gene expression studies, and creating genetically modified organisms. Without restriction
+enzymes, targeted manipulation of DNA for research, medicine, or biotechnology would be nearly impossible.
+
+Q.6 Define Polymerase Chain Reaction (PCR).
+
+Ans. Polymerase Chain Reaction (PCR) is a laboratory technique used to
+amplify a specific DNA sequence, generating millions of copies froma | . dispenses uy
+single or few DNA molecules. PCR involves repeated cycles of oeameen eth Narre eee
+denaturation, where the double-stranded DNA is separated; annealing,
+where short primers bind to complementary sequences on the target DNA; and extension, where a DNA
+polymerase synthesizes new strands starting from the primers. This cyclical process allows researchers to
+obtain large amounts of DNA from minimal starting material, facilitating applications such as genetic testing,
+forensic analysis, cloning, and pathogen detection. PCR is fundamental in molecular biology due to its speed,
+specificity, and sensitivity.
+
+Q.7_ Why is Taq polymerase used in PCR?
+
+Ans. Taq polymerase is a DNA polymerase derived from the thermophilic
+bacterium Thermus aquaticus. \t is thermostable, meaning it remains MARKING SCHEME (3 Marks)
+active at the high temperatures required for DNA denaturation during | © Definition—1mark, importance-2marks
+PCR. This stability allows the enzyme to repeatedly synthesize new DNA
+strands during successive cycles of amplification without being denatured itself. Taq polymerase efficiently
+extends primers to produce complementary DNA strands, enabling the exponential amplification of the
+target sequence. Its robustness and efficiency make it the enzyme of choice for PCR, allowing precise, rapid,
+and reliable DNA replication for applications such as diagnostics, cloning, and forensic analysis.
+
+Q.8 What is the function of primers in PCR? :
+
+Ans. Primers are short, single-stranded DNA sequences. that are
+complementary to regions flanking the target DNA segment. They serve
+as starting points for DNA synthesis by providing free 3’-OH ends for
+Taq polymerase to attach nucleotides. During the annealing step of PCR,
+primers specifically bind to their complementary sequences on the template DNA, ensuring that only the
+desired region is amplified. Without primers, DNA polymerase cannot initiate synthesis. Primers thus
+provide specificity to PCR; define the boundaries of the amplified sequence, and determine the efficiency
+
+and accuracy of the reaction, making them essential components for successful DNA amplification.
+eee
+
+Q.9 How does PCR achieve exponential amplification of DNA?
+Ans. PCR achieves exponential amplification because each cycle doubles the
+
+MARKING SCHEME (3 Marks)
+
+MARKING SCHEME (3 Marks)
+mark, funi mi
+
+4
+2
+3
+Es
+
+number of DNA molecules. In the first cycle, the original DNA template | | eS I os ij
+produces two copies. In subsequent cycles, both original and newly roe pe cabins San ih
+
+synthesized strands serve as templates for further amplification. This 2 marks
+doubling process continues through multiple cycles, resulting in millions
+of copies of the target DNA from a minimal starting amount. The combination of repeated denaturation,
+primer annealing, and extension ensures that the reaction is both rapid and highly specific. Exponential
+amplification enables sensitive detection of genetic material in applications such as disease diagnosis,
+forensic analysis, and molecular cloning.
+
+Q,10 What is the purpose of the final extension step in PCR?
+
+Ans. The final extension step in PCR allows Taq polymerase to complete the
+synthesis of any partially extended DNA strands remaining from MARKING SCHEME (3 Marks)
+previous cycles. During this step, the reaction is held at an optimal | * Definition of extension ~ 1 mark,
+
+temperature, enabling the polymerase to add nucleotides to the 3’ ends \_*eese2maris
+
+S$ studyplusplus.com S$
+
+
+
+--- Page 24 ---
+
+of all‘newly synthesized DNA strands. This ensures that the PCR products are fully double-stranded,
+complete, and.uniform in length. The final extension maximizes yield and accuracy of the amplified DNA,
+which is crucial for downstream applications such as cloning, sequencing, or diagnostic assays, where
+incomplete DNA products could compromise results.
+
+WORKING OF VERTICAL (SOIL-FREE) FOOD FARMS
+
+1 RR RE
+
+Vertical food farms, also called vertical farming, are an innovative method of growing crops without
+traditional soil, using controlled soilless systems in stacked layers. This approach allows year-round cultivation,
+maximizes space efficiency, and reduces reliance on conventional agriculture, making it ideal for urban
+environments.
+
+Vertical farming is the practice of growing plants in vertically stacked layers using soilless techniques such as
+hydroponics, aeroponics, or aquaponics, under controlled environmental conditions including light, temperature,
+and nutrients.
+
+NUTRIENT PUMP AIR STONE AIR PUMP
+Figure: Working of vertical (Soil-free) food farms
+How Soil-Free Vertical Farms Work
+Soilless Growth Systems
+Vertical farms eliminate soil by using alternative growth methods:
+1. Hydroponics
+
+In hydroponics, plants are grown with their roots immersed in a nutrient-rich water solution instead of soil.
+The system circulates water through channels, delivering nutrients directly to the plant roots and recycling
+it to conserve resources—using up to 90% less water than traditional farming methods.
+
+Figure: Harvesting of fruits from vertical (Soil-free) food farms
+
+S$ studyplusplus.com S$
+
+
+--- Page 25 ---
+
+3.
+
+Aeroponics
+
+Aeroponics involves suspending plant roots in air, where they are. periodically misted with nutrient-rich
+water. This method enhances oxygen availability to roots and supports efficient absorption of nutrients and
+water. Aeroponics offers greater water efficiency, improved oxygenation, and higher crop yields compared
+
+to hydroponics.
+
+Figure: Schematic diagram of Aquaponics: Vertical (Soil-free) food farming with fish farming
+
+Aquaponics
+
+Aquaponics combines hydroponics with aquaculture (fish farming). In this system, water from fish tanks is
+cycled through plant beds. Fish waste serves as a natural fertilizer for plants, while the plants purify the
+water for reuse in the fish tanks. This creates a sustainable, closed-loop ecosystem with minimal need for
+
+synthetic inputs.
+
+ee °
+Figure: Well established large scale vertical (Soil-free) food farm
+
+Vertical farming is supported by Controlled Environment Agriculture (CEA), which utilizes technology to
+maintain optimal growing conditions year-round. CEA systems include:
+© LED grow lights with programmable timers to simulate appropriate light spectra for photosynthesis.
+© Climate control systems to regulate temperature and humidity.
+* Sensor networks to monitor and adjust nutrient delivery, light exposure, and overall plant health.
+This method enables consistent, rapid plant growth and reliable harvests throughout the year while
+minimizing land and water usage. Vertical farming is considered more sustainable than traditional
+agriculture, as it significantly reduces water consumption, greenhouse gas emissions, and land use, while
+yielding more crops per unit area.
+Modern vertical farms are also integrated with automated sensor systems and artificial intelligence (Al),
+which optimize production by monitoring plant growth, adjusting environmental conditions, and managing
+
+Nutrient delivery with precision.
+
+S$ studyplusplus.com S$
+
+
+--- Page 26 ---
+
+SLO [B-12-J-08]
+
+Compare and contrast the advantages of vertical food farms with general agricultural practices
+
+prevalent in Pakistan.
+
+COMPARISON OF VERTICAL FOOD FARMS AND TRADITIONAL
+AGRICULTURE IN PAKISTAN
+
+Agriculture is a cornerstone of Pakistan's economy, providing employment to a large proportion of the rural
+population and serving as a major contributor to the country's GDP. It supplies raw materials for key industries
+such as textiles, sugar, food processing, and dairy.
+> Main Features of Traditional Agriculture in Pakistan
+
+(i) Agricultural Land: Pakistan possesses 47% arable land, significantly higher than the global average of
+
+38%. About 82% of cultivated land is irrigated through an extensive canal system, while 18% is rain-fed
+or arid.
+
+(ii) Major Crops: Staple crops include wheat, rice, sugarcane, and potatoes, while cotton and maize are
+
+prominent cash crops. The cropping calendar consists of two main seasons: Kharif and Rabi.
+
+(iil) Livestock Sector: Livestock complements crop production and is a major economic sector. Pakistan is
+
+the fifth-largest producer of dairy products and the fourth-largest exporter of leather goods globally.
+
+(iv) Organic Farming: Organic practices are observed through the use of recycled crop residues and animal
+
+manure, minimal use of synthetic pesticides, and implementation of crop rotation to reduce
+environmental impact. °
+
+Table 10.1: Comparison Between Vertical Farming and Traditional Agricultural Practices
+
+Utilizes vertical space by stacking crops in | Requires extensive horizontal land, making
+multiple layers, allowing cultivation in | it more feasible in rural areas. Staple crops
+urban areas with limited land availability. | such as wheat, rice, and sugarcane demand
+Particularly suitable for densely populated | large tracts of land, as commonly seen in.
+regions. the agricultural zones of Punjab and Sindh.
+Uses 90-95% less water than conventional | Requires large volumes of water,
+farming. Systems such as hydroponics and} particularly for crops like tice and
+aeroponics recycle or mist water directly to | sugarcane. Traditional irrigation methods
+roots, significantly minimizing water loss. | often result.in wastage due to seepage and
+This approach is especially relevant in arid | flood-based overflow, contributing to water
+regions like Thar and Balochistan. and environmental stress.
+Provides higher yields per square foot due | Productivity is seasonal and dependent on
+to controlled environmental conditions | environmental factors such as rainfall,
+(light, temperature, humidity, and nutrient | floods, and droughts, Crop failures due to
+delivery). Enables year-round production of | extreme weather conditions are common.
+crops such as leafy vegetables, herbs, and | For example, wheat is restricted to the
+strawberries. winter season, while monsoon rains may
+damage cotton and rice crops.
+Relies heavily on manual labour, especially
+in rural regions. Limited use of modern
+equipment and outdated practices reduce
+
+efficiency and increase human effort,
+impacting productivity.
+
+Space Utilization
+
+Yield and
+Productivity
+
+Labour and
+Automation
+
+Largely automated, often using Al-based
+systems to regulate irrigation, lighting, and
+climate control. Reduces the need for
+manual labour, though initial investment in
+automation can be costly and may limit
+tural adoption in countries like Pakistan.
+
+PS) studyplusplus.com S$
+
+
+--- Page 27 ---
+
+3.
+
+Crop Varieties
+
+Pesticide and
+Chemical Use
+
+Environmental
+Impact
+
+Accessibility and
+Investment
+
+Which of the following is a key characteristic of
+vertical farming?
+
+A. Use of synthetic fertilizers
+
+B. Cultivation in arid lands
+
+C. Use of soil in multi-level platforms.
+
+D. Cultivation in vertically stacked layers
+
+Limited to short-cycle, compact crops such
+as leafy greens, herbs, and select fruits. Not
+ideal for growing staple grains or large-root
+crops due to space and weight limitations.
+
+Controlled environments reduce the risk of
+pest infestations, minimizing the need for
+chemical pesticides and herbicides. This
+leads to safer, chemical-free produce and
+reduces environmental contamination.
+
+Offers a sustainable model with reduced
+land and water usage, lower CO emissions,
+and no soil erosion. Often located near
+consumers, reducing  transport-related
+emissions. However, energy demands (e.g.,
+for LED lights) may be offset using
+renewable sources like solar power.
+Requires significant initial investment. for
+infrastructure, climate regulation, and
+automation systems. Thus, it is currently
+more accessible to commercial enterprises
+in urban: settings than to small-scale rural
+farmers.
+
+Supports a wide range of crops including
+cereals (wheat, rice, maize), vegetables
+(potatoes, onions), and fruits (mangoes,
+oranges). Thus, it plays a vital role in
+national food security.
+
+High dependency on pesticides and
+synthetic fertilizers to manage pests and
+enhance yields. Overuse may lead to
+pesticide resistance, health concerns, and
+environmental degradation through soil
+and water pollution.
+
+Faces environmental threats such as land
+degradation, deforestation, waterlogging,
+and salinization. Expansion often leads to
+loss of biodiversity and soil fertility.
+Traditional agriculture is vulnerable to
+climate change and extreme weather
+conditions.
+
+Involves relatively lower startup costs and is
+more accessible to small-scale farmers
+using basic tools and natural resources.
+However, productivity is generally lower
+and more susceptible to environmental
+variability.
+
+SLOs Based (MCQs)
+
+VERTICAL FARMING
+
+Aquaponics combines hydroponics with:
+A. Composting
+C. Aquaculture
+
+6. What serves as a natural fertilizer in aquaponics
+systems?
+
+B. Livestock farming
+D. Mushroom farming
+
+i A. Vermicompost B. Fish waste
+What is the main reason vertical farming avoids C Seaweed exthaot D. Urea
+using soil? =
+A. Soll cannot retain nutrients 7. Vertical farms achieve water savings of up to:
+B. Soil attracts pests A. 40% B. 60%
+C. Soil is too heavy for vertical structures C. 90% D. 10%
+D. Soil lacks oxygen 8. Which technology is used in Controlled
+In hydroponics, plants receive nutrients through: Environment Agriculture (CEA)?
+A. Suspended air mists A. Pesticide drones B. Solar heaters
+B. Decomposing organic matter C. LED grow lights D. Organic mulch
+C. Soil absorption 9. The major advantage of vertical farming in urban
+0. Circulating nutrient-rich water areas Is:
+Which vertical farming method provides the A. Cheaper land availability
+highest oxygen availability to plant roots? B. Easier rainfall access
+
+A. Hydroponics B. Soil-based culture
+
+C. Aeroponics D. Aquaponics
+
+o
+
+studyplusplus.com
+
+C. Efficient use of limited space
+D. Crop rotation options
+
+°
+
+
+--- Page 28 ---
+
+10.
+
+11,
+
+12.
+
+13.
+
+14,
+
+15.
+
+Vertical farming is more sustainable than
+traditional farming because it:
+
+A. Increases pesticide use
+
+B. Expands farmland
+
+C. Minimizes land and water use
+
+D. Promotes seasonal production
+
+The type of vertical farming that uses misted
+nutrient water is:
+
+A. Aquaponics B. Hydroponics
+
+C. Soil-based farming D. Aeroponics
+Traditional agriculture in Pakistan primarily
+relieson: _
+
+A. Al-based automation
+
+B. Indoor growing chambers
+
+C. Manual labor and irrigation
+
+D. Drone-based planting
+
+Which crop is least suitable for vertical farming?
+A. Spinach B. Strawberries
+
+C. Wheat D. Basil
+
+Amajor limitation of vertical farming in Pakistan
+is:
+
+A. Lack of water
+
+B. High energy costs
+
+C. Soil salinization
+
+D. Inaccessibility to remote regions
+
+Which crop season in Pakistan includes rice and
+cotton?
+
+A. Summer
+C. Kharif
+
+B. Rabi
+D. Monsoon
+
+16.
+
+17.
+
+18.
+
+A primary environmental concern in traditional
+agriculture is:
+
+A. Indoor air pollution :
+
+B. Biodiversity loss and soil degradation
+
+C. Over-fertilization of hydroponics
+
+D. Lack of pesticide use
+
+Vertical farming contributes to food security by:
+A. Growing staple cereals efficiently
+
+B. Expanding arable land
+
+C. Providing reliable year-round yields
+
+D. Increasing livestock productivity
+
+Which Pakistani provinces are noted for extensive
+irrigated land use in traditional farming?
+
+A. Khyber Pakhtunkhwa and Balochistan
+
+B. Punjab and Sindh
+
+C. Azad Kashmir and Gilgit-Baltistan
+
+D. Islamabad and Rawalpindi
+
+The role of Al in vertical farming includes:
+
+A. Transporting crops
+
+B. Monitoring plant health and adjusting
+environments
+
+C. Harvesting grain by hand
+
+D. Managing crop rotation
+
+What reduces the environmental contamination
+in vertical farming?
+
+A. Overuse of fertilizers
+
+B..Limited oxygen exposure
+
+C. Controlled pesticide-free environments
+
+D. Excessive water usage
+
+| 16.8 |
+Short Questions
+
+Q.1 What is vertical farming and where is it commonly established?
+Ans. Vertical farming is an innovative agricultural method in which crops are
+
+grown in vertically stacked layers, often using soil-free systems like
+hydroponics or aeroponics. This approach maximizes space efficiency,
+
+MARKING SCHEME (3 Marks)
+‘* Definition — 2 marks, location ~ 1 mark
+
+making it ideal for urban environments where arable land is scarce.
+
+Vertical farms can be established in greenhouses, warehouses, skyscrapers, and even indoor.spaces such as
+offices or homes. By utilizing vertical space, controlled lighting, and nutrient delivery systems, vertical
+farming enables year-round crop production, reduces land use, and minimizes transportation costs by
+growing food closer to consumers. It is a key strategy for sustainable urban agriculture and addressing food
+
+security challenges.
+
+Q.2 How does hydroponics function in vertical farming?
+Ans. Hydroponics is a soil-less cultivation technique where plants grow with
+
+their roots immersed in a circulating nutrient-rich water solution. This
+method allows direct absorption of essential minerals and nutrients,
+
+MARKING SCHEME (3 Marks)
+* Function - 2 marks, advantages — 1 mark
+
+ensuring rapid growth and higher yields. Water is continuously
+
+o
+
+studyplusplus.com
+
+°
+
+
+--- Page 29 ---
+
+recycled, conserving up to 90% more water than traditional soil-based farming. Hydroponics reduces
+dependency on soil quality, minimizes pests and diseases, and enables precise control over nutrient delivery
+and pH levels. Its efficiency and adaptability make it an ideal method for vertical farming, supporting
+sustainable and high-density crop production in urban and indoor environments.
+
+Q.3 Whatis the significance of aeroponics in vertical farming?
+
+Ans. Aeroponics is a cultivation method where plant roots are suspended in
+the air and periodically misted with nutrient solutions. This approach
+maximizes oxygen availability to roots, enhances nutrient uptake, and | ¢ Definition—1 mark, advantages—2 marks
+accelerates plant growth. Aeroponics uses minimal water and
+eliminates soil, reducing risks of soil-borne diseases and pests. It also allows precise control over
+environmental conditions, supporting higher crop density and yield. These advantages make aeroponics
+particularly suitable for vertical farming and controlled environment agriculture. By combining efficiency,
+sustainability, and resource conservation, aeroponics contributes to year-round production of high-quality
+crops in urban or space-limited settings.
+
+Q.4 Explain how aquaponics supports sustainable agriculture.
+
+Ans. Aquaponics integrates hydroponic plant cultivation with aquaculture,
+creating a closed-loop, sustainable ecosystem. Fish produce nutrient- MARKING SCHEME (3 Marks)
+rich waste, which is converted by bacteria into forms usable by plants. | * Definition—1mark, advantages —2 marks
+The plants, in turn, filter and purify the water, which is recirculated back
+to the fish tanks. This system minimizes the need for chemical fertilizers and conserves water through
+continuous recycling. Aquaponics supports high-density crop and fish production simultaneously, making it
+highly resource-efficient. By reducing environmental impact and providing both plant and protein yields,
+aquaponics represents a sustainable and environmentally friendly agricultural approach, especially suited
+for urban farming, areas with limited water, and controlled environment agriculture systems.
+
+Q.5 What technologies support Controlled Environment Agriculture (CEA)?
+
+Ans. Controlled Environment Agriculture (CEA) relies on technologies that >
+optimize growth conditions for crops. Key technologies include LED | | , ee i ask =
+grow lights that provide tailored light spectra for photosynthesis, three names
+climate control systems that maintain temperature and humidity within
+ideal ranges, and sensor networks that monitor and regulate nutrient levels, pH, and environmental
+parameters. Automation and .data analytics allow precise, consistent, and efficient crop management,
+supporting year-round production regardless of external weather conditions. These technologies enable
+higher yields, resource efficiency, and sustainability, making CEA a critical component of modern urban
+agriculture, vertical farming, and future food security strategies. $
+
+Q.6 How does vertical farming conserve water?
+
+Ans. Vertical farming conserves water by using soil-free systems like
+hydroponics and aeroponics, which deliver nutrient solutions directly to (MARKING SCHEME (3 Marks)
+plant roots. Water is continuously recirculated, minimizing losses ‘Advantages —3 marks
+
+through evaporation or runoff. Unlike traditional soil-based irrigation,
+which can lose large amounts of water, vertical farming systems ensure precise control over usage, resulting
+in up to 95% water savings. This efficiency makes vertical farming particularly suitable for urban
+environments or regions with water scarcity. By reducing dependency on freshwater resources, vertical
+farming supports sustainable agriculture while maintaining high crop yields, demonstrating a significant
+environmental advantage over conventional farming practices.
+
+Q.7 Compare crop variety limitations of vertical and traditional farming.
+
+Ans. Vertical farming generally supports compact, fast-growing crops such as
+leafy greens, herbs,-and strawberries, due to limited vertical space and | , Pecasasyairooshe ar oe
+shorter growth cycles. Large or deep-rooted crops like grains, tubers, or pa eral ‘and traditional farming
+tree fruits are difficult to cultivate in stacked or controlled
+environments. In contrast, traditional farming accommodates a wide range of crops, including cereals,
+vegetables, and fruits essential for food security, as it is not restricted by vertical space. While vertical
+farming excels in efficiency and resource use for select crops, traditional farming remains necessary for
+diverse agricultural production, highlighting a trade-off between yield efficiency and crop variety.
+
+S$ studyplusplus.com S$
+
+
+--- Page 30 ---
+
+ee ae eee
+Q.8 Why is vertical farming considered more sustainable than traditional farming?
+Ans. Vertical farming is considered more sustainable because it minimizes
+land use, reducing deforestation and soil degradation. Soil-free systems MARKING SCHEME (3 Marks)
+prevent erosion, conserve water, and decrease pesticide and fertilizer | « Advantages of vertical farming—3 marks
+use. Growing crops in urban or controlled environments reduces
+transportation emissions and associated carbon footprints. Although vertical farming is energy-intensive,
+renewable energy sources such as solar panels or LED lighting can offset these demands, making the system
+environmentally friendly. By combining water efficiency, reduced chemical use, and urban proximity, vertical
+farming supports resource conservation, high productivity, and lower environmental impact, offering a
+sustainable alternative to conventional soil-based agriculture, especially in densely populated areas.
+
+Q.9 How does automation impact vertical farming compared to traditional farming?
+
+Ans. Automation in vertical farming uses Al, sensor networks, and robotic
+systems to control irrigation, nutrient delivery, lighting, and climate
+conditions with precision. This reduces labor requirements, improves
+efficiency, and ensures consistent crop quality. In contrast, traditional
+farming, particularly in countries like Pakistan, relies heavily on manual labor, simple tools, and seasonal
+monitoring, making it less precise and more labor-intensive. Automation allows vertical farms to optimize
+resources, reduce errors, and maximize yields per unit area, whereas traditional methods may be slower,
+variable, and more resource-consuming. This technological difference highlights the efficiency and
+modernity of vertical farming over conventional agricultural practices.
+
+Q.10 What are the limitations of vertical farming in developing countries like Pakistan?
+
+Ans. Vertical farming in developing countries faces several constraints. The
+high initial cost of infrastructure, including LED lighting, hydroponic
+systems, and climate control, limits accessibility for small-scale farmers.
+Energy requirements for artificial lighting and climate management are
+significant and may not be reliably met in regions with unstable power supply. Additionally, vertical farming
+is generally restricted to a narrow range of crops, primarily leafy greens and herbs, limiting its ability to
+replace traditional, staple food production. These factors make vertical farming more feasible for
+commercial urban operations rather than rural or smallholder farms, slowing its widespread adoption and
+contribution to local food security.
+
+MARKING SCHEME (3 Marks)
+* Vertical farming - 15 marks,
+
+traditional farming - 1.5 marks
+
+Exercise
+
+Choice Questions (MCQs)
+
+“Select the correct Answer.
+
+1. Which tool of recombinant DNA technology is
+incorrectly paired with its use?
+
+C.Vertical farming is ideal for urban areas;
+traditional farming needs large fields.
+
+D. Traditional farming grows crops in vertical
+layers; vertical farming requires vast fields.
+
+A. Restriction enzyme - RFLP production
+
+B. DNA ligase - cuts DNA 3. A paleontologist finds tissue from a 400 -year-
+: ei old extinct bird and wants to compare its DNA
+Gr Reverse trenscrigtase makes CONA with living birds, Which method would best
+D. Electrophoresis - separates DNA increase the bird DNA for testing?
+2. Which of the following is a key difference A. a RFLP analysis
+between vertical farming and traditional B. polymerase chain reaction (PCR)
+agriculture? C. electroporation
+A.Vertical farming uses more horizontal space, D. Southern hybridization
+suitable for rural areas. 4. Which of the following sequences in double-
+
+B. Vertical farming is not ideal for crops like
+wheat, rice, and sugarcane.
+
+stranded DNA Is mostly likely to be recognized
+as a cutting site for a restriction enzyme?
+
+S$ studyplusplus.com S$
+
+
+--- Page 31 ---
+
+A, AAGGTTCC B. AGTCTCAG
+
+C. GGCCCCGG D. ACCATGGT
+
+Aplasmid
+
+A. is used as DNA vector
+
+B. is a type of bacteriophage 2
+C. is a type of CDNA
+
+D. is a retrovirus .
+DNA molecules with complementary sticky ends
+associate by
+
+A. covalent bond B. hydrogen bond 10.
+C. ionic bond D. disulphide bond
+
+Which technique rapidly replicates specific DNA
+fragments without cloning?
+
+A. gel electrophoresis B. cDNA libraries
+
+C. genetic probe
+
+D. polymerase chain reaction
+
+The PCR technique uses
+
+A. heat resistant DNA polymerase
+
+B. reverse transcriptase
+
+C. DNA ligase
+
+D. restriction enzymes
+
+If eukaryotic DNA contains five cleavage sites for
+
+a particular restriction enzyme, how many
+
+fragments will be produced upon complete
+
+digestion of the DNA with that enzyme:
+
+A.2 B.4
+
+C.6 D. None
+
+The dideoxynucleotides (ddATP, ddTTP, ddGTP
+
+and ddCTP) are important in DNA sequencing
+
+because they:
+
+A. cause premature termination of growing DNA
+strand
+
+B. are used as prime
+
+C. cause the DNA fragments that contain them to
+migrate more slowly through the gel
+
+D. are not affected by high temperatures
+
+[a.8[2c[3e]4.0[5.a][66[7.0]8a]9.c] 10.4]
+
+ye
+
+Q.1 What is the role of restriction endonucleases in gene cloning?
+
+Ans. Restriction endonucleases are enzymes that recognize specific
+palindromic DNA sequences and cleave the DNA at or near these sites.
+In gene cloning, they are essential for creating recombinant DNA, as
+they cut both the gene of interest and the vector DNA at
+
+(MARKING SCHEME (3 Marks)
+
+* Definition — 1 mark, role in cloning - 2
+marks
+
+complementary sequences. This generates sticky or blunt ends that allow precise insertion of the target gene
+into the vector. By producing predictable fragments, restriction endonucleases enable researchers to
+manipulate DNA with high specificity, facilitating cloning, sequencing, and genetic engineering. Their ability
+to target specific sequences makes them fundamental tools in molecular biology and biotechnology for
+applications such as therapeutic protein production, GMO development, and genetic research.
+
+Q.2 What are molecular carriers?
+
+Ans. ‘Molecular carriers, also known as vectors, are DNA molecules that
+
+transport foreign genetic material into a host cell for replication or sie Ay regebaloraips|
+
+expression. Common vectors include plasmids, bacteriophages,
+cosmids, and artificial chromosomes. Effective vectors possess features
+such as an origin of replication to enable self-replication within the host, selectable marker genes for
+identification of transformed cells, and multiple cloning sites to facilitate insertion of target genes. Vectors
+are crucial in gene cloning, recombinant protein production, and genetic engineering, allowing scientists to
+introduce and propagate specific DNA sequences in bacterial; yeast, or mammalian systems, forming the
+foundation of modern biotechnology and molecular medicine.
+
+Definition ~1 mark, examples and role
+2 marks
+
+Q.3_ What Is the role of restriction DNA ligases in gene technology?
+Ans. DNA ligases are enzymes that catalyze the formation of phosphodiester
+
+bonds between adjacent nucleotides in DNA strands. In gene
+technology, they are used to covalently join DNA fragments, such as
+linking a gene of interest to a plasmid vector to form recombinant DNA.
+
+MARKING SCHEME (3 Marks)
+* Definition - 2 mark, role - 2 marks _
+
+°
+
+S$ studyplusplus.com
+
+
+--- Page 32 ---
+
+By sealing the sugar-phosphate backbone, DNA ligases ensure stable and continuous DNA molecules that
+can be replicated and expressed in host organisms. They are vital for molecular cloning, genetic engineering,
+and repair of DNA during laboratory manipulations. Without DNA ligases, the assembly of functional
+recombinant DNA constructs for protein expression or gene therapy would not be possible.
+
+Q.4 What are the concerns about genetically modified organisms (GMOs)?
+Ans. Concerns about GMOs include potential ecological disruption, such as
+
+unintended effects on non-target species or loss of biodiversity. There MARKING SCHEME (3 Marks)
+
+is also the risk of horizontal gene transfer, where antibiotic resistance | * 3 main concerns-1mark each
+markers could spread to pathogens. Food safety issues like allergenicity
+
+or toxicity are debated, alongside ethical questions about manipulating life forms. Socioeconomic concerns
+include patent control over genetically engineered seeds by large biotech companies, which may affect
+farmers’ independence and food accessibility. Additionally, there is public apprehension regarding long-term
+health and environmental impacts. These concerns highlight the importance of strict regulation, biosafety
+assessment, and ethical oversight in GMO research and commercialization.
+
+Q.5 Define following terms:
+
+(i)
+
+Biotechnology
+
+Ans. Biotechnology is the application of biological systems, organisms, or
+
+their components to develop useful products or processes for specific MARKING SCHEME (2 Marks
+purposes. It spans multiple fields, including medicine, agriculture, Definition —2 marks
+
+industry, and environmental management. In medicine, biotechnology
+
+enables the production of vaccines, therapeutic proteins, and diagnostic tools. In agriculture, it helps
+develop pest-resistant or nutrient-enhanced crops. Industrially, it is applied. in biofuels, fermentation, and
+bioprocessing. Environmental applications include bioremediation and conservation of biodiversity. By
+leveraging the capabilities of living organisms, biotechnology integrates scientific knowledge with practical
+solutions, improving human welfare, food security, and sustainable development while offering innovative
+approaches to solve complex biological and ecological challenges. z
+
+(ii) Genetic Engineering
+Ans. Genetic engineering is the deliberate modification of an organism’s
+
+genome using biotechnological techniques. This includes the insertion, MARKING SCHEME (2 Marks)
+deletion, or alteration of genes to change genetic characteristics. It | » Definition—2 marks
+
+enables scientists to produce organisms with desirable traits, such as ”
+
+disease resistance in plants, production of human proteins in bacteria, or enhanced growth in animals.
+Genetic engineering relies on tools such as recombinant DNA technology, gene cloning, and CRISPR-Cas9 for
+precise genome editing. Applications range from agriculture and medicine to industrial biotechnology. The
+field also raises ethical and safety considerations, requiring careful regulation. Overall, genetic engineering
+is a cornerstone of modern biotechnology, allowing controlled manipulation of life at the molecular level.
+
+(iii) Gene Cloning.
+Ans. Gene cloning is the process of producing multiple identical copies of a
+
+specific gene or DNA segment. The gene of interest is inserted into a KING SCHEME (2 Marks)
+suitable vector, such as a plasmid, which is then introduced into a host | + Definition-2marks
+organism, typically bacteria. Within the host, the recombinant DNA is
+replicated, generating numerous copies of the target gene. Gene cloning allows scientists to study genes in
+detail, produce recombinant proteins, and perform genetic engineering experiments, It is fundamental for
+applications such as insulin production, vaccine development, and functional genomics. By enabling precise
+replication of DNA sequences, gene cloning serves as a foundational tool in molecular biology and
+biotechnology.
+
+liv) Palindromic Sequence in DNA.
+
+Ans. A palindromic sequence in DNA is a nucleotide sequence that reads the
+
+same forward on one strand and backward on the complementary
+strand. For example, GAATTC on one strand pairs with CTTAAG on the
+other. These sequences are recognized by restriction enzymes, which
+cleave DNA at or near these sites, producing sticky or blunt ends for recombinant DNA construction.
+
+PS) studyplusplus.com S$
+
+
+
+--- Page 33 ---
+
+(v)
+
+Ans. Recombinant DNA technology involves combining DNA molecules from
+
+Palindromic sequences are essential in gene cloning, molecular diagnostics, and genetic engineering because
+they allow precise targeting and manipulation of DNA fragments. By providing specificity, these sequences
+facilitate the insertion, deletion, or modification of genes in biotechnology applications.
+
+Recombinant DNA Technology
+
+different sources to create a new DNA sequence. This is achieved by MARKING SCHEME (2 Marks)
+inserting a gene of interest into a vector, such as a plasmid, and | ° Definition~2marks
+
+introducing it into a host organism, where it can be replicated and
+
+expressed. The resulting recombinant DNA can produce proteins, enzymes, or other biomolecules for
+medical, agricultural, or industrial purposes. Applications include insulin production, genetically modified
+crops, and gene therapy. Recombinant DNA technology relies on molecular tools like restriction enzymes,
+DNA ligases, and vectors, and it forms the foundation of modern genetic engineering, enabling targeted
+manipulation of genetic material to achieve desired outcomes.
+
+(vi) DNA Ligase
+
+Ans. DNA ligase is an enzyme that catalyzes the formation of phosphodiester
+
+bonds between adjacent nucleotides, effectively joining two DNA MARKING SCHEME (2 Marks)
+fragments. It plays. a vital role in DNA replication and repair by sealing |_* Definition~2 marks
+
+nicks in the sugar-phosphate backbone. In molecular biology, DNA
+
+ligase is essential for recombinant DNA technology, where it covalently links a gene of interest into a vector
+to produce stable recombinant molecules. This enables gene cloning, protein expression, and genetic
+engineering experiments. By ensuring the continuity and integrity of DNA strands, DNA ligase facilitates
+accurate genetic manipulation and is fundamental to modern biotechnology applications in medicine,
+agriculture, and research. ,
+
+(vii) Polymerase Chain Reaction (PCR)
+
+Ans. PCR is an in vitro molecular technique used to amplify a specific DNA
+
+segment exponentially. It involves repeated cycles of denaturation, MARKING SCHEME (2 Marks)
+where the DNA strands separate; annealing, where short primers bind | * Definition ~2 marks
+
+to complementary sequences flanking the target region; and extension,
+
+where a thermostable DNA polymerase synthesizes new strands. PCR allows the production of millions of
+copies of a DNA fragment from minimal starting material in a short time. It is widely used in diagnostics,
+forensic analysis, gene cloning, and research. By enabling rapid and precise amplification of DNA, PCR has
+become an indispensable tool in modern biotechnology and molecular biology.
+
+(viii) Primers in the context of PCR
+
+Ans. Primers are short, single-stranded DNA sequences designed to bind
+
+specifically to complementary regions flanking the DNA segment to be MARKING SCHEME (3 Marks)
+amplified in PCR. They provide a starting point for DNA polymerase-to |_* nad
+initiate synthesis of new DNA strands. Forward and reverse primers
+
+define the boundaries of the target sequence and ensure specificity. Accurate primer design is critical for
+efficient amplification and avoiding non-specific products. Primers are fundamental in PCR applications,
+including diagnostics, gene cloning, sequencing, and detection of genetic mutations. They enable selective
+amplification of desired DNA fragments, making molecular experiments precise, reproducible, and reliable.
+
+(ix) Tag Polymerase
+
+Ans. Taq polymerase is a thermostable DNA polymerase extracted from the
+
+MARKING SCHEME (3 Marks)
+
+bacterium Thermus aquaticus. It synthesizes new DNA strands during A
+
+the extension step of PCR and can withstand repeated cycles of high | * Definiten-*mark importancein FcR
+temperature required for DNA denaturation without losing activity. Its
+heat stability makes it ideal for PCR, enabling efficient and rapid amplification of DNA fragments. Taq
+polymerase is widely used in molecular biology for cloning, diagnostics, sequencing, and research
+applications. Its discovery revolutionized PCR technology, making it reliable, fast, and accessible for
+laboratories worldwide.
+
+S$ studyplusplus.com S$
+
+
+--- Page 34 ---
+
+(x) Genome
+
+Ans. A genome is the complete set of genetic material present in an
+organism, including all coding genes, regulatory sequences, and non- MARKING SCHEME (2 Marks)
+coding DNA, organized into chromosomes. It contains the instructions | © Definition-2 marks
+necessary for growth, development, and reproduction. Genomes vary
+in size and complexity across species, from small viral genomes to large eukaryotic genomes. Genome
+analysis allows identification of genes, regulatory networks, and evolutionary relationships. Mapping and
+sequencing genomes underpin modern genetics, biotechnology, and medicine, facilitating advances in gene
+
+therapy, personalized medicine, crop improvement, and conservation biology. Understanding genomes is
+essential for decoding biological information and applying it in research and applied sciences.
+
+(xi) Transgenic Organisms
+
+Ans. Transgenic organisms are those that carry one or more genes artificially
+inserted from another species through recombinant DNA technology.
+These introduced genes ‘confer new traits or functions, such as pest | ¢ Definition—2marks
+resistance in plants, enhanced growth in animals, or production of
+therapeutic proteins in bacteria. Creating transgenic organisms involves identifying a gene of interest,
+inserting it into a vector, and introducing it into a host organism where it can be stably expressed. Transgenic
+organisms have applications in medicine, agriculture, and industry, including genetically modified crops,
+protein production, and animal models for disease research. They are a cornerstone of modern
+biotechnology, offering innovative solutions to human challenges.
+
+Q.6 Write the difference between:
+(a) Biotechnology and Genetic Engineering
+
+Ans. Biotechnology is a broad field that uses living organisms or their
+components to develop products and processes across medicine, SNRSITG SCHMIAE (3 Stock)
+agriculture, industry, and the environment. It includes both modern
+molecular techniques and traditional practices such as fermentation
+and selective breeding. Genetic engineering, on the other hand, is a specialized branch of biotechnology that
+focuses on direct manipulation of genes through techniques like recombinant DNA technology and gene
+editing. While biotechnology encompasses a wide range of applications, genetic engineering is primarily
+used for modifying specific genetic traits in organisms, producing transgenic crops, therapeutic proteins, or
+animal models for research. Genetic engineering is thus a precise, gene-level tool within the broader scope
+of biotechnology.
+
+(b) Staggered cut and Blunt cut Restriction Enzymes
+Ans. Staggered cut restriction enzymes cleave DNA to produce short, single-
+
+* Biotechnology — 1.5 marks, genetic
+engineering — 1.5 marks
+
+stranded overhangs known as. sticky ends, which facilitate easier and Pivemicpiatenlits ried ate
+more specific joining of DNA fragments during recombinant DNA 15 marks
+
+experiments. An exampie is EcoRI. Blunt cut restriction enzymes cut
+straight across both DNA strands without creating overhangs, making ligation less efficient; Smal is an
+example. Sticky ends enhance the efficiency and specificity of DNA fragment joining, while blunt ends require
+more careful handling during ligation. Both types are essential tools in molecular cloning, genetic
+engineering, and recombinant DNA technology, allowing scientists to manipulate and assemble DNA
+fragments for gene cloning, transgenic development, and other biotechnological applications.
+
+({c) Genome and Chromosome
+
+Ans..A genome is the complete set of genetic material in an organism,
+including all coding genes, non-coding sequences, and regulatory MARKING SCHEME (3 Marks)
+elements. A chromosome is a single, organized DNA molecule within | + Genome - 1.5 marks, chromosome —
+the nucleus that carries specific genes. The human genome consists of 1.5 marks
+46 chromosomes (23 pairs), each forming a part of the overall genome.
+While the-genome represents the totality of an organism’s hereditary information, chromosomes are the
+physical structures that package and organize this DNA for replication, transcription, and inheritance.
+Understanding both concepts is crucial for genetics, genomics, and biotechnology, as they provide insight
+into how genes are organized, regulated, and expressed in living organisms.
+
+PS) studyplusplus.com S$
+
+
+
+--- Page 35 ---
+
+(d) Transgenic Organisms and Hybrid Organisms
+
+Ans. Transgenic organisms contain foreign genes artificially inserted
+through genetic engineering, giving them traits not naturally present in | | _, MARKING SCHEME Llanes
+the species. For example, Bt cotton carries an insect-resistance gene Neha ished Le
+from bacteria. Hybrid organisms result from sexual cross-breeding of
+two different species or varieties, combining traits from both parents, such as a mule, produced from a horse
+and a donkey. Transgenic organisms are created using molecular biology techniques, while hybrids result
+from traditional breeding methods. Both approaches are used to enhance desirable traits, but transgenic
+organisms allow for precise gene-level modifications, whereas hybrids are limited to naturally compatible
+species or varieties.
+
+(e) Biotechnology and Nanotechnology
+
+Ans. Biotechnology manipulates biological systems, such as cells, DNA,
+enzymes, and organisms, to produce applications in medicine, | , eae ie sans
+agriculture, and industry, including genetic _ engineering, nanotechnology ~ 1.5 marks is
+biopharmaceuticals, and biofuels.
+Nanotechnology, in contrast, works at the nanoscale (1-100 nm) with atoms, molecules, and nanoparticles _
+to create materials and devices with novel properties, such as nanosensors, targeted drug delivery, or
+nanomaterials. Biotechnology focuses on living systems, while nanotechnology focuses on matter at the
+atomic or molecular level. Both fields have transformative impacts on science and industry, but their tools,
+targets, and applications differ fundamentally, with biotechnology emphasizing biological processes and
+nanotechnology emphasizing physical and chemical manipulation at extremely small scales.
+
+Q.7 Shortly suggest, which type of farming is better from vertical farming and traditional agriculture farming
+in Pakistan.
+
+Ans. Traditional. agriculture remains more practical in Pakistan due to
+extensive rural areas, established farming infrastructure, and staple | , rs for
+crops like wheat and rice, which are not suited for vertical farming vertical and traditional farming
+systems. Traditional farming supports large-scale cereal and pulse
+production, critical for food security. However, vertical farming offers advantages for urban areas, including
+high-value crops such as leafy greens, herbs, and strawberries, maximizing space and water efficiency. It also
+reduces dependency on arable land and mitigates the impact of climate variability. While vertical farming
+has potential for supplementing food production in cities, Pakistan’s agricultural economy currently relies
+
+predominantly on traditional soil-based farming for widespread staple crop cultivation.
+
+Q.8 Explain the role of restriction endonucleases and DNA ligases in gene cloning.
+
+Ans. Restriction endonucleases are enzymes that recognize specific
+palindromic DNA sequences and cleave DNA at those sites, producing | . ,, Pocasinipriaeer mses ee ae
+sticky or blunt ends. This allows the precise isolation of a gene of DNA ligases ~ 2 marks
+interest and preparation of a vector for insertion. DNA ligases are
+enzymes that join these DNA fragments by forming covalent phosphodiester bonds, creating stable
+recombinant DNA molecules. Together, these enzymes enable the construction of recombinant DNA, which
+can be replicated and expressed in a host organism. Their combined function is fundamental to molecular
+cloning, gene manipulation, and biotechnology, ensuring specificity, stability, and efficiency in producing
+genetically engineered organisms or proteins.
+
+_
+
+Q.9 Describe the selection and isolation of the gene of interest. MARKING SCHEME (3 Marks)
+
+Oe ere eae ae eee et, |g ‘
+
+‘Ans. The process begins with identifying the required gene from genomic baron piated bell pacar
+DNA or complementary DNA (cDNA). Restriction enzymes are then | © Cutting by restriction enzymes at
+applied to cut the DNA at specific palindromic sites. This cutting specific sites (1 mark)
+produces sticky or blunt ends, which help in separating the target gene. | * Hovey ol paid ends: for
+
+In this way, the desired gene is isolated and prepared for cloning.
+
+Q.10 Explain the properties and the role of vectors in recombinant DNA technology.
+‘Ans. Vectors are DNA molecules used to carry foreign genes into host cells.
+Ideal vectors possess an origin of replication to allow independent
+replication, selectable marker genes (e.g., antibiotic resistance) for
+
+S$ studyplusplus.com S$
+
+
+--- Page 36 ---
+
+identifying transformed cells, and multiple cloning sites to facilitate insertion of the target gene. Vectors can
+be plasmids, bacteriophages, cosmids, or artificial chromosomes. Their role is to transport, replicate, and
+enable expression of the gene of interest within a host organism, forming recombinant DNA. Vectors are
+indispensable in molecular cloning, gene expression studies, protein production, and genetic engineering,
+providing stability, specificity, and efficiency in introducing genetic material into biological systems.
+
+Q.11 State the steps for the integration of DNA insert into the vector.
+
+Ans. The integration of a DNA insert into a vector involves several steps.
+First, restriction enzymes cut both the vector and the gene of interest
+at specific sequences, generating complementary sticky or blunt ends. | » 1markeach for four main steps
+The DNA insert is then mixed with the vector to allow base pairing of
+these ends. DNA ligase seals the sugar-phosphate backbone, creating a stable recombinant DNA molecule.
+Finally, the recombinant plasmid is introduced into a host cell by transformation, where it can replicate and
+express the inserted gene. This process forms the foundation of recombinant DNA technology, enabling gene
+cloning, protein production, and various applications in medicine and biotechnology.
+
+Q.12 Briefly state the technique applied for the selection of vectors that take up the DNA insert.
+Ans. Vectors that successfully take up DNA inserts are selected using
+selectable marker genes, such as antibiotic resistance. After
+transformation, only host cells containing vectors with the inserted
+gene survive when cultured in the presence of the corresponding
+antibiotic. Molecular probes, reporter genes, or PCR amplification may be used to confirm the presence and
+correct orientation of the insert. This technique ensures that only recombinant vectors are propagated,
+allowing researchers to isolate and study the gene of interest efficiently. Selection minimizes experimental
+
+errors, increases cloning success, and is a critical step in recombinant DNA technology for producing
+proteins, functional studies, or genetic modifications.
+
+Q.13 Describe the steps involved in gene amplification through polymerase chain reaction (PCR).
+Ans. PCR amplifies a specific DNA segment through, repeated cycles. First,
+denaturation heats the DNA to ~95°C, separating the two strands. | | , feng sichet oe toecie
+Second, annealing lowers the temperature, allowing primers to bind to annealing, extension, and 1. mark for
+target sequences on each strand. Third, extension occurs at ~72°C, ‘exponential amplification
+where Taq polymerase synthesizes new DNA strands from the primers.
+These steps are repeated 25-35 times, resulting in exponential amplification of the target DNA. PCR is rapid,
+sensitive, and specific, enabling researchers to produce millions of copies of DNA from a small sample. It is
+
+widely used in diagnostics, forensics, cloning, and genetic research, forming a cornerstone of modern
+molecular biology.
+
+Q.14 State the objectives of producing transgenic bacteria, transgenic plants, and transgenic animals.
+Ans. Transgenic organisms are engineered for specific purposes. Transgenic
+bacteria produce human proteins, such as insulin, degrade | . mpi Sona ate
+environmental pollutants, or enhance nutrient availability in plants, animals
+agriculture. Transgenic plants are developed to resist pests, herbicides,
+or drought, and to improve nutritional quality, contributing to food security. Transgenic animals are created
+to improve growth rates, disease resistance, or to produce pharmaceutical proteins in milk or blood, a
+process known as transpharming. The overarching objective is to harness genetic engineering to solve
+
+human problems, increase productivity, and improve health, while maintaining safety and sustainability (n
+agricultural and medical applications.
+
+Oe
+
+Q.15 Explain the scope and importance of biotechnology in promoting human welfare.
+
+Ans, Biotechnology has far-reaching impacts on health, agriculture, and
+industry. In healthcare, it enables production of life-saving drugs,
+vaccines, and diagnostics for early disease detection. In agriculture,
+biotechnology improves crop yield, pest resistance, and nutritional
+quality, contributing to food security. Environmental applications include bioremediation to clean pollutants
+and conservation of biodiversity. Industrial uses include biofuels, biodegradable materials, and fermentation
+processes. Overall, biotechnology enhances human welfare by improving quality of life, ensuring sustainable
+
+industry/environmen
+
+S$ studyplusplus.com $
+
+
+--- Page 37 ---
+
+food production, and addressing environmental and medical challenges. Its scope continues to expand with
+advances in genetic engineering, molecular biology, and synthetic biology.
+
+Q.16 List the hazards of using genetically modified organisms (GMOs).
+
+Ans. GMOs pose several potential hazards. They may cause allergic reactions
+or unknown health effects in humans. Gene transfer to non-target
+species or wild populations can disrupt ecosystems. GMOs may
+contribute to loss of biodiversity and unforeseen environmental
+impacts. Ethical concerns arise regarding animal welfare and manipulation of life forms. Additionally, pests
+or weeds may develop resistance to GMO-based interventions, reducing long-term effectiveness. These
+hazards highlight the need for rigorous risk assessment, regulatory oversight, and responsible management
+to ensure that the benefits of GMOs outweigh potential risks for health, agriculture, and the environment.
+
+=
+
+Q.1 Describe the components of recombinant DNA technology under the following heads:
+(a) Gene of interest (b) Molecular scissors (c) Molecular carriers
+(d) Molecular glue _(e) Expression system
+
+Ans. Please See SLO [B-12-J-01]
+
+Q.2 Describe the mechanism or procedure of recombinant DNA technology.
+Ans. Please See SLO [B-12-J-01)
+
+Q.3_ What is polymerase chain reaction? Discuss its components and mechanism?
+Ans. Please See SLO [B-12-J-02]
+
+Q.4 Describe vertical agriculture farming. Explain hydroponics, aeroponics and aquaponics.
+Ans. Please See SLO [B-12-J-07]
+
+Q.5 Discuss the scope and importance of biotechnology in promoting human welfare.
+Ans. Please See SLO [B-12-J-05]
+
+Q.6 Whatare the ethical, legal and social implications of using biotechnology?
+Ans. Please See SLO [B-12-J-05]
+
+Q.7 Compare vertical farming and traditional agriculture farming in Pakistan to clear advantages and
+disadvantages of both.
+Ans. Please See SLO [B-12-J-08]
+
+core Pele @eooece
+
+9S studyplusplus.com S$

@@ -1,0 +1,1423 @@
+
+
+--- Page 1 ---
+
+Chapter # 15
+
+Pharmacological Drugs
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+e [B-12-T-01] Explain the drug discovery and development process.
+
+° {B-12-T-02] Define 4 classes of antibiotics (Penecillins, Tetracyclins, Fluriquinolones and Sulfonamides)
+and describe their mode of action.
+
+© — [B-12-T-04] Define antivirals and antiretrovirals.
+
+° [B-12-T-05] Describe advantages of monoclonal antibodies enjoy compared to other drug classes.
+
+Drugs have played a central role in human health and disease management throughout history. In biology,
+the term drug refers to any chemical substance that, when taken into the body, alters its physiological processes.
+Some drugs are used for therapeutic purposes to prevent, treat, or cure diseases, while others may be misused,
+leading to harmful effects on health.
+
+Pharmacological drugs are specifically those substances that act on the body’s biological systems,
+particularly the nervous system, to produce characteristic effects. They may act by stimulating or depressing the
+activity of certain cells, blocking or enhancing the transmission of nerve impulses, or modifying biochemical
+reactions in tissues.
+
+Understanding pharmacological drugs is essential for several reasons:
+
+¢ Medical Importance: They form the foundation of modern medicine, enabling treatment of infections,
+
+mental disorders, cardiovascular diseases, pain, and many other conditions.
+
+© Scientific Relevance: Studying how drugs act helps in understanding body functions such as nerve
+
+transmission, hormone regulation, and homeostasis.
+
+© Social and Ethical Perspective: While therapeutic use can save lives, misuse or addiction can lead to
+
+severe health and social problems.
+
+Thus, pharmacological drugs occupy a unique position in human biology: they can be powerful tools for
+healing when used wisely, but equally dangerous when abused or misunderstood.
+
+DRUG DISCOVERY AND DEVELOPMENT PROCESS
+
+A drug is a chemical substance that alters normal physiological functions of the body. In medicine, drugs are
+developed to diagnose, prevent, or treat diseases. The discovery and development of new drugs is a complex,
+multi-phase process that can take a decade or more, requiring collaboration across biology, chemistry,
+pharmacology, and regulatory sciences. The ultimate goal is to deliver safe, effective, and high-quality
+medications for human use.
+
+1. Drug Discovery
+
+The drug discovery stage is the foundation of the entire development process. Its purpose is to identify
+biologically active compounds that can influence the course of a disease. This stage combines modern tools
+of molecular biology, biochemistry, genetics, and computational sciences to search for promising drug
+candidates. Since only a small fraction of potential Compounds ever become medicines, drug discovery Is
+
+both challenging and highly selective.
+
+So studyplusplus.com S$
+
+
+--- Page 2 ---
+
+The main steps include:
+
+e Target Identification: The process begins by identifying a biological target, such as a protein, enzyme,
+ion channel, receptor, or nucleic acid that plays.a crucial role in the disease mechanism. For example, in
+bacterial infections, enzymes essential for cell wall synthesis may serve as drug targets. In cancer,
+proteins that control cell division may be selected. A good target is one that is disease-specific and
+“druggable”, meaning it can be modulated by a chemical compound.
+
+e Target Validation: Once a potential target is identified, researchers must confirm that altering it will
+actually produce a therapeutic effect. This involves laboratory experiments, genetic studies, and use of
+animal models to show that blocking or activating the target improves the disease condition. For
+example, validation of HIV protease as a target paved the way for protease inhibitor drugs used in
+antiretroviral therapy. i
+
+e Hit Identification: In this step, scientists look for molecules that show initial activity against the target.
+This is done using high-throughput screening, a technique that tests thousands of compounds from
+large chemical libraries in a short time. Molecules that show promising interactions are called “hits.”
+Increasingly, computer-based methods such as virtual screening and molecular docking are also used
+to predict how compounds will interact with the target, saving both time and resources.
+
+© Hit-to-Lead Optimization: Initial hits are rarely suitable as drugs because they may lack potency, have
+unwanted side effects, or be unstable in the body. Therefore, chemists modify the chemical structure of
+hits to create more effective compounds known as “leads.” This process focuses on improving:
+© Potency: ensuring the compound strongly affects the target at low doses.
+© Specificity: reducing interaction with unintended targets to minimize side effects.
+© Pharmacokinetics: optimizing how the drug is absorbed, distributed, metabolized, and excreted
+
+(ADME properties).
+
+o Safety and Toxicity: ensuring that the compound does not cause harmful effects in cells or tissues.
+The outcome of this stage is a small number of lead compounds with the highest potential to progress into
+preclinical development. These leads are then studied in greater depth for their safety, stability, and
+suitability for human use.
+
+Preclinical Development
+
+Once lead compounds have been identified and optimized, they must be carefully studied before being
+tested in humans. This stage is called preclinical development. Its purpose is to evaluate the safety,
+biological activity, and drug-like properties of the compound under controlled laboratory conditions.
+Preclinical studies usually take several years and provide the scientific evidence required for regulatory
+authorities to permit human trials.
+The main components are:
+e In Vitro Studies: These are experiments performed outside a living organism, usually on cultured cells
+or isolated tissues. In vitro studies help scientists understand:
+© How the compound interacts with its biological target.
+° Its effectiveness in blocking or stimulating a disease pathway.
+o° Potential toxic effects on human cells. For example, cancer drug candidates may be tested on tumor
+cell lines to measure whether they can inhibit abnormal cell growth.
+© In Vivo Studies: These involve experiments in living animal models (such as mice, rats, or primates). In
+vivo studies provide information about:
+© Pharmacokinetics (PK): how the drug is absorbed, distributed, metabolized, and excreted in the body.
+© Pharmacodynamics (PD): the biological and physiological effects of the drug, including its
+mechanism of action. ¢
+o Safety and efficacy: whether the compound improves disease symptoms in animals without causing
+unacceptable harm.
+¢ Toxicology Studies: Every potential drug must be tested for toxicity before human use. Toxicology
+studies determine:
+© Acute toxicity: harmful effects after a single or short-term exposure.
+© Chronic toxicity: effects after repeated or long-term use.
+© Safe dosage ranges: the highest dose that can be given without significant adverse effects.
+© This ensures that the drug candidate has a favorable therapeutic index (the ratio between effective
+dose and toxic dose).
+
+S$ studyplusplus.com S$
+
+ye
+rere
+
+
+--- Page 3 ---
+
+3.
+
+¢ Formulation Development: Even if a compound is effective, it must be delivered to the body in a
+practical and stable form. In this step, scientists design suitable dosage forms such as tablets, capsules,
+syrups, injections, or topical creams. They also consider:
+© Stability (shelf life and resistance to degradation).
+© Bioavailability (the fraction of the drug that reaches circulation).
+© Delivery mechanisms (e.g., oral vs. injectable).
+
+For instance, some drugs cannot survive the acidic environment of the stomach and must be given
+as coated tablets or injections.
+
+Preclinical development ensures that only the most promising and safe drug candidates progress to human
+
+testing. Although many compounds fail at this stage, it serves as a critical filter to protect human volunteers
+
+in later clinical trials.
+
+Clinical Development
+
+If a drug candidate successfully passes preclinical testing, the next step is to evaluate it in humans. Before
+
+trials begin, an application such as the Investigational New Drug (IND) is submitted to regulatory authorities
+
+(e.g., FDA in the USA, DRAP in Pakistan) for approval. Only after this clearance can clinical development—
+
+human testing—proceed.
+
+Clinical trials are conducted in phases, each designed to answer specific questions about the drug’s safety,
+
+effectiveness, and appropriate use.
+
+e Phase I: Safety and Dosage:
+© Participants: 20-100 healthy volunteers (sometimes patients, if the drug is very risky, e.g., for cancer).
+© Purpose: To assess safety, tolerability, dosage range, and metabolism of the drug in humans.
+
+o. Key Question: /s the drug safe enough to be given to people, and how does the human body process it?
+¢ Phase Il: Efficacy and Side Effects:
+© Participants: 100-500 patients with the target disease.
+O Purpose: To test the therapeutic effectiveness of the drug, refine the correct dose, and monitor
+short-term side effects.
+o Key Question: Does the drug work in patients, and what are its risks?
+e Phase lil: Large-Scale Testing:
+o Participants: 1,000-3,000 patients across multiple hospitals and countries.
+© Purpose: To confirm effectiveness, compare with existing treatments, and identify less common or
+long-term side effects.
+o Key Question: /s the new drug better and safer than current standard treatments?
+o Successful Phase III results usually form the basis for requesting regulatory approval.
+Phase IV: Post-Marketing Surveillance:
+o Conducted after the drug is approved and available to the public.
+© Purpose: To track long-term safety and effectiveness in a much larger, diverse population. Rare
+adverse reactions, interactions with other medicines, or previously unknown risks are often
+discovered at this stage.
+© Sometimes Phase IV studies also test new uses or formulations of the drug.
+
+Clinical development is the most critical stage of drug testing, as it provides the final evidence of whether a
+
+compound can become a safe and effective medicine. Although the process is long, expensive, and
+
+sometimes results in failure, it ensures that only the best candidates are introduced for patient use.
+
+Regulatory Review
+
+After a drug successfully completes preclinical and clinical development, it cannot be marketed
+
+immediately. Before reaching patients, it must pass through a stage called regulatory review, where
+
+independent authorities carefully examine all the collected data. This step ensures that only medicines that
+meet-the highest standards of safety, efficacy, and quality are approved for public use.
+The process involves two major steps:
+© New Drug Application (NDA):
+© The pharmaceutical company compiles all data from laboratory studies, animal testing, and clinical
+trials into a comprehensive document known as a New Drug Application (NDA) (or an equivalent
+dossier in other countries).
+
+co. The NDA includes details about:
+= The drug’s mechanism of action.
+
+® Results of preclinical and clinical trials.
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+5.
+
+= Safety and toxicity profiles.
+* Proposed dosage forms and manufacturing processes.
+= Labeling information for doctors and patients.
+oO This submission is made to regulatory authorities such as the FDA (USA), EMA (Europe), or DRAP
+(Pakistan).
+e Evaluation by Regulatory Authorities:
+o Expert committees of scientists, physicians, and pharmacologists critically examine the application.
+o They review whether:
+® The drug demonstrates real therapeutic benefit compared to existing treatments.
+* The risks and side effects are acceptable in relation to its benefits.
+= The drug can be consistently manufactured to meet quality standards.
+o. If the evidence is convincing, approval is granted, and the medicine can be marketed. If not, the
+application may be rejected or returned for further testing.
+The regulatory review process acts as the final safeguard between experimental-drugs and patient use. By
+ensuring rigorous evaluation, it protects public health and maintains trust in modern medicine.
+Post-Marketing Surveillance
+Approval by regulatory authorities does not mean that a drug is completely free of risk. Once a medicine
+enters the market, it is used by millions of people in diverse settings, including patients with multiple health
+conditions, children, the elderly, and pregnant women—groups that may not have been fully represented in
+clinical trials. For this reason, post-marketing surveillance (also called Phase IV studies) is essential to ensure
+continued safety and effectiveness. *
+The key elements include:
+© Monitoring:
+o Long-term safety tracking is carried out through reporting systems where doctors, pharmacists, and
+patients can submit information about side effects.
+o. This helps identify rare, delayed, or unexpected adverse reactions that may not have appeared in
+earlier trials because of limited sample sizes or shorter duration.
+© For example, some painkillers and anti-diabetic drugs have been withdrawn from the market after
+serious cardiovascular side effects were discovered post-approval.
+¢ Additional Studies:
+© Post-marketing research may investigate:
+= New therapeutic uses of the drug (e.g., aspirin, originally developed as a painkiller, later found
+to reduce the risk of blood clots).
+= New dosage forms such as slow-release tablets, syrups, or injections.
+= Combination therapies, where the drug is tested with other medicines to improve effectiveness
+or reduce side effects.
+© These studies can expand the usefulness of a drug while ensuring patient safety.
+Post-marketing surveillance is the final layer of protection in the drug development process. It ensures that
+medicines remain safe and effective under real-world conditions, and it provides valuable data that can
+guide improvements, new indications, or even withdrawal of unsafe products.
+
+@)
+Discovery and inical Clinical FDA FDA post-market
+development ro Bibi review safety monitoring
+Figure: The five drug development phases
+The drug discovery and development process is lengthy, expensive, and highly selective, with many
+candidates failing along the way. However, it ensures that only medicines meeting rigorous standards of
+safety, efficacy, and quality reach patients, protecting public health.
+
+S$ studyplusplus.com S$
+
+
+--- Page 5 ---
+
+Define 4 classes of antibiotics (Penecillins, Tetracyclins, Fluriquinolones and Sulfonamides) and
+
+describe their mode of action.
+
+CLASSES OF ANTIBIOTICS AND THEIR MODE OF ACTION
+
+Antibiotics are chemical substances, either naturally produced by microorganisms or synthetically
+manufactured, that inhibit the growth of.or kill other microorganisms, especially bacteria. They are grouped into
+different classes based on their chemical structure and mechanism of action.
+
+Here are four important classes:
+
+1. Penicillins
+¢ Definition: Penicillins were the first true antibiotics discovered, marking a revolution in medicine. They
+were originally derived from the mold Penicillium notatum by Alexander Fleming in 1928 and later mass-
+produced during World War Il. They belong to the B-lactam class of antibiotics (so named because they
+contain a B-lactam ring —a special four-sided chemical structure essential for their action).
+
+*@ Mode of Action: Penicillins specifically target the bacterial cell wall (the tough outer layer that protects
+
+bacterial cells, not present in human cells, which makes the drug safe for us).
+
+© They block the enzyme transpeptidase (also called penicillin-binding protein, PBP — a bacterial
+enzyme that helps “stitch” the wall together).
+
+© Normally, this enzyme cross-links peptidoglycan chains (peptidoglycan = a mesh-like sugar + protein
+material that gives bacteria their rigid shape).
+
+© Without cross-linking, the cell wall becomes weak and leaky.
+
+©. Under pressure, the bacteria burst and die.
+
+©. This killing effect makes penicillins bactericidal (they kill bacteria outright, instead of just slowing
+them down).
+
+© They are especially effective against Gram-positive bacteria (bacteria with a thick cell wall, e.g.,
+Streptococcus).
+
+e. Examples and Uses:
+
+© Penicillin G: The original penicillin; effective against pneumonia, strep throat, and syphilis.
+
+o Amoxicillin: A semi-synthetic version (chemically improved form), stable and effective for ear,
+throat, and urinary tract infections.
+
+oO Ampicillin: Broader spectrum than Penicillin G, can act against some Gram-negative bacteria (Gram-
+negative = bacteria with thinner walls but an extra outer membrane, e.g., E. coli).
+
+© Clinical importance:
+
+© Before penicillin, simple infections like pneumonia or infected wounds often caused death.
+
+© The discovery of penicillin turned once-deadly diseases into treatable conditions and laid the
+foundation for modern antibiotics.
+
+2. Tetracyclines
+© Definition: Tetracyclines are a class of broad-spectrum antibiotics (meaning they can act against a wide
+
+range of bacteria, both Gram-positive and Gram-negative).
+
+o They were first discovered in the 1940s and remain widely used because of their effectiveness.
+
+© They are particularly useful against respiratory infections, acne, urinary tract infections, and some
+diseases caused by unusual bacteria (e.g., Chlamydia, Rickettsia, and Mycoplasma).
+
+© Mode of Action: Unlike penicillins (which attack the bacterial wall), tetracyclines target bacterial protein
+
+production, which is essential for survival.
+
+© They bind to the 30S ribosomal subunit (a smaller part of the bacterial ribosome — the ribosome is
+
+like a "protein-making factory" inside the cell).
+
+© This blocks the attachment of aminoacyl-tRNA (the “carrier molecules” that bring amino acids, the
+building blocks of proteins, to the ribosome).
+Without this step, the elongation of the protein chain (the process of making longer proteins) is stopped.
+© Since bacteria cannot make proteins, they stop growing and multiplying.
+© This makes tetracyclines bacteriostatic (they stop bacterial growth rather than killing bacteria directly).
+
+°
+
+S$ studyplusplus.com S$
+
+
+--- Page 6 ---
+
+3.
+
+4.
+
+Examples and Uses:
+
+© Tetracycline: The original drug, used for respiratory infections and acne.
+
+© Doxycycline: A newer, more stable version; widely used for malaria prevention, typhus, Lyme
+disease, and sexually transmitted infections (STIs).
+
+© Minocycline: Used for acne and some resistant infections. .
+
+Clinical Importance:
+
+© Tetracyclines are valued for treating infections where other antibiotics may not work, especially
+atypical bacteria (those that don’t have the usual bacterial cell wall or structure).
+
+© They are also used in combination with other antibiotics in complex infections.
+
+Fluoroquinolones
+
+Definition: Fluoroquinolones are a class of fully synthetic antibiotics (unlike penicillins or tetracyclines,
+
+which came from natural sources, these are man-made in laboratories).
+
+© They were developed in the 1980s to provide broad-spectrum coverage, meaning they can fight a
+wide variety of bacteria, including both Gram-positive and Gram-negative species.
+
+oO They are especially effective against bacteria that cause respiratory infections, urinary tract
+infections, gastrointestinal infections, and some hospital-acquired infections. :
+
+Mode of Action: Fluoroquinolones work by targeting the bacterial DNA machinery—the system bacteri:
+
+use to copy and repair their genetic material.
+
+oO They block two key enzymes:
+=  DNAgyrase (helps unwind the tightly coiled DNA so it can be copied).
+= Topoisomerase IV (helps separate newly made DNA strands during cell division).
+
+o Without these enzymes, bacteria cannot replicate or repair their DNA.
+
+© This causes DNA damage to build up, leading to bacterial cell death.
+
+© Because they directly kill bacteria rather than just stopping growth, fluoroquinolones are bactericidal.
+
+Examples and Uses: .
+
+© Ciprofloxacin: Effective against urinary tract infections, gastrointestinal infections (like typhoid), and
+anthrax.
+
+© Levofloxacin: Often used for pneumonia, sinus infections, and bronchitis.
+
+© Moxifloxacin: Stronger activity against Gram-positive bacteria; used for respiratory infections and
+some eye infections.
+
+Clinical Importance:
+
+© Fluoroquinolones are popular because they are well absorbed orally (patients can take tablets
+instead of injections).
+
+© They also penetrate deep into tissues, making them useful for bone, joint, and respiratory infections.
+
+© They are considered “reserve antibiotics” in some cases, used when other drugs fail.
+
+Limitations and Side Effects:
+
+© Resistance: Overuse has led to resistant strains of bacteria (especially E. coli and Pseudomonas).
+
+© Tendon damage: Rarely, they can cause tendonitis or tendon rupture (tearing of connective tissues
+like the Achilles tendon).
+
+© Nervous system effects: Can cause headaches, dizziness, or sleep problems. 3
+
+© Heart rhythm changes: Some fluoroquinolones can disturb electrical activity in the heart (QT prolongation).
+
+© Because of these risks, they are often reserved for serious infections.
+
+Sulfonamides
+
+Definition: Sulfonamides, also called sulfa drugs, were the first widely used synthetic antibiotics (made
+
+entirely in the laboratory rather than derived from natural organisms).
+
+o They were introduced in the 1930s, before penicillin became available, and saved countless lives
+from bacterial infections. g i
+
+o  Eventoday, they are still used-often in combination with other antibiotics-to treat a variety of infections.
+
+Mode of Action: Sulfonamides interfere with how bacteria make folic acid (vitamin B9), which is
+
+essential for their survival.
+
+© They act as competitive inhibitors (meaning they "compete" with the natural substance for the
+enzyme’s active site, like putting the wrong key in a lock).
+
+© The enzyme they block is dihydropteroate synthase (an enzyme bacteria use to start building folic acid).
+
+© Without folic acid, bacteria cannot produce DNA (the genetic material) or proteins, both of which
+are essential for growth and division.
+
+S$ studyplusplus.com S$
+
+
+--- Page 7 ---
+
+© Humans are unaffected because we do not make folic acid ourselves—we get it from food—so
+sulfonamides specifically target bacteria.
+© The effect is bacteriostatic (they don’t directly kill bacteria, but stop them from multiplying, giving
+the immune system time to eliminate them).
+e Examples and Uses:
+© Sulfamethoxazole: Commonly used in combination with another drug, Trimethoprim (the
+combination is called Co-trimoxazole or Septrin).
+© This combination blocks two different steps in folic acid production, making the treatment much
+more effective. %
+© They are used for urinary tract infections, respiratory infections, intestinal infections, and some
+opportunistic infections in immunocompromised patients (like those with HIV/AIDS).
+© Clinical Importance:
+© Sulfonamides were the first “miracle drugs” before penicillin and played a key role in reducing
+deaths from infections in the pre-antibiotic era.
+© Their discovery marked the beginning of the modern era of antimicrobial therapy.
+Summary Table
+
+[___ class TargetfAction | EffectonBacteria | Example |
+
+rs - aaa Penicillin G,
+| Penictins | Inhibit cell wall synthesis (block transpeptidase) ‘Amonialllin
+
+Tetracyclines Bind 30S ribosome — block protein synthesis Bacteriostatic Doxycycline
+
+Fluoroquinolones Inhibit DNA gyrase & topoisomerase Ni block Bactericidal Ciprofloxacin
+DNA replication
+Inhibit folic acid synthesis (enzyme:
+su ionemige dihydropteroate synthase)
+ind antiretrovirals.
+
+ANTIVIRALS AND ANTIRETROVIRALS
+
+Antiviral drugs are designed to treat infections caused by viruses, Unlike bacteria, viruses rely entirely on the
+host's cellular machinery for replication, making them more difficult to target.
+
+Antivirals
+
+Antiviral drugs inhibit viral replication by interfering with various stages of the viral life cycle, such as
+attachment, entry, genome replication, or protein synthesis. These drugs are used against a broad range of viruses
+including influenza viruses, herpesviruses, and hepatitis viruses.
+
+Antiretrovirals
+
+Antiretrovirals are a specialized class of antiviral drugs specifically
+used to combat retroviruses, particularly HIV (Human Immunodeficiency
+Virus). Retroviruses use RNA-as their genetic material and rely on the Retroviruses, helping to control HIV
+enzyme reverse transcriptase for replication. infection and reduce the risk of
+
+Different classes of antiretroviral drugs act at various stages of the progression to AIDS.
+viral life cycle, including:
+
+e Entry inhibitors
+
+e Reverse transcriptase inhibitors
+
+¢ — Integrase inhibitors
+
+¢ Protease inhibitors
+
+These drugs are often used in combination therapy (HAART — Highly Active Antiretroviral Therapy) to prevent
+resistance and manage viral load effectively.
+
+YOU KNOW?
+All antiretrovirals are antivirals but
+not all antivirals are antiretrovirals.
+
+S$ studyplusplus.com S$
+
+
+--- Page 8 ---
+
+ADVANTAGES OF MONOCLONAL ANTIBODIES
+
+_
+
+Monoclonal antibodies are laboratory-produced molecules that mimic the immune system's ability to
+recognize and neutralize specific pathogens or abnormal cells. These antibodies are derived from a single clone of
+cells and bind to a single specific antigen.
+Mechanism of Action
+
+Monoclonal antibodies are engineered to recognize and bind very precisely to a specific antigen (a unique
+marker, usually a protein) found on the surface of pathogens (like viruses and bacteria) or abnormal human cells
+(like cancer cells). Once bound, they can act in multiple ways:
+1, Direct Neutralization
+
+e The antibody binds to a harmful molecule or pathogen and blocks its activity.
+
+e Example: mAbs used in viral infections can stop viruses from attaching to host cells.
+2. Immune System Activation
+
+© By attaching to the target cell, mAbs act like a “flag” or signal to the immune system.
+
+© This attracts immune cells (like macrophages and natural killer cells) to destroy the marked cell.
+3. Complement Activation —__
+
+© Binding of mAbs can trigger the complement system (a group of blood proteins that punch holes in cell
+
+membranes).
+
+¢ This leads to the destruction of the targeted cell.
+4. Blocking Growth Signals
+
+¢ Some cancer cells grow uncontrollably because of signals from receptors on their surface.
+
+® mAbs can block these receptors, preventing cancer cells from receiving “grow and divide” messages.
+5. Delivery of Toxic Agents
+
+*® mAbs can be linked to toxins, chemotherapy drugs, or radioactive substances.
+
+© Once the antibody finds its target, it delivers the toxic “payload” directly to diseased cells, sparing most
+
+: healthy ones.
+
+The mechanism of monoclonal antibodies is not limited to one function—they can neutralize, tag, block, or
+directly kill diseased cells. Their high precision makes them powerful tools against cancer, autoimmune diseases,
+and infections.
+
+Advantages of Using Monoclonal Antibodies
+a The difference between monoclonal
+1. High Specificity antibodies and polyclonal antibodies
+
+e Monoclonal antibodies are designed to bind to one specific antigen | isin the names. "Mono" refers to one
+only. They act like a “sniper bullet” instead of a “shotgun blast,” hitting | and "poly" refers too many.
+only the intended target. Monoclonal antibodies are clones of
+
+* This precision greatly reduces off-target effects (unwanted | Just one antibody, and they bind to
+interactions with healthy tissues). one antigen only.
+2. Consistent Quality
+© Because they are made in controlled laboratory systems, every batch of mAbsis nearly identical in structure
+and function. Like producing identical keys from the same mold-every copy works the same way.
+¢ This ensures reliable results in both treatment and research.
+3. Renewable Production
+© Once scientists create a hybridoma (a fused cell that continuously makes antibodies) or a recombinant
+cell line (genetically engineered cell), it can produce unlimited amounts of the same antibody.
+4. Versatile Applications
+* Diagnostics: Used in pregnancy tests, HIV tests, COVID-19 rapid kits, and other diagnostic assays.
+
+S$ studyplusplus.com S$
+
+
+--- Page 9 ---
+
+1.
+
+3;
+
+Therapy: Effective against cancers (e.g., breast cancer, leukemia), autoimmune diseases (e.g.,
+rheumatoid arthritis), and infectious diseases.
+Research: Widely used in molecular biology, drug development, and immunology experiments.
+
+Evnents eee
+e Scientists can genetically modify mAbs to: Monoclonal antibodies have been used
+© Increase their binding strength. in treatment of Cancer, Organ
+o Reduce side effects. transplant rejection, Inflammatory and
+
+o Extend their half-life (how long they stay active inthe body). | autoimmune disorders, _ including
+
+Humanization allergies, Infections, including COVID-
+
+Large-Scale Production
+
+Originally, mAbs were made in mice, which sometimes triggered pop aesalSiea natu atiats
+immune reactions in humans. system disorders. In most cases,
+Modern biotechnology allows scientists to engineer mouse | monoclonal antibodies are given mostly
+antibodies to closely resemble human antibodies, reducing the | as intravenous (IV) solution injected
+risk of immune rejection. right into your vein (sometimes referred
+‘ to as an infusion).
+
+Advances in bioreactors and biotechnology now allow mass
+production of monoclonal antibodies with high purity and safety standards.
+This makes them widely available for clinical use worldwide.
+
+Monoclonal antibodies are superior to many traditional drugs because they are highly specific, reliable,
+renewable, versatile, and customizable. Their ability to be engineered and mass-produced has made them central
+tools in modern medicine, diagnostics, and research.
+
+Monoclonal Antibodies vs Other Therapeutic Agents
+Compared to Antibiotics
+
+Antibiotics act broadly on bacterial processes (e.g., cell wall synthesis, protein synthesis) and can affect
+a wide range of bacterial species.
+
+Monoclonal antibodies (mAbs), however, are precisely targeted against one specific antigen, which
+reduces off-target effects (unwanted harm to beneficial bacteria or healthy cells).
+
+mAbs are also less prone to resistance development, because they target unique proteins rather than
+general bacterial machinery.
+
+Layman’s view: Antibiotics are like “pesticides” that kill many bugs (good and bad), while mAbs are like
+“snipers” that only hit the exact harmful target.
+
+Compared to Polyclonal Antibodies
+
+Polyclonal antibodies are natural mixtures produced by the immune system, binding to multiple
+epitopes (different parts of the same antigen).
+
+This leads to variability between batches and less precise targeting.
+
+Monoclonal antibodies bind to only one epitope (a single, unique spot on the antigen), ensuring
+superior specificity and consistency.
+
+Layman’s view: Polyclonal antibodies are like a group of archers shooting arrows in different directions,
+while monoclonal antibodies are one expert archer hitting the bull’s-eye every time.
+
+Compared to Chemotherapy and Radiotherapy
+
+.
+
+Chemotherapy and radiotherapy kill rapidly dividing cells, but they cannot distinguish cancer cells from
+healthy dividing cells, leading to side effects such as hair loss, nausea, and immune suppression.
+Monoclonal antibody therapies can selectively bind only to cancer-specific antigens, which allows:
+
+© Lower required dosages.
+
+o Reduced collateral damage to healthy tissues.
+
+Layman’s view: Traditional therapies are like “carpet bombing” (hitting everything in the area), while
+mAbs are like “guided missiles” targeting only enemy bases.
+
+Compared to Small-Molecule Drugs
+
+Many small-molecule drugs are rapidly cleared from the body and have unpredictable
+pharmacokinetics (how the body absorbs, distributes, metabolizes, and eliminates them).
+
+Monoclonal antibodies, especially IgG type, have long half-lives (~21 days), meaning they stay active
+in the body much longer and require less frequent dosing.
+
+Their action is also more predictable.
+
+So studyplusplus.com S$
+
+
+--- Page 10 ---
+
+5.
+
+7.
+
+9
+
+SLOs Based (MCQs)
+
+What is the first step in the drug discovery process?
+A. Hit Identification
+
+B. Target Identification
+
+C. Formulation Development
+
+D. Phase I Trials
+
+What is the primary goal of hit-to-lead optimization?
+A. Reduce side effects
+
+B. Improve cost-efficiency
+
+C. Optimize drug properties
+
+D. Test on humans
+
+Which study type uses cultured cells to assess
+
+drug efficacy?
+A. In vivo B. In vitro
+C. Toxicology D. Clinical
+
+What is the purpose of in vivo studies in drug
+development?
+
+A. Assess effects in a petri dish
+
+B. Test for regulatory approval
+
+C. Observe drug effects in living organisms
+
+D. Identify new diseases
+
+Which trial phase'tests safety in 20-100 healthy
+volunteers?
+
+A. Phase | B. Phase Il
+
+C. Phase Ill D, Phase IV
+
+What does the New Drug Application (NDA)
+include?
+
+A. Financial projections
+
+B. Only clinical trial results
+
+C. All preclinical and clinical data
+
+D. Animal study summaries
+
+Why are Phase IV clinical trials important?
+
+A. Confirm dosage B. Reduce cost
+
+C. Monitor long-term safety and rare side effects
+D. Develop marketing strategies
+
+Which class of antibiotics inhibits cell wall
+
+synthesis?
+A. Fluoroquinolones B. Sulfonamides
+C. Penicillins D. Tetracyclines
+
+How do tetracyclines inhibit bacterial growth?
+A. Disrupting DNA synthesis
+
+B. Destroying membranes
+
+C. Binding to 30S ribosomal subunit
+
+D. Breaking lipid chains
+
+10.
+
+11.
+
+12.
+
+13.
+
+14,
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+Which enzyme is targeted by fluoroquinolones?
+A. Reverse transcriptase B. Protease
+
+C. Topoisomerase IV D. Ribosome synthase
+Sulfonamides disrupt which bacterial process?
+A. Cell wall formation B. Folate synthesis
+
+C. Protein folding D. Lipid metabolism
+Why don't antibiotics work on viruses?
+
+A. Viruses have thick membranes
+
+B. Viruses aren't alive
+
+C. Viruses lack independent replication machinery
+D. Viruses have resistant DNA
+
+What distinguishes retroviruses from others?
+A. Lack of nucleus
+
+B. Use of RNA and reverse transcriptase
+
+C. Infection of bacteria
+
+D. Multicellular structure
+
+Which enzyme do reverse transcriptase inhibitors
+block?
+
+A. DNA polymerase B. Protease
+
+C. Reverse transcriptase D. Helicase
+
+What is the combination antiretroviral strategy
+called?
+
+A. Monotherapy B. HAART
+
+C. Passive immunization _D. Retro-cycle
+Monoclonal antibodies are derived from:
+
+A. Blood plasma B. Many B cells
+
+C. A single B cell clone D. T-cell clusters
+What enhances mAbs compatibility in humans?
+A. Crystallization B. Polyclonality
+
+C. Humanization D. Protein folding
+Which field doesn't commonly use monoclonal
+antibodies?
+
+A. Diagnostics B. Food preservation
+C. Therapy D. Research
+
+How do mAbs help treat cancer?
+
+A. Inhibit all dividing cells
+
+B. Strengthen healthy tissue
+
+C. Bind to cancer-specific antigens
+
+D. Increase antibody count.
+
+Which property makes mAbs more predictable
+than small molecules?
+
+A. Shorter half-life
+
+B. Resistance development
+
+C. Predictable pharmacokinetics
+
+D. Natural sourcing
+
+°
+
+[as TacTas [acl sa] 6c |
+| 31.8 | 22.¢] 13.8] 14.¢] 35.8] 16.c] 17.c] 18.8 | 19.c] 20.¢|
+
+studyplusplus.com
+
+°
+
+
+--- Page 11 ---
+
+Q.1 Define the term ‘drug’ in pharmacology and state its uses.
+
+Ans. In pharmacology, a drug is defined as a chemical substance, either
+natural or synthetic, that interacts with a biological system to produce Pbseaqupheibresas
+a functional change. Drugs. may act by enhancing, inhibiting, or J
+modifying normal body functions or by interfering with disease-causing
+agents. Importantly, drugs are not only used for curing illnesses but also play roles in diagnosis, treatment,
+prevention, and relief of symptoms. For example, antibiotics cure infections, vaccines prevent diseases, and
+analgesics relieve pain. Drugs can also be used in diagnostic procedures such as imaging. Thus, a drug is a
+therapeutic or diagnostic agent designed to restore or maintain health.
+
+Q.2 Explain the importance of target validation in drug discovery.
+
+Ans. Target validation is a crucial step in the drug discovery process. It
+confirms that a chosen biological molecule, such as a receptor, enzyme,
+or gene, is directly involved in the disease process. First, target \|_° Thee significances ~1 mark each
+validation ensures that manipulating this target will yield the desired
+therapeutic effect, thereby reducing the chances of drug failure. Second, it helps prioritize promising drug
+targets so that time, cost, and research efforts are not wasted on ineffective ones. Third, validated targets
+provide a strong foundation for designing and testing drug candidates with higher chances of success. In this
+way, target validation improves the efficiency, accuracy, and safety of drug discovery.
+
+Q.3 Differentiate between in vitro and in vivo studies in drug testing.
+
+Ans. In vitro studies are experiments performed outside a living organism, MARKING SCHEME (3 Masks)
+typically in controlled laboratory environments such as petridishes, test | . Definition of in vitro — 1.5 marks;
+tubes, or cell cultures. They allow researchers to analyze drug effects definition of in vivo ~ 1.5 marks
+on isolated cells, tissues, or biochemical systems, offering high control
+and reproducibility. However, they do not fully mimic the complexity of a whole organism. In contrast, in
+vivo studies are carried out inside living organisms, such as animals or humans. These studies test how a
+drug behaves within the complete biological system, including metabolism, absorption, and overall safety.
+Thus, in vitro studies provide preliminary insights, while in vivo studies reveal real-world biological
+responses.
+
+Q.4 Describe the function and mode of action of sulfonamide antibiotics.
+
+Ans. Sulfonamide antibiotics were the first widely used antimicrobial drugs
+and remain important in medicine. Their primary function is to inhibit MARKING SCHEME (3 Morks)
+bacterial growth by interfering with DNA synthesis. They achieve this sidecnislahscal
+by competitively inhibiting the enzyme responsible for converting para-
+aminobenzoic acid (PABA) into folic acid, a molecule essential for nucleic acid production in bacteria. Since
+humans obtain folic acid from diet and do not synthesize it, sulfonamides act with selective toxicity, harming
+bacteria without damaging human cells. By blocking folic acid synthesis, these antibiotics stop bacterial
+replication and spread, helping the immune system eliminate infection. Hence, sulfonamides are
+bacteriostatic agents effective against a wide range of bacteria.
+
+Q.5 State the purpose of Phase III clinical trials in drug development.
+Ans. Phase Ill clinical trials are the final and largest stage of human drug
+
+testing before regulatory approval. Their primary purpose istoevaluate | | Pot escssoariaalitaricy
+the overall effectiveness of the drug in treating the target disease monitoring — 1 mark; comparison with
+
+within large and diverse patient populations. They also monitor side treatments —1 mark
+effects and safety by detecting both common and rare adverse
+reactions that may not appear in earlier trials. In addition, Phase Ill trials compare the new drug with existing
+treatments or placebo, helping determine whether it offers superior benefits. Results from Phase I!) provide
+critical evidence for final approval by drug regulatory authorities, ensuring that only safe and effective drugs
+reach the market.
+
+S$ studyplusplus.com S$
+
+
+--- Page 12 ---
+
+Q.6 Define the term ‘hit identification’ in drug discovery and state its advantage.
+Ans. In drug discovery, hit identification refers to the process of finding
+chemical compounds, known as “hits,” that interact with a chosen MARKING SCHEME (3 Marks)
+
+biological target and show promising therapeutic potential. This is | _* Definition~2 marks; advantage—1 mark
+achieved by screening large libraries of natural products, synthetic
+
+molecules, or computationally designed compounds. The advantage of hit identification is that it provides a
+starting point for drug development, allowing researchers to focus only on those molecules that
+demonstrate measurable biological activity. Without this stage, drug discovery would be inefficient, as
+countless inactive molecules would waste resources. Thus, hit identification serves as the gateway to lead
+optimization and preclinical research.
+
+Q.7_ Explain the importance of Phase IV clinical trials in drug development.
+Ans. Phase IV trials, also called post-marketing surveillance, are conducted
+after a drug has been approved and released to the public. Their MARKING SCHEME (3 Marks)
+importance lies in detecting rare or long-term side effects that may not | * Purpose of Phase IV trials —3 marks
+be evident during earlier, smaller-scale trials. They also assess the
+drug’s real-world effectiveness across diverse patient groups, including those with multiple diseases or on
+other medications. Furthermore, Phase IV trials provide information about drug interactions, long-term
+safety, and cost-effectiveness. This ensures that the drug continues to be safe and beneficial for widespread
+use. In some cases, Phase IV findings may even lead to withdrawal of unsafe drugs or adjustment of usage
+guidelines.
+
+Q.8 Describe step by step the mode of action of fluoroquinolones.
+Ans, Fluoroquinolones are a class of broad-spectrum antibiotics that act by
+disrupting bacterial DNA replication. Their mode of action can be MARKING SCHEME (3 Marks)
+explained step by step: © Step-by-step mode of action—3 marks
+1. They bind to and inhibit the bacterial enzyme DNA gyrase, which
+normally introduces negative supercoils into DNA.
+2. They also inhibit topoisomerase IV, an enzyme required to separate replicated DNA strands during cell
+division.
+3. Without these enzymes, bacterial DNA replication and repair are blocked, leading to fragmentation of DNA.
+4. Asa result, bacteria cannot divide or survive, leading to cell death. Since these enzymes are unique to
+bacteria, fluoroquinolones act selectively without harming human cells. 7
+
+Q.9 Explain how sulfonamides work selectively in bacterial cells.
+Ans. Sulfonamides are bacteriostatic antibiotics that act selectively on
+
+bacterial cells by interfering with folic acid metabolism. Their mode of MARKING SCHEME (3 Marks)
+action can be described in steps: * Step-by-step mode of action ~3 marks
+
+1. Bacteria synthesize folic acid from para-aminobenzoic acid (PABA)
+using the enzyme dihydropteroate synthase.
+
+2. Sulfonamides, being structural analogues of PABA, competitively inhibit this enzyme, preventing folic
+acid formation.
+
+3. Without folic acid, bacteria cannot synthesize nucleic acids and proteins, leading to growth inhibition.
+
+4. This selectivity arises because human cells do not synthesize folic acid; instead, they obtain it from diet.
+Therefore, sulfonamides specifically target bacterial metabolism without harming human tissues.
+
+Q.10 State the therapeutic advantages of monoclonal antibodies (mAbs) over traditional drugs.
+
+Ans. Monoclonal antibodies (mAbs) are laboratory-produced molecules that
+can precisely bind to specific antigens. Their therapeutic advantages
+over traditional small-molecule drugs are significant. First, they have
+high specificity, targeting only diseased cells or molecules, which
+minimizes damage to healthy tissues. Second, mAbs generally cause fewer side effects, since they do not
+interfere with unrelated biological pathways, Third, they have a longer circulation time in the bloodstream,
+requiring less frequent dosing and improving patient compliance. Additionally, they can be engineered to
+modulate the immune system or block specific signaling pathways, offering advanced treatment options for
+cancer, autoimmune disorders, and infections.
+
+S$ studyplusplus.com S$
+
+
+
+--- Page 13 ---
+
+Exercise
+
+>
+
+4.
+
+Select the correct Answer.
+
+What is the primary goal of target identification
+
+in drug discovery?
+
+A. To determine the chemical composition of a drug.
+
+B. To identify the biological origin of a disease and
+potential targets for intervention.
+
+C. To evaluate the safety and efficacy of a drug in
+animal models.
+
+D.To optimize the synthetic route for a drug's
+production.
+
+Which clinical trial phase involves testing a drug
+
+‘on a small group of healthy volunteers to assess
+
+its safety and determine the appropriate
+
+dosage?
+A. Phase! B. Phase Il
+C. Phase III D. Phase IV
+
+The pharmacokinetic properties of a drug are
+mainly governed by the physicochemical
+properties of the drug such as it's:
+
+A. Solubility in aqueous solutions
+
+B. Size and structure
+
+C. Ability to form hydrogen bonds
+
+D. All of these
+
+What is the main purpose of phase IV testing?
+A. Determine therapeutic window
+
+B. Determine unreported toxicity
+
+C. Determine variation in absorption
+
+D. Determine tolerability
+
+Which among the following antibiotics function
+as protein synthesis inhibitors?
+
+A. penicillin B. tetracycline
+
+C. cefotaxime D. trimethoprim
+Which of the following techniques is best for
+measuring the effectiveness of antibiotics on
+bacteria?
+
+A. Physical testing
+C. Biological testing
+D. Combined physical and chemical testing
+Which point in the replication cycle appears
+most easily blocked by antivirals?
+
+A. Virus absorption B. Virus penetration
+C. Virus RNA and DNA replication
+
+D. Exit of viruses from the cell
+
+B. Chemical testing
+
+°
+
+yo
+
+12.
+
+studyplusplus.com
+
+Which is one of the main current goals of
+
+antiretroviral treatment?
+
+A. to suppress the viral load
+
+B. to cure HIV infection.
+
+C. to allow the patient to have a pain-free death
+
+D. to prevent repeated infection with HIV
+
+Which of the following is easily blocked by
+
+antivirals?
+
+A. Virus penetration
+
+B. Nucleic acid replication
+
+C. Virus absorption
+
+D. Removal of the virus from the cell
+
+Which of the following is the primary reason
+
+why antiretroviral therapy (ART) cannot cure
+
+HIV?
+
+A. ART is not effective in reducing the viral load.
+
+B.HIV can hide within immune cells, forming
+latent reservoirs.
+
+C. ART drugs are toxic and cause severe side effects.
+
+D. HIV mutates too rapidly to be targeted by ART.
+
+Which of the following cannot be treated by
+
+antiviral drugs?
+
+A. tuberculosis B. smallpox
+
+C. hepatitis D. warts
+
+What is the main advantage of monoclonal
+
+antibodies over polyclonal antibodies?
+
+A. greater specificity and constancy
+
+B. lower cost production C. longer shelf life
+
+D. ability to target multiple antigens
+
+How monoclonal antibodies are administered to
+
+patients?
+A. topically B. intravenously
+C. inhalation D. Orally
+
+What is the main difference between Phase II!
+
+and Phase IV clinical trials?
+
+A. Phase Ill tests the drug's efficacy, while Phase
+IV focuses on long-term safety.
+
+B. Phase Ill studies involve a small number of
+patients, while Phase IV studies involve a large
+number of patients.
+
+C. Phase Ill trials are conducted in animals, while
+Phase IV trials are conducted in humans.
+
+D.Phase Il! trials are conducted in one country,
+-while Phase IV trials are conducted in multiple
+countries,
+
+°
+
+
+--- Page 14 ---
+
+15. What is the purpose of a’ New Drug Application? | 18. What is the main advantage of monoclonal
+A.To obtain permission to conduct clinical trials antibodies over polyclonal antibodies?
+
+ona new drug. A. Greater specificity and consistency
+B. To request a patent for a new drug. B. Low cost production
+
+C. To seek regulatory approval to market a new drug. é ‘
+D.To conduct post-marketing surveillance on a C. Ability to target multiple antigens simultaneously
+
+new drug. D. Longer shelf life.
+16. Antibodies are: 19. The science which deals with the drug and their
+A. prostaglandins B. steroids action on human body is called:
+C. lipoproteins D. glycoproteins A. Physiology B. Pathology
+17. What are monoclonal antibodies? C. Pharmacology D. Microbiology
+
+A.Antibodies produced by a single type of | 29. The study of absorption, distribution,
+
+immune cell.
+metabolism and excretion of drug is known as:
+B. Antibodies derived from multiple individuals. .
+
+seagate i . Nghia Ze A. Pharmacy B. Pharmacokinetics
+C. Antibodies with multiple antigen-binding sites. .
+D. Antibodies found in the blood of newborn €. Pharmacodynamics: D. Pharmacopoeia
+Answer Key
+[1.8] 2a] 30] 4875.8] 6c] 7c] sa] 9.8 | 10.8]
+[a1.a [22.a [13.8] 14.a]15.¢] 16.0 ]'47.a]18.a]19.¢ | 20.8 |
+
+Q.1 Define the following:
+(a) Pharmacology
+
+Ans. Pharmacology is the branch of science that studies how drugs and MARKING SCHEME (3 Marka)
+chemical substances interact with living organisms. It involves avira
+understanding the mechanisms of drug action, therapeutic effects, ashok ee ewe
+
+side effects, and toxicity, as well as the absorption, distribution,
+metabolism, and excretion of drugs. Pharmacology forms the foundation for developing new medicines and
+for ensuring their safe and effective use in treating diseases.
+
+(b)__ Drug
+Ans. A drug is any natural or synthetic chemical substance that alters the
+physiological or biochemical processes in a living organism. Drugs are MARKING SCHEME (3 Marks)
+
+used for diagnosis, treatment, prevention, or cure of diseases, and | ° ofenre tna example of use —
+they act by interacting with specific molecular targets such as enzymes, ps
+
+receptors, or ion channels, Drugs may produce therapeutic or toxic
+
+effects depending on the dose and context.
+
+(c) Drug Therapy
+
+Ans. Drug therapy, or pharmacotherapy, refers to the use of drugs to
+manage, alleviate, or cure diseases. It is a central component of
+modern medicine, relying on pharmacological knowledge to select the
+appropriate drug, dose, and duration for each patient. Drug therapy
+aims to restore health, reduce symptoms, prevent complications, and improve quality of life.
+
+(d) Antibiotics
+
+Ans. Antibiotics are chemical agents that either kill bacteria (bactericidal) or
+inhibit their growth (bacteriostatic). They are specifically used to treat | | eae pgenriyncrclamy j
+bacterial infections by targeting structures or processes unique to !
+bacteria, such as cell wall synthesis, protein synthesis, or DNA
+replication. Antibiotics do not affect viruses and must be used
+judiciously to prevent resistance.
+
+target —1 mark
+
+S$ studyplusplus.com S$
+
+
+--- Page 15 ---
+
+(e) Antivirals
+
+Ans. Antivirals are drugs designed to prevent the replication of viruses
+within host cells. They do not directly kill viruses but interfere with the
+viral life cycle, such as inhibiting attachment, uncoating, genome
+
+replication, protein synthesis, or viral release. Antivirals reduce
+severity, duration, and transmission of viral infections and are used against diseases like influenza, herpes,
+and hepatitis.
+
+(f) _ Antiretrovirals
+
+Ans. Antiretrovirals are a specialized class of antivirals used to treat
+infections caused by retroviruses, such as HIV. They inhibit viral
+replication by targeting reverse transcriptase, integrase, protease, or
+viral entry, thereby reducing viral load, preserving immune function,
+and delaying disease progression. While they do not cure HIV, they significantly improve patient outcomes.
+
+(g) Monoclonal Antibodies
+
+Ans. Monoclonal antibodies are laboratory-engineered molecules that bind
+to specific antigens. They are highly selective and are used in treating rensagye ee ieee tis
+cancers, autoimmune disorders, and infectious diseases. Their high
+specificity minimizes side effects, and they can be designed to target
+specific immune or signaling pathways, making them powerful tools in modern therapeutics.
+
+Q.2 What is a ‘pharmacological drug’?
+
+Ans. A pharmacological drug is a chemical substance of known structure
+that produces a measurable biological effect when administered to a
+‘ i ts ih De marks; uses — 1 mark
+living organism. These effects may be therapeutic, preventive, or
+diagnostic. Drugs can be derived from natural sources such as plants
+and microorganisms or synthesized chemically in laboratories. They interact with specific molecular targets
+such as receptors, enzymes, or ion channels, modifying normal body functions or disease processes.
+Pharmacological drugs are essential in diagnosing diseases (e.g., contrast agents in imaging), treating
+infections (e.g., antibiotics), curing chronic conditions (e.g., insulin for diabetes), or preventing illness (e.g.,
+
+vaccines). Thus, they form the backbone of modern medicine and healthcare.
+
+Q.3 Write the four major steps of drug discovery.
+Ans. Drug discovery is a structured process that involves several stages:
+
+1. Target identification and validation — Scientists identify a biological
+molecule (such as a protein or receptor) involved in a disease and
+confirm that altering its activity may have a therapeutic effect.
+
+2. Lead compound identification - A compound is discovered, often through screening libraries of
+chemicals or natural products, that shows activity against the chosen target.
+
+3. Lead optimization — The identified molecule is chemically modified to improve its potency, stability,
+safety, and ability to reach the target effectively.
+
+4. Preclinical testing — Laboratory and animal studies evaluate the compound’s safety, toxicity, and
+pharmacological properties before advancing to human trials.
+
+MARKING SCHEME (3 Marks)
+nism—1mark
+
+Q.4 What are the steps of preclinical development of drugs? |
+
+Ans. Preclinical development is a critical stage that occurs before human cannon Sctiee (3 hacrial
+testing begins. It focuses on evaluating whether a potential drug is safe *
+and effective enough for clinical use. Laboratory experiments and emis pet precta eee
+animal studies are conducted to assess:
+© Safety and toxicity — identifying harmful effects and safe dosage ranges.
+¢ Pharmacokinetics — studying how the body absorbs, distributes, metabolizes, and excretes the drug.
+¢ Pharmacodynamics — investigating how the drug interacts with its target and what biological effects it
+
+produces.
+
+¢ These studies also explore organ-specific toxicity and long-term safety. The overall goal is to generate
+
+reliable data to support an application for clinical trials in humans.
+
+So studyplusplus.com S$
+
+
+
+--- Page 16 ---
+
+Q.5 Describe clinical development of drugs.
+
+Pict seh ii ey
+Ans. Clinical development involves testing a drug candidate in human
+volunteers and patients through a sequence of phases to ensure safety
+and effectiveness.
+e Phase | trials test the drug on a small group of healthy volunteers
+to determine safe dosage levels and identify side effects.
+e Phase II involves patients with the target disease, focusing on the drug's effectiveness and refining the
+optimal dose.
+e Phase Ill trials include large populations across multiple centers, comparing the new drug with existing
+treatments while monitoring long-term safety and efficacy.
+e After successful results, data is submitted to regulatory authorities for approval. Only after this stage
+can the drug enter the market for medical use.
+
+Q.6 Name the five drug development phases.
+Ans. The five phases of drug development are:
+1. Drug Discovery — identification of active compounds and targets. MARKING SCHEME (3 Marks)
+2. Preclinical Development — laboratory and animal testing for safety | ° olin acne aa
+and activity.
+. Clinical Development — human trials in multiple phases (I-1I!).
+4. Regulatory Review — evaluation by authorities for approval.
+5. Post-Marketing Surveillance — monitoring long-term safety and new uses.
+
+Q.7 How do antibiotics work?
+
+Ans. Antibiotics are chemical agents that target bacteria to either kill them
+(bactericidal) or inhibit their growth (bacteriostatic). They achieve this MARKING SCHEME (3 Marks)
+by interfering with essential bacterial processes that are absent or | * Mechanism/targets~3 marks
+different in human cells. Common targets include cell wall synthesis
+(e.g., penicillins), protein synthesis by binding to bacterial ribosomes (e.g., tetracyclines), DNA replication
+(e.g., fluoroquinolones), and metabolic pathways like folic acid synthesis (e.g., sulfonamides). By disrupting
+these functions, antibiotics weaken or destroy the bacteria, allowing the immune system to clear the
+infection. Their selective action makes them effective while minimizing harm to human cells.
+
+Q.8 Why are monoclonal antibodies so specific?
+
+Ans. Monoclonal antibodies (mAbs) are laboratory-produced molecules
+designed to bind to a single, unique epitope on a specific antigen. This
+specificity arises because all antibody molecules in a monoclonal
+preparation are identical clones derived from a single parent B-cell. The
+precise interaction ensures that mAbs act only on the intended target, such as a cancer cell receptor ora
+pathogenic protein, while leaving other cells and tissues unaffected. This high specificity reduces off-target
+effects and side effects compared to traditional drugs, making monoclonal antibodies particularly valuable
+in targeted therapy, diagnostics, and immunotherapy for diseases such as cancer, autoimmune disorders,
+and viral infections.
+
+in Long Answer Questions
+
+Q.1 Explain drug discovery and development process.
+
+Ans. Please See SLO [B-12-T-01]
+
+Q.2 Discuss the types antibiotics and their mode of action.
+Ans. Please See SLO [B-12-T-02]
+
+Q.3 What.are the advantages of monoclonal antibodies?
+Ans. Please See SLO [B-12-T-05] -
+Q.4 Compare monoclonal antibodies to other drug classes.
+Ans. Please See SLO [B-12-T-05]
+
+© For correct order (1 mark).
+
+sore eloeoroe
+So studyplusplus.com S$

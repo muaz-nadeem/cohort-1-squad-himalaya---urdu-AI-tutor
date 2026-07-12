@@ -1,0 +1,2413 @@
+
+
+--- Page 1 ---
+
+Chapter # 11
+Biostatics and Data Handling
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+e  [B-12-K-01] Define biostatistics and its use.
+[B-12-K-02] Define mean, median, mode, standard deviation, range, percentile.
+[B-12-K-03] Calculate mean, median, mode, standard deviation, range, percentile from a given set of data.
+[B-12-K-04] Sketch a bar chart for a given set of data.
+
+[B-12-K-05] Sketch error bars based off of range or standard deviation for a given set of data on a bar chart.
+
+[B-12-K-06] Evaluate the appropriate type of figure or chart for a given set of data and/or experiment (bar
+chart, pie chart, xy axis data figure etc).
+
+{B-12-K-07] Make the appropriate chart with proper title, labeled axes, legend, axes units.
+
+[B-12-K-08] Design an appropriate experiment with control group and dependent, independent and
+control variables.
+
+SLO [B-12-K-01]
+
+Define biostatistics and its use.
+
+BIOSTATISTICS AND ITS USES
+
+Biostatistics is the application of statistical principles and methodologies to the collection, analysis,
+interpretation, and presentation of data derived from research in the biological, medical, and health sciences. It
+enables researchers and practitioners to make sense of complex biological phenomena by analyzing data related
+to living organisms, with the ultimate goal of proposing informed, evidence-based plans or interventions.
+
+Biostatistics finds broad application across a wide range of disciplines including medicine, public health,
+epidemiology, environmental science, and agriculture. Whether evaluating crop yields, livestock productivity,
+disease prevalence, or the efficacy of medical treatments, biostatistical tools offer critical insights for effective
+decision-making and scientific advancement.
+
+Understanding Data and Data Sets in Biostatistics
+> Data
+
+In the context of biostatistics, data refers to factual information, observations, or measurements related to
+biological entities. This includes quantifiable metrics such as enzyme activity levels, heart rates, population
+counts, body weights, or disease incidence rates. These data points serve as the foundation for drawing
+biological inferences and constructing statistical models.
+
+Data Set
+
+A data set is a systematically organized collection of related data points, typically presented in tabular form
+for analytical purposes. Each row usually represents an individual experimental unit (such as a subject or
+sample), while each column corresponds to a specific variable being measured. Every entry reflects a distinct
+
+observation.
+
+v
+
+Sg studyplusplus.com S$
+
+
+--- Page 2 ---
+
+Example: A table documenting the height and weight of 100 plants grown under varying light or moisture
+
+conditions constitutes a data set, facilitating comparative analysis.
+
+Core Components of Biostatistical Research
+
+Effective application of biostatistics involves a sequence of essential steps:
+
+1; Problem Identification: The process begins with defining a biological problem—often related to
+human, animal, or environmental health—that requires scientific inquiry or resolution.
+
+2. Data Collection and Analysis: Data are gathered both prior to and following experimental procedures.
+This data is then rigorously analyzed using statistical tools to identify patterns and draw meaningful
+conclusions.
+
+3. Experimental Design: Biostatistics supports the planning of experiments by determining appropriate
+sample sizes, durations, variables, and controls necessary to address the research question effectively.
+
+4. Result Interpretation: Analyzed data are used to interpret the biological relevance and potential
+implications of the findings. This step helps in understanding underlying mechanisms or evaluating
+interventions.
+
+5. Tool and Policy Development: Insights gained from biostatistical interpretation often lead to the
+creation of new diagnostic, therapeutic, or predictive tools, as well as public health policies and
+scientific recommendations.
+
+Applications of Biostatistics in Biological Sciences
+
+Biostatistics is the application of statistical principles to biological research, enabling scientists to analyze
+
+complex data, identify patterns, and make informed decisions. Its applications span agriculture, medicine,
+genetics, public health, and environmental science.
+
+1.
+
+4
+
+Agricultural and Livestock Demand Forecasting
+
+Biostatistics allows researchers and policymakers to analyze trends in crop yields, livestock production, and
+dairy outputs in relation to population growth, dietary habits, and climate change. For example, statistical
+models can predict whether wheat production in Pakistan will meet the projected demand over the next
+decade or if additional imports are required. Similarly, forecasting models help the dairy industry estimate
+milk supply fluctuations, enabling better management of feed, breeding schedules, and storage logistics to
+ensure food security.
+
+Evaluation of Medical Instruments and Pharmaceutical Interventions
+
+Clinical trials and controlled studies rely on biostatistical methods to evaluate the safety, efficacy, and
+optimal dosage of new drugs, vaccines, and medical devices. For instance, during the development of COVID-
+19 vaccines, biostatistical analyses were essential. in determining efficacy rates, side effect frequencies, and
+optimal dosing intervals. Biostatistics also aids in post-market surveillance, ensuring that medical devices
+such as pacemakers or insulin pumps continue to meet safety standards.
+
+Epidemiological Surveillance and Policy Formation
+
+Biostatistics is critical in tracking disease incidence, prevalence, and transmission patterns in populations.
+During the COVID-19 pandemic, statistical models predicted infection peaks, hospital bed requirements, and
+the effectiveness of lockdown measures. Biostatistical evidence guides health policies, vaccination
+strategies, and resource allocation, supporting both national and global public health planning.
+
+Public Health and Population Management
+
+Routine health surveillance relies on biostatistics to assess population health, track birth and mortality rates,
+and monitor disease burdens. Statistical analyses optimize healthcare delivery by evaluating patient flow,
+hospital capacity, and treatment outcomes. For example, biostatistical studies can reveal regions with high
+maternal mortality, guiding targeted interventions, resource allocation, and preventive care initiatives.
+Genetic Disease Research
+
+Biostatistics plays a central role in understanding the inheritance and prevalence of genetic disorders such
+as thalassemia, cystic fibrosis, and muscular dystrophy. It allows researchers to calculate carrier
+frequencies, assess risk factors across populations, and design screening programs. Statistical models also
+
+help predict the probability of offspring inheriting genetic traits, informing genetic counseling and
+preventive healthcare strategies.
+
+S$ studyplusplus.com S$
+
+
+--- Page 3 ---
+
+6. _ Environmental Monitoring and Pollution Control 2
+Environmental scientists use biostatistics to analyze data on air and water quality, soil contamination, and
+biodiversity changes. Statistical analyses help identify pollution hotspots, determine sources of
+contamination, and measure the effectiveness of mitigation strategies. For instance, urban smog trends in
+Delhi or Karachi can be analyzed to guide emission reduction policies, while water quality monitoring informs
+river cleanup programs. Biostatistical models also guide reforestation and conservation efforts to restore
+ecological balance,
+
+7. Survival Analysis
+Survival analysis is widely used in oncology, cardiology, and other clinical fields to estimate patient life
+expectancy after treatment. For example, the five-year survival rate of breast cancer patients post-
+chemotherapy or radiotherapy provides critical insights into treatment efficacy. Survival models also support
+clinical decision-making, identifying factors that improve outcomes and predicting long-term prognosis for
+patients with chronic or life-threatening illnesses.
+
+TYPE OF AVERAGES AND THEIR CALCULATION
+
+In everyday life, we frequently summarize complex information using a single representative value. Consider
+these examples:
+
+* “The average human heart rate is 72 beats per minute.”
+
+e “The cancer mortality rate in Pakistan is 25 per 1,000 patients.”
+
+e “Wheat yield in Punjab is 2,000 kg per acre.”
+
+These numbers are approximations, not exact figures. Biological systems are naturally variable: heart rates
+fluctuate with activity and stress, cancer outcomes differ by region and age, and wheat yields are influenced by
+soil quality, irrigation, and climate. Yet, these averages are invaluable—they allow us to see overall patterns,
+compare populations, and make informed decisions in medicine, agriculture, and ecology.
+
+In statistics, these representative values are referred to as measures of central tendency. They describe the
+“center” of a dataset—the point around which most observations cluster. The primary measures include:
+
+© Mean: The arithmetic average of all data points. It provides a balanced measure of centrality but can be
+
+influenced by extreme values.
+
+Median: The middle value when data are arranged in order. It represents the 50th percentile and is less
+
+affected by outliers.
+
+* Mode: The most frequently occurring value in a dataset, highlighting the most common observation.
+
+While central tendency summarizes a dataset, understanding variation is equally crucial. Measures of spread
+tell us how much data differ from the center: 4
+
+© Range: The difference between the largest and smallest values.
+
+© Standard Deviation (SD): A measure of how tightly or widely data cluster around the mean.
+
+© Percentiles: Values that indicate a specific position within the dataset, such as the 90th percentile, which
+
+is higher than 90% of all observations.
+
+Together, reasures of central tendency and variability provide a comprehensive picture of biological data.
+They allow researchers and practitioners to interpret trends, make predictions, and apply this knowledge to real-
+world challenges, from monitoring population health to optimizing agricultural production.
+
+Types of Averages and Their Calculation
+Averages can be calculated using various methods, depending on the nature and distribution of the data.
+Common measures of central tendency include:
+
+1. Mean (Arithmetic Average)
+The sum_of all data values divided by the number of observations. It is most useful for symmetric
+distributions without extreme outliers.
+
+2. Median
+The middle value in an ordered data set. It is a robust measure, less influenced by outliers, making it suitable
+for skewed data.
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+3. Mode
+The value that appears most frequently. Mode is particularly useful in categorical data or distributions with
+repeated values.
+
+4. Standard Deviation (SD)
+A measure of the dispersion or spread of data values around the mean. A smaller SD indicates that the data
+are closely clustered, while a larger SD suggests greater variability.
+
+5. Range
+The difference between the highest and lowest values in a data set. It provides a basic measure of data
+spread but is highly sensitive to outliers.
+
+6. Percentile
+A value below which a given percentage of observations fall. For instance, the 75th percentile (Q3) is the
+value below which 75% of the data lie. Percentiles are useful in comparing individual scores to a population.
+
+Arithmetic Mean or simply Mean
+
+Definition
+
+The mean is a measure of central tendency that represents the arithmetic average of a dataset. It is
+calculated by summing all the values in the dataset and dividing the total by the number of values. The mean
+provides a single value that characterizes the overall distribution and is often used to summarize large datasets
+with one representative figure.
+
+In statistical notation, the sample mean is denoted by & (read as "x-bar"), The bar placed over the letter x
+signifies that it is the average of a set of observations.
+
+ned (%) — Some of values (»)
+
+Total Number of values. (n)
+
+Where:
+
+¢ =sample mean
+
+e x=sum ofall observed values
+
+© n=total number of values in the dataset
+Formula:
+
+Direct Method for Group Data
+
+where, x= Value of.data set Lower limit + upper limit
+
+(where, x= Value of data set and is calculated as x = 2
+
+and f = frequency distribution)
+
+Types of Data in Biostatistics
+In biostatistics, data are categorized based on how they are organized. Two primary classifications are
+ungrouped data and grouped data.
+> Ungrouped Data
+Ungrouped data consist of raw, individual observations that are not organized into categories or intervals.
+This form is suitable for small datasets where each value can be listed and analyzed directly.
+Example:
+iralioual systolic blood pressure readings from 10 patients: 120, 125, 130, 122, 118, 135, 128, 124, 129, 121
+> Grouped Data
+Grouped data involve organizing raw data into specific intervals or classes, each with a corresponding
+frequency. This approach is ideal for large datasets, making them easier to summarize and interpret.
+Example:
+Systolic blood pressure ranges and number of patients: i
+e 110-119 mmHg: 2 patients
+
+$ studyplusplus.com S$
+
+
+--- Page 5 ---
+
+¢ 120-129 mmHg: 5 patients
+¢ 130-139 mmkg: 3 patients
+
+Frequency Distribution
+
+A frequency distribution is a method of organizing data to show how frequently each value or range of
+values occurs within a dataset. It may be presented as a table or a graph, such as a histogram. This representation
+aids in identifying patterns, trends, and outliers in the data and is essential for constructing statistical charts.
+
+> Types of Frequency Distributions
+1. Ungrouped Frequency Distribution:
+o Lists each distinct data value and the number of times it occurs.
+o Suitable for small datasets with limited variation.
+2. Grouped Frequency Distribution:
+o Organizes data into classes (intervals) and provides the frequency for each class.
+o Suitable for large datasets to simplify interpretation and graphical representation.
+
+> Example 1 (Un-group data)
+Dataset: Team of world health organization (WHO) planned to assess the prevalence of polio disease in
+Pakistan. Study to record the polio cases in Pakistan continued for consecutive two years. Number of
+confirmed Polio patients detected each month of 2022 and 2023 are given in table below. Calculate the
+mean polio patients per month in each year. Also compare the prevalence of Polio disease in both years.
+
+Number of Polio patients in | Number of Polio patients in
+Month offapting year 2022 year 2023
+
+}——March__ 1
+
+| a. eis SES
+{| 2. ESR eee
+| 3. | | Biineemsee13 See
+[ 4. | PEs Eee
+a EE eed
+SCE GEST eta RE ) eee) eee eee
+—————————
+| 8. | EG 0 FE a eee
+| 3. | ie ea
+| 10. _| aa ee
+
+ane eee
+
+P Saeed eed
+
+if Je ee
+
+ry
+
+[September -| 38 FD, |
+[-11._| November [10
+[ead | yO ecember™ ose ee
+[total | azmonths [192
+
+Sum of Polio casesin complete year _ 192
+
+M ber of Polio patients per month in 2022 = =—=16
+ay ssa aces 4 Total number of Months 12
+7 . Sum of Polio cases in complete year 144
+
+Mean number of Polio patients per month in 2023 =———_—_____________-. == 12
+. m 4 Total number of Months 12
+
+Difference of Polio patients per month detected in 2022 and 2023 = 16-12 = 04
+Prevalence of Polio disease decreased in 2023 compared to 2022 by 04 patients per month.
+
+> Example 2 (Group data)
+Data set: United Nation-World Food Programme (UN-WFP) conducted a research to assess the impact of
+food quality on body mass of 100 students of different age groups. Find the arithmetic mean for the
+
+Frequency distribution of body mass of 100 students as shown in table given below.
+Mass of Student Groups Before the Start of Experiment
+
+| se mo. | Mass (Lbs) | Frequency (f) x Hever leit Veper tent Frequency x mean of limits (fx)
+35+39
+ete ( = | es
+
+PS) studyplusplus.com S$
+
+
+
+--- Page 6 ---
+
+49.5 Lbs is the = mass of 100 students of different grou;
+Median
+Definition
+
+ps before the start of experiment
+
+The median is the middle value of a dataset when the values are arranged in ascending or descending order.
+It divides the dataset into two equal halves:
+
+® One half contains values less than the median.
+e The other half contains values greater than the median.
+
+Itis denoted by Z, (read as "x tilde" or "x snake"). It is necessary to arrange the values of dataset in ascending
+or descending order.
+
+The methods of calculating the median are simple and the value of median is not affected by change in
+extreme values of dataset.
+
+> Median for Un-group Data
+e If the number of values is odd, the median is the middle value.
+
+th
+Median (#) = The value of (4) item in the dataset (where n = number of items or data)
+
+If the number of values is even, the median is the average of the two middle values.
+
+Example 1; (For the dataset with odd number of values)
+Dataset: In an experiment to check the effect of specific fertilizer on the growth of the plants, heights of the
+plants in the experimental dataset was recorded. The heights (in cm ) of 13 plants are given below.
+
+58,67,65,70,68,62,63,46,64,49,55,66,72
+Find out the Median value of height.
+
+Solution: The median is calculated as follows
+
+The measured heights of plants after arranging in ascending order is as given below:
+46,49,55,58, 62,63, 64,65,66,67,68,70,72
+
+Number of values in the dataset of observed heights = 13
+
+Median (2) a0 BS. 7i.e. value of 7” value in datasheet)
+
+Median (Z) = 64
+Example 1: (For the dataset with odd number of values)
+
+n - n
+des (5 th vatue }+($+1)
+Median (x) ian Pa
+
+PS) studyplusplus.com S$
+
+
+--- Page 7 ---
+
+Dataset: The number of fruits produced on each of the 16 plants of experimental group are recorded as below:
+3,5,18,21,15,10,8,12,13,7,11,14,9,16,20,24
+
+Find out the median value of fruits produced per plant.
+
+Solution: i
+
+The numbers of fruits produced on 16 plants after arranging the values of dataset in ascending order are
+
+given below: :
+
+3,5,7,8,9,10,11,12,13,14,15,16,18,20,21,24
+
+Total number of values in the above given dataset n = 16 (even number)
+
+($e waive }+(2-42) (#)+(23)
+
+Median (Z) 282 — 2 NES ee ee
+2 2
+
+Median (#) © (3th “= value +1) x oe
+
+Median (%) = 2B -3 =12.5 fruits per plant
+
+Activity: (to be solved by the students)
+
+Calculate the median of the following values of data set obtained by measuring the heights of 22 plants in
+
+an experimental group to assess the effects of less water availability:
+8,9,10,18,10,8,9,7,8,11,23,19,17,15,7,12,14,12,11,14,15,13
+
+Median for Grouped Data
+
+Discontinuous or Unconnected Values in Dataset
+
+To calculate the value of median for discontinuous grouped data, first of all the cumulative frequency (cf) of
+
+complete dataset is obtained.
+
+The value of data against n + 1/2 the'cumulative frequency will be the median for odd number of data.
+
+© Median for dataset with odd number of values will be:
+
+Median (%) = value of data against (He) cumulative frequency
+¢ Median for dataset with even number of values will be:
+
+2
+Class values against += + 1" cumulative frequencies
+
+Median(x) =( 5
+Example for Odd Number Dataset:
+Calculate the median of the following dataset obtained by counting the number of flowers on 21 rose plants.
+Class (no. of flowers/plant a Lak a Lp 5 |
+Frequency (no. of plants) Ee ee eC Re
+Calculations:
+Class (no. of flowers/plant) | Frequency (no. of plants = n | Cumulative frequency |
+RE
+ee ers
+Number of plants (n) = 21
+Median (%) -( ou) cumulative frequency
+21+1)_ 22
+
+Median (%) -(BH)-2-
+
+S$ studyplusplus.com S$
+
+
+--- Page 8 ---
+
+Since cumulative frequency 11 is included in 13 which represents the class value 3 , therefore, for cumulative
+frequency 11, the class value will be 3 which is the median.
+
+Example for even number dataset
+Calculate the median for the following data
+
+Calculations:
+Calculate the median for the following data recorded for height (in cm ) of 80 plants.
+
+Class (p cam pena er Frequency (no. of plants = n) | Cumulative frequency
+
+Number of plants ag nn
+Class values against 3th + ; +1th cumulative frequencies
+
+Median (%) = z
+
+ee
+
+eo th+ kd +1th cumulative frequencies
+Median (%) =
+
+2
+
+Median () = ( Class values against cumulative frequencies40 St)
+The class values for cumulative frequencies 40 and 41 are included in the class value of cumulative frequency
+45 which is 122 . Therefore, Median (%) = 122 + 122/2 = 122.
+
+>» Advantages of Median
+
+1. Simple to Calculate and Interpret: The median is easy to compute, especially in small datasets, and
+provides a clear indication of the middle value.
+
+2. Robust to Extreme Values: Unlike the mean, the median is not influenced by outliers or extremely high
+or low values. This makes it especially useful in skewed data distributions.
+
+3. Applicable in Ordinal and Quantitative Data: The median can be effectively used with ordinal data (data
+that can be ranked) as well as quantitative data, making it versatile in biomedical and statistical
+analyses.
+
+> Limitations of Median
+
+1. Not Additive Across Multiple Datasets: The median of multiple datasets cannot be derived by simply
+calculating the median of each dataset and combining them. This limits its use in cumulative or
+comparative studies.
+
+2. May Not Reflect True Central Tendency: In certain distributions, the median may not lie at the statistical
+center of the dataset, especially in datasets with gaps or clusters.
+
+3. Limited Use with Discrete and Interval Data: Median is less effective when dealing with precise interval
+measurements (e.g. age in months, weight in grams), where the exact value is critical for interpretation.
+
+Mode
+
+The mode is the value that occurs most frequently in a dataset. It represents the most common observation
+and is particularly useful in identifying the most typical case in a distribution.
+
+S$ studyplusplus.com S$
+
+
+--- Page 9 ---
+
+Depending on the data, the mode can take several forms:
+
+« Adiataset with one mode is called unimodal.
+
+e Adiataset with two modes is called bimodal.
+
+© Adataset with more than two modes is referred to as multimodal.
+
+e — Ifall values occur with the same frequency, the dataset is amodal and has no mode.
+
+Unlike the mean and median, the mode can be used with both numerical and categorical data, making it a
+versatile measure of central tendency.
+
+It may be denoted by " X"(read as x-hat or x cap).
+
+Mode = the most frequent or repeated value occurring in a given dataset.
+
+Formula for calculating Mode for Group data is given below
+
+Where, {= lowercase boundary of model group
+
+fm = Maximum frequency of a group
+
+fi = previous frequency of fm
+
+fa = next frequency of fm
+
+h = class interval of model group
+
+> — Class interval and Modal Group (Modal Class)
+
+1. Class Interval: A class interval is a range of values into which data is grouped in a frequency distribution
+table. Each interval includes a lower and an upper boundary (e.g., 120-129). All intervals are typically of
+equal width.
+Example:
+
+Blood Pressure (mm/Hg) | Frequency (f) |
+
+iE -7 ae er
+
+[azo-aaseh” Ss
+
+[130-139 AY 3
+Here, 110-119, 120-129, and 130-139 are class intervals.
+
+2. Modal Group (Modal Class): The modal group is the class interval with the highest frequency in a
+grouped frequency distribution. It indicates the most common range of values in the dataset. Using the
+table above: The class interval 120 — 129 has the highest frequency (5). So, 120-129 is the modal group.
+
+Examples for Calculating MODE
+
+Example #01: Find the mode from the word "BIOLOGY".
+
+Mode (X) = the most repeated value of the data
+
+Mode (%) ="0"
+
+Example #02: Find mode from the following data; 3,5,6,6,9,10,9,6,6
+
+Mode () = the most repeated value of the data
+
+Mode (%) = 6
+
+Example #03: Find the mode from the following data; 3,5,5,6,9,9,10,12
+
+Mode (2) = the most repeated value of the data
+
+Mode (X) = 5,9
+
+Example #04: Find the mode from the following frequency distribution;
+
+| Groups | Frequency (f) | Class Boundary (CB) |
+
+ECC a
+
+| 20-29 Jewes(hy [195-295 |
+
+[ses 40 fs) | 29.5-39.5 _| (modet group) |
+40-49 | 9
+
+0 ae er
+
+$ studyplusplus.com S$
+
+
+
+--- Page 10 ---
+
+(fn-fi)xh
+
+wée|2 es
+mein) gait 4)
+
+l= 29.5, fm = 40,f, = 25,f. = 20,h=10
+
+40-25)x10
+Mode (X) =29.5+ (40-25) + (40-20)
+
+Mode (X) = 33.786
+Standard deviation (SD)
+
+Standard deviation (SD) is a key statistical measure that quantifies the dispersion or spread of data values
+in a dataset. It indicates how much individual data points deviate from the mean (average) of the dataset. In
+biological research and analysis, understanding variability is critical, and SD offers a clear metric to assess the
+consistency or variability within a sample or population.
+
+In simple terms, standard deviation answers the question:
+
+“How tightly or loosely are the data values clustered around the mean?"
+
+© When data values are closely grouped around the mean, the standard deviation is small, indicating low
+
+variability.
+
+e oe data values are widely spread from the mean, the standard deviation is large, indicating high
+
+variability.
+
+For example, a biologist might use standard deviation to evaluate:
+
+© The variation in plant height in an experimental field,
+
+* The number of infected individuals in various cities during a disease outbreak,
+
+© The fruit yield per plant ina botanical study.
+> Interpretation and Symbolism
+
+¢ Fora population, standard deviation is denoted by the Greek letter o (sigma).
+e Fora sample, it is denoted by the Latin letter s.
+These symbols represent how far a data point typically lies from the mean:
+¢ Alarger o or s indicates greater dispersion.
+¢ Asmallero or s suggests the data points are tightly clustered near the mean.
+> Relationship to Variance
+Standard deviation is directly related to variance (0)
+Standard deviation is the square root of the variance.
+Although both metrics describe spread, SD is generally preferred because it is expressed in the same units
+as the original data, making interpretation more intuitive.
+> Illustrative Example
+Consider the quiz results of a biology class:
+© If all 40 students score exactly 77 marks, the mean is 77, and since every value equals the mean, the
+standard deviation is O—indicating no variability.
+© \fa few students score slightly below or above 77 (e.g., 75 or 79), the standard deviation will be greater
+than zero but still small, reflecting minor variation.
+
+0.0 01 0.2 03 04
+
+K-30 X30 X30 R30 Xo (KH XHO
+
+sD Mean(x) sD
+Figure: Normal Curve showing Mean (x) and Standard Deviation (SD)
+
+$ studyplusplus.com $
+
+
+--- Page 11 ---
+
+> Calculation of standard deviation
+Here are two versions:
+Population standard deviation (when the entire population is known)
+e Sample standard deviation (when only a subset is available)
+Calculation Steps:
+1. Calculate the mean (average) of the data.
+2. Subtract the mean from each data value to find the deviation.
+3. Square each deviation to eliminate negatives.
+4. Sum the squared deviations.
+5. Divide:
+o by n (number of data points) for population (biased estimate), or
+o byn—1 for sample (unbiased estimate).
+6. Take the square root of the result to obtain the standard deviation.
+This process provides a reliable indicator of how individual observations differ from the central value,
+thereby offering valuable insight into data reliability and consistency in biological studies.
+Let's calculate the SD for prevalence of COVID in 2021. Number of confirmed COVID cases in four major cities
+Lahore = (80 — 60) = 20; Peshawar = (40 — 60) =-20; Quetta = (30 - 60) = -30;
+3. Square the result for each city:
+these cities as a sample from the entire Pakistan: 2600/3 = 866.7
+Determine the square root of this number which is the standard deviation (SD):
+
+Number of confirmed COVID cases
+
+of Pakistan were recorded:
+[cities |
+ees
+1. Determine.the mean: The mean is 60 .
+Karachi = (30)2 = 900; Lahore = (20)2 = 400; Peshawar = (—20)2 = 400; Quetta = (—30) = 900
+4. Add the results of all cities together: 900 + 400 + 400 + 900 = 2600
+
+2. Subtract the mean cases from cases of each city: Karachi = (90 — 60) = 30;
+5. Divide this result by the number of scores minus 1 (unbiased), because we are interested in considering
+
+6.
+
+The square root of 866.7 = 29.45, Hence, Standard deviation (SD): 29.45
+
+As a general rule large standard deviation means that data is well dispersed away from the mean. A small
+standard deviation indicates a tight cluster of data points near the mean.
+
+Standard deviation (SD) of a population or sample can be calculated by using following formulas:
+
+[Population OT Sampled
+
+X - The Value in the data distribution | X - The value in the data distribution
+p- The population mean. ¥-The sample mean
+
+N- Total number of observations n - Total number of observations
+
+As calculations of SD are complex and there's a high risk of error, so statisticians don't usually calculate
+
+standard deviation by hand. We can use a Calculator or computer software to find the SD.
+Range
+Range in Biostatistics
+
+In biostatistics, the range is a basic measure of dispersion that provides insight into the variability of data
+collected from experiments or populations. It is defined as:
+
+"The difference between the highest and lowest values in a dataset.”
+
+S$ studyplusplus.com S$
+
+
+--- Page 12 ---
+
+Alternatively, it may be stated as:
+
+"The difference between the maximum and minimum observations."
+The resulting value is referred to as the range of data values or range of observations, and it represents the
+
+extent of spread within the dataset. While simple, the range is useful in offering a quick sense of variation among 39
+values, particularly in biological studies.
+
+>
+
+Importance in Biological Studies
+In biological research, the range is frequently used to:
+e Assess variation within a population.
+© Summarise experimental outcomes with respect to spread.
+e Identify extreme values or outliers in biological measurements.
+Calculation of Range
+To calculate the range:
+1, Arrange the dataset in ascending order (from the smallest to the largest value).
+2. Apply the formula to determine the range.
+Formula for Range
+Range = Highest Value — Lowest Value (OR) Range = Maximum Observation - Minimum Observation
+Example: Imagine a student studying the heights of a sample of plants in a garden after the treatment of fertilizers.
+Student collected the following data set of plant heights (in centimetres) from sampled plant population:
+1. Raw data Set:
+10 cm,15 cm,18 cm,21 cm, and 25 cm,32 cm,41 cm,28 cm,54 cm,35 cm,26 cm,23 cm,33 cm,38 cm
+
+40 cm,19 cm,33 cm,43 cm,08 cm,13 cm
+2. Arranged data set (ascending order):
+08 cm,10 cm,13 cm,15 cm,18 cm,19'cm,21 cm,23 cm,25 cm,26 cm,28 cm,32 cm,33 cm,33 cm,
+35 cm,38 cm,40 cm,41 cm,43 cm,54 cm
+Identify the highest value: 54 cm
+Identify the lowest value: 08 cm
+5. Calculate the range: Range = Highest or Maximum Value - Lowest or Minimum Value
+
+Range =54 cm—08 cm=46 cm
+
+The range here is 46 cm, meaning there is a 46 cm difference between the smallest and tallest plants in
+
+the sample.
+Importance of Range in Biology
+In biological research, range plays a key role in quantifying the variability within a population. It serves as a
+basic yet informative statistical measure in fields such as genetics, ecology, and physiology, where variation
+among individuals may reflect environmental influences, genetic diversity, or adaptive traits within a
+population.
+Asmall range indicates that most individuals in the sampled population exhibit similar responses to a given
+treatment or condition. This uniformity implies that the biological response is consistent across the
+population. From a research perspective, a small range is generally considered favorable, especially when
+the minimum and maximum values both reflect high effectiveness of the treatment. In such cases, the
+treatment can be viewed as uniformly successful for the population under study.
+Conversely, a medium range presents interpretational challenges. The data may not reveal a clear trend or
+outcome, making it difficult to draw definitive conclusions. In these situations, the researcher may need to
+re-evaluate the experimental design, modify the treatment parameters, or increase the sample size to
+obtain more conclusive results.
+Alarge range indicates a high degree of variability among the individuals in the population. This may suggest
+that the population includes subgroups with different genetic makeups or environmental exposures, OF that
+the treatment has inconsistent effects. While a large range highlights biological diversity, it may complicate
+data interpretation, as the treatment appears to be effective for some individuals and ineffective for others.
+
+S$ studyplusplus.com S$
+
+oP
+
+
+--- Page 13 ---
+
+Limitations of Range
+
+Despite its usefulness, range has notable limitations that must be considered when interpreting biological
+data or planning further research. The range only considers the extreme values—the maximum and
+minimum—and ignores all intermediate data points. This makes it a sensitive statistic that can be skewed
+by outliers.
+
+For example, if nearly all the plants in a treatment group exhibit high productivity, but only one or two show
+very low productivity, the range will'be large. This might misleadingly suggest high variability, even though
+most individuals responded similarly. Therefore, relying solely on the range without considering the
+
+distribution of the entire dataset can lead to inaccurate conclusions.
+To address this limitation, researchers often use range in combination with other statistical measures such
+
+as standard deviation, interquartile range, or variance to obtain a more comprehensive understanding of
+data spread and consistency.
+
+Percentile
+
+A percentile is a statistical value that indicates the percentage of data points in a dataset that fall below a
+
+particular value. For example, the 25th percentile represents the value below which 25% of the data points lie.
+Percentiles are widely used in biological sciences to help interpret large datasets and provide meaningful
+comparisons across populations. Common applications include test scores, growth measurements, and other
+
+biometric indicators.
+
+Percentiles divide an ordered dataset into 100 equal parts, with each percentile representing one-hundredth
+
+of the data distribution. It is possible to identify a percentile at any value between 0 and 100, such as the 99th
+percentile, 44th percentile, or 9th percentile. A percentile score refers to the value or data point in the ordered
+dataset that indicates the proportion of observations that lie at or below that value.
+
+Normal,
+Bell-shaped Curve
+
+Percentage of
+cases in portion
+
+of the curve
+Standard Deviations
+Cumulative
+Percentages
+
+Normal Curve
+equivalents
+
+Figure: Percentile Calculation in a Normal Bell Shaped Curve of Data
+
+Further Helping Material to Understand Percentile
+
+>
+
+Quartiles:
+
+Interquartile Range and Its Significance
+
+The interquartile range (IQR) is defined as the difference between the third quartile (Qs) and the first quartile
+(Q,). It represents the range within which the central 50% of data values lie, and is often used to describe
+the spread or dispersion of data, excluding extreme values or outliers. In biological datasets, the IQR provides
+a robust summary of variation, particularly when dealing with non-normally distributed data.
+
+Application of Quartiles and Percentiles in Biological Research
+
+Consider the following example involving the number of fruits on orange trees in a small garden. If the 25th
+percentile corresponds to a count of 39 fruits, this means that 25% of the trees produced fewer than 39
+fruits. This allows the researcher to understand the distribution of fruit production and identify
+underperforming trees within the population.
+
+The 50th percentile in this dataset would represent the median fruit count, dividing the population into two
+equal halves. A tree that falls at the 99th percentile in fruit production would have yielded more fruit than
+99% of the other trees, indicating exceptionally high productivity. This type of ranking allows for meaningful
+comparisons among individuals or subgroups within the overall population.
+
+S$ studyplusplus.com S$
+
+
+--- Page 14 ---
+
+> Use of Percentile Ranks in Biometry
+In biometry and educational testing, percentile ranks are commonly used to interpret individual values in
+the context of a broader population. For instance, if a student's height is measured at 77 cm, and this
+measurement falls into the 89th percentile, it implies that 89% of the individuals in that population have a
+height of 77 cm or less. This comparative analysis enables researchers and educators to evaluate where an
+individual stands in relation to peers, thereby facilitating data-driven conclusions about growth, health
+
+status, or academic performance.
+Number of fruits on each plant
+
+Siew Pare see
+eens y ReneS EE
+
+Second Quartile=(21)
+
+ie |
+| Ass |
+Ha / Fee ne el
+| Third age [ae
+By oY Rin eae
+Ee / PEs Eee
+nana”
+
+Steps to Calculate Percentile
+
+1, Arrange Data: Sort the data values in ascending order.
+2. — Calculate Position: Use the formula for the position of the P™ percentile:
+
+P
+Position =Zo9 X(N+ 1)
+
+P is the desired percentile (e.g., 25 for the 25th percentile).
+Nis the number of observations.
+Percentile can be calculated by using the data by formula:
+
+P=2%100%
+
+Where P is the percentile, n is the number of data points below the data point of interest, and N is the total
+number of data points in the data set.
+
+a BAR CHART
+
+In biostatistics and scientific research, data is typically documented in the form of numerical figures and
+often organized into tables. However, large volumes of numerical data, especially when presented in tabular
+format, may appear uninspiring and difficult to interpret. The sheer quantity of figures can make it challenging
+for researchers and observers to grasp key patterns or derive meaningful conclusions at a glance.
+
+S$ studyplusplus.com $
+
+
+--- Page 15 ---
+
+To address this limitation, data is frequently represented using graphs, diagrams, charts, and pictorial
+illustrations. These visual tools offer a more engaging and accessible means of communicating complex datasets.
+Unlike tables filled with figures, graphic presentations provide a clear, concise, and impactful view of the data,
+helping to convey the overall message effectively. Visual formats such as bar charts, rectangular diagrams, pie
+charts, and others leave a long-lasting impression on the mind of the observer and are particularly useful in
+educational, medical, and research settings.
+
+Simple bar diagram or simple bar chart
+
+A simple bar chart is one of the most commonly used methods for representing single-variable data. It
+consists of a series of bars of equal width, where each bar represents a single value or figure. These charts are
+not subdivided to represent additional characteristics or classifications within the dataset.
+
+Ina simple bar chart:
+
+e Each bar corresponds to only one characteristic of the data.
+
+e The heights (u. lengths) of the bars represent the magnitude of the data values.
+
+@ While the width of all bars remains constant, their height varies proportionally according to the quantity
+
+or degree of the variable being represented.
+e Asimple bar chart may contain multiple bars, with each bar standing for a different data value or category.
+
+Evaluate the appropriate type of figure or chart for a given set of data and/or experiment (bar chart, pie
+
+chart, xy axis data figure etc).
+
+SELECTING AND EVALUATING FIGURES AND CHARTS
+
+—_————
+In biological research, data visualization is a powerful tool for summarizing results, identifying patterns, and
+communicating findings effectively. The choice of a.figure or chart depends on the type of data, the objective of
+the analysis, and the audience. Selecting an inappropriate chart can misrepresent data, obscure trends, or
+confuse the reader.
+Types of Figures
+1. Bar Charts
+Use: To compare discrete categories or groups.
+Structure: Rectangular bars of equal width, with height representing the value.
+© Example: Comparing the average number of seeds produced by three different plant species.
+© Why Appropriate: Shows clear comparisons between categories and allows easy visualization of
+differences.
+2. Pie Charts
+@ Use: To represent parts of a whole as percentages or proportions.
+¢ Structure: A circle divided into sectors, with each sector representing a category's contribution to the
+total. :
+e ” Example: Distribution of blood types.(A, B, AB, O) in a population.
+* Why Appropriate: Clearly shows proportional contributions but is not suitable for comparing multiple
+datasets.
+3. Line Graphs / XY Scatter Plots
+Use: To show relationships, trends, or correlations between two continuous variables.
+Structure: Points plotted on an XY coordinate plane, often connected by a line for trends.
+e Example: Plotting temperature vs. rate of photosynthesis in a plant species.
+© Why Appropriate: Displays trends over time or continuous changes, allowing evaluation of relationships
+
+between variables.
+
+S$ studyplusplus.com S$
+
+
+--- Page 16 ---
+
+4, Histograms
+e Use: To display the distribution of numerical data in intervals (bins).
+“e Structure: Similar to bar charts but represents frequency of ranges rather than discrete categories.
+e » Example: Distribution of heights of 100 seedlings measured in a nursery.
+@ Why Appropriate: Useful for understanding frequency distributions and identifying patterns like
+skewness or normality.
+5. Box Plots (Whisker Plots)
+e Use: To summarize data distribution, highlighting the median, quartiles, and outliers.
+e Example: Comparing test scores of students in two different biology classes.
+e Why Appropriate: Shows spread, central tendency, and potential outliers clearly, especially for
+comparing multiple datasets.
+
+Choosing the Right Figure
+
+Selecting the most appropriate figure or chart is crucial for accurately representing data and effectively
+communicating results. A poorly chosen figure can obscure patterns, mislead the audience, or make interpretation
+difficult. To ensure clarity and accuracy, consider the following steps:
+1. Identify the Type of Data
+
+Understanding the nature of your data is the first step:
+
+e Categorical Data: Represents distinct groups or categories, such as blood types (A, B, AB, O) or plant
+species. These are best displayed using bar charts or pie charts. :
+
+« Numerical Data: Represents measurable quantities, such as height, weight, or enzyme activity. This can
+be discrete (countable, e.g., number of offspring) or continuous (measured on a scale, e.g., temperature).
+Distributions of numerical data are often shown using histograms, box plots, or scatter plots.
+
+2. Determine the Purpose of the Figure
+
+Consider what you want the figure to convey:
+
+© Comparing Categories: Use bar charts to highlight differences between groups, such as comparing the
+growth rate of three plant species under different fertilizers.
+
+© Showing Proportions: Use pie charts to visualize relative contributions, like the percentage of different
+cell types in a tissue sample.
+
+¢ Illustrating Trends or Relationships: Use line graphs or XY scatter plots to show changes over time or
+
+> correlations between variables, such as plotting temperature versus enzyme activity.
+
+e Analyzing Distributions: Use histograms or box plots to show how data are spread, identify outliers, or
+detect skewness in a dataset.
+
+3. Consider Clarity and Simplicity
+
+A figure should make patterns immediately apparent without overwhelming the viewer:
+
+¢ Keep labels clear and legible.
+
+© Avoid excessive colors or decorative elements that distract from the data.
+
+¢ Include a concise title and units of measurement where relevant.
+
+e Example: A bar chart comparing leaf length across four plant species should clearly label each species
+on the X-axis and the measurement on the Y-axis, avoiding 3D effects that distort perception.
+
+4. Avoid Misleading Representations
+
+Accuracy is critical in data visualization. Common pitfalls include:
+
+© Truncated axes: Cutting off the axis scale can exaggerate differences between bars or polrits:
+
+¢  {nappropriate scales: Using logarithmic scales without explanation may confuse readers,
+Overcomplicated visuals: Including too many categories or variables in one figure can obscure trends.
+Example: A bar chart showing population growth should start the Y-axis at zero to prevent overstating
+differences between groups.
+
+S$ studyplusplus.com S$
+
+
+--- Page 17 ---
+
+5. Match the Figure to the Audience
+Consider the knowledge level of your audience:
+
+Scientific peers may appreciate detailed scatter plots with regression lines.
+General audiences benefit more from simplified bar charts, pie charts, or line graphs that focus on the
+key message.
+
+By carefully assessing the type of data, purpose, clarity, accuracy, and audience, you can select figures that
+not only convey information effectively but also support valid scientific conclusions.
+
+legend, axes units.
+
+SKETCHING OR CONSTRUCTION OF BAR CHARTS AND PIE CHARTS WITH
+
+PROPER TITLE, LABELLED AXES, LEGEND, AXES UNITS
+
+With Proper Title, Labelled Axes, Legend, and Axis Units
+
+To construct a scientifically accurate and visually effective bar chart or pie chart, the following systematic
+steps should be followed:
+
+1.
+
+2.
+
+8.
+9.
+
+Select a graph paper of suitable size and determine the scale based on the type and range of data to be
+represented.
+
+Draw two perpendicular axes on the graph that intersect at the origin (zero point):
+
+©. The horizontal line (X-axis) usually represents the categories or data items.
+
+©. The vertical line (Y-axis) represents the quantitative values.
+
+Label both axes appropriately:
+
+© The X-axis should be marked with the names of the data items or variables.
+
+© The Y-axis should be labelled with the unit of measurement corresponding to the data values.
+Choose a uniform width for each bar.and maintain equal spacing between the bars along the horizontal
+axis to ensure visual balance.
+
+Determine the scale on the Y-axis based on the range of data. This scale will be used to calculate and
+draw the heights of the bars accurately.
+
+Mark the heights of the bars according to the scale using dots or guidelines.
+
+Draw the bars carefully, ensuring each one is proportional to the data it represents. It is important to
+recheck all measurements and values for accuracy.
+
+Add a descriptive title to the graph that reflects the purpose or nature of the data being represented.
+If necessary, include a legend to indicate different variables, especially in compound or comparative bar
+charts or when using pie charts.
+
+> Some basic steps to make a pie chart manually, follow these steps
+
+1.
+
+2.
+
+Gather Your Data: You'll need a list of categories and their values.
+
+Example: Category A: 20, Category B: 30, Category C: 50
+
+Calculate Total and Percentages: Add up the values to get the total. Then, for each category, divide its
+value by the total and multiply by 100 to get its percentage.
+
+Example: Total = 20 + 30 + 50 = 100, Category A: (20/100) x 100 = 20%, Category B: (30/100) x 100 =
+30%, Category C: (50/100) x 100 = 50%
+
+Convert Percentages to Degrees: Since a-circle is 360 degrees, multiply each percentage by 3.6 (because
+100% x 3.6 = 360°) to get each angle.
+
+Example: Category A: 20% x 3.6 = 72°, Category B: 30% x 3.6 = 108°, Category C: 50% x 3.6 = 180°
+Draw a Circle: Use a compass to draw a circle on your paper. Mark the center.
+
+Measure and Draw Each Segment: Start at the top of the circle (12 o'clock position). Use a protractor
+to measure each angle from the center, marking each section. Draw lines from the center to the edge
+
+Of the circle at each angle to divide the circle into sections.
+S$ studyplusplus.com S$
+
+
+--- Page 18 ---
+
+>
+
+>
+
+6. Label Each Segment: Write each category name and percentage inside or near each section.
+
+7. Add Color (Optional): You can color each segment differently for clarity.
+Bar chart and pie chart can be constructed by using computer software.
+Example 1: Draw simple bar graph/chart to represent the cotton (weight in Kgs) of produced per acer of
+land from five Bt cotton varieties (IR-NIBGE-370, RH-647, MNH-886, FH-142, |UB-2013 and FH-Lalazar)
+in year'2023.
+
+Cotton Varieties IR-NIBGE370 MNH-886 | FH-142 | 1UB-2013
+Production per acre (Kgs) 700 650 600 | 500 _|
+Production per acre (%eage) | 20% | 18.75%
+
+Simple bar chart using above data
+
+a
+ko)
+z
+o
+2
+g
+oO
+5
+a.
+-
+°o
+iJ
+s
+oS
+e]
+3
+io
+
+()
+IR-NIBGE-370  RH-647 MNH-886 FH-142 1UB-2013- FH-Lalazar
+Cotton Varieties
+Simple pie chart using above data
+Pie chart to show Cotton Production of Bt-cotton Varieties per Acre (Kgs) in 2023
+
+Trend Line and it's purpose
+
+Atrend line shows the overall direction or pattern in the data over time or across categories. In bar graphs,
+trend lines are usually drawn as a dotted line across the tops of the bars to show increasing, decreasing or
+constant trends. Trend line explains that
+
+“There is an increasing trend...
+
+"The trend line shows a gradual decline...
+
+So studyplusplus.com S$
+
+
+--- Page 19 ---
+
+“The trend remains fairly constant...
+
+“There is a sharp rise/ drop between..." etc.
+
+Example 2: Draw simple bar graph/chart to represent the prevalence of polio, showing number of confirm
+polio cases in Pakistan in last five years (2019-2023)
+
+[Years | 2019 T2020 |
+[No.of poliocases | 550 | 350_|
+
+No. of polio cases
+
+SKETCHING ERROR BARS BASED ON RANGE OR STANDARD DEVIATION ON
+A BAR CHART
+
+Error bars are graphical elements added to bar charts to represent the variability or uncertainty in data.
+They provide insight into the distribution spread, helping readers to better understand how much individual
+values deviate from the mean or another measure of central tendency. Commonly, error bars are used to show
+range, standard deviation (SD), or standard error. (SE).
+
+So studyplusplus.com S$
+
+
+--- Page 20 ---
+
+3.
+
+Calculate Error Values
+Range-Based Error Bars: For each data point or category, first determine the minimum and maximum values
+to get the range. The error bar's length will be half of the range, extending above and below the mean or
+median value. ‘
+Standard Deviation (SD) Error Bars: For each data point or category, calculate the standard deviation. Error
+bars will extend above and below the mean by one standard deviation.
+Range-Based Error Bars
+For each data point or category:
+e Identify the minimum and maximum values.
+© Calculate the range by subtracting the minimum from the maximum value.
+© The length of the error bar is typically half of the range, extending equally above and below the central
+value (e.g., mean or median).
+Standard Deviation (SD) Error Bars
+For each data point or category:
+© Compute the mean of the dataset.
+e Determine the standard deviation to quantify the average dispersion of values.
+© Drawerror bars that extend one standard deviation above and below the mean value.
+Note: In scientific publications, the number of standard deviations used (e.g., +1 SD, +2 SD) should be clearly
+specified.
+Draw the Bar Chart
+e Construct a bar chart in which each bar represents the mean (or median) value of a category.
+e Use equal-width bars with consistent spacing to maintain clarity and visual balance.
+Add Error Bars
+Vertical Error Bars
+« At the center of the top edge of each bar, draw a vertical line extending upward and downward by the
+calculated error value (range/2 or +SD).
+¢ Ensure that each error bar line is centered accurately on the bar to reflect symmetrical variability.
+End Caps
+© Add horizontal caps at the top and bottom of each error bar line. These caps enhance visibility and
+provide a clear, professional appearance.
+Length of Error Bars
+© The total length of each error bar should reflect the magnitude of the variability:
+o For range: half of the total range (above and below the central value).
+o For SD: one standard deviation above and below the mean.
+Error bar Length:
+(Max value —Min value)
+2
+For standard deviation, set it equal to the standard deviation.
+
+For range, set the error bar to
+
+Calculation for Standard Deviation
+
+Suppose we have the following data points for three categories in a biological experiment:
+
+1. Calculate the mean and standard deviation for each category.
+
+2. For each bar representing the mean of each category, add error bars with lengths based on the
+calculated standard deviations.
+
+3. Here are the data points, mean values, ranges and standard deviation (SD) and error bar lengths for each
+category:
+
+S$ studyplusplus.com S$
+
+
+--- Page 21 ---
+
+| A ___| (10,12,15,11,13)
+|B _| (20,21,22,19,18)
+30, 33, 32, 31,29)
+
+Graph showing error bars
+
+20
+
+215 12.2
+
+SLO [B-1
+
+-K-08]
+
+Design an appropriate experiment with control group and dependent, independent and control
+variables.
+
+EXPERIMENTAL DESIGN WITH CONTROL GROUP AND DEPENDENT,
+INDEPENDENT AND CONTROL VARIABLES
+
+In scientific experimentation, two primary types of groups are utilized to achieve reliable, interpretable, and
+comparative results: the experimental group and the control group. These groups serve as the foundation for
+analyzing the effects of experimental treatments and validating the findings.
+>» -Experimental Group
+
+In scientific experimentation, two primary types of groups are utilized to achieve reliable, interpretable, and
+
+comparative results: the experimental group and the control group. These groups serve as the foundation
+
+for analyzing the effects of experimental treatments and validating the findings.
+>» Control Group
+
+The control group is maintained under standard or unchanged conditions, without receiving the specific
+
+treatment applied to the experimental group. This group serves as a reference or baseline to evaluate the
+
+impact of the independent variable. The control group enables researchers to determine whether the
+observed effects are truly due to the treatment or simply the result of natural variations.
+
+Example: In the same fertilizer experiment, the plants that are not given fertilizer form the control group.
+
+These plants help determine whether the growth observed in the experimental group is due to the fertilizer
+
+or other environmental factors.
+
+Independent, Dependent and Controlled Variables
+
+There are three main types of variables in scientific investigations: independent, dependent, and controlled
+variables.
+> Independent Variables
+
+The independent variable is the variable that the researcher deliberately changes or manipulates during
+
+So studyplusplus.com S$
+
+
+--- Page 22 ---
+
+the experiment. It is hypothesized to cause an effect on-another variable and is therefore also referred to
+as the input variable or causal factor.
+
+Example: In the fertilizer experiment, the presence or absence of fertilizer is the independent variable, as
+it is being changed to study its impact on plant growth.
+
+Note: Only one independent variable should be manipulated at a time to ensure that any observed effect in
+the dependent variable is solely due to that change.
+
+Dependent variables
+
+The dependent variable is the variable that is measured or observed during the experiment. It reflects the
+outcome that results from the manipulation of the independent variable and is also known as the response
+variable or effect variable.
+
+Example: In the fertilizer experiment, the dependent variable could be plant height, number of leaves, or
+overall growth rate—all of which are expected to change based on the fertilizer treatment.
+
+It is important that dependent variables are measurable and ideally quantitative, to enable accurate
+recording, analysis, and comparison.
+
+Controlled variables
+
+Controlled variables, also known as constants, are all other factors that must be kept the same in both the
+experimental and control groups. By maintaining these variables constant, the researcher ensures that any
+change in the dependent variable is due solely to the independent variable, and not to other uncontrolled
+factors.
+
+Example: In the fertilizer experiment, amount of sunlight, temperature, water supply, type of plant, and
+soil quality are examples of controlled variables. If any of these were to change between groups, it could
+confound the results and compromise the validity of the experiment.
+
+Further examples of independent, dependent and control variables:
+
+Let’s consider a researcher investigating the effect of temperature on the rate of photosynthesis in plants.
+* Independent Variable:
+The temperature is the independent variable, as it is being deliberately altered to observe its effect.
+¢ Dependent Variable:
+The rate of photosynthesis (e.g., measured by oxygen output or glucose production) is the dependent
+variable, as it is expected to change in response to temperature variations.
+¢ Controlled Variables:
+To ensure a fair test, variables such as the type of plant, intensity and duration of light, and concentration
+of carbon dioxide (CO2) must remain constant throughout the experiment.
+Controlling these variables ensures that any variation in the rate of photosynthesis can be confidently
+attributed to changes in temperature.
+
+Why Only One Independent Variable Should Be Used
+
+It is essential to manipulate only one independent variable at a time. If multiple variables are changed
+
+simultaneously, it becomes impossible to determine which one is responsible for the observed effect in the
+dependent variable. This principle is central to maintaining the validity and accuracy of experimental results.
+
+Experimental Design
+
+Let’s consider two examples that illustrate how a controlled experiment is designed to study the effect of
+
+different factors on plant growth:
+
+>
+
+Experiment 1: Effect of Light Intensity on Plant Growth
+Objective: To investigate how different light intensities affect the growth of a specific plant (e.g., bean plants).
+
+Hypothesis: Plants exposed to higher light intensities will grow more compared to plants under lower light
+intensities.
+
+Materials required: 20 potted bean plants (similar age and size), light source with adjustable intensity, ruler,
+water and watering can, soil with same composition, thermometers.
+
+S$ studyplusplus.com S$
+
+
+--- Page 23 ---
+
+Procedure:
+Divide the 20 potted plants into five groups of four plants each.
+Place each group under different light intensities (e.g., 100%, 75%, 50% and 25%).
+-Ensure all groups receive the same amount of water and are kept at a constant temperature.
+Measure the height of the plants every three days continuously for four weeks.
+Record and analyze the growth data.
+
+Variables:
+
+Independent Variable: Light intensity (100%, 75%, 50%, 25% and 10%)
+Dependent Variable: Plant growth; which we could be measured by tracking the height of the plants (in cm)
+and number of leaves of the plants.
+
+Control Variables: Type of plant, type of soil, amount of water, temperature, duration of light, amount of
+COz, pot size and initial plant size.
+
+Control Group: Plants grown under the normal light intensity (e.g., 100%)
+
+yPwne
+
+Lee rcllted design at the start
+of experiment
+
+perimental design to check the effect of light intensity on plant growth
+
+GROUP A
+100% intensity
+
+GROUP B
+75% intensity
+
+GROUP C
+50% intensity
+
+GROUP A
+25% intensity
+
+GROUP A
+10% intensity
+
+Figure: Experimental results showing the effect of light intensity on plant growth,
+
+So studyplusplus.com S$
+
+
+--- Page 24 ---
+
+Experiment 2: Effect of different amounts of water on plant growth
+
+Objective: To investigate how different amounts of watering, affects the growth of a specific plant (e.g.,
+potato plants).
+
+Hypothesis: Plants given more amount of water ( 1000 ml per week) will grow more compared to plants
+given lower amount of water.
+
+Materials required: 20 potato plants (similar age and size) in lager pots, water and graduated watering can,
+Light source with same intensity for all plants, ruler, soil with same composition, Thermometer.
+
+1000 miweek 800 mi/week 600 mi/week 400 miAveek 200 midweek
+Experimental design at the start of experiment
+Figure: Experimental design to check the effect of amount of water on plant growth
+
+Procedure:
+1. Divide the 20 potato plants potted in larger but same size pots into five groups of four plants each.
+2. Place all five groups under light of same higher intensity (100%) and at a constant temperature (30°C).
+3. Give different amount of water per week to each group of plants (1000ml, 800ml, 600ml, 400ml and
+
+200 ml).
+4. peace the height (in cm) of the plants and number of leaves on each group of plants after every three
+
+days continuously for six weeks.
+
+5. » Record and analyze the data of plant growth.
+800 mi 600 mi 400 mi 200 mi
+
+(Amount of water per week)
+Figure: Experivnental results showing the effect of amount of water on plant growth
+
+Variables:
+
+Independent Variabic: “‘nount of water given per week to each group of plants (1000ml,800ml,
+600ml, 400ml and 2¢” «). :
+Dependent Variable: :*:ent growth; which we could be measured by tracking the height of the plants (in cm)
+and number of leaves of the plants.
+
+Control Variables: Type and species of plant, type of soil, duration and intensity of light, temperature,
+amount of COz, pot size and initial plant size.
+
+Contro) Group: Plants watered 1000 ml per week.
+
+Experiment 3: Effect of Different pH Levels on Enzyme Activity
+
+Objective: To examine how pH levels affect the activity of the enzyme catalase in breaking down hydrogen
+peroxide.
+
+S$ studyplusplus.com $
+
+
+--- Page 25 ---
+
+1.
+
+3.
+
+Hypothesis: Catalase will have the highest activity at a neutral pH and will be less active in acidic or alkaline
+
+conditions.
+
+Materials required: Hydrogen peroxide solution, catalase (can use potato or liver tissue as a source), Test
+
+tubes, pH buffer solutions (pH 4, pH 7, pH 10), Stopwatch, Measuring cylinder, Thermometer
+
+Procedure:
+
+1. Place an equal amount of catalase in each test tube.
+
+2. ‘Add 10 mL of hydrogen peroxide to each test tube.
+
+3. Add different pH buffers to each tube to achieve desired specific pH levels for each test tube.
+
+4. Start the stopwatch as soon as hydrogen peroxide is added, and observe the time taken for bubbles to
+form or the amount of gas produced after 1 minute.
+
+5. Repeat three times for each pH and calculate the average.
+
+Variables:
+
+Independent Variable: pH level (pH 4, pH 7, pH 10).
+
+Dependent Variable: Enzyme activity (rate of reaction measured by gas produced or reaction time).
+
+Control Variables: Amount of hydrogen peroxide, amount of catalase, temperature, and test tube size.
+
+Control Group: Reaction at neutral pH (pH 7).
+Above mentioned experiments, will give a hands-on and easily observable understanding to students of
+scientific methods and the effects of variables on biological processes.
+
+SLOs Based (MCQs)
+
+STANDARD DEVIATION 5. Which of the following is essential when
+Which of the following best describes standard sketching a bar chart?
+deviation? A. Triangular bars
+A. The middle value in a dataset B. Unequal gaps between bars
+B. The difference between the highest and lowest C. Labelling axes and providing a title
+values D. Placing bars diagonally _
+
+6. _ Ina bar chart, the height of each bar represents:
+A. The size of the sample
+B, The measurement scale
+
+If the standard deviation of a dataset is zero, it 5 bi apernue.ci re ae value
+means that: . The range of the datas
+
+A. The values are extremely variable > — PIE CHART
+7. Apie chart is most suitable for representing:
+A. Individual scores.
+B. Time-series data
+C, Part-to-whole relationships
+D. Dispersion of data
+8. Ina pie chart, the whole circle represents:
+A. A frequency table
+B. 50% of the data
+C. 100% of the total data
+D. Only categorical variables
+
+C. The average of all values in a dataset
+D.The measure of how spread out values are
+from the mean
+
+B. The mean is zero
+
+C. All values are the same
+
+D. There is no data
+
+A larger standard deviation in a dataset
+indicates:
+
+A. Less consistency among the values
+
+B. More similarity among the values
+
+C. A higher mean
+
+D. A lower median
+
+BAR CHART 9. Which of the following is true about pie charts?
+In a simple bar chart, each bar represents: A. They are used to display ranges
+
+A. Acategory’s average over time B. They use bars to display values
+
+B. One data value or figure C. Each slice is proportional to the category's
+C. A changing variable over a timeline percentage
+
+D. The frequency ofa variable at multiple time points D. They are based on continuous data
+
+S$ studyplusplus.com S$
+
+
+--- Page 26 ---
+
+10.
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+1.
+
+2.
+
+PERCENTILE
+
+The 75th percentile is the value:
+
+A. At the lower end of the dataset
+
+B. Below which 75% of the data lies
+
+C. That equals the mean
+
+D. Above which 75% of values are found
+
+If a student’s score is in the 90th percentile, it
+means:
+
+A. 10% of students scored more
+
+B. 90% of students scored higher
+
+C. 10% of students scored the same
+
+D. The student scored below average
+
+Which of the following percentiles corresponds
+to the median?
+
+A. 25% B. 75"
+c. 50" D. 99"
+RANGE
+
+Range is calculated by:
+
+A. Dividing total values by number of values
+
+B. Subtracting the lowest value from the highest
+C. Adding the highest and lowest values
+
+D. Subtracting mean from each value
+
+Which of the following is a limitation of using
+range?
+
+A. It considers all data points equally
+
+B. It is affected by outliers
+
+C. It is difficult to calculate
+
+D. It gives a precise measure of central tendency
+Asmall range in a biological experiment indicates:
+A. High variation in responses
+
+B. Greater effect of outliers
+
+C. Low consistency in results
+
+D. Uniformity among subjects
+
+¥
+
+Vv
+
+MEDIAN
+
+Median is defined as:
+
+A. The highest value in the dataset
+
+B. The most frequently occurring value
+
+C. The middle value when data is arranged in order
+D. The average of all data points
+
+Which type of data is most suitable for using the
+median as a measure of central tendency?
+
+A. Data with no variation
+
+B. Data with extreme outliers
+
+C. Uniform data
+
+D. Data that is normally distributed
+
+CONTROL AND EXPERIMENTAL GROUPS
+
+The group in an experiment that receives the
+
+treatment is called the:
+
+A. Control group B. Test group
+
+C. Experimental group D. Reference group
+
+The control group in an experiment is used to:
+
+A. Ensure that the sample size is increased
+
+B. Increase the variability of the data
+
+C. Compare results with the experimental group
+
+D. Eliminate the need for statistical analysis
+
+Which of the following statements about
+
+experimental design is correct?
+
+A. Only the dependent variable is changed
+
+B. The experimental group serves as a benchmark
+
+C. Controlled variables should change during the
+experiment
+
+D.Only the independent variable is deliberately
+manipulated
+
+Numerical Problems
+
+Find the mean of the following data: 12, 18, 25, 30, 15.
+Step 1: Add all the numbers: 12 + 18 + 25 + 30+ 15 =100
+
+Step 2: Count the number of values: 5
+
+MARKING SCHEME (3 Marks)
+© mark for each step
+
+Step 3: Divide the sum by the number of values: 100 + 5 = 20
+
+Answer: Mean = 20
+
+Find the median of the following data: 8, 11, 15, 18, 21.
+Step 1: Arrange data in ascending order (already arranged): 8, 11, 15, 18, 21
+
+Step 2: Find the middle value: 15 (3rd value)
+Answer: Median = 15
+
+°
+
+studyplusplus.com
+
+MARKING SCHEME (3 Marks)
+¢ 1.5 marks for each step
+
+°
+
+
+--- Page 27 ---
+
+3. Find the mode of the following data: 5, 8, 9, 8, 10, 11, 8. MARKING SCHEME (3 Marks)
+Step 1: Count the frequency of each number: © 1.5 marks for each step
+5:1 time, 8: 3 times, 9: 1 time, 10: 1 time, 11: 1 time
+Step 2: The most frequent value is 8
+Answer: Mode = 8
+
+4. Calculate the range of the following values: 45, 60, 30, 25, 55. MARKING SCHEME (3 Marks)
+Step 1: Identify maximum value = 60 © Amark for each step
+Step 2: Identify minimum value = 25
+Step 3: Range = 60-25 =35
+Answer: Range = 35
+
+5. Find the standard deviation (population) of: 5, 7, 9. MARKING SCHEME (3 Marks)
+Step 1; Find the mean = (5 +7 + 9)/3 = 21/3 =7 ‘© 0,75 mark for each step
+Step 2: Find squared deviations: (5-7)? = 4, (7-7)? =0, (9-7)? =4
+Step 3: Mean of squared deviations = (4 + 0 + 4)/3 = 8/3 = 2.67
+Step 4: Standard deviation = v2.67 = 1.63
+Answer: SD = 1.63
+
+6. Find the mean of: 40, 50, 60, 70, 80, 90. MARKING SCHEME (3 Marks)
+Step 1: Add all numbers: 40 + 50 + 60 + 70 + 80 + 90 = 390 © Lark for each step
+Step 2: Count of numbers = 6 .
+Step 3: Mean = 390+6=65
+Answer: Mean = 65
+
+7. Calculate the median of: 14, 22, 18, 20, 19. MARKING SCHEME (3 Marks)
+Step 1: Arrange in ascending order: 14, 18, 19, 20, 22 © 1.5 marks for each step
+Step 2: Middle value = 19 (3rd value)
+Answer: Median = 19
+
+8. Calculate the mode for the dataset: 2, 3, 2, 4, 5, 3, 3. MARKING SCHEME (3 Marks)
+Step 1: Frequency count: 2: 2 times, 3; 3 times, 4: 1 time, 5: 1 time © 1.5 marks for each step
+Step 2: The most frequent value is 3
+Answer: Mode = 3
+
+9. Calculate the range for the data: 101, 97, 105, 110, 99. MARKING SCHEME (3 Marks)
+Step 1: Max = 110, Min = 97 © 1.5 marks for each step
+Step 2: Range = 110-97 = 13
+Answer: Range = 13
+
+10. Calculate population standard deviation for: 2, 4, 6, 8. MARKING SCHEME (3 Marks)
+Step 1: Mean = (2+ 4+6+8)/4=20/4=5 * 0.75 mark for each step
+
+Step 2: Squared deviations: (2-5)? = 9, (4—5)* = 1, (6-5)*= 1, (8B—5)?=9
+Step 3: Mean of squared deviations = (9+1+1+9)/4 = 20/4 =5
+
+Step 4: Standard deviation = v5 = 2.24
+
+Answer: SD = 2.24
+
+Exercise
+> Multiple Choice Questions (MCQs)
+
+Select the correct Answer. experiment Is called.
+
+FORE TE a EP Tg A. Dependent variable _B. Independent variable
+
+ri ffects of pH levels
+pats eee SS eecadeck C. Control variable D. Experimental variable
+variable will be 3. Variables that researcher measure to determine
+A. pH B. Temperature the ‘effect of the Independent variable is also
+C. Substrate D. Reaction time known as:
+
+2. The variable that the experimenter changes in A. Outcome variables _B, Input variables
+the experiment to check its effect during C. Cause variables D. Contro) variable
+
+S$ studyplusplus.com S$
+
+
+--- Page 28 ---
+
+10.
+
+To which of the following fields of life sciences,
+biostatistics is not applicable?
+
+A. Health B. Chemical engineering
+C. Agriculture D. Medicine
+
+25” percentile is the value of the data points lie.
+A. Above which 25% B. Below which 25%
+
+c. 3/4" D.25
+
+Biostatistics is not involved in:
+
+A. Epidemiological studies B. Agriculture
+
+C. Petroleum industry D. Public Health
+
+The factors that must be kept constant during an
+experiment across both the experimental and
+control groups are known as
+
+A. Control variables B. Outcome variables
+C. Input variables D. Cause variables
+
+All of the followings are types of averages except:
+A. Arithmetic Mean B. Median
+
+C. Mode D. Product of data values
+The symbol for mean is: i
+
+A.X (read as “x bar”)
+
+B. X (read as “x tilde”)
+
+C. 2 (read as “x-hat”)
+
+D. h (“read as highly stable”)
+
+Formula of "Mean" for un-group data is:
+
+sk Bx
+“on
+
+B. =
+tf
+a rf
+
+n+l
+Ef2 2
+
+14.
+
+Find the mode from this dataset given
+
+46,49, 55,58, 62,66, 64, 65, 66,67,68,70,72:
+
+A. 46 B. 62
+
+Cc. 66 D.72
+
+The first step in genetic engineering is:
+
+A. Isolation of the gene of interest
+
+B. Insertion of the gene into a vector
+
+C. Transfer of recombinant DNA into the host
+organism
+
+D. Expression of the gene
+
+Biostatistics is similar to maths because of:
+
+A. Calculations
+
+B. Counting birds
+
+C. Used of symbol pie
+
+D. It is also useful in engineering studies
+
+If the numbers of diseased persons is greater in
+
+2nd year of study than 1st year then
+
+A. Height of the bar will be greater in 1t year
+
+B. Width of the bar will be greater in 1% year
+
+C. Height of the bar will be smaller in 1%t year
+
+D. Width of the bar will be greater in 2" year
+
+In a bar chart of number of deaths due to
+
+hepatitis in Pakistan in last 10 years what will we
+
+write at the x-axes of graph?
+
+A. Years B. Number of deaths
+
+C. Any of the value D. Causes of hepatitis
+
+[2.8 [3.a [4.68 [5.8 [6c [7a [8D [9.A [10.A]32.c[ 12.0] 13.0] 14.¢]15.A]
+
+Dd Short Answer Questions
+
+Q.1 How is Standard Deviation different from Range?
+
+Ans. Standard deviation measures the average spread of values around the mean, showing overall data
+
+variability.
+
+Range only shows the difference between the highest and lowest values.
+Thus, standard deviation gives a more detailed view of dispersion than range.
+
+Q.2 What are the demerits of relying on range to decide future plans in scientific experiments?
+
+Ans. Range is influenced by extreme values and ignores how data is distributed in between.
+It does not reflect consistency or clustering of values.
+Relying on range alone can lead to misleading conclusions in experiments.
+
+Q.3 Why isthe control group important in scientific experiments?
+
+Ans. A control group provides a baseline to compare the effects of a variable.
+
+It helps in determining whether the observed outcome is due to the treatment or another factor.
+Control groups enhance the reliability of experimental results.
+
+°
+
+studyplusplus.com
+
+°
+
+ie
+sc
+
+
+--- Page 29 ---
+
+Q.4 Define mean, median, and mode.
+Ans. ® Mean: The mean is the arithmetic average of a dataset, calculated by dividing the sum of all values by
+the total number of values. 3
+® Median: The median is the middle value in a dataset arranged in ascending or descending order; if the
+number of observations is even, it is the average of the two central values.
+* Mode: The mode is the value that occurs most frequently in a dataset; a dataset may have one mode
+(unimodal), more than one mode (bimodal or multimodal), or no mode at all.
+
+Q.5 Write down the formulae of median and mode.
+Ans. ¢ Median (for odd n) = Middle value
+© Median (for even n) = (n/2th value + (n/2 + 1)th value) /2
+© Mode (for grouped data) = L + [(fi - fo) / (2f: - fo - fa) xh
+Where: :
+L= lower boundary,
+f, = modal class frequency,
+fo = preceding class frequency,
+fz = following class frequency,
+h = class width
+
+Q.6 What is the importance of mean calculation?
+
+Ans. Mean provides a central value fora dataset, summarising the overall trend.
+It is useful in comparing groups and identifying general patterns in data.
+Mean is widely used in scientific, economic, and social analyses.
+
+Q.7 Why is the value of mean not completely reliable to get the correct picture?
+Ans. Mean is sensitive to extreme values (outliers), which can distort results.
+
+It may not represent skewed or bimodal data accurately.
+
+Hence, median or mode may be better indicators in such cases.
+
+Q8 Write the formula for calculation of Mode.
+Ans. For ungrouped data: Mode = Value with the highest frequency
+For grouped data:
+Mode = L + [(f,- fo) / (2f - fo- f2)] xh
+Q.9 How isa bar chart different from a pie-chart?
+Ans. A bar chart displays data using rectangular bars, with height representing frequency:
+A pie chart shows data as slices of a circle, representing proportion.
+Bar charts are ideal for comparisons; pie charts are better for showing percentages.
+Q.10 Write one similarity and one difference between rectangle graph and pie graph.
+
+Ans. Similarity: Both represent categorical data visually.
+Difference: Rectangle (bar) graphs use bars to show frequency; pie charts use circle slices to show proportions.
+
+Q.11 How is graphical representation of data more important than tabular representation?
+Ans. Graphs make data easier to interpret at a glance.and highlight trends, patterns, and outliers.
+They enhance visual learning and communication.
+Tabular data is detailed, but harder to analyse quickly.
+Q.12 Find the standard deviation of the values: 33, 55, 66, 84, 91, 72, 68, 87, 78, 66, 82, 46, 71, 31, 38
+Given Values:
+Set (n = 15):
+33, 55, 66, 84, 91, 72, 68, 87, 78, 66, 82, 46, 71, 31, 38
+Mean (u) = 64.73 (already calculated)
+
+S$ studyplusplus.com S$
+
+
+--- Page 30 ---
+
+Step 1: Subtract the Mean and Square the Result
+
+1006.73
+94.67
+
+1.27 1.61
+
+19.27 371.33
+
+‘1 26.27 690.11
+7
+
+22.27
+
+5
+_87
+
+78 13.27 176.09
+1.61
+
+66
+82
+
+7 39.
+nar 7
+734.49
+
+Step 2: Sum of Squared Differences
+2(x- p)? = 5442.31
+Step 3: Calculate the Variance
+Variance (¢*\ - E(x - p)? / n= 5442,31/ 15 = 362.82
+Step 4: Take the Square Root of Variance
+. Standard Deviation (0) = V362.82 = 19.05
+
+Q.13 Calculate the median of the dataset in question 12.
+
+Ans. Ordered values: 31, 33, 38, 46, 55, 66, 66, 68, 71, 72, 78, 82, 84, 87,91
+Total values (n) = 15
+Median = 68 (8th value in the ordered list)
+
+>=
+
+Q.1 What are advantages and disadvantages of Median?
+Ans. Advantages of Median:
+¢ Not affected by extreme values: Unlike the mean, the median is resistant to outliers and skewed data,
+providing a better measure of central tendency when data is not symmetrically distributed.
+¢ Useful for ordinal data: Median can be used when data is ranked or ordered but not measured precisely
+(e.g. rating scales).
+© Easy to understand and calculate: Especially with small datasets, it is straightforward to determine the
+middle value.
+Disadvantages of Median: -
+«Ignores actual values of data; It does not consider the magnitude of all values, only their position.
+¢ Not suitable for further statistical analysis: Unlike mean, it cannot be used in algebraic calculations or
+inferential statistics.
+
+¢ Sensitive to data arrangement: Requires data to be sorted, which can be time-consuming for large
+datasets,
+
+S$ studyplusplus.com S$
+
+
+--- Page 31 ---
+
+Q.2 Describe detailed procedure to add error bars in the graph.
+Ans. Add Error Bars:
+Vertical Error Bars: Draw a line centered on each bar, extending upward and downward by the calculated
+range or standard deviation. Use caps on the ends of each line for a clean representation.
+Error bar Length: For range, set the error bar to
+(Max value— Min value)
+
+2
+For standard deviation, set it equal to the standard deviation?”
+Calculation for Standard Deviation
+Suppose we have the following data points for three categories in a biological experiment:
+1. Calculate the mean and standard deviation for each category.
+2. For each bar representing the mean of each category, add error bars with lengths based on the
+calculated standard deviations. : 5
+3. Here are the data points, mean values, ranges and standard deviation (SD) and error bar lengths for each
+
+category:
+Standard lengths of error
+ron] owns. | deviation (0) bars (SD)
+as
+a Baas :
+
+(10,12,15,11,13) "
+(20,21,22,19,18) | 20.0 |
+[-¢ _['(30, 33,32, 31,29) 7g@g 7] 2 ase | ass |
+
+= 15 12.2
+
+A B c
+Category
+
+Q.3 Complete the following table by filling the values of Cumulative frequency.
+
+Class (no. of flowers/plant) | Frequency (no. ofplants=n) [Cumulative Frequency |
+
+ER ee ee ee Dee eee
+Ee SR ee ee |
+eae ee ee a Ee
+
+QA Give details steps to construct the Bar-chart.
+
+Ans. Some Basic Steps in Sketching of Bar Charts are:
+1. Take a graph paper with suitable sizes and scales as per requirement and type of data.
+2. Draw two lines on the graph, perpendicular to each other and intersecting at zero.
+3. Label the axis of the graph, horizontal line is X-axis and vertical line is Y-axis.
+
+4. Choose uniform width of bars and uniform gap between the bars along the horizontal axis (X axis).
+
+So studyplusplus.com S$
+
+
+--- Page 32 ---
+
+5. Label X-axis with the names of the data items whose values are to be presented.
+
+6. Choose a suitable scale to determine and specify the heights of the bars for the given values along the
+vertical axis (Y-axis).
+
+7. Label the Y-axis scale with specific unit of data value to grade the length of bars.
+
+8. Calculate the heights of the bars. According to the scale chosen and mark as dots.
+
+9. Draw the bars carefully and recheck all the entries. :
+
+Bars in the graph may be drawn vertically or horizontally but normally vertical bars are used.
+
+———— EES
+Q.5 For what the letters |, fm, f:, f2 and h stands for in the given formula? For which calculation this formula is
+
+ffi) xh ]
+
+used? I+ ae ALLL
+
+le “f,)+(fa-f)
+
+Ans. This formula is for Mode = the most frequent or repeated value occurring in a given dataset.
+Formula for calculating Mode for Group data is given below
+
+si (fn-fi)xh |
+mse = if Ey
+Where, L= lowercase boundary of model group
+fm = Maximum frequency of a group
+f, = previous frequency of fm
+f2 = next frequency of fm
+h = class interval of model group
+
+Q.6 Sketch and label the Pie-chart by using the data given in the table below about the deaths of vulture birds
+due to pollution in last five years? Also label the data values in the pie-chart.
+
+[Years |.2019 | 2020 | 2023 | 2022 [ 2023 |
+LNo. of deaths |
+
+Ans. Calculate the Total Number of Deaths:
+Total = 250 + 400 + 275 + 350 + 175 = 1450
+Convert each Value into an Angle:
+(250/1450)x360 = 62.07°
+
+18.
+
+Vulture Deaths due to Pollution (2019-2023)
+
+S$ studyplusplus.com S$
+
+
+--- Page 33 ---
+
+Dk i a Ta A a A TT a a a a te Tt oe ES PT eet
+Q.7 Draw a table and then sketch and label the bar-chart by using the data of height (in cm) collected from
+200 students of 12th class of your college.
+
+Ans.
+
+30 Frequency (Number of students)
+
+25
+
+42
+
+=
+
+3
+
+315
+
+GB
+
+© 10
+
+Ss
+
+Zz
+
+i
+
+MoM oH ofl ofl ofl «Boll oll cH s
+Cg FF FE Se OS
+
+Student height cm
+
+Q.8 Compare and contrast control variables, dependant variables and independent variables.
+Ans. In scientific experiments, variables are classified based on their role in the investigation:
+Independent Variable: This is the variable that the researcher deliberately changes or manipulates to
+observe its effect. It is considered the cause in the cause-effect relationship.
+e Dependent Variable: This is the variable that is measured or observed in response to changes in the
+independent variable. It represents the effect or outcome of the experiment.
+© Control Variables: These are the variables that are kept constant throughout the experiment to ensure
+that the effect on the dependent variable is only due to the independent variable. They eliminate
+alternate explanations for observed changes.
+Comparison:
+e The independent variable is manipulated, the dependent variable is measured, and control variables are
+held constant.
+* Independent and dependent variables are related through cause and effect, while control variables
+ensure the reliability of this relationship.
+
+Q.9 Describe the usage of percentile along with its demerits.
+
+Ans. A percentile is a statistical measure indicating the value below which a given percentage of observations in
+a group falls. For example, the 60th percentile means 60% of the data falls below that value.
+Usage:
+© Percentiles are widely used in educational testing, growth charts, and performance evaluations.
+@ = They help in ranking individuals or values relative to a group.
+
+They are useful in identifying outliers or extreme values in datasets.
+
+Demerits:
+
+e Percentiles do not reflect the exact score difference between individuals (non-linear intervals).
+© They can be misleading for small sample sizes.
+
+© They may oversimplify variability and hide patterns within the data.
+
+ek cee cate le et
+Q.10 Describe stepwise details to make the appropriate chart with proper title, labeled axes, legend, and axis
+units from a fictitious data set.
+
+Ans. With Proper Title, Labelled Axes, Legend, and Axis Units:
+To construct a scientifically accurate and visually effective bar chart or pie chart, the following systematic
+
+steps should be followed:
+
+So studyplusplus.com S$
+
+
+--- Page 34 ---
+
+3.
+
+Select a graph paper of suitable size and determine the scale based on the type and range of data to be
+represented.
+
+Draw two perpendicular axes on the graph that intersect at the origin (zero point):
+
+© The horizontal line (X-axis) usually represents the categories or data items.
+
+o The vertical line (Y-axis) represents the quantitative values.
+
+Label both axes appropriately:
+
+© The X-axis should be marked with the names of the data items or variables.
+
+o The Y-axis should be labelled with the unit of measurement corresponding to the data values.
+Choose a uniform width for each bar and maintain equal spacing between the bars along the horizontal
+axis to ensure visual balance. '
+
+Determine the scale on the Y-axis based on the range of data. This scale will be used to calculate and
+draw the heights of the bars accurately.
+
+Mark the heights of the bars according to the scale using dots or guidelines.
+
+Draw the bars carefully, ensuring each one is proportional to the data it represents. It is important to
+recheck all measurements and values for accuracy.
+
+Add a descriptive title to the graph that reflects the purpose or nature of the data being represented.
+If necessary, include a legend to indicate different variables, especially in compound or comparative bar
+charts or when using pie charts. ¢
+
+Some Basic Steps to MAKE a Pie Chart Manually, Follow these Steps:
+
+2.
+
+2.
+
+Gather Your Data: You'll need a list of categories and their values.
+
+Example: Category A: 20, Category B: 30, Category C: 50
+
+Calculate Total and Percentages: Add up the values to get the total. Then, for each category, divide its
+value by the total and multiply by 100 to get its percentage.
+
+Example: Total =20+30+50=100, Category A: (20/100)x100=20%, Category B: (30/100)
+100 = 30% , Category C: (50/100)x100=50%
+
+Convert Percentages to Degrees: Since a-circle is 360 degrees, multiply each percentage by 3.6 (because
+100% x 3.6 = 360° ) to get each angle.
+
+00+ @ ele @eoooe
+
+S$ studyplusplus.com S$

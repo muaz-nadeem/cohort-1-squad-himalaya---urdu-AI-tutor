@@ -1,0 +1,2707 @@
+
+
+--- Page 1 ---
+
+Chapter # 03
+
+Respiratory System of Man
+
+Student Learning Outcomes
+
+After studying this chapter, students will be able to:
+[B-12-R-01] Define the respiratory surface and list its properties.
+{B-12-R-02] Describe the main structural features and functions of human respiratory system.
+[B-12-R-03] Explain the ventilation mechanism in humans.
+
+[B-12-R-04] Discuss the transport of oxygen and carbon dioxide through blood.
+
+[B-12-R-05] Outline the role of respiratory pigments.
+
+[B-12-R-06] State the causes, symptoms and treatment of upper respiratory tract infections (sinusitis,
+otitis media) and lower respiratory infections (pneumonia, pulmonary tuberculosis).
+
+[B-12-R-07] Describe the disorders of lungs (emphysema and COPD)
+
+[B-12-R-08] List the effects of smoking on respiratory system.
+
+Respiration, like all essential life processes, operates at two distinct levels: the cellular fevel and the
+organismic level. At the cellular level, the process is termed internal respiration. It is a catabolic reaction involving
+the enzymatic breakdown of complex organic compounds, such as glucose, into simpler molecules—primarily
+carbon dioxide and water—accompanied by the release of energy in the form of ATP (adenosine triphosphate).
+This energy fuels various metabolic activities essential for life.
+
+At the organismic level, the process is known as external respiration, which involves the exchange of gases
+between the organism and its environment. Oxygen is inhaled into the body, transported to tissues, and carbon
+dioxide—produced as a byproduct of internal respiration—is expelled.
+
+These two levels of respiration are intricately linked. The oxygen taken in during external respiration serves
+as the final electron acceptor in cellular respiration, while the carbon dioxide generated at the cellular level is
+removed through the process of breathing.
+
+This chapter explores the biological, biochemical, and physiological dimensions of respiration, highlighting
+the mechanisms, adaptations, and significance of this fundamental life process.
+
+Define the respiratory surface and list its properties.
+
+Sesnaaelinnaeenn nine
+
+PROPERTIES OF RESPIRATORY SURFACE
+
+——_—_—_—_—_—_—_—_————
+Definition
+
+The respiratory surface is the specific region of an organism where the actual exchange of gases with the
+exteinal environment takes place. This surface plays a central role in facilitating the diffusion of respiratory
+gases—primarily oxygen and carbon dioxide—between the organism and its surroundings.
+
+Properties of Respiratory Surface
+
+For gas exchange to be efficient, the respiratory surface must exhibit certain critical properties:
+
+¢ Moist and Permeable: Gases dissolve in moisture before diffusing across membranes. A moist surface
+ensures that oxygenand'carbon dioxide can effectively pass through the membrane.
+
+¢ Thin Structure: Diffusion is only efficient over short distances. A thin respiratory membrane (generally
+less than 1 mm) minimizes the path length for gas molecules, enhancing the rate of exchange.
+
+S$ studyplusplus.com S$
+
+
+--- Page 2 ---
+
+@ Large Surface Area: A greater surface area allows for the exchange of a larger volume of gases. This is
+
+especially important in active organisms with high metabolic demands.
+
+© Rich Blood Supply: A dense capillary network ensures that gases are rapidly transported to and from
+
+the respiratory surface, maintaining an effective concentration gradient.
+
+© Efficient Ventilation Mechanism: Continuous ventilation replaces oxygen-depleted air or water and
+
+removes carbon dioxide. This helps maintain a steep diffusion gradient, which is essential for sustained
+gas exchange.
+
+The alveoli of human lungs are lined with a surfactant, a film of lipoprotein that lowers the surface tension
+and prevents them from closing. Surfactant also speeds up the transport of oxygen and carbon dioxide between
+the air and liquid lining the alveolus and helps to kill any bacteria, which reach the alveoli. Surfactant is constantly
+being secreted and reabsorbed in a healthy lung.
+
+tures and functions of human respiratory system.
+
+RESPIRATORY SYSTEM OF MAN
+
+The respiratory system is the biological system responsible for the exchange of gases—primarily oxygen
+and carbon dioxide—between the body fluids and the external environment. This system ensures that oxygen
+reaches the cells for energy production and that carbon dioxide, a metabolic waste product, is efficiently removed.
+
+Anatomically, the human respiratory system is divided into two major regions:
+
+Upper Respiratory Tract
+
+The upper respiratory tract includes the nose,
+nasal cavity, and pharynx. These structures are the Nasal cavity Upper
+first gateway of the respiratory system, performing the respiratory
+essential functions of filtering, warming, and z tract
+
+humidifying the air before it passes into the lungs.
+1. Nose and Nasal Cavity
+
+The nose is the only externally visible structure
+of the respiratory system. It is made up of bones,
+cartilage, and adipose tissue, giving it both
+strength and flexibility.
+
+e The two nostrils (external nares) open into
+the nasal cavity, which is divided into right F
+and left halves by the nasal septum. Diaphragm
+
+e The anterior-parts of these cavities, called Figure: Human respiratory tract
+vestibules, are lined with coarse hairs
+(vibrissae) that trap large dust particles.
+
+The inner surfaces of the nasal cavity are lined
+
+with a ciliated mucous membrane, which plays
+
+a crucial protective and conditioning role:
+
+> Functions of the Nasal Cavity:
+
+¢ Filtration: Hairs and sticky mucus trap dust,
+microbes, and airborne pollutants.
+
+¢ Ciliary Action: Cilia continuously sweep
+mucus and trapped particles backward
+toward the pharynx, where they are either
+swallowed or expelled.
+
+¢ Humidification: Mucus adds moisture to
+incoming air, preventing dryness of delicate
+lung tissues. Figure: Human respiratory tract
+
+* Warming of Air: A rich supply of blood
+capillaries beneath the mucous membrane warms the inhaled air to about 30°C, close to body temperature.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 3 ---
+
+© Olfaction: The upper part of the nasal cavity contains olfactory receptors, allowing the sense of smell,
+which also helps detect harmful substances.
+2. Pharynx
+The pharynx is a funnel-shaped muscular tube about 12-14 cm long. It connects the nasal and oral cavities
+to the larynx and esophagus, functioning as a common passageway for both air (respiration) and food
+(digestion).
+Structurally, the pharynx is divided into three regions:
+1. Nasopharynx
+© Located behind the nasal cavity.
+o Contains openings of the Eustachian tubes (auditory tubes), which equalize air pressure in the
+middle ear.
+o Contains the pharyngeal tonsils (adenoids), which provide immune defense against inhaled
+pathogens.
+2. Oropharynx
+oO Lies behind the oral cavity.
+© Serves.as a common passageway for both air and food.
+© Contains the palatine tonsils and lingual tonsils, which also have immune functions.
+3. Laryngopharynx
+© Located behind the larynx and leading into both the larynx.(respiratory system) and esophagus
+(digestive system).
+© Actsasa crossroad where food is directed toward the esophagus and air toward the larynx.
+Lower Respiratory Tract
+The lower respiratory tract includes the larynx, trachea, bronchi, bronchioles, alveolar ducts, and alveoli.
+Its primary role is to conduct air into the lungs and ensure efficient gas exchange between air and blood.
+1, Larynx (Voice Box)
+The larynx lies just below the pharynx and marks the entrance to the trachea. It is a muscular and
+cartilaginous chamber that not only allows air passage but also plays a vital role in protection and sound
+production.
+>» Functions of the Larynx:
+* Air Conduction: Provides a passageway for air between the pharynx and trachea.
+* Airway Protection: During swallowing, the epiglottis (a flap-like elastic cartilage) folds backward to
+cover the laryngeal opening, preventing food or liquid from entering the trachea.
+Voice Production: The vocal cords (vocal folds) inside the larynx vibrate when air passes through them,
+producing sound. Pitch and tone are controlled by the tension and length of these cords.
+© Voice Modulation: The glottis, which is the opening between the vocal cords, is lined by mucous
+membrane and adjusts in size to help in voice control and resonance.
+2. Trachea (Windpipe)
+The trachea is a flexible tube about 10-12 cm long and 2-2.5 cm wide. It begins at the larynx and extends
+downward into the thoracic cavity, where it divides into the two primary bronchi.
+> Structural Features:
+© Made of 15-20 C-shaped cartilage rings that provide rigidity and prevent collapse.
+* The open side of the C-rings faces the esophagus, allowing flexibility during swallowing,
+* Lined with ciliated pseudostratified epithelium and mucus-secreting goblet cells, which trap dust and
+microbes.
+* Ciliary action moves the mucus upward toward the pharynx in what is called the mucociliary escalator,
+keeping the lower tract clean.
+Function: Ensures an open and flexible airway, filtering and conducting air to the bronchi.
+3. Bronchi and Bronchioles
+At the lower end, the trachea bifurcates into the right and left primary bronchi:
+© The right bronchus is shorter, wider, and more vertical, making it a common site for inhaled foreign objects,
+¢ The left bronchus is longer, narrower, and more horizontal.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 4 ---
+
+4.
+
+Branching Pattern (Bronchial Tree):
+Primary (main) bronchi —> one to each lung.
+
+.
+* Secondary (lobar) bronchi —> 3 in the right lung, 2 in the left, supplying each lobe.
+¢ Tertiary (segmental) bronchi — supply bronchopulmonary segments.
+°
+°
+
+Bronchioles —> airways less than 1 mm in diameter.
+
+Terminal bronchioles —> the last conducting branches before reaching the gas-exchange region.
+
+Structural Changes along the Tree:
+
+e Cartilage rings gradually become cartilage plates,
+then disappear in bronchioles.
+
+¢ Smooth muscle increases in proportion, regulating
+airflow by constriction (bronchoconstriction) or
+dilation (bronchodilation).
+
+Alveolar Ducts and Alveoli
+
+The terminal bronchioles open into alveolar ducts,
+which lead to grape-like clusters of alveoli. These are
+the microscopic. structures where external
+respiration occurs.
+
+Features of Alveoli:
+
+¢ Human lungs contain about 700 million alveoli,
+providing a vast surface area (~70 m?) for gas
+exchange.
+
+Capillary network
+F.. on surface of alveolus
+
+‘Pulmonary
+Respiratory. rb
+bronchiole | ‘Alveolar duct
+
+‘Alveolar sac
+~—Alveoli
+
+Figure: Alveoli
+
+* Each alveolus is lined by a single layer of squamous epithelial cells (type | pneumocytes), ensuring
+
+minimal diffusion distance (~0.1 um).
+
+¢ Athin film of moisture lines the alveoli, dissolving gases for diffusion.
+e Surrounded by a dense network of capillaries, enabling close contact between air and blood.
+¢ Elastic and collagen fibers in alveolar walls allow alveoli to expand during inhalation and recoil during
+
+exhalation, maintaining breathing efficiency,
+
+© Special type Il pneumocytes secrete pulmonary surfactant, which reduces surface tension and prevents
+
+alveolar collapse.
+Functions of Alveoli:
+
+¢ Primary sites of gas exchange (oxygen enters blood, carbon dioxide leaves blood).
+e Provide a large, thin, and moist surface adapted for rapid diffusion of gases.
+
+External Structure of the Lungs
+
+‘The lungs are the principal organs of respiration.
+
+They are soft, spongy, and elastic in texture, mainly due to
+the presence of millions of alveoli and extensive elastic
+fibers. Their conical shape and light weight allow them to
+expand and recoil efficiently during breathing.
+
+>
+
+Shape and Position
+¢ Each lung is conical in shape, designed to fit the
+thoracic cavity.
+e Major features include:
+© Base — Broad and concave, resting on the
+diaphragm to allow smooth expansion
+during breathing.
+
+Figure: Human lungs
+
+© Apex —> Tapered upper portion, projecting slightly above the clavicle into the root of the neck.
+© Costal surface + Outer, smoothly curved surface that lies in contact with the ribs and intercostal
+
+muscles.
+
+© Mediastinal surface — Inner surface.facing the mediastinum, containing the hilum, where bronchi,
+blood vessels, lymphatics, and nerves enter or leave the lungs.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 5 ---
+
+8
+
+Lobes of the Lungs
+The human lungs are divided into distinct lobes, each separated by deep fissures. These lobes ensure
+efficient distribution of air and blood within the lungs, allowing for optimal gas exchange.
+
+Right Lung
+
+>
+
+>
+
+The right lung is larger in volume (about 55% of total lung capacity) but shorter and broader because
+the diaphragm rises higher on the right side due to the underlying liver.
+
+It is divided into three lobes:
+
+1. Superior lobe — located at the apex and anterior region.
+
+2. Middle lobe — wedge-shaped, situated between the other two lobes.
+
+3. Inferior lobe — the largest, extending toward the base of the lung.
+
+These lobes are separated by two fissures:
+
+o Horizontal fissure — separates the superior lobe from the middle lobe.
+
+o Oblique fissure —runs diagonally, separating the inferior lobe from both the superior and middle lobes.
+
+Left Lung
+
+The left lung is narrower and slightly longer because it shares space with the heart within the thoracic cavity.
+
+It comprises two lobes:
+
+1. Superior lobe — forms the upper part and contains the lingula, a tongue-like projection that partly
+corresponds to the middle lobe of the right lung.
+
+2. Inferior lobe — occupies the base.
+
+The lobes are separated by a single oblique fissure.
+
+A distinctive feature is the cardiac notch, an indentation on the anterior border that accommodates the
+
+apex of the heart.
+
+Hilum and Root of the Lung
+Hilum of the Lung
+
+>
+
+The hilum is a wedge-shaped depression situated on the mediastinal surface of each lung.
+
+It functions as the gateway through which all major structures enter or exit the lung, thereby linking the
+lungs with the rest of the body.
+
+The hilum is covered by the reflection of the pleura, forming a fold known as the pulmonary ligament,
+which provides support and allows movement during respiration.
+
+Structures Passing Through the Hilum
+
+i.
+2.
+
+3.
+4.
+
+5.
+
+Bronchi— main airways that branch from the trachea and carry air into and out of the lungs.
+Pulmonary arteries — deliver deoxygenated blood from the right ventricle of the heart to the lungs for
+oxygenation.
+
+Pulmonary veins — return oxygen-rich blood to the left atrium of the heart.
+
+Lymphatic vessels — transport lymph and filter harmful substances through lymph nodes, aiding in
+immune defense.
+
+Nerves — components of the autonomic nervous system that regulate bronchial muscle tone and
+vascular diameter.
+
+Root of the Lung
+
+.
+.
+
+The root of the lung refers collectively to the bronchi, pulmonary arteries, pulmonary veins, lymphatic
+vessels, and nerves that pass through the hilum.
+
+It secures the lung to the mediastinum while still allowing flexibility for breathing movements.
+
+The root is enclosed in a tubular fold of pleura known as the pleural sleeve, from which the pulmonary
+ligament descends, helping stabilize the lung in the thoracic cavity.
+
+Arrangement of Structures
+
+The arrangement of bronchi and vessels in the root differs between the right and left lung:
+
+o Right lung —the bronchus lies above the pulmonary artery (hence the mnemonic "RALS”: Right lung
+— Artery is Anterior, Left lung — Artery is Superior).
+
+o. Left lung— the pulmonary artery lies above the bronchus.
+
+This anatomical difference is important for surgeons and radiologists.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 6 ---
+
+Pleural Covering
+The lungs are delicate and spongy organs, and to protect them, they are enclosed within a specialized
+double-layered membrane known as the pleura. This pleural covering plays an essential role in both protection
+and the mechanics of breathing.
+1. Layers of the Pleura
+e Visceral pleura: This inner layer is firmly attached to the external surface of the lung, covering every
+lobe and fissure. It moves with the lung tissue during all respiratory movements.
+¢ Parietal pleura: This outer layer lines the thoracic cavity, the upper surface of the diaphragm, and the
+sides of the mediastinum, It acts as a boundary between the lungs and the walls of the chest cavity.
+2. Pleural Cavity
+© The space between the visceral and parietal layers is called the pleural cavity.
+© Itis not an empty space but a potential space containing a very thin film of pleural fluid secreted by the
+pleura.
+3. Functions of Pleural Fluid’
+© Lubrication: The pleural fluid minimizes friction between the two pleural layers during inhalation and
+exhalation, allowing smooth and pain-free movement of the lungs.
+© Surface tension: The fluid creates a slight adhesive force that helps the lungs remain in close contact
+with the thoracic wall. This ensures that when the chest cavity expands during inspiration, the lungs
+expand along with it.
+4. — Clinical Importance
+e Disturbances of the pleural cavity can lead to respiratory problems. For example:
+© Pleurisy: Inflammation of the pleura, causing painful breathing.
+o Pleural effusion: Excess accumulation of fluid in the pleural cavity, restricting lung expansion.
+© Pneumothorax: Entry of air into the pleural cavity, which can cause lung collapse.
+Comparison of Structure and Functions of Different parts of Respiratory System of Human
+
+Nasal Cavity | Lined with mucous membrane and ciliated-}| Warms, humidifies, and filters incoming air;
+epithelium; contains nasal conchae and hairs | traps dust and pathogens via mucus and cilia.
+
+Muscular tube divided into nasopharynx, | Serves asa common pathway for air and food;
+| Produces sound; acts as a passageway for air;
+prevents food entry into the trachea (epiglottis)
+Trachea Flexible tube supported by C-shaped cartilage | Conducts air to bronchi; cilia and mucus trap
+
+{Windpipe) rings; lined with ciliated epithelium and expel foreign particles
+Two main branches from trachea, each entering | Direct air into lungs; continue filtering .air
+a lung and further dividing into bronchioles through mucosal lining
+
+Regulate airflow to alveoli through
+have smooth muscle walls bronchodilation and bronchoconstriction
+Thin-walled, balloon-like sacs surrounded by } Primary site of gaseous exchange between air
+capillaries and blood (oxygen and carbon dioxide diffusion)
+
+Pair of spongy organs enclosed in pleural | Perform pulmonary ventilation and gas
+membranes; contain bronchi, bronchioles, | exchange; maintain acid-base balance
+
+: alveoli
+Diaphragm | Dome-shaped skeletal muscle located below | Facilitates breathing by altering thoracic cavity.
+>| (accessory) the lungs volume during inspiration and expiration i
+
+S$ studyplusplus.com cs)
+
+
+
+--- Page 7 ---
+
+SLOs Based (MCQs)
+
+RESPIRATORY SYSTEM
+
+Which of the following structures prevents food
+from entering the trachea during swallowing?
+A. Glottis B. Nasopharynx
+
+C. Epiglottis D. Vocal cords
+
+2. Which part of the respiratory tract is lined with
+ciliated mucous membrane that filters, moistens,
+
+How many secondary bronchi are present in the
+human lungs?
+A. 4 (2 per lung) B. 5 (3 right, 2 left)
+C. 6 (3 per lung) D. 7 (4 right, 3 left)
+7. Which structure of the respiratory system contains
+the vocal cords?
+
+and warms the air? A. Pharynx B. Glottis
+A, Larynx B. Nasal cavity C. Larynx D. Trachea
+C. Alveoli O. Trachea 8. The walls of alveoli are composed of which type
+3. | Whatis the function of surfactant in the alveoli? of epithelium?
+A. Increases blood flow A. Columnar epithelium 8. Cuboidal epithelium
+B. Enhances oxygen production C. Squamous epithelium _D. Transitional epithelium
+C. Reduces surface tension 9. Which part of the respiratory system contains C-
+D. Regulates temperature shaped cartilage rings?
+4. — Which of the following structures lacks cartilage A. Larynx B. Bronchiotes
+support? C. Trachea D. Alveoli
+A. Primary bronchi B. Secondary bronchi | 49. The hilum of the lung is best described as:
+C. Terminal bronchioles. D. Trachea A. Acartilage-covered ridge
+5. Which region of the pharynx connects directly to B. A depression for muscle attachment
+the larynx and esophagus? C. The region where vessels and bronchi enter the
+A. Nasopharynx B. Oropharynx lung é
+C. Laryngopharynx D, Tracheopharynx D. The alveolar sac's protective coating
+
+[a.c[2.6]3.clac]s.clée[7.claci9.c]10.c|
+Short Questions
+
+Q.1 Whatis the role of the nasal cavity in respiration?
+Ans. The nasal cavity plays a crucial role in preparing inhaled air before it
+
+reaches the delicate lower respiratory passages. It is lined with hair that MARKING SCHEME (3 Marks)
+traps large dust particles and other impurities. The mucous membrane Perbendeabaae ee
+secretes mucus, which moistens the incoming air and captures Moistening role — 0.50 mark
+microbes, pollen, and finer dust particles. Cilia present in the nasal ‘Warming role — 0.50 mark
+
+lining beat rhythmically.to move trapped debris towards the pharynx, Integration/importance in respiration
+where it can be swallowed or expelled. Additionally, the rich supply of Ph mark
+
+capillaries beneath the mucosa warms the air to nearly body
+
+temperature, usually around 30°C, preventing cold air from irritating deeper respiratory tissues. Thus, the
+
+nasal cavity filters, moistens, and warms inspired air, ensuring efficient and safe respiration.
+eee
+
+Q.2 Describe the function of the epiglottis during swallowing.
+Ans. The coislottic ic a flamrlite creer no
+Ans. The epiglottis is a flap-like structure made of elastic cartilage located
+
+just above the glottis in the larynx. Its main function is to safeguard the MARKING SCHEME (3 Marks)
+airway during swallowing. When a person is breathing normally, the Location of epiglottis—_1 mark
+epiglottis remains upright, allowing air to pass freely into the trachea. Step 1: Upright during breathing—0.SO
+During swallowing, however, the larynx moves upward and the hie
+
+epiglottis bends downward like a lid, covering the glottis. This prevents Sellewiod "03 7S za ae ores
+food particles and liquid from entering the trachea and directs them s
+
+f I he t Step 3: Directs food into esophagus,
+instead into the esophagus, Once swallowing is complete, the epiglottis Prevents choking ~ 0.75 mark
+
+returns to its original position, reopening the airway. This mechanism
+
+prevents choking, ensures proper passage of food, and maintains separation of the respiratory and
+digestive tracts.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 8 ---
+
+Q.3 Why is the surface area of alveoli important?
+Ans. The alveoli are tiny balloon-like sacs at the ends of bronchioles,
+
+numbering around 700 million-in the human lungs. Their greatest se Daa senna Scie (3 Marts)
+
+* structure of alveoli (tiny sacs, large
+significance lies in the vast surface area they collectively provide, ‘umber)- a mark
+estimated to be about 70-100 square meters, roughly the size of a Vast surface area (measurement /
+tennis court. This enormous surface area facilitates rapid and efficient ‘significance) — 1 mark
+
+gas exchange between air and blood. Oxygen diffuses from alveolar air Role In efficient gas exchange —1 mark
+into the capillary blood, while carbon dioxide diffuses out of blood into
+the alveoli. If the alveolar surface area were smaller, gas exchange would be slower, reducing oxygen
+delivery to tissues. Diseases like emphysema reduce alveolar surface area and lead to breathing difficulties,
+underscoring its critical importance in respiration.
+
+Q.4 What is surfactant, and what role does it play in the lungs?
+
+Ans. Pulmonary surfactant is a lipoprotein secretion produced by specialized
+alveolar cells (type ll pneumocytes) in the lungs. It forms a thin film that MARKING SCHEME (2 Marks)
+
+- ‘ ‘i Definition (lipoprotein film) - 1 mark
+coats the inner surface of alveoli. Its primary role is to reduce surface | ¢ 231.) in ducing’ Santee: tarsion,
+tension of the alveolar walls, preventing them from collapsing during preventing colapse—1.25 marks
+
+exhalation. By doing so, surfactant ensures that alveoli remain open, Role in smooth gas exchange and
+allowing smooth and continuous exchange of gases with every breath. defense - 0.75 mark
+
+In addition to its mechanical function, surfactant also plays a defensive
+role, as it contains proteins with antimicrobial properties that protect against lung infoctigns: Lack of
+surfactant, especially in premature infants, can result in neonatal respiratory distress syndrome, highlighting
+its vital role in breathing.
+
+Q.5 Differentiate between primary, secondary, and tertiary bronchi.
+Ans. The bronchial tree is a series of branching tubes that distribute air
+
+throughout the lungs. The primary bronchi are the first branches of the MARKING SCHEME (3 Marks)
+trachea; there are two, one entering each lung. The secondary bronchi Ain Ralgiceaghaecy blak
+(also called lobar bronchi) branch from the primary bronchi. They asad iciaiaracak ce
+
+deliver air into each lobe of the lungs: three secondary bronchi serve Tertiary bronchi description - 1 mark
+
+the three lobes of the right lung, while two serve the two lobes of the
+left lung. The tertiary bronchi (segmental bronchi) arise from secondary bronchi and further divide to
+ventilate distinct bronchopulmonary segments of each lobe. This branching system ensures efficient
+distribution of air throughout all lung regions, supporting uniform gas exchange.
+
+a6 What structural changes occur in the airways as they branch?
+Ans. As the respiratory tract branches from bronchi into bronchioles, distinct
+
+structural changes teke placc to support their functions. In the larger bracers
+
+bronchi, the airway wal!s contain C-shaped cartilage rings which esc
+
+gradually change inco straller irregular cartilage plates. By the time the Presence of smooth muscle - 1 mack
+airways reach the zronchioles, cartilage completely disappears, leaving Decreasing airway diameter —>
+the walls supported mainly by smooth muscle. This smooth muscle terminal bronchioles — 1. mark
+
+plays a regulatory role, allowing the bronchioles to constrict or dilate
+and thus control airflow into the alveoli. Additionally, the airway diameter progressively decreases with each
+branching, leading to terminal bronchioles and eventually the alveolar ducts. These changes make the
+airways lighter, more fiexible, and efficient for distributing air to the gas exchange surfaces of the lungs.
+
+Q.7 Whatis the function of the pharynx in respiration?
+
+Ans. The pharynx is a muscular tube located behind the nasal and oral MARKING SCHEME (3 Maris)
+cavities, extending down to the larynx and esophagus. It serves aS @ | . ioeationof pharynx—1 mark
+shared pathway for both air and food, functioning in both the | « pespicatoryrole (passage for alr|—1 mark
+respiratory and digestive systems. In respiration, it allows inhaled air | « Naming of three regions—1 mark
+from the nasal cavity or oral cavity to pass into the larynx and further
+down into the trachea. The pharynx is divided into three distinct regions: the nasopharynx, which connects
+with the nasal cavity; the oropharynx, which lies behind the oral cavity; and the laryngopharynx, which
+opens into the larynx. This arrangement ensures that air is properly directed while swallowing reflexes keep
+
+: food from entering the respiratory tract.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 9 ---
+
+Q.8 Describe the structure of the trachea.
+Ans. The trachea, commonly called the windpipe, is a tubular structure about
+
+10-12 cm long and 2 cm in diameter, extending from the larynx to the cadens Was Coen
+
+Primary bronchi. Its wall is reinforced by 15-20 C-shaped cartilage rings ‘Smooth muscle (flexibitity,
+
+that provide rigidity and prevent collapse during inspiration and contraction) —1 mark
+
+expiration. The open ends of these rings face posteriorly and are Mucoils mentbrane wah die (pering
+role)—1. mar
+
+bridged by.smooth muscle (trachealis muscle), which allows flexibility
+and slight narrowing of the trachea during coughing. The inner lining of
+the trachea consist¢ of ciliated pseudostratified epithelium with goblet cells that secrete mucus to trap dust
+and microbes. The coordinated beating of cilia moves trapped particles upward toward the pharynx for
+expulsion, ensuring clean air reaches the lungs.
+
+Q.9 What makes the alveolar wall suitable for gas exchange?
+Ans. The alveolar wal! is highly specialized to allow efficient diffusion of
+
+i i i itheli MARKING SCHEME (3 Marks)
+gases. It is composed of a single layer of thin squamous epithelial cells Serritamine cies
+(Type | pneumocytes), making the wall extremely thin—only about 0.1 paar
+uum thick. This greatly reduces the diffusion distance for gases. The Structural adaptation: moist lining +
+alveolar surface is kept moist, which helps dissolve gases and facilitates capillary network —1 mark
+their movement across the membrane. Surrounding each alveolus is a Functional adaptation: efficient diffusion
+
+of gases —1 mark
+
+dense capillary network, ensuring a continuous supply of deoxygenated
+blood and rapid oxygen uptake. Additionally, elastic fibers in the
+alveolar walls allow stretching during inhalation and recoil during exhalation, maintaining proper airflow.
+Together, these features make alveoli highly efficient sites for oxygen and carbon dioxide exchange.
+
+Q.10 Explain the anatomical difference between the right and left lungs.
+Ans. The two lungs differ structurally due to their position in the thoracic
+
+cavity and the presence of the heart. The right lung is broader and ascent Senet baat)
+shorter but has a larger volume. It is divided into three lobes—superior, eee ee
+middle, and inferior—separated by horizontal and oblique fissures. The Left lung anatomy: 2 lobes, cardiac
+
+left lung is slightly smaller and narrower, as it shares space with the notch, smaller — 1.50 marks
+heart, forming a cardiac notch on its medial surface. It has only two
+lobes—superior and inferior—separated by an oblique fissure. Despite these differences, both lungs are
+spongy in texture and contain a hilum, the entry and exit point for bronchi, blood vessels, lymphatics, and
+nerves, ensuring coordinated respiratory function.
+
+jation mechanism in humans.
+
+VENTILATION MECHANISM IN HUMANS
+
+Ventilation (also called breathing) is the mechanical process by which air is moved into and out of the lungs,
+ensuring a continuous supply of oxygen and removal of carbon dioxide. It occurs in two phases: inhalation
+(inspiration) and exhalation (expiration).
+
+1. Inhalation (Inspiration)
+Inhalation is the process by which air enters the lungs. It is considered an active phase of breathing, because
+it requires the contraction of respiratory muscles and the expenditure of energy. This process ensures that
+oxygen-rich air is drawn into the alveoli, where gas exchange takes place.
+> Mechanism of Inhalation
+1. Contraction of the Diaphragm
+© The diaphragm is a dome-shaped sheet of muscle separating the thoracic cavity from the abdominal cavity.
+© During inhalation, it ‘contracts and flattens downward, increasing the vertical dimension of the.
+thoracic cavity. st
+©. This movementalso pushes the abdominal contents slightly downward and forward.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 10 ---
+
+2.. Contraction of External Intercostal Muscles
+©. The external intercostal muscles are located between the ribs.
+* o Whenthey contract, the ribs are pulled upward and outward, which increases the anteroposterior
+(front-to-back) and transverse (side-to-side) diameters of the chest cavity.
+©. This expansion further enlarges the thoracic cavity.
+3. Increase in Thoracic Volume
+© Combined action of the diaphragm and intercostal muscles results in a significant increase in
+thoracic volume in all dimensions.
+4. Decrease in Intrapulmonary Pressure
+© According to Boyle’s Law (which states that pressure and volume are inversely related), an increase
+in the thoracic volume causes a drop in intrapulmonary pressure.
+©. The pressure inside the lungs becomes slightly lower than atmospheric pressure.
+5. Entry of Air into the Lungs
+© Due to the created pressure gradient, air rushes into the lungs from the atmosphere.
+© The flow continues until intrapulmonary pressure equals atmospheric pressure, completing inspiration.
+Lung volume Trachea
+increases
+
+1. The muscles in diaphragm contract.
+This pulls the diaphragm downwards.
+
+2. The intercostal muscles contract. ey
+This pull the ribs upwards and outwards
+
+3. The lungs expand. When the volume
+increases, the pressure decreases in the a =»>
+
+4 fd Urata cd the lungs from a 4 \
+
+Diaphragm contracts
+muscle is flattened
+
+Exhalation (Expiration) ;
+Exhalation is the process by which air is expelled from the lungs into the atmosphere. Unlike inhalation, it is
+
+usually a passive process during quiet breathing, because it does not require active muscular effort. Instead,
+it mainly relies on the natural elastic recoil of the lungs and relaxation of the respiratory muscles.
+
+Mechanism of Normal (Quiet) Exhalation
+1. Relaxation of the Diaphragm
+
+o After contraction during inhalation, the diaphragm relaxes and moves back into its dome-shaped
+resting position.
+
+© This reduces the vertical dimension of the thoracic cavity.
+2. Relaxation of External Intercostal Muscles
+© The external intercostals also relax, causing the ribs to move downward and inward.
+© Asaresult, both the anteroposterior and transverse diameters of the thoracic cavity decrease.
+3. Decrease in Thoracic Volume
+co Relaxation of these muscles leads to a smaller thoracic cavity, reducing lung volume.
+4. Increase in Intrapulmonary Pressure
+© According to Boyle’s Law, a decrease in volume leads to an increase in pressure.
+© Intrapulmonary pressure becomes slightly higher than atmospheric pressure.
+5. Air Flows Out
+
+o. Airis forced out of the lungs down the pressure gradient, moving from the area of higher pressure
+(lungs) to lower pressure (atmosphere).
+
+S$ studyplusplus.com cs)
+
+
+--- Page 11 ---
+
+Forced (Active) Expiration
+
+During activities such as vigorous exercise, coughing, sneezing, or playing wind instruments, expiration
+
+becomes an active process, involving additional muscular effort.
+
+© Internal intercostal muscles: Contract to pull the ribs downward and inward more forcefully, reducing
+thoracic volume.
+
+« Abdominal muscles: Contract to push the abdominal contents upward against the diaphragm, causing
+it to rise further into the thoracic cavity.
+
+© Together, these actions sharply increase intrapulmonary pressure, expelling air more foreately and rapidly.
+
+rachea
+
+Lung volume
+decreases
+
+an Maa! diaphragm muscles relax. This allow the
+ragm to become normal, domed shape
+
+‘
+
+2. The intercostal muscles relax. This allow the
+ribs to move downwards and inwards
+
+3. The lungs are compressed. When the volume
+decreases, the pressure increases in the lungs.
+
+4. Airis forced out from the lungs to the
+surrounding air
+
+Pressure Relationships in Ventilation
+Breathing (ventilation) depends upon the creation of pressure gradients between the atmosphere, alveoli,
+and pleural cavity. Air moves into or out of the lungs by bulk flow, always following the rule:
+“Air flows from a region of higher pressure to a region of lower pressure.”
+To understand this, three major pressures are important:
+1, Atmospheric Pressure (Patm)
+© This is the pressure exerted by the air surrounding the body.
+© Atsea level, it is approximately 760 mmHg (millimeters of mercury).
+© Atmospheric pressure is considered the reference point against which other pressures are
+measured.
+2. Intrapulmonary (Alveolar) Pressure (Palv)
+© This is the pressure inside the alveoli of the lungs.
+© It changes continuously during breathing:
+* - During inhalation: Palv falls slightly below Patm (about —1 mmHg), drawing air into the lungs.
+* During exhalation: Palv rises slightly above Patm (about +1 mmHg), pushing air out of the lungs.
+o Atthe end of each breath, when there is no airflow, Palv becomes equal to Patm.
+3. Intrapleural Pressure (Pip)
+© This is the pressure inside the pleural cavity, between the visceral and parietal pleura.
+© It is always slightly negative compared to both Patm and Palv, usually around -4 mmHg (= 756
+mmHg) at rest.
+© The negative pressure is essential because it:
+"Prevents lung collapse.
+* Keeps the lungs closely attached to the thoracic wall, so they expand when the chest expands,
+Importance of Pressure Gradients
+© Inhalation: Thoracic cavity expands —> Pip becomes more negative — Palv falls below Patm — air flows
+into the lungs.
+Exhalation: Thoracic cavity reduces in size —-> Pip becomes less negative — Palv rises above Patm > air
+flows out of the lungs.
+In summary, ventilation is governed by the relationship among atmospheric, intrapulmonary, and intrapleural
+pressures. These dynamic pressure changes ensure that air moves in and out of the lungs efficiently.
+
+ae
+
+Diaphragm relaxes,
+muscle is dome shaped
+
+S$ studyplusplus.com cs)
+
+
+--- Page 12 ---
+
+During inspiration: During expiration:
+Air Air
+
+Rib cage BS > ’
+3 \ é — , Rib cage
+Rib cage moves r
+up and outward
+
+Pressure in lungs [},
+increases, and air
+
+pushed out hi
+
+Figure: Mechanism of breathing in human
+
+Direction of Air | Air enters the lungs Air leaves the lungs
+Diaphragm Contracts and moves downward Relaxes and moves upward and dome shaped
+
+Contract, lifting the ribcage upward and | Relax, allowing the ribcage to move
+outward downward and inward
+
+Chest Volume [increases | Decreases
+
+Air Pressure in | Becomes lower than atmospheric pressure, | Becomes higher than atmospheric pressure,
+Lungs to bring oxygen into the body to remove carbon dioxide from the body
+
+\ ,%
+
+2 Diaphragm contracts Diaphragm relaxes,
+
+muscle is flattened spusacie is Comeenavet
+Contro} of Breathing (Ventilation)
+The automatic control of breathing is coordinated by a respiratory centre located in the medulla oblongata
+of the brainstem. This centre continuously regulates the rate and depth of ventilation to maintain homeostasis.
+e The ventral portion of the medullary centre functions as the inspiratory centre. It sends rhythmic
+impulses to the diaphragm and intercostal muscles to initiate and deepen inspiration.
+¢ The dorsal aid lateral portions serve as the expiratory centre, which inhibits inspiration and promotes
+expiration, particularly during forceful breathing.
+Together, these centres adjust ventilation in response to the body’s metabolic demands, ensuring that
+oxygen uptake and carbon dioxide removal are balanced.
+
+S$ studyplusplus.com cs)
+
+
+--- Page 13 ---
+
+Voluntary and Higher Brain Control
+
+While breathing is primarily involuntary, it can be consciously overridden via the cerebral cortex. This allows
+
+individuals to:
+
+e Alter the rate and depth of breathing (e.g., during speech, singing, or exercise).
+
+© Voluntarily hold their breath—for example, during swimming or moments of concentration.
+
+However, breath-holding is limited by rising carbon dioxide levels and falling oxygen levels in the blood. If
+oxygen levels fall too low, unconsciousness occurs, and automatic breathing resumes under the control of
+
+the respiratory centre.
+Emotional Influence: The Limbic System
+
+Breathing patterns can also be modified by emotional stimuli, which act through the limbic system—a
+complex network in the brain associated with emotions and behavior. For example:
+
+Anxiety may cause rapid, shallow breathing.
+
+e Fear or excitement may accelerate breathing rate.
+
+® Calmness can slow breathing.
+
+SLOs Based
+
+Which muscles are primarily responsible for
+
+increasing the volume of the thoracic cavity durin;
+
+inspiration? .
+
+A. Diaphragm and internal intercostals
+
+B. Diaphragm and external intercostals
+
+C. External and internal intercostals
+
+D. Abdominal muscles and diaphragm
+
+What happens to the diaphragm during
+
+inspiration?
+
+A. It relaxes and becomes more dome-shaped
+
+B. It contracts and flattens
+
+C. It moves upward and reduces lung volume
+
+D. It contracts and forms folds
+
+Which of the following occurs during passive
+
+expiration?
+
+A.Contraction of diaphragm and external
+intercostals
+
+B. Relaxation
+intercostals
+
+C. Contraction of all intercostal muscles
+
+D. Active pull by alveoli
+
+In which part of the brain is the primary
+
+breathing centre located?
+
+A. Cerebellum B. Hypothalamus
+
+C. Medulla oblongata D. Thalamus
+
+The inspiratory centre is located in the:
+
+A. Dorsal portion of the medulla
+
+B. Cerebral cortex
+
+C. Ventral portion of the medulla
+
+D. Pons
+
+of diaphragm and external
+
+Qs)
+
+Which muscles contract during forceful expiration?
+
+A. Diaphragm and external intercostals
+
+B. Internal intercostals and abdominal muscles
+
+C. Diaphragm and internal intercostals
+
+D. External intercostals only
+
+Which of the following allows voluntary control
+
+of breathing?
+
+A. Limbic system B. Cerebral cortex
+
+c. Cerebellum D. Medulla oblongata
+
+What happens to intrapulmonary pressure
+
+during inspiration?
+
+A. It increases above atmospheric pressure
+
+B. It becomes equal to atmospheric pressure
+
+C. It drops below atmospheric pressure
+
+D. It remains constant
+
+How does the limbic system affect breathing?
+
+A. It increases oxygen absorption
+
+B.It influences breathing based on emotional
+states
+
+C. It initiates reflex coughing
+
+D. It controls muscle contraction in the lungs
+
+Which of the following statements is true about
+
+expiration during normal breathing?
+
+A. It is an active process
+
+B. It involves contraction of the diaphragm
+
+C.lt is a passive process involving muscle
+relaxation
+
+D. It increases the volume of thoracic cavity
+
+o
+
+studyplusplus.com
+
+°
+
+
+--- Page 14 ---
+
+Q.1 Describe the role of the diaphragm during inspiration.
+
+Ans. The diaphragm is the main muscle of inspiration and plays a crucial role
+in drawing air into the lungs. During inspiration, the diaphragm MARKING SCHEME (3 Matis)
+contracts and moves ddwnward, changing from its dome-shaped alge ntsop lowe
+resting form to a flattened sheet. This contraction increases the vertical “a
+dimension of the thoracic cavity, thereby expanding lung volume. As Pressure falls, air enters lungs—1.mark
+lung volume rises, the intrapulmonary pressure falls below
+atmospheric pressure, creating a negative pressure gradient. Due to this difference, air from the
+environment rushes into the lungs to equalize pressure. Thus, by its contraction and flattening, the
+diaphragm ensures the lungs are ventilated efficiently, allowing oxygen to enter and participate in gaseous
+exchange at the alveoli. i
+
+Q.2 What changes occur in the thoracic cavity during expiration?
+
+Ans. Expiration is the process of expelling air from the lungs and occurs due
+to relaxation of respiratory muscles. During quiet breathing, the _ MARKING SCHEME (3 Marks)
+diaphragm relaxes and returns to its dome-shaped position, while the een ae external intercostals
+external intercostal muscles also relax, allowing the rib cage to Bia »
+descend. This leads to a decrease in thoracic cavity volume, which biti omty Notenve: deezenees = 2
+
+compresses the lungs. As a result, the intrapulmonary pressure Pressure rises, air pushed out = 1 mark
+
+increases above atmospheric pressure, forcing air out of the lungs. In
+forced expiration, such as during coughing or exercise, the internal intercostal and abdominal muscles
+actively contract, pushing air out more forcefully. These coordinated changes ensure effective removal of
+
+carbon dioxide and maintain normal gas exchange. .
+
+Q.3 What causes air to move into the lungs during inspiration?
+Ans. Air enters the lungs because of the development of a pressure gradient
+
+between the atmosphere and the lungs. When inspiration begins, the Manne scene 0 ais ne
+diaphragm contracts and thoracic volume increases, causing lung rc Bede" concepts i
+expansion. This expansion lowers the intrapulmonary pressure below ‘Thoracte volume increases» pressure
+atmospheric pressure. As gases naturally move from a region of higher | drops - 1.50 marks
+
+pressure to lower pressure, air flows down this gradient into the lungs.
+The greater the increase in thoracic cavity volume, the larger the drop in internal pressure, and the stronger
+the inflow of air. This mechanism ensures that oxygen-rich air is continuously drawn into the alveoli where
+diffusion into blood occurs, while maintaining the principle of pressure equalization. :
+
+Q.4 Whatis the function of the respiratory centre in the medulla oblongata?
+
+Ans. The respiratory centre, located in the medulla oblongata, plays a vital
+role in the automatic regulation of breathing. It ensures that ventilation eRe lee ¢ eta ie
+is continuous and adjusts the rate and depth of breathing based onthe | ° Overi Deena tit mark
+
+body’s oxygen and carbon dioxide levels. The ventral respiratory group |. Function of dorsal/lateral part —1 mark
+is primarily responsible for stimulating inspiration by sending signals to
+the diaphragm and intercostal muscles. On the other hand, the dorsal and lateral groups of neurons help
+inhibit inspiration and promote-expiration, especially during passive breathing. Together, these centres
+coordinate a rhythmic pattern of inhalation and exhalation, ensuring that tissues receive adequate oxygen
+supply while excess carbon dioxide is eliminated efficiently.
+
+Q.5 How can breathing be voluntarily controlled?
+
+Ans. Although breathing is largely involuntary, it can be consciously
+pes He through higher brain centres. The cerebral cortex allows Lseeproapeaivinytaap ely
+voluntary control by overriding the automatic signals from the medulla ouhteny Baal isa Gedhine,
+oblongata. Through this control, a person can consciously regulate bokding breathy ebc.f--4 ark
+
+breathing for actions such as speaking, singing, blowing, or holding the ‘Automatic resumption when 0;
+
+breath. Voluntary control works by sending direct impulses from the falls/CO; rises— 1 mack
+
+cortex to the respiratory muscles, bypassing automatic pathways.
+
+However, this control is limited: if a person holds their: breath too long, the rising carbon dioxide levels and
+
+falling oxygen levels in the blood stimulate the medullary respiratory centre, which automatically restarts
+
+breathing. This ensures survival by preventing dangerous hypoxia.
+
+S$ studyplusplus.com $
+
+
+
+--- Page 15 ---
+
+Q.6 Explain the role of intercostal muscles in ventilation.
+Ans. The intercostal muscles, located between the ribs, play an essential role-
+
+in ventilation by aiding the diaphragm. During inspiration, the external
+intercostal muscles contract, pulling the ribs upward and outward. This
+action expands the thoracic cavity laterally and anteroposteriorly,
+further increasing lung volume and reducing intrapulmonary pressure
+
+MARKING SCHEME (3 Marks)
+Role of external intercostals (lift ribs,
+aid inspiration) ~ 1.50 marks
+
+Role of internal intercostals (pull ribs
+down, aid expiration) — 1.50 marks
+
+so that air enters. During quiet expiration, these muscles simply relax.
+However, during forced expiration, the internal intercostal muscles contract, pulling the ribs downward
+and inward. This decreases thoracic cavity volume, raising pressure inside the lungs and driving air out
+forcefully. In this: way, intercostal muscles act as accessory muscles, ensuring efficient air exchange and
+supporting both quiet and forceful phases of breathing.
+
+Q.7 .What happens when a person holds their breath for too long?
+Ans. When a person deliberately holds their breath, normal gas exchange is
+
+disrupted. As time passes, oxygen levels in the blood decrease while
+carbon dioxide accumulates because it is not being exhaled. The rising
+concentration of carbon dioxide stimulates chemoreceptors, which
+
+MARKING SCHEME (3 Marks)
+Carbon dioxide increases, oxygen
+decreases — 1 mark
+
+Effect: dizziness/unconsciousness —
+
+send strong signals to the medullary respiratory centre. If the person 1 mark
+
+continues to resist breathing, the oxygen level may fall to a critically low Automatic resumption of breathing —
+point while carbon dioxide rises to dangerous levels. This imbalance can sak
+
+cause dizziness, loss of voluntary control, and eventual
+
+unconsciousness. Once unconscious, voluntary control is removed, and the automatic respiratory centre
+resumes function, restoring breathing and preventing fatal hypoxia.
+
+Q8 How does the limbic system influence breathing?
+
+Ans. The limbic system, a part of the brain involved in emotion and memory,
+also affects respiratory patterns. Emotional states strongly influence
+breathing rate and depth. For example, fear, anxiety, or stress can
+stimulate the sympathetic nervous system, causing rapid and shallow
+breathing (hyperventilation). On the other hand, feelings of calmness,
+relaxation, or meditation slow the respiratory rate, producing deeper
+and steadier breaths. Emotions such as excitement or laughter may
+temporarily alter breathing rhythms as well. This link between
+emotional processing and respiratory control explains why breathing exercises are commonly used in stress
+relief and relaxation techniques. Thus, the limbic system serves as an important modulator of breathing in
+relation to mental and emotional states.
+
+MARKING SCHEME (3 Marks)
+Function of limbic system in
+respiration ~ 1 mark
+Example: fear/anxiety > rapid
+breathing ~ 1 mark
+Example: calmness/relaxation —> slow
+breathing - 1 mark
+
+Q.9 Why is expiration usually considered a passive process?
+Ans. Expiration, in most normal breathing cycles, is regarded as a passive
+
+process. This is because it does not usually require active muscular
+effort. During expiration, the diaphragm relaxes and returns to its
+dome shape, while the external intercostal muscles also relax,
+lowering the rib cage. As a result, the elastic recoil of the lungs and
+thoracic wall compresses the lungs naturally. This recoil increases
+intrapulmonary pressure, pushing air out without active contraction.
+Only in forced expiration, such as during exercise or coughing, do the
+
+internal intercostals and abdominal muscles contract actively. Under
+
+MARKING SCHEME (3 Marks)
+Relaxation of diaphragm and
+intercostals — 1 mark
+Elasticrecoil of lungs and thoracic wall
+—1 mark
+Air expelled without muscular effort —
+A mark
+
+resting conditions, however,
+
+expiration occurs passively due to relaxation and recoil, conserving energy during breathing.
+
+Q,10 What is the difference between the inspiratory and expiratory centres?
+
+Ans. Breathing is controlled by distinct centres in the medulla oblongata. The
+inspiratory centre is located in the ventral region of the medulla. It
+generates rhythmic newe"mpulses that stimulate the diaphragm and
+external intercostals, thereby initiating inspiration and increasing the
+rate and depth of breathing when necessary. In contrast, the
+
+MARKING SCHEME (3 Marks)
+* Role of inspiratory centre (ventral,
+initiates inspiration) - 2.50 marks
+
+* Role of expiratory centre (dorsal /
+oy . lateral, supports expiration) - 1.50
+expiratory centre is situated in the dorsal and lateral regions of the marks
+
+medulla. It primarily functions during forced breathing by inhibiting
+
+S$ studyplusplus.com S$
+
+
+--- Page 16 ---
+
+inspiratory signals and stimulating internal intercostals and abdominal muscles, thereby enhancing
+expiration. During quiet breathing, this centre remains largely inactive. Together, these two centres
+coordinate the rhythm of inhalation and exhalation, ensuring efficient and adaptable ventilation.
+
+Discuss the transport of oxygen and carbon dioxide through blood.
+
+TRANSPORT OF OXYGEN AND CARBON DIOXIDE IN BLOOD
+
+Efficient transport of respiratory gases is essential to maintain cellular respiration and energy production.
+The blood serves as the medium for carrying oxygen (02) from the lungs to the body tissues and transporting
+carbon dioxide (CO;) from the tissues back to the lungs for elimination.
+
+1. Transport of Oxygen
+
+Oxygen is vital for cellular respiration, yet it is only | Reg blood Ry foes
+
+slightly soluble in plasma. Therefore, the vast majority cell FY ro
+
+of oxygen is carried in the blood. bound to 0:
+
+haemoglobin (Hb) within red blood cells (RBCs). This fo tua cols eezy
+dual mechanism ensures efficient oxygen delivery from g
+the lungs to tissues with varying demands. roc}
+
+(a) Dissolved Oxygen in Plasma
+¢ Avery small portion of oxygen, about 1.5-2%, | Hemoglobin
+si warspored a a simple physical solution molecules
+issolved in the plasma. a
+e Though aiantitatively minor, this fraction is ee tales
+extremely important because it determines the Figure: Human lungs
+partial pressure of oxygen (PO.) in the blood.
+© PO, acts as the driving force for oxygen diffusion:
+o From alveoli into blood (in the lungs).
+© From blood into tissues (in systemic circulation).
+(b) Oxyhaemoglobin Formation
+e Nearly 98% of oxygen is carried bound to haemoglobin (Hb) in red blood cells.
+© Structure of haemoglobin:
+© Each haemoglobin molecule consists of four polypeptide chains.
+© Each chain has a heme group with a central iron atom capable.of binding one oxygen molecule.
+o Thus, one haemoglobin molecule can bind up to four oxygen molecules to form
+oxyhaemoglobin (HbO,).
+
+Reversible Nature of Binding
+e The attachment of oxygen to haemoglobin is reversible, allowing oxygen to be picked up in the lungs
+and released in the tissues as required.
+e Inthe lungs: :
+© High PO; and relatively lower CO; create favorable conditions for haemoglobin to bind oxygen
+efficiently (oxygen loading).
+« Inthe tissues:
+© Low PO,, high'CO, concentration, increased acidity (low pH), and higher temperature favor
+release of oxygen from haemoglobin (oxygen unloading).
+This adaptive mechanism ensures oxygen is delivered precisely where it is most needed.
+
+(c) Oxygen-Haemoglobin Dissociation Curve
+© The relationship between PO2 and haemoglobin saturation is shown by the oxygen-haemoglobin
+dissociation curve, which has a characteristic $-shape (sigmoid curve).
+* The sigmoid shape reflects cooperative binding: the binding of one oxygen molecule to
+haemoglobin increases its affinity for the next, and vice versa.
+
+S$ studyplusplus.com S$
+
+
+--- Page 17 ---
+
+2.
+
+Factors Influencing Oxygen Release (Shifting the Curve):
+
+1.
+
+2.
+
+4.
+
+Partial Pressure of Oxygen (PO2):
+
+e Athigh PO: (lungs), haemoglobin becomes nearly fully saturated.
+
+e Atlow PO, (tissues), haemoglobin releases oxygen.
+
+Carbon Dioxide Levels (PCO2):
+
+e Increased CO2 promotes oxygen release — part of the Bohr effect.
+
+Blood pH:
+A decrease in pH (more acidic conditions due to CO: or lactic acid) reduces haemoglobin’s affinity
+
+for oxygen, enhancing oxygen unloading.
+
+Temperature:
+
+e Elevated temperatures, as during muscular activity, also favor oxygen release to tissues.
+
+Physiological Significance
+
+These shifting conditions ensure that oxygen is held tightly by haemoglobin in the lungs (where it is
+plentiful) and released efficiently in metabolically active tissues (where it is needed most).
+
+Transport of Carbon Dioxide
+
+Carbon dioxide (CO) is a waste product of cellular respiration, produced continuously in body tissues.
+Because CO, is about 20 times more soluble in plasma than oxygen, it is transported in the blood more
+easily. Still, specialized mechanisms are required to carry large amounts efficiently from tissues to the lungs,
+where it is exhaled.
+
+The three major methods of carbon dioxide transport are:
+
+(a)
+
+Dissolved in Plasma (~7—10%)
+
+¢ Asmall fraction of CO, (about 7-10%) is transported simply dissolved in blood plasma.
+
+Though this percentage is small, it is important because dissolved CO; contributes to the partial
+pressure of carbon dioxide (PCO2) in the blood, which regulates diffusion between tissues, blood,
+
+and alveoli.
+
+(b) Carbaminohaemoglobin (~20-25%)
+
+e About 20-25% of CO. binds reversibly with haemoglobin in red blood cells to form
+carbaminohaemoglobin (HbCO,).
+e Unlike oxygen, CO, binds to the globin (protein) part of haemoglobin, not the heme group.
+
+¢  Intissues:
+© Where PCO; is high, more CO binds to haemoglobin, favoring carbaminohaemoglobin formation.
+
+e Inthe lungs:
+© Where PCO; is low, CO, detaches from haemoglobin and diffuses into the alveoli for exhalation.
+
+This process is also influenced by the Haldane effect:
+Deoxygenated haemoglobin has a greater capacity to bind CO2, while oxygenated haemoglobin
+more readily releases it.
+This ensures efficient CO, loading in tissues and unloading in the lungs.
+Bicarbonate lons (~65-70%) — Major Transport Form
+e The majority of carbon dioxide (65-70%) is carried as bicarbonate ions (HCO;") dissolved in plasma.
+© This process occurs primarily inside red blood cells: ‘*
+1. Formation of Carbonic Acid
+© CO, diffuses into RBCs and combines with water (H20) to form carbonic acid (H2COs). 2
+© This reaction is catalyzed by the enzyme carbonic anhydrase, which greatly accelerates the process.
+2. Dissociation into lons
+o Carbonic acid quickly dissociates into hydrogen ions (H*) and bicarbonate ions (HCO3°).
+3. Chloride Shift
+© To maintain ionic balance inside the RBC, bicarbonate ions move out into the plasma in exchange
+for chloride ions (CL").
+o This exchange is known as the chloride shift or Hamburger phenomenon.
+
+S$ studyplusplus.com S$
+
+
+--- Page 18 ---
+
+® Inthe lungs, the process reverses:
+
+© Bicarbonate re-enters RBCs, recombines with H* to form CO2, which then diffuses into the alveoli
+and is exhaled.
+
+Transport of Carbon dioxide in Blood
+
+.
+
+Figure: Transport of COz as bicarbonate Ions (a) Transfer of CO2 from tissues to blood
+(b) Transfer of CO2 from blood to lungs.
+
+(I) As Bicarbonate tons
+
+During the formation of bicarbonate ions (HCOs°) in red blood cells, a compensatory exchange of ions
+takes place to maintain electrochemical balance:
+
+Chloride ions (CL-) enter red blood cells from the plasma via bicarbonate-chloride antiporter proteins.
+Inside the RBC, Cl- combines with potassium ions (K*) to form potassium chloride (KCL).
+
+In the plasma, bicarbonate ions combine with sodium ions (Na*) to form sodium bicarbonate (NaHCOs).
+
+These interactions help stabilize the pH of blood around 7.4, maintained by the bicarbonate buffer
+system.
+
+Influence of Partial Pressure on CO, Transport
+
+The movement and transformation of CO, are driven by differences in partial pressure (P_CO2)
+between tissues, blood, and lungs:
+
+In tissues, PCO, is higher than in blood. CO; diffuses into RBCs, combines with water to form bicarbonate
+ions, and is transported in this form.
+
+In the lungs, PCO; is lower than in the blood. The process reverses:
+
+© Bicarbonate ions recombine with hydrogen ions (H*), forming carbonic'acid, which then dissociates
+into CO, and water.
+
+© CO, diffuses into alveoli and is expelled during exhalation.
+
+(uy ns Carboxyhaemoglobin
+
+About 23% of COz is transported’ by directly binding to the globin portion of haemoglobin, forming
+carboxyhaemoglobin (Hb-CO2).
+
+In body tissues, where PCO; is high, CO, readily binds with haemoglobin.
+In the lungs, where PCO, is lower, CO2 dissociates from haemoglobin and is exhaled.
+This process is reversible and regulated by the relative PCO; in different regions of the creutatory system.
+
+(i!) Transport as Dissolved CO; in Plasma
+
+Asmall fraction—around 7% of total carbon dioxide—is carried dissolved directly in blood plasma.
+
+Although not the primary route, this form contributes to the total CO, load and allows for rapid diffusion
+at the gas exchange surfaces.
+
+Due to its limited solubility, this route is relatively inefficient, but still functionally significant in CO.
+transport dynamics.
+
+S$ studyplusplus.com S$
+
+
+--- Page 19 ---
+
+Os Based (MCQs)
+
+TRANSPORT OF OXYGEN AND CARBON DIOXIDE
+
+3.
+
+5.
+
+Qi Describe how oxygen is transported in the blood.
+
+What percentage of oxygen is transported in
+blood as oxyhaemoglobin?
+
+A. 3% B. 30%
+
+C.97% D. 100%
+
+Which enzyme facilitates the reversible binding
+
+of oxygen to haemoglobin?
+
+A. Pepsin B. Catalase
+
+C. Carbonic anhydrase _D. Lipase
+
+In what form is the majority of carbon dioxide
+
+transported in the blood?
+
+A. Carboxyhaemoglobin
+
+B. Dissolved CO, in plasma
+
+C. Bicarbonate ions D. As carbonic acid
+
+What causes oxygen to be released from
+
+oxyhaemoglobin at the tissue level?
+
+A. Decrease in CO; levels
+
+B. Increase in pH
+
+C. Increase in hydrogen ion concentration
+
+D. Binding of glucose
+
+What is the chloride shift in red blood cells?
+
+A. Exchange of sodium and potassium
+
+B. Entry of bicarbonate into RBCs
+
+C. Movement of chloride into RBCs in exchange
+for bicarbonate
+
+D. Active transport of oxygen
+
+10.
+
+What is the role of haemoglobin in buffering
+blood pH?
+
+A. It binds to water
+
+B. It binds to hydrogen ions
+
+C. It converts CO2 to glucose
+
+D. It activates bicarbonate
+
+Which ion pairs with bicarbonate in the plasma
+to form sodium bicarbonate?
+
+A.C B. Ca?*
+
+Cc. Na* D. Kt
+
+What happens to bicarbonate ions in the lungs?
+A. They are stored in the liver
+
+B. They combine with hydrogen ions to release CO,
+C. They bind to oxygen
+
+D. They are excreted through kidneys
+
+Where does carboxyhaemoglobin primarily form?
+A. In the lungs B. In the alveolar fluid
+
+C. In the tissues D. In the heart
+
+What Is the approximate blood pH maintained
+
+by the buffering system?
+A.6.5 B.7.0
+C.7.4 D.8.0
+
+[a.c]2.c][3.cl4c][s.c[é6e[7¢[s.s[9.c]10.¢]
+Short Questions
+
+Ans. Oxygen transport in blood is primarily carried out.by haemoglobin
+present in red blood cells. About 97% of oxygen molecules bind
+reversibly with haemoglobin’ to form oxyhaemoglobin. This binding
+occurs in the lungs where the partial pressure of oxygen (pOz) is high,
+favoring attachment. The remaining 3% of oxygen dissolves directly in
+plasma, though this plays a minor role. As blood. circulates to tissues
+
+MARKING SCHEME (3 Marks)
+‘% oxygen with haemoglobin (97%) -0.S0
+
+‘3% oxygen dissolved in plasma (3%) -0.50
+Role of high pO2 in lungs (binding) - 2
+Role of low pO; in tissues (release) — 1
+
+where the partial pressure of oxygen is lower, haemoglobin releases oxygen, ensuring continuous supply.
+This property of haemoglobin to bind oxygen where it is abundant and release it where it is deficient ensures
+efficient delivery to active cells. Thus, oxygen transport depends on haemoglobin and the differences in
+
+oxygen pressure.
+
+Q.2 Describe the role of bicarbonate ions in carbon dioxide transport.
+
+Ans. Carbon dioxide transport in blood relies heavily on bicarbonate ions.
+About 70% of COs is carried this way. First, CO2 diffuses from tissues
+into red blood cells. Inside, it combines with water under the influence
+of carbonic anhydrase, forming carbonic acid (H2COs). This unstable
+compound dissociates into hydrogen ions (H*) and bicarbonate ions
+(HCOs"). The bicarbonate ions diffuse out into plasma, serving as the
+
+°
+
+studyplusplus.com
+
+MARKING SCHEME (3 Marks)
+© Diffusion of CO, into RBCs—1
+
+* Conversion to carbonic acid— 1
+
+* Formation of #* and HCO,"
+bicarbonate into plasma —1
+
+°
+
+
+--- Page 20 ---
+
+major form of CO; transport. Meanwhile, hydrogen ions are buffered by haemoglobin to maintain pH. In the
+lungs, the reverse reaction occurs: bicarbonate re-enters RBCs, reforms CO, and is exhaled. This cycle
+ensures continuous, efficient transport of CO2 from tissues to lungs.
+
+Ce Na a a eA a RET
+
+Q.3_ What is the chloride shift and why is it important?
+
+eee
+
+Ans. The chloride shift refers to the exchange of bicarbonate ions (HCO3")
+
+leaving red blood cells with chloride ions (Cé-) entering from plasma. MARKING SCHEME (3 Marks)
+This exchange occurs via a special-membrane protein called the prronraan sailors ;
+bicarbonate-chloride carrier. The shift is essential for maintaining ingotaack Sart karhlessar oak
+electrochemical neutrality inside red blood cells; without it, loss of
+
+transport—1
+
+negatively charged bicarbonate would create imbalance. By ensuring
+electrical stability, the chloride shift allows continuous movement of bicarbonate into plasma, which is the
+main form in which CO; is carried. It also plays a crucial role in sustaining efficient gas exchange and
+preventing harmful pH disturbances during CO, transport.
+
+— ee ———————————————————————SSSSSeSEeSe
+
+Q.4 How does haemoglobin help in maintaining blood pH?
+
+ee _
+
+Ans. Haemoglobin is not only an oxygen carrier but also a pH buffer in the
+blood. When CO, enters RBCs, it forms carbonic acid that dissociates MARKING SCHEME (3 Marks)
+into H* and HCOs-. The free hydrogen ions (H*) could sharply lower | + H° ions buffered by haemoglobin ~1
+blood pH. To prevent this, haemoglobin binds to these ions, forming | * Role of bicarbonate ions ~1
+haemoglobinic acid (HHb), which stabilizes pH near 7.4. Meanwhile, [_°_ Shloride shift supports balance~1
+bicarbonate ions move out into plasma, balanced by the chloride shift
+that maintains electrical neutrality. In the lungs, the process reverses: haemoglobin releases H* to recombine
+with bicarbonate, forming CO; for exhalation. This buffering role of haemoglobin is essential for preventing
+acidosis and ensuring proper cellular activity.
+
+Q.5 Describe how carbon dioxide is transported as carboxyhaemoglobin.
+Ans. A significant fraction of carbon dioxide, about 23%, is transported by Fae
+binding to the globin portion of haemoglobin. This compound is called MARIONG SCHED b
+carboxyhaemoglobin or carbaminohaemoglobin. This binding occurs TaiccuL tases ponte tang
+mainly in tissues where the partial pressure of CO, is high, which “1 =
+promotes attachment. Unlike oxygen, CO. does not compete directly Low pCO) in lungs promotes release ~ 1
+with haem groups but instead binds to amino groups on globin chains.
+When blood reaches the lungs, the partial pressure of CO: falls, and the bound CO; dissociates from
+haemoglobin. It then diffuses into the alveoli to be exhaled. This mechanism allows haemoglobin to carry
+not just oxygen but also a portion of carbon dioxide efficiently.
+
+SLO [B-12-R-5]
+
+Outline the role of respiratory pigments.
+
+ROLE OF RESPIRATORY PIGMENTS
+
+Respiratory pigments are coloured molecules that play a vital role in the transport of oxygen within
+organisms. These pigments bind reversibly with oxygen, allowing them to pick up oxygen in regions of high
+concentration (e.g., lungs or gills) and release it where it is needed (e.g., tissues undergoing respiration). A
+common feature among all respiratory pigments is the presence of a coloured, non-protein component—for
+example, the haem group in haemoglobin.
+
+Two of the most studied respiratory pigments in vertebrates are haemoglobin and myoglobin.
+Haemoglobin
+
+Haemoglobin is a large, globular protein found within red blood cells. It is composed of :our polypeptide
+chains, each associated with a haem group that contains a central iron (Fe**) atom. This iron atom is capable of
+binding one molecule of oxygen, allowing each haemoglobin molecule to carry up to four oxygen molecules.
+
+Oxygen binding to haemoglobin is reversible and depends on the partial pressure of oxygen (pO,). In
+
+oxygen-rich environments such as the alveoli of the lungs, haemoglobin readily binds oxygen to form
+oxyhaemoglobin. In tissues with low pO2, oxygen is released to support cellular respiration.
+
+S$ studyplusplus.com $
+
+
+--- Page 21 ---
+
+Myoglobin
+
+Myoglobin is a structurally simpler pigment found in skeletal and cardiac muscles. It consists of a single
+polypeptide chain and a single haem group, allowing it to bind one molecule of oxygen. Myoglobin has a higher
+affinity for oxygen than haemoglobin and serves as an intracellular oxygen reservoir.
+
+This pigment becomes particularly important when oxygen levels drop below 20 mmHg—a condition that
+may occur during intense muscular activity. At such low oxygen pressures, myoglobin releases its stored oxygen,
+thereby sustaining aerobic respiration in muscle cells when haemoglobin-derived oxygen becomes limited. It is
+
+also responsible for the red colour of muscle tissue.
+N-terminus C-terminus
+
+C-terminus
+N-terminus
+
+Figure: Haemoglobin Figure: Myoglobin
+
+Major Roles of Respiratory Pigments
+
+1. Transport of Oxygen
+e The primary role is to carry oxygen from the lungs to tissues.
+e In humans and other vertebrates, the pigment haemoglobin (Hb) is the main oxygen carrier.
+e Haemoglobin binds oxygen in the lungs (where PO; is high) to form oxyhaemoglobin and releases it in
+the tissues (where PO, is low).
+© This reversible binding ensures oxygen delivery is adapted to tissue needs.
+2. Transport of Carbon Dioxide
+e Respiratory pigments also assist in carrying carbon dioxide back from tissues to the lungs.
+Haemoglobin binds with CO2 to form carbaminohaemoglobin, and it also helps buffer hydrogen ions
+formed during CO, transport as bicarbonate.
+3. Buffering Role (Maintaining pH)
+Haemoglobin can bind hydrogen ions (H*), helping to maintain the acid-base balance of blood.
+¢ This buffering prevents large fluctuations in blood pH during metabolism.
+4. Adaptation to Varying Oxygen Demands
+¢ Respiratory pigments ensure that sufficient oxygen is delivered to tissues even under special conditions,
+such as:
+© Exercise (when tissues require more oxygen).
+© High altitude (where atmospheric oxygen is lower).
+© Diving animals (which store oxygen in myoglobin for use during long dives).
+
+ae ee Haemoglobin eg
+Found in red blood cells (erythrocytes), Found in skeletal and cardiac muscle cells.
+
+Tetramer (4 polypeptide chains, each with a | Monomer (single polypeptide chain with one
+haem group). d haem group).
+Capacity
+very low pO: .
+Function Transports oxygen from lungs to tissues.
+eee a during low pO».
+
+S$ studyplusplus.com S$
+
+
+
+--- Page 22 ---
+
+Oxygen Release | Releases oxygen at moderate partial | Releases oxygen. when pO) falls below 20
+Threshold pressures of oxygen. mmHg.
+
+Role in Supports oxygen delivery across the whole | Provides oxygen for aerobic respiration in
+Respiration bod active muscles.
+
+[Colour __—_—_—| Gives red colour to blood. Responsible for red colour of muscle.
+
+Presence of Exhibits cooperative binding (allosteric | Does not exhibit cooperative binding.
+Allosteric Effect | regulation). .
+
+Response to Increased oxygen delivery to active tissues. | Acts as an emergency oxygen supply in
+Exercise muscles.
+
+SLO [B-1
+State the causes, symptoms and treatment of upper respiratory tract Infections (sinusitis, otitis media)
+and lower respiratory infections (pneumonia, pulmonary tuberculosis).
+
+RESPIRATORY TRACT INFECTIONS
+
+Respiratory tract infections are among the most common human diseases, affecting millions of people
+worldwide each year. They may involve either the upper respiratory tract (nose, sinuses, pharynx, larynx, and
+middle ear) or the lower respiratory tract (trachea, bronchi, lungs).
+
+1. Upper Respiratory Tract Infections (URTIs)
+(a) Sinusitis
+
+Definition:
+
+ — Sinusitis is the inflammation or infection of the paranasal sinuses, the air-filled cavities surrounding
+the nasal passages.
+
+Causes:
+
+© Usually occurs after a viral upper respiratory infection (“common cold”).
+
+* May be caused by bacteria (e.g., Streptococcus pneumoniae, Haemophilus influenzae) or, rarely, fungi.
+
+© Predisposing factors: allergies, nasal polyps, deviated septum, or exposure to air pollution/smoke.
+
+Symptoms:
+
+e ~ Facial pain or pressure (especially around eyes, forehead, or cheeks).
+
+© Blocked nose and thick nasal discharge (yellow or green).
+
+e Headache, reduced sense of smell, and sometimes fever.
+
+e Pain worsens when bending forward.
+
+Treatment:
+
+© Most viral sinusitis resolves without antibiotics.
+
+* Symptomatic relief: warm steam inhalation, saline sprays, and pain relievers.
+
+¢ Bacterial sinusitis: treated with antibiotics.
+
+e Chronic or recurrent cases may require surgery (functional endoscopic sinus surgery).
+
+(b) Otitis Media
+
+Definition:
+
+* Otitis media is the infection or inflammation of the middle ear cavity, located behind the eardrum.
+
+Causes:
+
+¢ Frequently follows an upper respiratory viral infection, as germs travel from the throat to the middle
+ear via the Eustachian tube.
+Common bacteria: Streptococcus pneumoniae and Haemophilus influenzae.
+Risk factors: bottle-feeding in infants, allergies, exposure to tobacco smoke, and crowded environments
+(e.g., daycare). ~
+
+Symptoms:
+
+e Earache (often severe), irritability in children.
+
+e Fever and hearing loss.
+
+Fluid or pus may leak from the ear if the eardrum ruptures.
+
+S$ studyplusplus.com S$
+
+wee
+
+
+--- Page 23 ---
+
+Treatment:
+
+e Pain relievers and warm compresses for mild cases.
+
+e Antibiotics are prescribed for bacterial infection.
+
+e Recurrent infections may require insertion of ventilation tubes in the eardrum.
+
+Children are more prone to otitis media due to shorter and more horizontal Eustachian tubes. This is
+
+why pediatricians often see ear infections following colds or flu in toddlers.
+
+2. Lower Respiratory Tract Infections (LRTIs)
+(a) Pneumonia
+
+Definition:
+
+* Pneumonia is an acute infection of the alveoli in Pneumonia Healthy
+the lungs, where air sacs become filled with fluid
+or pus, making breathing difficult. /
+
+Causes:
+
+« Can be caused by bacteria (Streptococcus
+pneumoniae is most common), viruses
+(influenza, RSV, COVID-19), or fungi (in
+immunocompromised patients).
+
+© Risk factors: smoking, chronic illnesses, old age,
+weak immunity.
+
+Symptoms:
+
+© High fever, chills, cough with sputum (may be
+rusty-colored in bacterial cases).
+
+e Chest pain that worsens with breathing or
+coughing. Figure: Pneumonia
+
+e Shortness of breath, rapid breathing, and fatigue.
+
+© Insevere cases: bluish lips or nails due to lack of oxygen.
+
+Treatment:
+
+¢ Bacterial pneumonia: treated with antibiotics.
+
+e Viral pneumonia: supportive care (fluids, oxygen, antivirals in some cases).
+
+e Hospitalization may be required in severe cases for oxygen therapy.
+
+Pneumonia is a leading cause of hospitalization worldwide, especially in elderly people. Vaccination
+
+against pneumococcal bacteria helps prevent it.
+
+(b) Pulmonary Tuberculosis (TB)
+
+Definition:
+
+* Tuberculosis is a chronic bacterial infection of the lungs caused by Mycobacterium tuberculosis. It
+primarily affects the lungs but can spread to other organs.
+
+¢ Spread by inhaling airborne droplets released when an infected person coughs, sneezes, or talks.
+
+e Risk factors: poor nutrition, overcrowding, HIV/AIDS, and weak immune systems.
+
+Symptoms:
+
+« Persistent cough lasting more than three weeks.
+
+© Coughing up blood-stained sputum.
+
+e Fever, night sweats, unexplained weight loss, fatigue, and chest pain.
+
+Treatment:
+
+. over a long course of 6-9 months.
+
+* Directly Observed Treatment, Short-course (DOTS) is recommended by WHO to ensure patient
+compliance. ‘
+
+TB remains a major public health issue in Pakistan and South Asia. According to WHO, Pakistan is among
+
+the high TB burden countries. Awareness, vaccination (BCG vaccine), and early diagnosis are crucial in
+
+controlling its spread.
+
+S$ studyplusplus.com S$
+
+
+--- Page 24 ---
+
+Describe the disorders of lungs (emphysema and COPD)
+
+————_—_
+
+DISORDERS OF THE LUNGS
+EMPHYSEMA AND CHRONIC OBSTRUCTIVE PULMONARY DISEASE (COPD)
+
+ers GEIR SOILS
+
+The lungs are delicate organs responsible for gas exchange. When they are damaged by long-term exposure
+to irritants such as cigarette smoke, air pollution, or occupational dust, the structure and function of the airways
+can be permanently altered. Two important chronic respiratory disorders are emphysema and chronic obstructive
+pulmonary disease (COPD). These conditions severely impair breathing and quality of life.
+1. Emphysema
+
+Definition:
+
+Emphysema is a chronic lung disease in which the alveoli (air sacs) are gradually destroyed, leading to
+
+reduced surface area for gas exchange and loss of lung elasticity.
+
+Causes:
+
+¢ Cigarette smoking (primary cause).
+
+e Long-term exposure to air pollutants, industrial fumes, or dust.
+
+¢ Genetic deficiency of the enzyme inhibitor alpha-1 antitrypsin (rare cause).
+
+Pathophysiology:
+
+¢ In emphysema, the walls of alveoli break down and merge
+
+into larger, irregular air spaces.
+¢ Elastic fibers are destroyed, so the lungs cannot recoil
+
+Healthy Emphysema
+
+normally.
+¢ This causes air trapping and difficulty in exhaling fully.
+Symptoms:
+¢ Shortness of breath (initially during exertion, later even at
+rest).
+
+Chronic cough with little sputum (“dry cough”).
+Wheezing and tightness in chest.
+
+Barrel-shaped chest (due to over-inflated lungs).
+Fatigue and weight loss in advanced stages.
+Treatment:
+
+© There is no cure, but treatment slows progression.
+
+reat
+
+* Stopping smoking is the most important step. —
+
+* Medications: bronchodilators, inhaled steroids, and oxygen Figure: Emphysema
+therapy.
+
+e Pulmonary rehabilitation exercises to strengthen breathing muscles.
+
+e Insevere cases, lung surgery or transplant may be considered.
+
+Emphysema is often called the “smoker's disease.” Many long-term smokers develop progressive
+breathlessness in middle or old age.
+
+2. Chronic Obstructive Pulmonary Disease (COPD)
+Definition:
+
+COPD is @ progressive disease characterized by long-term obstruction of airflow in the lungs, making it
+
+difficult to breathe. \t usually includes chronic bronchitis and emphysema, often occurring together.
+
+Causes:
+
+© Cigarette smoking is the leading cause (responsible for over 80% of cases).
+
+¢ Long-term exposure to biomass fuel smoke (common in rural households using wood or coal for.
+cooking).
+
+¢ Air pollution and occupational dust/fumes.
+
+S$ studyplusplus.com $
+
+
+--- Page 25 ---
+
+© Genetic predisposition (e.g., alpha-1 antitrypsin deficiency).
+
+Pathophysiology: ;
+
+e Inchronic bronchitis, inflammation and mucus production
+narrow the airways.
+
+® Inemphysema, alveoli are destroyed and lose elasticity.
+
+© Together, these changes reduce airflow and impair
+oxygen.exchange.
+
+Symptoms:
+
+e Persistent cough with sputum (often called a “smoker's
+
+cough”). Healthy Lungs Effected Lungs
+
+Shortness of breath, especially on exertion. Figure: Effects of smoking on lungs
+
+Wheezing and chest tightness.
+
+Frequent respiratory infections.
+
+In severe cases: bluish skin or lips (cyanosis) due to low oxygen levels.
+
+Treatment:
+
+No complete cure; management aims to reduce symptoms and prevent complications.
+
+Quitting smoking is essential.
+
+Bronchodilator inhalers to relax airway muscles.
+
+inhaled steroids to reduce inflammation.
+
+Long-term oxygen therapy for advanced COPD.
+
+Pulmonary rehabilitation, healthy nutrition, and exercise to improve quality of life.
+
+COPD is among the leading causes of death worldwide, particularly in countries with high rates of smoking
+
+and pollution exposure. In Pakistan, COPD cases are rising due to tobacco use and indoor pollution from
+
+cooking fires.
+
+EFFECTS OF SMOKING ON THE RESPIRATORY SYSTEM
+
+Smoking is one of the most harmful lifestyle habits and a leading cause of respiratory illness worldwide.
+
+Tobacco smoke contains thousands of toxic substances such as nicotine, tar, and carbon monoxide, along with
+many cancer-causing chemicals. These substances damage the air passages, alveoli, and protective mechanisms
+of the lungs, producing both short-term irritation and long-term chronic diseases.
+
+>»
+
+Irritation and Inflammation of Airways
+
+When a person inhales cigarette smoke, the chemicals
+irritate the lining of the trachea and bronchi. This
+leads to swelling and inflammation of the airways,
+accompanied by excessive mucus secretion. Over
+time, this constant irritation causes a persistent
+cough, often referred to as a “smoker's cough,” which
+is one of the earliest warning signs of lung damage.
+Paralysis of Cilia
+
+The respiratory tract is normally lined with tiny hair-
+like structures called cilia, which move rhythmically to
+sweep out dust, microbes, and mucus. Smoking a
+paralyzes or even destroys these cilia. As a result,
+
+harmful particles remain trapped in the lungs instead
+of being cleared out. This greatly increases the risk of
+respiratory infections such as bronchitis and =
+pneumonia, since the lungs lose their natural defense
+system.
+
+Figure: Effects of smoking
+
+S$ studyplusplus.com $
+
+
+--- Page 26 ---
+
+> Chronic Bronchitis
+
+With long-term smoking, the bronchi remain chronically inflamed and produce large amounts of thick
+mucus. The narrowed and clogged airways make breathing difficult and cause constant coughing. This
+condition, known as chronic bronchitis, is commonly seen in long-term smokers who experience frequent
+chest infections and reduced lung efficiency.
+
+> Emphysema
+
+One of the most serious effects of smoking is emphysema, in which the walls of the alveoli (air sacs) are
+progressively destroyed. Instead of many small alveoli providing a large surface area for gas exchange, the
+alveoli fuse into larger, less efficient sacs. This reduces the surface area for oxygen absorption, leading to
+severe shortness of breath. Patients with emphysema often develop a “barrel-shaped chest” and may
+become dependent on supplemental oxygen in advanced stages.
+
+>» Chronic Obstructive Pulmonary Disease (COPD)
+
+Chronic bronchitis and emphysema together are referred to as Chronic Obstructive Pulmonary Disease
+(COPD). Smoking is the leading cause of COPD worldwide. It is a progressive disease in which airflow
+becomes permanently obstructed, making exhalation difficult. Patients with COPD suffer from constant
+breathlessness, wheezing, and greatly reduced exercise tolerance.
+
+> Lung Cancer
+
+Smoking is the major cause of lung cancer, responsible for over 80% of cases globally. Carcinogens present
+
+in tobacco smoke damage the DNA of lung cells, leading to uncontrolled cell growth. Lung cancer is
+
+particularly dangerous because symptoms often appear late, when the disease has already spread. This
+makes survival rates very low compared to many other cancers.
+>» Reduced Oxygen Transport
+
+Another harmful effect of smoking is reduced oxygen transport in the blood. Carbon monoxide, a poisonous
+
+gas in cigarette smoke, binds to hemoglobin with much greater affinity than oxygen. This prevents
+
+hemoglobin from carrying oxygen efficiently, depriving tissues of oxygen. Smokers may experience fatigue,
+dizziness, and a higher risk of heart and brain complications due to reduced oxygen supply.
+> Increased Susceptibility to Infections
+
+Since smoking damages both the cilia and the immune defenses of the respiratory system, smokers are far
+
+more prone to infections such as tuberculosis, influenza, and pneumonia. Healing of damaged respiratory
+
+tissues is also slower in smokers, further worsening recovery from illness.
+
+According to the World Health Organization (WHO), tobacco use kills more than 8 million people every year,
+with respiratory diseases being a major cause of death. In countries like Pakistan, smoking-related illnesses such
+as COPD, lung cancer, and tuberculosis place a heavy burden on public health systems. Many of these conditions
+are preventable if smoking is avoided or stopped early in life.
+
+Smoking affects the respiratory system by irritating and inflaming the airways, paralyzing cilia, causing
+chronic bronchitis, damaging alveoli in emphysema, leading to COPD, and greatly increasing the risk of lung cancer.
+It also reduces oxygen transport due to carbon monoxide and makes the body more vulnerable to infections.
+
+SLOs Based (MCQs)
+
+DISORDERS OF RESPIRATORY SYSTEM OF MAN
+Which of the following is the most common The Directly Observed Treatment Short Course
+cause of chronic bronchitis and emphysema? (DOTS) is used in the treatment of:
+A. Viral infections B. Smoking A. Pneumonia B. Tuberculosis
+C. Dust mites D. Cold weather c. COPD D. Sinusitis
+2. Which disorder is characterized by the 4. In pneumonia, which part of the respiratory
+destruction of alveolar walls, reducing the system primarily gets inflamed?
+
+A. Trachea B. Alveoli
+surface area for gas exchange? ;
+el : Scare C. Larynx O. Sinuses
+. Pneumonia . Otitis me I 5. Which of the following is a lower respiratory
+C. Emphysema D. Tuberculosis tract infection?
+
+S$ studyplusplus.com S$
+
+
+--- Page 27 ---
+
+A. Sinusitis B. Otitis media 7. | Which of the following is NOT a typical symptom
+
+Cc. COPD D. Pharyngitis of emphysema?
+6. Mycobacterium tuberculosis primarily affects A. Shortness of breath
+which organ? B. Chest tightness
+A. Liver B. Kidney C. Productive cough with blood
+C. Lungs D. Heart D. Fatigue
+
+Q.1 What is emphysema and what causes it?
+
+Ans. Emphysema is a chronic lung disease in which the alveolar walls are
+destroyed, reducing the surface area for gas exchange. As a result, coated
+patients experience difficulty in exhaling air fully, leading to Main cause (smoking / pollution /
+breathlessness and low oxygen supply. The main cause of emphysema irritants) - 1.
+is long-term exposure to harmful substances, especially cigarette Effect (reduced gas exchange /
+smoke, which contains toxic chemicals that weaken lung tissue. Other breathlessness) —2
+causes include air pollution, industrial dust, and genetic factors such as
+alpha-1 antitrypsin deficiency. The damage to alveoli is irreversible, making the disease progressive and
+disabling. Because the lungs lose elasticity, patients often struggle with chronic coughing and wheezing.
+Thus, emphysema is a preventable but serious respiratory condition.
+
+Q.2 How does pulmonary tuberculosis affect the body?
+
+Ans. Pulmonary tuberculosis (TB) is a lung disease caused by the bacterium
+Mycobacterium tuberculosis. It spreads through airborne droplets MARKING SCHEME (3 Marks)
+when an infected person coughs or sneezes. The bacteria invade lung (Cease (Mycobacterium tuberculosis) — 1
+tissue, causing the formation of tubercles (nodules) and progressive oon Ge. it fevers ment ewentn,
+
+lung damage. Common symptoms include a rsistent cough
+
+(sometimes with blood-tinged sputum), tod fate fever, night ee ene aaee) See ee
+
+sweats, weight loss, and fatigue. If untreated, TB can spread beyond
+
+the lungs to affect other organs, leading to serious complications. Treatment requires long-term use of
+antibiotics under the DOTS program (Directly Observed Treatment, Short-course), which ensures proper
+drug intake. Without treatment, TB can be fatal, but with proper care it is curable.
+
+Q.3_ What are the typical symptoms of pneumonia?
+
+Ans. Pneumonia is an infection of the lungs in which the alveoli become
+inflamed and filled with fluid or pus, reducing the efficiency of gas
+exchange. This results in difficulty breathing and low oxygen supply to
+the body. The typical symptoms include chest pain, fever, chills,
+productive cough with mucus, shortness of breath, and fatigue. In severe cases, lips and fingertips may turn
+bluish due to lack of oxygen. Pneumonia can be caused by bacteria (commonly Streptococcus pneumoniae),
+viruses, or fungi. It can affect people of all ages, but infants, elderly individuals, and immunocompromised
+patients are at higher risk. Early diagnosis and treatment are essential to prevent complications such as
+pleural effusion or sepsis.
+
+Q.4 Differentiate between COPD and pneumonia.
+
+Ans. COPD (Chronic Obstructive Pulmonary Disease) is a long-term
+progressive disease that includes chronic bronchitis and emphysema. It is MARKING SCHEME (3 Marks)
+mainly caused by smoking or prolonged exposure to air pollutants. COPD | * Definition and cause of COPD 1.50
+
+develops slowly, causing symptoms such as chronic cough, wheezing, and ‘ aeaae end catse} ot poeumonte=
+
+shortness of breath due to irreversible damage to lung tissue.
+
+On the other hand, pneumonia is an acute infection of the alveoli, often caused by bacteria, viruses, or
+
+fungi. It leads to inflammation and fluid buildup in alveoli, impairing oxygen exchange. Unlike COPD,
+
+pneumonia can often be treated successfully with antibiotics or antivirals, and recovery is usually complete.
+
+Thus, COPD is a chronic progressive condition, while pneumonia is an acute but often curable infection.
+
+So studyplusplus.com S$
+
+
+--- Page 28 ---
+
+Q.5 Whatis the role of the DOTS strategy in TB management?
+
+Ans. DOTS (Directly Observed Treatment, Short-course) is the global
+strategy recommended by WHO for the effective management of
+tuberculosis. Under this program, patients are supervised by health
+workers or trained volunteers to ensure that they take their medicines
+regularly and complete the course. This prevents patients from
+stopping treatment prematurely, which is a major cause of drug-
+
+MARKING SCHEME (3 Marks)
+Definition of DOTS - 1
+
+Description of supervised strategy ~ 1
+Effects (cure, reduced spread, prevent
+resistance) ~ 1
+
+resistant TB. DOTS improves cure rates, reduces transmission in the community, and lowers TB-related
+deaths. It also ensures early diagnosis, proper record keeping, and consistent supply of anti-TB drugs. By
+focusing on both treatment and prevention of resistance, DOTS has become the cornerstone of TB control
+
+worldwide.
+Q.6 How does smoking affect the respiratory system?
+
+Ans. Smoking has serious negative effects on the respiratory system. First,
+the chemicals in cigarette smoke damage the cilia lining the respiratory
+tract. Since cilia normally clear mucus and trapped particles, their
+destruction allows harmful substances to accumulate. Second, smoking
+increases mucus production, leading to persistent coughing and
+infections. Third, smoke destroys alveolar walls, reducing the surface
+
+MARKING SCHEME (3 Marks)
+Cilia destruction - 2
+
+* Increased mucus production —1
+Damage to alveoli / risk of chronic
+diseases ~1
+
+area for gas exchange, which contributes to diseases such as emphysema. Additionally, smoking causes
+chronic irritation of the bronchi, resulting in chronic bronchitis. Long-term smoking also greatly increases
+the risk of lung cancer due to carcinogens present in tobacco. Thus, smoking leads to progressive and often
+irreversible respiratory diseases, making it a major preventable cause of death.
+
+Exercise
+
+“Select the correct Answer:
+
+1. When blood leaves the capillary bed most of the
+carbon dioxide is in the form of
+A. carbonate ions B. bicarbonate ions
+C. hydrogen ions D. hydroxyl ions
+2. When you inhale, the diaphragm
+A. relaxes and moves upward
+B. relaxes and moves downward
+C. contracts and moves upward
+D. contracts and moves downward
+3. With which other system do specialised
+respiratory systems most closely interface in
+exchanging gases between the cells and the
+environment?
+A, the skin B. the excretory system
+C. the circulatory system D. the muscular system
+Which of the following is the respiratory surface
+in human respiratory system:
+A. larynx B. trachea
+C. bronchi D. alveoli
+5. How Is most of the oxygen transported in the
+blood?
+A. dissolved in plasma __B. bound to haemoglobin
+C. as bicarbonate D. dissolved in water
+
+°
+
+>
+
+yy ===
+
+studyplusplus.com
+
+The lateral walls of the chest cavity of man are
+
+composed of the:
+
+A. ribs B. intercostal muscles
+
+C. ribs and intercostal muscles
+
+D. ribs, intercostal muscles and diaphragm
+
+Which of the following factors is the most
+
+effective in accelerating the rate of breathing in
+
+man?
+
+A. a lack of oxygen in the blood
+
+B. a lack of oxygen in the tissues
+
+C. an excess of carbon dioxide in the lungs
+
+D. an excess of carbon dioxide in the blood
+
+Which of the following changes will increase the
+
+body's rate of carbon dioxide excretion into the
+
+alveoli?
+
+A. holding the breath
+
+8. the breakdown of alveolar tissue as.a result of
+disease
+
+C.a decrease in the partial pressure of carbon
+dioxide in the alveolar air
+
+D. a decrease in the pulmonary circulation
+
+Breathing is an example of
+A. counter current exchange
+B. cellular respiration
+
+C. ventilation D. diffusion
+
+°
+
+
+--- Page 29 ---
+
+10. Which sequence most accurately describes the A. decreased temperature B. decreases H*
+
+sequence of airflow in the human respiratory C. decreased PO2 D. exercise
+system? 16. Which of these correctly orders the structures
+1. pharynx 2. bronchus 3. trachea 4, larynx 5. through which air passes during inhalation?
+alveolus 6. bronchiole A. pharynx > trachea > larynx > bronchi
+A.4, 1,3, 2,5,6 B. 1,4, 3,2,5,6 B. pharynx > larynx > trachea bronchi
+C.4,1,3,2,6,5 0.1, 4,3,2,6,5 C. larynx > pharynx > bronchi > trachea
+11. Which one of the following changes takes place D. larynx > pharynx > trachea > bronchi
+during inspiration? 17, The pharynx is also known as the:
+A. Decrease in thoracic cavity A. windpipe B. trachea
+B. Relaxation in diaphragm C. voice box D. throat
+C. Relaxation in external intercostal muscles 18. What is the correct path air takes when it enters
+D.Sternum moves towards ventral and anterior the trachea on its way to the lungs?
+direction A.bronchi /bronchioles /pulmonary capillaries/
+12. The volume of air that can be exhaled after alveoli
+normal exhalation is the B.bronchioles/ bronchi/ alveoli/ pulmonary
+A. tidal volume B. residual volume capillaries
+C. inspiratory reserve volume C.bronchi / pulmonary  capillaries/alveoli/
+D. expiratory reserve volume bronchioles
+13. Haemoglobin D.bronchi /bronchioles/alveoli / pulmonary
+A. combine reversely with only oxygen capillaries
+C. attach to the alveolar wall 19. Which of the following is correct for the partial
+B. all have four heme group pressure of oxygen in alveoli?
+D. none of them A. less than carbon dioxide
+14. The maximum volume of air contained in the B. less than the blood
+lung by a full forced inhalation is called C. more than the blood
+paises ae D. equal to that of the blood
+A. Tidal volume B. Vital capacity 20. Which of the following is the respiratory surface
+C. Ventilation rate D. Total lung capacity in human respiratory system:
+15. Dissociation’ of O2 from oxyhaemoglobin is A. larynx B. trachea
+facilutated by: + C. bronchi D. alveoli
+[1.8 [2.0 [3.c [4b [5.8 [6c [7.0 [ac [9.c [10.0]
+[11.0 [12.0 | 13.8 | 44.0 | 45.0 [16.8 [ 47. [18.d [ 19. ¢ | 20.0 |
+
+Short Answer Questions
+
+Q.1 What is respiratory surface? Write the properties of respiratory surface.
+
+Ans. A respiratory surface is the specialized biological interface where the
+exchange of oxygen and carbon dioxide occurs between the body and MARKING SCHEME (3 Marks)
+the external environment. In humans, the alveoli of the lungs serve as | © Definition of respiratory surface —1
+the main respiratory surface, while in other organisms it may be the | © Properties (thin, moist, vascularized,
+skin, gills, or tracheal system. For efficient gaseous exchange, the large surface area) -2
+respiratory surface must possess certain properties. It should be thin to
+allow rapid diffusion of gases, moist so that gases can dissolve before diffusing, and richly supplied with
+blood capillaries to carry oxygen to tissues and remove carbon dioxide. Moreover, it must have a large
+surface area to meet the oxygen requirements of the body.
+
+Q.2_ What organs constitute the respiratory system?
+Ans. The human respiratory system is a complex arrangement of organs that
+
+enable breathing and gaseous exchange. The process begins at the nose MARKING SCHEME (3 Marks)
+
+and nasal cavity, where air is filtered, moistened, and warmed. From | + Mentification of main respiratory organs
+there, air passes through the pharynx and into the larynx (voice box). (nasal cavity, pharynx, larynx, trachea,
+The air then moves into the trachea (windpipe), which divides into right bronchi, bronchioles, alveoli) — 2
+
+and left bronchi, further branching into smaller bronchioles. At the end | * See oteots (nes: Siaphragm,
+of bronchioles are the alveoli, the main sites for gaseous exchange. The
+
+lungs house these alveoli and serve as the primary respiratory organs.
+
+So studyplusplus.com $
+
+
+
+--- Page 30 ---
+
+Supporting structures such as the diaphragm and intercostal muscles help in aoretation and exhalation by
+creating pressure changes in the thoracic cavity.
+
+Q.3 How do nose and nasal cavity function in filtering the incoming air?
+Ans. The nose and nasal cavity are the first entry points of air into the
+
+respiratory system and perform important protective functions. The air MARKieS ScHENS (8 ae if
+entering through the nostrils is warmed by the blood vessels in the pobehigabate eons pplskstee
+nasal lining, ensuring that cold air does not damage delicate alveoli. At dust/microbes —1.
+
+the same time, the mucous membrane of the nasal cavity moistens the Role of cilia in clearing particles — 1
+
+air, preventing dryness in the respiratory tract. Most importantly, the
+mucus traps dust particles, microbes, and pollutants, keeping them from entering deeper parts of the lungs.
+The cilia (tiny hair-like structures) lining the nasal passage then move these trapped particles toward the
+throat, where they are either swallowed or expelled. This ensures that only clean air reaches the lungs.
+
+Q.4 Whatis the role of pharynx in human respiration?
+
+Ans. The pharynx is a muscular tube located behind the nasal and oral
+cavities. It serves as a common pathway for both air and food. In | parcarmradcanitat ional
+respiration, the pharynx plays a vital role by conducting inhaled air | . function in passage vant
+from the nasal cavity to the larynx, ensuring a continuous passage | . Role in preventing entry of food -1
+toward the trachea and lungs. It also helps in proper routing of air, so -
+that inhaled air does not enter the digestive tract. During swallowing, the epiglottis prevents food from
+entering the airway, keeping the respiratory passage clear. Thus, the pharynx not only functions as a
+connecting chamber but also ensures safe and efficient air passage in the respiratory process.
+
+Q.5 Describe the function of the human larynx.
+Ans. The larynx, commonly known as the voice box, is a cartilaginous
+
+structure located between the pharynx and trachea: Its primary MARKING SCHEME (3 Marks)
+function is to produce sound, as it houses the vocal cords, which vibrate a pharwes ised
+when air passes through, enabling speech and vocalization. In addition, sear aa
+the larynx plays an important role in protecting the lower respiratory Perea ten Corslean 2
+
+Role in protecting airway during
+tract. During swallowing, the epiglottis (a flap of tissue) closes over the pata 5 seus may
+
+laryngeal opening to prevent food or liquid from entering the trachea.
+The larynx also helps regulate airflow during breathing, ensuring smooth passage of air into the trachea and
+lungs. Hence, the larynx has a dual role in both voice production and airway protection.
+
+Q.6 Describe the structure and function of alveoli.
+
+Ans. The alveoli are microscopic, balloon-like air sacs located at the ends of :
+bronchioles in the lungs. Each human lung contains about 300 million MARKING SCHEME (3 Marks)
+alveoli, providing a vast surface area for gas exchange. Their walls are Pbagate ears etch this sad
+extremely thin (one cell thick) and kept moist, allowing oxygen and nae Sah of capillaries ~ 2
+carbon dioxide to dissolve and diffuse efficiently. Surrounding each Function in oxygen uptake and CO:
+alveolus is a dense network of capillaries, enabling close contact refhoval—1.
+between air and blood. During gas exchange, oxygen diffuses from the
+alveolar air into the blood, while carbon dioxide diffuses from the blood into the alveolar air for exhalation.
+Thus, alveoli form the essential respiratory surface of humans.
+
+Q.7 How do the contraction and relaxation of human lungs take place?
+Ans. The lungs themselves cannot contract, but their movement depends on
+the dispivaara and intercostal muscles. During inhalation, the | | Peli Sy hdr
+diaphragm contracts and flattens downward while the external | > joi.” oy popes.) tails ‘s
+intercostal muscles contract, pulling the ribs upward and outward.
+These changes increase the thoracic cavity volume, lowering the air | . Relaxation leading to exhalation/
+pressure inside the lungs, causing air to rush in. During exhalation, the forced expiration—1
+diaphragm and intercostals relax, returning to their normal positions.
+This decreases thoracic volume and increases air pressure in the lungs, forcing air out. During forced
+breathing, internal intercostals and abdominal muscles assist by pushing air out more forcefully.
+
+Q.8 What is chloride shift?
+ee
+Ans. The chloride shift, also called the Hamburger phenomenon, is a vital process in carbon dioxide transport.
+
+inhalation - 1
+
+S$ studyplusplus.com $
+
+
+--- Page 31 ---
+
+In the tissues, carbon dioxide diffuses into red blood cells and is
+converted into bicarbonate ions (HCOs-) by the enzyme carbonic
+anhydrase. To prevent accumulation, bicarbonate diffuses out. of the
+red blood cell into the plasma. To maintain electrical neutrality, an
+equal number of chloride ions (CL-) move into the red blood cell from
+the plasma. This ion exchange balances the charges and keeps red blood
+cells stable. In the lungs, the process reverses to allow release of carbon
+dioxide for exhalation.
+
+enormous surface area for gaseous exchange, far greater than what a
+pair of simple balloon-like lungs could provide. This ensures sufficient
+oxygen uptake to meet the high energy demands of human cells and
+efficient carbon dioxide elimination. The smalt size of alveoli means
+that each is in close contact with a dense capillary network, reducing
+the distance for diffusion and speeding up gas exchange. Moreover,
+having many small alveoli allows the lungs to remain elastic and
+flexible, accommodating large volumes of air without damage. This
+design ensures maximum respiratory efficiency.
+
+MARKING SCHEME (3 Marks)
+Definition of chloride shift—2
+Movement of bicarbonate out of RBC—1.
+
+Influx of chloride ions to maintain
+neutrality —1
+
+Q.9 What are the advantages of having millions of alveoli rather than a pair of simple balloon-like lungs?
+Ans. The presence of millions of alveoli provides the lungs with an
+
+MARKING SCHEME (3 Marks)
+Increased surface area for gas
+exchange - 1.
+
+Efficient diffusion due to thin walls and
+capillary contact ~1
+
+Meeting high metabolic/respiratory
+demands -1
+
+Q.10 Write the differentiate between:
+(a) _ Internal and External Respiration.
+Ans. External respiration occurs in the lungs and involves the exchange of
+
+gases between alveolar air and blood. Oxygen diffuses from alveoli into
+blood, while carbon dioxide diffuses from blood into alveoli for
+exhalation.
+
+Internal respiration takes place in tissues, where oxygen carried by
+
+MARKING SCHEME (3 Marks)
+Definition of external respiration ~ 1
+Definition of internal respiration - 1
+Difference in site/process clearly
+
+explained -1
+
+haemoglobin is released into body cells, and carbon dioxide produced
+by metabolism diffuses from cells into blood.
+
+Thus, external respiration ensures oxygen loading in the lungs, while internal respiration ensures oxygen
+unload ie in tissues. Both processes are vital for maintaining continuous cellular respiration and energy
+release.
+
+(b) Upper and Lower Respiratory Tract.
+
+Ans. The upper respiratory tract includes the nose, nasal cavity, pharynx,
+and larynx. Its main functions are to filter, warm, and moisten incoming
+air and to act as a passageway to the lower tract.
+
+“ The lower respiratory tract begins with the trachea, branching into
+bronchi, bronchioles, and alveoli inside the lungs. Its primary role is the
+actual gas exchange between air and blood.
+
+In short, the upper tract prepares air for entry, while the lower tract provides the respiratory surface.
+Together, they maintain an efficient respiratory system.
+
+MARKING SCHEME (3 Marks)
+© Components of upper tract - 1
+© Components of lower tract-1
+© Difference in function ~ 1
+
+(c) _ Bronchi and Bronchioles. :
+
+Ans. The bronchi are two large tubes branching from the trachea into the
+right and left lungs. They have cartilage rings in their walls to maintain MARKING SCHEME (3 Marks)
+shape and prevent collapse. Their function is to conduct air deeper into pri b WW pacts
+the lungs. ¢ ios
+The bronchioles are finer branches of the bronchi that lack cartilage and scheme’. anger clea)
+instead have smooth muscle. Their narrow structure allows them to pjoataltnes ite (alr passa,
+regulate airflow by constriction or dilation. They terminate in clusters of regulation and alveoli pistlensia git
+alveoli, where gas exchange occurs.
+Thus, bronchi act as main air passageways, while bronchioles serve as
+regulators of airflow and connect to the alveoli.
+
+MARKING SCHEME (3 Marks)
+‘Oxyhaemoglobin: definition and role ~ 1
+Carboxyhaemoglobin: definition and
+
+(d) Oxyhaemoglobin and Carboxyhaemoglobin.
+
+Ans. Oxyhaemoglobin is formed when oxygen binds reversibly with
+haemoglobin inside red blood cells. It plays a vital role in transporting
+
+danger—1
+oxygen from the lungs to body tissues, where oxygen is released for Clear distinction (reversible vs
+
+irreversible binding) — 1
+
+cellular respiration. This binding is reversitle and supports life.
+
+S$ studyplusplus.com S$
+
+
+--- Page 32 ---
+
+Carboxyhaemoglobin, on the other hand, is formed when carbon monoxide (CO) binds irreversibly with
+haemoglobin. CO has about 200 times greater affinity for haemoglobin than oxygen, making it highly
+dangerous. This prevents haemoglobin from carrying oxygen, leading to tissue hypoxia, suffocation, and
+even death.
+
+Thus, oxyhaemoglobin is essential for survival, while carboxyhaemoglobin is harmful.
+
+(e) Haemoglobin and Myoglobin. ~
+Ans. Haemoglobin is a red, iron-containing protein found in red blood cells.
+
+It has four polypeptide chains and can bind up to four molecules of iqmple in aataa)
+oxygen. Its main function is the transport of oxygen from the lungs to Sevtrnand Rion hee»
+; abe Structure and function of myoglobin 1
+tissues and carbon dioxide back to the lungs. Key difference (oxygen transport vs
+Myoglobin is a similar oxygen-binding protein but found in muscle cells. storage)—1
+
+It consists of a single polypeptide chain and can bind only one oxygen
+molecule. Its function is to store oxygen within muscle fibers and release it during intense muscular activity.
+Therefore, haemoglobin transports oxygen in blood, while myoglobin stores oxygen in muscles for
+immediate use.
+
+Q.11 List the effects of smoking.
+
+Ans. Smoking has serious harmful effects on the respiratory system and
+
+general health. It is responsible for about 87% of lung cancer cases and ee ea cee Cee
+
+ds ncer-related effects —
+also increases the risk of cancers of the mouth, larynx, and esophagus. thicate eoeliaaay daa is,
+It is a major cause of chronic bronchitis and emphysema, two diseases ‘emphysema, asthma, allergies) —1
+that permanently damage the lungs. Smoking irritates the airways, Cough, cilia damage, infections /
+
+producing a persistent morning cough, and damages the cilia that difficulty in breathing —1
+normally help remove dust and microbes, leaving the body vulnerable
+to infections like pneumonia. Almost immediately, smoking can make breathing difficult and, over time, it
+worsens asthma and allergies. Thus, smoking severely impairs respiratory efficiency and reduces life
+expectancy.
+
+ya
+
+Q.1 Describe the human upper respiratory tract.
+
+Ans. Please See SLO [B-12-R-02]
+
+Q.2' Describe the human lower respiratory tract.
+
+Ans, Please See SLO [B-12-R-02]
+
+Q.3 Describe the mechanism of breathing in man.
+
+Ans. Please See SLO [B-12-R-03)
+
+Q.4 How the control of breathing takes place?
+
+Ans. Please See SLO [B-12-R-03)
+
+Q.5 Explain the transport of oxygen in blood.
+
+Ans. Please See SLO (B-12-R-04)
+
+Q.6 Explain the transport of carbon dioxide in blood.
+
+Ans. Please See SLO [B-12-R-04)}
+
+Q.7 What is the role of respiratory pigments in man?
+
+Ans. Please See SLO [B-12-R-05)}
+
+Q.8 Describe the cause, symptoms and treatments of:
+(a) Sinusitis (b) Otitis media (c) Pneumonia (d) Pulmonary tuberculosis
+(e) Emphysema (f) Chronic obstructive pulmonary disease (COPD)
+
+Ans. Please See SLO [B-12-R-06]
+
+soso @elomeoece
+
+S$ studyplusplus.com S$

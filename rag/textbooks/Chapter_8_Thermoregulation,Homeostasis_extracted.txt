@@ -1,0 +1,2255 @@
+
+
+--- Page 1 ---
+
+Chapter # 08
+
+Thermoregulation Homeostasis
+
+Student Learning Outcomes
+
+At the end of this chapter, students will be able to:
+[B-12-R-74] Define thermoregulation and explain its needs.
+[B-12-R-75] Classify animals on the basis of the source of body heat i.e., ectotherms and endotherms.
+[B-12-R-76] Classify the animals on the basis of the ability to thermoregulate i.e., poikilotherms and
+homeotherms.
+[B-12-R-77] Describe the regulatory strategies in man for thermoregulation.
+
+[B-12-R-78] Describe three elements i.e., receptors, control center and effectors which operate
+homeostatic mechanisms.
+
+[B-12-R-79] Relate the homeostatic mechanisms with the negative and positive feedback systems.
+[B-12-R-80] Differentiate between osmoconformers and osmoregulators.
+
+[B-12-R-81] Define osmoregulation.
+
+[B-12-R-82] Explain the problems faced by osmoregulators.
+
+[B-12-R-83] Explain the different methods of osmoregulation found in freshwater, marine water and terrestrial.
+
+Living organisms must maintain a stable internal environment to survive, even when external conditions
+change. This ability is called homeostasis, and one of its most important aspects is the regulation of body
+temperature, known as thermoregulation.
+
+Temperature strongly influences the speed of biochemical reactions, the structure of proteins, and the
+functioning of enzymes. If body temperature rises too high (hyperthermia), enzymes may denature and vital
+processes can collapse. If temperature falls too low (hypothermia), reaction rates slow down and cells cannot
+function properly. Thus, keeping body temperature within an optimal range is essential for life.
+
+Different animals have evolved various strategies to cope with temperature fluctuations. Some, like fisi.es,
+reptiles, and amphibians, rely largely on external heat sources and are.called ectotherms. Others, such as birds
+and mammals, generate and regulate their own body heat, and are termed endotherms.
+
+In humans, thermoregulation is controlled by the hypothalamus, which acts as a thermostat. It receives
+information from temperature receptors, compares it with the set point (around 37 °C), and activates responses
+through effectors such as sweat: glands, blood vessels, and muscles. These responses may involve heat-loss
+mechanisms (like sweating and vasodilation) or heat-gain mechanisms (like shivering and vasoconstriction).
+
+Understanding thermoregulation not only explains how organisms maintain balance with their environment
+but also highlights the intricate coordination of receptors, control centers, and effectors that sustain life.
+
+THERMOREGULATION
+
+Thermoregulation is the biological process by which organisms maintain a stable internal body temperature
+within a narrow and optimal range, despite fluctuations in the external environment. It involves physiological,
+behavioral, and structural adaptations that prevent harmful variations in body temperature. In humans and other
+warm-blooded animals, thermoregulation is primarily controlled by the hypothalamus, which acts as the body’s
+
+“thermostat.”
+
+Sg studyplusplus.com S$
+
+
+--- Page 2 ---
+
+Importance and Needs of Thermoregulation
+
+Maintaining a constant internal temperature is essential for survival because most biochemical processes
+
+and enzymes in living organisms are temperature-sensitive. Even small deviations from the normal range (36.5—
+37.5°C in humans) can disrupt homeostasis and impair body functions. The main needs of thermoregulation are:
+
+1.
+
+2.
+
+5.
+
+Enzyme Function and Metabolism
+
+Enzymes are highly specialized proteins that act as catalysts for almost every biochemical reaction occurring
+in living cells. Their activity is strongly dependent on temperature, as they function efficiently only within a
+narrow optimal range. In humans, this optimal temperature is around 37 °C. If body temperature rises
+beyond this range, a condition called hyperthermia occurs. Under hyperthermia, enzymes begin to lose their
+three-dimensional shape, a process known as denaturation, which severely reduces their ability to catalyze
+reactions. As.a result, essential processes such as respiration, digestion, and protein synthesis slow down or
+may even cease entirely. On the other hand, if the body’s temperature falls below the normal range,
+hypothermia sets in. At low temperatures, enzymes do not denature but their activity becomes sluggish,
+leading to a sharp decline in metabolic rate. This reduced metabolic efficiency compromises the production
+of energy and weakens cellular functions. Thus, thermoregulation is vital for maintaining the precise
+temperature conditions necessary for enzyme activity and overall metabolism.
+
+Cell and Organ Protection
+
+Temperature extremes pose a direct threat to the integrity of cellular structures and organs. At high
+temperatures, proteins and lipids that form the building blocks of cells undergo structural damage. Proteins
+may unfold or clump together, disrupting normal cellular machinery, while lipids in membranes become
+excessively fluid, weakening the barrier that protects cells. Nucleic acids such as DNA and RNA are also
+sensitive to high heat, which can cause mutations or breakage of their molecular bonds. Conversely, at very
+low temperatures, cells face the risk of ice crystal formation within their cytoplasm. These ice crystals are
+sharp and can puncture delicate membranes and organelles, leading to irreversible damage and cell death.
+Vital organs such as the heart, liver, and kidneys are especially at risk in such conditions, since their failure
+can quickly threaten survival. Thermoregulation, by keeping body temperature within safe limits, provides
+essential protection against these potentially lethal effects.
+
+Homeostasis of Vital Processes
+
+The maintenance of a constant body temperature is fundamental to the smooth functioning of vital
+physiological processes. For example, respiration depends on temperature-sensitive enzymes in
+mitochondria to generate ATP efficiently. Circulation is also influenced, as both high and low temperatures
+alter the viscosity of blood and the efficiency of the heart in pumping it. Nerve conduction, which relies on
+precise ion movements across membranes, becomes slowed or erratic when temperatures deviate from the
+normal range. Organs such as the brain and the heart are especially sensitive to temperature disturbances.
+The brain requires a steady environment to maintain consciousness, coordination, and memory, while the
+heart depends on precise biochemical signals for rhythmic contractions. Even a slight increase above normal
+body temperature can lead to confusion, seizures, or cardiac stress, while a drop below the normal range
+can result in loss of coordination or unconsciousness. Therefore, thermoregulation is indispensable in
+sustaining the internal environment required for these vital processes.
+
+Survival in Fluctuating Environments
+
+Living organisms are constantly exposed to environmental changes, such as day-to-night temperature
+variations, seasonal shifts between summer and winter, and geographic differences between hot deserts
+and cold polar regions. Without thermoregulation, organisms would not be able to adapt to these
+fluctuations and would risk death during unfavorable conditions. For instance, desert animals must prevent
+overheating during the day and avoid chilling during the night, while polar animals need insulation and
+behavioral mechanisms to withstand freezing conditions. Thermoregulation enables animals to remain
+active, find food, reproduce, and escape predators in both hot and cold habitats. In humans, it allows us to
+live in and adapt to diverse environments across the globe—from the scorching tropics to icy mountain
+ranges—by maintaining internal temperature stability despite extreme external variations. Thus,
+thermoregulation ensures survival and functionality in ever-changing climates.
+
+Energy Balance
+
+Thermoregulation also plays a crucial role in managing the body’s energy resources. Maintaining body
+temperature within a stable range minimizes unnecessary energy expenditure, allowing organisms to direct
+energy toward growth, reproduction, and activity rather than continuous adjustment to environmental
+
+S$ studyplusplus.com S$
+
+
+--- Page 3 ---
+
+changes. For example, in the absence of thermoregulation, the body would need to accelerate metabolism
+drastically during cold conditions to generate heat or slow it excessively during hot conditions to prevent
+overheating. Such frequent and extreme metabolic changes would consume vast amounts of energy, leaving
+little for other essential processes. By keeping temperature stable, thermoregulation prevents wastage of
+energy and ensures efficient utilization of nutrients and stored reserves. This balance between temperature
+regulation and energy conservation is especially critical for survival during times of food scarcity, migration,
+or hibernation.
+Thermoregulation is the process of maintaining a constant internal body temperature to ensure normal
+enzyme activity, protect cells, maintain homeostasis, and support survival in changing environments. It is an
+essential aspect of homeostasis and vital for the continuity of life processes.
+
+Classify the animals on the basis of the ability to thermoregulate
+
+CLASSIFICATION OF ANIMALS ON THE BASIS OF THERMOREGULATION
+
+Animals differ in how they regulate their internal body temperature when exposed to environmental
+changes. Based on this ability, they are classified into two broad categories: poikilotherms and homeotherms.
+This classification highlights the distinct strategies animals have evolved to cope with the thermal challenges of
+their habitats.
+
+1. Poikilotherms (Cold-blooded Animals)
+
+Poikilotherms are animals whose internal body temperature fluctuates with the temperature of their
+external environment. They do not possess efficient physiological mechanisms to maintain a constant
+internal temperature. Instead, their metabolic activities and body functions rise or fall according to ambient
+conditions. For example, when exposed to heat, poikilotherms become more active due to an increase in
+enzymatic activity, whereas in colder environments, their activity slows down drastically.
+
+The lack of internal regulation makes poikilotherms heavily dependent on environmental conditions for
+survival. To cope, they rely on behavioral adaptations, such as basking in the sun to raise body temperature
+or seeking shade, burrows, or water to avoid overheating. Many reptiles, amphibians, fishes, and
+invertebrates are poikilothermic. For instance, lizards are often seen basking on rocks in the morning to
+absorb heat, and frogs become sluggish during winter as their body processes slow down.
+
+While poikilothermy conserves energy—because these animals do not burn large amounts of food for heat
+production—it also restricts them. They cannot remain active in extreme cold or heat for long periods, and
+their distribution is limited to environments where temperature fluctuations are within tolerable limits.
+
+Homeotherms (Warm-blooded Animals)
+
+Homeotherms are animals that maintain a relatively constant internal body temperature, regardless of
+external environmental conditions. This is achieved through well-developed physiological mechanisms,
+such as sweating, panting, shivering, vasodilation, vasoconstriction, and changes in metabolic rate. The
+
+hypothalamus acts as the central control system, ensuring that the body’s temperature remains within a
+
+narrow range (for humans, typically around 36.5—37.5 °C).
+
+Because homeotherms regulate their own temperature, they can remain active across a wide range of
+
+environmental conditions, from deserts to polar regions. Birds and mammals are classic examples of
+
+homeotherms. For instance, polar bears maintain body warmth through thick fur and fat insulation even in
+freezing conditions, while camels regulate heat storage and water balance to survive in hot deserts.
+
+However, maintaining homeothermy requires a high metabolic rate, which in turn demands a continuous
+
+supply of food and oxygen. This makes homeotherms energetically more expensive than poikilotherms.
+
+Despite this cost, the advantage lies in their ability to survive, reproduce, and remain active in diverse and
+
+often harsh climates.
+
+In conclusion, animals can be classified into two groups based on thermoregulation: poikilotherms, which
+allow their body temperature to fluctuate with the environment, and homeotherms, which maintain a stable
+internal temperature through physiological regulation. Poikilothermy conserves energy but restricts activity in
+extreme climates, while homeothermy allows independence from environmental conditions but requires greater
+energy expenditure. Both strategies illustrate the diversity of adaptations that animals have evolved to survive in
+their respective habitats.
+
+y
+
+S$ studyplusplus.com S$
+
+
+--- Page 4 ---
+
+Classify animals on the basis of the source of body heat ectotherms and endotherms.
+
+CLASSIFICATION OF ANIMALS ON THE BASIS OF THE SOURCE OF BODY HEAT
+
+Animals.can also be classified according to the primary. source from which they obtain body heat. This
+classification distinguishes between organisms that rely on the external environment for heat and those that
+generate it internally through metabolic processes. On this basis, animals are grouped into two main categories:
+ectotherms and endotherms.
+
+1. Ectotherms
+
+Ectotherms are animals that depend primarily on heat gained from their external environment to regulate
+body temperature. Their internal heat production through metabolism is relatively low and insufficient to
+maintain a stable temperature on its own. As a result, ectothermic animals exhibit wide fluctuations in body
+temperature that Closely mirror environmental changes.
+
+To survive, ectotherms adopt behavioral strategies to regulate heat. For example, reptiles like snakes and
+lizards bask in the sun to absorb heat and raise their body temperature for activity, while in excessively hot
+conditions they retreat to burrows, shaded areas, or water bodies to avoid overheating. Amphibians, fishes,
+and most invertebrates are also ectothermic, relying on the warmth of the sun or surrounding water to
+function efficiently.
+
+The advantage of ectothermy is that it conserves energy, as these animals do not burn large amounts of
+food to generate heat internally. This allows them to survive on smaller food supplies compared to
+endotherms. However, the disadvantage is their dependence on environmental temperatures. In cold
+conditions, ectotherms become sluggish and unable to maintain high levels-of activity, which limits their
+survival in extreme or fluctuating climates.
+
+2. Endotherms
+
+Endotherms are animals that generate most of their body heat through internal metabolic processes, such
+
+as cellular respiration. This internally produced heat allows them to maintain a relatively constant body
+
+temperature, independent of the external environment. Endotherms use both physiological and structural
+adaptations to balance heat production and heat loss. Examples include shivering to produce heat, sweating
+or panting to cool down, insulating fur or feathers, and fat layers such as blubber in whales and seals.
+
+Birds and mammals are typical endotherms. A sparrow, for example, maintains high body temperature to
+
+sustain flight even in cool mornings, while polar bears and arctic foxes use thick fur and fat insulation to
+
+survive freezing polar regions. Endothermy provides a significant advantage by enabling activity in a wide
+range of habitats and climates, as well as during both day and night.
+
+The cost of endothermy, however, is high energy demand. Since internal heat production requires rapid
+
+metabolism, endotherms must consume large amounts of food and oxygen. This constant energy
+
+requirement makes them more vulnerable to food scarcity, but it is balanced by the benefit of environmental
+independence and continuous activity.
+
+Animals are classified on the basis of their heat source into ectotherms, which rely on environmental heat
+and show fluctuating body temperatures, and endotherms, which generate their own heat metabolically and
+maintain stable body temperatures. Ectotherms conserve energy but are dependent on external conditions, while
+endotherms remain independent of the environment but require large amounts of energy. This classification
+highlights the contrasting strategies animals use to meet the universal challenge of temperature regulation.
+
+SLO [B:
+
+Describe the regulatory strategies in man for thermoregulation.
+
+REGULATORY STRATEGIES IN MAN FOR THERMOREGULATION
+
+Humans, being homeothermic and endothermic animals, maintain their internal body temperature within a
+narrow range of about 36.5—37.5 °C, regardless of environmental fluctuations. This regulation is controlled mainly
+
+PS) studyplusplus.com S$
+
+
+--- Page 5 ---
+
+by the hypothalamus, which functions as the body’s thermostat. The hypothalamus constantly monitors blood
+temperature and, when deviations are detected, initiates physiological and behavioral responses to restore
+balance. These regulatory strategies can be divided into two categories: responses to overheating (heat-loss
+mechanisms) and responses to excessive cooling (heat-gain mechanisms).
+
+Heat-Loss Mechanisms (Regulation in Hot Conditions)
+
+When the external temperature is high, or when internal heat is generated through strenuous muscular
+activity, the human body must prevent overheating to maintain homeostasis. Overheating can be
+dangerous, as it disrupts enzymatic functions, accelerates dehydration, and may lead to heat stroke. To avoid
+these outcomes, the hypothalamus activates several coordinated mechanisms that promote heat loss and
+restore body temperature to normal.
+
+1.
+
+Sweating (Evaporative Cooling): Sweating is the most effective cooling mechanism in humans. Sweat
+glands located in the dermis release fluid onto the surface of the skin. As this sweat evaporates, it
+absorbs a large amount of latent heat from the body, thereby cooling the blood flowing beneath the
+skin. This process works best in hot and dry environments where evaporation is rapid. However, in
+humid conditions, evaporation is slowed down, which makes sweating less efficient and explains the
+discomfort experienced in such climates.
+
+Vasodilation of Skin Arterioles: Another key response is vasodilation, in which blood vessels near the
+skin surface widen. This increases the flow of warm blood close to the surface, where heat can escape
+into the environment through radiation, convection, and conduction. The skin often becomes flushed
+or reddish as a result of increased blood flow. By channeling heat outward, vasodilation prevents
+dangerous rises in core body temperature.
+
+Reduced Metabolic Rate: The body also regulates its internal heat production by lowering the metabolic
+rate. By slowing down chemical reactions and energy release, the production of extra heat within cells
+is minimized. This conservation of energy reduces the risk of further overheating and supports the body
+in maintaining balance.
+
+Behavioral Adjustments: In addition to physiological mechanisms, humans consciously adopt behavioral
+strategies to regulate temperature. Examples include wearing light and loose-fitting clothing, drinking
+water to replace fluids lost through sweating, reducing strenuous activity, and seeking cooler
+environments such as shade or air-conditioned spaces. These behaviors complement internal regulatory
+mechanisms and play a crucial role in preventing dehydration and heat-related illnesses.
+
+Through the combined actions of sweating, vasodilation, reduced metabolism, and behavioral strategies,
+the body maintains a safe internal temperature during hot conditions. This integrated system ensures the
+protection of enzymes, cells, and vital organs from the harmful effects of hyperthermia, thereby preserving
+normal physiological function even under extreme heat. 7
+
+Vasodilation
+
+Heat energy transferred by radiation
+
+Little blood
+passes through
+shunt vessel
+
+Muscles relaxed, increased 4
+blood flow to skin surface
+
+Figure: Mechanisms of vasodilation
+
+PS) studyplusplus.com S$
+
+
+--- Page 6 ---
+
+Heat-Gain Mechanisms (Regulation in Cold Conditions)
+
+In cold environments, the body must conserve existing heat and produce additional warmth to prevent
+hypothermia. A fall in body temperature slows down enzyme activity, reduces metabolic efficiency, and
+threatens vital organ function. To counter these effects, the hypothalamus activates a series of physiological
+and behavioral mechanisms designed to retain or generate heat.
+
+Shivering: One of the most immediate responses to cold is shivering, which consists of rapid, involuntary
+contractions of skeletal muscles. These contractions require energy and therefore increase the rate of
+cellular respiration, which in turn produces heat as a by-product. Although shivering can be physically
+tiring, it is highly effective in raising body temperature during sudden exposure to cold.
+Vasoconstriction of Skin Arterioles: Another important strategy is vasoconstriction, in which arterioles
+supplying blood to the skin narrow. This reduces the flow of warm blood to the surface, thereby
+minimizing heat loss through radiation, convection, and conduction. As a result, the skin may appear
+pale or bluish, particularly in the fingers, toes, and lips. By preserving heat in the body’s core,
+vasoconstriction helps protect vital organs from dangerously low temperatures.
+
+Piloerection (Goosebumps): The contraction of tiny muscles at the base of hair follicles causes hairs to
+stand upright, a response known as piloerection or “goosebumps.” In ancestral mammals with dense
+fur, this mechanism trapped an insulating layer of air close to the skin, reducing heat loss. In humans,
+where body hair is sparse, this response is largely ineffective for insulation but remains as a vestigial
+mechanism. ;
+
+Increased Metabolic Rate: Cold exposure also stimulates hormonal responses that increase heat
+production. The thyroid gland secretes thyroxine, which raises the basal metabolic rate, while the
+adrenal medulla releases adrenaline, which accelerates metabolism and enhances heat generation.
+These hormonal adjustments ensure a sustained supply of energy and warmth, especially during
+prolonged exposure to cold conditions.
+
+Behavioral Adjustments: in addition to automatic physiological responses, humans consciously adopt
+behaviors that help conserve and generate heat. These include wearing insulating clothing, covering
+exposed body parts, seeking shelter from wind and cold, consuming warm food and drinks, and engaging
+in physical activities such as exercise to stimulate muscle activity and heat production.
+
+Through the combined action of shivering, vasoconstriction, piloerection, metabolic adjustments, and
+behavioral strategies, the human body maintains core temperature within the normal range. These
+mechanisms are critical for keeping the brain, heart, and other essential organs functional, ensuring survival
+in cold environments and preventing the life-threatening effects of hypothermia.
+
+Vasoconstriction
+
+Epidermis
+
+Little blood
+passes through
+shunt vessel
+
+Muscles relaxed, increased j/
+blood flow to skin surface i
+
+Figure: Mechanisms of vasoconstriction
+
+3. Role of the Hypothalamus
+
+The hypothalamus integrates all information related to body temperature. Thermoreceptors in the skin
+detect changes in external temperature, while internal thermoreceptors monitor blood temperature. The
+
+S$ studyplusplus.com S$
+
+
+--- Page 7 ---
+
+hypothalamus compares this information to the body’s set point and triggers appropriate corrective
+responses. This constant regulation exemplifies homeostasis, ensuring survival in diverse climates.
+
+In humans, thermoregulation is achieved through a combination of physiological and behavioral strategies
+controlled by the hypothalamus. In hot conditions, sweating, vasodilation, and reduced metabolism
+promote heat loss, while in cold conditions, shivering, vasoconstriction, and increased metabolism promote
+heat conservation and heat gain. These mechanisms, along with conscious behavioral actions, maintain body
+temperature within the narrow optimal range necessary for normal enzyme function and overall survival.
+
+Contro} iter
+
+w
+Ww
+
+Information sent (thermoregulatory Information sent
+along the efferent b along the efferent
+pathway to control pathway to
+
+center Afferent Efferent effects
+
+Pathway pathway
+
+i
+Sweat glands activated
+
+Response
+Evaporation of sweat
+
+Stimulus Body temperature falls;
+Body temperature stimulus ends
+rises
+Stimulus
+Response Body temperature falls
+
+Body temperature rises
+stimulus ends
+
+Effectors
+Skeletal muscles)
+
+Shiverin, ins
+pe es ae
+
+Receptors
+| Temperature-sensitive|
+cells in skin and brain
+
+Efferent
+pathway
+
+Afferent
+pathway
+
+Nasooonstiction Informatior n
+goose bumps ; Control Center ne otis
+Sepgtneetigrent [thermoregulatory RNa MS Ser
+center in brain) center
+
+pathway to effectors
+
+Figure: Thermoregulation in human
+
+SLOs Based (MCQs)
+
+THERMOREGULATION
+Which part of the brain functions as the body’s A. Vasoconstriction B. Piloerection
+thermostat? C. Sweating D. Vasodilation
+A. Cerebellum B. Medulla oblongata | 4 What is the main method of heat loss through
+C. Hypothalamus D. Pituitary gland
+A sweating?
+= Valbphaneecridethacdaes) erect: A. Radiation B. Conduction
+5 " 8 C. Evaporation D. Convection
+
+B. External temperature changes
+
+C. Blood pressure 5. In dry environments, humans can tolerate
+
+D. Blood glucose levels temperatures up to:
+3. Which response involves widening of arterioles A. 37°C B. 45°C
+C. 56°C D. 65°C
+
+near the skin surface?
+
+Sg studyplusplus.com S$
+
+
+--- Page 8 ---
+
+Shivering helps to: 13. The hypothalamus responds to changes in:
+
+A. Reduce body temperature A. Ambient light - B. Skin pH
+
+B, Produce heat through muscle contractions C.Blood temperature —_D. Oxygen saturation
+C. Cool the body via evaporation 14. Which of the following is not a function of the
+D. Increase oxygen levels hypothalamus in thermoregulation?
+
+A. Detecting body temperature
+B. Initiating shivering
+C. Secreting insulin
+D. Controlling vasodilation
+
+15. Piloerection in humans is considered:
+A. An active heat production mechanism
+B. A behavioral response
+
+Vasoconstriction during cold exposure helps to:
+A. Increase sweating
+
+B. Increase blood flow to the skin
+
+C. Decrease heat loss
+
+D. Lower body temperature
+
+Goosebumps are caused by:
+
+A. Muscle fatigue C. A vestigial response
+
+B. Erector pili muscle contraction D. A hormonal process
+
+C. Increased sweat production 16. Thermoregulation is essential to:
+
+D. Hormonal stimulation A. Maintain blood pressure
+
+Which hormone increases metabolic rate during B. Ensure proper enzyme activity
+
+cold exposure? C. Regulate heart rate
+
+A. Insulin B. Glucagon D. Control reflexes
+
+C. Adrenaline D. Estrogen 17. Which of the following processes contributes
+
+Shunt vessels help conserve heat by: cirectly $0 neat gain?
+
+A. Increasing blood pressure pe Sweating E-Vasodliation
+C. Shivering D. Goosebumps
+
+B. Directing blood away from the skin surface
+C. Promoting sweating
+D. Stimulating vasodilation
+
+18. In cold conditions, blood is diverted away from
+the skin via:
+
+A. Arteries B. Veins
+Which physiological response reduces heat loss C. Shunt vessels D. Lymph vessels
+in cold environments? 19. Sweat is secreted primarily by:
+A. Sweating B. Vasodilation A. Sebaceous glands B. Adrenal glands
+C. Shivering D. Vasoconstriction C. Endocrine glands D. Sweat glands
+What is the effect of high humidity on sweat | 20. Which is a behavioral response to thermal
+evaporation? discomfort?
+A. Increases efficiency B. No effect A. Vasoconstriction B. Piloerection
+C. Decreases efficiency D. Accelerates metabolism C. Wearing warm clothing D. Shivering
+
+[1.c]2e]3.0][4c]s.o] 66 [7c] 88 | 9c | 108]
+[11.0 [12.c[13.c[14.c[as.c [16.8 [17.c]18.c] 19.0 | 20.¢|
+
+Short Questions
+
+Q.1 What role does the hypothalamus play in thermoregulation?
+
+Ans. The hypothalamus is the central regulator of body temperature: It
+
+continuously monitors core temperature by detecting the warmth or MARKING SCHEME (3 Marks)
+coldness of blood flowing through it. It also integrates input from | + Monitoring blood temperature - 1
+thermoreceptors in the skin that sense external conditions. Based on Ima recelving Input from receptors —
+this information, the hypothalamus initiates physiological responses, 2 cath RIN Meares 2 ae
+such as sweating, vasodilation, or shivering, and behavioral responses
+
+like seeking shade or adding clothing, to maintain thermal balance.
+
+S$ studyplusplus.com $
+
+rt
+1
+
+
+--- Page 9 ---
+
+Q.2 How does vasodilation help cool the body?
+Ans. Vasodilation is the widening of blood vessels, particularly arterioles
+
+near the skin surface. This process increases blood flow to the skin, ee cpasivapet earoabeteen
+allowing more heat to be transferred from the body’s core to the noises ot mak kak be ey
+
+environment. Excess heat is then lost mainly through radiation and radiation/convection - 1 mark
+convection, effectively lowering body temperature.
+
+Q.3 Why is sweating an effective cooling mechanism?
+
+Ans. Sweating regulates temperature through evaporative cooling. Sweat
+glands secrete water onto the skin surface, and as this liquid Albetractastes etch IS st
+evaporates, it absorbs latent heat energy from the body. This heat cooling effect - 1 mark
+transfer reduces core temperature, making sweating particularly
+effective in dry environments where evaporation occurs rapidly.
+
+Q.4 How does humidity affect the efficiency of sweating?
+
+Ans. Humidity directly influences the evaporation of sweat. In high humidity, MARKING SCHEME (3 Marks)
+the air is already saturated with water vapor, slowing sweat | . peistionship of humidity and
+evaporation and reducing its cooling effect. In contrast, dry air allows evaporation —2 marks; resulting effect
+rapid evaporation, enhancing heat loss and making sweating a more ‘on cooling — 1 mark
+
+effective thermoregulatory mechanism.
+
+Q.5 What is shivering, and how does it aid in thermoregulation?
+
+Ans. Shivering is the rapid, involuntary contraction and relaxation of skeletal ath ata
+muscles. These muscle movements increase metabolic activity, which | | Bsrosecdivashs a pase
+generates extra heat as a byproduct of cellular respiration. This heat = 2 marks
+additional heat production helps restore core body temperature in cold
+environments, preventing hypothermia.
+
+Q.6 Describe the function of vasoconstriction in cold environments.
+Ans. Vasoconstriction is the narrowing of arterioles that supply blood to the
+skin. By reducing blood flow to surface capillaries, this mechanism limits | , cuenta = paras ae in seer
+heat loss through radiation, convection, and conduction at the skin heat loss — 1 mark; retaining. core heat
+surface. As a result, more heat is retained in the body’s core, helping to =1 mark
+maintain an optimal internal temperature during cold exposure.
+
+Q.7_ Whatis the significance of piloerection in thermoregulation?
+Ans. Piloerection is the reflex action where small muscles at the base of hair
+follicles contract, causing hairs to stand upright. In fur-covered animals, sentence heels
+this traps a layer of insulating air close to the skin, reducing heat loss. In | * ae emake shivaptieen raake
+humans, however, it serves little thermoregulatory purpose and is humans —1 mark i
+considered a vestigial response, though it signals exposure to cold.
+
+Q.8 Describe how shunt vessels contribute to heat conservation.
+
+Ans. Shunt vessels are specialized blood pathways that divert blood away
+from surface capillaries toward deeper veins. This redirection reduces (MARKING SCHEME (3 Marks)
+heat loss from the skin by minimizing radiation and convection at the
+surface. Consequently, more heat is conserved in the body’s core,
+making this mechanism especially useful in cold weather to prevent
+hypothermia.
+
+Q.9 How does the body respond hormonally to cold exposure?
+Ans. In cold environments, the hypothalamus stimulates the release of
+
+: " MARKII EME (3 Marks)
+hormones. such as adrenaline and noradrenaline. These hormones | , jamming reve a mp ponies
+
+increase metabolic rate by accelerating cellular respiration, which thyroxine) — 1 mark; functions in
+generates additional heat. Thyroxine may also be released to boost raising metabolism and heat
+production ~ 2 marks
+
+long-term heat production. Collectively, these hormonal adjustments
+help maintain body temperature under prolonged cold stress.
+
+Sg studyplusplus.com S$
+
+
+--- Page 10 ---
+
+Q.10 Why is thermoregulation crucial for enzyme function?
+
+Ans. Enzymes function effectively only within a narrow temperature range.
+\f body temperature falls too low, enzyme activity slows, reducing
+metabolic reactions. Conversely, excessive heat can denature enzymes enzymes - 2 marks; role of
+by altering their active site, stopping reactions altogether. thermoregulation in stability — 1 mark
+Thermoregulation maintains body temperature within the optimal
+range, ensuring stable enzyme activity and efficient metabolism.
+
+(B-12-R-78]
+
+Describe three elements i.e., receptors, control center and effectors which operate homeostatic
+
+MARKING SCHEME (3 Marks)
+© Effects of temperature change on
+
+mechanisms.
+
+HOMEOSTASIS AND ITS ROLE IN THERMOREGULATION
+
+Homeostasis is the process by which living organisms maintain a stable internal environment despite
+constant changes in the external surroundings. It ensures that essential conditions such as temperature, pH, water
+balance, and glucose concentration remain within narrow limits necessary for survival. In humans, homeostasis is
+critical because enzymes and cellular processes can function properly only under stable internal conditions.
+
+One of the most important examples of homeostasis is thermoregulation—the regulation of body
+temperature. For humans, the normal internal body temperature is around 36.5-37.5 °C. If this range is disturbed,
+enzymes may lose efficiency, cells may suffer damage, and vital organs such as the brain and heart may fail to
+function correctly. To prevent such dangers, the body uses a coordinated system of receptors, a control center,
+and effectors to detect changes, process information, and restore balance.
+
+Elements of Homeostatic Mechanisms
+
+Homeostasis in humans and other animals is achieved through a highly coordinated system that involves
+three essential components: receptors (sensors), a control center (integrator), and effectors (responders). These
+three elements form a feedback loop that continuously monitors the internal environment, detects changes, and
+restores balance whenever necessary. Together, they ensure that vital conditions such as temperature, pH, water
+balance, and glucose concentration remain within safe limits.
+1. Receptors (Sensors)
+
+Receptors are specialized cells or structures that detect changes, known as stimuli, in the body’s internal or
+
+external environment. Their primary role is to monitor conditions and immediately send information to the
+
+control center.
+
+In thermoregulation, two major types of receptors are involved:
+
+e Peripheral Thermoreceptors: Located in the skin, these receptors sense changes in the external
+environment. For example, when the skin comes in contact with cold air or hot surfaces, the peripheral
+thermoreceptors detect these variations and send signals to the brain. This allows the body to prepare
+early responses even before the core temperature is significantly affected.
+
+e Central Thermoreceptors: Found mainly in the hypothalamus, these receptors monitor the temperature
+of the blood as it circulates through the brain. Since blood temperature reflects the body’s core
+temperature, central receptors provide the most accurate information about internal conditions.
+
+Both sets of receptors work together: peripheral receptors act as an early-warning system for external
+
+changes, while central receptors provide precise monitoring of internal stability. This continuous flow of
+
+information ensures rapid detection of any deviation from the set point, allowing corrective measures to be
+initiated without delay.
+2. Control Center (Integrator)
+
+The control center is the decision-making component of the homeostatic system, It receives information
+from receptors, compares it with the body’s normal set point, and initiates responses to correct any imbalance.
+
+S$ studyplusplus.com $
+
+
+--- Page 11 ---
+
+In humans, the hypothalamus—a small but crucial part of the brain—serves as the main control center for
+thermoregulation. The hypothalamus contains specialized nerve cells that function like a thermostat,
+constantly comparing incoming temperature data with the ideal set point of about 37 °C.
+
+e If the body temperature rises above normal, the hypothalamus detects this change and activates
+cooling mechanisms. These include stimulation of sweat glands for evaporative cooling, dilation of skin
+blood vessels (vasodilation) to increase heat loss, and a reduction in metabolic rate to limit internal heat
+production.
+
+¢ If the body temperature falls below normal, the hypothalamus triggers heat-gain mechanisms. These
+include shivering of muscles to generate heat, vasoconstriction to conserve core temperature, and
+stimulation of endocrine glands (thyroid and adrenal) to increase metabolic heat production.
+
+Thus, the hypothalamus not only processes sensory information but also coordinates appropriate responses
+
+by signaling the -ffectors. Without the integrative function of the control center, homeostasis would break
+
+down, and the body would be unable to adjust to environmental fluctuations.
+3. Effectors (Responders)
+
+Effectors are the structures that carry out the corrective
+
+actions determined by the control center. They rec
+
+instructions via nerve impulses or hormones and bring
+
+about changes that restore the internal environment to Receptor
+normal. g
+
+In thermoregulation, the key effectors include:
+
+e Sweat Glands: Activated by the hypothalamus in
+
+hot conditions, sweat glands secrete fluid onto the
+skin surface. As the sweat evaporates, it removes
+latent heat from the body, producing a cooling
+effect.
+
+e Skin Arterioles: These small blood vessels adjust
+
+their diameter in response to temperature changes.
+They dilate (vasodilation) to increase blood flow
+and heat loss in hot weather, and constrict
+(vasoconstriction) to reduce heat loss in cold
+conditions.
+
+© Skeletal Muscles: When stimulated by the hypothalamus in cold conditions, skeletal muscles contract
+
+rapidly in shivering. These contractions generate heat through increased cellular respiration, warming
+the body.
+
+© Endocrine Glands: The thyroid gland releases thyroxine, which raises the metabolic rate and heat
+
+production, while the adrenal medulla secretes adrenaline to increase energy release and body warmth
+during cold stress.
+
+By executing these physiological changes, effectors directly restore the body’s temperature to its normal
+
+range. Their role is crucial because they translate the brain’s instructions into visible and measurable
+
+responses that protect the body from damage caused by extreme heat or cold,
+
+Homeostasis is the maintenance of a stable internal environment, vital for the survival of living organisms.
+Thermoregulation is a prime example of this process, keeping body temperature within safe limits. The three
+elements of homeostatic mechanisms are: receptors, which detect changes in the environment; the control
+center, which processes the information and decides on corrective action; and effectors, which carry out the
+responses to restore balance. Together, these elements form a feedback system that preserves internal stability
+and supports life.
+
+Control center
+
+ee
+by / Effector
+
+Figure: Components of homeostatic mechanisms
+
+S$ studyplusplus.com S$
+
+
+--- Page 12 ---
+
+The renin-angiotensin system (RAS), also known as the renin-angiotensin aldosterone system (RAAS),
+is a critical hormonal system that regulates blood pressure and fluid balance. It is the system of
+hormones, proteins, enzymes and reactions. It regulates your blood pressure by increasing sodium
+(salt) reabsorption, water reabsorption (retention) and vascular tone (the degree to which your blood
+vessels constrict, or narrow). The RAAS consists of three major substances, including Renin (an
+enzyme), Angiotensin Il (a hormone), and Aldosterone (a-hormone).
+
+Angiotensin |-
+
+—> Angiotensinogen Angiotensin converting
+
+enzyme (ACE)
+Renin
+
+Aldosterone —»,
+'———-» Sodium & Water
+Retention
+Kidney
+Increased BP
+
+Vasoconstriction <——
+
+the homeostatic mechanisms with the negative and positive feedback systems.
+
+HOMEOSTATIC MECHANISMS AND FEEDBACK SYSTEMS
+
+Homeostasis operates through feedback systems, which are self-regulating processes that maintain internal
+stability in response to external or internal changes. Feedback can be of two types: negative feedback and positive
+feedback. Both play vital roles in regulating physiological processes, but they differ in how they influence the
+original stimulus.
+
+1. Negative Feedback Systems
+
+Negative feedback is the most common and vital type of feedback in homeostatic regulation. In this system,
+
+the response generated by effectors opposes or reverses the initial change, thereby restoring balance to
+
+the normal set point.
+
+> — Role in Homeostasis
+Most homeostatic mechanisms in the human body, including thermoregulation, blood sugar control, and
+water balance, are governed by negative feedback. It prevents extreme deviations and maintains conditions
+within narrow limits essential for enzyme activity and cellular function.
+
+PS) studyplusplus.com S$
+
+
+--- Page 13 ---
+
+Some stimulus
+disrupts
+homeostasis by
+
+Increasing or
+decreasing a
+
+Controlled condition
+that is monitored by
+
+that send |
+
+Nerve impulses or
+hemical signals to a
+
+that receives the
+input and provides
+
+condition back to
+normal.
+
+Nerve impulses or
+chemical signals to i
+
+that bring about
+a change or
+
+Response that alters
+ithe controlled condition.
+
+Figure: Negative Feedback Flowsheet
+
+Example in Thermoregulation:
+
+© Rise in Temperature: If body temperature increases above 37°C, thermoreceptors send signals to the
+hypothalamus. The hypothalamus activates sweating and vasodilation to reduce heat, As the body cools,
+the initial rise in temperature is corrected.
+
+e Fall in Temperature: If body temperature drops below normal, thermoreceptors alert the
+hypothalamus. The hypothalamus triggers shivering, vasoconstriction, and hormonal changes to
+produce and conserve heat. As the body warms, the drop in temperature is reversed.
+
+© Regulation of Blood Glucose: After food intake, blood glucose levels rise. This increase is detected by B-
+cells of the pancreas, which release insulin, promoting glucose uptake by cells and storage as glycogen
+in the liver. As glucose is removed from the blood, levels return to normal.
+
+© Conversely, if blood glucose levels fall, a-cells of the pancreas release glucagon, which stimulates
+glycogen breakdown, raising blood glucose. Both responses restore balance through opposing actions,
+exemplifying negative feedback.
+
+© Regulation of Blood Calcium: When blood calcium levels decline, the parathyroid glands secrete
+parathyroid hormone (PTH). PTH increases calcium absorption in the intestines and kidneys, and
+promotes calcium release from bones. Once calcium levels rise to the set point, PTH secretion is
+suppressed, completing the negative feedback loop.
+
+In both cases, the response negates the original disturbance, exemplifying negative feedback.
+
+S$ studyplusplus.com S$
+
+
+--- Page 14 ---
+
+Stimulates glucose
+anh uptake from blood
+Insulin High
+Blood
+Sugar
+
+Promotes the release Eanes Promotes the release
+Of glucagon of insulin
+
+Figure: Blood sugar levels are controlled by a negative feedback flowsheet
+
+2. Positive Feedback Systems
+
+Positive feedback is less common in homeostasis. In this system, the response generated by- effectors
+
+amplifies or intensifies the original stimulus, pushing the variable further away from the set point. This loop
+
+continues until an external factor interrupts it.
+> Role in the Body
+
+Positive feedback is usually associated with processes that need a rapid, decisive outcome rather than
+
+ongoing balance. While it is not the main mechanism of homeostasis, it can temporarily override normal
+
+stability for specific biological purposes.
+
+Examples:
+
+Blood Clotting:.When a blood vessel is injured, platelets adhere to the damaged site and release
+chemical signals that attract additional platelets. This process accelerates until a sufficient clot is formed
+to seal the wound. Once the injury is resolved, the feedback loop terminates.
+
+© Uterine Contractions During Childbirth: The hormone oxytocin, released by the posterior pituitary,
+stimulates uterine contractions. The stretching of the cervix is sensed by the nervous system, which
+signals for increased oxytocin secretion. This amplifies contractions until childbirth occurs, at which point
+the stimulus (cervical stretch) ceases and the loop ends.
+
+In both cases, the response amplifies the stimulus until the process reaches a natural endpoint.
+
+@Break or toar in
+
+blood vossol wall
+Feedback cycle
+cK initiated
+Released chemicals @® Cootting occurs as
+@atwact more plat platelets adhere to site
+
+and roloase chomicals
+
+Figure: Blood Clotting Mechanism during positive Figure: Positive feedback loop: The birth of ahuman
+feedback system. infant is the result of positive feedback
+
+Sg studyplusplus.com S$
+
+
+--- Page 15 ---
+
+Involvement of Set Aims to maintain or restore a physiological | Temporarily overrides the set point until
+Point set point. the process ends.
+
+Type of Feedback Loop | Corrective or stabilizing loop. Amplifying or self-reinforcing loop.
+
+System Outcome Returns the system to its normal state. Drives the system to a new state or
+conclusion.
+
+Comparison and Relationship with Homeostasis
+
+© Negative feedback maintains stability by counteracting deviations (e.g., regulating temperature,
+glucose, water, and blood pressure). It is essential for survival and long-term balance.
+
+© Positive feedback temporarily enhances changes to achieve a specific outcome (e.g., childbirth, blood
+clotting). While not maintaining stability in the short term, it ultimately serves the body’s survival.
+
+Thus, homeostatic mechanisms primarily rely on negative feedback to sustain equilibrium, but positive
+
+feedback can complement them in special situations requiring a rapid and decisive result.
+
+Comparison of Negative and Positive Feedback Mechanisms in Homeostasis
+
+[Feature _—|__Negative Feedback Mechanism __[___Positive Feedback Mechanism |
+A regulatory. mechanism in which the | A regulatory mechanism in which the
+response reverses the direction of the | response amplifies or reinforces the
+original stimulus to restore balance.
+
+Role in Homeostasis | Maintains homeostasis by keeping
+Reed internal conditions within a narrow range. | achieve a specific biological outcome.
+Stability Effect Promotes internal stability and equilibrium.
+Beater 9 until a specific endpoint is reached.
+biological systems. situations.
+internal variables. completed.
+
+Regulation of blood glucose,
+temperature, blood pressure, and calcium | during childbirth, lactation reflex.
+
+Definition
+
+levels.
+
+original stimulus.
+
+body | Blood clotting, uterine contractions
+
+:
+
+HOMEOSTASIS
+
+What is homeostasis?
+
+A. Ability to respond to stimuli
+
+B. Maintenance of a stable internal environment
+C. Increase in body temperature
+
+D. Breakdown of complex substances
+
+The internal environment of the body primarily
+includes:
+
+A. Bone marrow and cartilage
+
+B. Muscle fibers and ligaments
+
+C. Interstitial fluid and plasma
+
+D. Air in the lungs
+
+Which two systems coordinate to maintain
+homeostasis?
+
+A. Circulatory and muscular
+
+B. Nervous and endocrine
+
+C. Digestive and reproductive
+
+D. Skeletal and integumentary
+
+What is the function of receptors in a homeostatic
+mechanism?
+
+A. To initiate movement
+
+B. To receive and detect changes in environment
+C. To control hormone levels
+
+D. To store nutrients
+
+The control center in a feedback loop:
+
+A. Produces enzymes
+
+B. Carries out a response
+
+C. Processes information and sends commands
+D. Absorbs nutrients
+
+The effector in a homeostatic system:
+
+A. Detects stimuli B. Processes signals
+
+C. Carries out the response D. Monitors hormones
+
+S$ studyplusplus.com S$
+
+
+--- Page 16 ---
+
+7. Negative feedback results in: 13. Oxytocin stimulates:
+
+A. Acceleration of a process A. Glucose absorption B. Blood pressure drop
+B. Further deviation from normal C. Uterine contractions D. Muscle fatigue
+C. Restoration of balance 14. . Which structure is involved in glucose regulation? .
+D. Disruption of equilibrium A. Heart B. Pancreas
+
+8. Which of the following is an example of negative C. Kidneys D. Lungs
+feedback? 15. The renin-angiotensin system regulates:
+
+A. Uterine contractions during labor
+B. Blood clot formation
+
+C. Regulation of blood glucose
+
+D. Lactation reflex
+
+9. Which hormone lowers blood glucose levels
+
+A. Blood sugar B. Blood calcium
+
+C. Blood pressure D. Blood clotting
+16. Blood plasma is part of the:
+
+A. External environment _ B. Digestive tract
+
+C. Internal environment _ D. Skeletal system
+
+after a meal?
+A. Glucagon B. Thyroxine 17. Which organ converts glucose to glycogen after
+C. Adrenaline D. Insulin : peel an
+_ . Kidney . Liver
+10: cote gi C. Pancreas D. Small intestine
+B. Oxygen levels increase 18. Parathyroid: hormone raises blood calcium by
+C. Blood glucose is low acting on the:
+D. Body temperature rises A. Liver B. Pancreas
+11. Positive feedback differs from negative feedback C. Bones, intestines, and kidneys
+because it: D. Muscles and lungs
+A. Inhibits biological processes 19. Which of the following systems directly supports
+B. Restores normal conditions gas exchange in homeostasis?
+C. Amplifies the original stimulus A. Digestive system B. Nervous system
+D. Maintains homeostasis directly C. Respiratory system D. Integumentary system
+12. Which of the following is a positive feedback | 20. Feedback mechanisms function as:
+mechanism? A. One-time responses __B. Linear processes
+
+A. Regulation of pH B. Blood clotting C. Self-regulating loops _—_-D. Immune responses
+
+C. Thermoregulation D. Calcium balance
+
+Short Questions
+
+Q.1 Define homeostasis and describe its significance.
+Ans. Homeostasis is the ability of an organism to maintain a stable internal
+environment despite changes in the external surroundings. It regulates
+variables such as temperature, pH, and glucose concentration within
+narrow limits. This stability is vital because enzymes function optimally
+only under specific conditions, and disruption of balance can impair cellular activities. By maintaining
+homeostasis, organisms ensure proper metabolism, survival, and adaptation to environmental changes.
+Q.2 What are the main components of a homeostatic feedback mechanism?
+Ans. A homeostatic feedback mechanism is made up of three key
+components. The receptor detects any change in the internal or MARKING SCHEME (3 Marks)
+2 © Receptor — 1 mark; control center — 1.
+external environment. The control center, usually the brain or
+endocrine glands, processes this information and decides the corrective
+
+response. The effector then carries out the response, restoring the system to its equilibrium or set point.
+Together, these components ensure stability within the organism.
+
+S$ studyplusplus.com S$
+
+MARKING SCHEME (3 Marks)
+‘© Definition — 2 marks; significance
+mark
+
+mark; effector — 1 mark
+
+
+
+--- Page 17 ---
+
+Q.3 Differentiate between negative and positive feedback mechanisms.
+Ans. Negative feedback mechanisms reverse deviations from a set point,
+
+restoring the system to balance. For example, regulation of blood | , pcerenrai sesaavis, Me as
+glucose and body temperature both rely on negative feedback. Positive marks; positive feedback definition —
+feedback mechanisms, on the other hand, amplify changes and drive 1.5 marks
+
+processes toward completion rather than stabilization. Classic
+examples include blood clotting and uterine contractions during childbirth. Both mechanisms are crucial for
+physiological regulation, but they operate differently depending on the body’s needs.
+
+Q.4 Explain how insulin and glucagon maintain blood glucose levels.
+
+Ans. When blood glucose rises after eating, the pancreas releases insulin.
+Insulin lowers glucose levels by stimulating cellular uptake of glucose | | Maman soten EO ee et
+and promoting its storage as glycogen in the liver and muscles. When glucagon — 1.5 marks ,
+glucose levels fall between meals, the pancreas secretes glucagon.
+Glucagon raises glucose levels by stimulating glycogen breakdown and glucose release from the liver. This
+coordinated action of insulin and glucagon is a negative feedback system that maintains glucose homeostasis.
+
+Q.5 How does positive feedback work during childbirth?
+Ans. During labor, stretching of the uterus stimulates the release of the
+hormone oxytocin from the pituitary gland. Oxytocin increases the
+
+MARKING SCHEME (3 Marks)
+
+; ‘ 4 ‘A A ‘+ Name of hormone ~ 1 mark; role in
+intensity and frequency of uterine contractions, which further stretches amplifying contractions — 2 marks
+
+the uterus. This ‘additional stretching triggers more oxytocin release,
+creating a cycle of increasing contractions. The loop continues until the baby is delivered. Once birth occurs,
+
+the stimulus ends, and the positive feedback cycle is terminated.
+
+Define osmoregulation.
+
+OSMOREGULATION
+
+Osmoregulation is the biological process through which living organisms regulate the balance of water and
+dissolved solutes—such as salts, ions, and other osmolytes—in their body fluids. It ensures that the osmotic
+pressure inside cells and tissues remains stable, preventing harmful effects of excessive water gain (swelling) or
+water loss (shrinkage).
+
+Importance
+
+Maintaining osmotic baiance is essential because all metabolic activities occur in an aqueous medium. If
+water and solute concentrations fluctuate widely, enzyme function, cellular transport, and overall metabolism are
+disrupted. Osmoregulation therefore plays a vital role in maintaining homeostasis, ensuring that cells function
+efficiently regardless of external environmental changes.
+How It Works?
+
+Osmoregulation involves three main components:
+
+1. Receptors (Osmoreceptors): Specialized sensors, mainly in the hypothalamus, detect changes in water
+concentration and osmotic pressure of blood plasma.
+
+2. Control Center: The hypothalamus processes this information and, if needed, signals the pituitary gland
+to release antidiuretic hormone (ADH).
+
+3. Effectors: The kidneys act as the primary effectors. They adjust the volume and concentration of urine
+by either conserving water when the body is dehydrated or excreting excess water when the body is
+overhydrated.
+
+Examples:
+
+© Inhumans, when water levels drop (e.g., due to sweating), ADH secretion increases. This makes kidney
+tubules reabsorb more water, producing concentrated urine.
+
+© When water intake is high, ADH secretion decreases, leading to dilute urine and restoring osmotic balance.
+
+Sg studyplusplus.com S$
+
+
+--- Page 18 ---
+
+« In aquatic animals, such as freshwater fishes, osmoregulation prevents excess water entry, while in
+marine fishes, it prevents dehydration caused by salty surroundings. .
+In simple terms, osmoregulation is the control of water and solute balance in the body. It is crucial for
+maintaining stable internal conditions, supporting cellular activities, and ensuring survival in environments with
+fluctuating water and salt concentrations.
+
+Differentiate between osmoconformers and osmoregulators.
+
+OSMOCONFORMERS AND OSMOREGULATORS
+
+Osmoconformers
+
+Osmoconformers are organisms whose internal osmotic concentration changes in accordance with that of
+their Surrounding environment. Their body fluids are isotonic to the external medium, meaning there is no
+significant osmotic gradient between the internal and external fluids. As a result, these organisms do not expend
+significant energy on active osmoregulation.
+
+¢ Most marine invertebrates (e.g., mollusks, echinoderms), some freshwater invertebrates, and certain
+
+marine vertebrates, such as hagfishes (Myxine) and elasmobranchs (sharks and rays), are classified as
+
+osmoconformers.
+¢ In elasmobranchs, isotonicity is achieved through the accumulation of organic solutes in their blood.
+Osmoregulators
+
+Osmoregulators are organisms that actively maintain a constant | In most vertebrates, the level of urea
+internal osmotic concentration of body fluids, irrespective of changes in the | to this high concentration would
+osmolarity of their external environment. This regulation is essential for | damage the proteins because it is
+sustaining cellular function and overall homeostasis. chaotropic (denaturing) agent that
+
+Organisms living in freshwater, marine, and terrestrial environments | 4!supts noncovalent and ionic bonds
+face different osmotic challenges. In response, osmoregulators have evolved res Gee baci nie but
+a variety of physiological and structural adaptations that allow them to regulate cer eck, ccbain anne
+the movement of water and solutes across body surfaces and membranes. against the wee “allacts of urea:
+
+Such adaptations may include:
+
+e  xcretory structures (e.g., kidneys, nephridia, Malpighian tubules).
+
+e Water-proof body coverings (e.g., scales, exoskeletons, keratinized skin). -
+
+e Active transport systems in gills or epithelial tissues for salt uptake or excretion.
+
+e Behavioral mechanisms like burrowing or nocturnal activity to reduce water loss.
+
+These adaptations vary based on the habitat type: ‘
+
+@ Freshwater animals prevent excessive water uptake and conserve salts.
+
+e Marine animals combat dehydration and excessive salt intake.
+
+e Terrestrial animals minimize water loss while maintaining salt balance.
+
+Osmoregulation Osmoconformation
+
+The active regulation of internal osmotic | The passive adjustment of internal
+concentration, independent of the | osmotic concentration to match the
+environment. environment.
+
+Involves energy-dependent physiological | involves minimal energy expenditure;
+processes to maintain homeostasis. osmolarity changes with the environment.
+Maintained constant regardless of
+external osmotic conditions. osmotic environment.
+
+Allows survival in diverse and fluctuating | Limited to stable osmotic environments
+
+environments (freshwater, —_ marine, | |ike marine habitats.
+terrestrial,
+
+Freshwater fish, marine vertebrates | Marine invertebrates, elasmobranchs
+(except elasmobranchs), amphibians, | (sharks, rays), hagfish.
+humans.
+
+PS) studyplusplus.com S$
+
+Adaptation
+
+
+
+--- Page 19 ---
+
+with Environment _| the environment.
+water to regulate internal conditions. and TMAO to balance osmotic pressure.
+and water.
+
+ed by osmoregulators.
+
+Explain the problems
+
+PROBLEMS FACED BY OSMOREGULATORS
+
+Osmoregulators actively maintain a constant internal balance of water and solutes, regardless of external
+environmental conditions. While this ability allows them to survive in diverse habitats, it also presents several
+challenges. These problems differ depending on whether the animal lives in freshwater, marine, or terrestrial
+environments.
+
+1. Freshwater Osmoregulators
+
+Freshwater animals live in an environment where the concentration of salts outside is much lower than
+
+inside their body fluids. This creates a constant osmotic challenge.
+
+Problems Faced: d
+
+© Water Influx by Osmosis: Water continuously enters the body across permeable surfaces (skin or gills).
+
+This can cause cells to swell and burst if not regulated.
+
+© Loss of Salts: Essential ions like sodium and chloride tend to diffuse out of the body into the dilute
+
+environment.
+
+Consequences: Without regulation, freshwater animals would become diluted and lose critical electrolytes.
+2. Marine Osmoregulators
+
+Marine animals live in seawater, which has a much higher salt concentration than their body fluids. This
+
+creates the opposite osmotic stress compared to freshwater animals.
+
+Problems Faced:
+
+¢ Loss of Water by Osmosis: Water tends to leave the body, leading to dehydration.
+
+e Excess Salt Gain: Salt enters the body across gill membranes and from drinking seawater.
+
+Consequences: Without regulation, marine osmoregulators would become dehydrated and accumulate
+
+toxic levels of salts.
+
+3. Terrestrial Osmoregulators
+Land animals face challenges due to exposure to air and a relatively dry environment.
+Problems Faced:
+Water Loss by Evaporation: Evaporation from skin, respiratory surfaces, and excretion can rapidly
+deplete body water.
+© Limited Water Availability: Many terrestrial habitats have scarce or irregular sources of fresh water.
+e Salt Balance: Sweating and excretion can lead to loss of essential electrolytes.
+Consequences: Without mechanisms to conserve water, terrestrial animals risk dehydration and impaired
+physiological functions.
+4. Energy Demands of Osmoregulation
+
+Acommon problem across all environments is the high energy cost of osmoregulation. Active transport of
+ions across membranes, production of concentrated or dilute urine, and specialized glandular secretions
+(e.g., salt glands in marine birds) all consume large amounts of ATP. This means osmoregulators must
+balance energy expenditure for survival with other biological needs like growth and reproduction.
+Osmoregulators face significant problems depending on their habitat:
+
+e Freshwater animals struggle with excess water gain and salt loss.
+
+© Marine animals struggle with dehydration and salt overload.
+
+& Terrestrial animals face water loss through evaporation and limited water supply.
+
+PS) studyplusplus.com S$
+
+
+--- Page 20 ---
+
+Additionally, osmoregulation requires continuous energy investment, which can strain the animal's
+resources. Despite these challenges, specialized adaptations allow osmoregulators to survive in diverse
+environmen
+
+Methods of Osmoregulation in Different Habitats
+
+Animals live in aquatic and terrestrial environments with very different osmotic pressures. To survive, they
+must regulate the balance of water and salts within their bodies. The strategies employed depend on whether the
+animal lives in freshwater, marine, or terrestrial habitats.
+
+1.
+
+2.
+
+Osmoregulation in Freshwater Animals
+
+Freshwater animals live in a hypotonic environment, where the concentration of solutes in the surrounding
+
+water is lower than that of their body fluids. Consequently, water continuously enters their bodies by
+
+osmosis, and they face a risk of salt loss.
+
+Freshwater is a hypotonic environment, meaning the concentration of solutes outside the body is lower
+
+than inside body fluids. As a result, water continuously enters the body by osmosis, while essential salts tend
+
+to diffuse out. Without regulation, cells would swell and burst, and electrolytes would be depleted.
+
+Adaptations of Freshwater Animals:
+
+e Excretion of Dilute Urine: Freshwater fishes and amphibians produce large volumes of dilute urine,
+which removes excess water from the body.
+
+Salt Reabsorption by Kidneys: The kidneys actively reabsorb useful ions such as sodium and chloride to
+minimize their loss.
+
+¢ Active Salt Uptake: Specialized cells called ionocytes (chloride cells), located in the gills of fishes and
+the skin of amphibians, actively transport salts from the water into the body.
+
+© Dietary Compensation: Salts lost to the environment are replaced through food intake.
+
+Example: Most freshwater fishes (carps, tilapia) and amphibians (frogs) are osmoregulators, maintaining
+
+body fluids at higher solute concentrations than their environment.
+
+Osmoregulation in Marine Animals
+
+Marine teleosts (bony fishes) live in a hypertonic environment, where the concentration of solutes in
+
+seawater exceeds that of their internal body fluids. As a result, they tend to lose water to the environment
+
+by osmosis, particularly across the gill epithelium, and face an accumulation of excess salts due to ingestion
+
+of seawater.
+
+Adaptations of Marine Teleosts (Bony Fishes):
+
+e Drinking Seawater: Marine fishes drink seawater to replace water lost by osmosis.
+
+¢ Active Salt Excretion:
+© Monovalent ions (Na*, CL”, K*) are excreted through chloride cells in the gills.
+o Divalent ions (Mg**, Ca**, SO,?") are excreted via the kidneys.
+
+© Specialized Salt Glands: Some species possess rectal glands (e.g., in sharks) that eliminate excess salts
+into the digestive tract.
+
+¢ Partial Osmoconformation in Elasmobranchs: Sharks and rays retain urea and trimethylamine oxide
+(TMAO) in their blood, making body fluids nearly isotonic with seawater and reducing osmotic stress.
+
+Examples:
+
+© Marine bony fishes like tuna and cod rely heavily on gill and kidney functions.
+
+© Sharks use urea retention along with rectal glands.
+
+Marine birds (seagulls) and reptiles (sea turtles) use salt glands to expel concentrated saline solutions.
+
+Osmoregulation in Terrestrial Animals
+
+Terrestrial animals live in environments where water is often scarce, and they face constant risks of
+
+dehydration due to evaporation from skin, lungs, and excretion. Most are hypotonic relative to their
+
+surroundings, so preventing water loss is a major challenge.
+
+S$ studyplusplus.com S$
+
+
+--- Page 21 ---
+
+Adaptations of Terrestrial Animals:
+
+e = Structural Barriers:
+o Arthropods possess a chitinous exoskeleton that reduces water loss.
+o Reptiles, birds, and mammals have dead, keratinized skin layers that act as waterproof barriers.
+
+« Kidney Function: Mammalian kidneys produce concentrated urine. Desert mammals like the kangaroo
+rat have exceptionally long loops of Henle that conserve water efficiently.
+
+e Behavioral Adaptations:
+o Many desert animals are nocturnal, avoiding the heat of the day.
+o Burrowing behavior reduces exposure to high temperatures.
+
+® Metabolic Water Production: Some species obtain water from the breakdown of carbohydrates during
+respiration. For example, kangaroo rats meet up to 90% of their water requirements from metabolic
+water.
+
+e Tolerance of Dehydration (Anhydrobiosis): Certain animals can withstand extended periods without
+drinking water by storing fat or tolerating fluctuations in body water content.
+
+Examples:
+
+¢ Humans rely mainly on kidneys and hormonal regulation (ADH, aldosterone).
+
+e Kangaroo rats survive almost entirely without drinking water.
+
+¢ Camels tolerate dehydration and conserve water by fluctuating their body temperature, reducing
+
+sweating.
+Gain of water Uptake of — Osmotic water
+and some ions salt ions in through
+in food by gills bw and other Gain of waterand Excretion Osmotic water
+ry parts of boty saltlons from food of salt ions loss through gills
+(A from gills and other parts
+of body surface
+
+ee
+
+[ Key Excretion of salt ions and
+
+eS large amounts of water in Gain of water Excretion of salt ions and
+
+> Water dilute urine from kidneys and salt ions from —_ small amounts of water in
+
+B® salt drinking seawater ‘scanty urine from kidneys
+Figure: Osmoregulation in freshwater animals Figure: Osmoregulation in marine animals
+
+Osmoregulatory Challenges and Adaptations in Different Habitats
+[Habitat [Osmoregulatory Problems | Adaptations,
+Excrete large volumes of dilute urine
+Actively absorb ions (Na*, CL-) through gills or
+skin
+Possess impermeable body coverings
+Drink seawater to compensate water loss
+Excrete excess salts through salt glands or gill
+epithelium
+Concentrated urine to conserve water
+Impermeable integument (keratinized skin,
+waxy cuticle)
+Efficient kidneys producing concentrated urine
+Behavioral adaptations (e.g., burrowing,
+Nocturnal activity)
+
+Continuous water influx due to hypotonic
+environment
+Loss of body salts by diffusion
+
+Constant water loss due to hypertonic
+environment
+
+Excessive salt gain from surroundings
+
+Desiccation due to evaporation
+Limited water availability
+
+PS) studyplusplus.com S$
+
+
+--- Page 22 ---
+
+1,
+
+4
+
+7.
+
+10.
+
+LOs Based (MCQs)
+
+OSMOREGULATION
+
+Osmoregulation refers to the regulation of:
+
+A. Enzyme activity
+
+B. Oxygen concentration
+
+C. Body temperature
+
+D. Water and solute balance
+
+Animals that adjust their internal osmotic
+concentration to match the external
+environment are called:
+
+A. Osmoregulators B. Osmoconformers
+
+C. Homeotherms D. Thermoregulators
+Which of the following animals is an example of
+an osmoconformer?
+
+A. Frogs
+
+C. Kangaroo rats
+
+D. Freshwater bony fishes
+Osmoregulators differ from osmoconformers
+because they:
+
+A. Always remain hypertonic
+
+B, Adjust internal osmolarity actively
+
+C. Do not require energy
+
+D. Are all marine vertebrates
+
+lonocytes are specialized cells involved in:
+
+A. Digestive enzyme secretion
+
+B. Thermoregulation
+
+C. Active salt uptake D. Hormone synthesis
+Freshwater animals typically face which of the
+following challenges?
+
+A. Water loss and salt gain
+
+B. Water gain and salt loss
+
+C. Water loss and salt loss
+
+D. Water gain and salt gain
+
+The urine of freshwater animals is usually:
+
+A. Concentrated B. lsotonic
+
+C. Highly diluted D. Absent
+
+In marine teleosts, excess salts are removed
+primarily through the:
+
+A. Skin B. Lungs
+
+C. Gill epithelium D. Large intestine
+Rectal glands involved in salt secretion are found
+in:
+
+A. Amphibians
+
+C. Some marine fishes
+D. Freshwater invertebrates
+
+Which ions are typically excreted by the kidneys
+of marine fishes?
+A. Na* and Cl-
+
+C. H* and OH-
+
+B. Sharks
+
+B. Marine reptiles
+
+B. Mg* and Ca?*
+D. Fe?* and Cu**
+
+°
+
+11.
+
+12.
+
+13.
+
+14,
+
+15.
+
+16.
+
+17.
+
+18.
+
+19.
+
+studyplusplus.com
+
+Marine teleosts drink seawater to:
+
+A. Eliminate salts B. Maintain buoyancy
+
+C. Compensate for water loss
+
+D. Avoid predators
+
+What is the primary function of ionocytes in
+
+freshwater fishes?
+
+A. Secreting hormones
+
+B. Preventing water absorption
+
+C. Absorbing salts from the environment
+
+D. Excreting nitrogenous waste
+
+Osmoconformers maintain:
+
+A.An osmotic concentration higher than their
+environment
+
+B. A fixed internal solute composition
+
+C.Internal osmotic balance equal to their
+environment
+
+D. Water balance through metabolic water
+
+Which of the following is not an osmoregulatory
+
+adaptation of terrestrial animals?
+
+A. Keratinized skin B. Chitinous exoskeleton
+
+C. Dilute urine D. Nocturnal behavior
+
+Anhydrobiosis refers to the ability to:
+
+A. Survive underwater
+
+B. Store water in the body
+
+C. Tolerate extreme dehydration
+
+D. Produce very dilute urine
+
+Which organism is a classic example of
+
+anhydrobiosis?
+
+A. Camel © B. Tilapia
+
+C. Shark D. Kangaroo rat
+
+How do desert rodents obtain most of their water?
+
+A. By drinking water
+
+B. By absorbing moisture from the air
+
+C. From metabolic breakdown of food
+
+D. Through skin absorption
+
+Which group of animals uses gill ionocytes to
+
+regulate salt balance?
+
+A. Reptiles B. Amphibians and fishes
+
+Cc. Mammals D. Birds
+
+The primary osmotic challenge for marine
+
+teleosts is:
+
+A. Gaining too much water
+
+B. Losing water and gaining excess salts
+
+C. Gaining excess water and salts
+
+D. Retaining metabolic waste
+
+°
+
+
+--- Page 23 ---
+
+23
+
+20. What feature helps arthropods reduce water B. Excretion of dilute urine
+loss in dry environments? C. Chitinous exoskeleton
+A. Internal salt glands D. Secreting urea
+
+[1.0 [28 [38 | 48 [5c [658 [7c [ac] 9c | 108 |
+[az.c | 12.¢ | 13.¢ | 14.¢ | | 16.0 [ 17.¢ | 18.8 [ 19.8 | 20.¢ |
+
+Short Questions
+
+Q.1 Define homeostasis and describe its significance.
+
+Ans. Homeostasis is the ability of an organism to maintain a stable internal
+environment despite changes in the external surroundings. It regulates MARKING SCHEME (3 Marks)
+variables such as temperature, pH, and glucose concentration within | * penton me marty agniconce 2)
+narrow liriits. This stability is vital because enzymes function optimally
+only under specific conditions, and disruption of balance can impair cellular activities. By maintaining
+homeostasis, organisms ensure proper metabolism, survival, and adaptation to environmental changes.
+
+Q.2 What are the main components of a homeostatic feedback mechanism?
+Ans. A homeostatic feedback mechanism is made up of three key
+
+components. The receptor detects any change in the internal or MARKING SCHEME (3 Marks)
+external environment. The control center, usually the brain or paving cpl ea aga
+
+endocrine glands, processes this information and decides the corrective
+response. The effector then carries out the response, restoring the system to its equilibrium or set point.
+Together, these components ensure stability within the organism.
+
+Q.3 Differentiate between negative and positive feedback mechanisms.
+Ans. Negative feedback mechanisms reverse deviations from a set point,
+restoring the system to balance. For example, regulation of blood MARKING SCHEME (3 Marks)
+glucose and body temperature both rely on negative feedback. Positive | * Negative feedback definition ~ 1.5
+feedback mechanisms, on the other hand, amplify changes and drive bee capella
+processes toward completion rather than stabilization. Classic
+examples include blood clotting and uterine contractions during childbirth. Both mechanisms are crucial for
+
+physiological regulation, but they operate differently depending on the body's needs.
+
+Q.4 Explain how insulin and glucagon maintain blood glucose levels.
+
+Ans. When blood glucose rises after eating, the pancreas releases insulin.
+Insulin lowers glucose levels by stimulating cellular uptake of glucose MARKING SCHEME (3 Marks)
+and promoting its storage as glycogen in the liver and muscles. When | ° Role of Maree marks; role of
+glucose levels fall between meals, the pancreas secretes glucagon.
+Glucagon raises glucose levels by stimulating glycogen breakdown and glucose release from the liver. This
+coordinated action of insulin and glucagon is a negative feedback system that maintains glucose
+
+homeostasis.
+
+Q.5 How does positive feedback work during childbirth?
+
+Ans. During labor, stretching of the uterus stimulates the release of the
+hormone oxytocin from the pituitary gland. Oxytocin increases the
+intensity and frequency of uterine contractions, which further stretches
+the uterus. This additional stretching triggers more oxytocin release,
+creating a cycle of increasing contractions. The loop continues until the baby is delivered. Once birth occurs,
+the stimulus ends, and the positive feedback cycle is terminated.
+
+S$ studyplusplus.com S$
+
+
+--- Page 24 ---
+
+Select the correct Answer.
+
+by
+
+9.
+
+10.
+
+The main difference between endotherms and
+ectotherms is
+
+A. how they conserve water
+
+B. from where they get most of their body heat
+C. whether they are cold or warm blooded ~
+
+D. whether they live on land or water
+
+Which word is not similarly with the others?
+
+A. ectoderms B. endoderms
+
+C. homeothermic D. warm-blooded
+
+This part of the brain controls temperature
+regulation.
+
+A. cerebellum B. thalamus
+
+C. hypothalamus D. hippocampus
+
+If body temperature decreases, which one of the
+following is incorrect?
+
+A. vasoconstriction B. hair raised
+
+C. increase metabolic rate D. sweating
+
+The body's ability to maintain a constant body
+temperature is called what:
+
+A. thermoregulation B. modification
+
+C. adaptation D. lucky
+
+The liver's functions are required for
+
+A. thermoregulation B. osmoregulation
+
+C. homeostasis D. all of these
+
+The mechanism of regulation, generally
+between organism and its environment, of
+solutes and the gain and the loss of water is
+called
+
+A. homeostasis
+
+C. osmoregulation
+In a hot summer after noon, if your body's
+homeostatic machinery keep your internal
+temperature quite lower than that of external
+than this is an example of
+
+A. positive feed back B, negative feed back
+C. feed back D. osmoregulation
+The characteristic which enable animals to
+tolerate dehydration is called
+
+A. osmoconformation B. osmoregulaton
+
+C. anhydrobiosis D. anhidrosis
+Homeostasis
+
+B. hemostasis
+D. thermoregulation
+
+°
+
+11.
+
+12.
+
+13.
+
+14.
+
+15.
+
+studyplusplus.com
+
+A.must always be restored using negative
+feedback mechanisms
+
+B. provides for the tight regulation of all
+physiological variables
+
+C. is the sum of all chemical reactions in the body
+
+D.is a combination of positive and negative
+feedback mechanisms
+
+A negative feedback mechanism comprise
+
+A. detectors, comparators, a fixed set point and
+effectors
+
+B. detectors, amplifiers, comparators, a set point
+and effectors
+
+C. detectors, attenuators, comparators, a set
+point and effectors
+
+D.detectors, comparators, a variable set point
+and effectors
+
+Positive feedback
+
+A. does not exist in physiological systems
+
+B. is seen in the initiation of an action potential
+when sodium entry causes depolarization
+which in turn leads to potassium exit
+
+C.is unstable and requires some mechanism to
+break the feedback loop
+
+D.is switched off by negative feedback mechanisms
+
+Which of the following is an example of a
+
+positive feedback mechanism?
+
+A: the control of blood sugar by insulin
+
+B. blood clotting
+
+C. the control of blood pressure
+
+D. the regulation of body temperature
+
+Which of the following components of a
+
+homeostatic regulatory mechanism is responsible
+
+for detecting a stimulus?
+
+A. an effector B. a contro} center
+
+C. a receptor D. an afferent pathway
+
+Which of the following phrases most correctly
+
+defines homeostasis? Homeostasis involves the
+
+maintenance of internal conditions within
+
+A. specific set-points.
+
+B. specific normal ranges.
+
+C. ranges higher than external conditions.
+
+D. ranges equal to external conditions.
+
+°
+
+wi
+ite
+
+
+--- Page 25 ---
+
+16. Homeostasis is best conceived as a state of: D. stimulate the formation of blood clots
+A. negative feedback B. dynamic consistency | 18, A setpoint is usually:
+
+C. positive feedback D. hormone regulation A. the top of a normal range
+17. Insulin is a hormone that acts to: B. the bottom of a normal range
+
+A. stimulate metabolism in the body C. in the middle of a normal range
+
+B. increase blood sugar levels D. the point at which changes can no longer occur
+
+C. decrease blood sugar levels
+[18] 2a] 3c] 40] 5a [60] 7c] ae | 9c | 10.0]
+Li1.a | | 13.8 | 14.¢ | 15.8 [16.8 | 17.¢ |
+D1) Short Answer Questions
+
+Q.1 Define or describe very briefly the following:
+
+(a) osmoregulation”
+
+Ans. Osmoregulation is the biological process by which organisms maintain
+a stable balance of water and electrolytes (salts) in their bodies,
+ensuring proper cellular and metabolic functions despite external
+environmental changes.
+
+(b) Osmoregulators
+Ans. Osmoregulators are organisms that actively control their internal
+osmotic concentration, maintaining homeostasis regardless of the
+_ osmolarity of their.external environment. Examples include freshwater
+fishes and mammals.
+
+MARKING SCHEME (3 Marks)
+
+(c) _Osmoconformers
+Ans. Osmoconformers are organisms that keep their internal osmotic
+pressure in equilibrium with their surrounding environment, without A Fats tceh enay /
+active regulation of solute concentrations. Many marine invertebrates significance — 1 mark
+are osmoconformers.
+
+(d) Vasodilation ccamG j
+
+Ans. Vasodilation is the widening of blood vessels due to relaxation Of | . pefinition - 2 marks; role in
+smooth muscle in their walls. It increases blood flow to the skin and thermoregulation — 1 mark.
+enhances heat loss, playing a role in thermoregulation.
+
+(e) Vasoconstriction
+
+Ans. Vasoconstriction is the narrowing of blood vessels caused by
+contraction of smooth muscle cells. It reduces blood flow to the skin,
+minimizes heat loss, and helps conserve core body temperature in cold
+environments.
+
+(f) _ Thermoregulation
+
+Ans. Thermoregulation is the ability of an organism to maintain its body
+temperature within a narrow range despite changes in external
+environmental conditions: It ensures proper enzyme activity and
+
+metabolic stability.
+
+(g) Poikilotherms
+
+Ans. Poikilotherms are animals whose internal body temperature fluctuates
+significantly with the external environment. Examples include
+amphibians, reptiles, and most fish.
+
+MARKING SCHEME (3 Marks)
+© Definition = 2 marks; role in
+thermoregulation — 1 mark
+
+MARKING SCHEME (3 Marks)
+© Definition — 2 marks; significance - 1
+mark
+
+PS) studyplusplus.com S$
+
+
+--- Page 26 ---
+
+(h) Homeotherms
+
+Ans. Homeotherms are animals that maintain a relatively constant internal |, Delickion’ 23 take aamole 1
+body temperature, independent of external environmental changes. significance - 1 mark
+Examples include birds and mammals.
+
+MARKING SCHEME (3 Marks)
+
+(i) _ Ectotherms
+MARKING SCHEME (3 Marks)
+Ans. Ectotherms are animals that depend mainly on external sources of heat, | © pefinition - 2 marks; example /
+
+such as sunlight or warm surfaces, to regulate their body temperature. significance — 1 mark
+Examples include reptiles and amphibians.
+
+(ij) Endotherms
+Ans. Endotherms are animals that produce most of their body heat through
+
+internal metabolic processes, enabling them to regulate temperature MARKING SCHEME (3 Marks)
+
+regardless of environmental fluctuations. Examples include birds and para i
+mammals.
+
+(k) Homeostasis
+
+Ans. Homeostasis is the dynamic process by which organisms maintain a
+stable internal environment—including temperature, pH, and fluid
+balance—despite external changes. It is vital for normal physiological
+functions and survival.
+
+MARKING SCHEME (3 Marks)
+© Definition — 2 marks; significance — 1
+mark
+
+Q.2_ What are the problems faced by osmoregulators?
+
+Ans. Osmoregulators must maintain constant internal osmotic conditions
+despite fluctuations in external environments. In freshwater habitats, CARING SCHEIN (2 arts)
+the problem is excessive water entry by osmosis and loss of salts. In | * reas 0 eee as
+
+s 5 i . problems in marine ~ 1 mark; energy
+
+contrast, in marine habitats, organisms face dehydration due to water cost/role of active transport - 1 mark
+loss and accumulation of excess salts. Both conditions disrupt
+homeostasis and require active physiological control. Osmoregulators use metabolic energy for active
+transport of ions, water reabsorption, and salt excretion through specialized organs such as kidneys, gills, or
+salt glands to maintain osmotic balance.
+
+Q.3 Describe the osmoregulatory adaptations in (a) freshwater (b) marine (c) terrestrial animals.
+Ans. (a) Freshwater animals: Being hypertonic to their environment, they
+constantly gain water by osmosis. They excrete large amounts of Z eee marks
+dilute urine and actively absorb salts through gills or skin to replace marine adaptations — 4 mark:
+lost ions. terrestrial adaptations ~ 1 mark
+(b) Marine animals: Marine bony fishes are hypotonic to seawater, a
+losing water by osmosis. They drink seawater and actively excrete excess salts via chloride cells in gills
+and kidneys. Marine cartilaginous fishes retain urea and TMAO, making their body fluids nearly isotonic
+to seawater.
+(c) Terrestrial animals: The main challenge is dehydration from evaporation and excretion. Adaptations
+include waterproof skin, behavioral changes such as nocturnality, kidneys producing concentrated urine,
+_ and efficient reabsorption of water in intestines and nephrons.
+
+QA Whatare the needs of thermoregulation?
+Ans. Thermoregulation is needed to maintain body temperature within a
+
+iologi i it ING SCHEME (3 Marks
+narrow physiological range. This ensures enzymes work at their optimal | , Seiad ig cau tern
+temperature, preventing denaturation or inactivation. Stable temperature stability - 1 mark; survival under
+also keeps metabolic rates constant, supporting efficient energy extremes —1 mark
+
+production and biochemical processes. Additionally, thermoregulation
+
+protects cellular structures and vital organs from damage due to extreme heat or cold. It is especially
+
+important for endotherms, enabling them to function in diverse and fluctuating environmental conditions.
+Q.5 Whatis a feedback mechanism? "MARKING SCHEME (3 Marks)
+
+pee dl beh Asche ne ho LAE Re
+Ans. A feedback mechanism is a regulatory process in which the outcome of | * Definition~1 mark; negative feedback
+an action influences the system itself. In homeostasis, sensors detect =) eek eee Rae FONE
+
+S$ studyplusplus.com S$
+
+
+
+--- Page 27 ---
+
+deviations from the set point and communicate with the control center, which triggers effectors to restore
+balance. Negative feedback counteracts the original change (e.g., regulation of body temperature or blood
+glucose), while positive feedback amplifies the response until a specific outcome is achieved (e.g., uterine
+contractions during childbirth). Feedback loops are vital for maintaining internal stability.
+
+Q.6 Identify and define the four interacting components that maintain homeostasis in feedback loops.
+Ans. Stimulus: Any detectable change in the internal or external
+environment that disrupts homeostasis, such as rising temperature or MARNE eee Oe)
+falling blood glucose.
+1. Receptor (Sensor): Detects the stimulus and sends information to:
+the control center.
+2. Control Center: Processes incoming information and determines the appropriate corrective response,
+often performed by the brain or endocrine glands.
+3. Effector: Carries out the corrective action, such as muscles shivering to produce heat or glands secreting
+hormones to restore balance.
+
+© Stimulus ~ 1 mark; receptor ~ 1 mark;
+control center + effector —1 mark
+
+Q.7 Give two examples of physiological processes controlled by positive feedback loops.
+Ans. Positive feedback amplifies changes until a specific process is
+completed. Two main examples include: MARKING SCHEME (3 Marks)
+1. Childbirth (parturition): Stretching of the uterus stimulates the
+release of oxytocin. This hormone intensifies uterine contractions,
+which further increases oxytocin release. The loop continues until delivery is completed.
+2. Blood clotting: Injury to a blood vessel triggers platelet adhesion at the site. Platelets release chemicals
+that attract more platelets, amplifying the clotting cascade until a stable clot seals the breach.
+
+Q.1 Classify animals on the basis of temperature.
+Ans. Please See SLO [B-12-R-75], [B-12-R-76]
+
+Q.2 Whatare the thermoregulatory strategies in man?
+Ans. Please See SLO [B-12-R-77]
+
+Q.3 How various human organs system to maintain controlled stable environment.
+Ans. Please See [B-12-R-77]
+
+Q.4 Explain components of homeostatic mechanism.
+Ans. Please See SLO [B-12-R-78]
+
+Q5 Describe with example the negative feedback mechanism with relation to homeostas!s.
+Ans. Please See SLO [B-12-R-79]
+
+Q.6 Describe with example the positive feedback mechanism with relation to homeostasis.
+Ans. Please See SLO [B-12-R-79]}
+
+Q.7 Compare and contrast negative and positive feedback loops.
+
+Ans. Please See [B-12-R-79]
+
+Q8 Explain how negative feedback controls body temperature.
+Ans. Please See SLO (B-12-R-79]
+
+soscr @eo@ooscs
+
+9S studyplusplus.com S$
