@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-surface text-slate-800 antialiased font-sans;
+}
+
+.font-display {
+  font-family: Fraunces, Georgia, serif;
+}
+
+.card {
+  @apply rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold transition-all duration-200 active:scale-[0.98];
+}
+
+.btn-primary {
+  @apply btn bg-brand text-white hover:bg-brand-dark disabled:opacity-50;
+}
+
+.btn-ghost {
+  @apply btn bg-slate-100 text-slate-700 hover:bg-slate-200;
+}
+
+.btn-outline {
+  @apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  @apply w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/10;
+}
+
+.progress-bar {
+  @apply h-2 rounded-full bg-slate-100 overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full rounded-full transition-all duration-500 ease-out;
+}
+
+/* Landing — soft sky atmosphere, not flat white / not dark SaaS */
+.landing {
+  background:
+    radial-gradient(120% 80% at 10% -10%, #dbeafe 0%, transparent 55%),
+    radial-gradient(90% 60% at 100% 0%, #e0f2fe 0%, transparent 45%),
+    linear-gradient(180deg, #f0f7ff 0%, #ffffff 42%, #ffffff 100%);
+}
+
+.landing-arc {
+  pointer-events: none;
+  position: absolute;
+  right: -5%;
+  top: 8%;
+  width: min(70vw, 720px);
+  color: rgba(27, 59, 111, 0.14);
+  animation: landingDraw 1.6s ease both;
+}
+
+.landing-hero-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: -20% 20% auto -10%;
+  height: 70%;
+  background: radial-gradient(
+    closest-side,
+    rgba(37, 99, 235, 0.12),
+    transparent 70%
+  );
+}
+
+.landing-phone-orb {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 340px;
+  width: 340px;
+  translate: -50% -48%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.28) 0%,
+    rgba(37, 99, 235, 0.12) 42%,
+    transparent 70%
+  );
+  filter: blur(2px);
+}
+
+@keyframes landingDraw {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-hero-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(27, 59, 111, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 59, 111, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, black 0%, transparent 75%);
+}
+
+.landing-peek {
+  background: linear-gradient(180deg, #f8fafc 0%, #eef5ff 55%, #f8fafc 100%);
+}
+
+.landing-close {
+  background: linear-gradient(135deg, #132d54 0%, #1b3b6f 48%, #1e4a8a 100%);
+}
+
+.landing-close-glow {
+  pointer-events: none;
+  position: absolute;
+  right: -10%;
+  top: -40%;
+  height: 160%;
+  width: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(125, 211, 252, 0.18),
+    transparent 70%
+  );
+}
+
+.landing-cta {
+  @apply inline-flex items-center gap-2 bg-brand px-7 py-3.5 text-sm font-semibold text-white transition;
+  box-shadow: 0 12px 28px -12px rgba(27, 59, 111, 0.55);
+}
+
+.landing-cta:hover {
+  background-color: #132d54;
+  transform: translateY(-1px);
+}
+
+.landing-cta-invert {
+  @apply inline-flex items-center gap-2 bg-white px-7 py-3.5 text-sm font-semibold text-brand transition;
+}
+
+.landing-cta-invert:hover {
+  background-color: #f0f9ff;
+  transform: translateY(-1px);
+}
+
+.landing-ui-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  backdrop-filter: blur(8px);
+}
+
+.landing-reveal {
+  animation: landingFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-reveal-delay {
+  animation: landingFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.landing-phone-float {
+  animation: landingFloat 7s ease-in-out infinite;
+}
+
+.landing-phone-tilt {
+  transform: perspective(1000px) rotateY(10deg) rotateX(2deg);
+  transition: transform 0.5s ease;
+}
+
+.landing-phone-tilt:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+.landing-feature-row {
+  transition: background-color 0.25s ease;
+}
+
+.landing-feature-row:hover {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(219, 234, 254, 0.45),
+    transparent
+  );
+}
+
+.landing-ui-stack > * {
+  animation: landingFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-ui-stack > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.landing-ui-stack > *:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.landing-ui-stack > *:nth-child(3) {
+  animation-delay: 0.25s;
+}
+
+@keyframes landingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes landingFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.landing-voice-pulse {
+  animation: landingPulse 1.8s ease-out infinite;
+}
+
+.landing-wave-bar {
+  transform-origin: bottom;
+  animation: landingWave 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes landingPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes landingWave {
+  from {
+    transform: scaleY(0.45);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-reveal,
+  .landing-reveal-delay,
+  .landing-phone-float,
+  .landing-ui-stack > *,
+  .landing-arc,
+  .landing-voice-pulse,
+  .landing-wave-bar {
+    animation: none;
+  }
+  .landing-phone-tilt {
+    transform: none;
+  }
+  .landing-cta:hover,
+  .landing-cta-invert:hover {
+    transform: none;
+  }
+}

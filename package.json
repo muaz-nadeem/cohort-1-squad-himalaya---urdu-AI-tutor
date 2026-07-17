@@ -1,0 +1,17 @@
+{
+  "name": "mdcat-urdu-voice-tutor",
+  "version": "0.1.0",
+  "description": "Urdu voice tutor for MDCAT Biology using Uplift AI Realtime Assistants",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "node --watch server/index.js",
+    "start": "node server/index.js",
+    "setup": "node scripts/setup-assistant.js",
+    "update": "node scripts/update-assistant.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}

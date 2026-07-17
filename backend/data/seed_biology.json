@@ -1,0 +1,222 @@
+{
+  "concepts": [
+    { "name": "Cell Structure", "chapter": "Cell Biology", "mdcat_weightage": 5, "ptb_chapter_ref": "Bio Part 1 · Ch 4" },
+    { "name": "Mitochondria", "chapter": "Cell Biology", "mdcat_weightage": 4, "ptb_chapter_ref": "Bio Part 1 · Ch 4" },
+    { "name": "Cell Membrane Transport", "chapter": "Cell Biology", "mdcat_weightage": 4, "ptb_chapter_ref": "Bio Part 1 · Ch 4" },
+    { "name": "Enzymes", "chapter": "Biomolecules", "mdcat_weightage": 5, "ptb_chapter_ref": "Bio Part 1 · Ch 3" },
+    { "name": "Photosynthesis", "chapter": "Bioenergetics", "mdcat_weightage": 5, "ptb_chapter_ref": "Bio Part 1 · Ch 11" },
+    { "name": "Cellular Respiration", "chapter": "Bioenergetics", "mdcat_weightage": 4, "ptb_chapter_ref": "Bio Part 1 · Ch 12" },
+    { "name": "Mitosis", "chapter": "Cell Cycle", "mdcat_weightage": 4, "ptb_chapter_ref": "Bio Part 1 · Ch 5" },
+    { "name": "DNA Structure", "chapter": "Molecular Biology", "mdcat_weightage": 5, "ptb_chapter_ref": "Bio Part 2 · Ch 21" }
+  ],
+  "questions": [
+    {
+      "concept": "Mitochondria",
+      "chapter": "Cell Biology",
+      "difficulty": 1,
+      "question_text": "Which organelle is known as the powerhouse of the cell?",
+      "options": [
+        { "key": "A", "text": "Ribosome" },
+        { "key": "B", "text": "Mitochondria" },
+        { "key": "C", "text": "Golgi apparatus" },
+        { "key": "D", "text": "Lysosome" }
+      ],
+      "correct_option": "B",
+      "explanation": "Mitochondria generate ATP through cellular respiration, powering the cell.",
+      "source": "MDCAT 2018",
+      "year": 2018
+    },
+    {
+      "concept": "Mitochondria",
+      "chapter": "Cell Biology",
+      "difficulty": 2,
+      "question_text": "The inner membrane of a mitochondrion is folded into structures called:",
+      "options": [
+        { "key": "A", "text": "Cristae" },
+        { "key": "B", "text": "Thylakoids" },
+        { "key": "C", "text": "Grana" },
+        { "key": "D", "text": "Villi" }
+      ],
+      "correct_option": "A",
+      "explanation": "Cristae increase surface area for the electron transport chain.",
+      "source": "MDCAT 2020",
+      "year": 2020
+    },
+    {
+      "concept": "Mitochondria",
+      "chapter": "Cell Biology",
+      "difficulty": 3,
+      "question_text": "The presence of circular DNA in mitochondria is strong evidence for:",
+      "options": [
+        { "key": "A", "text": "Fluid mosaic model" },
+        { "key": "B", "text": "Lock and key model" },
+        { "key": "C", "text": "Endosymbiotic theory" },
+        { "key": "D", "text": "Cell theory" }
+      ],
+      "correct_option": "C",
+      "explanation": "Mitochondrial circular DNA supports the endosymbiotic origin of mitochondria.",
+      "source": "MDCAT 2022",
+      "year": 2022
+    },
+    {
+      "concept": "Cell Structure",
+      "chapter": "Cell Biology",
+      "difficulty": 1,
+      "question_text": "Which of the following is present in plant cells but NOT in animal cells?",
+      "options": [
+        { "key": "A", "text": "Nucleus" },
+        { "key": "B", "text": "Cell wall" },
+        { "key": "C", "text": "Mitochondria" },
+        { "key": "D", "text": "Cell membrane" }
+      ],
+      "correct_option": "B",
+      "explanation": "A rigid cellulose cell wall surrounds plant cells but is absent in animal cells.",
+      "source": "MDCAT 2017",
+      "year": 2017
+    },
+    {
+      "concept": "Cell Membrane Transport",
+      "chapter": "Cell Biology",
+      "difficulty": 1,
+      "question_text": "Movement of water across a semi-permeable membrane is called:",
+      "options": [
+        { "key": "A", "text": "Diffusion" },
+        { "key": "B", "text": "Osmosis" },
+        { "key": "C", "text": "Active transport" },
+        { "key": "D", "text": "Endocytosis" }
+      ],
+      "correct_option": "B",
+      "explanation": "Osmosis is the passive movement of water across a semi-permeable membrane.",
+      "source": "MDCAT 2019",
+      "year": 2019
+    },
+    {
+      "concept": "Enzymes",
+      "chapter": "Biomolecules",
+      "difficulty": 1,
+      "question_text": "Enzymes are chemically:",
+      "options": [
+        { "key": "A", "text": "Carbohydrates" },
+        { "key": "B", "text": "Lipids" },
+        { "key": "C", "text": "Proteins" },
+        { "key": "D", "text": "Nucleic acids" }
+      ],
+      "correct_option": "C",
+      "explanation": "Most enzymes are globular proteins that act as biological catalysts.",
+      "source": "MDCAT 2016",
+      "year": 2016
+    },
+    {
+      "concept": "Enzymes",
+      "chapter": "Biomolecules",
+      "difficulty": 2,
+      "question_text": "According to the induced fit model, the active site of an enzyme:",
+      "options": [
+        { "key": "A", "text": "Is rigid and unchanging" },
+        { "key": "B", "text": "Changes shape to fit the substrate" },
+        { "key": "C", "text": "Is destroyed after each reaction" },
+        { "key": "D", "text": "Binds only to products" }
+      ],
+      "correct_option": "B",
+      "explanation": "In the induced fit model the active site moulds around the substrate.",
+      "source": "MDCAT 2021",
+      "year": 2021
+    },
+    {
+      "concept": "Photosynthesis",
+      "chapter": "Bioenergetics",
+      "difficulty": 1,
+      "question_text": "In which organelle does photosynthesis occur?",
+      "options": [
+        { "key": "A", "text": "Mitochondria" },
+        { "key": "B", "text": "Chloroplast" },
+        { "key": "C", "text": "Nucleus" },
+        { "key": "D", "text": "Ribosome" }
+      ],
+      "correct_option": "B",
+      "explanation": "Chloroplasts contain chlorophyll and are the site of photosynthesis.",
+      "source": "MDCAT 2018",
+      "year": 2018
+    },
+    {
+      "concept": "Photosynthesis",
+      "chapter": "Bioenergetics",
+      "difficulty": 2,
+      "question_text": "The light-dependent reactions of photosynthesis occur in the:",
+      "options": [
+        { "key": "A", "text": "Stroma" },
+        { "key": "B", "text": "Thylakoid membrane" },
+        { "key": "C", "text": "Matrix" },
+        { "key": "D", "text": "Cytoplasm" }
+      ],
+      "correct_option": "B",
+      "explanation": "Light reactions happen on the thylakoid membranes; the Calvin cycle runs in the stroma.",
+      "source": "MDCAT 2020",
+      "year": 2020
+    },
+    {
+      "concept": "Cellular Respiration",
+      "chapter": "Bioenergetics",
+      "difficulty": 1,
+      "question_text": "The end product of glycolysis is:",
+      "options": [
+        { "key": "A", "text": "Lactic acid" },
+        { "key": "B", "text": "Pyruvate" },
+        { "key": "C", "text": "Ethanol" },
+        { "key": "D", "text": "Glucose" }
+      ],
+      "correct_option": "B",
+      "explanation": "Glycolysis splits glucose into two molecules of pyruvate in the cytoplasm.",
+      "source": "MDCAT 2019",
+      "year": 2019
+    },
+    {
+      "concept": "Mitosis",
+      "chapter": "Cell Cycle",
+      "difficulty": 1,
+      "question_text": "During which phase of mitosis do chromosomes align at the cell's equator?",
+      "options": [
+        { "key": "A", "text": "Prophase" },
+        { "key": "B", "text": "Metaphase" },
+        { "key": "C", "text": "Anaphase" },
+        { "key": "D", "text": "Telophase" }
+      ],
+      "correct_option": "B",
+      "explanation": "In metaphase chromosomes line up on the metaphase plate before separating.",
+      "source": "MDCAT 2017",
+      "year": 2017
+    },
+    {
+      "concept": "DNA Structure",
+      "chapter": "Molecular Biology",
+      "difficulty": 1,
+      "question_text": "In DNA, adenine pairs with:",
+      "options": [
+        { "key": "A", "text": "Guanine" },
+        { "key": "B", "text": "Cytosine" },
+        { "key": "C", "text": "Thymine" },
+        { "key": "D", "text": "Uracil" }
+      ],
+      "correct_option": "C",
+      "explanation": "Adenine forms two hydrogen bonds with thymine in DNA base pairing.",
+      "source": "MDCAT 2021",
+      "year": 2021
+    },
+    {
+      "concept": "DNA Structure",
+      "chapter": "Molecular Biology",
+      "difficulty": 2,
+      "question_text": "The two strands of a DNA double helix are held together by:",
+      "options": [
+        { "key": "A", "text": "Peptide bonds" },
+        { "key": "B", "text": "Hydrogen bonds" },
+        { "key": "C", "text": "Ionic bonds" },
+        { "key": "D", "text": "Glycosidic bonds" }
+      ],
+      "correct_option": "B",
+      "explanation": "Complementary bases pair via hydrogen bonds, holding the two strands together.",
+      "source": "MDCAT 2022",
+      "year": 2022
+    }
+  ]
+}

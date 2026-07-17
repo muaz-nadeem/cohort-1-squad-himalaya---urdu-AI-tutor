@@ -1,0 +1,14 @@
+node_modules/
+.env
+backend/.env
+backend/venv/
+frontend/.env.local
+frontend/.next/
+frontend/node_modules/
+__pycache__/
+backend/data/**/*.pdf
+backend/data/_extracted/
+backend/data/_cache/
+backend/data/textbooks/*.pdf
+backend/data/textbooks/_cache/
+*.pyc
