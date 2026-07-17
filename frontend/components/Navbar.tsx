@@ -1,30 +1,46 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { BookOpen, ChevronDown, LogOut } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  BookOpen,
+  LayoutDashboard,
+  Layers,
+  Timer,
+  Puzzle,
+  MessageCircle,
+  Target,
+  CalendarDays,
+  LogOut,
+  Menu,
+  X,
+} from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 import { getStudentName, clearStudent } from "@/lib/student";
 
-export default function Navbar() {
+const NAV = [
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/practice", label: "Chapter practice", icon: Layers },
+  { href: "/exam", label: "Full-length", icon: Timer },
+  { href: "/custom-quiz", label: "Custom quiz", icon: Puzzle },
+  { href: "/chat", label: "Ask Textbook", icon: MessageCircle },
+  { href: "/weak-spots", label: "Weak Spots", icon: Target },
+  { href: "/weekly-plan", label: "Weekly Plan", icon: CalendarDays },
+] as const;
+
+export default function Navbar({ children }: { children?: ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [name, setName] = useState("Student");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setName(getStudentName() || "Student");
   }, []);
 
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    setOpen(false);
+  }, [pathname]);
 
   function handleLogout() {
     clearStudent();
@@ -38,98 +54,118 @@ export default function Navbar() {
     .toUpperCase()
     .slice(0, 2);
 
-  return (
-    <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-              <BookOpen className="h-4 w-4" />
-            </div>
-            <span className="text-lg font-bold text-brand">uraan</span>
-          </Link>
-          <span className="hidden rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand sm:inline-block">
-            MDCAT 2026
-          </span>
+  const sidebar = (
+    <aside className="flex h-full w-[240px] flex-col border-r border-slate-100 bg-white">
+      <div className="flex items-center gap-2.5 px-5 py-5">
+        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
+          <BookOpen className="h-4 w-4" />
         </div>
-
-        <div className="relative" ref={menuRef}>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-slate-50"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">
-              {initials}
-            </div>
-            <span className="hidden text-sm font-medium text-slate-700 sm:inline">
-              {name.split(" ")[0]}
-            </span>
-            <ChevronDown className="hidden h-4 w-4 text-slate-400 sm:inline" />
-          </button>
-
-          {menuOpen && (
-            <div className="absolute right-0 top-12 w-48 rounded-xl border border-slate-100 bg-white p-1 shadow-lg">
-              <Link
-                href="/dashboard"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Dashboard
-              </Link>
-              <Link
-                href="/practice"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Chapter practice
-              </Link>
-              <Link
-                href="/exam"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Full-length
-              </Link>
-              <Link
-                href="/custom-quiz"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Custom quiz
-              </Link>
-              <Link
-                href="/chat"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Ask Textbook
-              </Link>
-              <Link
-                href="/weak-spots"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Weak Spots
-              </Link>
-              <Link
-                href="/weekly-plan"
-                className="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
-              >
-                Weekly Plan
-              </Link>
-              <hr className="my-1 border-slate-100" />
-              <button
-                onClick={handleLogout}
-                className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-50"
-              >
-                <LogOut className="h-4 w-4" />
-                Log out
-              </button>
-            </div>
-          )}
+        <div>
+          <p className="font-display text-lg font-bold leading-none text-brand">
+            uraan
+          </p>
+          <p className="mt-1 text-[10px] font-semibold tracking-wide text-slate-400">
+            MDCAT 2026
+          </p>
         </div>
       </div>
-    </nav>
+
+      <nav className="flex-1 space-y-0.5 px-3 py-2">
+        {NAV.map(({ href, label, icon: Icon }) => {
+          const active =
+            pathname === href ||
+            (href !== "/dashboard" && pathname.startsWith(href));
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+                active
+                  ? "bg-brand-50 text-brand"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+              }`}
+            >
+              <Icon
+                className={`h-4 w-4 shrink-0 ${active ? "text-brand" : "text-slate-400"}`}
+              />
+              {label}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="border-t border-slate-100 px-3 py-3">
+        <div className="mb-2 flex items-center gap-2.5 rounded-lg px-3 py-2">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">
+            {initials}
+          </div>
+          <p className="truncate text-sm font-medium text-slate-700">
+            {name.split(" ")[0]}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition hover:bg-red-50"
+        >
+          <LogOut className="h-4 w-4" />
+          Log out
+        </button>
+      </div>
+    </aside>
+  );
+
+  return (
+    <div className="min-h-screen bg-surface">
+      {/* Desktop sidebar */}
+      <div className="fixed inset-y-0 left-0 z-40 hidden lg:block">{sidebar}</div>
+
+      {/* Mobile top bar */}
+      <div className="sticky top-0 z-40 flex h-14 items-center justify-between border-b border-slate-100 bg-white/95 px-4 backdrop-blur-sm lg:hidden">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="rounded-lg p-2 text-slate-600 hover:bg-slate-50"
+          aria-label="Open menu"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+        <Link href="/dashboard" className="font-display text-lg font-bold text-brand">
+          uraan
+        </Link>
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">
+          {initials}
+        </div>
+      </div>
+
+      {/* Mobile drawer */}
+      {open && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <button
+            type="button"
+            className="absolute inset-0 bg-slate-900/40"
+            aria-label="Close menu"
+            onClick={() => setOpen(false)}
+          />
+          <div className="absolute inset-y-0 left-0 shadow-xl">
+            <div className="relative h-full">
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="absolute right-3 top-4 z-10 rounded-lg p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+                aria-label="Close"
+              >
+                <X className="h-5 w-5" />
+              </button>
+              {sidebar}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="lg:pl-[240px]">
+        {children}
+      </div>
+    </div>
   );
 }

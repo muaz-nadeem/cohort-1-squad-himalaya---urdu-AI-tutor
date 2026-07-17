@@ -406,11 +406,10 @@ function Centered({
 
 export default function SessionPage() {
   return (
-    <>
-      <Navbar />
+    <Navbar>
       <Suspense fallback={<Centered text="Loading..." />}>
         <SessionInner />
       </Suspense>
-    </>
+    </Navbar>
   );
 }

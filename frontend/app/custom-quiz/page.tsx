@@ -58,9 +58,8 @@ export default function CustomQuizPage() {
   const total = rows.reduce((s, r) => s + (r.chapter ? r.count : 0), 0);
 
   return (
-    <>
-      <Navbar />
-      <main className="relative min-h-[calc(100vh-4rem)]">
+    <Navbar>
+      <main className="relative min-h-[calc(100vh-3.5rem)] lg:min-h-screen">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_#fef3c7_0%,_transparent_45%)]" />
         <div className="relative mx-auto max-w-2xl px-4 py-8 sm:px-6">
           <Link
@@ -165,6 +164,6 @@ export default function CustomQuizPage() {
           </div>
         </div>
       </main>
-    </>
+    </Navbar>
   );
 }

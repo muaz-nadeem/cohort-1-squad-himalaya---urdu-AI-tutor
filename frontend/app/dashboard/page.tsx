@@ -49,15 +49,14 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <>
-        <Navbar />
+      <Navbar>
         <div className="flex min-h-[80vh] items-center justify-center">
           <div className="text-center">
             <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brand border-t-transparent" />
             <p className="mt-3 text-sm text-slate-400">Loading dashboard...</p>
           </div>
         </div>
-      </>
+      </Navbar>
     );
   }
 
@@ -70,9 +69,8 @@ export default function DashboardPage() {
   const hasPractice = (data?.total_attempted ?? 0) > 0;
 
   return (
-    <>
-      <Navbar />
-      <div className="relative min-h-[calc(100vh-4rem)]">
+    <Navbar>
+      <div className="relative min-h-[calc(100vh-3.5rem)] lg:min-h-screen">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#e0edfb_0%,_transparent_50%)]" />
         <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           {error && (
@@ -319,7 +317,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }
 

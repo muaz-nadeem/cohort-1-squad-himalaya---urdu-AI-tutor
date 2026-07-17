@@ -38,8 +38,7 @@ export default function WeeklyPlanPage() {
   }, [router]);
 
   return (
-    <>
-      <Navbar />
+    <Navbar>
       <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
         <header className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -105,6 +104,6 @@ export default function WeeklyPlanPage() {
           })}
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }

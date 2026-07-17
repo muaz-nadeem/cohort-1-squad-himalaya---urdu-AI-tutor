@@ -155,9 +155,8 @@ export default function ChatPage() {
   }
 
   return (
-    <>
-      <Navbar />
-      <div className="mx-auto flex h-[calc(100vh-4rem)] max-w-4xl flex-col">
+    <Navbar>
+      <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-4xl flex-col lg:h-screen">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
@@ -234,7 +233,7 @@ export default function ChatPage() {
           </p>
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }
 

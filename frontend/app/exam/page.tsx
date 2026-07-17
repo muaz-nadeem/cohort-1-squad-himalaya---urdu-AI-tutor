@@ -18,9 +18,8 @@ export default function ExamPage() {
   }, [router]);
 
   return (
-    <>
-      <Navbar />
-      <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
+    <Navbar>
+      <main className="relative min-h-[calc(100vh-3.5rem)] overflow-hidden lg:min-h-screen">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_#dbeafe_0%,_transparent_50%)]" />
         <div className="relative mx-auto max-w-3xl px-4 py-8 sm:px-6">
           <Link
@@ -128,6 +127,6 @@ export default function ExamPage() {
           </div>
         </div>
       </main>
-    </>
+    </Navbar>
   );
 }

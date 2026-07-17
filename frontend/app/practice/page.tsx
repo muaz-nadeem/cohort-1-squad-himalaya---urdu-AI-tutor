@@ -33,9 +33,8 @@ export default function PracticePage() {
   const part2 = filtered.filter((c) => c.book === "fsc_part2");
 
   return (
-    <>
-      <Navbar />
-      <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
+    <Navbar>
+      <main className="relative min-h-[calc(100vh-3.5rem)] overflow-hidden lg:min-h-screen">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#e8f4f0_0%,_transparent_55%)]" />
         <div className="relative mx-auto max-w-4xl px-4 py-8 sm:px-6">
           <Link
@@ -99,7 +98,7 @@ export default function PracticePage() {
           )}
         </div>
       </main>
-    </>
+    </Navbar>
   );
 }
 

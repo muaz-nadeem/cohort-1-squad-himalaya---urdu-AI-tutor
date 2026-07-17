@@ -40,8 +40,7 @@ export default function WeakSpotsPage() {
   }, [router]);
 
   return (
-    <>
-      <Navbar />
+    <Navbar>
       <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6">
         <header className="mb-6 flex items-center justify-between">
           <div>
@@ -127,6 +126,6 @@ export default function WeakSpotsPage() {
           })}
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }

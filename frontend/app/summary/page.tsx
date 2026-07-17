@@ -72,8 +72,7 @@ export default function SummaryPage() {
   }
 
   return (
-    <>
-      <Navbar />
+    <Navbar>
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         <div className="mb-6 rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-sm">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand-50">
@@ -268,7 +267,7 @@ export default function SummaryPage() {
           </Link>
         </div>
       </div>
-    </>
+    </Navbar>
   );
 }
 
