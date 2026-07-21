@@ -73,10 +73,10 @@ async def ask_ai(req: AskRequest):
     if citation:
         answer_text = f"{answer_text}\n\n({citation})"
 
-    # Skip TTS for speed — text answer is enough in-session
+    audio_b64 = await voice.text_to_speech(answer_text)
     return {
         "answer": answer_text,
-        "audio": None,
+        "audio": audio_b64,
         "transcript": "",
         "concept": req.concept,
         "sources": sources,
@@ -229,11 +229,11 @@ async def explain(req: ExplainRequest):
     # Only book + page (never academy PDF / MCQ source filename)
     citation = rag.format_citation_short(sources)
 
-    # Skip TTS here — it was the main delay; students read text first
+    audio_b64 = await voice.text_to_speech(explanation)
     return {
         "explanation": explanation,
         "answer": explanation,
-        "audio": None,
+        "audio": audio_b64,
         "concept": q_chapter,
         "citation": citation,
         "sources": sources,

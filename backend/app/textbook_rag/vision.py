@@ -97,6 +97,7 @@ def caption_image(png_bytes: bytes) -> list[VisualChunk]:
             ],
             max_tokens=700,
             temperature=0.2,
+            reasoning_effort="none",
         )
         raw = response.choices[0].message.content or ""
         return _parse_vision_json(raw)
@@ -160,6 +161,7 @@ def ocr_page_with_vision(png_bytes: bytes) -> str:
             ],
             max_tokens=1200,
             temperature=0.1,
+            reasoning_effort="none",
         )
         return (response.choices[0].message.content or "").strip()
     except Exception as exc:

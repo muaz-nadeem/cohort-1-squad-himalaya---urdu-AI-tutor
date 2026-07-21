@@ -47,19 +47,43 @@ def _configure_tesseract() -> bool:
     return True
 
 
-def _ocr_page_image(png_bytes: bytes) -> str:
-    """OCR via Tesseract if installed, else Groq vision OCR fallback."""
-    _configure_tesseract()
+def ocr_with_tesseract(png_bytes: bytes) -> str:
+    """Local Tesseract OCR only. Returns empty string if unavailable or failed."""
+    if not _configure_tesseract():
+        return ""
     try:
         import pytesseract
-        from PIL import Image
+        from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
         img = Image.open(io.BytesIO(png_bytes))
-        text = pytesseract.image_to_string(img) or ""
-        if text.strip():
-            return text
+        if img.mode not in ("L", "RGB"):
+            img = img.convert("RGB")
+        gray = ImageOps.grayscale(img)
+        gray = ImageOps.autocontrast(gray)
+        # Upscale small / phone-scan images so Tesseract can resolve glyphs
+        min_side = min(gray.size)
+        if min_side < 1400:
+            scale = max(2, int(1400 / min_side) + 1)
+            gray = gray.resize(
+                (gray.width * scale, gray.height * scale),
+                Image.Resampling.LANCZOS,
+            )
+            gray = ImageEnhance.Contrast(gray).enhance(1.4)
+            gray = gray.filter(ImageFilter.SHARPEN)
+
+        text = pytesseract.image_to_string(
+            gray, lang="eng", config="--oem 3 --psm 6"
+        )
+        return text or ""
     except Exception:
-        pass
+        return ""
+
+
+def _ocr_page_image(png_bytes: bytes) -> str:
+    """OCR via Tesseract if installed, else Groq vision OCR fallback."""
+    text = ocr_with_tesseract(png_bytes)
+    if text.strip():
+        return text
 
     try:
         from .vision import ocr_page_with_vision

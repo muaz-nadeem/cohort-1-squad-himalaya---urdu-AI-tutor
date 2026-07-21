@@ -22,7 +22,9 @@ Drop / keep PDFs in these folders (already present in this repo layout):
 # Smoke: 1 PDF, first 3 pages
 python -m scripts.ingest_mcqs --max-pdfs 1 --max-pages 3
 
-# Full-ish batch (slow — Vision/LLM per page)
+# Full batch (embedded text or Tesseract OCR → cheap text model for JSON)
+# Requires Tesseract OCR installed for scanned/CamScanner PDFs
+# MCQs without a marked answer in the source are dropped (no LLM guessing)
 python -m scripts.ingest_mcqs
 
 # Mnemonics for explanations

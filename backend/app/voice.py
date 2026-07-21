@@ -55,24 +55,22 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
         return ""
 
 
-def text_to_speech(text: str) -> Optional[str]:
+async def text_to_speech(text: str) -> Optional[str]:
     """Synthesise Urdu speech via Uplift Orator, return base64 MP3 (or None)."""
     if not settings.uplift_ready:
         return None
     try:
-        import requests
-
-        response = requests.post(
-            f"{settings.UPLIFT_BASE}/synthesis/text-to-speech",
-            headers={
-                "Authorization": f"Bearer {settings.UPLIFT_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={"text": text, "voice_id": settings.UPLIFT_VOICE_ID},
-            timeout=30,
-        )
+        async with httpx.AsyncClient(timeout=30) as http:
+            response = await http.post(
+                f"{settings.UPLIFT_BASE}/synthesis/text-to-speech",
+                headers={
+                    "Authorization": f"Bearer {settings.UPLIFT_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                json={"text": text, "voice_id": settings.UPLIFT_VOICE_ID},
+            )
         if response.status_code == 200:
             return base64.b64encode(response.content).decode("utf-8")
-    except requests.RequestException:
+    except httpx.HTTPError:
         pass
     return None

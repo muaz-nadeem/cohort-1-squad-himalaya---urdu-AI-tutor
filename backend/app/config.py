@@ -24,7 +24,12 @@ class Settings:
     EMBEDDING_DIMENSIONS: int = 768
     LLM_MODEL: str = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-versatile")
     VISION_MODEL: str = os.getenv(
-        "GROQ_VISION_MODEL", "meta-llama/llama-4-scout-17b-16e-instruct"
+        "GROQ_VISION_MODEL", "qwen/qwen3.6-27b"
+    )
+    # MCQ PDF ingest only (cheap structuring — not used for tutor Q&A)
+    MCQ_TEXT_MODEL: str = os.getenv("GROQ_MCQ_TEXT_MODEL", "llama-3.1-8b-instant")
+    MCQ_VISION_MODEL: str = os.getenv(
+        "GROQ_MCQ_VISION_MODEL", "qwen/qwen3.6-27b"
     )
     WHISPER_MODEL: str = "whisper-large-v3"
 
