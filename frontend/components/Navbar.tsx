@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  BookOpen,
   LayoutDashboard,
   Layers,
   Timer,
@@ -57,14 +56,14 @@ export default function Navbar({ children }: { children?: ReactNode }) {
   const sidebar = (
     <aside className="flex h-full w-[240px] flex-col border-r border-slate-100 bg-white">
       <div className="flex items-center gap-2.5 px-5 py-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-          <BookOpen className="h-4 w-4" />
-        </div>
         <div>
-          <p className="font-display text-lg font-bold leading-none text-brand">
-            uraan
-          </p>
-          <p className="mt-1 text-[10px] font-semibold tracking-wide text-slate-400">
+          <div className="flex items-baseline gap-2">
+            <p className="font-display text-lg font-bold leading-none text-brand">
+              uraan
+            </p>
+            <p className="font-urdu text-sm text-brand">اُڑان</p>
+          </div>
+          <p className="mt-1.5 text-[10px] font-semibold tracking-wide text-slate-400">
             MDCAT 2026
           </p>
         </div>

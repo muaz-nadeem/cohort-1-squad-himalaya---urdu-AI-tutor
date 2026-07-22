@@ -56,6 +56,15 @@ def get_groq_client() -> OpenAI:
     )
 
 
+@lru_cache
+def get_gemini_client() -> OpenAI:
+    """OpenAI SDK client pointed at Gemini's OpenAI-compatible endpoint."""
+    return OpenAI(
+        api_key=settings.GEMINI_API_KEY,
+        base_url=settings.GEMINI_BASE_URL,
+    )
+
+
 def _chat(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
     client = get_groq_client()
     response = client.chat.completions.create(

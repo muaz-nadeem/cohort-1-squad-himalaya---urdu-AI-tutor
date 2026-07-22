@@ -36,10 +36,12 @@ body {
   @apply btn border border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  @apply w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/10;
+@layer components {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    @apply w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/10;
+  }
 }
 
 .progress-bar {

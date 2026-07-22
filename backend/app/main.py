@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 from contextlib import asynccontextmanager
 from typing import Optional
 
@@ -21,8 +22,14 @@ from .config import settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Pre-warm the embedding model on startup so first request is fast
-    await asyncio.get_event_loop().run_in_executor(None, rag.warmup)
+    # Optional: skip warmup when RAM is tight (loads on first RAG request)
+    if os.getenv("SKIP_EMBED_WARMUP", "").lower() in {"1", "true", "yes"}:
+        print("  [rag] skipping embedding warmup (SKIP_EMBED_WARMUP)")
+    else:
+        try:
+            await asyncio.get_event_loop().run_in_executor(None, rag.warmup)
+        except Exception as exc:
+            print(f"  [rag] warmup skipped: {type(exc).__name__}: {exc}")
     yield
 
 

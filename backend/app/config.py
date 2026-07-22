@@ -11,6 +11,9 @@ class Settings:
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
 
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
+    GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
+
     UPLIFT_API_KEY: str = os.getenv("UPLIFT_API_KEY", "")
     UPLIFT_VOICE_ID: str = os.getenv("UPLIFT_VOICE_ID", "v_8eelc901")
     SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
@@ -26,11 +29,8 @@ class Settings:
     VISION_MODEL: str = os.getenv(
         "GROQ_VISION_MODEL", "qwen/qwen3.6-27b"
     )
-    # MCQ PDF ingest only (cheap structuring — not used for tutor Q&A)
     MCQ_TEXT_MODEL: str = os.getenv("GROQ_MCQ_TEXT_MODEL", "llama-3.1-8b-instant")
-    MCQ_VISION_MODEL: str = os.getenv(
-        "GROQ_MCQ_VISION_MODEL", "qwen/qwen3.6-27b"
-    )
+    MCQ_VISION_MODEL: str = os.getenv("GROQ_MCQ_VISION_MODEL", "qwen/qwen3.6-27b")
     WHISPER_MODEL: str = "whisper-large-v3"
 
     UPLIFT_BASE: str = "https://api.upliftai.org/v1"
@@ -42,6 +42,10 @@ class Settings:
     @property
     def groq_ready(self) -> bool:
         return bool(self.GROQ_API_KEY)
+
+    @property
+    def gemini_ready(self) -> bool:
+        return bool(self.GEMINI_API_KEY)
 
     @property
     def uplift_ready(self) -> bool:

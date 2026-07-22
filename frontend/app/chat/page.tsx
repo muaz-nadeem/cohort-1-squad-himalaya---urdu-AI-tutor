@@ -3,14 +3,15 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
-  Send,
-  BookOpen,
-  FileText,
   ArrowLeft,
-  Loader2,
-  Sparkles,
+  BookOpen,
   ChevronDown,
   ChevronUp,
+  FileText,
+  Loader2,
+  Mic,
+  Send,
+  Sparkles,
 } from "lucide-react";
 import { api, type RagSource } from "@/lib/api";
 import Navbar from "@/components/Navbar";
@@ -25,12 +26,12 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
-  "What is the structure of mitochondria?",
-  "Explain the process of photosynthesis",
+  "Explain the Krebs cycle in simple terms.",
+  "Where is the structure of the heart mentioned?",
   "What are the phases of mitosis?",
   "How does osmosis differ from diffusion?",
-  "Describe the lock and key model of enzymes",
-  "What is the role of DNA polymerase?",
+  "Compare DNA vs RNA from the textbook.",
+  "Describe the lock and key model of enzymes.",
 ];
 
 export default function ChatPage() {
@@ -52,6 +53,13 @@ export default function ChatPage() {
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  const searchLabel =
+    bookFilter === "fsc_bio_part1"
+      ? "BIOLOGY · PART 1"
+      : bookFilter === "fsc_bio_part2"
+        ? "BIOLOGY · PART 2"
+        : "BIOLOGY · BOTH PARTS";
 
   async function handleSend(question?: string) {
     const q = (question || input).trim();
@@ -82,9 +90,7 @@ export default function ChatPage() {
         top_k: 3,
       });
 
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
+      if (!res.ok) throw new Error(await res.text());
 
       const reader = res.body?.getReader();
       if (!reader) throw new Error("No response stream");
@@ -107,7 +113,6 @@ export default function ChatPage() {
 
           try {
             const event = JSON.parse(payload);
-
             if (event.type === "sources") {
               setMessages((prev) =>
                 prev.map((m) =>
@@ -126,15 +131,13 @@ export default function ChatPage() {
               );
             }
           } catch {
-            // skip malformed JSON
+            /* skip */
           }
         }
       }
 
       setMessages((prev) =>
-        prev.map((m) =>
-          m.id === botId ? { ...m, streaming: false } : m
-        )
+        prev.map((m) => (m.id === botId ? { ...m, streaming: false } : m))
       );
     } catch (e) {
       setMessages((prev) =>
@@ -142,7 +145,9 @@ export default function ChatPage() {
           m.id === botId
             ? {
                 ...m,
-                content: `Error: ${e instanceof Error ? e.message : "Failed to get answer"}. Make sure the backend is running.`,
+                content: `Error: ${
+                  e instanceof Error ? e.message : "Failed to get answer"
+                }. Make sure the backend is running.`,
                 streaming: false,
               }
             : m
@@ -156,9 +161,8 @@ export default function ChatPage() {
 
   return (
     <Navbar>
-      <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-4xl flex-col lg:h-screen">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-5xl flex-col bg-[#F4F7FB] lg:h-screen">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 bg-white px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard"
@@ -166,34 +170,40 @@ export default function ChatPage() {
             >
               <ArrowLeft className="h-5 w-5" />
             </Link>
-            <div>
-              <h1 className="flex items-center gap-2 font-semibold text-slate-800">
-                <Sparkles className="h-4 w-4 text-brand-light" />
-                Ask from Textbook
-              </h1>
-              <p className="text-xs text-slate-400">
-                FSc Biology RAG — answers grounded in your textbook with page references
-              </p>
-            </div>
+            <h1 className="font-display text-lg font-bold text-brand-700">
+              Ask Textbook
+            </h1>
           </div>
 
-          <select
-            value={bookFilter || ""}
-            onChange={(e) => setBookFilter(e.target.value || undefined)}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-600 outline-none focus:border-brand"
-          >
-            <option value="">Both Parts</option>
-            <option value="fsc_bio_part1">Part 1</option>
-            <option value="fsc_bio_part2">Part 2</option>
-          </select>
+          <div className="inline-flex rounded-full bg-slate-100 p-1">
+            {(
+              [
+                [undefined, "Both"],
+                ["fsc_bio_part1", "Part 1"],
+                ["fsc_bio_part2", "Part 2"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => setBookFilter(id)}
+                className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
+                  bookFilter === id
+                    ? "bg-brand text-white"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6">
+        <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
           {messages.length === 0 ? (
             <EmptyState onAsk={handleSend} />
           ) : (
-            <div className="space-y-4">
+            <div className="mx-auto max-w-3xl space-y-4">
               {messages.map((msg) => (
                 <MessageBubble key={msg.id} message={msg} />
               ))}
@@ -202,35 +212,42 @@ export default function ChatPage() {
           )}
         </div>
 
-        {/* Input */}
-        <div className="border-t border-slate-100 bg-white px-4 py-3 sm:px-6">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-            className="flex items-center gap-3"
-          >
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask any Biology question..."
-              disabled={loading}
-              className="!rounded-xl !border-slate-200 !bg-slate-50 !py-3"
-            />
-            <button
-              type="submit"
-              disabled={loading || !input.trim()}
-              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
+        <div className="border-t border-slate-200/80 bg-white px-4 py-4 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <p className="mb-2 text-center text-[10px] font-bold tracking-wider text-slate-400">
+              SEARCHING: {searchLabel}
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSend();
+              }}
+              className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 shadow-sm"
             >
-              <Send className="h-5 w-5" />
-            </button>
-          </form>
-          <p className="mt-2 text-center text-xs text-slate-400">
-            Answers are generated from FSc Biology textbook passages via RAG. Always verify with your book.
-          </p>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400">
+                <Mic className="h-4 w-4" />
+              </span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Ask about MDCAT syllabus..."
+                disabled={loading}
+                className="!border-0 !bg-transparent !px-0 !py-2 !shadow-none !ring-0 focus:!ring-0"
+              />
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </form>
+            <p className="mt-3 text-center text-xs text-slate-400">
+              AI-generated · verify with textbook for final MDCAT preparation.
+            </p>
+          </div>
         </div>
       </div>
     </Navbar>
@@ -239,30 +256,29 @@ export default function ChatPage() {
 
 function EmptyState({ onAsk }: { onAsk: (q: string) => void }) {
   return (
-    <div className="flex h-full flex-col items-center justify-center">
-      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50">
-        <BookOpen className="h-8 w-8 text-brand" />
+    <div className="mx-auto flex h-full max-w-3xl flex-col items-center justify-center">
+      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-white shadow-sm">
+        <Sparkles className="h-6 w-6" />
       </div>
-      <h2 className="text-lg font-semibold text-slate-800">Ask from your Textbook</h2>
-      <p className="mt-1 max-w-sm text-center text-sm text-slate-500">
-        Ask any Biology question and get an answer grounded in your FSc textbook, with exact page references.
+      <h2 className="font-display text-2xl font-bold text-brand-700 sm:text-3xl">
+        How can I help with your studies?
+      </h2>
+      <p className="mt-3 max-w-lg text-center text-sm leading-relaxed text-slate-500">
+        Ask questions directly from your FSc Biology textbooks. I can find
+        specific pages and explain complex concepts.
       </p>
 
-      <div className="mt-8 w-full max-w-lg">
-        <p className="mb-3 text-center text-xs font-medium uppercase tracking-wider text-slate-400">
-          Try asking
-        </p>
-        <div className="grid gap-2 sm:grid-cols-2">
-          {SUGGESTED_QUESTIONS.map((q) => (
-            <button
-              key={q}
-              onClick={() => onAsk(q)}
-              className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-left text-sm text-slate-600 transition hover:border-brand/30 hover:bg-brand-50"
-            >
-              {q}
-            </button>
-          ))}
-        </div>
+      <div className="mt-8 grid w-full gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {SUGGESTED_QUESTIONS.map((q) => (
+          <button
+            key={q}
+            type="button"
+            onClick={() => onAsk(q)}
+            className="rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left text-sm text-slate-600 shadow-sm transition hover:border-brand/30 hover:bg-brand-50"
+          >
+            {q}
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -274,7 +290,7 @@ function MessageBubble({ message }: { message: Message }) {
   if (isUser) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] rounded-2xl rounded-tr-none bg-brand px-4 py-3 text-sm text-white">
+        <div className="max-w-[80%] rounded-2xl rounded-tr-md bg-brand px-4 py-3 text-sm text-white">
           {message.content}
         </div>
       </div>
@@ -287,7 +303,7 @@ function MessageBubble({ message }: { message: Message }) {
         <BookOpen className="h-4 w-4 text-brand" />
       </div>
       <div className="max-w-[85%] space-y-2">
-        <div className="rounded-2xl rounded-tl-none bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
+        <div className="rounded-2xl rounded-tl-md bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
           {message.content ? (
             <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
               {message.content}
@@ -323,6 +339,7 @@ function SourcesPanel({
   return (
     <div className="rounded-xl border border-slate-100 bg-slate-50 text-xs">
       <button
+        type="button"
         onClick={() => setExpanded(!expanded)}
         className="flex w-full items-center justify-between px-3 py-2 text-slate-500 hover:text-slate-700"
       >
@@ -341,8 +358,11 @@ function SourcesPanel({
       {expanded && (
         <div className="space-y-2 border-t border-slate-100 px-3 py-2">
           {sources.map((src, i) => (
-            <div key={i} className="rounded-lg bg-white p-2.5 ring-1 ring-slate-100">
-              <div className="mb-1 flex items-center justify-between">
+            <div
+              key={i}
+              className="rounded-lg bg-white p-2.5 ring-1 ring-slate-100"
+            >
+              <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="font-medium text-slate-700">
                   {src.book_label || src.book || "FSc Biology"}
                   {src.page_number != null && ` · p. ${src.page_number}`}
@@ -355,7 +375,6 @@ function SourcesPanel({
                 <p className="text-slate-400">
                   {src.chapter}
                   {src.concept && ` · ${src.concept}`}
-                  {src.content_type && src.content_type !== "text" && ` · ${src.content_type}`}
                 </p>
               )}
               {src.snippet && (

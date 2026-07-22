@@ -64,10 +64,7 @@ export default function LandingPage() {
               uraan
             </p>
             <h1 className="mt-7 text-[1.55rem] font-medium leading-snug tracking-tight text-slate-800 sm:text-[1.85rem]">
-              Biology in Urdu.
-              <span className="block text-slate-500">
-                Practice that finds what you miss.
-              </span>
+              Practice that finds what you miss.
             </h1>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-slate-500">
               Chapter MCQs, full-length papers, and a tutor you can ask in Urdu
@@ -206,29 +203,92 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Close */}
-      <section className="landing-close relative overflow-hidden">
-        <div className="landing-close-glow" aria-hidden />
-        <div className="relative mx-auto flex max-w-6xl flex-col items-start justify-between gap-10 px-5 py-20 sm:px-8 lg:flex-row lg:items-center lg:py-24">
-          <div>
-            <p className="font-urdu text-2xl text-sky-200/90">اڑان</p>
-            <p className="font-display mt-2 text-5xl font-bold text-white sm:text-6xl">
-              uraan
-            </p>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-sky-100/90">
-              Free to start. Built for students who revise in Urdu and want
-              practice that adapts.
-            </p>
-          </div>
-          <Link href="/signup" className="landing-cta-invert">
-            Create your account
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+      {/* Close CTA */}
+      <section className="bg-brand-700 px-5 py-20 text-center sm:px-8 sm:py-24">
+        <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+          Ready to secure your white coat?
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-base text-slate-300 sm:text-lg">
+          Join the next generation of doctors using Uraan to ace the MDCAT.
+        </p>
+        <Link
+          href="/signup"
+          className="mt-8 inline-flex items-center justify-center rounded-full bg-accent-blue px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-600"
+        >
+          Create account
+        </Link>
+        <p className="mt-5 text-sm text-slate-400">
+          No credit card required. Start free today.
+        </p>
       </section>
 
-      <footer className="border-t border-slate-100 bg-white py-8 text-center text-xs text-slate-400">
-        © {new Date().getFullYear()} Uraan · MDCAT Biology
+      <footer className="border-t border-slate-200 bg-white">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-5 py-8 sm:px-8 lg:flex-row lg:justify-between lg:gap-6">
+          <div className="flex items-baseline gap-2.5">
+            <span className="font-display text-xl font-bold tracking-tight text-brand">
+              uraan
+            </span>
+            <span className="font-urdu text-lg text-brand">اڑان</span>
+          </div>
+
+          <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-500">
+            <Link href="/practice" className="transition hover:text-brand">
+              Practice
+            </Link>
+            <Link href="#pricing" className="transition hover:text-brand">
+              Pricing
+            </Link>
+            <Link href="#privacy" className="transition hover:text-brand">
+              Privacy
+            </Link>
+            <Link href="#terms" className="transition hover:text-brand">
+              Terms
+            </Link>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <a
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand transition hover:bg-brand-100"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-current"
+                aria-hidden
+              >
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.227-8.451L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-50 text-brand transition hover:bg-brand-100"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-none stroke-current"
+                strokeWidth="1.75"
+                aria-hidden
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div className="border-t border-slate-100">
+          <p className="mx-auto max-w-6xl px-5 py-5 text-center text-xs leading-relaxed text-slate-400 sm:px-8">
+            © {new Date().getFullYear()} Uraan Education Technologies. All
+            rights reserved. MDCAT is a registered trademark of PMDC.
+          </p>
+        </div>
       </footer>
     </div>
   );

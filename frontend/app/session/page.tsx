@@ -12,8 +12,16 @@ import {
 } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import AskAI from "@/components/AskAI";
-import Navbar from "@/components/Navbar";
-import { ArrowLeft, CheckCircle, Clock, XCircle } from "lucide-react";
+import {
+  BookOpen,
+  CheckCircle2,
+  Clock,
+  Frown,
+  Smile,
+  Sparkles,
+  X,
+  XCircle,
+} from "lucide-react";
 
 function modeLabel(mode: SessionMode) {
   switch (mode) {
@@ -22,9 +30,9 @@ function modeLabel(mode: SessionMode) {
     case "chapter_practice":
       return "Chapter Practice";
     case "full_length_practice":
-      return "FLP · Practice";
+      return "Full-length Mock";
     case "full_length_timed":
-      return "FLP · Timed";
+      return "Full-length Mock";
     case "custom":
       return "Custom Quiz";
     case "drill":
@@ -57,8 +65,9 @@ function SessionInner() {
   const scoreRef = useRef(0);
   const answeredRef = useRef(0);
   const sessionIdRef = useRef<string | null>(null);
+  const startedAtRef = useRef<number>(Date.now());
 
-  const explainParam = params.get("explain"); // each | end | null
+  const explainParam = params.get("explain");
   const flpMode = (params.get("flp") as "practice" | "timed") || "practice";
 
   useEffect(() => {
@@ -71,6 +80,11 @@ function SessionInner() {
       return;
     }
     setStudentId(id);
+    startedAtRef.current = Date.now();
+    window.sessionStorage.setItem(
+      "mdcat_session_started_at",
+      String(startedAtRef.current)
+    );
 
     const mode = params.get("mode") || "auto";
     const chapter = params.get("chapter") || undefined;
@@ -128,7 +142,10 @@ function SessionInner() {
       }
       return;
     }
-    const t = setTimeout(() => setSecondsLeft((s) => (s === null ? s : s - 1)), 1000);
+    const t = setTimeout(
+      () => setSecondsLeft((s) => (s === null ? s : s - 1)),
+      1000
+    );
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secondsLeft, selected]);
@@ -138,7 +155,6 @@ function SessionInner() {
 
   const isTimedExam = set?.mode === "full_length_timed";
   const isFlpPractice = set?.mode === "full_length_practice";
-  // Timed always end-review; practice uses ?explain=; other modes show each
   const reviewAtEnd =
     isTimedExam ||
     explainParam === "end" ||
@@ -210,10 +226,6 @@ function SessionInner() {
     }
   }
 
-  async function next() {
-    nextAfterAnswer();
-  }
-
   async function finish() {
     const sid = sessionIdRef.current;
     if (!sid) {
@@ -236,143 +248,272 @@ function SessionInner() {
         JSON.stringify(reviewRef.current)
       );
     }
-    // Always go to summary; review section shows if mdcat_review exists
     router.replace("/summary");
   }
 
   if (loading) return <Centered text="Loading session..." />;
   if (error)
     return (
-      <Centered text={error} isError onBack={() => router.replace("/dashboard")} />
+      <Centered
+        text={error}
+        isError
+        onBack={() => router.replace("/dashboard")}
+      />
     );
   if (!question || !set)
-    return <Centered text="No questions." onBack={() => router.replace("/dashboard")} />;
+    return (
+      <Centered text="No questions." onBack={() => router.replace("/dashboard")} />
+    );
 
   const progress = ((index + 1) / set.questions.length) * 100;
   const mm = secondsLeft !== null ? Math.floor(secondsLeft / 60) : 0;
   const ss = secondsLeft !== null ? secondsLeft % 60 : 0;
+  const hh = secondsLeft !== null ? Math.floor(secondsLeft / 3600) : 0;
+  const timerLabel =
+    secondsLeft === null
+      ? null
+      : hh > 0
+        ? `${hh.toString().padStart(2, "0")}:${Math.floor((secondsLeft % 3600) / 60)
+            .toString()
+            .padStart(2, "0")}:${ss.toString().padStart(2, "0")}`
+        : `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
+
+  const scorePct = answered ? Math.round((score / answered) * 100) : 0;
+  const showSidebar = !!(selected && showExplainNow);
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-6 sm:px-6">
-      <header className="mb-6 flex items-center justify-between gap-3">
-        <button
-          onClick={() => router.replace("/dashboard")}
-          className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700"
-        >
-          <ArrowLeft className="h-4 w-4" /> Exit
-        </button>
-        <div className="flex items-center gap-2">
-          {secondsLeft !== null && (
-            <span
-              className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${
-                secondsLeft < 300 ? "bg-red-50 text-red-600" : "bg-slate-100 text-slate-600"
-              }`}
-            >
-              <Clock className="h-3.5 w-3.5" />
-              {mm}:{ss.toString().padStart(2, "0")}
-            </span>
-          )}
-          <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand">
+    <div className="min-h-screen bg-[#F4F7FB]">
+      <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <button
+            type="button"
+            onClick={() => router.replace("/dashboard")}
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800"
+          >
+            <X className="h-4 w-4" />
+            Exit Session
+          </button>
+
+          <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-brand">
             {modeLabel(set.mode)}
-            {reviewAtEnd && !isTimedExam ? " · End review" : ""}
           </span>
+
+          <div className="flex items-center gap-2">
+            {timerLabel && (
+              <span
+                className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold tabular-nums ${
+                  secondsLeft !== null && secondsLeft < 300
+                    ? "bg-red-50 text-red-600"
+                    : "bg-slate-100 text-slate-700"
+                }`}
+              >
+                <Clock className="h-3.5 w-3.5" />
+                {timerLabel}
+              </span>
+            )}
+          </div>
         </div>
       </header>
 
-      <div className="mb-6">
-        <div className="mb-2 flex justify-between text-sm text-slate-500">
-          <span>
-            Question {index + 1} / {set.questions.length}
-          </span>
-          {!reviewAtEnd && (
-            <span>
-              Score {score}/{answered}
-            </span>
-          )}
-          {reviewAtEnd && <span>Answered {answered}</span>}
-        </div>
-        <div className="progress-bar">
-          <div className="progress-bar-fill bg-brand" style={{ width: `${progress}%` }} />
-        </div>
-      </div>
-
-      <div className="mb-6 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
-        {question.chapter && (
-          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-400">
-            {question.chapter}
-          </p>
-        )}
-        <p className="text-lg font-medium text-slate-800">{question.question_text}</p>
-      </div>
-
-      <div className="space-y-3">
-        {question.options.map((opt) => {
-          const isSel = selected === opt.key;
-          const isRight =
-            showExplainNow && explanation && opt.key === question.correct_option;
-          const isWrongPick = showExplainNow && isSel && isCorrect === false;
-          let cls =
-            "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
-          if (selected) {
-            if (isRight) cls = "border-green-500 bg-green-50 text-green-800";
-            else if (isWrongPick) cls = "border-red-500 bg-red-50 text-red-800";
-            else if (isSel && reviewAtEnd)
-              cls = "border-brand bg-brand-50 text-brand";
-            else cls = "border-slate-200 bg-white opacity-50";
-          }
-          return (
-            <button
-              key={opt.key}
-              disabled={!!selected}
-              onClick={() => selectOption(opt.key)}
-              className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all ${cls}`}
-            >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold">
-                {opt.key}
-              </span>
-              <span className="flex-1">{opt.text}</span>
-              {selected && isRight && <CheckCircle className="h-5 w-5 text-green-500" />}
-              {isWrongPick && <XCircle className="h-5 w-5 text-red-500" />}
-            </button>
-          );
-        })}
-      </div>
-
-      {selected && showExplainNow && (
-        <div className="mt-6 space-y-4">
-          <div
-            className={`rounded-2xl border p-5 ${
-              isCorrect ? "border-green-200 bg-green-50" : "border-red-200 bg-red-50"
-            }`}
-          >
-            <p className="mb-2 font-semibold">
-              {isCorrect ? "Correct!" : "Not quite."}
+      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div className="min-w-[200px] flex-1">
+            <p className="text-[10px] font-bold tracking-wider text-slate-400">
+              PROGRESS
             </p>
-            {explaining ? (
-              <p className="text-sm text-slate-500">Generating explanation...</p>
-            ) : explanation ? (
-              <>
-                <p className="whitespace-pre-line text-sm text-slate-700">
-                  {explanation.explanation}
-                </p>
-                {explanation.citation && (
-                  <p className="mt-2 text-xs text-slate-400">{explanation.citation}</p>
-                )}
-              </>
-            ) : (
-              <p className="text-sm text-slate-500">
-                {question.explanation || "Review this concept in your textbook."}
+            <p className="mt-1 text-sm font-semibold text-slate-800">
+              Q {index + 1} / {set.questions.length}
+            </p>
+            <div className="mt-2 h-2 max-w-md overflow-hidden rounded-full bg-sky-100">
+              <div
+                className="h-full rounded-full bg-sky-400 transition-all"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+          {!reviewAtEnd && (
+            <div className="text-right">
+              <p className="text-[10px] font-bold tracking-wider text-slate-400">
+                Current Score
               </p>
+              <p className="mt-1 text-sm font-semibold text-brand">
+                {score}/{answered || 0}
+                {answered > 0 ? ` (${scorePct}%)` : ""}
+              </p>
+            </div>
+          )}
+          {reviewAtEnd && (
+            <div className="text-right">
+              <p className="text-[10px] font-bold tracking-wider text-slate-400">
+                Answered
+              </p>
+              <p className="mt-1 text-sm font-semibold text-slate-800">
+                {answered}/{set.questions.length}
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div
+          className={`grid gap-6 ${
+            showSidebar ? "lg:grid-cols-[1.45fr_0.9fr]" : ""
+          }`}
+        >
+          <div>
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
+                BIOLOGY
+              </span>
+              {question.chapter && (
+                <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                  {question.chapter}
+                </span>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
+              <p className="text-base font-medium leading-relaxed text-slate-800 sm:text-lg">
+                {question.question_text}
+              </p>
+            </div>
+
+            <div className="mt-4 space-y-3">
+              {question.options.map((opt) => {
+                const isSel = selected === opt.key;
+                const isRight =
+                  showExplainNow &&
+                  explanation &&
+                  opt.key === question.correct_option;
+                const isWrongPick =
+                  showExplainNow && isSel && isCorrect === false;
+                let cls =
+                  "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
+                if (selected) {
+                  if (isRight) cls = "border-brand bg-sky-50 text-brand-700";
+                  else if (isWrongPick)
+                    cls = "border-red-400 bg-red-50 text-red-800";
+                  else if (isSel && reviewAtEnd)
+                    cls = "border-brand bg-brand-50 text-brand";
+                  else cls = "border-slate-200 bg-white opacity-50";
+                }
+                return (
+                  <button
+                    key={opt.key}
+                    disabled={!!selected}
+                    onClick={() => selectOption(opt.key)}
+                    className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all ${cls}`}
+                  >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold">
+                      {opt.key}
+                    </span>
+                    <span className="flex-1 text-sm sm:text-[15px]">
+                      {opt.text}
+                    </span>
+                    {selected && isRight && (
+                      <CheckCircle2 className="h-5 w-5 text-brand" />
+                    )}
+                    {isWrongPick && <XCircle className="h-5 w-5 text-red-500" />}
+                  </button>
+                );
+              })}
+            </div>
+
+            {selected && showExplainNow && (
+              <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+                <button
+                  type="button"
+                  onClick={finish}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                >
+                  Finish Session
+                </button>
+                <button
+                  type="button"
+                  onClick={nextAfterAnswer}
+                  className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+                >
+                  {index >= set.questions.length - 1
+                    ? "Finish Session"
+                    : "Next Question →"}
+                </button>
+              </div>
             )}
           </div>
 
-          <AskAI concept={conceptName} />
+          {showSidebar && (
+            <aside className="space-y-4">
+              <div
+                className={`rounded-2xl border p-4 ${
+                  isCorrect
+                    ? "border-emerald-100 bg-emerald-50"
+                    : "border-red-100 bg-red-50"
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+                      isCorrect
+                        ? "bg-emerald-100 text-emerald-600"
+                        : "bg-red-100 text-red-500"
+                    }`}
+                  >
+                    {isCorrect ? (
+                      <Smile className="h-4 w-4" />
+                    ) : (
+                      <Frown className="h-4 w-4" />
+                    )}
+                  </div>
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isCorrect ? "text-emerald-800" : "text-red-700"
+                    }`}
+                  >
+                    {isCorrect
+                      ? "Nice work. Lock this concept in before you move on."
+                      : "Not quite. Don't worry — even doctors make mistakes in training. Let's understand why."}
+                  </p>
+                </div>
+              </div>
 
-          <button onClick={next} className="btn-primary w-full">
-            {index >= set.questions.length - 1 ? "Finish session" : "Next question →"}
-          </button>
+              <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+                <div className="flex items-center justify-between bg-brand-700 px-4 py-3 text-white">
+                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
+                    <Sparkles className="h-3.5 w-3.5" />
+                    AI INSIGHT
+                  </div>
+                  <span className="text-[10px] text-sky-200">Uraan AI</span>
+                </div>
+                <div className="p-4">
+                  {explaining ? (
+                    <p className="text-sm text-slate-400">
+                      Generating explanation...
+                    </p>
+                  ) : explanation ? (
+                    <>
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+                        {explanation.explanation}
+                      </p>
+                      {explanation.citation && (
+                        <div className="mt-4 flex items-start gap-2 rounded-xl bg-sky-50 px-3 py-2.5 text-xs text-brand">
+                          <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+                          <span>{explanation.citation}</span>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <p className="text-sm text-slate-500">
+                      {question.explanation ||
+                        "Review this concept in your textbook."}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <AskAI concept={conceptName} />
+            </aside>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -391,8 +532,12 @@ function Centered({
   onBack?: () => void;
 }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 px-4">
-      <p className={`max-w-md text-center text-sm ${isError ? "text-red-500" : "text-slate-400"}`}>
+    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#F4F7FB] px-4">
+      <p
+        className={`max-w-md text-center text-sm ${
+          isError ? "text-red-500" : "text-slate-400"
+        }`}
+      >
         {text}
       </p>
       {onBack && (
@@ -406,10 +551,8 @@ function Centered({
 
 export default function SessionPage() {
   return (
-    <Navbar>
-      <Suspense fallback={<Centered text="Loading..." />}>
-        <SessionInner />
-      </Suspense>
-    </Navbar>
+    <Suspense fallback={<Centered text="Loading..." />}>
+      <SessionInner />
+    </Suspense>
   );
 }
