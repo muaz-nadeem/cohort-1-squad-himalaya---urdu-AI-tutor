@@ -16,17 +16,28 @@ from .llm import get_groq_client
 
 async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> str:
     """Transcribe Urdu audio. Uplift STT first, Whisper fallback."""
+    print(f"  [stt] starting transcription ({len(audio_bytes)} bytes, {filename})")
+
     transcript = await _uplift_stt(audio_bytes, filename)
     if transcript:
+        print(f"  [stt] Uplift success: '{transcript[:60]}...'")
         return transcript
-    return _whisper_stt(audio_bytes, filename)
+
+    print("  [stt] Uplift failed/empty, trying Groq Whisper...")
+    transcript = _whisper_stt(audio_bytes, filename)
+    if transcript:
+        print(f"  [stt] Whisper success: '{transcript[:60]}...'")
+    else:
+        print("  [stt] Both STT engines returned empty")
+    return transcript
 
 
 async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
     if not settings.uplift_ready:
+        print("  [stt] Uplift not configured (no UPLIFT_API_KEY)")
         return ""
     try:
-        async with httpx.AsyncClient(timeout=30) as http:
+        async with httpx.AsyncClient(timeout=45) as http:
             resp = await http.post(
                 f"{settings.UPLIFT_BASE}/transcriptions",
                 headers={"Authorization": f"Bearer {settings.UPLIFT_API_KEY}"},
@@ -35,13 +46,19 @@ async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
             )
         if resp.status_code == 200:
             return resp.json().get("text", "") or ""
-    except httpx.HTTPError:
-        pass
+        print(f"  [stt] Uplift returned {resp.status_code}: {resp.text[:200]}")
+    except httpx.TimeoutException:
+        print("  [stt] Uplift STT timed out (45s)")
+    except httpx.HTTPError as exc:
+        print(f"  [stt] Uplift HTTP error: {type(exc).__name__}: {exc}")
+    except Exception as exc:
+        print(f"  [stt] Uplift error: {type(exc).__name__}: {exc}")
     return ""
 
 
 def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
     if not settings.groq_ready:
+        print("  [stt] Groq not configured (no GROQ_API_KEY)")
         return ""
     try:
         client = get_groq_client()
@@ -51,7 +68,8 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
             model=settings.WHISPER_MODEL, file=buffer, language="ur"
         )
         return getattr(result, "text", "") or ""
-    except Exception:
+    except Exception as exc:
+        print(f"  [stt] Whisper error: {type(exc).__name__}: {exc}")
         return ""
 
 
@@ -71,6 +89,11 @@ async def text_to_speech(text: str) -> Optional[str]:
             )
         if response.status_code == 200:
             return base64.b64encode(response.content).decode("utf-8")
-    except httpx.HTTPError:
-        pass
+        print(f"  [tts] Uplift returned {response.status_code}")
+    except httpx.TimeoutException:
+        print("  [tts] Uplift TTS timed out (30s)")
+    except httpx.HTTPError as exc:
+        print(f"  [tts] Uplift HTTP error: {type(exc).__name__}: {exc}")
+    except Exception as exc:
+        print(f"  [tts] error: {type(exc).__name__}: {exc}")
     return None

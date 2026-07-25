@@ -154,11 +154,7 @@ function SessionInner() {
   const conceptName = explanation?.concept || question?.chapter || "Biology";
 
   const isTimedExam = set?.mode === "full_length_timed";
-  const isFlpPractice = set?.mode === "full_length_practice";
-  const reviewAtEnd =
-    isTimedExam ||
-    explainParam === "end" ||
-    (isFlpPractice && explainParam !== "each");
+  const reviewAtEnd = isTimedExam || explainParam === "end";
   const showExplainNow = !reviewAtEnd;
 
   async function selectOption(key: string) {
@@ -195,15 +191,26 @@ function SessionInner() {
         is_correct: res.is_correct,
       });
 
-      if (showExplainNow) {
+      if (showExplainNow || !res.is_correct) {
         setExplaining(true);
-        const exp = await api.explain({
-          question_id: question.id,
-          concept: question.chapter,
-          selected_option: optionText(question, key),
-          correct_option: optionText(question, res.correct_option),
-        });
-        setExplanation(exp);
+        try {
+          const exp = await api.explain({
+            question_id: question.id,
+            concept: question.chapter,
+            selected_option: optionText(question, key),
+            correct_option: optionText(question, res.correct_option),
+          });
+          setExplanation(exp);
+        } catch {
+          setExplanation({
+            explanation: `The correct answer is: ${optionText(question, res.correct_option)}`,
+            answer: "",
+            audio: null,
+            concept: question.chapter || "Biology",
+            citation: null,
+            sources: [],
+          });
+        }
         setExplaining(false);
       } else {
         setTimeout(() => nextAfterAnswer(), 450);
@@ -279,7 +286,7 @@ function SessionInner() {
         : `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
 
   const scorePct = answered ? Math.round((score / answered) * 100) : 0;
-  const showSidebar = !!(selected && showExplainNow);
+  const showSidebar = !!(selected && (showExplainNow || isCorrect === false));
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
@@ -380,12 +387,11 @@ function SessionInner() {
             <div className="mt-4 space-y-3">
               {question.options.map((opt) => {
                 const isSel = selected === opt.key;
+                const shouldHighlight = showSidebar && explanation;
                 const isRight =
-                  showExplainNow &&
-                  explanation &&
-                  opt.key === question.correct_option;
+                  shouldHighlight && opt.key === question.correct_option;
                 const isWrongPick =
-                  showExplainNow && isSel && isCorrect === false;
+                  shouldHighlight && isSel && isCorrect === false;
                 let cls =
                   "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
                 if (selected) {
@@ -409,7 +415,7 @@ function SessionInner() {
                     <span className="flex-1 text-sm sm:text-[15px]">
                       {opt.text}
                     </span>
-                    {selected && isRight && (
+                    {isRight && (
                       <CheckCircle2 className="h-5 w-5 text-brand" />
                     )}
                     {isWrongPick && <XCircle className="h-5 w-5 text-red-500" />}
@@ -418,7 +424,7 @@ function SessionInner() {
               })}
             </div>
 
-            {selected && showExplainNow && (
+            {selected && showSidebar && (
               <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
                 <button
                   type="button"

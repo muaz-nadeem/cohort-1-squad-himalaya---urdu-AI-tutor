@@ -18,11 +18,15 @@ export default function LoginPage() {
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim()) return;
+    const emailValue = email.trim();
+    if (!emailValue) {
+      setError("Please enter your email address.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
-      const student = await api.login(email.trim());
+      const student = await api.login(emailValue);
       setStudentId(student.id);
       setStudentName(student.name || "Student");
       router.replace("/dashboard");
@@ -140,8 +144,10 @@ export default function LoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onInput={(e) => setEmail((e.target as HTMLInputElement).value)}
                   placeholder="aspirant@uraan.com"
                   className="!pl-11"
+                  autoComplete="email"
                   required
                 />
               </div>
@@ -194,7 +200,7 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              disabled={loading || !email.trim()}
+              disabled={loading}
               className="btn-primary w-full"
             >
               {loading ? "Logging in..." : "Log in →"}

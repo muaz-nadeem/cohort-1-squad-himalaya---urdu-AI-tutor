@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Send, Mic, Square, X, Volume2 } from "lucide-react";
+import { Send, Mic, Square, X, Volume2, Loader2 } from "lucide-react";
 import { api } from "@/lib/api";
 
 function playBase64Audio(base64: string) {
@@ -24,12 +24,15 @@ export default function AskAI({ concept }: { concept: string }) {
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const historyRef = useRef<{ role: string; content: string }[]>([]);
+  const abortRef = useRef<AbortController | null>(null);
 
   async function askText() {
     if (!text.trim()) return;
     setLoading(true);
     setError("");
     setTranscript("");
+    abortRef.current = new AbortController();
+    const timeout = setTimeout(() => abortRef.current?.abort(), 60000);
     try {
       const res = await api.ask({
         concept,
@@ -39,14 +42,21 @@ export default function AskAI({ concept }: { concept: string }) {
       handleResponse(text, res.answer, res.audio);
       setText("");
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to ask");
+      if ((e as Error)?.name === "AbortError") {
+        setError("Request timed out. Try again.");
+      } else {
+        setError(e instanceof Error ? e.message : "Failed to ask");
+      }
     } finally {
+      clearTimeout(timeout);
       setLoading(false);
     }
   }
 
   async function startRecording() {
     setError("");
+    setAnswer("");
+    setTranscript("");
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       const recorder = new MediaRecorder(stream);
@@ -72,16 +82,40 @@ export default function AskAI({ concept }: { concept: string }) {
 
   async function sendVoice(blob: Blob) {
     setLoading(true);
+    setError("");
     try {
-      const res = await api.askVoice(blob, concept);
+      const controller = new AbortController();
+      abortRef.current = controller;
+      const timeout = setTimeout(() => controller.abort(), 60000);
+
+      const form = new FormData();
+      form.append("audio", blob, "question.webm");
+      form.append("concept", concept);
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const resp = await fetch(`${API_URL}/api/ask-voice`, {
+        method: "POST",
+        body: form,
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+
+      if (!resp.ok) {
+        setError(`Server error: ${resp.status}`);
+        return;
+      }
+      const res = await resp.json();
       if (res.error) {
         setError(res.error);
         return;
       }
-      setTranscript(res.transcript);
-      handleResponse(res.transcript, res.answer, res.audio);
+      setTranscript(res.transcript || "");
+      handleResponse(res.transcript || "", res.answer || "", res.audio);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Voice request failed");
+      if ((e as Error)?.name === "AbortError") {
+        setError("Voice processing timed out. Try a shorter question or use text.");
+      } else {
+        setError(e instanceof Error ? e.message : "Voice request failed");
+      }
     } finally {
       setLoading(false);
     }
@@ -89,8 +123,8 @@ export default function AskAI({ concept }: { concept: string }) {
 
   function handleResponse(question: string, ans: string, audio: string | null) {
     setAnswer(ans);
-    historyRef.current.push({ role: "user", content: question });
-    historyRef.current.push({ role: "assistant", content: ans });
+    if (question) historyRef.current.push({ role: "user", content: question });
+    if (ans) historyRef.current.push({ role: "assistant", content: ans });
     if (audio) playBase64Audio(audio);
   }
 
@@ -110,7 +144,11 @@ export default function AskAI({ concept }: { concept: string }) {
       <div className="mb-4 flex items-center justify-between">
         <p className="font-semibold text-slate-800">Ask AI</p>
         <button
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            abortRef.current?.abort();
+            setOpen(false);
+            setLoading(false);
+          }}
           className="rounded-lg p-1 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
         >
           <X className="h-4 w-4" />
@@ -131,13 +169,21 @@ export default function AskAI({ concept }: { concept: string }) {
 
       {error && <p className="mb-3 text-sm text-red-500">{error}</p>}
 
+      {loading && (
+        <div className="mb-3 flex items-center gap-2 text-sm text-slate-400">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          {recording ? "Recording..." : "Processing your question..."}
+        </div>
+      )}
+
       <div className="flex gap-2">
         <input
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && askText()}
+          onKeyDown={(e) => e.key === "Enter" && !loading && askText()}
           placeholder="Type your question..."
+          disabled={loading}
           className="!py-2.5 !text-sm"
         />
         <button
@@ -151,11 +197,13 @@ export default function AskAI({ concept }: { concept: string }) {
 
       <button
         onClick={recording ? stopRecording : startRecording}
-        disabled={loading}
+        disabled={loading && !recording}
         className={`mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${
           recording
             ? "animate-pulse bg-red-500 text-white"
-            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+            : loading
+              ? "bg-slate-100 text-slate-400"
+              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
         }`}
       >
         {recording ? (
@@ -163,7 +211,9 @@ export default function AskAI({ concept }: { concept: string }) {
             <Square className="h-4 w-4" /> Stop & send
           </>
         ) : loading ? (
-          "Processing..."
+          <>
+            <Loader2 className="h-4 w-4 animate-spin" /> Processing...
+          </>
         ) : (
           <>
             <Mic className="h-4 w-4" /> Tap to speak (Urdu)

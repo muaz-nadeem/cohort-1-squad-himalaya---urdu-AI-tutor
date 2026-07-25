@@ -59,28 +59,35 @@ async def ask_ai(req: AskRequest):
     """Text question -> RAG -> GPT-4o -> answer text + Urdu audio."""
     context = req.context_chunk
     sources: list[dict] = []
+
     if not context:
-        retrieved = rag.retrieve_context(req.student_question, concept=req.concept)
-        context = retrieved["context"]
-        sources = retrieved["sources"]
-        # Chapter labels from MCQs often don't match textbook concept tags —
-        # fall back to open retrieval so Ask AI still uses FSc passages.
-        if not context:
-            retrieved = rag.retrieve_context(req.student_question, top_k=6)
+        try:
+            retrieved = rag.retrieve_context(req.student_question, concept=req.concept)
             context = retrieved["context"]
             sources = retrieved["sources"]
+            if not context:
+                retrieved = rag.retrieve_context(req.student_question, top_k=6)
+                context = retrieved["context"]
+                sources = retrieved["sources"]
+        except Exception as exc:
+            print(f"  [ask] RAG failed: {type(exc).__name__}: {exc}")
 
     answer_text = llm.answer_question(
         concept=req.concept,
         student_question=req.student_question,
-        context_chunk=context,
+        context_chunk=context or "",
         history=req.history,
     )
     citation = rag.format_citation_short(sources)
     if citation:
         answer_text = f"{answer_text}\n\n({citation})"
 
-    audio_b64 = await voice.text_to_speech(answer_text)
+    audio_b64 = None
+    try:
+        audio_b64 = await voice.text_to_speech(answer_text)
+    except Exception:
+        pass
+
     return {
         "answer": answer_text,
         "audio": audio_b64,
@@ -98,21 +105,38 @@ async def ask_voice(
 ):
     """Audio -> Uplift STT -> RAG -> GPT-4o -> TTS -> transcript + answer + audio."""
     audio_bytes = await audio.read()
+    if not audio_bytes:
+        return {"error": "No audio data received", "transcript": "", "answer": "", "audio": None}
+
     transcript = await voice.speech_to_text(
         audio_bytes, filename=audio.filename or "audio.webm"
     )
     if not transcript:
-        return {"error": "Could not understand audio", "transcript": ""}
+        return {
+            "error": "Could not understand audio. Please try speaking louder or use text input.",
+            "transcript": "",
+            "answer": "",
+            "audio": None,
+        }
 
-    result = await ask_ai(
-        AskRequest(
-            concept=concept,
-            student_question=transcript,
-            context_chunk=context_chunk,
+    try:
+        result = await ask_ai(
+            AskRequest(
+                concept=concept,
+                student_question=transcript,
+                context_chunk=context_chunk,
+            )
         )
-    )
-    result["transcript"] = transcript
-    return result
+        result["transcript"] = transcript
+        return result
+    except Exception as exc:
+        print(f"  [ask-voice] LLM/RAG failed after STT: {type(exc).__name__}: {exc}")
+        return {
+            "error": f"Understood your question but AI response failed: {str(exc)[:100]}",
+            "transcript": transcript,
+            "answer": "",
+            "audio": None,
+        }
 
 
 # ===========================================================================
@@ -207,19 +231,31 @@ class ExplainRequest(BaseModel):
 @app.post("/api/explain")
 async def explain(req: ExplainRequest):
     """MCQ explanation — teach the question; cite textbook book + page only."""
-    question = db.get_question(req.question_id)
+    question = None
+    try:
+        question = db.get_question(req.question_id)
+    except Exception:
+        pass
     question_text = (question or {}).get("question_text") or ""
     q_chapter = (question or {}).get("chapter") or req.concept
 
-    search_q = f"{question_text} {req.correct_option}".strip() or req.concept
-    retrieved = rag.retrieve_context(search_q, top_k=3)
-    context = req.context_chunk or retrieved.get("context") or ""
-    sources = retrieved.get("sources") or []
+    context = req.context_chunk
+    sources: list[dict] = []
+    citation = None
 
-    # One mnemonic lookup max — skip if empty to save time on cold path
+    try:
+        search_q = f"{question_text} {req.correct_option}".strip() or req.concept
+        retrieved = rag.retrieve_context(search_q, top_k=3)
+        context = context or retrieved.get("context") or ""
+        sources = retrieved.get("sources") or []
+        citation = rag.format_citation_short(sources)
+    except Exception as exc:
+        print(f"  [explain] RAG retrieval failed: {type(exc).__name__}: {exc}")
+
     mnemonic_ctx = ""
     try:
-        mnemonic = rag.retrieve_mnemonics(search_q or req.concept, top_k=1)
+        search_q = f"{question_text} {req.correct_option}".strip() or req.concept
+        mnemonic = rag.retrieve_mnemonics(search_q, top_k=1)
         mnemonic_ctx = mnemonic.get("context") or ""
     except Exception:
         pass
@@ -229,14 +265,27 @@ async def explain(req: ExplainRequest):
         selected_option=req.selected_option,
         correct_option=req.correct_option,
         question_text=question_text,
-        context_chunk=context,
+        context_chunk=context or "",
         mnemonic_chunk=mnemonic_ctx,
     )
 
-    # Only book + page (never academy PDF / MCQ source filename)
-    citation = rag.format_citation_short(sources)
+    # Build citation from question source metadata as fallback
+    if not citation and question:
+        q_book = (question or {}).get("book") or ""
+        q_page = (question or {}).get("page_number")
+        q_source = (question or {}).get("source") or ""
+        if q_book and q_page:
+            from .textbook_rag.chunk import book_display_name
+            citation = f"{book_display_name(q_book)}, p. {q_page}"
+        elif q_source and q_page:
+            citation = f"{q_source}, p. {q_page}"
 
-    audio_b64 = await voice.text_to_speech(explanation)
+    audio_b64 = None
+    try:
+        audio_b64 = await voice.text_to_speech(explanation)
+    except Exception:
+        pass
+
     return {
         "explanation": explanation,
         "answer": explanation,
