@@ -27,6 +27,10 @@ _LEGACY_CHAPTER_RE = re.compile(
 
 SIMILARITY_THRESHOLD = 0.35
 
+# Prompt size dominates answer latency: past ~5k chars of context, Groq requests
+# jump from ~1.5s to 15s+ (token-per-minute throttling). Cap what we send.
+MAX_CONTEXT_CHARS = 4500
+
 _embedding_model = None
 _model_loaded = False
 
@@ -111,10 +115,11 @@ def _format_context_block(chunk: dict) -> str:
 
 def retrieve_context(
     query: str,
-    top_k: int = 6,
+    top_k: int = 3,
     concept: Optional[str] = None,
     book: Optional[str] = None,
     similarity_threshold: float = SIMILARITY_THRESHOLD,
+    max_context_chars: int = MAX_CONTEXT_CHARS,
 ) -> dict:
     """Return { context, sources } with printed page metadata."""
     embedding = embed(query, is_query=True)
@@ -147,6 +152,20 @@ def retrieve_context(
         c for c in enriched
         if c.get("similarity", 0) >= similarity_threshold
     ]
+
+    # Keep the highest-similarity chunks that fit the budget; drop the rest so a
+    # few oversized chunks cannot blow up answer latency.
+    if max_context_chars:
+        enriched.sort(key=lambda c: c.get("similarity", 0), reverse=True)
+        kept: list[dict] = []
+        used = 0
+        for chunk in enriched:
+            block_len = len(_format_context_block(chunk)) + 2
+            if kept and used + block_len > max_context_chars:
+                continue
+            kept.append(chunk)
+            used += block_len
+        enriched = kept
 
     context = "\n\n".join(_format_context_block(c) for c in enriched)
     sources = [

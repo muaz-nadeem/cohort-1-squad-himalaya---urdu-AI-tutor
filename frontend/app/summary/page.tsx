@@ -294,11 +294,28 @@ export default function SummaryPage() {
                                 </p>
                               )}
                               <div className="mt-4">
-                                <AskAI concept={item.chapter || "Biology"} />
+                                <AskAI
+                                  concept={item.chapter || "Biology"}
+                                  mcq={{
+                                    question_text: item.question_text,
+                                    options: item.options,
+                                    selected_option: item.selected_option,
+                                    correct_option: item.correct_option,
+                                    explanation: exp?.explanation || "",
+                                  }}
+                                />
                               </div>
                             </div>
                           ) : (
-                            <AskAI concept={item.chapter || "Biology"} />
+                            <AskAI
+                              concept={item.chapter || "Biology"}
+                              mcq={{
+                                question_text: item.question_text,
+                                options: item.options,
+                                selected_option: item.selected_option,
+                                correct_option: item.correct_option,
+                              }}
+                            />
                           )}
                         </div>
                       )}

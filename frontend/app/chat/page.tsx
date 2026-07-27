@@ -9,12 +9,20 @@ import {
   ChevronUp,
   FileText,
   Loader2,
-  Mic,
+  Phone,
+  PhoneOff,
   Send,
   Sparkles,
+  Volume2,
 } from "lucide-react";
-import { api, type RagSource } from "@/lib/api";
+import { api, speechStreamUrl, type RagSource } from "@/lib/api";
+import { useVoiceCall } from "@/lib/useVoiceCall";
 import Navbar from "@/components/Navbar";
+
+function playAudioUrl(url: string) {
+  const audio = new Audio(url);
+  audio.play().catch(() => {});
+}
 
 interface Message {
   id: string;
@@ -23,6 +31,7 @@ interface Message {
   sources?: RagSource[];
   citation?: string | null;
   streaming?: boolean;
+  speechUrl?: string | null;
 }
 
 const SUGGESTED_QUESTIONS = [
@@ -41,6 +50,11 @@ export default function ChatPage() {
   const [bookFilter, setBookFilter] = useState<string | undefined>(undefined);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const bookFilterRef = useRef<string | undefined>(undefined);
+
+  useEffect(() => {
+    bookFilterRef.current = bookFilter;
+  }, [bookFilter]);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -159,6 +173,97 @@ export default function ChatPage() {
     }
   }
 
+  const handleClip = useCallback(async (blob: Blob) => {
+    const botId = crypto.randomUUID();
+    setMessages((prev) => [
+      ...prev,
+      { id: botId, role: "assistant", content: "", streaming: true },
+    ]);
+
+    try {
+      const res = await api.ragAskVoice(blob, bookFilterRef.current, 3);
+
+      // Silence / unclear audio — drop the placeholder and keep listening
+      if (res.no_speech) {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return { audio: null, noSpeech: true };
+      }
+
+      if (res.error) {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === botId ? { ...m, content: res.error!, streaming: false } : m
+          )
+        );
+        return { audio: null };
+      }
+
+      if (res.transcript) {
+        const userMsg: Message = {
+          id: crypto.randomUUID(),
+          role: "user",
+          content: res.transcript,
+        };
+        setMessages((prev) => {
+          const idx = prev.findIndex((m) => m.id === botId);
+          if (idx === -1) return [...prev, userMsg];
+          const updated = [...prev];
+          updated.splice(idx, 0, userMsg);
+          return updated;
+        });
+      }
+
+      const sources = (res.sources || []).map((s) => ({
+        ...s,
+        similarity: s.similarity ?? 0,
+        snippet: s.snippet ?? "",
+      }));
+
+      const speechUrl = speechStreamUrl(res.speech_id);
+
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === botId
+            ? {
+                ...m,
+                content: res.answer || "No answer received.",
+                sources,
+                citation: res.citation,
+                speechUrl,
+                streaming: false,
+              }
+            : m
+        )
+      );
+
+      return { audio: res.audio, speechUrl };
+    } catch (e) {
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === botId
+            ? {
+                ...m,
+                content: `Error: ${e instanceof Error ? e.message : "Voice request failed"}`,
+                streaming: false,
+              }
+            : m
+        )
+      );
+      return { audio: null };
+    }
+  }, []);
+
+  const call = useVoiceCall({ onClip: handleClip });
+
+  const callStatusLabel =
+    call.status === "listening"
+      ? "Listening… ask your question"
+      : call.status === "processing"
+        ? "Searching the textbook…"
+        : call.status === "speaking"
+          ? "Answering in Urdu…"
+          : "Connecting…";
+
   return (
     <Navbar>
       <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-5xl flex-col bg-[#F4F7FB] lg:h-screen">
@@ -217,33 +322,76 @@ export default function ChatPage() {
             <p className="mb-2 text-center text-[10px] font-bold tracking-wider text-slate-400">
               SEARCHING: {searchLabel}
             </p>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSend();
-              }}
-              className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 shadow-sm"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400">
-                <Mic className="h-4 w-4" />
-              </span>
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about MDCAT syllabus..."
-                disabled={loading}
-                className="!border-0 !bg-transparent !px-0 !py-2 !shadow-none !ring-0 focus:!ring-0"
-              />
-              <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
+            {call.inCall ? (
+              <div className="rounded-2xl border-2 border-brand/30 bg-brand-50 px-4 py-3 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <span className="relative flex h-3 w-3">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-brand" />
+                  </span>
+                  <span className="flex-1 text-sm font-semibold text-brand-700">
+                    {callStatusLabel}
+                  </span>
+                  {call.status === "processing" && (
+                    <Loader2 className="h-4 w-4 animate-spin text-brand" />
+                  )}
+                  <button
+                    type="button"
+                    onClick={call.endCall}
+                    className="flex items-center gap-1.5 rounded-full bg-red-500 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-red-600"
+                  >
+                    <PhoneOff className="h-3.5 w-3.5" /> End call
+                  </button>
+                </div>
+                <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-white">
+                  <div
+                    className="h-full rounded-full bg-brand transition-[width] duration-100"
+                    style={{ width: `${Math.min(100, Math.round(call.level * 600))}%` }}
+                  />
+                </div>
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSend();
+                }}
+                className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 shadow-sm"
               >
-                <Send className="h-4 w-4" />
-              </button>
-            </form>
+                <button
+                  type="button"
+                  onClick={call.startCall}
+                  disabled={loading}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition hover:bg-brand-50 hover:text-brand disabled:opacity-40"
+                  title="Start voice call (Urdu)"
+                >
+                  <Phone className="h-4 w-4" />
+                </button>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Ask about MDCAT syllabus..."
+                  disabled={loading}
+                  className="!border-0 !bg-transparent !px-0 !py-2 !shadow-none !ring-0 focus:!ring-0"
+                />
+                <button
+                  type="submit"
+                  disabled={loading || !input.trim()}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
+                >
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                </button>
+              </form>
+            )}
+            {call.error && (
+              <p className="mt-2 text-center text-xs text-red-500">{call.error}</p>
+            )}
             <p className="mt-3 text-center text-xs text-slate-400">
               AI-generated · verify with textbook for final MDCAT preparation.
             </p>
@@ -305,12 +453,24 @@ function MessageBubble({ message }: { message: Message }) {
       <div className="max-w-[85%] space-y-2">
         <div className="rounded-2xl rounded-tl-md bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
           {message.content ? (
-            <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
-              {message.content}
-              {message.streaming && (
-                <span className="ml-1 inline-block h-4 w-1 animate-pulse bg-brand" />
+            <div>
+              <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+                {message.content}
+                {message.streaming && (
+                  <span className="ml-1 inline-block h-4 w-1 animate-pulse bg-brand" />
+                )}
+              </p>
+              {!message.streaming && message.speechUrl && (
+                <button
+                  type="button"
+                  onClick={() => playAudioUrl(message.speechUrl!)}
+                  className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-medium text-brand transition hover:bg-brand-100"
+                >
+                  <Volume2 className="h-3.5 w-3.5" />
+                  Play audio
+                </button>
               )}
-            </p>
+            </div>
           ) : message.streaming ? (
             <div className="flex items-center gap-2 text-sm text-slate-400">
               <Loader2 className="h-4 w-4 animate-spin" />

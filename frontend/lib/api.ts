@@ -90,10 +90,28 @@ export interface ExplainResult {
 export interface AskResult {
   answer: string;
   audio: string | null;
+  /** Token for streaming narration from /api/tts-stream/{id}. */
+  speech_id?: string | null;
+  urdu_text?: string;
   transcript: string;
   concept: string;
   sources: { concept: string; chapter: string; similarity: number }[];
+  no_speech?: boolean;
   error?: string;
+}
+
+/** URL that streams cached Urdu narration as MP3, playable the moment it starts. */
+export function speechStreamUrl(speechId?: string | null): string | null {
+  return speechId ? `${API_URL}/api/tts-stream/${speechId}` : null;
+}
+
+/** The MCQ a student is looking at, so follow-ups stay on that question. */
+export interface McqContext {
+  question_text?: string;
+  options?: Option[];
+  selected_option?: string;
+  correct_option?: string;
+  explanation?: string;
 }
 
 export interface WeakSpot {
@@ -191,6 +209,18 @@ export interface RagAnswer {
   citation: string | null;
 }
 
+export interface RagVoiceResult {
+  transcript: string;
+  answer: string;
+  audio: string | null;
+  speech_id?: string | null;
+  urdu_text?: string;
+  sources: RagSource[];
+  citation: string | null;
+  no_speech?: boolean;
+  error?: string;
+}
+
 export const api = {
   login: (email: string) =>
     request<Student>(`/api/login?email=${encodeURIComponent(email)}`),
@@ -266,15 +296,45 @@ export const api = {
     concept: string;
     student_question: string;
     history?: { role: string; content: string }[];
+    mcq?: McqContext;
   }) => request<AskResult>("/api/ask", { method: "POST", body: JSON.stringify(body) }),
 
-  askVoice: async (audio: Blob, concept: string): Promise<AskResult> => {
+  askVoice: async (
+    audio: Blob,
+    concept: string,
+    mcq?: McqContext
+  ): Promise<AskResult> => {
     const form = new FormData();
-    form.append("audio", audio, "question.webm");
+    const mime = audio.type || "audio/webm";
+    const ext = mime.includes("mp4") || mime.includes("m4a")
+      ? "m4a"
+      : mime.includes("ogg")
+        ? "ogg"
+        : mime.includes("wav")
+          ? "wav"
+          : "webm";
+    form.append("audio", audio, `question.${ext}`);
     form.append("concept", concept);
-    const res = await fetch(`${API_URL}/api/ask-voice`, { method: "POST", body: form });
-    if (!res.ok) throw new Error(await res.text());
-    return res.json();
+    if (mcq?.question_text) form.append("mcq", JSON.stringify(mcq));
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 90000);
+    try {
+      const res = await fetch(`${API_URL}/api/ask-voice`, {
+        method: "POST",
+        body: form,
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    } catch (e) {
+      if ((e as Error)?.name === "AbortError") {
+        throw new Error("Voice request timed out. Try a shorter question.");
+      }
+      throw e;
+    } finally {
+      clearTimeout(timeout);
+    }
   },
 
   getWeakSpots: (studentId: string) =>
@@ -295,6 +355,43 @@ export const api = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }),
+
+  ragAskVoice: async (audio: Blob, book?: string, top_k = 3): Promise<RagVoiceResult> => {
+    const form = new FormData();
+    const mime = audio.type || "audio/webm";
+    const ext = mime.includes("mp4") || mime.includes("m4a")
+      ? "m4a"
+      : mime.includes("ogg")
+        ? "ogg"
+        : mime.includes("wav")
+          ? "wav"
+          : "webm";
+    form.append("audio", audio, `question.${ext}`);
+    if (book) form.append("book", book);
+    form.append("top_k", String(top_k));
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 90000);
+    try {
+      const res = await fetch(`${API_URL}/api/rag/ask-voice`, {
+        method: "POST",
+        body: form,
+        signal: controller.signal,
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `Voice request failed (${res.status})`);
+      }
+      return res.json();
+    } catch (e) {
+      if ((e as Error)?.name === "AbortError") {
+        throw new Error("Voice request timed out. Try a shorter question or use text.");
+      }
+      throw e;
+    } finally {
+      clearTimeout(timeout);
+    }
+  },
 };
 
 export { API_URL };

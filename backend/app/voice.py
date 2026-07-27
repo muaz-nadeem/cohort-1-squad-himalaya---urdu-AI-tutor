@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import base64
 import io
+import sys
 from typing import Optional
 
 import httpx
@@ -14,86 +15,181 @@ from .config import settings
 from .llm import get_groq_client
 
 
+def _safe_print(msg: str) -> None:
+    """Print text safely on Windows consoles that cannot encode Urdu (cp1252)."""
+    try:
+        ascii_msg = msg.encode("ascii", errors="backslashreplace").decode("ascii")
+        print(ascii_msg, flush=True)
+    except Exception:
+        try:
+            sys.stderr.write("[stt/tts log suppressed]\n")
+        except Exception:
+            pass
+
+
+def _guess_mime(filename: str) -> str:
+    name = (filename or "").lower()
+    if name.endswith(".wav"):
+        return "audio/wav"
+    if name.endswith(".mp3"):
+        return "audio/mpeg"
+    if name.endswith(".ogg"):
+        return "audio/ogg"
+    if name.endswith(".m4a") or name.endswith(".mp4"):
+        return "audio/mp4"
+    return "audio/webm"
+
+
 async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> str:
-    """Transcribe Urdu audio. Uplift STT first, Whisper fallback."""
-    print(f"  [stt] starting transcription ({len(audio_bytes)} bytes, {filename})")
+    """Transcribe audio (Urdu/English). Uplift STT first, Whisper fallback."""
+    if not audio_bytes or len(audio_bytes) < 500:
+        _safe_print(f"  [stt] audio too small ({len(audio_bytes) if audio_bytes else 0} bytes)")
+        return ""
 
-    transcript = await _uplift_stt(audio_bytes, filename)
-    if transcript:
-        print(f"  [stt] Uplift success: '{transcript[:60]}...'")
-        return transcript
+    _safe_print(f"  [stt] starting transcription ({len(audio_bytes)} bytes, {filename})")
 
-    print("  [stt] Uplift failed/empty, trying Groq Whisper...")
-    transcript = _whisper_stt(audio_bytes, filename)
-    if transcript:
-        print(f"  [stt] Whisper success: '{transcript[:60]}...'")
-    else:
-        print("  [stt] Both STT engines returned empty")
-    return transcript
+    try:
+        transcript = await _uplift_stt(audio_bytes, filename)
+        if transcript and transcript.strip():
+            _safe_print(f"  [stt] Uplift success ({len(transcript)} chars)")
+            return transcript.strip()
+    except Exception as exc:
+        _safe_print(f"  [stt] Uplift unexpected: {type(exc).__name__}: {exc}")
+
+    _safe_print("  [stt] Uplift failed/empty, trying Groq Whisper...")
+    try:
+        transcript = _whisper_stt(audio_bytes, filename)
+        if transcript and transcript.strip():
+            _safe_print(f"  [stt] Whisper success ({len(transcript)} chars)")
+            return transcript.strip()
+    except Exception as exc:
+        _safe_print(f"  [stt] Whisper unexpected: {type(exc).__name__}: {exc}")
+
+    _safe_print("  [stt] Both STT engines returned empty")
+    return ""
 
 
 async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
     if not settings.uplift_ready:
-        print("  [stt] Uplift not configured (no UPLIFT_API_KEY)")
+        _safe_print("  [stt] Uplift not configured (no UPLIFT_API_KEY)")
         return ""
+    mime = _guess_mime(filename)
     try:
         async with httpx.AsyncClient(timeout=45) as http:
             resp = await http.post(
                 f"{settings.UPLIFT_BASE}/transcriptions",
                 headers={"Authorization": f"Bearer {settings.UPLIFT_API_KEY}"},
-                files={"file": (filename, audio_bytes, "audio/webm")},
+                files={"file": (filename, audio_bytes, mime)},
                 data={"model": "uplift-stt-1"},
             )
         if resp.status_code == 200:
-            return resp.json().get("text", "") or ""
-        print(f"  [stt] Uplift returned {resp.status_code}: {resp.text[:200]}")
+            data = resp.json()
+            return (data.get("text") or data.get("transcript") or "") or ""
+        _safe_print(f"  [stt] Uplift returned {resp.status_code}: {resp.text[:200]}")
     except httpx.TimeoutException:
-        print("  [stt] Uplift STT timed out (45s)")
+        _safe_print("  [stt] Uplift STT timed out (45s)")
     except httpx.HTTPError as exc:
-        print(f"  [stt] Uplift HTTP error: {type(exc).__name__}: {exc}")
+        _safe_print(f"  [stt] Uplift HTTP error: {type(exc).__name__}: {exc}")
     except Exception as exc:
-        print(f"  [stt] Uplift error: {type(exc).__name__}: {exc}")
+        _safe_print(f"  [stt] Uplift error: {type(exc).__name__}: {exc}")
     return ""
 
 
 def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
     if not settings.groq_ready:
-        print("  [stt] Groq not configured (no GROQ_API_KEY)")
+        _safe_print("  [stt] Groq not configured (no GROQ_API_KEY)")
         return ""
     try:
         client = get_groq_client()
         buffer = io.BytesIO(audio_bytes)
         buffer.name = filename
+        # Do not force language — students ask in Urdu or English
         result = client.audio.transcriptions.create(
-            model=settings.WHISPER_MODEL, file=buffer, language="ur"
+            model=settings.WHISPER_MODEL,
+            file=buffer,
         )
         return getattr(result, "text", "") or ""
     except Exception as exc:
-        print(f"  [stt] Whisper error: {type(exc).__name__}: {exc}")
+        _safe_print(f"  [stt] Whisper error: {type(exc).__name__}: {exc}")
         return ""
+
+
+def clean_for_tts(text: str, limit: int = 600) -> str:
+    """Trim narration so synthesis stays fast (TTS time scales with length)."""
+    speak = (text or "").strip()
+    if len(speak) > limit:
+        speak = speak[:limit].rsplit(" ", 1)[0] + "..."
+    return speak
+
+
+async def stream_tts(text: str, output_format: str = "MP3_22050_32"):
+    """Yield MP3 chunks from Uplift's streaming endpoint as they arrive.
+
+    Streaming lets the browser start playing in well under a second instead of
+    waiting for the whole file, which is the bulk of perceived voice latency.
+    """
+    if not settings.uplift_ready or not text:
+        return
+    speak = clean_for_tts(text)
+    try:
+        async with httpx.AsyncClient(timeout=60) as http:
+            async with http.stream(
+                "POST",
+                f"{settings.UPLIFT_BASE}/synthesis/text-to-speech/stream",
+                headers={
+                    "Authorization": f"Bearer {settings.UPLIFT_API_KEY}",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "voiceId": settings.UPLIFT_VOICE_ID,
+                    "text": speak,
+                    "outputFormat": output_format,
+                },
+            ) as response:
+                if response.status_code != 200:
+                    body = await response.aread()
+                    _safe_print(
+                        f"  [tts-stream] Uplift {response.status_code}: {body[:200]!r}"
+                    )
+                    return
+                async for chunk in response.aiter_bytes():
+                    if chunk:
+                        yield chunk
+    except httpx.TimeoutException:
+        _safe_print("  [tts-stream] timed out")
+    except Exception as exc:
+        _safe_print(f"  [tts-stream] error: {type(exc).__name__}: {exc}")
 
 
 async def text_to_speech(text: str) -> Optional[str]:
     """Synthesise Urdu speech via Uplift Orator, return base64 MP3 (or None)."""
-    if not settings.uplift_ready:
+    if not settings.uplift_ready or not text:
         return None
+    # Orator can choke on very long answers; keep TTS snappy
+    speak = text.strip()
+    if len(speak) > 800:
+        speak = speak[:800].rsplit(" ", 1)[0] + "..."
     try:
-        async with httpx.AsyncClient(timeout=30) as http:
+        async with httpx.AsyncClient(timeout=45) as http:
             response = await http.post(
                 f"{settings.UPLIFT_BASE}/synthesis/text-to-speech",
                 headers={
                     "Authorization": f"Bearer {settings.UPLIFT_API_KEY}",
                     "Content-Type": "application/json",
                 },
-                json={"text": text, "voice_id": settings.UPLIFT_VOICE_ID},
+                json={
+                    "voiceId": settings.UPLIFT_VOICE_ID,
+                    "text": speak,
+                    "outputFormat": "MP3_22050_64",
+                },
             )
-        if response.status_code == 200:
+        if response.status_code == 200 and response.content:
             return base64.b64encode(response.content).decode("utf-8")
-        print(f"  [tts] Uplift returned {response.status_code}")
+        _safe_print(f"  [tts] Uplift returned {response.status_code}: {response.text[:200]}")
     except httpx.TimeoutException:
-        print("  [tts] Uplift TTS timed out (30s)")
+        _safe_print("  [tts] Uplift TTS timed out (45s)")
     except httpx.HTTPError as exc:
-        print(f"  [tts] Uplift HTTP error: {type(exc).__name__}: {exc}")
+        _safe_print(f"  [tts] Uplift HTTP error: {type(exc).__name__}: {exc}")
     except Exception as exc:
-        print(f"  [tts] error: {type(exc).__name__}: {exc}")
+        _safe_print(f"  [tts] error: {type(exc).__name__}: {exc}")
     return None

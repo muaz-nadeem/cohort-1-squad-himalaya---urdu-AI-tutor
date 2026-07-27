@@ -515,7 +515,17 @@ function SessionInner() {
                 </div>
               </div>
 
-              <AskAI concept={conceptName} />
+              <AskAI
+                concept={conceptName}
+                mcq={{
+                  question_text: question.question_text,
+                  options: question.options,
+                  selected_option: selected || "",
+                  correct_option: question.correct_option,
+                  explanation:
+                    explanation?.explanation || question.explanation || "",
+                }}
+              />
             </aside>
           )}
         </div>
