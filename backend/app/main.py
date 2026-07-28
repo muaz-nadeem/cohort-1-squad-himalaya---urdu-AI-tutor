@@ -226,36 +226,60 @@ async def ask_ai(req: AskRequest):
     if cached:
         answer_text, urdu_text, sources = cached
     else:
-        try:
-            answer_text, urdu_text, sources = await _generate_ask_answer(req, mcq_block)
-        except Exception as exc:
-            print(f"  [ask] generation failed: {type(exc).__name__}")
-            return {
-                "answer": "",
-                "audio": None,
-                "speech_id": None,
-                "urdu_text": "",
-                "transcript": "",
-                "concept": req.concept,
-                "sources": [],
-                "error": friendly_error(exc),
-            }
-        if not answer_text.strip():
-            print("  [ask] model returned an empty answer")
-            return {
-                "answer": "",
-                "audio": None,
-                "speech_id": None,
-                "urdu_text": "",
-                "transcript": "",
-                "concept": req.concept,
-                "sources": [],
-                "error": "The AI returned an empty answer. Please ask again.",
-            }
-        if req.speak:
-            urdu_text = await ensure_urdu(answer_text, urdu_text)
-        if not req.history:
-            _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
+        # Hard gate: off-course questions never reach RAG/LLM tutoring.
+        on_course = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: llm.is_course_related(
+                req.student_question,
+                history=req.history,
+                has_mcq=bool(mcq_block),
+            ),
+        )
+        if not on_course:
+            answer_text, urdu_text = llm.off_topic_reply()
+            sources = []
+            if not req.history:
+                _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
+        else:
+            try:
+                answer_text, urdu_text, sources = await _generate_ask_answer(req, mcq_block)
+            except Exception as exc:
+                print(f"  [ask] generation failed: {type(exc).__name__}")
+                return {
+                    "answer": "",
+                    "audio": None,
+                    "speech_id": None,
+                    "urdu_text": "",
+                    "transcript": "",
+                    "concept": req.concept,
+                    "sources": [],
+                    "error": friendly_error(exc),
+                }
+            answer_text, urdu_text = llm.normalize_course_answer(answer_text, urdu_text)
+            if not answer_text.strip():
+                print("  [ask] model returned an empty answer")
+                return {
+                    "answer": "",
+                    "audio": None,
+                    "speech_id": None,
+                    "urdu_text": "",
+                    "transcript": "",
+                    "concept": req.concept,
+                    "sources": [],
+                    "error": "The AI returned an empty answer. Please ask again.",
+                }
+            if req.speak and not llm.is_off_topic_answer(answer_text):
+                urdu_text = await ensure_urdu(answer_text, urdu_text)
+            elif llm.is_off_topic_answer(answer_text):
+                answer_text, urdu_text = llm.off_topic_reply()
+                sources = []
+            if not req.history:
+                _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
+
+    # Off-topic replies must not carry textbook citations
+    if llm.is_off_topic_answer(answer_text):
+        sources = []
+        answer_text, urdu_text = llm.off_topic_reply()
 
     citation = rag.format_citation_short(sources)
     display_answer = f"{answer_text}\n\n({citation})" if citation else answer_text
@@ -411,6 +435,14 @@ async def rag_ask(req: RagAskRequest):
     if not req.question.strip():
         raise HTTPException(status_code=400, detail="question is required")
 
+    loop = asyncio.get_event_loop()
+    on_course = await loop.run_in_executor(
+        None, lambda: llm.is_course_related(req.question.strip())
+    )
+    if not on_course:
+        answer_text, _ = llm.off_topic_reply()
+        return {"answer": answer_text, "sources": [], "citation": None}
+
     retrieved = rag.retrieve_context(
         req.question.strip(),
         top_k=max(1, min(req.top_k, 10)),
@@ -430,6 +462,10 @@ async def rag_ask(req: RagAskRequest):
         }
 
     answer_text = llm.answer_from_rag(req.question.strip(), context)
+    answer_text, _ = llm.normalize_course_answer(answer_text, "")
+    if llm.is_off_topic_answer(answer_text):
+        return {"answer": answer_text, "sources": [], "citation": None}
+
     citation = rag.format_citation(sources)
     if citation and citation not in answer_text:
         answer_text = f"{answer_text}\n\n({citation})"
@@ -446,6 +482,20 @@ async def rag_ask_stream(req: RagAskRequest):
     """Streaming version: sends sources first, then LLM tokens as SSE."""
     if not req.question.strip():
         raise HTTPException(status_code=400, detail="question is required")
+
+    loop = asyncio.get_event_loop()
+    on_course = await loop.run_in_executor(
+        None, lambda: llm.is_course_related(req.question.strip())
+    )
+    if not on_course:
+        answer_text, _ = llm.off_topic_reply()
+
+        async def off_topic_stream():
+            yield f"data: {json.dumps({'type': 'sources', 'sources': [], 'citation': None})}\n\n"
+            yield f"data: {json.dumps({'type': 'text', 'content': answer_text})}\n\n"
+            yield "data: [DONE]\n\n"
+
+        return StreamingResponse(off_topic_stream(), media_type="text/event-stream")
 
     retrieved = rag.retrieve_context(
         req.question.strip(),
@@ -536,6 +586,22 @@ async def rag_ask_voice(
 
     try:
         loop = asyncio.get_event_loop()
+        on_course = await loop.run_in_executor(
+            None, lambda: llm.is_course_related(transcript.strip())
+        )
+        if not on_course:
+            answer_text, urdu_text = llm.off_topic_reply()
+            speech_id = narration_id(answer_text, urdu_text)
+            return {
+                "transcript": transcript,
+                "answer": answer_text,
+                "audio": None,
+                "speech_id": speech_id,
+                "urdu_text": urdu_text,
+                "sources": [],
+                "citation": None,
+            }
+
         book_filter = book if book and book not in ("undefined", "null", "") else None
         retrieved = await loop.run_in_executor(
             None,
@@ -553,6 +619,19 @@ async def rag_ask_voice(
         answer_text, urdu_text = await loop.run_in_executor(
             None, lambda: llm.answer_from_rag_bilingual(transcript.strip(), context)
         )
+        answer_text, urdu_text = llm.normalize_course_answer(answer_text, urdu_text)
+        if llm.is_off_topic_answer(answer_text):
+            answer_text, urdu_text = llm.off_topic_reply()
+            speech_id = narration_id(answer_text, urdu_text)
+            return {
+                "transcript": transcript,
+                "answer": answer_text,
+                "audio": None,
+                "speech_id": speech_id,
+                "urdu_text": urdu_text,
+                "sources": [],
+                "citation": None,
+            }
         if not answer_text.strip():
             print("  [rag-ask-voice] model returned an empty answer")
             return {
