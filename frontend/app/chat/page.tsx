@@ -2,6 +2,8 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { getStudentId } from "@/lib/student";
 import {
   ArrowLeft,
   BookOpen,
@@ -44,6 +46,7 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 export default function ChatPage() {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -51,6 +54,10 @@ export default function ChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const bookFilterRef = useRef<string | undefined>(undefined);
+
+  useEffect(() => {
+    if (!getStudentId()) router.replace("/");
+  }, [router]);
 
   useEffect(() => {
     bookFilterRef.current = bookFilter;

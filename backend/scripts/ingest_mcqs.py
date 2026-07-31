@@ -12,9 +12,15 @@ import json
 import sys
 from pathlib import Path
 
+# Windows consoles (cp1252) crash on Unicode chars from OCR; force UTF-8
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from app.chapters import infer_chapter_from_text  # noqa: E402
+from app.chapters import classify_question_chapter, infer_chapter_from_text  # noqa: E402
 from app.config import settings  # noqa: E402
 from app.db import insert_questions  # noqa: E402
 from app.mcq_ingest import (  # noqa: E402
@@ -22,6 +28,7 @@ from app.mcq_ingest import (  # noqa: E402
     infer_source_type,
     is_mnemonic_pdf,
     list_mcq_pdfs,
+    token_tracker,
 )
 
 DATA_ROOT = Path(__file__).resolve().parents[1] / "data"
@@ -30,7 +37,7 @@ DONE_LOG = EXTRACTED / "_done_sources.txt"
 
 
 def _source_label(pdf: Path) -> str:
-    return pdf.stem[:120]
+    return pdf.stem[:120].strip()
 
 
 def _json_path(pdf: Path) -> Path:
@@ -87,20 +94,30 @@ def ingest_one(
     print(f"    extracted {len(rows_raw)} MCQs with answers -> {out_json.name}")
 
     db_rows = []
+    classified = 0
     for r in rows_raw:
+        # Per-question classification: use question content first, then
+        # fall back to the PDF-level chapter hint
+        q_chapter = classify_question_chapter(
+            r["question_text"], r.get("options"), fallback=ch,
+        )
+        if q_chapter != ch:
+            classified += 1
         db_rows.append(
             {
                 "question_text": r["question_text"],
                 "options": r["options"],
                 "correct_option": r["correct_option"],
                 "explanation": r.get("explanation"),
-                "chapter": r.get("chapter") or ch,
+                "chapter": q_chapter,
                 "book": book,
                 "source": source,
                 "source_type": source_type,
                 "difficulty": 2,
             }
         )
+    if classified:
+        print(f"    per-question classification: {classified}/{len(db_rows)} reclassified from '{ch}'")
 
     if dry_run:
         print("    dry-run - not inserting")
@@ -177,6 +194,9 @@ def main() -> None:
             print("    Tip: wait a few minutes, then re-run with --resume")
             break
     print(f"\nDone. Total MCQs this run: {total}")
+    print(f"\n{'='*60}")
+    print(f"TOKEN USAGE: {token_tracker.summary()}")
+    print(f"{'='*60}")
 
 
 if __name__ == "__main__":

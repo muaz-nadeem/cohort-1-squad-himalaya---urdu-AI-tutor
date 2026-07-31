@@ -25,7 +25,10 @@ _LEGACY_CHAPTER_RE = re.compile(
     r"^(fsc_bio_part[12])\|p(\d+)\|(text|figure|table)\|(.*)$"
 )
 
-SIMILARITY_THRESHOLD = 0.35
+# Textbook coverage is partial (~600 chunks), so keep this permissive enough to
+# surface a relevant passage when one exists; the explain endpoint still falls
+# back to the MCQ's own exam source when nothing clears the bar.
+SIMILARITY_THRESHOLD = 0.3
 
 # Prompt size dominates answer latency: past ~5k chars of context, Groq requests
 # jump from ~1.5s to 15s+ (token-per-minute throttling). Cap what we send.

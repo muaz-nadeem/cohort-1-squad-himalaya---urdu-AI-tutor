@@ -7,7 +7,6 @@ import {
   ArrowLeft,
   CheckCircle2,
   Flame,
-  Lock,
   Play,
   TrendingUp,
 } from "lucide-react";
@@ -30,6 +29,15 @@ export default function PracticePage() {
       router.replace("/");
       return;
     }
+
+    const cachedChapters = api.peekChapters();
+    const cachedDash = api.peekDashboard(id);
+    if (cachedChapters?.length) {
+      setChapters(cachedChapters);
+      setLoading(false);
+    }
+    if (cachedDash) setDashboard(cachedDash);
+
     Promise.all([
       api.getChapters().catch(() => [] as ChapterInfo[]),
       api.getDashboard(id).catch(() => null),
@@ -57,10 +65,14 @@ export default function PracticePage() {
   );
   const part1 = filtered.filter((c) => c.book === "fsc_part1");
   const part2 = filtered.filter((c) => c.book === "fsc_part2");
-  const withBank = chapters.filter((c) => c.has_questions).length;
+
   const started = chapters.filter((c) => {
     const s = accuracyByChapter.get(c.name);
     return s && s.attempted > 0;
+  }).length;
+  const completed = chapters.filter((c) => {
+    const s = accuracyByChapter.get(c.name);
+    return s && s.attempted > 0 && s.accuracy_pct >= 85;
   }).length;
 
   return (
@@ -111,13 +123,13 @@ export default function PracticePage() {
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <StatCard
               label="Completed"
-              value={`${started} / ${withBank || chapters.length || 0}`}
+              value={`${completed} / ${chapters.length || 0}`}
               icon={<CheckCircle2 className="h-4 w-4 text-emerald-600" />}
             />
             <StatCard
-              label="Streak"
-              value={`${dashboard?.streak ?? 0} Days`}
-              icon={<Flame className="h-4 w-4 text-amber-500" />}
+              label="Started"
+              value={`${started} / ${chapters.length || 0}`}
+              icon={<Play className="h-4 w-4 text-brand" />}
             />
             <StatCard
               label="Avg. Accuracy"
@@ -126,7 +138,7 @@ export default function PracticePage() {
             />
           </div>
 
-          {loading ? (
+          {loading && !chapters.length ? (
             <p className="mt-10 text-sm text-slate-400">Loading chapters...</p>
           ) : (
             <div className="mt-10 space-y-10">
@@ -142,7 +154,6 @@ export default function PracticePage() {
                   title="FSc Part 2 (Biology)"
                   chapters={part2}
                   accuracyByChapter={accuracyByChapter}
-                  showWeeklyGoal
                 />
               )}
             </div>
@@ -181,14 +192,12 @@ function ChapterSection({
   title,
   chapters,
   accuracyByChapter,
-  showWeeklyGoal,
 }: {
   title: string;
   chapters: ChapterInfo[];
   accuracyByChapter: Map<string, { accuracy_pct: number; attempted: number }>;
-  showWeeklyGoal?: boolean;
 }) {
-  if (!chapters.length && !showWeeklyGoal) return null;
+  if (!chapters.length) return null;
 
   return (
     <section>
@@ -202,18 +211,11 @@ function ChapterSection({
           const stats = accuracyByChapter.get(ch.name);
           const attempted = stats?.attempted ?? 0;
           const accuracy = stats?.accuracy_pct ?? 0;
-          const progress = !ch.has_questions
-            ? 0
-            : attempted > 0
-              ? Math.min(100, Math.max(8, accuracy || 15))
-              : 0;
-          const status: "locked" | "start" | "progress" | "done" = !ch.has_questions
-            ? "locked"
-            : attempted === 0
-              ? "start"
-              : accuracy >= 85
-                ? "done"
-                : "progress";
+          const count = ch.question_count ?? 0;
+          const progress =
+            attempted > 0 ? Math.min(100, Math.max(0, accuracy)) : 0;
+          const status: "start" | "progress" | "done" =
+            attempted === 0 ? "start" : accuracy >= 85 ? "done" : "progress";
 
           return (
             <ChapterCard
@@ -222,33 +224,10 @@ function ChapterSection({
               name={ch.name}
               status={status}
               progress={progress}
-              difficulty={
-                i % 3 === 0 ? "Medium" : i % 3 === 1 ? "High" : "Low"
-              }
+              questionCount={count}
             />
           );
         })}
-
-        {showWeeklyGoal && (
-          <div className="rounded-2xl bg-brand-700 p-5 text-white shadow-sm">
-            <p className="text-xs font-bold tracking-wider text-sky-200">
-              WEEKLY GOAL
-            </p>
-            <h3 className="mt-3 font-display text-xl font-bold leading-snug">
-              Stay on track for MDCAT 2026
-            </h3>
-            <p className="mt-2 text-sm text-sky-100/90">
-              Complete your next weak chapter this week to keep your daily plan
-              moving.
-            </p>
-            <Link
-              href="/weekly-plan"
-              className="mt-5 inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand transition hover:bg-sky-50"
-            >
-              View Plan
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   );
@@ -259,15 +238,19 @@ function ChapterCard({
   name,
   status,
   progress,
-  difficulty,
+  questionCount,
 }: {
   index: number;
   name: string;
-  status: "locked" | "start" | "progress" | "done";
+  status: "start" | "progress" | "done";
   progress: number;
-  difficulty: string;
+  questionCount: number;
 }) {
   const href = `/session?mode=chapter&chapter=${encodeURIComponent(name)}`;
+  const countLabel =
+    questionCount > 0
+      ? `${questionCount} MCQ${questionCount === 1 ? "" : "s"} in bank`
+      : "No MCQs ingested yet";
 
   return (
     <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
@@ -279,23 +262,17 @@ function ChapterCard({
           <h3 className="mt-1 font-semibold leading-snug text-slate-900">
             {name}
           </h3>
-          <p className="mt-2 text-xs text-slate-500">
-            100 mixed MCQs · Difficulty: {difficulty}
-          </p>
+          <p className="mt-2 text-xs text-slate-500">{countLabel}</p>
         </div>
         <div
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
             status === "done"
               ? "bg-emerald-50 text-emerald-600"
-              : status === "locked"
-                ? "bg-slate-50 text-slate-400"
-                : "bg-brand-50 text-brand"
+              : "bg-brand-50 text-brand"
           }`}
         >
           {status === "done" ? (
             <CheckCircle2 className="h-4 w-4" />
-          ) : status === "locked" ? (
-            <Lock className="h-4 w-4" />
           ) : (
             <Play className="h-3.5 w-3.5 fill-current" />
           )}
@@ -314,15 +291,18 @@ function ChapterCard({
       </div>
 
       <div className="mt-4 flex flex-1 items-end">
-        {status === "locked" && (
-          <span className="rounded-md bg-slate-100 px-2.5 py-1 text-[10px] font-bold tracking-wider text-slate-500">
-            COMING SOON
-          </span>
-        )}
         {status === "done" && (
-          <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-emerald-600">
-            COMPLETED
-          </span>
+          <div className="flex w-full items-center justify-between gap-3">
+            <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-emerald-600">
+              COMPLETED
+            </span>
+            <Link
+              href={href}
+              className="rounded-xl bg-brand px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark"
+            >
+              Practice again
+            </Link>
+          </div>
         )}
         {status === "progress" && (
           <div className="flex w-full items-center justify-between gap-3">

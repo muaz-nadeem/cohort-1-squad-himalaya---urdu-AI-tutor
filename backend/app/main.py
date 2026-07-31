@@ -46,6 +46,19 @@ async def lifespan(app: FastAPI):
             await asyncio.get_event_loop().run_in_executor(None, rag.warmup)
         except Exception as exc:
             print(f"  [rag] warmup skipped: {type(exc).__name__}: {exc}")
+
+    # Prime the per-chapter MCQ counts so the first /api/chapters request is
+    # instant instead of paying the one-time full-bank scan.
+    async def _warm_chapter_counts():
+        try:
+            await asyncio.get_event_loop().run_in_executor(
+                None, db.chapter_question_counts
+            )
+            print("  [chapters] chapter counts warmed up")
+        except Exception as exc:
+            print(f"  [chapters] count warmup skipped: {type(exc).__name__}: {exc}")
+
+    asyncio.create_task(_warm_chapter_counts())
     yield
 
 
@@ -141,6 +154,8 @@ def narration_id(english_answer: str, urdu_text: str) -> Optional[str]:
 # retrieve + generate pipeline.
 _ANSWER_CACHE: "OrderedDict[str, tuple]" = OrderedDict()
 _ANSWER_CACHE_MAX = 128
+_EXPLAIN_CACHE: "OrderedDict[str, dict]" = OrderedDict()
+_EXPLAIN_CACHE_MAX = 128
 
 
 def friendly_error(exc: Exception) -> str:
@@ -161,6 +176,12 @@ def _answer_cache_put(key: str, value: tuple) -> None:
     _ANSWER_CACHE[key] = value
     while len(_ANSWER_CACHE) > _ANSWER_CACHE_MAX:
         _ANSWER_CACHE.popitem(last=False)
+
+
+def _explain_cache_put(key: str, value: dict) -> None:
+    _EXPLAIN_CACHE[key] = value
+    while len(_EXPLAIN_CACHE) > _EXPLAIN_CACHE_MAX:
+        _EXPLAIN_CACHE.popitem(last=False)
 
 
 class McqContext(BaseModel):
@@ -683,14 +704,35 @@ class ExplainRequest(BaseModel):
     selected_option: str
     correct_option: str
     context_chunk: str = ""
+    speak: bool = False
+    stream_audio: bool = True
 
 
 @app.post("/api/explain")
 async def explain(req: ExplainRequest):
     """MCQ explanation — teach the question; cite textbook book + page only."""
+    cache_key = _answer_key(
+        "explain",
+        req.question_id,
+        req.concept,
+        req.selected_option,
+        req.correct_option,
+        req.context_chunk,
+    )
+    cached = _EXPLAIN_CACHE.get(cache_key)
+    if cached:
+        response = dict(cached)
+        if req.speak:
+            if req.stream_audio:
+                response["speech_id"] = narration_id(response["explanation"], "")
+            else:
+                response["audio"] = await voice.text_to_speech(response["explanation"])
+        return response
+
+    loop = asyncio.get_event_loop()
     question = None
     try:
-        question = db.get_question(req.question_id)
+        question = await loop.run_in_executor(None, db.get_question, req.question_id)
     except Exception:
         pass
     question_text = (question or {}).get("question_text") or ""
@@ -700,58 +742,82 @@ async def explain(req: ExplainRequest):
     sources: list[dict] = []
     citation = None
 
-    try:
-        search_q = f"{question_text} {req.correct_option}".strip() or req.concept
-        retrieved = rag.retrieve_context(search_q, top_k=3)
+    search_q = f"{question_text} {req.correct_option}".strip() or req.concept
+    retrieved_task = loop.run_in_executor(
+        None, lambda: rag.retrieve_context(search_q, top_k=3)
+    )
+    mnemonic_task = loop.run_in_executor(
+        None, lambda: rag.retrieve_mnemonics(search_q, top_k=1)
+    )
+    retrieved, mnemonic = await asyncio.gather(
+        retrieved_task, mnemonic_task, return_exceptions=True
+    )
+
+    if isinstance(retrieved, Exception):
+        print(f"  [explain] RAG retrieval failed: {type(retrieved).__name__}: {retrieved}")
+    else:
         context = context or retrieved.get("context") or ""
         sources = retrieved.get("sources") or []
         citation = rag.format_citation_short(sources)
-    except Exception as exc:
-        print(f"  [explain] RAG retrieval failed: {type(exc).__name__}: {exc}")
 
-    mnemonic_ctx = ""
-    try:
-        search_q = f"{question_text} {req.correct_option}".strip() or req.concept
-        mnemonic = rag.retrieve_mnemonics(search_q, top_k=1)
-        mnemonic_ctx = mnemonic.get("context") or ""
-    except Exception:
-        pass
+    mnemonic_ctx = "" if isinstance(mnemonic, Exception) else mnemonic.get("context") or ""
 
-    explanation = llm.explain_answer(
-        concept=q_chapter,
-        selected_option=req.selected_option,
-        correct_option=req.correct_option,
-        question_text=question_text,
-        context_chunk=context or "",
-        mnemonic_chunk=mnemonic_ctx,
+    explanation = await loop.run_in_executor(
+        None,
+        lambda: llm.explain_answer(
+            concept=q_chapter,
+            selected_option=req.selected_option,
+            correct_option=req.correct_option,
+            question_text=question_text,
+            context_chunk=context or "",
+            mnemonic_chunk=mnemonic_ctx,
+        ),
     )
 
-    # Build citation from question source metadata as fallback
+    # Build citation from question source metadata as fallback so an explanation
+    # always cites *something* correct, even when no textbook chunk matched.
     if not citation and question:
         q_book = (question or {}).get("book") or ""
         q_page = (question or {}).get("page_number")
         q_source = (question or {}).get("source") or ""
+        q_year = (question or {}).get("year")
         if q_book and q_page:
             from .textbook_rag.chunk import book_display_name
             citation = f"{book_display_name(q_book)}, p. {q_page}"
         elif q_source and q_page:
             citation = f"{q_source}, p. {q_page}"
+        elif q_source:
+            # e.g. "MDCAT 2018" or "KIPS FLP 3" — the paper the MCQ came from.
+            citation = f"{q_source}{f' ({q_year})' if q_year and str(q_year) not in q_source else ''}"
+        elif q_year:
+            citation = f"Past paper {q_year}"
 
     audio_b64 = None
-    try:
-        audio_b64 = await voice.text_to_speech(explanation)
-    except Exception:
-        pass
+    speech_id = None
+    if req.speak:
+        if req.stream_audio:
+            speech_id = narration_id(explanation, "")
+        else:
+            try:
+                audio_b64 = await voice.text_to_speech(explanation)
+            except Exception:
+                pass
 
-    return {
+    response = {
         "explanation": explanation,
         "answer": explanation,
         "audio": audio_b64,
+        "speech_id": speech_id,
         "concept": q_chapter,
         "citation": citation,
         "sources": sources,
         "mnemonics": [],
     }
+    cacheable = dict(response)
+    cacheable["audio"] = None
+    cacheable["speech_id"] = None
+    _explain_cache_put(cache_key, cacheable)
+    return response
 
 
 # ===========================================================================
@@ -829,10 +895,18 @@ async def questions_diagnostic(student_id: str, count: int = 25):
 
 
 @app.get("/api/questions/chapter")
-async def questions_chapter(chapter: str, count: int = 100):
-    """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
+async def questions_chapter(
+    chapter: str, count: int = 100, student_id: Optional[str] = None
+):
+    """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated).
+
+    When ``student_id`` is supplied, already-attempted MCQs are pushed out so a
+    re-attempt of the same chapter returns fresh questions.
+    """
     n = max(1, min(count, 100))
-    qs = study.build_chapter_practice(chapter, count=n)
+    qs = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: study.build_chapter_practice(chapter, count=n, student_id=student_id)
+    )
     return {
         "mode": "chapter_practice",
         "chapter": chapter,
@@ -843,11 +917,14 @@ async def questions_chapter(chapter: str, count: int = 100):
 
 class CustomQuizRequest(BaseModel):
     selections: list[dict]  # [{ chapter, book?, count }]
+    student_id: Optional[str] = None
 
 
 @app.post("/api/questions/custom")
 async def questions_custom(req: CustomQuizRequest):
-    qs = study.build_custom(req.selections)
+    qs = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: study.build_custom(req.selections, student_id=req.student_id)
+    )
     return {
         "mode": "custom",
         "questions": qs,
@@ -857,11 +934,13 @@ async def questions_custom(req: CustomQuizRequest):
 
 
 @app.get("/api/questions/full-length")
-async def questions_full_length(mode: str = "practice"):
+async def questions_full_length(mode: str = "practice", student_id: Optional[str] = None):
     """Our own Biology FLP: 81 MCQs mixed from the entire bank — not one FLP PDF."""
     if mode not in ("practice", "timed"):
         raise HTTPException(status_code=400, detail="mode must be practice or timed")
-    qs = study.build_platform_flp()
+    qs = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: study.build_platform_flp(student_id=student_id)
+    )
     session_mode = (
         "full_length_timed" if mode == "timed" else "full_length_practice"
     )
@@ -974,12 +1053,46 @@ async def get_weak_spots(student_id: str):
 
 @app.get("/api/dashboard")
 async def dashboard(student_id: str):
-    student = db.get_student(student_id)
-    attempts = db.get_attempts(student_id)
+    loop = asyncio.get_event_loop()
+
+    # These reads are independent — run them concurrently instead of paying a
+    # sequential Supabase round-trip for each (kept the dashboard ~3.5s).
+    student, attempts, focus, daily = await asyncio.gather(
+        loop.run_in_executor(None, db.get_student, student_id),
+        loop.run_in_executor(None, db.get_attempts, student_id),
+        loop.run_in_executor(None, weak_spots.recommended_focus, student_id),
+        loop.run_in_executor(None, planner.get_or_create_daily_plan, student_id),
+        return_exceptions=True,
+    )
+    if isinstance(student, Exception):
+        student = None
+    if isinstance(attempts, Exception) or attempts is None:
+        attempts = []
+    if isinstance(focus, Exception):
+        focus = None
+    if isinstance(daily, Exception):
+        daily = None
+
     total = len(attempts)
     correct = sum(1 for a in attempts if a.get("is_correct"))
 
     concepts = {c["id"]: c for c in db.list_concepts()}
+
+    # Batch-fetch every question referenced by attempts in one round-trip
+    # (previously an N+1 get_question per attempt made the dashboard ~4s).
+    needed_qids = [
+        a["question_id"]
+        for a in attempts
+        if a.get("question_id") and not concepts.get(a.get("concept_id"))
+    ]
+    q_map = (
+        await loop.run_in_executor(
+            None, lambda: db.get_questions_by_ids(needed_qids, columns="id,chapter")
+        )
+        if needed_qids
+        else {}
+    )
+
     chapters: dict[str, dict] = {}
     for a in attempts:
         concept = concepts.get(a.get("concept_id"))
@@ -987,7 +1100,7 @@ async def dashboard(student_id: str):
         if concept:
             chapter = concept.get("chapter", "Unknown")
         else:
-            q = db.get_question(a["question_id"]) if a.get("question_id") else None
+            q = q_map.get(a.get("question_id"))
             chapter = (q or {}).get("chapter") or "Unknown"
         bucket = chapters.setdefault(
             chapter, {"chapter": chapter, "attempted": 0, "correct": 0}
@@ -1008,18 +1121,12 @@ async def dashboard(student_id: str):
         streak += 1
         cursor -= dt.timedelta(days=1)
 
-    daily = None
-    try:
-        daily = planner.get_or_create_daily_plan(student_id)
-    except Exception:
-        pass
-
     return {
         "accuracy_pct": round(correct / total * 100, 1) if total else 0,
         "total_attempted": total,
         "streak": streak,
         "chapters": list(chapters.values()),
-        "focus": weak_spots.recommended_focus(student_id),
+        "focus": focus,
         "diagnostic_done": bool(student and student.get("diagnostic_done")),
         "daily_plan": daily,
     }
@@ -1056,6 +1163,8 @@ async def health():
     return {
         "status": "ok",
         "groq": settings.groq_ready,
+        "elevenlabs": settings.elevenlabs_ready,
         "uplift": settings.uplift_ready,
+        "tts": settings.tts_ready,
         "supabase": settings.supabase_ready,
     }

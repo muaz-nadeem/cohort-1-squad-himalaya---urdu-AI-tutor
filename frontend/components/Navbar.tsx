@@ -23,8 +23,8 @@ const NAV = [
   { href: "/exam", label: "Full-length", icon: Timer },
   { href: "/custom-quiz", label: "Custom quiz", icon: Puzzle },
   { href: "/chat", label: "Ask Textbook", icon: MessageCircle },
-  { href: "/weak-spots", label: "Weak Spots", icon: Target },
-  { href: "/weekly-plan", label: "Weekly Plan", icon: CalendarDays },
+  // { href: "/weak-spots", label: "Weak Spots", icon: Target },
+  // { href: "/weekly-plan", label: "Weekly Plan", icon: CalendarDays },
 ] as const;
 
 export default function Navbar({ children }: { children?: ReactNode }) {
@@ -36,6 +36,13 @@ export default function Navbar({ children }: { children?: ReactNode }) {
   useEffect(() => {
     setName(getStudentName() || "Student");
   }, []);
+
+  // Prefetch every main tab so switches feel instant
+  useEffect(() => {
+    for (const { href } of NAV) {
+      router.prefetch(href);
+    }
+  }, [router]);
 
   useEffect(() => {
     setOpen(false);
@@ -78,6 +85,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
             <Link
               key={href}
               href={href}
+              prefetch
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                 active
                   ? "bg-brand-50 text-brand"

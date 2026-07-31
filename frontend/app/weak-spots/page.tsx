@@ -27,6 +27,11 @@ export default function WeakSpotsPage() {
       router.replace("/");
       return;
     }
+    const cached = api.peekWeakSpots(id);
+    if (cached) {
+      setSpots(cached);
+      setLoading(false);
+    }
     api
       .getWeakSpots(id)
       .then(setSpots)

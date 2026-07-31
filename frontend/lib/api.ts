@@ -1,5 +1,48 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
+type CacheEntry<T> = { value: T; expiresAt: number };
+const memoryCache = new Map<string, CacheEntry<unknown>>();
+const inflight = new Map<string, Promise<unknown>>();
+
+/** Instant read of whatever is cached (even if expired) — for paint-before-fetch. */
+export function peekCache<T>(key: string): T | null {
+  const hit = memoryCache.get(key) as CacheEntry<T> | undefined;
+  return hit ? hit.value : null;
+}
+
+/**
+ * Memory cache with in-flight dedupe. Use peekCache() for instant first paint.
+ */
+function cached<T>(key: string, ttlMs: number, loader: () => Promise<T>): Promise<T> {
+  const hit = memoryCache.get(key) as CacheEntry<T> | undefined;
+  if (hit && hit.expiresAt > Date.now()) return Promise.resolve(hit.value);
+
+  let load = inflight.get(key) as Promise<T> | undefined;
+  if (!load) {
+    load = loader()
+      .then((value) => {
+        memoryCache.set(key, { value, expiresAt: Date.now() + ttlMs });
+        inflight.delete(key);
+        return value;
+      })
+      .catch((err) => {
+        inflight.delete(key);
+        throw err;
+      });
+    inflight.set(key, load);
+  }
+  return load;
+}
+
+function invalidateCache(prefix: string) {
+  for (const key of memoryCache.keys()) {
+    if (key.startsWith(prefix)) memoryCache.delete(key);
+  }
+  for (const key of inflight.keys()) {
+    if (key.startsWith(prefix)) inflight.delete(key);
+  }
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 60000);
@@ -81,6 +124,7 @@ export interface ExplainResult {
   explanation: string;
   answer: string;
   audio: string | null;
+  speech_id?: string | null;
   concept: string;
   citation: string | null;
   sources: { concept: string; chapter: string; similarity: number }[];
@@ -190,6 +234,7 @@ export interface ChapterInfo {
   name: string;
   book: string;
   has_questions: boolean;
+  question_count?: number;
 }
 
 export interface RagSource {
@@ -235,9 +280,17 @@ export const api = {
   getStudent: (id: string) => request<Student>(`/api/students/${id}`),
 
   getDashboard: (studentId: string) =>
-    request<Dashboard>(`/api/dashboard?student_id=${studentId}`),
+    cached(`dashboard:${studentId}`, 60_000, () =>
+      request<Dashboard>(`/api/dashboard?student_id=${studentId}`)
+    ),
 
-  getChapters: () => request<ChapterInfo[]>("/api/chapters"),
+  peekDashboard: (studentId: string) =>
+    peekCache<Dashboard>(`dashboard:${studentId}`),
+
+  getChapters: () =>
+    cached("chapters", 10 * 60 * 1000, () => request<ChapterInfo[]>("/api/chapters")),
+
+  peekChapters: () => peekCache<ChapterInfo[]>("chapters"),
 
   getQuestions: (studentId: string, params: { chapter?: string; concept_id?: string } = {}) => {
     const q = new URLSearchParams({ student_id: studentId });
@@ -251,19 +304,26 @@ export const api = {
       `/api/questions/diagnostic?student_id=${studentId}&count=${count}`
     ),
 
-  getChapterPractice: (chapter: string, count = 100) =>
-    request<QuestionSet>(
-      `/api/questions/chapter?chapter=${encodeURIComponent(chapter)}&count=${count}`
-    ),
+  getChapterPractice: (chapter: string, count = 100, studentId?: string) => {
+    const q = new URLSearchParams({ chapter, count: String(count) });
+    if (studentId) q.set("student_id", studentId);
+    return request<QuestionSet>(`/api/questions/chapter?${q.toString()}`);
+  },
 
-  getCustomQuiz: (selections: { chapter: string; book?: string; count: number }[]) =>
+  getCustomQuiz: (
+    selections: { chapter: string; book?: string; count: number }[],
+    studentId?: string
+  ) =>
     request<QuestionSet>("/api/questions/custom", {
       method: "POST",
-      body: JSON.stringify({ selections }),
+      body: JSON.stringify({ selections, student_id: studentId }),
     }),
 
-  getFullLength: (mode: "practice" | "timed" = "practice") =>
-    request<QuestionSet>(`/api/questions/full-length?mode=${mode}`),
+  getFullLength: (mode: "practice" | "timed" = "practice", studentId?: string) => {
+    const q = new URLSearchParams({ mode });
+    if (studentId) q.set("student_id", studentId);
+    return request<QuestionSet>(`/api/questions/full-length?${q.toString()}`);
+  },
 
   startSession: (body: {
     student_id: string;
@@ -276,6 +336,10 @@ export const api = {
     request<SessionSummary>(`/api/sessions/${sessionId}/end`, {
       method: "POST",
       body: JSON.stringify(body),
+    }).then((summary) => {
+      invalidateCache("dashboard:");
+      invalidateCache("weak-spots:");
+      return summary;
     }),
 
   logAttempt: (body: {
@@ -283,13 +347,22 @@ export const api = {
     question_id: string;
     selected_option: string;
     session_id?: string;
-  }) => request<AttemptResult>("/api/attempt", { method: "POST", body: JSON.stringify(body) }),
+  }) =>
+    request<AttemptResult>("/api/attempt", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }).then((result) => {
+      invalidateCache(`dashboard:${body.student_id}`);
+      invalidateCache(`weak-spots:${body.student_id}`);
+      return result;
+    }),
 
   explain: (body: {
     question_id: string;
     concept: string;
     selected_option: string;
     correct_option: string;
+    speak?: boolean;
   }) => request<ExplainResult>("/api/explain", { method: "POST", body: JSON.stringify(body) }),
 
   ask: (body: {
@@ -338,10 +411,20 @@ export const api = {
   },
 
   getWeakSpots: (studentId: string) =>
-    request<WeakSpot[]>(`/api/weak-spots?student_id=${studentId}`),
+    cached(`weak-spots:${studentId}`, 60_000, () =>
+      request<WeakSpot[]>(`/api/weak-spots?student_id=${studentId}`)
+    ),
+
+  peekWeakSpots: (studentId: string) =>
+    peekCache<WeakSpot[]>(`weak-spots:${studentId}`),
 
   getWeeklyPlan: (studentId: string) =>
-    request<WeeklyPlan>(`/api/weekly-plan?student_id=${studentId}`),
+    cached(`weekly-plan:${studentId}`, 5 * 60 * 1000, () =>
+      request<WeeklyPlan>(`/api/weekly-plan?student_id=${studentId}`)
+    ),
+
+  peekWeeklyPlan: (studentId: string) =>
+    peekCache<WeeklyPlan>(`weekly-plan:${studentId}`),
 
   getDailyPlan: (studentId: string) =>
     request<DailyPlan>(`/api/daily-plan?student_id=${studentId}`),

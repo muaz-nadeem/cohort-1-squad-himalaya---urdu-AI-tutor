@@ -104,6 +104,16 @@ def get_groq_client() -> OpenAI:
 
 
 @lru_cache
+def get_openai_client() -> OpenAI:
+    """OpenAI SDK client for MCQ ingestion (gpt-4o-mini)."""
+    return OpenAI(
+        api_key=settings.OPENAI_API_KEY,
+        max_retries=2,
+        timeout=60.0,
+    )
+
+
+@lru_cache
 def get_gemini_client() -> OpenAI:
     """OpenAI SDK client pointed at Gemini's OpenAI-compatible endpoint."""
     return OpenAI(
@@ -403,7 +413,7 @@ Is this about FSc/MDCAT Biology course material? Reply YES or NO only."""
     try:
         client = get_groq_client()
         response = client.chat.completions.create(
-            model=settings.MCQ_TEXT_MODEL,
+            model=settings.TOPIC_GATE_MODEL,
             messages=[
                 {"role": "system", "content": TOPIC_GATE_SYSTEM},
                 {"role": "user", "content": user},

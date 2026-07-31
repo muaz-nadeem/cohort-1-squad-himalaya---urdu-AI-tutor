@@ -13,7 +13,56 @@ import fitz
 
 from ..chapters import infer_chapter_from_text
 from ..config import settings
-from ..llm import get_groq_client
+from ..llm import get_groq_client, get_openai_client
+
+
+def _get_ingest_client():
+    """Return the best available client for MCQ ingestion.
+
+    Priority: OpenAI (gpt-4o-mini, cheapest) > Groq (free but rate-limited).
+    """
+    if settings.openai_ready:
+        return get_openai_client(), "openai"
+    if settings.groq_ready:
+        return get_groq_client(), "groq"
+    return None, None
+
+
+class TokenTracker:
+    """Accumulates token usage across all LLM calls during an ingest run."""
+
+    def __init__(self):
+        self.prompt_tokens = 0
+        self.completion_tokens = 0
+        self.calls = 0
+
+    def record(self, response):
+        usage = getattr(response, "usage", None)
+        if usage:
+            self.prompt_tokens += usage.prompt_tokens or 0
+            self.completion_tokens += usage.completion_tokens or 0
+            self.calls += 1
+
+    @property
+    def total_tokens(self) -> int:
+        return self.prompt_tokens + self.completion_tokens
+
+    def cost_usd(self, input_price: float = 0.15, output_price: float = 0.60) -> float:
+        """Estimated cost in USD. Defaults to gpt-4o-mini pricing per 1M tokens."""
+        return (self.prompt_tokens / 1e6) * input_price + (self.completion_tokens / 1e6) * output_price
+
+    def summary(self) -> str:
+        cost = self.cost_usd()
+        return (
+            f"API calls: {self.calls} | "
+            f"Input tokens: {self.prompt_tokens:,} | "
+            f"Output tokens: {self.completion_tokens:,} | "
+            f"Total tokens: {self.total_tokens:,} | "
+            f"Est. cost (gpt-4o-mini): ${cost:.4f}"
+        )
+
+
+token_tracker = TokenTracker()
 
 # Pages with at least this much extractable text use text structuring only
 # (no vision fallback). Thin/scanned pages go to vision.
@@ -191,12 +240,13 @@ def looks_like_non_mcq_page(page_text: str) -> bool:
 
 
 def extract_mcqs_from_page_image(png_bytes: bytes) -> list[ExtractedMcq]:
-    if not settings.groq_ready:
+    client, provider = _get_ingest_client()
+    if client is None:
+        print("    [vision] no ingest API key configured (set OPENAI_API_KEY)")
         return []
-    client = get_groq_client()
 
     def _call():
-        return client.chat.completions.create(
+        kwargs: dict = dict(
             model=settings.MCQ_VISION_MODEL,
             messages=[
                 {
@@ -212,10 +262,13 @@ def extract_mcqs_from_page_image(png_bytes: bytes) -> list[ExtractedMcq]:
             ],
             max_tokens=3500,
             temperature=0.1,
-            reasoning_effort="none",
         )
+        if provider == "groq":
+            kwargs["reasoning_effort"] = "none"
+        return client.chat.completions.create(**kwargs)
 
     response = _groq_with_retry(_call, label="vision")
+    token_tracker.record(response)
     raw = response.choices[0].message.content or ""
     parsed = _parse_questions_json(raw)
     if not parsed:
@@ -225,13 +278,16 @@ def extract_mcqs_from_page_image(png_bytes: bytes) -> list[ExtractedMcq]:
 
 
 def extract_mcqs_from_page_text(page_text: str) -> list[ExtractedMcq]:
-    if not page_text.strip() or not settings.groq_ready:
+    if not page_text.strip():
+        return []
+    client, provider = _get_ingest_client()
+    if client is None:
+        print("    [text] no ingest API key configured (set OPENAI_API_KEY)")
         return []
     if looks_like_non_mcq_page(page_text):
         return []
     if not re.search(r"\b[A-Da-d][).]\s", page_text) and "?" not in page_text:
         return []
-    client = get_groq_client()
 
     def _call():
         return client.chat.completions.create(
@@ -245,6 +301,7 @@ def extract_mcqs_from_page_text(page_text: str) -> list[ExtractedMcq]:
         )
 
     response = _groq_with_retry(_call, label="text")
+    token_tracker.record(response)
     return _parse_questions_json(response.choices[0].message.content or "")
 
 

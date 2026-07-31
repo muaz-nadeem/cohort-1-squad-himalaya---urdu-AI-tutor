@@ -25,14 +25,24 @@ def build_diagnostic(count: int = DIAGNOSTIC_COUNT) -> list[dict[str, Any]]:
 
 
 def build_chapter_practice(
-    chapter: str, count: int = CHAPTER_PRACTICE_COUNT
+    chapter: str,
+    count: int = CHAPTER_PRACTICE_COUNT,
+    student_id: Optional[str] = None,
 ) -> list[dict[str, Any]]:
-    """100 MCQs for one chapter, mixed across all source_types."""
-    return db.sample_questions(count=count, chapter=chapter)
+    """100 MCQs for one chapter, mixed across all source_types.
+
+    When ``student_id`` is given, questions the student has already attempted
+    are pushed out so a re-attempt of the chapter returns fresh MCQs.
+    """
+    exclude = db.get_attempted_question_ids(student_id) if student_id else None
+    return db.sample_questions(count=count, chapter=chapter, exclude_ids=exclude)
 
 
-def build_custom(selections: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def build_custom(
+    selections: list[dict[str, Any]], student_id: Optional[str] = None
+) -> list[dict[str, Any]]:
     """selections: [{ chapter, book?, count }] — each slice mixed from bank."""
+    exclude = db.get_attempted_question_ids(student_id) if student_id else None
     ordered: list[dict[str, Any]] = []
     seen: set[str] = set()
     for sel in selections:
@@ -41,7 +51,7 @@ def build_custom(selections: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         n = max(1, min(int(sel.get("count") or 10), 100))
         # Sample by chapter only — book is UI metadata; bank mixes all sources
-        batch = db.sample_questions(count=n, chapter=chapter)
+        batch = db.sample_questions(count=n, chapter=chapter, exclude_ids=exclude)
         for q in batch:
             qid = q.get("id")
             if qid and qid in seen:
@@ -52,8 +62,11 @@ def build_custom(selections: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return ordered
 
 
-def build_platform_flp(count: int = FULL_LENGTH_BIOLOGY) -> list[dict[str, Any]]:
+def build_platform_flp(
+    count: int = FULL_LENGTH_BIOLOGY, student_id: Optional[str] = None
+) -> list[dict[str, Any]]:
     """Our own Biology FLP: mix from entire bank (tests + FLPs + past papers)."""
+    exclude = db.get_attempted_question_ids(student_id) if student_id else None
     chapters = db.list_distinct_chapters()
     if len(chapters) >= 4:
         # Stratify roughly evenly across chapters present in bank
@@ -61,7 +74,7 @@ def build_platform_flp(count: int = FULL_LENGTH_BIOLOGY) -> list[dict[str, Any]]
         picked: list[dict[str, Any]] = []
         seen: set[str] = set()
         for ch in chapters:
-            for q in db.sample_questions(count=per + 2, chapter=ch):
+            for q in db.sample_questions(count=per + 2, chapter=ch, exclude_ids=exclude):
                 qid = q.get("id")
                 if qid in seen:
                     continue
@@ -70,7 +83,7 @@ def build_platform_flp(count: int = FULL_LENGTH_BIOLOGY) -> list[dict[str, Any]]
                 if len(picked) >= count:
                     return picked[:count]
         if len(picked) < count:
-            extra = db.sample_questions(count=count - len(picked))
+            extra = db.sample_questions(count=count - len(picked), exclude_ids=exclude)
             for q in extra:
                 qid = q.get("id")
                 if qid and qid not in seen:
@@ -79,7 +92,7 @@ def build_platform_flp(count: int = FULL_LENGTH_BIOLOGY) -> list[dict[str, Any]]
                 if len(picked) >= count:
                     break
         return picked[:count]
-    return db.sample_questions(count=count)
+    return db.sample_questions(count=count, exclude_ids=exclude)
 
 
 def build_drill(concept_id: str) -> list[dict[str, Any]]:
@@ -148,6 +161,12 @@ def session_summary(student_id: str, session_id: str) -> dict[str, Any]:
     per_concept: dict[str, dict[str, Any]] = {}
     chapters: dict[str, dict[str, Any]] = {}
 
+    # Batch-fetch questions for chapter mapping in one round-trip (no N+1).
+    q_map = db.get_questions_by_ids(
+        [a["question_id"] for a in attempts if a.get("question_id")],
+        columns="id,chapter",
+    )
+
     for a in attempts:
         cid = a.get("concept_id")
         if cid:
@@ -164,7 +183,7 @@ def session_summary(student_id: str, session_id: str) -> dict[str, Any]:
             if a.get("is_correct"):
                 bucket["correct"] += 1
 
-        q = db.get_question(a["question_id"]) if a.get("question_id") else None
+        q = q_map.get(a.get("question_id"))
         ch = (q or {}).get("chapter") or concepts.get(cid or "", {}).get("chapter")
         if ch:
             cb = chapters.setdefault(
@@ -192,21 +211,18 @@ def session_summary(student_id: str, session_id: str) -> dict[str, Any]:
 
 
 def available_chapters() -> list[dict[str, Any]]:
+    """The 16 canonical MDCAT chapters with per-chapter MCQ counts.
+
+    Counts fold in legacy/alias chapter names (see db.CHAPTER_COUNT_ALIASES) so a
+    chapter's number reflects every MCQ that belongs to it. Non-syllabus bank
+    buckets (e.g. 'Man and His Environment') are intentionally not surfaced as
+    practice chapters — their MCQs still appear in the mixed full-length/custom
+    quizzes.
+    """
     catalog = list_chapters()
-    in_bank = set(db.list_distinct_chapters())
+    counts = db.catalog_question_counts()
     out = []
     for c in catalog:
-        out.append({**c, "has_questions": c["name"] in in_bank})
-    # Include any bank chapters not in catalog
-    known = {c["name"] for c in catalog}
-    for name in in_bank:
-        if name not in known:
-            out.append(
-                {
-                    "id": name.lower().replace(" ", "_")[:40],
-                    "name": name,
-                    "book": "fsc_part1",
-                    "has_questions": True,
-                }
-            )
+        n = int(counts.get(c["name"], 0))
+        out.append({**c, "has_questions": n > 0, "question_count": n})
     return out

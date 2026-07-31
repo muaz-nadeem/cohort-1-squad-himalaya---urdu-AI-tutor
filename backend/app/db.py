@@ -71,6 +71,7 @@ def update_student(student_id: str, payload: dict[str, Any]) -> dict[str, Any]:
 
 
 # ── concepts ────────────────────────────────────────────────────────────────
+@lru_cache(maxsize=1)
 def list_concepts() -> list[dict[str, Any]]:
     return require_client().table("concepts").select("*").execute().data
 
@@ -116,8 +117,41 @@ def sample_questions(
     count: int = 25,
     chapter: Optional[str] = None,
     book: Optional[str] = None,
+    exclude_ids: Optional[list[str]] = None,
 ) -> list[dict[str, Any]]:
-    """Random sample across the mixed bank (all source_types)."""
+    """Random sample across the mixed bank (all source_types).
+
+    When ``exclude_ids`` is provided (questions the student has already seen),
+    unseen questions are returned first so a re-attempt of the same chapter
+    yields fresh MCQs. If the unseen pool is smaller than ``count`` (chapter
+    exhausted), the remainder is topped up with a reshuffled set of seen ones.
+    """
+    import random
+
+    exclude = set(exclude_ids or [])
+
+    if not exclude:
+        # No personalisation needed — plain random sample (server-side RPC).
+        try:
+            res = require_client().rpc(
+                "sample_questions",
+                {
+                    "match_count": count,
+                    "filter_chapter": chapter,
+                    "filter_book": book,
+                },
+            ).execute()
+            if res.data:
+                return res.data
+        except Exception:
+            pass
+        pool = get_questions(chapter=chapter, book=book, limit=max(count * 5, 200))
+        random.shuffle(pool)
+        return pool[:count]
+
+    # Personalised (unseen-first) sampling.
+    # Try an exclusion-aware RPC first (if the maintainer has applied the
+    # optimised sample_questions SQL); fall back to a Python filter otherwise.
     try:
         res = require_client().rpc(
             "sample_questions",
@@ -125,18 +159,71 @@ def sample_questions(
                 "match_count": count,
                 "filter_chapter": chapter,
                 "filter_book": book,
+                "exclude_ids": list(exclude),
             },
         ).execute()
         if res.data:
             return res.data
     except Exception:
         pass
-    # Fallback: fetch a pool and shuffle in Python
-    import random
 
-    pool = get_questions(chapter=chapter, book=book, limit=max(count * 5, 200))
-    random.shuffle(pool)
-    return pool[:count]
+    # DDL-free fallback: fetch a random pool large enough to guarantee `count`
+    # unseen rows when the chapter has them (pigeonhole: pool_size = count +
+    # |seen| means at most |seen| of the pool are seen -> >= count unseen).
+    pool_size = count + len(exclude)
+    try:
+        res = require_client().rpc(
+            "sample_questions",
+            {
+                "match_count": pool_size,
+                "filter_chapter": chapter,
+                "filter_book": book,
+            },
+        ).execute()
+        pool = res.data or []
+    except Exception:
+        pool = get_questions(chapter=chapter, book=book, limit=max(pool_size, 200))
+        random.shuffle(pool)
+
+    unseen = [q for q in pool if q.get("id") not in exclude]
+    if len(unseen) >= count:
+        random.shuffle(unseen)
+        return unseen[:count]
+
+    # Chapter (nearly) exhausted for this student — serve all unseen, then
+    # top up with reshuffled seen questions so they still get a full set.
+    seen_rows = [q for q in pool if q.get("id") in exclude]
+    random.shuffle(seen_rows)
+    result = unseen + seen_rows
+    return result[:count]
+
+
+def get_attempted_question_ids(student_id: str) -> list[str]:
+    """All question_ids a student has ever attempted (for unseen-first sampling)."""
+    if not student_id:
+        return []
+    client = require_client()
+    page_size = 1000
+    offset = 0
+    ids: list[str] = []
+    while True:
+        rows = (
+            client.table("student_attempts")
+            .select("question_id")
+            .eq("student_id", student_id)
+            .range(offset, offset + page_size - 1)
+            .execute()
+            .data
+            or []
+        )
+        for r in rows:
+            qid = r.get("question_id")
+            if qid:
+                ids.append(qid)
+        if len(rows) < page_size:
+            break
+        offset += page_size
+    return ids
 
 
 def insert_questions(rows: list[dict[str, Any]]) -> int:
@@ -152,22 +239,97 @@ def insert_questions(rows: list[dict[str, Any]]) -> int:
     return stored
 
 
+@lru_cache(maxsize=1)
 def list_distinct_chapters() -> list[str]:
-    rows = (
-        require_client()
-        .table("questions")
-        .select("chapter")
-        .limit(2000)
-        .execute()
-        .data
-        or []
+    return list(chapter_question_counts().keys())
+
+
+def _chapter_counts_via_rpc() -> Optional[dict[str, int]]:
+    """Single grouped query if the optional chapter_counts() RPC is applied."""
+    try:
+        res = require_client().rpc("chapter_counts", {}).execute()
+        rows = res.data or []
+        if not rows:
+            return None
+        counts: dict[str, int] = {}
+        for r in rows:
+            ch = (r.get("chapter") or "").strip()
+            if ch:
+                counts[ch] = int(r.get("n") or r.get("count") or 0)
+        return counts or None
+    except Exception:
+        return None
+
+
+@lru_cache(maxsize=1)
+def chapter_question_counts() -> dict[str, int]:
+    """How many MCQs exist per chapter name in the bank.
+
+    Prefers a grouped chapter_counts() RPC (one round-trip). Without it, pages
+    the ``chapter`` column concurrently — PostgREST caps at 1000 rows/request,
+    so fetching pages in parallel keeps this well under a second instead of the
+    ~9s a sequential loop took on the full bank.
+    """
+    rpc_counts = _chapter_counts_via_rpc()
+    if rpc_counts is not None:
+        return rpc_counts
+
+    from concurrent.futures import ThreadPoolExecutor
+
+    client = require_client()
+    page_size = 1000
+
+    # Total rows so we know how many pages to fetch in parallel.
+    total = (
+        client.table("questions").select("id", count="exact").limit(1).execute().count
+        or 0
     )
-    seen: list[str] = []
-    for r in rows:
-        ch = r.get("chapter")
-        if ch and ch not in seen:
-            seen.append(ch)
-    return seen
+    num_pages = max(1, (total + page_size - 1) // page_size)
+
+    def fetch_page(page: int) -> list[dict[str, Any]]:
+        start = page * page_size
+        return (
+            require_client()
+            .table("questions")
+            .select("chapter")
+            .range(start, start + page_size - 1)
+            .execute()
+            .data
+            or []
+        )
+
+    counts: dict[str, int] = {}
+    with ThreadPoolExecutor(max_workers=min(num_pages, 10)) as pool:
+        for rows in pool.map(fetch_page, range(num_pages)):
+            for r in rows:
+                ch = (r.get("chapter") or "").strip()
+                if ch:
+                    counts[ch] = counts.get(ch, 0) + 1
+    return counts
+
+
+# Aliases seen in ingested banks that should map onto the practice catalog.
+CHAPTER_COUNT_ALIASES: dict[str, str] = {
+    "Cell Biology": "Cell Structure and Function",
+    "Cell Cycle": "Cell Structure and Function",
+    "Biomolecules": "Biological Molecules",
+    "Molecular Biology": "Biological Molecules",
+    "Chromosome and DNA": "Inheritance",
+    "Prokaryotes": "Cell Structure and Function",
+    "Growth and Development": "Reproduction",
+    "Genetics": "Inheritance",
+    "Variation and Genetics": "Inheritance",
+}
+
+
+def catalog_question_counts() -> dict[str, int]:
+    """Counts keyed by catalog chapter names (aliases folded in)."""
+    raw = chapter_question_counts()
+    out: dict[str, int] = {}
+    for name, n in raw.items():
+        key = CHAPTER_COUNT_ALIASES.get(name, name)
+        out[key] = out.get(key, 0) + n
+    return out
 
 
 def get_question(question_id: str) -> Optional[dict[str, Any]]:
@@ -180,6 +342,31 @@ def get_question(question_id: str) -> Optional[dict[str, Any]]:
         .execute()
     )
     return res.data[0] if res.data else None
+
+
+def get_questions_by_ids(
+    question_ids: list[str], columns: str = "*"
+) -> dict[str, dict[str, Any]]:
+    """Batch-fetch questions by id in one round-trip. Returns {id: row}."""
+    ids = [q for q in dict.fromkeys(question_ids) if q]
+    if not ids:
+        return {}
+    client = require_client()
+    out: dict[str, dict[str, Any]] = {}
+    batch = 200  # keep the `in` filter URL within limits
+    for i in range(0, len(ids), batch):
+        chunk = ids[i : i + batch]
+        rows = (
+            client.table("questions")
+            .select(columns)
+            .in_("id", chunk)
+            .execute()
+            .data
+            or []
+        )
+        for r in rows:
+            out[r["id"]] = r
+    return out
 
 
 # ── sessions ────────────────────────────────────────────────────────────────

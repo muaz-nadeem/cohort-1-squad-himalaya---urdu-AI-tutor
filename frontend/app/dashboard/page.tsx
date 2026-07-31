@@ -33,9 +33,20 @@ export default function DashboardPage() {
     }
     setStudentName_(getStudentName() || "Student");
 
+    const cachedDash = api.peekDashboard(id);
+    const cachedSpots = api.peekWeakSpots(id);
+    if (cachedDash) {
+      setData(cachedDash);
+      setLoading(false);
+    }
+    if (cachedSpots) setWeakSpots(cachedSpots);
+
+    // Warm chapters cache for Chapter Practice so that tab feels instant
+    void api.getChapters().catch(() => []);
+
     Promise.all([
       api.getDashboard(id),
-      api.getWeakSpots(id).catch(() => []),
+      api.getWeakSpots(id).catch(() => [] as WeakSpot[]),
     ])
       .then(([dashboard, spots]) => {
         setData(dashboard);
@@ -45,7 +56,7 @@ export default function DashboardPage() {
       .finally(() => setLoading(false));
   }, [router]);
 
-  if (loading) {
+  if (loading && !data) {
     return (
       <Navbar>
         <div className="flex min-h-[80vh] items-center justify-center">
@@ -328,43 +339,7 @@ export default function DashboardPage() {
                 </Link>
               </div>
 
-              {declining ? (
-                <div className="rounded-2xl border border-red-100 bg-red-50/70 p-5">
-                  <div className="flex gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-500">
-                      <AlertTriangle className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-red-700">
-                        Weak Spot Alert
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-red-700/80">
-                        Your performance in{" "}
-                        <span className="font-semibold">
-                          {declining.concept || declining.chapter}
-                        </span>{" "}
-                        needs attention ({declining.accuracy_pct}% accuracy). We
-                        recommend a short drill session.
-                      </p>
-                      <Link
-                        href={
-                          declining.chapter
-                            ? `/session?mode=chapter&chapter=${encodeURIComponent(declining.chapter)}`
-                            : `/session?concept_id=${declining.concept_id}`
-                        }
-                        className="mt-3 inline-block text-sm font-semibold text-red-600 hover:underline"
-                      >
-                        Start quick test →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="rounded-2xl border border-emerald-100 bg-emerald-50/70 p-5 text-sm text-emerald-800">
-                  Practise a few chapters — we&apos;ll spot which topics you miss
-                  and push those into your plan.
-                </div>
-              )}
+{/* Weak Spot Alert — hidden until weak-spot analysis is wired */}
             </aside>
           </div>
 
@@ -398,7 +373,7 @@ function getGreeting() {
 }
 
 function getDaysToMdcat() {
-  const exam = new Date("2026-08-25");
+  const exam = new Date("2026-08-16");
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.max(0, Math.ceil((exam.getTime() - today.getTime()) / 86400000));

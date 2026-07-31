@@ -35,7 +35,7 @@ function pickMimeType(): string {
 
 export function useVoiceCall({
   onClip,
-  silenceMs = 1400,
+  silenceMs = 900,
   maxUtteranceMs = 20000,
   threshold = 0.015,
 }: UseVoiceCallOptions) {

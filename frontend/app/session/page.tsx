@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   api,
+  speechStreamUrl,
   type ExplainResult,
   type Question,
   type QuestionSet,
@@ -19,6 +20,7 @@ import {
   Frown,
   Smile,
   Sparkles,
+  Volume2,
   X,
   XCircle,
 } from "lucide-react";
@@ -59,8 +61,10 @@ function SessionInner() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+  const [speakingExplain, setSpeakingExplain] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
+  const explainAudioRef = useRef<HTMLAudioElement | null>(null);
   const reviewRef = useRef<ReviewItem[]>([]);
   const scoreRef = useRef(0);
   const answeredRef = useRef(0);
@@ -93,18 +97,43 @@ function SessionInner() {
 
     (async () => {
       try {
-        let qs: QuestionSet;
+        // For known modes we already know the session's mode/chapter, so we can
+        // fetch the questions and open the session in parallel instead of
+        // waiting for the (slow) 100-MCQ fetch first.
+        let questionsP: Promise<QuestionSet>;
+        let sessionMode: string | null = null;
         if (mode === "diagnostic") {
-          qs = await api.getDiagnostic(id);
+          questionsP = api.getDiagnostic(id);
+          sessionMode = "diagnostic";
         } else if (mode === "chapter" && chapter) {
-          qs = await api.getChapterPractice(chapter, 100);
+          questionsP = api.getChapterPractice(chapter, 100, id);
+          sessionMode = "chapter_practice";
         } else if (mode === "full_length") {
-          qs = await api.getFullLength(flpMode);
+          questionsP = api.getFullLength(flpMode, id);
+          sessionMode =
+            flpMode === "timed" ? "full_length_timed" : "full_length_practice";
         } else if (mode === "custom" && customRaw) {
           const selections = JSON.parse(decodeURIComponent(customRaw));
-          qs = await api.getCustomQuiz(selections);
+          questionsP = api.getCustomQuiz(selections, id);
+          sessionMode = "custom";
         } else {
-          qs = await api.getQuestions(id, { chapter, concept_id: conceptId });
+          questionsP = api.getQuestions(id, { chapter, concept_id: conceptId });
+        }
+
+        let qs: QuestionSet;
+        let session: { id: string } | null = null;
+        if (sessionMode) {
+          [qs, session] = await Promise.all([
+            questionsP,
+            api.startSession({
+              student_id: id,
+              mode: sessionMode,
+              concept_id: conceptId,
+              chapter: chapter,
+            }),
+          ]);
+        } else {
+          qs = await questionsP;
         }
 
         if (!qs.questions.length) {
@@ -117,12 +146,14 @@ function SessionInner() {
         setSet(qs);
         if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
 
-        const session = await api.startSession({
-          student_id: id,
-          mode: qs.mode,
-          concept_id: qs.concept_id,
-          chapter: qs.chapter || chapter,
-        });
+        if (!session) {
+          session = await api.startSession({
+            student_id: id,
+            mode: qs.mode,
+            concept_id: qs.concept_id,
+            chapter: qs.chapter || chapter,
+          });
+        }
         setSessionId(session.id);
         sessionIdRef.current = session.id;
       } catch (e) {
@@ -134,7 +165,8 @@ function SessionInner() {
   }, [params, router, flpMode]);
 
   useEffect(() => {
-    if (secondsLeft === null || selected) return;
+    // Timed exam: the clock must keep running even while an answer is selected.
+    if (secondsLeft === null) return;
     if (secondsLeft <= 0) {
       if (!timedOutRef.current) {
         timedOutRef.current = true;
@@ -148,7 +180,7 @@ function SessionInner() {
     );
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [secondsLeft, selected]);
+  }, [secondsLeft]);
 
   const question: Question | undefined = set?.questions[index];
   const conceptName = explanation?.concept || question?.chapter || "Biology";
@@ -191,7 +223,10 @@ function SessionInner() {
         is_correct: res.is_correct,
       });
 
-      if (showExplainNow || !res.is_correct) {
+      // In review-at-end / timed-exam modes we never interrupt the flow with a
+      // mid-quiz explanation — the student reviews everything at the end and the
+      // clock keeps ticking. Otherwise (normal practice) explain every answer.
+      if (showExplainNow) {
         setExplaining(true);
         try {
           const exp = await api.explain({
@@ -199,6 +234,7 @@ function SessionInner() {
             concept: question.chapter,
             selected_option: optionText(question, key),
             correct_option: optionText(question, res.correct_option),
+            speak: true,
           });
           setExplanation(exp);
         } catch {
@@ -222,6 +258,11 @@ function SessionInner() {
   }
 
   function nextAfterAnswer() {
+    if (explainAudioRef.current) {
+      explainAudioRef.current.pause();
+      explainAudioRef.current = null;
+    }
+    setSpeakingExplain(false);
     setSelected(null);
     setIsCorrect(null);
     setExplanation(null);
@@ -231,6 +272,38 @@ function SessionInner() {
     } else {
       setIndex((i) => i + 1);
     }
+  }
+
+  async function exitSession() {
+    // Properly close the session instead of abandoning it open.
+    const sid = sessionIdRef.current;
+    if (sid) {
+      try {
+        await api.endSession(sid, {
+          score: scoreRef.current,
+          total: answeredRef.current,
+        });
+      } catch {
+        /* ignore — leaving anyway */
+      }
+    }
+    router.replace("/dashboard");
+  }
+
+  function playExplanation() {
+    const id = explanation?.speech_id;
+    if (!id) return;
+    const url = speechStreamUrl(id);
+    if (!url) return;
+    if (explainAudioRef.current) {
+      explainAudioRef.current.pause();
+    }
+    const audio = new Audio(url);
+    explainAudioRef.current = audio;
+    setSpeakingExplain(true);
+    audio.onended = () => setSpeakingExplain(false);
+    audio.onerror = () => setSpeakingExplain(false);
+    audio.play().catch(() => setSpeakingExplain(false));
   }
 
   async function finish() {
@@ -286,7 +359,7 @@ function SessionInner() {
         : `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
 
   const scorePct = answered ? Math.round((score / answered) * 100) : 0;
-  const showSidebar = !!(selected && (showExplainNow || isCorrect === false));
+  const showSidebar = !!(selected && showExplainNow);
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
@@ -294,7 +367,7 @@ function SessionInner() {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <button
             type="button"
-            onClick={() => router.replace("/dashboard")}
+            onClick={exitSession}
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800"
           >
             <X className="h-4 w-4" />
@@ -487,7 +560,19 @@ function SessionInner() {
                     <Sparkles className="h-3.5 w-3.5" />
                     AI INSIGHT
                   </div>
-                  <span className="text-[10px] text-sky-200">Uraan AI</span>
+                  {explanation?.speech_id ? (
+                    <button
+                      type="button"
+                      onClick={playExplanation}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25 disabled:opacity-60"
+                      disabled={speakingExplain}
+                    >
+                      <Volume2 className="h-3.5 w-3.5" />
+                      {speakingExplain ? "Playing..." : "Listen"}
+                    </button>
+                  ) : (
+                    <span className="text-[10px] text-sky-200">Uraan AI</span>
+                  )}
                 </div>
                 <div className="p-4">
                   {explaining ? (

@@ -1,9 +1,11 @@
-"""Uplift AI voice pipeline: STT (speech -> Urdu text) and Orator TTS (text -> MP3).
+"""Voice pipeline: STT (speech -> Urdu text) and TTS (text -> MP3).
 
-Groq Whisper is used as the STT fallback when Uplift STT fails.
+TTS provider: Uplift Orator (active) / ElevenLabs (commented out, needs paid plan).
+STT: Uplift STT first, Groq Whisper fallback.
 """
 from __future__ import annotations
 
+import asyncio
 import base64
 import io
 import sys
@@ -40,6 +42,10 @@ def _guess_mime(filename: str) -> str:
     return "audio/webm"
 
 
+# ===========================================================================
+# STT — Speech-to-Text (Uplift -> Whisper fallback)
+# ===========================================================================
+
 async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> str:
     """Transcribe audio (Urdu/English). Uplift STT first, Whisper fallback."""
     if not audio_bytes or len(audio_bytes) < 500:
@@ -58,7 +64,11 @@ async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> st
 
     _safe_print("  [stt] Uplift failed/empty, trying Groq Whisper...")
     try:
-        transcript = _whisper_stt(audio_bytes, filename)
+        # Whisper via the Groq SDK is synchronous; run it off the event loop so
+        # it doesn't block other requests while transcribing.
+        transcript = await asyncio.get_event_loop().run_in_executor(
+            None, _whisper_stt, audio_bytes, filename
+        )
         if transcript and transcript.strip():
             _safe_print(f"  [stt] Whisper success ({len(transcript)} chars)")
             return transcript.strip()
@@ -75,7 +85,9 @@ async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
         return ""
     mime = _guess_mime(filename)
     try:
-        async with httpx.AsyncClient(timeout=45) as http:
+        # Keep this short: on timeout we fall straight through to Whisper, so a
+        # slow Uplift response shouldn't dominate perceived STT latency.
+        async with httpx.AsyncClient(timeout=6) as http:
             resp = await http.post(
                 f"{settings.UPLIFT_BASE}/transcriptions",
                 headers={"Authorization": f"Bearer {settings.UPLIFT_API_KEY}"},
@@ -87,7 +99,7 @@ async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
             return (data.get("text") or data.get("transcript") or "") or ""
         _safe_print(f"  [stt] Uplift returned {resp.status_code}: {resp.text[:200]}")
     except httpx.TimeoutException:
-        _safe_print("  [stt] Uplift STT timed out (45s)")
+        _safe_print("  [stt] Uplift STT timed out (6s), falling back to Whisper")
     except httpx.HTTPError as exc:
         _safe_print(f"  [stt] Uplift HTTP error: {type(exc).__name__}: {exc}")
     except Exception as exc:
@@ -103,7 +115,6 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
         client = get_groq_client()
         buffer = io.BytesIO(audio_bytes)
         buffer.name = filename
-        # Do not force language — students ask in Urdu or English
         result = client.audio.transcriptions.create(
             model=settings.WHISPER_MODEL,
             file=buffer,
@@ -114,6 +125,10 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
         return ""
 
 
+# ===========================================================================
+# TTS helpers
+# ===========================================================================
+
 def clean_for_tts(text: str, limit: int = 600) -> str:
     """Trim narration so synthesis stays fast (TTS time scales with length)."""
     speak = (text or "").strip()
@@ -121,6 +136,10 @@ def clean_for_tts(text: str, limit: int = 600) -> str:
         speak = speak[:limit].rsplit(" ", 1)[0] + "..."
     return speak
 
+
+# ===========================================================================
+# Uplift Orator TTS (active)
+# ===========================================================================
 
 async def stream_tts(text: str, output_format: str = "MP3_22050_32"):
     """Yield MP3 chunks from Uplift's streaming endpoint as they arrive.
@@ -165,10 +184,9 @@ async def text_to_speech(text: str) -> Optional[str]:
     """Synthesise Urdu speech via Uplift Orator, return base64 MP3 (or None)."""
     if not settings.uplift_ready or not text:
         return None
-    # Orator can choke on very long answers; keep TTS snappy
-    speak = text.strip()
-    if len(speak) > 800:
-        speak = speak[:800].rsplit(" ", 1)[0] + "..."
+    speak = clean_for_tts(text, limit=800)
+    if not speak:
+        return None
     try:
         async with httpx.AsyncClient(timeout=45) as http:
             response = await http.post(
@@ -193,3 +211,89 @@ async def text_to_speech(text: str) -> Optional[str]:
     except Exception as exc:
         _safe_print(f"  [tts] error: {type(exc).__name__}: {exc}")
     return None
+
+
+# ===========================================================================
+# ElevenLabs TTS (commented out — needs paid plan for library voices)
+# To switch: uncomment this block, comment out the Uplift block above,
+# and set ELEVENLABS_API_KEY + ELEVENLABS_VOICE_ID in .env
+# ===========================================================================
+#
+# async def stream_tts(text: str, output_format: str = "mp3_22050_32"):
+#     """Yield MP3 chunks from ElevenLabs streaming endpoint as they arrive."""
+#     if not settings.elevenlabs_ready or not text:
+#         return
+#     speak = clean_for_tts(text)
+#     voice_id = settings.ELEVENLABS_VOICE_ID
+#     url = f"{settings.ELEVENLABS_BASE}/text-to-speech/{voice_id}/stream"
+#     try:
+#         async with httpx.AsyncClient(timeout=60) as http:
+#             async with http.stream(
+#                 "POST",
+#                 url,
+#                 headers={
+#                     "xi-api-key": settings.ELEVENLABS_API_KEY,
+#                     "Content-Type": "application/json",
+#                 },
+#                 json={
+#                     "text": speak,
+#                     "model_id": settings.ELEVENLABS_MODEL,
+#                     "voice_settings": {
+#                         "stability": 0.5,
+#                         "similarity_boost": 0.75,
+#                     },
+#                 },
+#                 params={"output_format": output_format},
+#             ) as response:
+#                 if response.status_code != 200:
+#                     body = await response.aread()
+#                     _safe_print(
+#                         f"  [tts-stream] ElevenLabs {response.status_code}: {body[:200]!r}"
+#                     )
+#                     return
+#                 async for chunk in response.aiter_bytes():
+#                     if chunk:
+#                         yield chunk
+#     except httpx.TimeoutException:
+#         _safe_print("  [tts-stream] timed out")
+#     except Exception as exc:
+#         _safe_print(f"  [tts-stream] error: {type(exc).__name__}: {exc}")
+#
+#
+# async def text_to_speech(text: str) -> Optional[str]:
+#     """Synthesise speech via ElevenLabs, return base64 MP3 (or None)."""
+#     if not settings.elevenlabs_ready or not text:
+#         return None
+#     speak = text.strip()
+#     if len(speak) > 800:
+#         speak = speak[:800].rsplit(" ", 1)[0] + "..."
+#     voice_id = settings.ELEVENLABS_VOICE_ID
+#     url = f"{settings.ELEVENLABS_BASE}/text-to-speech/{voice_id}"
+#     try:
+#         async with httpx.AsyncClient(timeout=45) as http:
+#             response = await http.post(
+#                 url,
+#                 headers={
+#                     "xi-api-key": settings.ELEVENLABS_API_KEY,
+#                     "Content-Type": "application/json",
+#                 },
+#                 json={
+#                     "text": speak,
+#                     "model_id": settings.ELEVENLABS_MODEL,
+#                     "voice_settings": {
+#                         "stability": 0.5,
+#                         "similarity_boost": 0.75,
+#                     },
+#                 },
+#                 params={"output_format": "mp3_22050_32"},
+#             )
+#         if response.status_code == 200 and response.content:
+#             return base64.b64encode(response.content).decode("utf-8")
+#         _safe_print(f"  [tts] ElevenLabs returned {response.status_code}: {response.text[:200]}")
+#     except httpx.TimeoutException:
+#         _safe_print("  [tts] ElevenLabs TTS timed out (45s)")
+#     except httpx.HTTPError as exc:
+#         _safe_print(f"  [tts] ElevenLabs HTTP error: {type(exc).__name__}: {exc}")
+#     except Exception as exc:
+#         _safe_print(f"  [tts] error: {type(exc).__name__}: {exc}")
+#     return None

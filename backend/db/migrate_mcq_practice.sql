@@ -98,3 +98,41 @@ as $$
   order by mc.embedding <=> query_embedding
   limit match_count;
 $$;
+
+-- ---------------------------------------------------------------------------
+-- Optional performance / personalisation helpers.
+-- The backend works without these (Python fallbacks in app/db.py), but
+-- applying them makes /api/chapters a single query and unseen-first sampling
+-- happen server-side. Safe to run multiple times.
+-- ---------------------------------------------------------------------------
+
+-- One grouped query for per-chapter MCQ counts (replaces paging the table).
+create or replace function chapter_counts()
+returns table (chapter text, n bigint)
+language sql stable
+as $$
+  select chapter, count(*) as n
+  from questions
+  where chapter is not null and chapter <> ''
+  group by chapter;
+$$;
+
+-- Unseen-first random sample: excludes questions the student already attempted
+-- so re-attempting a chapter returns fresh MCQs.
+create or replace function sample_questions(
+  match_count    int default 25,
+  filter_chapter text default null,
+  filter_book    text default null,
+  exclude_ids    uuid[] default null
+)
+returns setof questions
+language sql stable
+as $$
+  select *
+  from questions
+  where (filter_chapter is null or chapter = filter_chapter)
+    and (filter_book is null or book = filter_book)
+    and (exclude_ids is null or id <> all (exclude_ids))
+  order by random()
+  limit match_count;
+$$;
