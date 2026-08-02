@@ -42,7 +42,7 @@ def generate_plan(student_id: str) -> dict[str, Any]:
                     "chapter": t.get("chapter"),
                     "minutes": minutes,
                     "question_count": max(5, minutes // 3),
-                    "reason": f"{t['accuracy_pct']}% accuracy · priority {t['priority_score']}",
+                    "reason": f"Focus on {t['concept']} — keep drilling until it sticks",
                 }
             )
         else:
@@ -131,29 +131,17 @@ def generate_daily_plan(student_id: str, plan_date: dt.date | None = None) -> di
                     "concept_id": t.get("concept_id"),
                     "minutes": minutes,
                     "question_count": min(100, max(15, minutes)),
-                    "reason": (
-                        f"Weak spot: {t['accuracy_pct']}% accuracy — "
-                        "focus this chapter today"
-                    ),
+                    "reason": "You keep missing questions here — focus this chapter today",
                     "action": "chapter_practice",
                 }
             )
     else:
         items.append(
             {
-                "chapter": "Cell Structure and Function",
+                "chapter": None,
                 "minutes": 30,
                 "question_count": 25,
-                "reason": "Start chapter practice — we learn your weak spots as you go",
-                "action": "chapter_practice",
-            }
-        )
-        items.append(
-            {
-                "chapter": "Biological Molecules",
-                "minutes": 25,
-                "question_count": 20,
-                "reason": "Keep the streak going with another chapter",
+                "reason": "Pick any chapter and start practising — we adapt your plan as you go",
                 "action": "chapter_practice",
             }
         )

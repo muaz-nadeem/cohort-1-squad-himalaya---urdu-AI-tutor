@@ -52,15 +52,17 @@ Rules:
 
 URDU_SPEECH_SYSTEM_PROMPT = """You are an Urdu-speaking MDCAT Biology tutor talking to a Pakistani FSc student on a phone call.
 
-You will be given an English tutoring answer. Re-express it as natural spoken Urdu.
+You will be given an English tutoring answer. Re-express it as natural bilingual Urdu — the way a Pakistani teacher naturally explains Biology to students.
 
 Rules:
-1. Output ONLY Urdu script (اردو). No English sentences, no Roman Urdu, no Hindi.
-2. Keep standard scientific terms in English where students actually use them (for example: mitochondria, enzyme, glucose, DNA). Write those terms in Urdu script transliteration only if it reads naturally; otherwise keep the English word.
-3. Sound like natural speech, warm and clear — as if explaining out loud to a student.
-4. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
-5. Keep it under 120 words. Do not add new facts that were not in the English answer.
-6. Output only the Urdu narration — no preamble, no labels, no quotes."""
+1. Write the explanation in Urdu script (اردو) but freely keep English key terms inline.
+2. Keep ALL scientific and technical terms in English — biology terms (eukaryotic, mitochondria, enzyme, glucose, DNA, ATP, photosynthesis, osmosis), measurements (wavelength, nanometer, frequency), colors (violet, red, indigo), chemical names, units, and any term students learn and use in English. Do NOT transliterate these into Urdu script.
+3. The overall sentence structure and connecting words should be Urdu, but key terms stay English — like how a Pakistani teacher actually speaks in class.
+4. Sound like natural speech, warm and clear — as if explaining out loud to a student.
+5. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
+6. Keep it under 120 words. Do not add new facts that were not in the English answer.
+7. No Roman Urdu, no Hindi. Urdu script for the Urdu parts, English for the technical terms.
+8. Output only the narration — no preamble, no labels, no quotes."""
 
 RAG_ASK_SYSTEM_PROMPT = f"""You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.
 
@@ -321,8 +323,9 @@ ENGLISH section rules:
 - Under 120 words. End with one short exam tip when useful.
 
 URDU section rules:
-- Write in Urdu script (اردو) ONLY. This section MUST be Urdu script — never Roman Urdu, never English sentences.
-- Keep scientific terms students actually say in English (mitochondria, enzyme, glucose, DNA, ATP) as those English words.
+- Write in Urdu script (اردو) with English key terms kept inline — natural bilingual style, the way a Pakistani teacher actually explains Biology in class.
+- Keep ALL scientific/technical terms in English: biology words (eukaryotic, mitochondria, enzyme, photosynthesis, osmosis), measurements (wavelength, nanometer), colors (violet, indigo), chemical names, units, and any term students learn in English. Do NOT transliterate these into Urdu script.
+- Sentence structure and connecting words in Urdu, key terms in English. Never use Roman Urdu or Hindi.
 - Natural spoken style, as if explaining out loud on a phone call.
 - No citations, page numbers, brackets, bullets or markdown — it will be read aloud.
 - Under 110 words. Add no facts that are absent from the ENGLISH section.
@@ -362,8 +365,8 @@ def answer_from_rag_bilingual(question: str, context: str) -> tuple[str, str]:
     return normalize_course_answer(*_split_bilingual(raw))
 
 
-def looks_like_urdu(text: str, min_ratio: float = 0.5) -> bool:
-    """True when the text is genuinely Urdu script rather than Roman Urdu."""
+def looks_like_urdu(text: str, min_ratio: float = 0.3) -> bool:
+    """True when the text contains meaningful Urdu script (bilingual is fine)."""
     letters = [c for c in (text or "") if c.isalpha()]
     if len(letters) < 10:
         return False

@@ -169,15 +169,7 @@ export default function WeeklyPlanPage() {
 
             <aside className="space-y-4">
               <div className="rounded-2xl border border-sky-100 bg-[#EAF3FB] p-5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="rounded-md bg-red-500 px-2 py-0.5 text-[10px] font-bold tracking-wider text-white">
-                    LIVE
-                  </span>
-                  <span className="text-xs font-medium text-slate-500">
-                    Coming this week
-                  </span>
-                </div>
-                <h3 className="mt-4 font-display text-xl font-bold text-brand-700">
+                <h3 className="font-display text-xl font-bold text-brand-700">
                   Full-length Biology Mock
                 </h3>
                 <p className="mt-1 inline-flex items-center gap-1.5 text-sm text-slate-500">

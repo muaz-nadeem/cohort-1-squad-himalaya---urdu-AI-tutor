@@ -78,31 +78,23 @@ export default function LoginPage() {
 
           <div className="mt-10 grid grid-cols-2 gap-8">
             <div>
-              <p className="font-display text-3xl font-bold">4k+</p>
-              <p className="mt-1 text-sm text-slate-400">Practice Questions</p>
+              <p className="font-display text-xl font-bold">Chapter MCQs</p>
+              <p className="mt-1 text-sm text-slate-400">
+                Mixed from past papers &amp; academy banks
+              </p>
             </div>
             <div>
-              <p className="font-display text-3xl font-bold">50+</p>
-              <p className="mt-1 text-sm text-slate-400">Mock Tests</p>
+              <p className="font-display text-xl font-bold">Ask in Urdu</p>
+              <p className="mt-1 text-sm text-slate-400">
+                AI tutor grounded in your FSc textbooks
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="relative flex items-center gap-3">
-          <div className="flex -space-x-2">
-            {["#93C5FD", "#BFDBFE", "#E0F2FE"].map((c, i) => (
-              <span
-                key={i}
-                className="h-8 w-8 rounded-full border-2 border-brand-700"
-                style={{ backgroundColor: c }}
-              />
-            ))}
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-brand-700 bg-white/15 text-[10px] font-semibold">
-              +3k
-            </span>
-          </div>
+        <div className="relative">
           <p className="text-sm text-slate-300">
-            Join thousands of successful medical aspirants.
+            Built for Pakistani MDCAT aspirants.
           </p>
         </div>
       </div>

@@ -80,28 +80,11 @@ export default function SignupPage() {
         </div>
 
         <div className="relative rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur-sm">
-          <div className="flex gap-1 text-amber-300">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span key={i} className="text-sm">
-                ★
-              </span>
-            ))}
-          </div>
-          <p className="mt-3 text-sm leading-relaxed text-sky-50/95">
-            &ldquo;The AI hints actually explained my mistakes like a senior
-            would. Best investment for MDCAT 2026.&rdquo;
+          <p className="text-sm leading-relaxed text-sky-50/95">
+            Chapter-wise MCQ practice, full-length papers, and an AI tutor that
+            explains your mistakes — in Urdu or English, grounded in your FSc
+            textbooks.
           </p>
-          <div className="mt-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-200 text-sm font-bold text-brand-700">
-              AM
-            </div>
-            <div>
-              <p className="text-sm font-semibold">Ayesha Malik</p>
-              <p className="text-xs text-slate-300">
-                King Edward Medical University
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 

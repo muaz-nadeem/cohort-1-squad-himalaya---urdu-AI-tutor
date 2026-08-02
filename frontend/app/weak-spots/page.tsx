@@ -62,7 +62,7 @@ export default function WeakSpotsPage() {
                 Weak Spots Analysis
               </h1>
               <p className="mt-2 text-sm text-slate-500 sm:text-base">
-                Targeted focus on concepts where your accuracy is below 70%.
+                Targeted focus on the concepts you keep missing.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -104,17 +104,17 @@ export default function WeakSpotsPage() {
           {!loading && spots.length > 0 && (
             <div className="mt-8 space-y-8">
               <SpotGroup
-                title="CRITICAL (ACCURACY < 40%)"
+                title="CRITICAL"
                 color="red"
                 spots={groups.critical}
               />
               <SpotGroup
-                title="NEEDS ATTENTION (40% – 65%)"
+                title="NEEDS ATTENTION"
                 color="amber"
                 spots={groups.attention}
               />
               <SpotGroup
-                title="STABLE (65% – 80%)"
+                title="STABLE"
                 color="green"
                 spots={groups.stable}
               />
@@ -132,7 +132,7 @@ export default function WeakSpotsPage() {
                     Focus on {topCritical.concept} this weekend
                   </h2>
                   <p className="mt-2 max-w-xl text-sm text-sky-100/90">
-                    Your accuracy is {topCritical.accuracy_pct}% across{" "}
+                    You&apos;ve struggled with this concept across{" "}
                     {topCritical.attempts} attempts
                     {topCritical.chapter
                       ? ` in ${topCritical.chapter}`
@@ -148,9 +148,6 @@ export default function WeakSpotsPage() {
                       <Sparkles className="h-4 w-4" />
                       Generate Study Plan
                     </Link>
-                    <span className="text-sm font-semibold text-sky-100">
-                      {Math.max(20, 100 - topCritical.accuracy_pct)}% FOCUS
-                    </span>
                   </div>
                 </div>
               )}
@@ -185,13 +182,6 @@ function SpotGroup({
       : color === "amber"
         ? "border-l-amber-500"
         : "border-l-emerald-500";
-  const accColor =
-    color === "red"
-      ? "text-red-500"
-      : color === "amber"
-        ? "text-amber-600"
-        : "text-emerald-600";
-
   return (
     <section>
       <h2 className={`mb-3 text-xs font-bold tracking-wider ${labelColor}`}>
@@ -232,10 +222,7 @@ function SpotGroup({
 
               <div className="mt-4 flex items-end justify-between gap-3">
                 <div>
-                  <p className={`font-display text-2xl font-bold ${accColor}`}>
-                    {s.accuracy_pct}%
-                  </p>
-                  <p className="mt-0.5 text-xs text-slate-400">
+                  <p className="text-xs text-slate-400">
                     {s.attempts} attempts
                   </p>
                 </div>

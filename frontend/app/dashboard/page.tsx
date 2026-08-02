@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  AlertTriangle,
   BookOpen,
   Clock,
   ClipboardList,
   Flame,
   MessageCircle,
   Settings2,
-  TrendingDown,
 } from "lucide-react";
 import { api, type Dashboard, type WeakSpot } from "@/lib/api";
 import { getStudentId, getStudentName } from "@/lib/student";
@@ -71,24 +69,19 @@ export default function DashboardPage() {
 
   const greeting = getGreeting();
   const firstName = studentName.split(" ")[0];
-  const mastery = data?.accuracy_pct ?? 0;
   const daysToMdcat = getDaysToMdcat();
   const planItems = data?.daily_plan?.items || [];
   const primary = planItems[0];
   const hasPractice = (data?.total_attempted ?? 0) > 0;
   const focus = data?.focus || weakSpots[0] || null;
-  const declining = weakSpots.find((s) => s.trend === "getting_worse") || weakSpots[0];
   const chapters = data?.chapters?.slice(0, 3) || [];
   const missionChapter =
-    primary?.chapter || focus?.chapter || "Biological Molecules";
+    primary?.chapter || focus?.chapter || "Start Chapter Practice";
   const missionReason =
     primary?.reason ||
     (focus
       ? `Recommended today because ${focus.concept} needs attention. Keep drilling until it sticks.`
       : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
-  const chapterMastery =
-    data?.chapters?.find((c) => c.chapter === missionChapter)?.accuracy_pct ??
-    mastery;
 
   return (
     <Navbar>
@@ -147,19 +140,6 @@ export default function DashboardPage() {
                   {missionReason}
                 </p>
 
-                <div className="relative mt-6 max-w-md">
-                  <div className="mb-2 flex items-center justify-between text-xs font-semibold tracking-wide text-slate-400">
-                    <span>CURRENT MASTERY</span>
-                    <span className="text-brand">{chapterMastery}%</span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                    <div
-                      className="h-full rounded-full bg-brand transition-all"
-                      style={{ width: `${Math.min(100, chapterMastery)}%` }}
-                    />
-                  </div>
-                </div>
-
                 <Link
                   href={hasPractice ? planHref(primary) : "/practice"}
                   className="relative mt-6 inline-flex items-center rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
@@ -207,51 +187,36 @@ export default function DashboardPage() {
                 </Link>
               </div>
 
-              {/* Chapter accuracy */}
+              {/* Chapter progress */}
               <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
                 <div className="mb-5 flex items-center justify-between gap-3">
                   <h3 className="font-semibold text-slate-900">
-                    Top Chapter Accuracy
+                    Recent Chapters
                   </h3>
                   <Link
-                    href="/weak-spots"
+                    href="/practice"
                     className="text-sm font-medium text-brand hover:underline"
                   >
-                    View Analytics
+                    All Chapters
                   </Link>
                 </div>
 
                 {chapters.length > 0 ? (
                   <div className="space-y-4">
                     {chapters.map((c) => (
-                      <div key={c.chapter}>
-                        <div className="mb-1.5 flex justify-between text-sm">
-                          <span className="font-medium text-slate-700">
-                            {c.chapter}
-                          </span>
-                          <span className="tabular-nums text-slate-500">
-                            {c.accuracy_pct}%
-                          </span>
-                        </div>
-                        <div className="h-2 overflow-hidden rounded-full bg-slate-100">
-                          <div
-                            className={`h-full rounded-full ${
-                              c.accuracy_pct >= 70
-                                ? "bg-emerald-500"
-                                : c.accuracy_pct >= 40
-                                  ? "bg-amber-500"
-                                  : "bg-red-500"
-                            }`}
-                            style={{ width: `${c.accuracy_pct}%` }}
-                          />
-                        </div>
+                      <div key={c.chapter} className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-slate-700">
+                          {c.chapter}
+                        </span>
+                        <span className="text-sm tabular-nums text-slate-500">
+                          {c.attempted} MCQs done
+                        </span>
                       </div>
                     ))}
                   </div>
                 ) : (
                   <p className="text-sm text-slate-500">
-                    Complete a few practice sessions to see chapter accuracy
-                    here.
+                    Complete a few practice sessions to see your progress here.
                   </p>
                 )}
               </div>
@@ -263,21 +228,13 @@ export default function DashboardPage() {
                 <h3 className="text-sm font-semibold tracking-wide text-sky-100">
                   Quick Stats
                 </h3>
-                <div className="mt-5 grid grid-cols-2 gap-4">
+                <div className="mt-5">
                   <div>
                     <p className="text-[10px] font-semibold tracking-wider text-sky-200/80">
-                      ATTEMPTED
+                      MCQs ATTEMPTED
                     </p>
                     <p className="mt-1 font-display text-2xl font-bold tabular-nums">
                       {(data?.total_attempted ?? 0).toLocaleString()}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-semibold tracking-wider text-sky-200/80">
-                      ACCURACY
-                    </p>
-                    <p className="mt-1 font-display text-2xl font-bold tabular-nums">
-                      {mastery}%
                     </p>
                   </div>
                 </div>
@@ -290,7 +247,7 @@ export default function DashboardPage() {
                       {focus?.concept || focus?.chapter || "Start practising"}
                     </p>
                   </div>
-                  <TrendingDown className="h-4 w-4 text-sky-200" />
+                  <Flame className="h-4 w-4 text-sky-200" />
                 </div>
               </div>
 

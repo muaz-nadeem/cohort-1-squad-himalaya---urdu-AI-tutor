@@ -238,8 +238,8 @@ export default function ExamPage() {
 
               <div className="w-full max-w-xs rounded-xl border border-white/15 bg-white/10 p-4 text-sm text-sky-50 backdrop-blur-sm">
                 <div className="flex items-center justify-between">
-                  <span className="text-sky-200/80">Time Remaining</span>
-                  <span className="font-semibold tabular-nums">01:09:42</span>
+                  <span className="text-sky-200/80">Time Limit</span>
+                  <span className="font-semibold">~70 minutes</span>
                 </div>
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-sky-200/80">Questions</span>
