@@ -7,6 +7,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def _parse_origins(raw: str) -> list[str]:
+    """Split CORS origins; strip whitespace and trailing slashes."""
+    return [o.strip().rstrip("/") for o in raw.split(",") if o.strip()]
+
+
+def _parse_hosts(raw: str) -> list[str]:
+    return [h.strip() for h in raw.split(",") if h.strip()]
+
+
 class Settings:
     GROQ_API_KEY: str = os.getenv("GROQ_API_KEY", "")
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
@@ -27,9 +36,22 @@ class Settings:
     SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
     SUPABASE_KEY: str = os.getenv("SUPABASE_KEY", "")
     PORT: int = int(os.getenv("PORT", "8000"))
-    CORS_ORIGINS: list[str] = [
-        o.strip() for o in os.getenv("CORS_ORIGINS", "*").split(",") if o.strip()
-    ]
+
+    # development | production — production refuses wildcard CORS
+    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development").strip().lower()
+
+    # Comma-separated frontend origins. Default keeps local Next.js working.
+    # Production example: https://your-app.vercel.app,https://uraan.app
+    CORS_ORIGINS: list[str] = _parse_origins(
+        os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
+    )
+
+    # Optional: comma-separated hostnames for TrustedHostMiddleware
+    # e.g. api.uraan.app,*.awsapprunner.com
+    TRUSTED_HOSTS: list[str] = _parse_hosts(os.getenv("TRUSTED_HOSTS", ""))
+
+    # Reject oversized mic clips (voice endpoints)
+    MAX_AUDIO_UPLOAD_MB: float = float(os.getenv("MAX_AUDIO_UPLOAD_MB", "10"))
 
     EMBEDDING_MODEL: str = "nomic-embed-text-v1.5"  # local via fastembed
     EMBEDDING_DIMENSIONS: int = 768
@@ -43,6 +65,33 @@ class Settings:
     WHISPER_MODEL: str = "whisper-large-v3"
 
     UPLIFT_BASE: str = "https://api.upliftai.org/v1"
+
+    @property
+    def is_production(self) -> bool:
+        return self.ENVIRONMENT in {"production", "prod"}
+
+    @property
+    def max_audio_bytes(self) -> int:
+        return int(self.MAX_AUDIO_UPLOAD_MB * 1024 * 1024)
+
+    @property
+    def cors_allow_origins(self) -> list[str]:
+        """Origins passed to CORSMiddleware (never '*' in production)."""
+        origins = list(self.CORS_ORIGINS)
+        if "*" in origins:
+            if self.is_production:
+                print(
+                    "  [config] WARNING: CORS_ORIGINS=* is not allowed in production; "
+                    "falling back to empty list — set explicit Vercel/frontend URLs"
+                )
+                return []
+            return ["*"]
+        return origins
+
+    @property
+    def cors_allow_credentials(self) -> bool:
+        # Browsers reject Access-Control-Allow-Origin: * with credentials
+        return "*" not in self.cors_allow_origins
 
     @property
     def supabase_ready(self) -> bool:

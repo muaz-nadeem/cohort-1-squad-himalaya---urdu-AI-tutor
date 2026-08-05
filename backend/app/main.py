@@ -17,6 +17,7 @@ from typing import Optional
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import StreamingResponse
 from openai import APIConnectionError, APITimeoutError, RateLimitError
 from pydantic import BaseModel
@@ -37,6 +38,15 @@ async def lifespan(app: FastAPI):
             sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
+
+    print(
+        f"  [boot] environment={settings.ENVIRONMENT} "
+        f"cors={settings.cors_allow_origins}"
+    )
+    if settings.is_production and not settings.supabase_ready:
+        print("  [boot] WARNING: SUPABASE_URL/KEY missing in production")
+    if settings.is_production and not settings.groq_ready:
+        print("  [boot] WARNING: GROQ_API_KEY missing in production")
 
     # Optional: skip warmup when RAM is tight (loads on first RAG request)
     if os.getenv("SKIP_EMBED_WARMUP", "").lower() in {"1", "true", "yes"}:
@@ -66,11 +76,29 @@ app = FastAPI(title="MDCAT AI Tutor API", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS or ["*"],
-    allow_credentials=True,
+    allow_origins=settings.cors_allow_origins or ["http://localhost:3000"],
+    allow_credentials=settings.cors_allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if settings.TRUSTED_HOSTS:
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=settings.TRUSTED_HOSTS,
+    )
+
+
+def _reject_oversized_audio(audio_bytes: bytes) -> Optional[str]:
+    """Return an error message if the mic clip exceeds the configured limit."""
+    limit = settings.max_audio_bytes
+    if len(audio_bytes) > limit:
+        mb = settings.MAX_AUDIO_UPLOAD_MB
+        return (
+            f"Audio is too large (max {mb:g} MB). "
+            "Record a shorter question and try again."
+        )
+    return None
 
 
 # ===========================================================================
@@ -394,6 +422,14 @@ async def ask_voice(
 ):
     """Audio -> STT -> RAG (anchored on the MCQ) -> English answer + Urdu audio."""
     audio_bytes = await audio.read()
+    oversized = _reject_oversized_audio(audio_bytes)
+    if oversized:
+        return {
+            "error": oversized,
+            "transcript": "",
+            "answer": "",
+            "audio": None,
+        }
     if not audio_bytes or len(audio_bytes) < 500:
         return {
             "error": "No usable audio received. Speak for at least 1–2 seconds.",
@@ -570,6 +606,16 @@ async def rag_ask_voice(
     """Audio -> STT -> textbook RAG search -> English answer + TTS audio."""
     audio_bytes = await audio.read()
     filename = audio.filename or "audio.webm"
+    oversized = _reject_oversized_audio(audio_bytes)
+    if oversized:
+        return {
+            "error": oversized,
+            "transcript": "",
+            "answer": "",
+            "audio": None,
+            "sources": [],
+            "citation": None,
+        }
     if not audio_bytes or len(audio_bytes) < 500:
         return {
             "error": "No usable audio received. Hold the mic and speak for at least 1–2 seconds.",
@@ -1158,10 +1204,18 @@ async def make_daily_plan(student_id: str):
 # ===========================================================================
 # Health
 # ===========================================================================
+@app.get("/")
+async def root():
+    """Lightweight root ping for load balancers / App Runner."""
+    return {"service": "mdcat-ai-tutor", "status": "ok"}
+
+
 @app.get("/health")
 async def health():
+    """Liveness + integration flags (no heavy work — safe for health checks)."""
     return {
         "status": "ok",
+        "environment": settings.ENVIRONMENT,
         "groq": settings.groq_ready,
         "elevenlabs": settings.elevenlabs_ready,
         "uplift": settings.uplift_ready,

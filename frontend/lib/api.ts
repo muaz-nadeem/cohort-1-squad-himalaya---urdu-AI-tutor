@@ -1,4 +1,21 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = resolveApiUrl();
+
+function resolveApiUrl(): string {
+  const raw = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(
+    /\/$/,
+    ""
+  );
+  if (
+    process.env.NODE_ENV === "production" &&
+    /(localhost|127\.0\.0\.1)/i.test(raw)
+  ) {
+    console.error(
+      "[api] NEXT_PUBLIC_API_URL still points at localhost in a production build. " +
+        "Set it to your AWS backend URL in the Vercel project settings."
+    );
+  }
+  return raw;
+}
 
 type CacheEntry<T> = { value: T; expiresAt: number };
 const memoryCache = new Map<string, CacheEntry<unknown>>();
