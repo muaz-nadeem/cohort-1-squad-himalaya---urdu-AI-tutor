@@ -15,7 +15,15 @@ from typing import Optional
 
 from .config import settings
 from . import db
-from .textbook_rag.chunk import book_display_name
+
+BOOK_LABELS = {
+    "fsc_bio_part1": "FSc Biology Part 1",
+    "fsc_bio_part2": "FSc Biology Part 2",
+}
+
+
+def book_display_name(book: str) -> str:
+    return BOOK_LABELS.get(book, book)
 
 _HEADER_RE = re.compile(
     r"\[([^\]]+?)\s*(?:·|-)\s*p\.\s*(\d+)\s*(?:·|-)\s*(text|figure|table)\]",
