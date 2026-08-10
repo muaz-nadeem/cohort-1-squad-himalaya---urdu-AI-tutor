@@ -126,13 +126,16 @@ alter table textbook_chunks enable row level security;
 alter table mnemonic_chunks enable row level security;
 
 drop policy if exists concepts_select_authenticated on concepts;
-create policy concepts_select_authenticated on concepts
-  for select to authenticated
+drop policy if exists concepts_select_public on concepts;
+create policy concepts_select_public on concepts
+  for select
   using (true);
 
 drop policy if exists questions_select_authenticated on questions;
-create policy questions_select_authenticated on questions
-  for select to authenticated
+drop policy if exists questions_select_public on questions;
+-- Temporary public read of MCQ bank (tighten later when API always uses service_role).
+create policy questions_select_public on questions
+  for select
   using (true);
 
 drop policy if exists textbook_chunks_select_authenticated on textbook_chunks;

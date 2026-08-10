@@ -461,10 +461,10 @@ async def _generate_ask_answer(
 async def ask_voice(
     request: Request,
     user: Annotated[AuthUser, Depends(get_current_user)],
-    audio: UploadFile = File(...),
-    concept: str = Form(...),
-    context_chunk: str = Form(default=""),
-    mcq: str = Form(default=""),
+    audio: Annotated[UploadFile, File()],
+    concept: Annotated[str, Form()],
+    context_chunk: Annotated[str, Form()] = "",
+    mcq: Annotated[str, Form()] = "",
 ):
     """Audio -> STT -> RAG (anchored on the MCQ) -> English answer + Urdu audio."""
     audio_bytes = await audio.read()
@@ -658,9 +658,9 @@ def _is_meaningful_question(text: str) -> bool:
 async def rag_ask_voice(
     request: Request,
     user: Annotated[AuthUser, Depends(get_current_user)],
-    audio: UploadFile = File(...),
-    book: Optional[str] = Form(default=None),
-    top_k: int = Form(default=5),
+    audio: Annotated[UploadFile, File()],
+    book: Annotated[Optional[str], Form()] = None,
+    top_k: Annotated[int, Form()] = 5,
 ):
     """Audio -> STT -> textbook RAG search -> English answer + TTS audio."""
     audio_bytes = await audio.read()
