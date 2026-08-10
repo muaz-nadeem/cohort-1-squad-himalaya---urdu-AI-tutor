@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: "Uraan — MDCAT Biology Prep",
   description:
     "Ask Biology in Urdu. Practise chapter MCQs and full-length papers. Uraan finds your weak spots as you go.",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png" }],
+  },
 };
 
 export default function RootLayout({

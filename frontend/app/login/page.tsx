@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, Lock, Mail, Plane } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { api } from "@/lib/api";
 import { signIn } from "@/lib/auth";
 import { setStudentName } from "@/lib/student";
+import BrandMark from "@/components/BrandMark";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -64,9 +65,7 @@ export default function LoginPage() {
           }}
         />
         <Link href="/" className="relative inline-flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-            <Plane className="h-5 w-5 -rotate-45" />
-          </div>
+          <BrandMark className="h-10 w-10" priority />
           <div>
             <p className="font-display text-2xl font-bold leading-none">Uraan</p>
             <p className="font-urdu mt-1 text-sm text-sky-200/90">اُڑان</p>

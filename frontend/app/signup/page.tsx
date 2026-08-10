@@ -9,12 +9,12 @@ import {
   Info,
   Lock,
   Mail,
-  Plane,
   User,
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { signUp } from "@/lib/auth";
 import { setStudentName } from "@/lib/student";
+import BrandMark from "@/components/BrandMark";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -75,9 +75,7 @@ export default function SignupPage() {
         />
 
         <Link href="/" className="relative inline-flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-            <Plane className="h-5 w-5 -rotate-45" />
-          </div>
+          <BrandMark className="h-10 w-10" priority />
           <div>
             <p className="font-display text-2xl font-bold leading-none">Uraan</p>
             <p className="font-urdu mt-1 text-sm text-sky-200/90">اُڑان</p>
@@ -108,9 +106,7 @@ export default function SignupPage() {
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
           <div className="mb-8 flex items-center justify-between lg:hidden">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-                <Plane className="h-4 w-4 -rotate-45" />
-              </div>
+              <BrandMark className="h-9 w-9" />
               <span className="font-display text-xl font-bold text-brand">
                 Uraan
               </span>

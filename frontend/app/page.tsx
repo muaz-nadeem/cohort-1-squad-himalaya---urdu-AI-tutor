@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { getStudentId } from "@/lib/student";
 import { syncStudentCacheFromSession } from "@/lib/auth";
+import BrandMark from "@/components/BrandMark";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -20,9 +21,12 @@ export default function LandingPage() {
     <div className="landing min-h-screen text-slate-900">
       <header className="absolute inset-x-0 top-0 z-30">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-          <span className="font-display text-lg font-bold tracking-tight text-brand">
-            uraan
-          </span>
+          <Link href="/" className="inline-flex items-center gap-2">
+            <BrandMark className="h-8 w-8" priority />
+            <span className="font-display text-lg font-bold tracking-tight text-brand">
+              uraan
+            </span>
+          </Link>
           <div className="flex items-center gap-5 text-sm">
             <Link
               href="/login"
@@ -227,11 +231,14 @@ export default function LandingPage() {
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-5 py-8 sm:px-8 lg:flex-row lg:justify-between lg:gap-6">
-          <div className="flex items-baseline gap-2.5">
-            <span className="font-display text-xl font-bold tracking-tight text-brand">
-              uraan
-            </span>
-            <span className="font-urdu text-lg text-brand">اڑان</span>
+          <div className="flex items-center gap-2.5">
+            <BrandMark className="h-8 w-8" />
+            <div className="flex items-baseline gap-2.5">
+              <span className="font-display text-xl font-bold tracking-tight text-brand">
+                uraan
+              </span>
+              <span className="font-urdu text-lg text-brand">اڑان</span>
+            </div>
           </div>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-slate-500">

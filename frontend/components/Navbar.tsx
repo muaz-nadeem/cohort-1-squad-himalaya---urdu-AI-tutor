@@ -1,5 +1,8 @@
 "use client";
 
+import { getStudentName } from "@/lib/student";
+import { signOut } from "@/lib/auth";
+import BrandMark from "@/components/BrandMark";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -8,15 +11,11 @@ import {
   Timer,
   Puzzle,
   MessageCircle,
-  Target,
-  CalendarDays,
   LogOut,
   Menu,
   X,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { getStudentName } from "@/lib/student";
-import { signOut } from "@/lib/auth";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -64,17 +63,20 @@ export default function Navbar({ children }: { children?: ReactNode }) {
   const sidebar = (
     <aside className="flex h-full w-[240px] flex-col border-r border-slate-100 bg-white">
       <div className="flex items-center gap-2.5 px-5 py-5">
-        <div>
-          <div className="flex items-baseline gap-2">
-            <p className="font-display text-lg font-bold leading-none text-brand">
-              uraan
+        <Link href="/dashboard" className="flex items-center gap-2.5">
+          <BrandMark className="h-9 w-9 shrink-0" />
+          <div>
+            <div className="flex items-baseline gap-2">
+              <p className="font-display text-lg font-bold leading-none text-brand">
+                uraan
+              </p>
+              <p className="font-urdu text-sm text-brand">اُڑان</p>
+            </div>
+            <p className="mt-1.5 text-[10px] font-semibold tracking-wide text-slate-400">
+              MDCAT 2026
             </p>
-            <p className="font-urdu text-sm text-brand">اُڑان</p>
           </div>
-          <p className="mt-1.5 text-[10px] font-semibold tracking-wide text-slate-400">
-            MDCAT 2026
-          </p>
-        </div>
+        </Link>
       </div>
 
       <nav className="flex-1 space-y-0.5 px-3 py-2">
@@ -138,7 +140,8 @@ export default function Navbar({ children }: { children?: ReactNode }) {
         >
           <Menu className="h-5 w-5" />
         </button>
-        <Link href="/dashboard" className="font-display text-lg font-bold text-brand">
+        <Link href="/dashboard" className="inline-flex items-center gap-2 font-display text-lg font-bold text-brand">
+          <BrandMark className="h-7 w-7" />
           uraan
         </Link>
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">
