@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
@@ -11,48 +10,60 @@ import {
   MessageCircle,
   Settings2,
 } from "lucide-react";
-import { api, type Dashboard, type WeakSpot } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
+import { api, type WeakSpot } from "@/lib/api";
 import { getStudentId, getStudentName } from "@/lib/student";
+import { syncStudentCacheFromSession } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
+import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [data, setData] = useState<Dashboard | null>(null);
-  const [weakSpots, setWeakSpots] = useState<WeakSpot[]>([]);
+  const [studentId, setStudentId] = useState<string | null>(null);
   const [studentName, setStudentName_] = useState("Student");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    const id = getStudentId();
-    if (!id) {
-      router.replace("/");
-      return;
-    }
-    setStudentName_(getStudentName() || "Student");
-
-    const cachedDash = api.peekDashboard(id);
-    const cachedSpots = api.peekWeakSpots(id);
-    if (cachedDash) {
-      setData(cachedDash);
-      setLoading(false);
-    }
-    if (cachedSpots) setWeakSpots(cachedSpots);
-
-    // Warm chapters cache for Chapter Practice so that tab feels instant
-    void api.getChapters().catch(() => []);
-
-    Promise.all([
-      api.getDashboard(id),
-      api.getWeakSpots(id).catch(() => [] as WeakSpot[]),
-    ])
-      .then(([dashboard, spots]) => {
-        setData(dashboard);
-        setWeakSpots(spots);
-      })
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load"))
-      .finally(() => setLoading(false));
+    void syncStudentCacheFromSession().then((id) => {
+      const sid = id || getStudentId();
+      if (!sid) {
+        router.replace("/login");
+        return;
+      }
+      setStudentId(sid);
+      setStudentName_(getStudentName() || "Student");
+    });
   }, [router]);
+
+  const dashQuery = useQuery({
+    queryKey: ["dashboard", studentId],
+    queryFn: () => api.getDashboard(studentId!),
+    enabled: !!studentId,
+    staleTime: 60_000,
+  });
+
+  const spotsQuery = useQuery({
+    queryKey: ["weak-spots", studentId],
+    queryFn: () => api.getWeakSpots(studentId!).catch(() => [] as WeakSpot[]),
+    enabled: !!studentId,
+    staleTime: 60_000,
+  });
+
+  useQuery({
+    queryKey: ["chapters"],
+    queryFn: () => api.getChapters(),
+    enabled: !!studentId,
+    staleTime: 10 * 60_000,
+  });
+
+  const data = dashQuery.data ?? null;
+  const weakSpots = spotsQuery.data ?? [];
+  const loading = !studentId || (dashQuery.isLoading && !data);
+  const error =
+    dashQuery.error instanceof Error
+      ? dashQuery.error.message
+      : dashQuery.error
+        ? "Failed to load"
+        : "";
 
   if (loading && !data) {
     return (

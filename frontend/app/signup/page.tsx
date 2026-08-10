@@ -13,7 +13,8 @@ import {
   User,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { setStudentId, setStudentName } from "@/lib/student";
+import { signUp } from "@/lib/auth";
+import { setStudentName } from "@/lib/student";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -26,17 +27,31 @@ export default function SignupPage() {
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !password) {
+      setError("Email and password are required.");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
     setLoading(true);
     setError("");
     try {
+      const { session, user } = await signUp(email.trim(), password, name || undefined);
+      if (!session && user) {
+        setError(
+          "Check your email to confirm your account, then sign in."
+        );
+        setLoading(false);
+        return;
+      }
       const student = await api.createStudent({
         name: name || undefined,
         email: email.trim(),
         level: "just_starting",
         daily_time: "1hr",
       });
-      setStudentId(student.id);
       setStudentName(student.name || name || "Student");
       router.replace("/dashboard");
     } catch (e) {

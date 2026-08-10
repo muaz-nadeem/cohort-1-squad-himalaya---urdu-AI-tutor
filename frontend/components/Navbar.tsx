@@ -15,7 +15,8 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { getStudentName, clearStudent } from "@/lib/student";
+import { getStudentName } from "@/lib/student";
+import { signOut } from "@/lib/auth";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -48,8 +49,8 @@ export default function Navbar({ children }: { children?: ReactNode }) {
     setOpen(false);
   }, [pathname]);
 
-  function handleLogout() {
-    clearStudent();
+  async function handleLogout() {
+    await signOut();
     router.replace("/");
   }
 

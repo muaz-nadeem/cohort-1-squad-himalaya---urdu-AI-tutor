@@ -14,30 +14,36 @@ import {
 import { api, type WeakSpot } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import Navbar from "@/components/Navbar";
+import { useQuery } from "@tanstack/react-query";
 
 export default function WeakSpotsPage() {
   const router = useRouter();
-  const [spots, setSpots] = useState<WeakSpot[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [studentId, setStudentId] = useState<string | null>(null);
 
   useEffect(() => {
     const id = getStudentId();
     if (!id) {
-      router.replace("/");
+      router.replace("/login");
       return;
     }
-    const cached = api.peekWeakSpots(id);
-    if (cached) {
-      setSpots(cached);
-      setLoading(false);
-    }
-    api
-      .getWeakSpots(id)
-      .then(setSpots)
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load"))
-      .finally(() => setLoading(false));
+    setStudentId(id);
   }, [router]);
+
+  const spotsQuery = useQuery({
+    queryKey: ["weak-spots", studentId],
+    queryFn: () => api.getWeakSpots(studentId!),
+    enabled: !!studentId,
+    staleTime: 60_000,
+  });
+
+  const spots = spotsQuery.data ?? [];
+  const loading = spotsQuery.isLoading && spots.length === 0;
+  const error =
+    spotsQuery.error instanceof Error
+      ? spotsQuery.error.message
+      : spotsQuery.error
+        ? "Failed to load"
+        : "";
 
   const groups = useMemo(() => {
     const critical = spots.filter((s) => s.accuracy_pct < 40);

@@ -34,14 +34,22 @@ class Settings:
     ELEVENLABS_BASE: str = "https://api.elevenlabs.io/v1"
 
     SUPABASE_URL: str = os.getenv("SUPABASE_URL", "")
-    SUPABASE_KEY: str = os.getenv("SUPABASE_KEY", "")
+    # Prefer service role; fall back to legacy SUPABASE_KEY for local scripts.
+    SUPABASE_SERVICE_ROLE_KEY: str = (
+        os.getenv("SUPABASE_SERVICE_ROLE_KEY")
+        or os.getenv("SUPABASE_KEY")
+        or ""
+    )
+    # JWT secret from Supabase Project Settings → API → JWT Secret (HS256).
+    SUPABASE_JWT_SECRET: str = os.getenv("SUPABASE_JWT_SECRET", "")
     PORT: int = int(os.getenv("PORT", "8000"))
 
     # development | production — production refuses wildcard CORS
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development").strip().lower()
 
     # Comma-separated frontend origins. Default keeps local Next.js working.
-    # Production example: https://your-app.vercel.app,https://uraan.app
+    # Production: set exact Vercel/custom domains — never use * in production.
+    # Example: https://your-app.vercel.app,https://uraan.app
     CORS_ORIGINS: list[str] = _parse_origins(
         os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
     )
@@ -94,8 +102,17 @@ class Settings:
         return "*" not in self.cors_allow_origins
 
     @property
+    def SUPABASE_KEY(self) -> str:
+        """Alias used by db.get_client — always the service role key."""
+        return self.SUPABASE_SERVICE_ROLE_KEY
+
+    @property
     def supabase_ready(self) -> bool:
-        return bool(self.SUPABASE_URL and self.SUPABASE_KEY)
+        return bool(self.SUPABASE_URL and self.SUPABASE_SERVICE_ROLE_KEY)
+
+    @property
+    def auth_ready(self) -> bool:
+        return bool(self.SUPABASE_JWT_SECRET)
 
     @property
     def groq_ready(self) -> bool:

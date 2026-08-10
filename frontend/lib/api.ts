@@ -1,3 +1,7 @@
+"use client";
+
+import { getAccessToken } from "./auth";
+
 const API_URL = resolveApiUrl();
 
 function resolveApiUrl(): string {
@@ -17,56 +21,28 @@ function resolveApiUrl(): string {
   return raw;
 }
 
-type CacheEntry<T> = { value: T; expiresAt: number };
-const memoryCache = new Map<string, CacheEntry<unknown>>();
-const inflight = new Map<string, Promise<unknown>>();
-
-/** Instant read of whatever is cached (even if expired) — for paint-before-fetch. */
-export function peekCache<T>(key: string): T | null {
-  const hit = memoryCache.get(key) as CacheEntry<T> | undefined;
-  return hit ? hit.value : null;
-}
-
-/**
- * Memory cache with in-flight dedupe. Use peekCache() for instant first paint.
- */
-function cached<T>(key: string, ttlMs: number, loader: () => Promise<T>): Promise<T> {
-  const hit = memoryCache.get(key) as CacheEntry<T> | undefined;
-  if (hit && hit.expiresAt > Date.now()) return Promise.resolve(hit.value);
-
-  let load = inflight.get(key) as Promise<T> | undefined;
-  if (!load) {
-    load = loader()
-      .then((value) => {
-        memoryCache.set(key, { value, expiresAt: Date.now() + ttlMs });
-        inflight.delete(key);
-        return value;
-      })
-      .catch((err) => {
-        inflight.delete(key);
-        throw err;
-      });
-    inflight.set(key, load);
-  }
-  return load;
-}
-
-function invalidateCache(prefix: string) {
-  for (const key of memoryCache.keys()) {
-    if (key.startsWith(prefix)) memoryCache.delete(key);
-  }
-  for (const key of inflight.keys()) {
-    if (key.startsWith(prefix)) inflight.delete(key);
-  }
+async function authHeaders(
+  extra?: Record<string, string>,
+  json = true
+): Promise<Record<string, string>> {
+  const token = await getAccessToken();
+  const headers: Record<string, string> = { ...(extra || {}) };
+  if (json) headers["Content-Type"] = "application/json";
+  if (token) headers.Authorization = `Bearer ${token}`;
+  return headers;
 }
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 60000);
   try {
+    const baseHeaders = await authHeaders(
+      options?.headers as Record<string, string> | undefined,
+      !(options?.body instanceof FormData)
+    );
     const res = await fetch(`${API_URL}${path}`, {
-      headers: { "Content-Type": "application/json", ...(options?.headers || {}) },
       ...options,
+      headers: baseHeaders,
       signal: options?.signal || controller.signal,
     });
     if (!res.ok) {
@@ -76,7 +52,9 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     return res.json() as Promise<T>;
   } catch (e) {
     if ((e as Error)?.name === "AbortError") {
-      throw new Error("Request timed out. The server may be loading models — try again in a moment.");
+      throw new Error(
+        "Request timed out. The server may be loading models — try again in a moment."
+      );
     }
     throw e;
   } finally {
@@ -107,7 +85,8 @@ export interface Question {
   difficulty: number;
   question_text: string;
   options: Option[];
-  correct_option: string;
+  /** Only present after an attempt is graded server-side. */
+  correct_option?: string;
   explanation?: string;
   source?: string;
   source_type?: string;
@@ -151,7 +130,6 @@ export interface ExplainResult {
 export interface AskResult {
   answer: string;
   audio: string | null;
-  /** Token for streaming narration from /api/tts-stream/{id}. */
   speech_id?: string | null;
   urdu_text?: string;
   transcript: string;
@@ -161,12 +139,16 @@ export interface AskResult {
   error?: string;
 }
 
-/** URL that streams cached Urdu narration as MP3, playable the moment it starts. */
-export function speechStreamUrl(speechId?: string | null): string | null {
-  return speechId ? `${API_URL}/api/tts-stream/${speechId}` : null;
+/** URL that streams cached Urdu narration (includes access_token for <audio>). */
+export async function speechStreamUrl(
+  speechId?: string | null
+): Promise<string | null> {
+  if (!speechId) return null;
+  const token = await getAccessToken();
+  const q = token ? `?access_token=${encodeURIComponent(token)}` : "";
+  return `${API_URL}/api/tts-stream/${speechId}${q}`;
 }
 
-/** The MCQ a student is looking at, so follow-ups stay on that question. */
 export interface McqContext {
   question_text?: string;
   options?: Option[];
@@ -207,7 +189,12 @@ export interface Dashboard {
   accuracy_pct: number;
   total_attempted: number;
   streak: number;
-  chapters: { chapter: string; attempted: number; correct: number; accuracy_pct: number }[];
+  chapters: {
+    chapter: string;
+    attempted: number;
+    correct: number;
+    accuracy_pct: number;
+  }[];
   focus: WeakSpot | null;
   diagnostic_done?: boolean;
   daily_plan?: DailyPlan | null;
@@ -218,8 +205,19 @@ export interface SessionSummary {
   score: number;
   total: number;
   accuracy_pct: number;
-  concepts: { concept_id: string; concept: string; attempted: number; correct: number; accuracy_pct: number }[];
-  chapters?: { chapter: string; attempted: number; correct: number; accuracy_pct: number }[];
+  concepts: {
+    concept_id: string;
+    concept: string;
+    attempted: number;
+    correct: number;
+    accuracy_pct: number;
+  }[];
+  chapters?: {
+    chapter: string;
+    attempted: number;
+    correct: number;
+    accuracy_pct: number;
+  }[];
   next_recommendation: WeakSpot | null;
 }
 
@@ -284,32 +282,33 @@ export interface RagVoiceResult {
 }
 
 export const api = {
-  login: (email: string) =>
-    request<Student>(`/api/login?email=${encodeURIComponent(email)}`),
-
   createStudent: (body: {
     name?: string;
     email?: string;
     level: string;
     daily_time: string;
-  }) => request<Student>("/api/students", { method: "POST", body: JSON.stringify(body) }),
+  }) =>
+    request<Student>("/api/students", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
-  getStudent: (id: string) => request<Student>(`/api/students/${id}`),
+  getStudent: (id?: string) =>
+    id
+      ? request<Student>(`/api/students/${id}`)
+      : request<Student>("/api/students/me"),
 
-  getDashboard: (studentId: string) =>
-    cached(`dashboard:${studentId}`, 60_000, () =>
-      request<Dashboard>(`/api/dashboard?student_id=${studentId}`)
-    ),
+  getDashboard: (studentId?: string) => {
+    const q = studentId ? `?student_id=${encodeURIComponent(studentId)}` : "";
+    return request<Dashboard>(`/api/dashboard${q}`);
+  },
 
-  peekDashboard: (studentId: string) =>
-    peekCache<Dashboard>(`dashboard:${studentId}`),
+  getChapters: () => request<ChapterInfo[]>("/api/chapters"),
 
-  getChapters: () =>
-    cached("chapters", 10 * 60 * 1000, () => request<ChapterInfo[]>("/api/chapters")),
-
-  peekChapters: () => peekCache<ChapterInfo[]>("chapters"),
-
-  getQuestions: (studentId: string, params: { chapter?: string; concept_id?: string } = {}) => {
+  getQuestions: (
+    studentId: string,
+    params: { chapter?: string; concept_id?: string } = {}
+  ) => {
     const q = new URLSearchParams({ student_id: studentId });
     if (params.chapter) q.set("chapter", params.chapter);
     if (params.concept_id) q.set("concept_id", params.concept_id);
@@ -343,24 +342,24 @@ export const api = {
   },
 
   startSession: (body: {
-    student_id: string;
+    student_id?: string;
     mode: string;
     concept_id?: string;
     chapter?: string;
-  }) => request<{ id: string }>("/api/sessions", { method: "POST", body: JSON.stringify(body) }),
+  }) =>
+    request<{ id: string }>("/api/sessions", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
-  endSession: (sessionId: string, body: { score: number; total: number }) =>
+  endSession: (sessionId: string, body: { score?: number; total?: number } = {}) =>
     request<SessionSummary>(`/api/sessions/${sessionId}/end`, {
       method: "POST",
       body: JSON.stringify(body),
-    }).then((summary) => {
-      invalidateCache("dashboard:");
-      invalidateCache("weak-spots:");
-      return summary;
     }),
 
   logAttempt: (body: {
-    student_id: string;
+    student_id?: string;
     question_id: string;
     selected_option: string;
     session_id?: string;
@@ -368,10 +367,6 @@ export const api = {
     request<AttemptResult>("/api/attempt", {
       method: "POST",
       body: JSON.stringify(body),
-    }).then((result) => {
-      invalidateCache(`dashboard:${body.student_id}`);
-      invalidateCache(`weak-spots:${body.student_id}`);
-      return result;
     }),
 
   explain: (body: {
@@ -380,14 +375,22 @@ export const api = {
     selected_option: string;
     correct_option: string;
     speak?: boolean;
-  }) => request<ExplainResult>("/api/explain", { method: "POST", body: JSON.stringify(body) }),
+  }) =>
+    request<ExplainResult>("/api/explain", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
   ask: (body: {
     concept: string;
     student_question: string;
     history?: { role: string; content: string }[];
     mcq?: McqContext;
-  }) => request<AskResult>("/api/ask", { method: "POST", body: JSON.stringify(body) }),
+  }) =>
+    request<AskResult>("/api/ask", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
   askVoice: async (
     audio: Blob,
@@ -396,13 +399,14 @@ export const api = {
   ): Promise<AskResult> => {
     const form = new FormData();
     const mime = audio.type || "audio/webm";
-    const ext = mime.includes("mp4") || mime.includes("m4a")
-      ? "m4a"
-      : mime.includes("ogg")
-        ? "ogg"
-        : mime.includes("wav")
-          ? "wav"
-          : "webm";
+    const ext =
+      mime.includes("mp4") || mime.includes("m4a")
+        ? "m4a"
+        : mime.includes("ogg")
+          ? "ogg"
+          : mime.includes("wav")
+            ? "wav"
+            : "webm";
     form.append("audio", audio, `question.${ext}`);
     form.append("concept", concept);
     if (mcq?.question_text) form.append("mcq", JSON.stringify(mcq));
@@ -410,8 +414,10 @@ export const api = {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 90000);
     try {
+      const headers = await authHeaders({}, false);
       const res = await fetch(`${API_URL}/api/ask-voice`, {
         method: "POST",
+        headers,
         body: form,
         signal: controller.signal,
       });
@@ -427,45 +433,55 @@ export const api = {
     }
   },
 
-  getWeakSpots: (studentId: string) =>
-    cached(`weak-spots:${studentId}`, 60_000, () =>
-      request<WeakSpot[]>(`/api/weak-spots?student_id=${studentId}`)
-    ),
+  getWeakSpots: (studentId?: string) => {
+    const q = studentId ? `?student_id=${encodeURIComponent(studentId)}` : "";
+    return request<WeakSpot[]>(`/api/weak-spots${q}`);
+  },
 
-  peekWeakSpots: (studentId: string) =>
-    peekCache<WeakSpot[]>(`weak-spots:${studentId}`),
+  getWeeklyPlan: (studentId?: string) => {
+    const q = studentId ? `?student_id=${encodeURIComponent(studentId)}` : "";
+    return request<WeeklyPlan>(`/api/weekly-plan${q}`);
+  },
 
-  getWeeklyPlan: (studentId: string) =>
-    cached(`weekly-plan:${studentId}`, 5 * 60 * 1000, () =>
-      request<WeeklyPlan>(`/api/weekly-plan?student_id=${studentId}`)
-    ),
-
-  peekWeeklyPlan: (studentId: string) =>
-    peekCache<WeeklyPlan>(`weekly-plan:${studentId}`),
-
-  getDailyPlan: (studentId: string) =>
-    request<DailyPlan>(`/api/daily-plan?student_id=${studentId}`),
+  getDailyPlan: (studentId?: string) => {
+    const q = studentId ? `?student_id=${encodeURIComponent(studentId)}` : "";
+    return request<DailyPlan>(`/api/daily-plan${q}`);
+  },
 
   ragAsk: (body: { question: string; book?: string; top_k?: number }) =>
-    request<RagAnswer>("/api/rag/ask", { method: "POST", body: JSON.stringify(body) }),
-
-  ragAskStream: (body: { question: string; book?: string; top_k?: number }) =>
-    fetch(`${API_URL}/api/rag/ask-stream`, {
+    request<RagAnswer>("/api/rag/ask", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }),
 
-  ragAskVoice: async (audio: Blob, book?: string, top_k = 3): Promise<RagVoiceResult> => {
+  ragAskStream: async (body: {
+    question: string;
+    book?: string;
+    top_k?: number;
+  }) => {
+    const headers = await authHeaders();
+    return fetch(`${API_URL}/api/rag/ask-stream`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    });
+  },
+
+  ragAskVoice: async (
+    audio: Blob,
+    book?: string,
+    top_k = 3
+  ): Promise<RagVoiceResult> => {
     const form = new FormData();
     const mime = audio.type || "audio/webm";
-    const ext = mime.includes("mp4") || mime.includes("m4a")
-      ? "m4a"
-      : mime.includes("ogg")
-        ? "ogg"
-        : mime.includes("wav")
-          ? "wav"
-          : "webm";
+    const ext =
+      mime.includes("mp4") || mime.includes("m4a")
+        ? "m4a"
+        : mime.includes("ogg")
+          ? "ogg"
+          : mime.includes("wav")
+            ? "wav"
+            : "webm";
     form.append("audio", audio, `question.${ext}`);
     if (book) form.append("book", book);
     form.append("top_k", String(top_k));
@@ -473,8 +489,10 @@ export const api = {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 90000);
     try {
+      const headers = await authHeaders({}, false);
       const res = await fetch(`${API_URL}/api/rag/ask-voice`, {
         method: "POST",
+        headers,
         body: form,
         signal: controller.signal,
       });
@@ -485,7 +503,9 @@ export const api = {
       return res.json();
     } catch (e) {
       if ((e as Error)?.name === "AbortError") {
-        throw new Error("Voice request timed out. Try a shorter question or use text.");
+        throw new Error(
+          "Voice request timed out. Try a shorter question or use text."
+        );
       }
       throw e;
     } finally {

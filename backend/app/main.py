@@ -13,17 +13,36 @@ import re
 import uuid
 from collections import OrderedDict
 from contextlib import asynccontextmanager
-from typing import Optional
+from typing import Annotated, Optional
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import StreamingResponse
 from openai import APIConnectionError, APITimeoutError, RateLimitError
 from pydantic import BaseModel
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
-from . import db, llm, planner, rag, study, voice, weak_spots
+from . import auth, db, llm, planner, rag, study, voice, weak_spots
+from .auth import AuthUser, assert_same_student, get_current_user, public_question_set
 from .config import settings
+
+
+def _rate_limit_key(request: Request) -> str:
+    """Prefer authenticated user id; fall back to client IP."""
+    header = request.headers.get("authorization") or ""
+    if header.lower().startswith("bearer "):
+        token = header.split(" ", 1)[1].strip()
+        try:
+            return f"user:{auth._decode_access_token(token).user_id}"
+        except Exception:
+            pass
+    return get_remote_address(request)
+
+
+limiter = Limiter(key_func=_rate_limit_key, default_limits=[])
 
 
 @asynccontextmanager
@@ -44,7 +63,9 @@ async def lifespan(app: FastAPI):
         f"cors={settings.cors_allow_origins}"
     )
     if settings.is_production and not settings.supabase_ready:
-        print("  [boot] WARNING: SUPABASE_URL/KEY missing in production")
+        print("  [boot] WARNING: SUPABASE_URL/SERVICE_ROLE_KEY missing in production")
+    if settings.is_production and not settings.auth_ready:
+        print("  [boot] WARNING: SUPABASE_JWT_SECRET missing — API auth will fail")
     if settings.is_production and not settings.groq_ready:
         print("  [boot] WARNING: GROQ_API_KEY missing in production")
 
@@ -73,6 +94,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="MDCAT AI Tutor API", version="1.0.0", lifespan=lifespan)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
@@ -121,7 +144,12 @@ def cache_speech(text: str) -> Optional[str]:
 
 
 @app.get("/api/tts-stream/{speech_id}")
-async def tts_stream(speech_id: str):
+@limiter.limit("60/minute")
+async def tts_stream(
+    request: Request,
+    speech_id: str,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Stream the cached Urdu narration as MP3 so playback starts immediately."""
     text = _SPEECH_CACHE.get(speech_id)
     if not text:
@@ -138,7 +166,12 @@ class TtsRequest(BaseModel):
 
 
 @app.post("/api/tts-stream")
-async def tts_stream_direct(req: TtsRequest):
+@limiter.limit("30/minute")
+async def tts_stream_direct(
+    request: Request,
+    req: TtsRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Stream synthesis for arbitrary text (used for replay)."""
     if not req.text.strip():
         raise HTTPException(status_code=400, detail="text is required")
@@ -260,8 +293,18 @@ class AskRequest(BaseModel):
 
 
 @app.post("/api/ask")
-async def ask_ai(req: AskRequest):
+@limiter.limit("30/minute")
+async def ask_ai(
+    request: Request,
+    req: AskRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Text question -> RAG -> LLM -> English answer + spoken Urdu audio."""
+    return await _ask_ai_impl(req)
+
+
+async def _ask_ai_impl(req: AskRequest):
+    """Shared ask pipeline (also used by ask-voice after STT)."""
     mcq_block = req.mcq.summary() if req.mcq else ""
     cache_key = _answer_key(
         "ask",
@@ -414,7 +457,10 @@ async def _generate_ask_answer(
 
 
 @app.post("/api/ask-voice")
+@limiter.limit("20/minute")
 async def ask_voice(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
     audio: UploadFile = File(...),
     concept: str = Form(...),
     context_chunk: str = Form(default=""),
@@ -457,7 +503,7 @@ async def ask_voice(
             mcq_ctx = None
 
     try:
-        result = await ask_ai(
+        result = await _ask_ai_impl(
             AskRequest(
                 concept=concept,
                 student_question=transcript,
@@ -487,7 +533,12 @@ class RagAskRequest(BaseModel):
 
 
 @app.post("/api/rag/ask")
-async def rag_ask(req: RagAskRequest):
+@limiter.limit("30/minute")
+async def rag_ask(
+    request: Request,
+    req: RagAskRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Question -> vector search over FSc Biology chunks -> grounded answer + pages."""
     if not req.question.strip():
         raise HTTPException(status_code=400, detail="question is required")
@@ -535,7 +586,12 @@ async def rag_ask(req: RagAskRequest):
 
 
 @app.post("/api/rag/ask-stream")
-async def rag_ask_stream(req: RagAskRequest):
+@limiter.limit("30/minute")
+async def rag_ask_stream(
+    request: Request,
+    req: RagAskRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Streaming version: sends sources first, then LLM tokens as SSE."""
     if not req.question.strip():
         raise HTTPException(status_code=400, detail="question is required")
@@ -598,7 +654,10 @@ def _is_meaningful_question(text: str) -> bool:
 
 
 @app.post("/api/rag/ask-voice")
+@limiter.limit("20/minute")
 async def rag_ask_voice(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
     audio: UploadFile = File(...),
     book: Optional[str] = Form(default=None),
     top_k: int = Form(default=5),
@@ -755,14 +814,29 @@ class ExplainRequest(BaseModel):
 
 
 @app.post("/api/explain")
-async def explain(req: ExplainRequest):
+@limiter.limit("30/minute")
+async def explain(
+    request: Request,
+    req: ExplainRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """MCQ explanation — teach the question; cite textbook book + page only."""
+    loop = asyncio.get_event_loop()
+    question = None
+    try:
+        question = await loop.run_in_executor(None, db.get_question, req.question_id)
+    except Exception:
+        pass
+
+    # Prefer server-side answer key; never trust the client alone.
+    correct_option = (question or {}).get("correct_option") or req.correct_option
+
     cache_key = _answer_key(
         "explain",
         req.question_id,
         req.concept,
         req.selected_option,
-        req.correct_option,
+        correct_option,
         req.context_chunk,
     )
     cached = _EXPLAIN_CACHE.get(cache_key)
@@ -775,12 +849,6 @@ async def explain(req: ExplainRequest):
                 response["audio"] = await voice.text_to_speech(response["explanation"])
         return response
 
-    loop = asyncio.get_event_loop()
-    question = None
-    try:
-        question = await loop.run_in_executor(None, db.get_question, req.question_id)
-    except Exception:
-        pass
     question_text = (question or {}).get("question_text") or ""
     q_chapter = (question or {}).get("chapter") or req.concept
 
@@ -788,7 +856,7 @@ async def explain(req: ExplainRequest):
     sources: list[dict] = []
     citation = None
 
-    search_q = f"{question_text} {req.correct_option}".strip() or req.concept
+    search_q = f"{question_text} {correct_option}".strip() or req.concept
     retrieved_task = loop.run_in_executor(
         None, lambda: rag.retrieve_context(search_q, top_k=3)
     )
@@ -813,7 +881,7 @@ async def explain(req: ExplainRequest):
         lambda: llm.explain_answer(
             concept=q_chapter,
             selected_option=req.selected_option,
-            correct_option=req.correct_option,
+            correct_option=correct_option,
             question_text=question_text,
             context_chunk=context or "",
             mnemonic_chunk=mnemonic_ctx,
@@ -878,23 +946,49 @@ class StudentCreate(BaseModel):
     subject: str = "Biology"
 
 
-@app.get("/api/login")
-async def login(email: str):
-    """Simple email-based login — find existing student by email."""
-    student = db.find_student_by_email(email)
+@app.post("/api/students")
+@limiter.limit("20/minute")
+async def create_student(
+    request: Request,
+    req: StudentCreate,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    """Create or update the profile for the authenticated user (id = auth.uid())."""
+    email = (req.email or user.email or "").strip() or None
+    return db.upsert_student_profile(
+        user.user_id,
+        {
+            "name": req.name,
+            "email": email,
+            "level": req.level,
+            "daily_time": req.daily_time,
+            "exam": req.exam,
+            "subject": req.subject,
+        },
+    )
+
+
+@app.get("/api/students/me")
+@limiter.limit("60/minute")
+async def get_my_student(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    student = db.get_student(user.user_id)
     if not student:
         raise HTTPException(status_code=404, detail="Student not found")
     return student
 
 
-@app.post("/api/students")
-async def create_student(req: StudentCreate):
-    return db.create_student(req.model_dump(exclude_none=True))
-
-
 @app.get("/api/students/{student_id}")
-async def get_student(student_id: str):
-    student = db.get_student(student_id)
+@limiter.limit("60/minute")
+async def get_student(
+    request: Request,
+    student_id: str,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    assert_same_student(user, student_id)
+    student = db.get_student(user.user_id)
     if not student:
         raise HTTPException(status_code=404, detail="Student not found")
     return student
@@ -904,12 +998,20 @@ async def get_student(student_id: str):
 # Concepts + chapters
 # ===========================================================================
 @app.get("/api/concepts")
-async def list_concepts():
+@limiter.limit("60/minute")
+async def list_concepts(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     return db.list_concepts()
 
 
 @app.get("/api/chapters")
-async def list_chapters():
+@limiter.limit("60/minute")
+async def list_chapters(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     """Catalog + which chapters already have MCQs in the mixed bank."""
     return study.available_chapters()
 
@@ -918,47 +1020,65 @@ async def list_chapters():
 # Questions — diagnostic / chapter / custom / platform FLP
 # ===========================================================================
 @app.get("/api/questions")
+@limiter.limit("60/minute")
 async def get_questions(
-    student_id: str,
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
     chapter: Optional[str] = None,
     concept_id: Optional[str] = None,
+    student_id: Optional[str] = None,
 ):
     """Next questions for a student based on mode + weak-spot profile."""
-    return study.next_questions_for_student(
-        student_id, chapter=chapter, concept_id=concept_id
+    sid = assert_same_student(user, student_id)
+    payload = study.next_questions_for_student(
+        sid, chapter=chapter, concept_id=concept_id
     )
+    return public_question_set(payload)
 
 
 @app.get("/api/questions/diagnostic")
-async def questions_diagnostic(student_id: str, count: int = 25):
+@limiter.limit("30/minute")
+async def questions_diagnostic(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    count: int = 25,
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
     qs = study.build_diagnostic(count=max(10, min(count, 40)))
-    return {
-        "mode": "diagnostic",
-        "student_id": student_id,
-        "questions": qs,
-        "timed_seconds": None,
-    }
+    return public_question_set(
+        {
+            "mode": "diagnostic",
+            "student_id": sid,
+            "questions": qs,
+            "timed_seconds": None,
+        }
+    )
 
 
 @app.get("/api/questions/chapter")
+@limiter.limit("30/minute")
 async def questions_chapter(
-    chapter: str, count: int = 100, student_id: Optional[str] = None
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    chapter: str,
+    count: int = 100,
+    student_id: Optional[str] = None,
 ):
-    """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated).
-
-    When ``student_id`` is supplied, already-attempted MCQs are pushed out so a
-    re-attempt of the same chapter returns fresh questions.
-    """
+    """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
+    sid = assert_same_student(user, student_id)
     n = max(1, min(count, 100))
     qs = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: study.build_chapter_practice(chapter, count=n, student_id=student_id)
+        None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)
     )
-    return {
-        "mode": "chapter_practice",
-        "chapter": chapter,
-        "questions": qs,
-        "timed_seconds": None,
-    }
+    return public_question_set(
+        {
+            "mode": "chapter_practice",
+            "chapter": chapter,
+            "questions": qs,
+            "timed_seconds": None,
+        }
+    )
 
 
 class CustomQuizRequest(BaseModel):
@@ -967,50 +1087,75 @@ class CustomQuizRequest(BaseModel):
 
 
 @app.post("/api/questions/custom")
-async def questions_custom(req: CustomQuizRequest):
+@limiter.limit("30/minute")
+async def questions_custom(
+    request: Request,
+    req: CustomQuizRequest,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    sid = assert_same_student(user, req.student_id)
     qs = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: study.build_custom(req.selections, student_id=req.student_id)
+        None, lambda: study.build_custom(req.selections, student_id=sid)
     )
-    return {
-        "mode": "custom",
-        "questions": qs,
-        "selections": req.selections,
-        "timed_seconds": None,
-    }
+    return public_question_set(
+        {
+            "mode": "custom",
+            "questions": qs,
+            "selections": req.selections,
+            "timed_seconds": None,
+        }
+    )
 
 
 @app.get("/api/questions/full-length")
-async def questions_full_length(mode: str = "practice", student_id: Optional[str] = None):
+@limiter.limit("20/minute")
+async def questions_full_length(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    mode: str = "practice",
+    student_id: Optional[str] = None,
+):
     """Our own Biology FLP: 81 MCQs mixed from the entire bank — not one FLP PDF."""
     if mode not in ("practice", "timed"):
         raise HTTPException(status_code=400, detail="mode must be practice or timed")
+    sid = assert_same_student(user, student_id)
     qs = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: study.build_platform_flp(student_id=student_id)
+        None, lambda: study.build_platform_flp(student_id=sid)
     )
     session_mode = (
         "full_length_timed" if mode == "timed" else "full_length_practice"
     )
-    return {
-        "mode": session_mode,
-        "questions": qs,
-        "timed_seconds": study.FULL_LENGTH_TIMED_SEC if mode == "timed" else None,
-        "note": "Platform FLP — mixed from academy tests, FLPs, past papers & most-repeated",
-    }
+    return public_question_set(
+        {
+            "mode": session_mode,
+            "questions": qs,
+            "timed_seconds": study.FULL_LENGTH_TIMED_SEC if mode == "timed" else None,
+            "note": "Platform FLP — mixed from academy tests, FLPs, past papers & most-repeated",
+        }
+    )
 
 
 # ===========================================================================
 # Sessions
 # ===========================================================================
 class SessionStart(BaseModel):
-    student_id: str
+    student_id: Optional[str] = None
     mode: str
     concept_id: Optional[str] = None
     chapter: Optional[str] = None
 
 
 @app.post("/api/sessions")
-async def start_session(req: SessionStart):
-    return db.create_session(req.model_dump(exclude_none=True))
+@limiter.limit("30/minute")
+async def start_session(
+    request: Request,
+    req: SessionStart,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    sid = assert_same_student(user, req.student_id)
+    payload = req.model_dump(exclude_none=True)
+    payload["student_id"] = sid
+    return db.create_session(payload)
 
 
 class SessionEnd(BaseModel):
@@ -1019,51 +1164,83 @@ class SessionEnd(BaseModel):
 
 
 @app.post("/api/sessions/{session_id}/end")
-async def finish_session(session_id: str, req: SessionEnd):
+@limiter.limit("30/minute")
+async def finish_session(
+    request: Request,
+    session_id: str,
+    req: SessionEnd,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
     import datetime as dt
 
     session = db.get_session(session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
+    if session.get("student_id") != user.user_id:
+        raise HTTPException(status_code=403, detail="Not your session")
+
+    score, total = db.session_attempt_score(user.user_id, session_id)
 
     db.end_session(
         session_id,
         {
             "ended_at": dt.datetime.now(dt.timezone.utc).isoformat(),
-            **req.model_dump(exclude_none=True),
+            "score": score,
+            "total": total,
         },
     )
-    weak_spots.recompute_for_session(session["student_id"], session_id)
+    weak_spots.recompute_for_session(user.user_id, session_id)
 
     if session.get("mode") == "diagnostic":
-        db.update_student(session["student_id"], {"diagnostic_done": True})
+        db.update_student(user.user_id, {"diagnostic_done": True})
 
     # Refresh daily plan after every completed session
     try:
-        planner.generate_daily_plan(session["student_id"])
+        planner.generate_daily_plan(user.user_id)
     except Exception:
         pass
 
-    return study.session_summary(session["student_id"], session_id)
+    return study.session_summary(user.user_id, session_id)
 
 
 @app.get("/api/session-summary")
-async def session_summary(student_id: str, session_id: str):
-    return study.session_summary(student_id, session_id)
+@limiter.limit("60/minute")
+async def session_summary(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    session_id: str,
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    session = db.get_session(session_id)
+    if not session or session.get("student_id") != sid:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return study.session_summary(sid, session_id)
 
 
 # ===========================================================================
 # Attempts
 # ===========================================================================
 class AttemptCreate(BaseModel):
-    student_id: str
+    student_id: Optional[str] = None
     question_id: str
     selected_option: str
     session_id: Optional[str] = None
 
 
 @app.post("/api/attempt")
-async def log_attempt(req: AttemptCreate):
+@limiter.limit("120/minute")
+async def log_attempt(
+    request: Request,
+    req: AttemptCreate,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    sid = assert_same_student(user, req.student_id)
+    if req.session_id:
+        session = db.get_session(req.session_id)
+        if not session or session.get("student_id") != sid:
+            raise HTTPException(status_code=403, detail="Not your session")
+
     question = db.get_question(req.question_id)
     if not question:
         raise HTTPException(status_code=404, detail="Question not found")
@@ -1071,7 +1248,7 @@ async def log_attempt(req: AttemptCreate):
     is_correct = req.selected_option == question["correct_option"]
     attempt = db.log_attempt(
         {
-            "student_id": req.student_id,
+            "student_id": sid,
             "question_id": req.question_id,
             "concept_id": question.get("concept_id"),
             "session_id": req.session_id,
@@ -1080,7 +1257,7 @@ async def log_attempt(req: AttemptCreate):
         }
     )
     if question.get("concept_id"):
-        weak_spots.recompute_for_concept(req.student_id, question["concept_id"])
+        weak_spots.recompute_for_concept(sid, question["concept_id"])
 
     return {
         "is_correct": is_correct,
@@ -1093,12 +1270,24 @@ async def log_attempt(req: AttemptCreate):
 # Weak spots + dashboard + plans
 # ===========================================================================
 @app.get("/api/weak-spots")
-async def get_weak_spots(student_id: str):
-    return weak_spots.ranked_report(student_id)
+@limiter.limit("60/minute")
+async def get_weak_spots(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    return weak_spots.ranked_report(sid)
 
 
 @app.get("/api/dashboard")
-async def dashboard(student_id: str):
+@limiter.limit("60/minute")
+async def dashboard(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    student_id = assert_same_student(user, student_id)
     loop = asyncio.get_event_loop()
 
     # These reads are independent — run them concurrently instead of paying a
@@ -1179,26 +1368,50 @@ async def dashboard(student_id: str):
 
 
 @app.get("/api/weekly-plan")
-async def get_weekly_plan(student_id: str):
-    plan = db.get_latest_weekly_plan(student_id)
+@limiter.limit("30/minute")
+async def get_weekly_plan(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    plan = db.get_latest_weekly_plan(sid)
     if not plan:
-        plan = planner.generate_plan(student_id)
+        plan = planner.generate_plan(sid)
     return plan
 
 
 @app.post("/api/weekly-plan/generate")
-async def make_weekly_plan(student_id: str):
-    return planner.generate_plan(student_id)
+@limiter.limit("10/minute")
+async def make_weekly_plan(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    return planner.generate_plan(sid)
 
 
 @app.get("/api/daily-plan")
-async def get_daily_plan(student_id: str):
-    return planner.get_or_create_daily_plan(student_id)
+@limiter.limit("30/minute")
+async def get_daily_plan(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    return planner.get_or_create_daily_plan(sid)
 
 
 @app.post("/api/daily-plan/generate")
-async def make_daily_plan(student_id: str):
-    return planner.generate_daily_plan(student_id)
+@limiter.limit("10/minute")
+async def make_daily_plan(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+    student_id: Optional[str] = None,
+):
+    sid = assert_same_student(user, student_id)
+    return planner.generate_daily_plan(sid)
 
 
 # ===========================================================================
@@ -1213,6 +1426,8 @@ async def root():
 @app.get("/health")
 async def health():
     """Liveness + integration flags (no heavy work — safe for health checks)."""
+    if settings.is_production:
+        return {"status": "ok"}
     return {
         "status": "ok",
         "environment": settings.ENVIRONMENT,
@@ -1221,4 +1436,5 @@ async def health():
         "uplift": settings.uplift_ready,
         "tts": settings.tts_ready,
         "supabase": settings.supabase_ready,
+        "auth": settings.auth_ready,
     }

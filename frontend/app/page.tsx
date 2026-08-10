@@ -5,12 +5,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { getStudentId } from "@/lib/student";
+import { syncStudentCacheFromSession } from "@/lib/auth";
 
 export default function LandingPage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (getStudentId()) router.replace("/dashboard");
+    void syncStudentCacheFromSession().then((id) => {
+      if (id || getStudentId()) router.replace("/dashboard");
+    });
   }, [router]);
 
   return (

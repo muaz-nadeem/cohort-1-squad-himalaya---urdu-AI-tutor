@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces, Noto_Nastaliq_Urdu } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -39,7 +40,9 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${fraunces.variable} ${notoUrdu.variable}`}
     >
-      <body className="min-h-screen font-sans antialiased">{children}</body>
+      <body className="min-h-screen font-sans antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

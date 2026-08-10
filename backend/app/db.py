@@ -35,6 +35,17 @@ def create_student(payload: dict[str, Any]) -> dict[str, Any]:
     return res.data[0]
 
 
+def upsert_student_profile(user_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    """Create or update the students row for auth.uid() (== user_id)."""
+    existing = get_student(user_id)
+    clean = {k: v for k, v in payload.items() if k != "id" and v is not None}
+    if existing:
+        if not clean:
+            return existing
+        return update_student(user_id, clean)
+    return create_student({"id": user_id, **clean})
+
+
 def get_student(student_id: str) -> Optional[dict[str, Any]]:
     res = (
         require_client()
@@ -68,6 +79,14 @@ def update_student(student_id: str, payload: dict[str, Any]) -> dict[str, Any]:
         .execute()
         .data[0]
     )
+
+
+def session_attempt_score(student_id: str, session_id: str) -> tuple[int, int]:
+    """Recompute score/total from logged attempts (do not trust the client)."""
+    attempts = get_attempts(student_id, session_id=session_id)
+    total = len(attempts)
+    score = sum(1 for a in attempts if a.get("is_correct"))
+    return score, total
 
 
 # ── concepts ────────────────────────────────────────────────────────────────

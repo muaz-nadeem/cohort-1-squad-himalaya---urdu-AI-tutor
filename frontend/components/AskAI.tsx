@@ -61,7 +61,8 @@ export default function AskAI({
       setError("");
       if (res.transcript) pushTurn("user", res.transcript);
       if (res.answer) pushTurn("assistant", res.answer);
-      return { audio: res.audio, speechUrl: speechStreamUrl(res.speech_id) };
+      const speechUrl = await speechStreamUrl(res.speech_id);
+      return { audio: res.audio, speechUrl };
     },
     [concept]
   );
@@ -87,7 +88,7 @@ export default function AskAI({
         return;
       }
       pushTurn("assistant", res.answer);
-      const speechUrl = speechStreamUrl(res.speech_id);
+      const speechUrl = await speechStreamUrl(res.speech_id);
       if (speechUrl) playAudioUrl(speechUrl);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to ask");

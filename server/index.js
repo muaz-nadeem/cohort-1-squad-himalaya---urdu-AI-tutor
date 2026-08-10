@@ -2,9 +2,31 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
+const crypto = require("crypto");
 
 const app = express();
-app.use(cors());
+
+const ALLOWED_ORIGINS = (process.env.CORS_ORIGINS || "http://localhost:3000,http://127.0.0.1:3000")
+  .split(",")
+  .map((o) => o.trim().replace(/\/$/, ""))
+  .filter(Boolean);
+
+const REALTIME_SERVER_SECRET = process.env.REALTIME_SERVER_SECRET || "";
+const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET || "";
+
+app.use(
+  cors({
+    origin(origin, cb) {
+      // Allow non-browser / same-origin tools with no Origin header
+      if (!origin) return cb(null, true);
+      if (ALLOWED_ORIGINS.includes("*") || ALLOWED_ORIGINS.includes(origin)) {
+        return cb(null, true);
+      }
+      return cb(new Error(`CORS blocked for origin: ${origin}`));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
@@ -14,11 +36,58 @@ const ASSISTANT_ID = process.env.UPLIFT_ASSISTANT_ID;
 const RAG_API_URL = process.env.RAG_API_URL;
 const PORT = process.env.PORT || 3001;
 
+function b64urlJson(segment) {
+  const padded = segment.replace(/-/g, "+").replace(/_/g, "/");
+  const pad = padded.length % 4 === 0 ? "" : "=".repeat(4 - (padded.length % 4));
+  return JSON.parse(Buffer.from(padded + pad, "base64").toString("utf8"));
+}
+
+function verifySupabaseJwt(token) {
+  if (!SUPABASE_JWT_SECRET || !token) return null;
+  const parts = token.split(".");
+  if (parts.length !== 3) return null;
+  const [headerB64, payloadB64, sigB64] = parts;
+  const data = `${headerB64}.${payloadB64}`;
+  const expected = crypto
+    .createHmac("sha256", SUPABASE_JWT_SECRET)
+    .update(data)
+    .digest("base64url");
+  if (expected !== sigB64) return null;
+  try {
+    const payload = b64urlJson(payloadB64);
+    if (payload.exp && payload.exp * 1000 < Date.now()) return null;
+    if (payload.aud && payload.aud !== "authenticated") return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+function requireAuth(req, res, next) {
+  const header = req.headers.authorization || "";
+  const bearer = header.toLowerCase().startsWith("bearer ")
+    ? header.slice(7).trim()
+    : "";
+  const secretHeader = req.headers["x-realtime-secret"];
+
+  if (REALTIME_SERVER_SECRET && secretHeader === REALTIME_SERVER_SECRET) {
+    return next();
+  }
+  if (bearer && verifySupabaseJwt(bearer)) {
+    return next();
+  }
+  return res.status(401).json({
+    error:
+      "Unauthorized. Send Authorization: Bearer <supabase_access_token> " +
+      "or X-Realtime-Secret matching REALTIME_SERVER_SECRET.",
+  });
+}
+
 // ---------------------------------------------------------------------------
 // POST /api/session
 // Frontend calls this to get a WebRTC token for the Uplift Realtime room.
 // ---------------------------------------------------------------------------
-app.post("/api/session", async (req, res) => {
+app.post("/api/session", requireAuth, async (req, res) => {
   const { participantName = "Student" } = req.body;
 
   if (!ASSISTANT_ID) {
@@ -46,7 +115,6 @@ app.post("/api/session", async (req, res) => {
     }
 
     const session = await upliftRes.json();
-    // session = { token, wsUrl, roomName }
     res.json(session);
   } catch (err) {
     console.error("Session creation failed:", err);
@@ -56,19 +124,13 @@ app.post("/api/session", async (req, res) => {
 
 // ---------------------------------------------------------------------------
 // POST /api/rag/search
-// The frontend tool handler calls this when the Uplift agent invokes
-// the search_biology_books tool via RPC.
-//
-// Expects: { query: string }
-// Returns: { results: Array<{ content, source, page? }> }
 // ---------------------------------------------------------------------------
-app.post("/api/rag/search", async (req, res) => {
+app.post("/api/rag/search", requireAuth, async (req, res) => {
   const { query } = req.body;
   if (!query) {
     return res.status(400).json({ error: "query is required" });
   }
 
-  // If the RAG pipeline is live, proxy to it
   if (RAG_API_URL) {
     try {
       const ragRes = await fetch(RAG_API_URL, {
@@ -83,8 +145,6 @@ app.post("/api/rag/search", async (req, res) => {
     }
   }
 
-  // Fallback: return a placeholder so you can test the voice flow
-  // before the RAG pipeline is ready
   console.log(`[RAG stub] query: "${query}"`);
   res.json({
     results: [
@@ -98,19 +158,16 @@ app.post("/api/rag/search", async (req, res) => {
   });
 });
 
-// ---------------------------------------------------------------------------
-// Health check
-// ---------------------------------------------------------------------------
 app.get("/health", (_req, res) => {
-  res.json({
-    status: "ok",
-    assistantConfigured: !!ASSISTANT_ID,
-    ragConnected: !!RAG_API_URL,
-  });
+  res.json({ status: "ok" });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`  Assistant ID : ${ASSISTANT_ID || "(not set — run npm run setup)"}`);
-  console.log(`  RAG endpoint : ${RAG_API_URL || "(stub mode — set RAG_API_URL in .env)"}`);
+  console.log(`Realtime server on http://localhost:${PORT}`);
+  console.log(`CORS origins: ${ALLOWED_ORIGINS.join(", ") || "(none)"}`);
+  if (!SUPABASE_JWT_SECRET && !REALTIME_SERVER_SECRET) {
+    console.warn(
+      "WARNING: Set SUPABASE_JWT_SECRET or REALTIME_SERVER_SECRET — routes require auth."
+    );
+  }
 });

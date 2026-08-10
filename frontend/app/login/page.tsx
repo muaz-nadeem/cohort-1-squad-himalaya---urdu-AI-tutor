@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, Lock, Mail, Plane } from "lucide-react";
 import { api } from "@/lib/api";
-import { setStudentId, setStudentName } from "@/lib/student";
+import { signIn } from "@/lib/auth";
+import { setStudentName } from "@/lib/student";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,19 +20,33 @@ export default function LoginPage() {
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     const emailValue = email.trim();
-    if (!emailValue) {
-      setError("Please enter your email address.");
+    if (!emailValue || !password) {
+      setError("Please enter your email and password.");
       return;
     }
     setLoading(true);
     setError("");
     try {
-      const student = await api.login(emailValue);
-      setStudentId(student.id);
-      setStudentName(student.name || "Student");
+      await signIn(emailValue, password);
+      if (!keepLoggedIn) {
+        // Soft hint only — Supabase still persists; full ephemeral sessions need
+        // a custom storage adapter. Cookie max-age stays short for middleware UX.
+        document.cookie =
+          "uraan_signed_in=1; path=/; SameSite=Lax; max-age=86400";
+      }
+      try {
+        const me = await api.getStudent();
+        setStudentName(me.name || "Student");
+      } catch {
+        /* profile may be missing — send to signup/onboarding later */
+      }
       router.replace("/dashboard");
-    } catch {
-      setError("No account found with this email. Please verify or sign up.");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Login failed. Check your email and password."
+      );
     } finally {
       setLoading(false);
     }
@@ -39,7 +54,6 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Left brand panel */}
       <div className="relative hidden overflow-hidden bg-brand-700 lg:flex lg:w-[48%] flex-col justify-between px-12 py-10 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.18]"
@@ -48,128 +62,80 @@ export default function LoginPage() {
               "radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px)",
             backgroundSize: "22px 22px",
           }}
-          aria-hidden
         />
-
-        <div className="relative">
-          <Link href="/" className="inline-flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-              <Plane className="h-5 w-5 -rotate-45" />
-            </div>
-            <div>
-              <p className="font-display text-2xl font-bold leading-none">Uraan</p>
-              <p className="font-urdu mt-1 text-sm text-sky-200/90">اُڑان</p>
-            </div>
-          </Link>
-          <span className="mt-4 inline-flex rounded-full bg-sky-400/20 px-3 py-1 text-xs font-semibold tracking-wide text-sky-100 ring-1 ring-sky-300/30">
-            MDCAT 2026
-          </span>
-        </div>
-
+        <Link href="/" className="relative inline-flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
+            <Plane className="h-5 w-5 -rotate-45" />
+          </div>
+          <div>
+            <p className="font-display text-2xl font-bold leading-none">Uraan</p>
+            <p className="font-urdu mt-1 text-sm text-sky-200/90">اُڑان</p>
+          </div>
+        </Link>
         <div className="relative max-w-md">
           <h1 className="font-display text-4xl font-bold leading-tight xl:text-[2.6rem]">
-            Your medical career starts with a single step.
+            Welcome back, aspirant.
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-slate-300">
-            Uraan provides the most accurate MDCAT simulation environment,
-            tailored to help you master every chapter with medical-grade
-            precision. Stay focused, your goal is within reach.
-          </p>
-
-          <div className="mt-10 grid grid-cols-2 gap-8">
-            <div>
-              <p className="font-display text-xl font-bold">Chapter MCQs</p>
-              <p className="mt-1 text-sm text-slate-400">
-                Mixed from past papers &amp; academy banks
-              </p>
-            </div>
-            <div>
-              <p className="font-display text-xl font-bold">Ask in Urdu</p>
-              <p className="mt-1 text-sm text-slate-400">
-                AI tutor grounded in your FSc textbooks
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative">
-          <p className="text-sm text-slate-300">
-            Built for Pakistani MDCAT aspirants.
+            Sign in with your email and password to continue your MDCAT prep.
           </p>
         </div>
+        <p className="relative text-sm text-sky-200/70">MDCAT 2026 Biology</p>
       </div>
 
-      {/* Right form */}
-      <div className="flex w-full flex-col bg-[#F7F9FC] px-6 py-10 lg:w-[52%] lg:px-16">
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
-          <div className="mb-8 flex items-center gap-3 lg:hidden">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-                <Plane className="h-4 w-4 -rotate-45" />
-              </div>
-              <span className="font-display text-xl font-bold text-brand">Uraan</span>
-            </Link>
-          </div>
-
-          <h2 className="font-display text-3xl font-bold text-brand-700">
-            Welcome Back
+      <div className="flex flex-1 flex-col justify-center px-6 py-12 sm:px-12">
+        <div className="mx-auto w-full max-w-md">
+          <h2 className="font-display text-2xl font-bold text-slate-900">
+            Sign in
           </h2>
           <p className="mt-2 text-sm text-slate-500">
-            Resume your MDCAT preparation where you left off.
+            New here?{" "}
+            <Link href="/signup" className="font-medium text-brand hover:underline">
+              Create an account
+            </Link>
           </p>
 
-          {error && (
-            <div className="mt-6 flex items-start gap-2.5 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
-              <span className="mt-0.5 text-base leading-none">⚠</span>
-              <p>{error}</p>
-            </div>
-          )}
-
           <form onSubmit={handleLogin} className="mt-8 space-y-5">
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-700">
-                Official Email Address
-              </label>
+            {error && (
+              <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
+                {error}
+              </p>
+            )}
+            <label className="block">
+              <span className="mb-1.5 flex items-center gap-2 text-sm font-medium text-slate-700">
+                <Mail className="h-4 w-4 text-slate-400" /> Email
+              </span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-brand/30 focus:ring-2"
+                autoComplete="email"
+                required
+              />
+            </label>
+            <label className="block">
+              <span className="mb-1.5 flex items-center justify-between text-sm font-medium text-slate-700">
+                <span className="flex items-center gap-2">
+                  <Lock className="h-4 w-4 text-slate-400" /> Password
+                </span>
+              </span>
               <div className="relative">
-                <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onInput={(e) => setEmail((e.target as HTMLInputElement).value)}
-                  placeholder="aspirant@uraan.com"
-                  className="!pl-11"
-                  autoComplete="email"
-                  required
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-1.5 flex items-center justify-between">
-                <label className="text-sm font-medium text-slate-700">
-                  Password
-                </label>
-                <button
-                  type="button"
-                  className="text-xs font-medium text-brand hover:underline"
-                >
-                  Forgot password?
-                </button>
-              </div>
-              <div className="relative">
-                <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className="!pl-11 !pr-11"
+                  placeholder="Your password"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pr-11 text-sm outline-none ring-brand/30 focus:ring-2"
+                  autoComplete="current-password"
+                  required
                 />
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                  onClick={() => setShowPassword((v) => !v)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" />
@@ -178,41 +144,25 @@ export default function LoginPage() {
                   )}
                 </button>
               </div>
-            </div>
-
-            <label className="flex items-center gap-2.5 text-sm text-slate-600">
+            </label>
+            <label className="flex items-center gap-2 text-sm text-slate-600">
               <input
                 type="checkbox"
                 checked={keepLoggedIn}
                 onChange={(e) => setKeepLoggedIn(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand/30"
+                className="rounded border-slate-300 text-brand focus:ring-brand"
               />
-              Keep me logged in for this study session
+              Keep me logged in
             </label>
-
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary w-full"
+              className="w-full rounded-xl bg-brand py-3 text-sm font-semibold text-white transition hover:bg-brand-600 disabled:opacity-60"
             >
-              {loading ? "Logging in..." : "Log in →"}
+              {loading ? "Signing in…" : "Sign in"}
             </button>
           </form>
-
-          <p className="mt-6 text-center text-sm text-slate-500">
-            New to Uraan?{" "}
-            <Link
-              href="/signup"
-              className="font-semibold text-brand hover:underline"
-            >
-              Create an account
-            </Link>
-          </p>
         </div>
-
-        <p className="mt-10 text-center text-[10px] font-semibold tracking-[0.2em] text-slate-400">
-          POWERED BY CLINICAL PRECISION
-        </p>
       </div>
     </div>
   );

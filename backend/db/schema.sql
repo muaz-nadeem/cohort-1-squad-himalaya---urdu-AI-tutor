@@ -10,9 +10,11 @@ create extension if not exists pgcrypto;
 
 -- ---------------------------------------------------------------------------
 -- students — profile + onboarding data
+-- Identity: id MUST equal auth.users.id (Supabase Auth uid). See
+-- migrations/001_auth_rls.sql for RLS policies.
 -- ---------------------------------------------------------------------------
 create table if not exists students (
-  id               uuid primary key default gen_random_uuid(),
+  id               uuid primary key,           -- = auth.users.id (no random default)
   name             text,
   email            text unique,
   exam             text not null default 'MDCAT 2026',

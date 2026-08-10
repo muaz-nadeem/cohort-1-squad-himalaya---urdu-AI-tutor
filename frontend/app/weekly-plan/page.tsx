@@ -9,28 +9,39 @@ import {
   ListChecks,
   Sparkles,
 } from "lucide-react";
-import { api, type WeeklyPlan } from "@/lib/api";
+import { api } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import Navbar from "@/components/Navbar";
+import { useQuery } from "@tanstack/react-query";
 
 export default function WeeklyPlanPage() {
   const router = useRouter();
-  const [plan, setPlan] = useState<WeeklyPlan | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [studentId, setStudentId] = useState<string | null>(null);
 
   useEffect(() => {
     const id = getStudentId();
     if (!id) {
-      router.replace("/");
+      router.replace("/login");
       return;
     }
-    api
-      .getWeeklyPlan(id)
-      .then(setPlan)
-      .catch((e) => setError(e instanceof Error ? e.message : "Failed to load"))
-      .finally(() => setLoading(false));
+    setStudentId(id);
   }, [router]);
+
+  const planQuery = useQuery({
+    queryKey: ["weekly-plan", studentId],
+    queryFn: () => api.getWeeklyPlan(studentId!),
+    enabled: !!studentId,
+    staleTime: 5 * 60_000,
+  });
+
+  const plan = planQuery.data ?? null;
+  const loading = planQuery.isLoading && !plan;
+  const error =
+    planQuery.error instanceof Error
+      ? planQuery.error.message
+      : planQuery.error
+        ? "Failed to load"
+        : "";
 
   const totals = useMemo(() => {
     const items = plan?.plan || [];

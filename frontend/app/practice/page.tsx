@@ -10,45 +10,43 @@ import {
   Play,
   TrendingUp,
 } from "lucide-react";
-import { api, type ChapterInfo, type Dashboard } from "@/lib/api";
+import { api, type ChapterInfo } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import Navbar from "@/components/Navbar";
+import { useQuery } from "@tanstack/react-query";
 
 export default function PracticePage() {
   const router = useRouter();
-  const [chapters, setChapters] = useState<ChapterInfo[]>([]);
-  const [dashboard, setDashboard] = useState<Dashboard | null>(null);
-  const [loading, setLoading] = useState(true);
   const [bookFilter, setBookFilter] = useState<"all" | "fsc_part1" | "fsc_part2">(
     "all"
   );
+  const [studentId, setStudentId] = useState<string | null>(null);
 
   useEffect(() => {
     const id = getStudentId();
     if (!id) {
-      router.replace("/");
+      router.replace("/login");
       return;
     }
-
-    const cachedChapters = api.peekChapters();
-    const cachedDash = api.peekDashboard(id);
-    if (cachedChapters?.length) {
-      setChapters(cachedChapters);
-      setLoading(false);
-    }
-    if (cachedDash) setDashboard(cachedDash);
-
-    Promise.all([
-      api.getChapters().catch(() => [] as ChapterInfo[]),
-      api.getDashboard(id).catch(() => null),
-    ])
-      .then(([chs, dash]) => {
-        setChapters(chs);
-        setDashboard(dash);
-      })
-      .finally(() => setLoading(false));
+    setStudentId(id);
   }, [router]);
 
+  const chaptersQuery = useQuery({
+    queryKey: ["chapters"],
+    queryFn: () => api.getChapters().catch(() => [] as ChapterInfo[]),
+    staleTime: 10 * 60_000,
+  });
+
+  const dashQuery = useQuery({
+    queryKey: ["dashboard", studentId],
+    queryFn: () => api.getDashboard(studentId!).catch(() => null),
+    enabled: !!studentId,
+    staleTime: 60_000,
+  });
+
+  const chapters = chaptersQuery.data ?? [];
+  const dashboard = dashQuery.data ?? null;
+  const loading = chaptersQuery.isLoading && chapters.length === 0;
   const accuracyByChapter = useMemo(() => {
     const map = new Map<string, { accuracy_pct: number; attempted: number }>();
     for (const c of dashboard?.chapters || []) {

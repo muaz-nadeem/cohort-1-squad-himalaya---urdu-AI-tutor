@@ -62,6 +62,7 @@ function SessionInner() {
   const [error, setError] = useState("");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [speakingExplain, setSpeakingExplain] = useState(false);
+  const [revealedCorrect, setRevealedCorrect] = useState<string | null>(null);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
   const explainAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -200,6 +201,7 @@ function SessionInner() {
         session_id: sessionId || undefined,
       });
       setIsCorrect(res.is_correct);
+      setRevealedCorrect(res.correct_option);
       setAnswered((a) => {
         const n = a + 1;
         answeredRef.current = n;
@@ -265,6 +267,7 @@ function SessionInner() {
     setSpeakingExplain(false);
     setSelected(null);
     setIsCorrect(null);
+    setRevealedCorrect(null);
     setExplanation(null);
     if (!set) return;
     if (index >= set.questions.length - 1) {
@@ -290,10 +293,10 @@ function SessionInner() {
     router.replace("/dashboard");
   }
 
-  function playExplanation() {
+  async function playExplanation() {
     const id = explanation?.speech_id;
     if (!id) return;
-    const url = speechStreamUrl(id);
+    const url = await speechStreamUrl(id);
     if (!url) return;
     if (explainAudioRef.current) {
       explainAudioRef.current.pause();
@@ -462,7 +465,9 @@ function SessionInner() {
                 const isSel = selected === opt.key;
                 const shouldHighlight = showSidebar && explanation;
                 const isRight =
-                  shouldHighlight && opt.key === question.correct_option;
+                  shouldHighlight &&
+                  !!revealedCorrect &&
+                  opt.key === revealedCorrect;
                 const isWrongPick =
                   shouldHighlight && isSel && isCorrect === false;
                 let cls =
@@ -606,7 +611,7 @@ function SessionInner() {
                   question_text: question.question_text,
                   options: question.options,
                   selected_option: selected || "",
-                  correct_option: question.correct_option,
+                  correct_option: revealedCorrect || "",
                   explanation:
                     explanation?.explanation || question.explanation || "",
                 }}

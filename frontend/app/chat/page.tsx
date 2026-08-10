@@ -226,7 +226,7 @@ export default function ChatPage() {
         snippet: s.snippet ?? "",
       }));
 
-      const speechUrl = speechStreamUrl(res.speech_id);
+      const speechUrl = await speechStreamUrl(res.speech_id);
 
       setMessages((prev) =>
         prev.map((m) =>
@@ -236,7 +236,7 @@ export default function ChatPage() {
                 content: res.answer || "No answer received.",
                 sources,
                 citation: res.citation,
-                speechUrl,
+                speechUrl: speechUrl || undefined,
                 streaming: false,
               }
             : m
