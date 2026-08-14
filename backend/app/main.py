@@ -16,7 +16,7 @@ from collections import OrderedDict
 from contextlib import asynccontextmanager
 from typing import Annotated, Optional
 
-from fastapi import Body, Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
+from fastapi import Body, Depends, FastAPI, File, Form, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import StreamingResponse
@@ -457,17 +457,19 @@ async def _generate_ask_answer(
     return answer_text, urdu_text, sources
 
 
-@app.post("/api/ask-voice")
+@app.post("/api/ask-voice", response_model=None)
 @limiter.limit("20/minute")
 async def ask_voice(
     request: Request,
     user: Annotated[AuthUser, Depends(get_current_user)],
-    audio: Annotated[UploadFile, File()],
-    concept: Annotated[str, Form()],
-    context_chunk: Annotated[str, Form()] = "",
-    mcq: Annotated[str, Form()] = "",
+    audio=File(...),
+    concept: str = Form(...),
+    context_chunk: str = Form(""),
+    mcq: str = Form(""),
 ):
     """Audio -> STT -> RAG (anchored on the MCQ) -> English answer + Urdu audio."""
+    # `audio` is a Starlette UploadFile; avoid annotating UploadFile (breaks under
+    # some FastAPI/Pydantic combos used on Render).
     audio_bytes = await audio.read()
     oversized = _reject_oversized_audio(audio_bytes)
     if oversized:
@@ -486,7 +488,7 @@ async def ask_voice(
         }
 
     transcript = await voice.speech_to_text(
-        audio_bytes, filename=audio.filename or "audio.webm"
+        audio_bytes, filename=getattr(audio, "filename", None) or "audio.webm"
     )
     if not transcript or not _is_meaningful_question(transcript):
         return {
@@ -654,18 +656,18 @@ def _is_meaningful_question(text: str) -> bool:
     return True
 
 
-@app.post("/api/rag/ask-voice")
+@app.post("/api/rag/ask-voice", response_model=None)
 @limiter.limit("20/minute")
 async def rag_ask_voice(
     request: Request,
     user: Annotated[AuthUser, Depends(get_current_user)],
-    audio: Annotated[UploadFile, File()],
-    book: Annotated[Optional[str], Form()] = None,
-    top_k: Annotated[int, Form()] = 5,
+    audio=File(...),
+    book: Optional[str] = Form(None),
+    top_k: int = Form(5),
 ):
     """Audio -> STT -> textbook RAG search -> English answer + TTS audio."""
     audio_bytes = await audio.read()
-    filename = audio.filename or "audio.webm"
+    filename = getattr(audio, "filename", None) or "audio.webm"
     oversized = _reject_oversized_audio(audio_bytes)
     if oversized:
         return {

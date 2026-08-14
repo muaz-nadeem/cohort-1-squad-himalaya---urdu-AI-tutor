@@ -1,6 +1,4 @@
 """Supabase Auth JWT verification for FastAPI dependencies."""
-from __future__ import annotations
-
 from dataclasses import dataclass
 from typing import Annotated, Optional
 
