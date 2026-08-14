@@ -3,7 +3,8 @@
 Orchestrates the STT -> RAG -> GPT-4o -> TTS pipeline and serves all the
 question/attempt/weak-spot/plan endpoints documented in the project spec.
 """
-from __future__ import annotations
+# NOTE: do not enable `from __future__ import annotations` here — it makes
+# FastAPI treat Pydantic body models / Depends as query params (422 on req/user).
 
 import asyncio
 import hashlib
@@ -15,7 +16,7 @@ from collections import OrderedDict
 from contextlib import asynccontextmanager
 from typing import Annotated, Optional
 
-from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
+from fastapi import Body, Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import StreamingResponse
@@ -169,7 +170,7 @@ class TtsRequest(BaseModel):
 @limiter.limit("30/minute")
 async def tts_stream_direct(
     request: Request,
-    req: TtsRequest,
+    req: Annotated[TtsRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """Stream synthesis for arbitrary text (used for replay)."""
@@ -296,7 +297,7 @@ class AskRequest(BaseModel):
 @limiter.limit("30/minute")
 async def ask_ai(
     request: Request,
-    req: AskRequest,
+    req: Annotated[AskRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """Text question -> RAG -> LLM -> English answer + spoken Urdu audio."""
@@ -536,7 +537,7 @@ class RagAskRequest(BaseModel):
 @limiter.limit("30/minute")
 async def rag_ask(
     request: Request,
-    req: RagAskRequest,
+    req: Annotated[RagAskRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """Question -> vector search over FSc Biology chunks -> grounded answer + pages."""
@@ -589,7 +590,7 @@ async def rag_ask(
 @limiter.limit("30/minute")
 async def rag_ask_stream(
     request: Request,
-    req: RagAskRequest,
+    req: Annotated[RagAskRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """Streaming version: sends sources first, then LLM tokens as SSE."""
@@ -817,7 +818,7 @@ class ExplainRequest(BaseModel):
 @limiter.limit("30/minute")
 async def explain(
     request: Request,
-    req: ExplainRequest,
+    req: Annotated[ExplainRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """MCQ explanation — teach the question; cite textbook book + page only."""
@@ -950,7 +951,7 @@ class StudentCreate(BaseModel):
 @limiter.limit("20/minute")
 async def create_student(
     request: Request,
-    req: StudentCreate,
+    req: Annotated[StudentCreate, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     """Create or update the profile for the authenticated user (id = auth.uid())."""
@@ -1090,7 +1091,7 @@ class CustomQuizRequest(BaseModel):
 @limiter.limit("30/minute")
 async def questions_custom(
     request: Request,
-    req: CustomQuizRequest,
+    req: Annotated[CustomQuizRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     sid = assert_same_student(user, req.student_id)
@@ -1149,7 +1150,7 @@ class SessionStart(BaseModel):
 @limiter.limit("30/minute")
 async def start_session(
     request: Request,
-    req: SessionStart,
+    req: Annotated[SessionStart, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     sid = assert_same_student(user, req.student_id)
@@ -1168,7 +1169,7 @@ class SessionEnd(BaseModel):
 async def finish_session(
     request: Request,
     session_id: str,
-    req: SessionEnd,
+    req: Annotated[SessionEnd, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     import datetime as dt
@@ -1232,7 +1233,7 @@ class AttemptCreate(BaseModel):
 @limiter.limit("120/minute")
 async def log_attempt(
     request: Request,
-    req: AttemptCreate,
+    req: Annotated[AttemptCreate, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     sid = assert_same_student(user, req.student_id)
