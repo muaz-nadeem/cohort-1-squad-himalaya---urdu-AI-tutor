@@ -4,6 +4,7 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   api,
+  wakeBackend,
   speechStreamUrl,
   type ExplainResult,
   type Question,
@@ -100,6 +101,9 @@ function SessionInner() {
           return;
         }
         setStudentId(id);
+
+        // Wake free-tier Render before the heavier chapter/session calls.
+        await wakeBackend();
 
         // Ensure profile exists before opening a session (FK to students).
         try {

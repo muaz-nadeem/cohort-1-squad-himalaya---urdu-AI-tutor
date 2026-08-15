@@ -33,42 +33,72 @@ async function authHeaders(
 }
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 60000);
+  const maxAttempts = 3;
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    const controller = new AbortController();
+    // Free Render cold starts can take 50s+; give the wake-up room.
+    const timeout = setTimeout(() => controller.abort(), 120_000);
+    try {
+      const baseHeaders = await authHeaders(
+        options?.headers as Record<string, string> | undefined,
+        !(options?.body instanceof FormData)
+      );
+      const res = await fetch(`${API_URL}${path}`, {
+        ...options,
+        headers: baseHeaders,
+        signal: options?.signal || controller.signal,
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `Request failed: ${res.status}`);
+      }
+      return res.json() as Promise<T>;
+    } catch (e) {
+      lastError = e;
+      const isAbort = (e as Error)?.name === "AbortError";
+      const isNetwork =
+        e instanceof TypeError &&
+        /failed to fetch|networkerror|load failed/i.test(e.message);
+
+      if (isAbort) {
+        throw new Error(
+          "Request timed out. On the free Render plan the backend may be waking from sleep — wait a few seconds and try again."
+        );
+      }
+
+      // Retry only pure network failures (cold start / connection drop).
+      if (isNetwork && attempt < maxAttempts) {
+        await new Promise((r) => setTimeout(r, 1500 * attempt));
+        continue;
+      }
+
+      if (isNetwork) {
+        throw new Error(
+          `Could not reach the API at ${API_URL}. On free Render it may be waking from sleep — wait ~30s and try again.`
+        );
+      }
+      throw e;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error("Request failed");
+}
+
+/** Cheap GET used to wake a sleeping free-tier Render instance. */
+export async function wakeBackend(): Promise<void> {
   try {
-    const baseHeaders = await authHeaders(
-      options?.headers as Record<string, string> | undefined,
-      !(options?.body instanceof FormData)
-    );
-    const res = await fetch(`${API_URL}${path}`, {
-      ...options,
-      headers: baseHeaders,
-      signal: options?.signal || controller.signal,
-    });
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(text || `Request failed: ${res.status}`);
-    }
-    return res.json() as Promise<T>;
-  } catch (e) {
-    if ((e as Error)?.name === "AbortError") {
-      throw new Error(
-        "Request timed out. The server may be loading models — try again in a moment."
-      );
-    }
-    if (
-      e instanceof TypeError &&
-      /failed to fetch|networkerror|load failed/i.test(e.message)
-    ) {
-      throw new Error(
-        `Could not reach the API at ${API_URL}. Is the backend running?`
-      );
-    }
-    throw e;
-  } finally {
-    clearTimeout(timeout);
+    await fetch(`${API_URL}/health`, { method: "GET", cache: "no-store" });
+  } catch {
+    // Ignore — real API call will retry.
   }
 }
+
 
 export interface Student {
   id: string;
