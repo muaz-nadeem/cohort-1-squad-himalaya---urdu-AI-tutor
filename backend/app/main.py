@@ -1446,15 +1446,19 @@ async def make_daily_plan(
 # ===========================================================================
 # Health
 # ===========================================================================
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 async def root():
-    """Lightweight root ping for load balancers / App Runner."""
+    """Lightweight root ping for load balancers / App Runner / uptime monitors."""
     return {"service": "mdcat-ai-tutor", "status": "ok"}
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health():
-    """Liveness + integration flags (no heavy work — safe for health checks)."""
+    """Liveness + integration flags (no heavy work — safe for health checks).
+
+    HEAD is required: UptimeRobot and similar monitors often probe with HEAD;
+    GET-only routes return 405 and show as permanently Down.
+    """
     if settings.is_production:
         return {"status": "ok"}
     return {
