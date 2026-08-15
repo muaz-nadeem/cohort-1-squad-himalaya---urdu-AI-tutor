@@ -12,6 +12,7 @@ import {
   type SessionMode,
 } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
+import { syncStudentCacheFromSession } from "@/lib/auth";
 import AskAI from "@/components/AskAI";
 import {
   BookOpen,
@@ -79,12 +80,6 @@ function SessionInner() {
     if (startedRef.current) return;
     startedRef.current = true;
 
-    const id = getStudentId();
-    if (!id) {
-      router.replace("/");
-      return;
-    }
-    setStudentId(id);
     startedAtRef.current = Date.now();
     window.sessionStorage.setItem(
       "mdcat_session_started_at",
@@ -98,9 +93,25 @@ function SessionInner() {
 
     (async () => {
       try {
-        // For known modes we already know the session's mode/chapter, so we can
-        // fetch the questions and open the session in parallel instead of
-        // waiting for the (slow) 100-MCQ fetch first.
+        const synced = await syncStudentCacheFromSession();
+        const id = synced || getStudentId();
+        if (!id) {
+          router.replace("/login");
+          return;
+        }
+        setStudentId(id);
+
+        // Ensure profile exists before opening a session (FK to students).
+        try {
+          await api.getStudent();
+        } catch {
+          await api.createStudent({
+            name: undefined,
+            level: "just_starting",
+            daily_time: "1hr",
+          });
+        }
+
         let questionsP: Promise<QuestionSet>;
         let sessionMode: string | null = null;
         if (mode === "diagnostic") {
@@ -121,25 +132,10 @@ function SessionInner() {
           questionsP = api.getQuestions(id, { chapter, concept_id: conceptId });
         }
 
-        let qs: QuestionSet;
-        let session: { id: string } | null = null;
-        if (sessionMode) {
-          [qs, session] = await Promise.all([
-            questionsP,
-            api.startSession({
-              student_id: id,
-              mode: sessionMode,
-              concept_id: conceptId,
-              chapter: chapter,
-            }),
-          ]);
-        } else {
-          qs = await questionsP;
-        }
-
+        const qs = await questionsP;
         if (!qs.questions.length) {
           setError(
-            "No questions in the bank yet. Run: python -m scripts.ingest_mcqs"
+            "No questions available for this chapter yet. Try another chapter."
           );
           setLoading(false);
           return;
@@ -147,18 +143,21 @@ function SessionInner() {
         setSet(qs);
         if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
 
-        if (!session) {
-          session = await api.startSession({
-            student_id: id,
-            mode: qs.mode,
-            concept_id: qs.concept_id,
-            chapter: qs.chapter || chapter,
-          });
-        }
+        const session = await api.startSession({
+          student_id: id,
+          mode: sessionMode || qs.mode,
+          concept_id: conceptId || qs.concept_id,
+          chapter: chapter || qs.chapter,
+        });
         setSessionId(session.id);
         sessionIdRef.current = session.id;
       } catch (e) {
-        setError(e instanceof Error ? e.message : "Failed to start session");
+        const msg = e instanceof Error ? e.message : "Failed to start session";
+        setError(
+          msg === "Failed to fetch"
+            ? "Could not reach the server. Check your connection and try again."
+            : msg
+        );
       } finally {
         setLoading(false);
       }

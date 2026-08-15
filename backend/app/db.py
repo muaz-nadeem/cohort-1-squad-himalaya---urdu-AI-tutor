@@ -117,7 +117,12 @@ def get_questions(
     source_type: Optional[str] = None,
     limit: int = 10,
 ) -> list[dict[str, Any]]:
-    q = require_client().table("questions").select("*")
+    # Lean columns for practice payloads (answer key stripped later anyway).
+    columns = (
+        "id,concept_id,chapter,difficulty,question_text,options,"
+        "source,source_type,book"
+    )
+    q = require_client().table("questions").select(columns)
     if chapter:
         q = q.eq("chapter", chapter)
     if concept_id:

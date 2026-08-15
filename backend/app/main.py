@@ -1071,9 +1071,15 @@ async def questions_chapter(
     """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
     sid = assert_same_student(user, student_id)
     n = max(1, min(count, 100))
-    qs = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)
-    )
+    try:
+        qs = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Could not load chapter questions: {type(exc).__name__}: {exc}",
+        ) from exc
     return public_question_set(
         {
             "mode": "chapter_practice",
@@ -1156,9 +1162,29 @@ async def start_session(
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     sid = assert_same_student(user, req.student_id)
+    # Sessions FK → students(id). Auto-create a minimal profile if signup
+    # never wrote one (e.g. email-confirm then sign-in without /api/students).
+    if not db.get_student(sid):
+        db.upsert_student_profile(
+            sid,
+            {
+                "name": (user.email or "Student").split("@")[0],
+                "email": user.email,
+                "level": "just_starting",
+                "daily_time": "1hr",
+                "exam": "MDCAT 2026",
+                "subject": "Biology",
+            },
+        )
     payload = req.model_dump(exclude_none=True)
     payload["student_id"] = sid
-    return db.create_session(payload)
+    try:
+        return db.create_session(payload)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Could not start session: {type(exc).__name__}: {exc}",
+        ) from exc
 
 
 class SessionEnd(BaseModel):

@@ -56,6 +56,14 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
         "Request timed out. The server may be loading models — try again in a moment."
       );
     }
+    if (
+      e instanceof TypeError &&
+      /failed to fetch|networkerror|load failed/i.test(e.message)
+    ) {
+      throw new Error(
+        `Could not reach the API at ${API_URL}. Is the backend running?`
+      );
+    }
     throw e;
   } finally {
     clearTimeout(timeout);
