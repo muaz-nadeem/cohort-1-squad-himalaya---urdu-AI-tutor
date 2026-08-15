@@ -40,8 +40,9 @@ class Settings:
         or os.getenv("SUPABASE_KEY")
         or ""
     )
-    # JWT secret from Supabase Project Settings → API → JWT Secret (HS256).
-    SUPABASE_JWT_SECRET: str = os.getenv("SUPABASE_JWT_SECRET", "")
+    # Legacy JWT secret (HS256). Newer projects may use asymmetric signing keys;
+    # auth.py also verifies via JWKS / Auth /user when this is wrong or unused.
+    SUPABASE_JWT_SECRET: str = (os.getenv("SUPABASE_JWT_SECRET") or "").strip()
     PORT: int = int(os.getenv("PORT", "8000"))
 
     # development | production — production refuses wildcard CORS
@@ -112,7 +113,8 @@ class Settings:
 
     @property
     def auth_ready(self) -> bool:
-        return bool(self.SUPABASE_JWT_SECRET)
+        # Local HS256 secret, or URL+service role (JWKS / Auth /user fallback).
+        return bool(self.SUPABASE_JWT_SECRET) or self.supabase_ready
 
     @property
     def groq_ready(self) -> bool:

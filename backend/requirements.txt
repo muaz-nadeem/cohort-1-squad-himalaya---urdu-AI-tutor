@@ -11,5 +11,6 @@ pydantic==2.10.3
 fastembed==0.8.0
 Pillow==11.0.0
 pytesseract==0.3.13
-PyJWT==2.9.0
+PyJWT[crypto]==2.9.0
+cryptography==44.0.0
 slowapi==0.1.9

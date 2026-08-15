@@ -1,15 +1,21 @@
 """Supabase Auth JWT verification for FastAPI dependencies."""
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import Annotated, Optional
 
+import httpx
 import jwt
 from fastapi import Depends, HTTPException, Query, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from jwt import PyJWKClient
 
 from . import db
 from .config import settings
 
 _bearer = HTTPBearer(auto_error=False)
+
+# Asymmetric algs used by newer Supabase signing keys.
+_ASYMMETRIC = {"RS256", "ES256", "ES384", "ES512", "EdDSA"}
 
 
 @dataclass(frozen=True)
@@ -18,27 +24,19 @@ class AuthUser:
     email: Optional[str] = None
 
 
-def _decode_access_token(token: str) -> AuthUser:
-    secret = settings.SUPABASE_JWT_SECRET
-    if not secret:
-        raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Auth is not configured (SUPABASE_JWT_SECRET missing).",
-        )
-    try:
-        payload = jwt.decode(
-            token,
-            secret,
-            algorithms=["HS256"],
-            audience="authenticated",
-        )
-    except jwt.PyJWTError as exc:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid or expired token",
-            headers={"WWW-Authenticate": "Bearer"},
-        ) from exc
+@lru_cache(maxsize=1)
+def _jwks_client() -> Optional[PyJWKClient]:
+    base = (settings.SUPABASE_URL or "").rstrip("/")
+    if not base:
+        return None
+    return PyJWKClient(
+        f"{base}/auth/v1/.well-known/jwks.json",
+        cache_keys=True,
+        lifespan=600,
+    )
 
+
+def _auth_user_from_payload(payload: dict) -> AuthUser:
     sub = payload.get("sub")
     if not sub:
         raise HTTPException(
@@ -47,6 +45,89 @@ def _decode_access_token(token: str) -> AuthUser:
             headers={"WWW-Authenticate": "Bearer"},
         )
     return AuthUser(user_id=str(sub), email=payload.get("email"))
+
+
+def _decode_with_jwks(token: str) -> Optional[dict]:
+    client = _jwks_client()
+    if client is None:
+        return None
+    try:
+        key = client.get_signing_key_from_jwt(token)
+        return jwt.decode(
+            token,
+            key.key,
+            algorithms=list(_ASYMMETRIC | {"HS256"}),
+            audience="authenticated",
+        )
+    except Exception:
+        return None
+
+
+def _decode_with_shared_secret(token: str) -> Optional[dict]:
+    secret = (settings.SUPABASE_JWT_SECRET or "").strip()
+    if not secret:
+        return None
+    try:
+        return jwt.decode(
+            token,
+            secret,
+            algorithms=["HS256"],
+            audience="authenticated",
+        )
+    except jwt.PyJWTError:
+        return None
+
+
+def _verify_with_supabase_auth(token: str) -> Optional[AuthUser]:
+    """Ask Supabase Auth if this access token is still valid (works for any signing key)."""
+    base = (settings.SUPABASE_URL or "").rstrip("/")
+    api_key = settings.SUPABASE_SERVICE_ROLE_KEY
+    if not base or not api_key:
+        return None
+    try:
+        res = httpx.get(
+            f"{base}/auth/v1/user",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "apikey": api_key,
+            },
+            timeout=8.0,
+        )
+    except httpx.HTTPError:
+        return None
+    if res.status_code != 200:
+        return None
+    data = res.json() or {}
+    user_id = data.get("id")
+    if not user_id:
+        return None
+    return AuthUser(user_id=str(user_id), email=data.get("email"))
+
+
+def _decode_access_token(token: str) -> AuthUser:
+    """Verify a Supabase user access token.
+
+    Order: JWKS (new asymmetric keys) → JWT secret (legacy HS256) → Auth /user API.
+    """
+    if not settings.SUPABASE_URL and not settings.SUPABASE_JWT_SECRET:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Auth is not configured.",
+        )
+
+    payload = _decode_with_jwks(token) or _decode_with_shared_secret(token)
+    if payload is not None:
+        return _auth_user_from_payload(payload)
+
+    user = _verify_with_supabase_auth(token)
+    if user is not None:
+        return user
+
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid or expired token",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
 
 
 async def get_current_user(
