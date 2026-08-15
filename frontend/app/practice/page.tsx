@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { api, type ChapterInfo } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
+import { syncStudentCacheFromSession } from "@/lib/auth";
 import Navbar from "@/components/Navbar";
 import { useQuery } from "@tanstack/react-query";
 
@@ -23,30 +24,40 @@ export default function PracticePage() {
   const [studentId, setStudentId] = useState<string | null>(null);
 
   useEffect(() => {
-    const id = getStudentId();
-    if (!id) {
-      router.replace("/login");
-      return;
-    }
-    setStudentId(id);
+    void syncStudentCacheFromSession().then((id) => {
+      const sid = id || getStudentId();
+      if (!sid) {
+        router.replace("/login");
+        return;
+      }
+      setStudentId(sid);
+    });
   }, [router]);
 
   const chaptersQuery = useQuery({
     queryKey: ["chapters"],
-    queryFn: () => api.getChapters().catch(() => [] as ChapterInfo[]),
+    queryFn: () => api.getChapters(),
+    enabled: !!studentId,
     staleTime: 10 * 60_000,
   });
 
   const dashQuery = useQuery({
     queryKey: ["dashboard", studentId],
-    queryFn: () => api.getDashboard(studentId!).catch(() => null),
+    queryFn: () => api.getDashboard(studentId!),
     enabled: !!studentId,
     staleTime: 60_000,
   });
 
   const chapters = chaptersQuery.data ?? [];
   const dashboard = dashQuery.data ?? null;
-  const loading = chaptersQuery.isLoading && chapters.length === 0;
+  const loading =
+    !studentId || (chaptersQuery.isLoading && chapters.length === 0);
+  const chaptersError =
+    chaptersQuery.error instanceof Error
+      ? chaptersQuery.error.message
+      : chaptersQuery.error
+        ? "Failed to load chapters"
+        : null;
   const accuracyByChapter = useMemo(() => {
     const map = new Map<string, { accuracy_pct: number; attempted: number }>();
     for (const c of dashboard?.chapters || []) {
@@ -138,6 +149,14 @@ export default function PracticePage() {
 
           {loading && !chapters.length ? (
             <p className="mt-10 text-sm text-slate-400">Loading chapters...</p>
+          ) : chaptersError ? (
+            <p className="mt-10 text-sm text-red-600">
+              Could not load chapters. {chaptersError}
+            </p>
+          ) : !chapters.length ? (
+            <p className="mt-10 text-sm text-slate-400">
+              No chapters returned from the API. Try signing out and back in.
+            </p>
           ) : (
             <div className="mt-10 space-y-10">
               {bookFilter !== "fsc_part2" && (
