@@ -21,6 +21,8 @@ import {
 } from "@/lib/api";
 import AskAI from "@/components/AskAI";
 import Navbar from "@/components/Navbar";
+import { getStudentId } from "@/lib/student";
+import { getDoctorPersona } from "@/lib/doctorPersona";
 
 export default function SummaryPage() {
   const router = useRouter();
@@ -34,6 +36,7 @@ export default function SummaryPage() {
   const [loadingExplain, setLoadingExplain] = useState<string | null>(null);
   const [elapsedLabel, setElapsedLabel] = useState("—");
   const [avgPerQ, setAvgPerQ] = useState("—");
+  const [doctor] = useState(() => getDoctorPersona(getStudentId()));
 
   useEffect(() => {
     const raw = window.sessionStorage.getItem("mdcat_summary");
@@ -295,6 +298,7 @@ export default function SummaryPage() {
                               )}
                               <div className="mt-4">
                                 <AskAI
+                                  doctor={doctor}
                                   concept={item.chapter || "Biology"}
                                   mcq={{
                                     question_text: item.question_text,
@@ -308,6 +312,7 @@ export default function SummaryPage() {
                             </div>
                           ) : (
                             <AskAI
+                              doctor={doctor}
                               concept={item.chapter || "Biology"}
                               mcq={{
                                 question_text: item.question_text,

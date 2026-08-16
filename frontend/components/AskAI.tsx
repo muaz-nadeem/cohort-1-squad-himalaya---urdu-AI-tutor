@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Send, Phone, PhoneOff, X, Volume2, Loader2 } from "lucide-react";
 import { api, speechStreamUrl, type McqContext } from "@/lib/api";
 import { useVoiceCall } from "@/lib/useVoiceCall";
+import type { DoctorPersona } from "@/lib/doctorPersona";
 
 function playAudioUrl(url: string) {
   const audio = new Audio(url);
@@ -15,13 +16,29 @@ interface Turn {
   content: string;
 }
 
+function DoctorAvatar({ doctor, size = "md" }: { doctor: DoctorPersona; size?: "sm" | "md" }) {
+  const dim = size === "sm" ? "h-8 w-8 text-[10px]" : "h-10 w-10 text-xs";
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center justify-center rounded-full font-bold text-white ${dim}`}
+      style={{ backgroundColor: `hsl(${doctor.hue} 42% 42%)` }}
+      aria-hidden
+    >
+      {doctor.initials}
+    </span>
+  );
+}
+
 export default function AskAI({
   concept,
   mcq,
+  doctor,
 }: {
   concept: string;
   /** The MCQ on screen, so follow-ups stay anchored to this question. */
   mcq?: McqContext;
+  /** Persistent Pakistani doctor persona for this student. */
+  doctor: DoctorPersona;
 }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -33,12 +50,10 @@ export default function AskAI({
   const abortRef = useRef<AbortController | null>(null);
   const mcqRef = useRef<McqContext | undefined>(mcq);
 
-  // Keep the live MCQ available inside the long-running voice call loop
   useEffect(() => {
     mcqRef.current = mcq;
   }, [mcq]);
 
-  // Reset the conversation when the student moves to a different question
   useEffect(() => {
     setTurns([]);
     historyRef.current = [];
@@ -101,9 +116,18 @@ export default function AskAI({
     return (
       <button
         onClick={() => setOpen(true)}
-        className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand/20 bg-brand-50 px-4 py-3 text-sm font-semibold text-brand transition hover:bg-brand-100"
+        className="flex w-full items-center gap-3 rounded-xl border border-brand/20 bg-brand-50 px-4 py-3 text-left transition hover:bg-brand-100"
       >
-        <Volume2 className="h-4 w-4" /> Ask AI
+        <DoctorAvatar doctor={doctor} size="sm" />
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold text-brand">
+            Ask {doctor.displayName}
+          </span>
+          <span className="block text-[11px] text-slate-500">
+            Your MDCAT Biology tutor
+          </span>
+        </span>
+        <Volume2 className="h-4 w-4 shrink-0 text-brand" />
       </button>
     );
   }
@@ -114,13 +138,21 @@ export default function AskAI({
       : call.status === "processing"
         ? "Samajh raha hoon…"
         : call.status === "speaking"
-          ? "Ustaad bol rahe hain…"
+          ? `${doctor.displayName} bol rahe hain…`
           : "Connecting…";
 
   return (
     <div className="rounded-2xl border border-brand/20 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
-        <p className="font-semibold text-slate-800">Ask AI</p>
+      <div className="mb-4 flex items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <DoctorAvatar doctor={doctor} />
+          <div className="min-w-0">
+            <p className="truncate font-semibold text-slate-800">
+              {doctor.displayName}
+            </p>
+            <p className="text-[11px] text-slate-400">MDCAT Biology tutor</p>
+          </div>
+        </div>
         <button
           onClick={() => {
             abortRef.current?.abort();
@@ -156,7 +188,11 @@ export default function AskAI({
                   : "whitespace-pre-line rounded-lg bg-brand-50 p-3 text-sm text-slate-700"
               }
             >
-              {t.role === "user" && <span className="font-medium">You: </span>}
+              {t.role === "user" ? (
+                <span className="font-medium">You: </span>
+              ) : (
+                <span className="font-medium">{doctor.name}: </span>
+              )}
               {t.content}
             </div>
           ))}
@@ -209,7 +245,7 @@ export default function AskAI({
               value={text}
               onChange={(e) => setText(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && !loading && askText()}
-              placeholder="Type your question..."
+              placeholder={`Ask ${doctor.displayName}...`}
               disabled={loading}
               className="!py-2.5 !text-sm"
             />
@@ -231,7 +267,7 @@ export default function AskAI({
             disabled={loading}
             className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
           >
-            <Phone className="h-4 w-4" /> Start voice call (Urdu)
+            <Phone className="h-4 w-4" /> Call {doctor.displayName} (Urdu)
           </button>
         </>
       )}

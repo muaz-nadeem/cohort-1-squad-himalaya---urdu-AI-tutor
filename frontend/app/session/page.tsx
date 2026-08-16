@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   api,
@@ -14,11 +14,14 @@ import {
 } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import { syncStudentCacheFromSession } from "@/lib/auth";
+import { getDoctorPersona } from "@/lib/doctorPersona";
 import AskAI from "@/components/AskAI";
 import {
   BookOpen,
+  Bookmark,
   CheckCircle2,
   Clock,
+  Flag,
   Frown,
   Smile,
   Sparkles,
@@ -26,6 +29,22 @@ import {
   X,
   XCircle,
 } from "lucide-react";
+
+type QState = {
+  selected: string | null;
+  isCorrect: boolean | null;
+  revealedCorrect: string | null;
+  explanation: ExplainResult | null;
+  flagged: boolean;
+};
+
+const EMPTY_Q: QState = {
+  selected: null,
+  isCorrect: null,
+  revealedCorrect: null,
+  explanation: null,
+  flagged: false,
+};
 
 function modeLabel(mode: SessionMode) {
   switch (mode) {
@@ -54,18 +73,17 @@ function SessionInner() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [set, setSet] = useState<QuestionSet | null>(null);
   const [index, setIndex] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [explanation, setExplanation] = useState<ExplainResult | null>(null);
+  const [qStates, setQStates] = useState<Record<number, QState>>({});
   const [explaining, setExplaining] = useState(false);
-  const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState(0);
   const [loading, setLoading] = useState(true);
   const [statusText, setStatusText] = useState("Starting session...");
   const [error, setError] = useState("");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [speakingExplain, setSpeakingExplain] = useState(false);
-  const [revealedCorrect, setRevealedCorrect] = useState<string | null>(null);
+  const [navFilter, setNavFilter] = useState<"all" | "flagged" | "wrong">(
+    "all"
+  );
+  const [confirmEnd, setConfirmEnd] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
   const explainAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -75,8 +93,36 @@ function SessionInner() {
   const sessionIdRef = useRef<string | null>(null);
   const startedAtRef = useRef<number>(Date.now());
 
+  const doctor = useMemo(() => getDoctorPersona(studentId), [studentId]);
+  const current = qStates[index] ?? EMPTY_Q;
+  const {
+    selected,
+    isCorrect,
+    revealedCorrect,
+    explanation,
+    flagged,
+  } = current;
+
+  function patchQ(i: number, patch: Partial<QState>) {
+    setQStates((prev) => ({
+      ...prev,
+      [i]: { ...(prev[i] ?? EMPTY_Q), ...patch },
+    }));
+  }
+
+  function syncScoreFromStates(next: Record<number, QState>) {
+    const vals = Object.values(next);
+    const a = vals.filter((s) => s.isCorrect !== null).length;
+    const s = vals.filter((s) => s.isCorrect === true).length;
+    answeredRef.current = a;
+    scoreRef.current = s;
+  }
+
   const explainParam = params.get("explain");
   const flpMode = (params.get("flp") as "practice" | "timed") || "practice";
+  const isTimedExamEarly = set?.mode === "full_length_timed";
+  const reviewAtEndEarly = isTimedExamEarly || explainParam === "end";
+  const showExplainNow = !reviewAtEndEarly;
 
   async function bootSession() {
     setLoading(true);
@@ -226,11 +272,14 @@ function SessionInner() {
 
   const isTimedExam = set?.mode === "full_length_timed";
   const reviewAtEnd = isTimedExam || explainParam === "end";
-  const showExplainNow = !reviewAtEnd;
 
   async function selectOption(key: string) {
-    if (selected || !question || !studentId) return;
-    setSelected(key);
+    if (!question || !studentId) return;
+    // Already graded — locked.
+    if (current.isCorrect !== null) return;
+    // Answer in flight.
+    if (current.selected) return;
+    patchQ(index, { selected: key });
     try {
       const res = await api.logAttempt({
         student_id: studentId,
@@ -238,22 +287,23 @@ function SessionInner() {
         selected_option: key,
         session_id: sessionId || undefined,
       });
-      setIsCorrect(res.is_correct);
-      setRevealedCorrect(res.correct_option);
-      setAnswered((a) => {
-        const n = a + 1;
-        answeredRef.current = n;
-        return n;
+      setQStates((prev) => {
+        const next = {
+          ...prev,
+          [index]: {
+            ...(prev[index] ?? EMPTY_Q),
+            selected: key,
+            isCorrect: res.is_correct,
+            revealedCorrect: res.correct_option,
+            flagged: prev[index]?.flagged ?? false,
+            explanation: prev[index]?.explanation ?? null,
+          },
+        };
+        syncScoreFromStates(next);
+        return next;
       });
-      if (res.is_correct) {
-        setScore((s) => {
-          const n = s + 1;
-          scoreRef.current = n;
-          return n;
-        });
-      }
 
-      reviewRef.current.push({
+      const item: ReviewItem = {
         question_id: question.id,
         question_text: question.question_text,
         chapter: question.chapter || "Biology",
@@ -261,11 +311,13 @@ function SessionInner() {
         selected_option: key,
         correct_option: res.correct_option,
         is_correct: res.is_correct,
-      });
+      };
+      const ri = reviewRef.current.findIndex(
+        (r) => r.question_id === question.id
+      );
+      if (ri >= 0) reviewRef.current[ri] = item;
+      else reviewRef.current.push(item);
 
-      // In review-at-end / timed-exam modes we never interrupt the flow with a
-      // mid-quiz explanation — the student reviews everything at the end and the
-      // clock keeps ticking. Otherwise (normal practice) explain every answer.
       if (showExplainNow) {
         setExplaining(true);
         try {
@@ -276,15 +328,17 @@ function SessionInner() {
             correct_option: optionText(question, res.correct_option),
             speak: true,
           });
-          setExplanation(exp);
+          patchQ(index, { explanation: exp });
         } catch {
-          setExplanation({
-            explanation: `The correct answer is: ${optionText(question, res.correct_option)}`,
-            answer: "",
-            audio: null,
-            concept: question.chapter || "Biology",
-            citation: null,
-            sources: [],
+          patchQ(index, {
+            explanation: {
+              explanation: `The correct answer is: ${optionText(question, res.correct_option)}`,
+              answer: "",
+              audio: null,
+              concept: question.chapter || "Biology",
+              citation: null,
+              sources: [],
+            },
           });
         }
         setExplaining(false);
@@ -292,9 +346,40 @@ function SessionInner() {
         setTimeout(() => nextAfterAnswer(), 450);
       }
     } catch (e) {
+      patchQ(index, { selected: null });
       setError(e instanceof Error ? e.message : "Failed to submit answer");
       setExplaining(false);
     }
+  }
+
+  function goToQuestion(i: number) {
+    if (!set || i < 0 || i >= set.questions.length || i === index) return;
+    if (explainAudioRef.current) {
+      explainAudioRef.current.pause();
+      explainAudioRef.current = null;
+    }
+    setSpeakingExplain(false);
+    setExplaining(false);
+    setConfirmEnd(false);
+    setIndex(i);
+  }
+
+  function markForReview() {
+    patchQ(index, { flagged: true });
+    if (!set) return;
+    // Jump to next unanswered after this one.
+    for (let j = 1; j <= set.questions.length; j++) {
+      const i = (index + j) % set.questions.length;
+      const st = qStates[i] ?? EMPTY_Q;
+      if (st.isCorrect === null && i !== index) {
+        goToQuestion(i);
+        return;
+      }
+    }
+  }
+
+  function toggleFlag() {
+    patchQ(index, { flagged: !flagged });
   }
 
   function nextAfterAnswer() {
@@ -303,16 +388,45 @@ function SessionInner() {
       explainAudioRef.current = null;
     }
     setSpeakingExplain(false);
-    setSelected(null);
-    setIsCorrect(null);
-    setRevealedCorrect(null);
-    setExplanation(null);
     if (!set) return;
-    if (index >= set.questions.length - 1) {
-      finish();
-    } else {
-      setIndex((i) => i + 1);
+    if (navFilter === "flagged" || navFilter === "wrong") {
+      const pool =
+        navFilter === "flagged"
+          ? set.questions
+              .map((_, i) => i)
+              .filter((i) => (qStates[i] ?? EMPTY_Q).flagged)
+          : set.questions
+              .map((_, i) => i)
+              .filter((i) => (qStates[i] ?? EMPTY_Q).isCorrect === false);
+      const next = pool.find((i) => i > index) ?? pool.find((i) => i < index);
+      if (next !== undefined) {
+        goToQuestion(next);
+        return;
+      }
     }
+    if (index >= set.questions.length - 1) {
+      requestEnd();
+    } else {
+      goToQuestion(index + 1);
+    }
+  }
+
+  function requestEnd() {
+    if (!set) {
+      void finish();
+      return;
+    }
+    const wrongN = set.questions.filter(
+      (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+    ).length;
+    const flagN = set.questions.filter(
+      (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+    ).length;
+    if (wrongN > 0 || flagN > 0) {
+      setConfirmEnd(true);
+      return;
+    }
+    void finish();
   }
 
   async function exitSession() {
@@ -390,7 +504,44 @@ function SessionInner() {
       <Centered text="No questions." onBack={() => router.replace("/dashboard")} />
     );
 
-  const progress = ((index + 1) / set.questions.length) * 100;
+  const answered = Object.values(qStates).filter(
+    (s) => s.isCorrect !== null
+  ).length;
+  const score = Object.values(qStates).filter(
+    (s) => s.isCorrect === true
+  ).length;
+  const scorePct = answered ? Math.round((score / answered) * 100) : 0;
+  const showSidebar = !!(selected && showExplainNow);
+  const graded = isCorrect !== null;
+  const revealColors = !reviewAtEnd;
+  const flaggedCount = set.questions.filter(
+    (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+  ).length;
+  const wrongCount = set.questions.filter(
+    (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+  ).length;
+
+  function boxClass(i: number) {
+    const st = qStates[i] ?? EMPTY_Q;
+    const isCurrent = i === index;
+    if (isCurrent) {
+      return "border-brand bg-brand text-white ring-2 ring-brand/30";
+    }
+    if (revealColors && st.isCorrect === true) {
+      return "border-emerald-500 bg-emerald-500 text-white";
+    }
+    if (revealColors && st.isCorrect === false) {
+      return "border-red-500 bg-red-500 text-white";
+    }
+    if (st.flagged) {
+      return "border-amber-400 bg-amber-50 text-amber-800";
+    }
+    if (st.selected && reviewAtEnd) {
+      return "border-slate-400 bg-slate-200 text-slate-700";
+    }
+    return "border-slate-200 bg-white text-slate-600 hover:border-slate-300";
+  }
+
   const mm = secondsLeft !== null ? Math.floor(secondsLeft / 60) : 0;
   const ss = secondsLeft !== null ? secondsLeft % 60 : 0;
   const hh = secondsLeft !== null ? Math.floor(secondsLeft / 3600) : 0;
@@ -402,10 +553,6 @@ function SessionInner() {
             .toString()
             .padStart(2, "0")}:${ss.toString().padStart(2, "0")}`
         : `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
-
-  const scorePct = answered ? Math.round((score / answered) * 100) : 0;
-  const showSidebar = !!(selected && showExplainNow);
-  const graded = isCorrect !== null;
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
@@ -442,42 +589,113 @@ function SessionInner() {
       </header>
 
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
-          <div className="min-w-[200px] flex-1">
-            <p className="text-[10px] font-bold tracking-wider text-slate-400">
-              PROGRESS
-            </p>
-            <p className="mt-1 text-sm font-semibold text-slate-800">
-              Q {index + 1} / {set.questions.length}
-            </p>
-            <div className="mt-2 h-2 max-w-md overflow-hidden rounded-full bg-sky-100">
-              <div
-                className="h-full rounded-full bg-sky-400 transition-all"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-          </div>
-          {!reviewAtEnd && (
-            <div className="text-right">
+        <div className="mb-6 space-y-4">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
               <p className="text-[10px] font-bold tracking-wider text-slate-400">
-                Current Score
-              </p>
-              <p className="mt-1 text-sm font-semibold text-brand">
-                {score}/{answered || 0}
-                {answered > 0 ? ` (${scorePct}%)` : ""}
-              </p>
-            </div>
-          )}
-          {reviewAtEnd && (
-            <div className="text-right">
-              <p className="text-[10px] font-bold tracking-wider text-slate-400">
-                Answered
+                PROGRESS
               </p>
               <p className="mt-1 text-sm font-semibold text-slate-800">
-                {answered}/{set.questions.length}
+                Q {index + 1} / {set.questions.length}
               </p>
             </div>
-          )}
+            {!reviewAtEnd && (
+              <div className="text-right">
+                <p className="text-[10px] font-bold tracking-wider text-slate-400">
+                  Current Score
+                </p>
+                <p className="mt-1 text-sm font-semibold text-brand">
+                  {score}/{answered || 0}
+                  {answered > 0 ? ` (${scorePct}%)` : ""}
+                </p>
+              </div>
+            )}
+            {reviewAtEnd && (
+              <div className="text-right">
+                <p className="text-[10px] font-bold tracking-wider text-slate-400">
+                  Answered
+                </p>
+                <p className="mt-1 text-sm font-semibold text-slate-800">
+                  {answered}/{set.questions.length}
+                </p>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {(
+              [
+                ["all", "All"],
+                ["flagged", `Review (${flaggedCount})`],
+                ["wrong", `Wrong (${wrongCount})`],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => {
+                  setNavFilter(id);
+                  if (id === "flagged" && flaggedCount > 0) {
+                    const first = set.questions.findIndex(
+                      (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+                    );
+                    if (first >= 0) goToQuestion(first);
+                  }
+                  if (id === "wrong" && wrongCount > 0) {
+                    const first = set.questions.findIndex(
+                      (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+                    );
+                    if (first >= 0) goToQuestion(first);
+                  }
+                }}
+                className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                  navFilter === id
+                    ? "bg-brand text-white"
+                    : "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+            <span className="ml-auto hidden items-center gap-3 text-[10px] text-slate-400 sm:inline-flex">
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
+              </span>
+            </span>
+          </div>
+
+          <div className="max-h-36 overflow-y-auto rounded-xl border border-slate-100 bg-white p-2 shadow-sm sm:max-h-none">
+            <div className="flex flex-wrap gap-1.5">
+              {set.questions.map((_, i) => {
+                const st = qStates[i] ?? EMPTY_Q;
+                if (navFilter === "flagged" && !st.flagged) return null;
+                if (navFilter === "wrong" && st.isCorrect !== false) return null;
+                return (
+                  <button
+                    key={i}
+                    type="button"
+                    title={`Question ${i + 1}`}
+                    onClick={() => goToQuestion(i)}
+                    className={`relative flex h-7 w-7 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition sm:h-8 sm:w-8 sm:text-[11px] ${boxClass(i)}`}
+                  >
+                    {i + 1}
+                    {st.flagged && i !== index && (
+                      <span className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         <div
@@ -495,6 +713,20 @@ function SessionInner() {
                   {question.chapter}
                 </span>
               )}
+              <button
+                type="button"
+                onClick={toggleFlag}
+                className={`ml-auto inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
+                  flagged
+                    ? "bg-amber-100 text-amber-800"
+                    : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                <Bookmark
+                  className={`h-3.5 w-3.5 ${flagged ? "fill-current" : ""}`}
+                />
+                {flagged ? "Marked for review" : "Mark for review"}
+              </button>
             </div>
 
             <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
@@ -549,7 +781,7 @@ function SessionInner() {
               <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
                 <button
                   type="button"
-                  onClick={finish}
+                  onClick={requestEnd}
                   className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
                 >
                   Finish Session
@@ -563,6 +795,89 @@ function SessionInner() {
                     ? "Finish Session"
                     : "Next Question →"}
                 </button>
+              </div>
+            )}
+
+            {!selected && (
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={markForReview}
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-800 hover:bg-amber-100"
+                >
+                  <Flag className="h-4 w-4" />
+                  Leave for review
+                </button>
+                <button
+                  type="button"
+                  onClick={requestEnd}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                >
+                  Finish Session
+                </button>
+              </div>
+            )}
+
+            {confirmEnd && (
+              <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-sm font-semibold text-slate-800">
+                  Review before you quit?
+                </p>
+                <p className="mt-1 text-xs text-slate-500">
+                  You can jump back to marked or wrong questions first.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {flaggedCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setConfirmEnd(false);
+                        setNavFilter("flagged");
+                        const first = set.questions.findIndex(
+                          (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+                        );
+                        if (first >= 0) goToQuestion(first);
+                      }}
+                      className="rounded-xl bg-amber-100 px-3 py-2 text-xs font-semibold text-amber-900"
+                    >
+                      Review marked ({flaggedCount})
+                    </button>
+                  )}
+                  {wrongCount > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setConfirmEnd(false);
+                        setNavFilter("wrong");
+                        const first = set.questions.findIndex(
+                          (_, i) =>
+                            (qStates[i] ?? EMPTY_Q).isCorrect === false
+                        );
+                        if (first >= 0) goToQuestion(first);
+                      }}
+                      className="rounded-xl bg-red-100 px-3 py-2 text-xs font-semibold text-red-800"
+                    >
+                      Review wrong ({wrongCount})
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setConfirmEnd(false);
+                      void finish();
+                    }}
+                    className="rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white"
+                  >
+                    End anyway
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setConfirmEnd(false)}
+                    className="rounded-xl px-3 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-50"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -661,6 +976,7 @@ function SessionInner() {
               </div>
 
               <AskAI
+                doctor={doctor}
                 concept={conceptName}
                 mcq={{
                   question_text: question.question_text,
