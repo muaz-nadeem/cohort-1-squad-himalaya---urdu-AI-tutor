@@ -655,3 +655,115 @@ def search_chunks_text(
             if len(found) >= match_count:
                 return found
     return found
+
+
+# ── Ask Textbook chat history ───────────────────────────────────────────────
+def list_textbook_chats(student_id: str, limit: int = 40) -> list[dict[str, Any]]:
+    res = (
+        require_client()
+        .table("textbook_chats")
+        .select("id,title,book_filter,created_at,updated_at")
+        .eq("student_id", student_id)
+        .order("updated_at", desc=True)
+        .limit(limit)
+        .execute()
+    )
+    return res.data or []
+
+
+def create_textbook_chat(
+    student_id: str,
+    title: str = "New chat",
+    book_filter: Optional[str] = None,
+) -> dict[str, Any]:
+    payload = {
+        "student_id": student_id,
+        "title": (title or "New chat")[:120],
+        "book_filter": book_filter,
+    }
+    res = require_client().table("textbook_chats").insert(payload).execute()
+    return (res.data or [payload])[0]
+
+
+def get_textbook_chat(chat_id: str, student_id: str) -> Optional[dict[str, Any]]:
+    res = (
+        require_client()
+        .table("textbook_chats")
+        .select("id,student_id,title,book_filter,created_at,updated_at")
+        .eq("id", chat_id)
+        .eq("student_id", student_id)
+        .limit(1)
+        .execute()
+    )
+    rows = res.data or []
+    return rows[0] if rows else None
+
+
+def update_textbook_chat(
+    chat_id: str,
+    student_id: str,
+    *,
+    title: Optional[str] = None,
+    book_filter: Optional[str] = None,
+    touch: bool = True,
+) -> Optional[dict[str, Any]]:
+    patch: dict[str, Any] = {}
+    if title is not None:
+        patch["title"] = title[:120]
+    if book_filter is not None:
+        patch["book_filter"] = book_filter or None
+    if touch:
+        from datetime import datetime, timezone
+
+        patch["updated_at"] = datetime.now(timezone.utc).isoformat()
+    if not patch:
+        return get_textbook_chat(chat_id, student_id)
+    res = (
+        require_client()
+        .table("textbook_chats")
+        .update(patch)
+        .eq("id", chat_id)
+        .eq("student_id", student_id)
+        .execute()
+    )
+    rows = res.data or []
+    return rows[0] if rows else get_textbook_chat(chat_id, student_id)
+
+
+def delete_textbook_chat(chat_id: str, student_id: str) -> bool:
+    require_client().table("textbook_chats").delete().eq("id", chat_id).eq(
+        "student_id", student_id
+    ).execute()
+    return True
+
+
+def list_textbook_chat_messages(chat_id: str) -> list[dict[str, Any]]:
+    res = (
+        require_client()
+        .table("textbook_chat_messages")
+        .select("id,role,content,sources,citation,created_at")
+        .eq("chat_id", chat_id)
+        .order("created_at")
+        .execute()
+    )
+    return res.data or []
+
+
+def append_textbook_chat_messages(
+    chat_id: str, messages: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    if not messages:
+        return []
+    rows = []
+    for m in messages:
+        rows.append(
+            {
+                "chat_id": chat_id,
+                "role": m["role"],
+                "content": m["content"],
+                "sources": m.get("sources") or [],
+                "citation": m.get("citation"),
+            }
+        )
+    res = require_client().table("textbook_chat_messages").insert(rows).execute()
+    return res.data or rows

@@ -333,6 +333,27 @@ export interface RagVoiceResult {
   error?: string;
 }
 
+export interface TextbookChatSummary {
+  id: string;
+  title: string;
+  book_filter?: string | null;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface TextbookChatMessage {
+  id: string;
+  role: "user" | "assistant" | string;
+  content: string;
+  sources?: RagSource[] | null;
+  citation?: string | null;
+  created_at?: string;
+}
+
+export interface TextbookChatDetail extends TextbookChatSummary {
+  messages: TextbookChatMessage[];
+}
+
 export const api = {
   createStudent: (body: {
     name?: string;
@@ -500,7 +521,12 @@ export const api = {
     return request<DailyPlan>(`/api/daily-plan${q}`);
   },
 
-  ragAsk: (body: { question: string; book?: string; top_k?: number }) =>
+  ragAsk: (body: {
+    question: string;
+    book?: string;
+    top_k?: number;
+    history?: { role: string; content: string }[];
+  }) =>
     request<RagAnswer>("/api/rag/ask", {
       method: "POST",
       body: JSON.stringify(body),
@@ -510,6 +536,7 @@ export const api = {
     question: string;
     book?: string;
     top_k?: number;
+    history?: { role: string; content: string }[];
   }) => {
     const headers = await authHeaders();
     return fetch(`${API_URL}/api/rag/ask-stream`, {
@@ -518,6 +545,43 @@ export const api = {
       body: JSON.stringify(body),
     });
   },
+
+  listTextbookChats: () =>
+    request<{ chats: TextbookChatSummary[] }>("/api/textbook-chats"),
+
+  createTextbookChat: (body?: { title?: string; book_filter?: string }) =>
+    request<TextbookChatSummary>("/api/textbook-chats", {
+      method: "POST",
+      body: JSON.stringify(body || {}),
+    }),
+
+  getTextbookChat: (chatId: string) =>
+    request<TextbookChatDetail>(`/api/textbook-chats/${chatId}`),
+
+  deleteTextbookChat: (chatId: string) =>
+    request<{ ok: boolean }>(`/api/textbook-chats/${chatId}`, {
+      method: "DELETE",
+    }),
+
+  appendTextbookChatMessages: (
+    chatId: string,
+    body: {
+      messages: {
+        role: string;
+        content: string;
+        sources?: RagSource[];
+        citation?: string | null;
+      }[];
+      title?: string;
+    }
+  ) =>
+    request<{
+      messages: TextbookChatMessage[];
+      chat: TextbookChatSummary;
+    }>(`/api/textbook-chats/${chatId}/messages`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
   ragAskVoice: async (
     audio: Blob,

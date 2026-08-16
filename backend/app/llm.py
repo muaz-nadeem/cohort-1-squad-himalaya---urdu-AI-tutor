@@ -268,16 +268,24 @@ def explain_answer(
     return _chat(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=220)
 
 
-def answer_from_rag(question: str, context: str) -> str:
+def answer_from_rag(
+    question: str,
+    context: str,
+    history: Optional[list[dict]] = None,
+) -> str:
     """Answer a free-form Biology question grounded in multimodal RAG context."""
-    user_prompt = _rag_user_prompt(question, context)
+    user_prompt = _rag_user_prompt(question, context, history)
     return _chat(RAG_ASK_SYSTEM_PROMPT, user_prompt, max_tokens=350)
 
 
-def stream_answer_from_rag(question: str, context: str):
+def stream_answer_from_rag(
+    question: str,
+    context: str,
+    history: Optional[list[dict]] = None,
+):
     """Streaming version — yields text chunks as they arrive from Groq."""
     client = get_groq_client()
-    user_prompt = _rag_user_prompt(question, context)
+    user_prompt = _rag_user_prompt(question, context, history)
     stream = client.chat.completions.create(
         model=settings.LLM_MODEL,
         messages=[
@@ -294,16 +302,37 @@ def stream_answer_from_rag(question: str, context: str):
             yield delta.content
 
 
-def _rag_user_prompt(question: str, context: str) -> str:
+def _rag_user_prompt(
+    question: str,
+    context: str,
+    history: Optional[list[dict]] = None,
+) -> str:
+    history_block = ""
+    if history:
+        lines: list[str] = []
+        for turn in history[-8:]:
+            role = (turn.get("role") or "user").strip()
+            content = (turn.get("content") or "").strip()
+            if not content:
+                continue
+            label = "Student" if role == "user" else "Tutor"
+            lines.append(f"{label}: {content}")
+        if lines:
+            history_block = (
+                "Recent conversation (use for follow-ups; stay on Biology):\n"
+                + "\n".join(lines)
+                + "\n\n"
+            )
+
     return f"""Optional textbook passages (each tagged with [Book - page - type]):
 {context if context else '(none retrieved)'}
 
-Student question (may be in Urdu or English): {question}
+{history_block}Student question (may be in Urdu or English): {question}
 
 If this is NOT about FSc/MDCAT Biology course material, reply with EXACTLY:
 {OFF_TOPIC_ENGLISH}
 
-Otherwise answer helpfully in English only. Prefer the passages if they match the topic; otherwise use your own MDCAT/FSc Biology knowledge. Never say the passage is missing or incomplete. Never reply in Urdu or Roman Urdu."""
+Otherwise answer helpfully in English only. Prefer the passages if they match the topic; otherwise use your own MDCAT/FSc Biology knowledge. Never say the passage is missing or incomplete. Never reply in Urdu or Roman Urdu. If this is a short follow-up (e.g. "explain more", "why"), continue from the recent conversation."""
 
 
 def _bilingual_prompt(role_line: str, source_line: str) -> str:
@@ -411,9 +440,17 @@ def answer_question_bilingual(
     return normalize_course_answer(*_split_bilingual(raw))
 
 
-def answer_from_rag_bilingual(question: str, context: str) -> tuple[str, str]:
+def answer_from_rag_bilingual(
+    question: str,
+    context: str,
+    history: Optional[list[dict]] = None,
+) -> tuple[str, str]:
     """Textbook RAG answer as (english, urdu_narration) in one LLM round-trip."""
-    raw = _chat(RAG_BILINGUAL_SYSTEM_PROMPT, _rag_user_prompt(question, context), max_tokens=700)
+    raw = _chat(
+        RAG_BILINGUAL_SYSTEM_PROMPT,
+        _rag_user_prompt(question, context, history),
+        max_tokens=700,
+    )
     return normalize_course_answer(*_split_bilingual(raw))
 
 

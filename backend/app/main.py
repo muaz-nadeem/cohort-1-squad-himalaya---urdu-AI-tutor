@@ -549,6 +549,7 @@ class RagAskRequest(BaseModel):
     question: str
     book: Optional[str] = None  # fsc_bio_part1 | fsc_bio_part2 | null = both
     top_k: int = 5
+    history: Optional[list[dict]] = None  # prior turns [{role, content}]
 
 
 @app.post("/api/rag/ask")
@@ -564,7 +565,10 @@ async def rag_ask(
 
     loop = asyncio.get_event_loop()
     on_course = await loop.run_in_executor(
-        None, lambda: llm.is_course_related(req.question.strip())
+        None,
+        lambda: llm.is_course_related(
+            req.question.strip(), history=req.history
+        ),
     )
     if not on_course:
         answer_text, _ = llm.off_topic_reply()
@@ -580,7 +584,9 @@ async def rag_ask(
 
     # Always answer Biology questions — even when retrieval is empty on slim
     # deploys (no local fastembed). Prefer passages when present.
-    answer_text = llm.answer_from_rag(req.question.strip(), context)
+    answer_text = llm.answer_from_rag(
+        req.question.strip(), context, history=req.history
+    )
     answer_text, _ = llm.normalize_course_answer(answer_text, "")
     if llm.is_off_topic_answer(answer_text):
         return {"answer": answer_text, "sources": [], "citation": None}
@@ -609,7 +615,10 @@ async def rag_ask_stream(
 
     loop = asyncio.get_event_loop()
     on_course = await loop.run_in_executor(
-        None, lambda: llm.is_course_related(req.question.strip())
+        None,
+        lambda: llm.is_course_related(
+            req.question.strip(), history=req.history
+        ),
     )
     if not on_course:
         answer_text, _ = llm.off_topic_reply()
@@ -632,7 +641,9 @@ async def rag_ask_stream(
 
     async def generate():
         yield f"data: {json.dumps({'type': 'sources', 'sources': sources if context else [], 'citation': citation})}\n\n"
-        for token in llm.stream_answer_from_rag(req.question.strip(), context):
+        for token in llm.stream_answer_from_rag(
+            req.question.strip(), context, history=req.history
+        ):
             yield f"data: {json.dumps({'type': 'text', 'content': token})}\n\n"
         if citation:
             yield f"data: {json.dumps({'type': 'text', 'content': f'  ({citation})'})}\n\n"
@@ -802,6 +813,156 @@ async def rag_ask_voice(
             "sources": [],
             "citation": None,
         }
+
+
+# ===========================================================================
+# Ask Textbook — saved conversations
+# ===========================================================================
+class TextbookChatCreate(BaseModel):
+    title: Optional[str] = None
+    book_filter: Optional[str] = None
+
+
+class TextbookChatAppend(BaseModel):
+    messages: list[dict]
+    title: Optional[str] = None
+
+
+def _chat_title_from_question(question: str) -> str:
+    cleaned = " ".join((question or "").strip().split())
+    if not cleaned:
+        return "New chat"
+    return cleaned if len(cleaned) <= 72 else cleaned[:69].rstrip() + "…"
+
+
+@app.get("/api/textbook-chats")
+@limiter.limit("60/minute")
+async def list_textbook_chats(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    try:
+        chats = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: db.list_textbook_chats(user.id)
+        )
+        return {"chats": chats}
+    except Exception as exc:
+        print(f"  [textbook-chats] list failed: {type(exc).__name__}: {exc}")
+        raise HTTPException(
+            status_code=503,
+            detail="Chat history is unavailable. Run migration 003_textbook_chats.sql in Supabase.",
+        )
+
+
+@app.post("/api/textbook-chats")
+@limiter.limit("30/minute")
+async def create_textbook_chat(
+    request: Request,
+    req: Annotated[TextbookChatCreate, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    try:
+        chat = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: db.create_textbook_chat(
+                user.id,
+                title=(req.title or "New chat"),
+                book_filter=req.book_filter,
+            ),
+        )
+        return chat
+    except Exception as exc:
+        print(f"  [textbook-chats] create failed: {type(exc).__name__}: {exc}")
+        raise HTTPException(
+            status_code=503,
+            detail="Could not create chat. Run migration 003_textbook_chats.sql in Supabase.",
+        )
+
+
+@app.get("/api/textbook-chats/{chat_id}")
+@limiter.limit("60/minute")
+async def get_textbook_chat(
+    request: Request,
+    chat_id: str,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    chat = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.get_textbook_chat(chat_id, user.id)
+    )
+    if not chat:
+        raise HTTPException(status_code=404, detail="Chat not found")
+    messages = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.list_textbook_chat_messages(chat_id)
+    )
+    return {**chat, "messages": messages}
+
+
+@app.delete("/api/textbook-chats/{chat_id}")
+@limiter.limit("30/minute")
+async def delete_textbook_chat(
+    request: Request,
+    chat_id: str,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    chat = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.get_textbook_chat(chat_id, user.id)
+    )
+    if not chat:
+        raise HTTPException(status_code=404, detail="Chat not found")
+    await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.delete_textbook_chat(chat_id, user.id)
+    )
+    return {"ok": True}
+
+
+@app.post("/api/textbook-chats/{chat_id}/messages")
+@limiter.limit("60/minute")
+async def append_textbook_chat_messages(
+    request: Request,
+    chat_id: str,
+    req: Annotated[TextbookChatAppend, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    chat = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.get_textbook_chat(chat_id, user.id)
+    )
+    if not chat:
+        raise HTTPException(status_code=404, detail="Chat not found")
+
+    cleaned = []
+    for m in req.messages or []:
+        role = (m.get("role") or "").strip()
+        content = (m.get("content") or "").strip()
+        if role not in {"user", "assistant"} or not content:
+            continue
+        cleaned.append(
+            {
+                "role": role,
+                "content": content,
+                "sources": m.get("sources") or [],
+                "citation": m.get("citation"),
+            }
+        )
+    if not cleaned:
+        raise HTTPException(status_code=400, detail="No valid messages")
+
+    saved = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.append_textbook_chat_messages(chat_id, cleaned)
+    )
+
+    title = req.title
+    if not title:
+        first_user = next((m["content"] for m in cleaned if m["role"] == "user"), "")
+        if chat.get("title") in {None, "", "New chat"} and first_user:
+            title = _chat_title_from_question(first_user)
+
+    updated = await asyncio.get_event_loop().run_in_executor(
+        None,
+        lambda: db.update_textbook_chat(
+            chat_id, user.id, title=title, touch=True
+        ),
+    )
+    return {"messages": saved, "chat": updated or chat}
 
 
 # ===========================================================================
