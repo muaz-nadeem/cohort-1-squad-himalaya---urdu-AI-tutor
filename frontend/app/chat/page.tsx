@@ -672,15 +672,6 @@ export default function ChatPage() {
                   }}
                   className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1.5 shadow-sm"
                 >
-                  <button
-                    type="button"
-                    onClick={call.startCall}
-                    disabled={loading}
-                    className="flex h-9 w-9 items-center justify-center rounded-full text-slate-400 transition hover:bg-brand-50 hover:text-brand disabled:opacity-40"
-                    title="Start voice call (Urdu)"
-                  >
-                    <Phone className="h-4 w-4" />
-                  </button>
                   <input
                     ref={inputRef}
                     type="text"
@@ -688,17 +679,27 @@ export default function ChatPage() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about MDCAT syllabus..."
                     disabled={loading}
-                    className="!border-0 !bg-transparent !px-0 !py-2 !shadow-none !ring-0 focus:!ring-0"
+                    className="min-w-0 flex-1 !border-0 !bg-transparent !px-3 !py-2 !shadow-none !ring-0 focus:!ring-0"
                   />
+                  <button
+                    type="button"
+                    onClick={call.startCall}
+                    disabled={loading}
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand transition hover:bg-brand hover:text-white disabled:opacity-40"
+                    title="Ask by voice (Urdu)"
+                    aria-label="Ask by voice"
+                  >
+                    <Phone className="h-5 w-5" />
+                  </button>
                   <button
                     type="submit"
                     disabled={loading || !input.trim()}
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
                   >
                     {loading ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
-                      <Send className="h-4 w-4" />
+                      <Send className="h-5 w-5" />
                     )}
                   </button>
                 </form>
