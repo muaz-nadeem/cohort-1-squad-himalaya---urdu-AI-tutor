@@ -1065,12 +1065,12 @@ async def questions_chapter(
     request: Request,
     user: Annotated[AuthUser, Depends(get_current_user)],
     chapter: str,
-    count: int = 100,
+    count: int = 25,
     student_id: Optional[str] = None,
 ):
     """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
     sid = assert_same_student(user, student_id)
-    n = max(1, min(count, 100))
+    n = max(1, min(count, 50))
     try:
         qs = await asyncio.get_event_loop().run_in_executor(
             None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)

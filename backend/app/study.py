@@ -12,7 +12,9 @@ from . import db, weak_spots
 from .chapters import list_chapters
 
 DIAGNOSTIC_COUNT = 25
-CHAPTER_PRACTICE_COUNT = 100
+# Keep chapter sets modest on free-tier hosts (512MB). Students can still drill;
+# full-length remains the long exam mode.
+CHAPTER_PRACTICE_COUNT = 25
 FULL_LENGTH_BIOLOGY = 81
 DRILL_TIME_LIMIT_SEC = 20 * 60
 DRILL_MASTERY_STREAK = 3

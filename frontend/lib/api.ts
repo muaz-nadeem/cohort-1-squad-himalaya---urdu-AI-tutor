@@ -76,7 +76,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 
       if (isNetwork) {
         throw new Error(
-          `Could not reach the API at ${API_URL}. On free Render it may be waking from sleep — wait ~30s and try again.`
+          `Could not reach the API at ${API_URL}. The free Render server may be asleep, restarting, or out of memory — wait ~30s and try again. Upgrade Render if this keeps happening.`
         );
       }
       throw e;
@@ -358,7 +358,7 @@ export const api = {
       `/api/questions/diagnostic?student_id=${studentId}&count=${count}`
     ),
 
-  getChapterPractice: (chapter: string, count = 100, studentId?: string) => {
+  getChapterPractice: (chapter: string, count = 25, studentId?: string) => {
     const q = new URLSearchParams({ chapter, count: String(count) });
     if (studentId) q.set("student_id", studentId);
     return request<QuestionSet>(`/api/questions/chapter?${q.toString()}`);

@@ -169,7 +169,7 @@ def sample_questions(
                 return res.data
         except Exception:
             pass
-        pool = get_questions(chapter=chapter, book=book, limit=max(count * 5, 200))
+        pool = get_questions(chapter=chapter, book=book, limit=max(count * 3, 60))
         random.shuffle(pool)
         return pool[:count]
 
@@ -206,7 +206,9 @@ def sample_questions(
         ).execute()
         pool = res.data or []
     except Exception:
-        pool = get_questions(chapter=chapter, book=book, limit=max(pool_size, 200))
+        pool = get_questions(
+            chapter=chapter, book=book, limit=max(min(pool_size, 150), count)
+        )
         random.shuffle(pool)
 
     unseen = [q for q in pool if q.get("id") not in exclude]

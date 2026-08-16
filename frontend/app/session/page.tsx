@@ -122,7 +122,7 @@ function SessionInner() {
           questionsP = api.getDiagnostic(id);
           sessionMode = "diagnostic";
         } else if (mode === "chapter" && chapter) {
-          questionsP = api.getChapterPractice(chapter, 100, id);
+          questionsP = api.getChapterPractice(chapter, 25, id);
           sessionMode = "chapter_practice";
         } else if (mode === "full_length") {
           questionsP = api.getFullLength(flpMode, id);
