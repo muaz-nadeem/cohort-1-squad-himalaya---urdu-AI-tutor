@@ -23,6 +23,7 @@ import {
   Clock,
   Flag,
   Frown,
+  Loader2,
   Smile,
   Sparkles,
   Volume2,
@@ -84,6 +85,7 @@ function SessionInner() {
     "all"
   );
   const [confirmEnd, setConfirmEnd] = useState(false);
+  const [exiting, setExiting] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
   const explainAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -420,6 +422,9 @@ function SessionInner() {
   }
 
   async function exitSession() {
+    if (exiting) return;
+    setExiting(true);
+    setConfirmEnd(false);
     // Properly close the session instead of abandoning it open.
     const sid = sessionIdRef.current;
     if (sid) {
@@ -452,6 +457,9 @@ function SessionInner() {
   }
 
   async function finish() {
+    if (exiting) return;
+    setExiting(true);
+    setConfirmEnd(false);
     const sid = sessionIdRef.current;
     if (!sid) {
       router.replace("/dashboard");
@@ -549,15 +557,28 @@ function SessionInner() {
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
+      {exiting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/35 backdrop-blur-[1px]">
+          <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-4 text-sm font-semibold text-slate-700 shadow-lg">
+            <Loader2 className="h-5 w-5 animate-spin text-brand" />
+            Ending session…
+          </div>
+        </div>
+      )}
       <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <button
             type="button"
             onClick={exitSession}
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800"
+            disabled={exiting}
+            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800 disabled:opacity-60"
           >
-            <X className="h-4 w-4" />
-            Exit Session
+            {exiting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <X className="h-4 w-4" />
+            )}
+            {exiting ? "Ending…" : "Exit Session"}
           </button>
 
           <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-brand">
@@ -775,14 +796,16 @@ function SessionInner() {
                 <button
                   type="button"
                   onClick={requestEnd}
-                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                  disabled={exiting}
+                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-60"
                 >
                   Finish Session
                 </button>
                 <button
                   type="button"
                   onClick={nextAfterAnswer}
-                  className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+                  disabled={exiting}
+                  className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60"
                 >
                   {index >= set.questions.length - 1
                     ? "Finish Session"

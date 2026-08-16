@@ -64,6 +64,12 @@ class Settings:
 
     EMBEDDING_MODEL: str = "nomic-embed-text-v1.5"  # local via fastembed
     EMBEDDING_DIMENSIONS: int = 768
+    # Optional: remote Nomic Atlas embeddings when fastembed is not installed
+    # (e.g. slim Render deploy). Same model/dims as ingested textbook chunks.
+    NOMIC_API_KEY: str = os.getenv("NOMIC_API_KEY", "").strip()
+    NOMIC_EMBED_URL: str = os.getenv(
+        "NOMIC_EMBED_URL", "https://api-atlas.nomic.ai/v1/embedding/text"
+    ).strip()
     LLM_MODEL: str = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-versatile")
     VISION_MODEL: str = os.getenv(
         "GROQ_VISION_MODEL", "qwen/qwen3.6-27b"

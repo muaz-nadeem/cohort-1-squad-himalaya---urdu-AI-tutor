@@ -578,28 +578,20 @@ async def rag_ask(
     context = retrieved["context"]
     sources = retrieved["sources"]
 
-    if not context:
-        return {
-            "answer": (
-                "No textbook passages were retrieved. "
-                "Ingest FSc Biology PDFs with: python -m scripts.build_biology_rag"
-            ),
-            "sources": [],
-            "citation": None,
-        }
-
+    # Always answer Biology questions — even when retrieval is empty on slim
+    # deploys (no local fastembed). Prefer passages when present.
     answer_text = llm.answer_from_rag(req.question.strip(), context)
     answer_text, _ = llm.normalize_course_answer(answer_text, "")
     if llm.is_off_topic_answer(answer_text):
         return {"answer": answer_text, "sources": [], "citation": None}
 
-    citation = rag.format_citation(sources)
+    citation = rag.format_citation(sources) if context else None
     if citation and citation not in answer_text:
         answer_text = f"{answer_text}\n\n({citation})"
 
     return {
         "answer": answer_text,
-        "sources": sources,
+        "sources": sources if context else [],
         "citation": citation,
     }
 
@@ -636,17 +628,10 @@ async def rag_ask_stream(
     )
     context = retrieved["context"]
     sources = retrieved["sources"]
-    citation = rag.format_citation(sources)
-
-    if not context:
-        async def empty_stream():
-            yield f"data: {json.dumps({'type': 'sources', 'sources': [], 'citation': None})}\n\n"
-            yield f"data: {json.dumps({'type': 'text', 'content': 'No textbook passages were retrieved.'})}\n\n"
-            yield "data: [DONE]\n\n"
-        return StreamingResponse(empty_stream(), media_type="text/event-stream")
+    citation = rag.format_citation(sources) if context else None
 
     async def generate():
-        yield f"data: {json.dumps({'type': 'sources', 'sources': sources, 'citation': citation})}\n\n"
+        yield f"data: {json.dumps({'type': 'sources', 'sources': sources if context else [], 'citation': citation})}\n\n"
         for token in llm.stream_answer_from_rag(req.question.strip(), context):
             yield f"data: {json.dumps({'type': 'text', 'content': token})}\n\n"
         if citation:

@@ -1,17 +1,21 @@
 """RAG retrieval: embed a query, pull the closest FSc textbook chunks.
 
-Embeddings run locally via fastembed (nomic-embed-text-v1.5, 768-dim ONNX).
-Retrieved chunks include book + printed page_number for citations.
+Embeddings:
+  1) local fastembed (nomic-embed-text-v1.5, 768-dim ONNX) when installed
+  2) remote Nomic Atlas API when NOMIC_API_KEY is set (slim Render deploys)
+  3) keyword ILIKE fallback over textbook_chunks when embeddings are unavailable
 
-Nomic embed models use task prefixes:
+Nomic embed models use task prefixes locally:
   - "search_query: " for queries
   - "search_document: " for documents (applied at ingest time)
+Remote Atlas API uses task_type instead of prefixes.
 """
 from __future__ import annotations
 
 import re
-from functools import lru_cache
 from typing import Optional
+
+import httpx
 
 from .config import settings
 from . import db
@@ -42,6 +46,15 @@ SIMILARITY_THRESHOLD = 0.3
 # jump from ~1.5s to 15s+ (token-per-minute throttling). Cap what we send.
 MAX_CONTEXT_CHARS = 4500
 
+_STOPWORDS = {
+    "what", "when", "where", "which", "whose", "whom", "why", "how", "does",
+    "did", "do", "the", "and", "for", "from", "with", "about", "into", "that",
+    "this", "these", "those", "please", "explain", "describe", "compare",
+    "simple", "terms", "term", "difference", "between", "versus", "vs",
+    "mentioned", "textbook", "biology", "chapter", "page", "tell", "give",
+    "define", "definition", "function", "functions", "meaning", "mean",
+}
+
 _embedding_model = None
 _model_loaded = False
 
@@ -57,6 +70,8 @@ def _get_embedding_model():
         _model_loaded = True
         return _embedding_model
     except Exception:
+        _model_loaded = True
+        _embedding_model = None
         return None
 
 
@@ -66,13 +81,15 @@ def warmup() -> None:
     if model is not None:
         list(model.embed(["warmup"]))
         print("  [rag] embedding model warmed up")
+    elif settings.NOMIC_API_KEY:
+        print("  [rag] using remote Nomic embeddings (no local fastembed)")
+    else:
+        print("  [rag] no embedding backend — keyword fallback only")
 
 
-def embed(text: str, *, is_query: bool = False) -> Optional[list[float]]:
-    """Embed text. Use is_query=True for search queries (adds nomic prefix)."""
+def _embed_local(text: str, *, is_query: bool = False) -> Optional[list[float]]:
     model = _get_embedding_model()
     if model is None:
-        print("  [embed] model unavailable (is fastembed installed in this Python?)")
         return None
     try:
         prefixed = f"search_query: {text}" if is_query else f"search_document: {text}"
@@ -80,8 +97,77 @@ def embed(text: str, *, is_query: bool = False) -> Optional[list[float]]:
         vec = embeddings[0]
         return vec.tolist() if hasattr(vec, "tolist") else list(vec)
     except Exception as exc:
-        print(f"  [embed] error: {type(exc).__name__}: {exc}")
+        print(f"  [embed] local error: {type(exc).__name__}: {exc}")
         return None
+
+
+def _embed_nomic_remote(text: str, *, is_query: bool = False) -> Optional[list[float]]:
+    """Same nomic-embed-text-v1.5 vectors as ingest, via Atlas HTTP API."""
+    if not settings.NOMIC_API_KEY or not text.strip():
+        return None
+    try:
+        resp = httpx.post(
+            settings.NOMIC_EMBED_URL,
+            headers={
+                "Authorization": f"Bearer {settings.NOMIC_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "nomic-embed-text-v1.5",
+                "texts": [text.strip()],
+                "task_type": "search_query" if is_query else "search_document",
+                "dimensionality": settings.EMBEDDING_DIMENSIONS,
+            },
+            timeout=30.0,
+        )
+        if resp.status_code != 200:
+            print(f"  [embed] nomic remote {resp.status_code}: {resp.text[:180]}")
+            return None
+        data = resp.json()
+        embeddings = data.get("embeddings") or []
+        if not embeddings:
+            return None
+        vec = embeddings[0]
+        return list(vec)
+    except Exception as exc:
+        print(f"  [embed] nomic remote error: {type(exc).__name__}: {exc}")
+        return None
+
+
+def embed(text: str, *, is_query: bool = False) -> Optional[list[float]]:
+    """Embed text. Prefer local fastembed; fall back to Nomic Atlas API."""
+    local = _embed_local(text, is_query=is_query)
+    if local is not None:
+        return local
+    remote = _embed_nomic_remote(text, is_query=is_query)
+    if remote is not None:
+        return remote
+    print("  [embed] unavailable (install fastembed or set NOMIC_API_KEY)")
+    return None
+
+
+def _extract_search_terms(query: str) -> list[str]:
+    """Pull useful Latin keywords from a student question for ILIKE fallback."""
+    words = re.findall(r"[A-Za-z][A-Za-z0-9\-]{2,}", query or "")
+    terms: list[str] = []
+    seen: set[str] = set()
+    for w in words:
+        low = w.lower()
+        if low in _STOPWORDS or low in seen:
+            continue
+        seen.add(low)
+        terms.append(w)
+    # Also keep multi-word science phrases when present.
+    for phrase in re.findall(
+        r"\b(?:krebs cycle|citric acid cycle|lock and key|induced fit|"
+        r"cell wall|cell membrane|action potential|light reaction|"
+        r"dark reaction|calvin cycle|electron transport)\b",
+        query or "",
+        flags=re.IGNORECASE,
+    ):
+        if phrase.lower() not in seen:
+            terms.insert(0, phrase)
+    return terms
 
 
 def _enrich_chunk(chunk: dict) -> dict:
@@ -124,50 +210,9 @@ def _format_context_block(chunk: dict) -> str:
     return f"{header}\n{content}"
 
 
-def retrieve_context(
-    query: str,
-    top_k: int = 3,
-    concept: Optional[str] = None,
-    book: Optional[str] = None,
-    similarity_threshold: float = SIMILARITY_THRESHOLD,
-    max_context_chars: int = MAX_CONTEXT_CHARS,
-) -> dict:
-    """Return { context, sources } with printed page metadata."""
-    embedding = embed(query, is_query=True)
-    if embedding is None or not settings.supabase_ready:
-        return {"context": "", "sources": []}
-
-    try:
-        chunks = db.match_chunks(
-            embedding, match_count=top_k, concept=concept, book=book
-        )
-    except Exception:
-        try:
-            chunks = db.require_client().rpc(
-                "match_chunks",
-                {
-                    "query_embedding": embedding,
-                    "match_count": top_k,
-                    "filter_concept": concept,
-                },
-            ).execute().data or []
-        except Exception:
-            return {"context": "", "sources": []}
-
-    enriched = [_enrich_chunk(c) for c in chunks]
-    if book:
-        enriched = [c for c in enriched if c.get("book") == book]
-
-    # Filter by similarity threshold
-    enriched = [
-        c for c in enriched
-        if c.get("similarity", 0) >= similarity_threshold
-    ]
-
-    # Keep the highest-similarity chunks that fit the budget; drop the rest so a
-    # few oversized chunks cannot blow up answer latency.
+def _pack_sources(enriched: list[dict], max_context_chars: int) -> dict:
     if max_context_chars:
-        enriched.sort(key=lambda c: c.get("similarity", 0), reverse=True)
+        enriched = sorted(enriched, key=lambda c: c.get("similarity", 0), reverse=True)
         kept: list[dict] = []
         used = 0
         for chunk in enriched:
@@ -193,6 +238,72 @@ def retrieve_context(
         for c in enriched
     ]
     return {"context": context, "sources": sources}
+
+
+def retrieve_context(
+    query: str,
+    top_k: int = 3,
+    concept: Optional[str] = None,
+    book: Optional[str] = None,
+    similarity_threshold: float = SIMILARITY_THRESHOLD,
+    max_context_chars: int = MAX_CONTEXT_CHARS,
+) -> dict:
+    """Return { context, sources } with printed page metadata."""
+    if not settings.supabase_ready:
+        return {"context": "", "sources": []}
+
+    embedding = embed(query, is_query=True)
+    chunks: list[dict] = []
+    if embedding is not None:
+        try:
+            chunks = db.match_chunks(
+                embedding, match_count=top_k, concept=concept, book=book
+            )
+        except Exception:
+            try:
+                chunks = db.require_client().rpc(
+                    "match_chunks",
+                    {
+                        "query_embedding": embedding,
+                        "match_count": top_k,
+                        "filter_concept": concept,
+                    },
+                ).execute().data or []
+            except Exception as exc:
+                print(f"  [rag] vector match failed: {type(exc).__name__}")
+                chunks = []
+    else:
+        # Slim deploys (no fastembed / no NOMIC_API_KEY): still try textbook text.
+        terms = _extract_search_terms(query)
+        print(f"  [rag] keyword fallback terms={terms[:5]!r}")
+        chunks = db.search_chunks_text(terms, match_count=top_k, book=book)
+
+    enriched = [_enrich_chunk(c) for c in chunks]
+    if book:
+        enriched = [c for c in enriched if c.get("book") == book]
+
+    # Filter by similarity threshold (keyword hits carry a synthetic score).
+    enriched = [
+        c for c in enriched
+        if c.get("similarity", 0) >= similarity_threshold
+    ]
+
+    packed = _pack_sources(enriched, max_context_chars)
+    if packed["context"]:
+        return packed
+
+    # Vector search returned nothing useful — try keyword before giving up.
+    if embedding is not None:
+        terms = _extract_search_terms(query)
+        if terms:
+            print(f"  [rag] vector empty; keyword fallback terms={terms[:5]!r}")
+            kw = db.search_chunks_text(terms, match_count=top_k, book=book)
+            enriched = [_enrich_chunk(c) for c in kw]
+            if book:
+                enriched = [c for c in enriched if c.get("book") == book]
+            return _pack_sources(enriched, max_context_chars)
+
+    return {"context": "", "sources": []}
 
 
 def retrieve_mnemonics(query: str, top_k: int = 3) -> dict:

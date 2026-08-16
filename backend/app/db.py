@@ -609,3 +609,49 @@ def match_chunks(
         payload.pop("filter_book", None)
         res = require_client().rpc("match_chunks", payload).execute()
         return res.data or []
+
+
+def search_chunks_text(
+    terms: list[str],
+    match_count: int = 5,
+    book: Optional[str] = None,
+) -> list[dict[str, Any]]:
+    """Keyword fallback when vector embeddings are unavailable (slim deploys)."""
+    cleaned = [t.strip() for t in terms if t and len(t.strip()) >= 3]
+    if not cleaned or not settings.supabase_ready:
+        return []
+
+    client = require_client()
+    found: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    # Prefer rarer/longer terms first (better precision than "what"/"from").
+    ordered = sorted(cleaned, key=len, reverse=True)[:5]
+
+    for term in ordered:
+        try:
+            q = (
+                client.table("textbook_chunks")
+                .select(
+                    "id,content,chapter,concept,book,page_number,content_type"
+                )
+                .ilike("content", f"%{term}%")
+                .limit(match_count)
+            )
+            if book:
+                q = q.eq("book", book)
+            rows = q.execute().data or []
+        except Exception as exc:
+            print(f"  [rag] keyword search failed: {type(exc).__name__}")
+            continue
+        for row in rows:
+            rid = str(row.get("id") or "")
+            if not rid or rid in seen:
+                continue
+            seen.add(rid)
+            # Synthetic score so callers that filter on similarity keep the hit.
+            row = dict(row)
+            row["similarity"] = 0.42
+            found.append(row)
+            if len(found) >= match_count:
+                return found
+    return found
