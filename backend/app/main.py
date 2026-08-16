@@ -843,7 +843,7 @@ async def list_textbook_chats(
 ):
     try:
         chats = await asyncio.get_event_loop().run_in_executor(
-            None, lambda: db.list_textbook_chats(user.id)
+            None, lambda: db.list_textbook_chats(user.user_id)
         )
         return {"chats": chats}
     except Exception as exc:
@@ -869,7 +869,7 @@ async def create_textbook_chat(
         chat = await asyncio.get_event_loop().run_in_executor(
             None,
             lambda: db.create_textbook_chat(
-                user.id,
+                user.user_id,
                 title=(req.title or "New chat"),
                 book_filter=req.book_filter,
             ),
@@ -895,7 +895,7 @@ async def get_textbook_chat(
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     chat = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: db.get_textbook_chat(chat_id, user.id)
+        None, lambda: db.get_textbook_chat(chat_id, user.user_id)
     )
     if not chat:
         raise HTTPException(status_code=404, detail="Chat not found")
@@ -913,12 +913,12 @@ async def delete_textbook_chat(
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     chat = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: db.get_textbook_chat(chat_id, user.id)
+        None, lambda: db.get_textbook_chat(chat_id, user.user_id)
     )
     if not chat:
         raise HTTPException(status_code=404, detail="Chat not found")
     await asyncio.get_event_loop().run_in_executor(
-        None, lambda: db.delete_textbook_chat(chat_id, user.id)
+        None, lambda: db.delete_textbook_chat(chat_id, user.user_id)
     )
     return {"ok": True}
 
@@ -932,7 +932,7 @@ async def append_textbook_chat_messages(
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
     chat = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: db.get_textbook_chat(chat_id, user.id)
+        None, lambda: db.get_textbook_chat(chat_id, user.user_id)
     )
     if not chat:
         raise HTTPException(status_code=404, detail="Chat not found")
@@ -967,7 +967,7 @@ async def append_textbook_chat_messages(
     updated = await asyncio.get_event_loop().run_in_executor(
         None,
         lambda: db.update_textbook_chat(
-            chat_id, user.id, title=title, touch=True
+            chat_id, user.user_id, title=title, touch=True
         ),
     )
     return {"messages": saved, "chat": updated or chat}
