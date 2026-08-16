@@ -163,7 +163,8 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 
       if (isNetwork) {
         throw new Error(
-          `Could not reach the API at ${API_URL} [${method} ${path}]. The free Render server may be asleep, restarting, or out of memory — wait ~30s and try again. Upgrade Render if this keeps happening.`
+          `Network error calling ${method} ${path} on ${API_URL}. ` +
+            `If other pages load, this is not “Render asleep” — the specific request failed or the connection dropped.`
         );
       }
       throw e;

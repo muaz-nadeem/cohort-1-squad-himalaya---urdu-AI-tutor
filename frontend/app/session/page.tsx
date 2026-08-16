@@ -166,24 +166,38 @@ function SessionInner() {
         );
         // #endregion
       } catch (profileErr) {
+        const profileMsg = String(
+          (profileErr as Error)?.message || profileErr
+        );
         // #region agent log
         sessionStorage.setItem(
           "dbg_079fbf_step",
           JSON.stringify({
             step: "getStudent:fail→create",
-            err: String((profileErr as Error)?.message || profileErr).slice(
-              0,
-              160
-            ),
+            err: profileMsg.slice(0, 160),
             t: Date.now(),
           })
         );
         // #endregion
-        await api.createStudent({
-          name: undefined,
-          level: "just_starting",
-          daily_time: "1hr",
-        });
+        // 404 "Student not found" is expected until profile is created.
+        if (!/Student not found/i.test(profileMsg) && !/404/.test(profileMsg)) {
+          throw profileErr;
+        }
+        try {
+          await api.createStudent({
+            name: undefined,
+            level: "just_starting",
+            daily_time: "1hr",
+          });
+        } catch (createErr) {
+          const createMsg = String(
+            (createErr as Error)?.message || createErr
+          ).slice(0, 300);
+          throw new Error(
+            `Your login works, but creating your student profile failed (${createMsg}). ` +
+              `Check that Render SUPABASE_KEY / SUPABASE_SERVICE_ROLE_KEY is the service_role key.`
+          );
+        }
       }
 
       setStatusText(

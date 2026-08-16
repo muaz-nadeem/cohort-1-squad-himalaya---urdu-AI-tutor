@@ -958,17 +958,25 @@ async def create_student(
 ):
     """Create or update the profile for the authenticated user (id = auth.uid())."""
     email = (req.email or user.email or "").strip() or None
-    return db.upsert_student_profile(
-        user.user_id,
-        {
-            "name": req.name,
-            "email": email,
-            "level": req.level,
-            "daily_time": req.daily_time,
-            "exam": req.exam,
-            "subject": req.subject,
-        },
-    )
+    name = (req.name or (user.email or "Student").split("@")[0]).strip()
+    try:
+        return db.upsert_student_profile(
+            user.user_id,
+            {
+                "name": name,
+                "email": email,
+                "level": req.level,
+                "daily_time": req.daily_time,
+                "exam": req.exam,
+                "subject": req.subject,
+            },
+        )
+    except Exception as exc:
+        # Always return JSON + CORS (never drop the connection).
+        raise HTTPException(
+            status_code=500,
+            detail=f"Could not create student profile: {type(exc).__name__}: {exc}",
+        ) from exc
 
 
 @app.get("/api/students/me")

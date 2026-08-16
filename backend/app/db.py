@@ -31,7 +31,14 @@ def require_client() -> Client:
 
 # ── students ────────────────────────────────────────────────────────────────
 def create_student(payload: dict[str, Any]) -> dict[str, Any]:
-    res = require_client().table("students").insert(payload).execute()
+    res = (
+        require_client()
+        .table("students")
+        .upsert(payload, on_conflict="id")
+        .execute()
+    )
+    if not res.data:
+        raise RuntimeError("Student upsert returned no rows (check SUPABASE service_role key)")
     return res.data[0]
 
 
@@ -43,7 +50,16 @@ def upsert_student_profile(user_id: str, payload: dict[str, Any]) -> dict[str, A
         if not clean:
             return existing
         return update_student(user_id, clean)
-    return create_student({"id": user_id, **clean})
+    # Prefer upsert so a partial/racy create does not hard-fail.
+    row = {"id": user_id, **clean}
+    try:
+        return create_student(row)
+    except Exception as exc:
+        # Unique email conflict: retry without email so practice can start.
+        if "email" in row and "email" in str(exc).lower():
+            row.pop("email", None)
+            return create_student(row)
+        raise
 
 
 def get_student(student_id: str) -> Optional[dict[str, Any]]:
