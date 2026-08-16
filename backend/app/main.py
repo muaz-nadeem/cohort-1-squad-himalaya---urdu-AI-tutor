@@ -1071,15 +1071,51 @@ async def questions_chapter(
     """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
     sid = assert_same_student(user, student_id)
     n = max(1, min(count, 100))
+    # #region agent log
+    _CLIENT_DEBUG.append(
+        {
+            "hypothesisId": "H4",
+            "location": "main.py:questions_chapter:start",
+            "message": "chapter load start",
+            "data": {"chapter": chapter, "count": n, "sid_prefix": sid[:8]},
+            "timestamp": int(__import__("time").time() * 1000),
+        }
+    )
+    print(f"  [chapter] start chapter={chapter!r} count={n}", flush=True)
+    # #endregion
     try:
         qs = await asyncio.get_event_loop().run_in_executor(
             None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)
         )
     except Exception as exc:
+        # #region agent log
+        _CLIENT_DEBUG.append(
+            {
+                "hypothesisId": "H4",
+                "location": "main.py:questions_chapter:error",
+                "message": "chapter load error",
+                "data": {"err": f"{type(exc).__name__}: {exc}"},
+                "timestamp": int(__import__("time").time() * 1000),
+            }
+        )
+        print(f"  [chapter] ERROR {type(exc).__name__}: {exc}", flush=True)
+        # #endregion
         raise HTTPException(
             status_code=500,
             detail=f"Could not load chapter questions: {type(exc).__name__}: {exc}",
         ) from exc
+    # #region agent log
+    _CLIENT_DEBUG.append(
+        {
+            "hypothesisId": "H4",
+            "location": "main.py:questions_chapter:ok",
+            "message": "chapter load ok",
+            "data": {"n": len(qs)},
+            "timestamp": int(__import__("time").time() * 1000),
+        }
+    )
+    print(f"  [chapter] ok n={len(qs)}", flush=True)
+    # #endregion
     return public_question_set(
         {
             "mode": "chapter_practice",
@@ -1446,6 +1482,44 @@ async def make_daily_plan(
 # ===========================================================================
 # Health
 # ===========================================================================
+# #region agent log
+_CLIENT_DEBUG: list[dict] = []
+_CLIENT_DEBUG_MAX = 80
+
+
+@app.post("/api/client-debug")
+@limiter.limit("120/minute")
+async def client_debug(request: Request):
+    """Ephemeral client debug sink for production Failed-to-fetch diagnosis."""
+    try:
+        body = await request.json()
+    except Exception:
+        body = {"raw": "invalid-json"}
+    if not isinstance(body, dict):
+        body = {"raw": body}
+    # Never store tokens / Authorization
+    safe = {
+        k: v
+        for k, v in body.items()
+        if k.lower() not in {"authorization", "token", "access_token", "password"}
+    }
+    safe["_recv_at"] = __import__("time").time()
+    _CLIENT_DEBUG.append(safe)
+    if len(_CLIENT_DEBUG) > _CLIENT_DEBUG_MAX:
+        del _CLIENT_DEBUG[: len(_CLIENT_DEBUG) - _CLIENT_DEBUG_MAX]
+    print(f"  [client-debug] {safe.get('hypothesisId')} {safe.get('location')} {safe.get('message')}")
+    return {"ok": True, "n": len(_CLIENT_DEBUG)}
+
+
+@app.get("/api/client-debug")
+@limiter.limit("60/minute")
+async def client_debug_dump(request: Request):
+    return {"n": len(_CLIENT_DEBUG), "events": list(_CLIENT_DEBUG)}
+
+
+# #endregion
+
+
 @app.api_route("/", methods=["GET", "HEAD"])
 async def root():
     """Lightweight root ping for load balancers / App Runner / uptime monitors."""

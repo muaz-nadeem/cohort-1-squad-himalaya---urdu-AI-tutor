@@ -73,6 +73,17 @@ function dbgLog(
     },
     body: JSON.stringify(payload),
   }).catch(() => {});
+  // Also ship to Render so we can poll logs from production (HTTPS-safe).
+  try {
+    fetch(`${API_URL}/api/client-debug`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    /* ignore */
+  }
 }
 // #endregion
 
