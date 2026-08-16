@@ -95,25 +95,6 @@ function SessionInner() {
     const customRaw = params.get("custom");
 
     try {
-      // #region agent log
-      fetch("http://127.0.0.1:7731/ingest/7d9b9d07-93bb-4158-bd2a-ba90f9b04dfc", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Debug-Session-Id": "079fbf",
-        },
-        body: JSON.stringify({
-          sessionId: "079fbf",
-          hypothesisId: "H0",
-          location: "session/page.tsx:bootSession",
-          message: "boot start",
-          data: { mode, chapter: chapter || null },
-          timestamp: Date.now(),
-          runId: "pre-fix",
-        }),
-      }).catch(() => {});
-      // #endregion
-
       const synced = await syncStudentCacheFromSession();
       const id = synced || getStudentId();
       if (!id) {
@@ -123,32 +104,6 @@ function SessionInner() {
       setStudentId(id);
 
       const awake = await wakeBackend(90_000);
-      // #region agent log
-      fetch("http://127.0.0.1:7731/ingest/7d9b9d07-93bb-4158-bd2a-ba90f9b04dfc", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Debug-Session-Id": "079fbf",
-        },
-        body: JSON.stringify({
-          sessionId: "079fbf",
-          hypothesisId: "H1",
-          location: "session/page.tsx:afterWake",
-          message: "wake result",
-          data: { awake },
-          timestamp: Date.now(),
-          runId: "pre-fix",
-        }),
-      }).catch(() => {});
-      try {
-        sessionStorage.setItem(
-          "dbg_079fbf_step",
-          JSON.stringify({ step: "afterWake", awake, t: Date.now() })
-        );
-      } catch {
-        /* ignore */
-      }
-      // #endregion
       if (!awake) {
         setError(
           "Server did not wake up in time. Open the site again in a minute, or check Render / UptimeRobot."
@@ -159,26 +114,10 @@ function SessionInner() {
       setStatusText("Loading your profile...");
       try {
         await api.getStudent();
-        // #region agent log
-        sessionStorage.setItem(
-          "dbg_079fbf_step",
-          JSON.stringify({ step: "getStudent:ok", t: Date.now() })
-        );
-        // #endregion
       } catch (profileErr) {
         const profileMsg = String(
           (profileErr as Error)?.message || profileErr
         );
-        // #region agent log
-        sessionStorage.setItem(
-          "dbg_079fbf_step",
-          JSON.stringify({
-            step: "getStudent:fail→create",
-            err: profileMsg.slice(0, 160),
-            t: Date.now(),
-          })
-        );
-        // #endregion
         // 404 "Student not found" is expected until profile is created.
         if (!/Student not found/i.test(profileMsg) && !/404/.test(profileMsg)) {
           throw profileErr;
@@ -205,17 +144,6 @@ function SessionInner() {
           ? "Loading chapter MCQs..."
           : "Loading questions..."
       );
-      // #region agent log
-      sessionStorage.setItem(
-        "dbg_079fbf_step",
-        JSON.stringify({
-          step: "beforeQuestions",
-          mode,
-          chapter: chapter || null,
-          t: Date.now(),
-        })
-      );
-      // #endregion
 
       let questionsP: Promise<QuestionSet>;
       let sessionMode: string | null = null;
@@ -238,32 +166,6 @@ function SessionInner() {
       }
 
       const qs = await questionsP;
-      // #region agent log
-      sessionStorage.setItem(
-        "dbg_079fbf_step",
-        JSON.stringify({
-          step: "questions:ok",
-          n: qs.questions?.length ?? 0,
-          t: Date.now(),
-        })
-      );
-      fetch("http://127.0.0.1:7731/ingest/7d9b9d07-93bb-4158-bd2a-ba90f9b04dfc", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Debug-Session-Id": "079fbf",
-        },
-        body: JSON.stringify({
-          sessionId: "079fbf",
-          hypothesisId: "H4",
-          location: "session/page.tsx:questionsOk",
-          message: "questions loaded",
-          data: { n: qs.questions?.length ?? 0, mode: qs.mode },
-          timestamp: Date.now(),
-          runId: "pre-fix",
-        }),
-      }).catch(() => {});
-      // #endregion
       if (!qs.questions.length) {
         setError(
           "No questions available for this chapter yet. Try another chapter."
@@ -274,12 +176,6 @@ function SessionInner() {
       if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
 
       setStatusText("Opening session...");
-      // #region agent log
-      sessionStorage.setItem(
-        "dbg_079fbf_step",
-        JSON.stringify({ step: "beforeStartSession", t: Date.now() })
-      );
-      // #endregion
       const session = await api.startSession({
         student_id: id,
         mode: sessionMode || qs.mode,
@@ -290,39 +186,10 @@ function SessionInner() {
       sessionIdRef.current = session.id;
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Failed to start session";
-      // #region agent log
-      let step = "";
-      try {
-        step = sessionStorage.getItem("dbg_079fbf_step") || "";
-        const last = sessionStorage.getItem("dbg_079fbf_last") || "";
-        fetch("http://127.0.0.1:7731/ingest/7d9b9d07-93bb-4158-bd2a-ba90f9b04dfc", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Debug-Session-Id": "079fbf",
-          },
-          body: JSON.stringify({
-            sessionId: "079fbf",
-            hypothesisId: "H0",
-            location: "session/page.tsx:catch",
-            message: "boot failed",
-            data: {
-              msg: msg.slice(0, 300),
-              step,
-              last: last.slice(0, 400),
-            },
-            timestamp: Date.now(),
-            runId: "pre-fix",
-          }),
-        }).catch(() => {});
-      } catch {
-        /* ignore */
-      }
-      // #endregion
       setError(
         msg === "Failed to fetch"
-          ? `Could not reach the server. Tap Try again in a few seconds. [dbg ${step}]`
-          : `${msg} [dbg ${step}]`
+          ? "Could not reach the server. Tap Try again in a few seconds."
+          : msg
       );
     } finally {
       setLoading(false);

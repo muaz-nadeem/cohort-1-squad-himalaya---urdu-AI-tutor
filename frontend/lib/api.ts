@@ -32,61 +32,6 @@ async function authHeaders(
   return headers;
 }
 
-// #region agent log
-function dbgLog(
-  hypothesisId: string,
-  location: string,
-  message: string,
-  data: Record<string, unknown> = {}
-) {
-  const payload = {
-    sessionId: "079fbf",
-    hypothesisId,
-    location,
-    message,
-    data,
-    timestamp: Date.now(),
-    runId: "pre-fix",
-  };
-  try {
-    if (typeof window !== "undefined") {
-      const prev = window.sessionStorage.getItem("dbg_079fbf") || "[]";
-      const arr = JSON.parse(prev) as unknown[];
-      arr.push(payload);
-      window.sessionStorage.setItem(
-        "dbg_079fbf",
-        JSON.stringify(arr.slice(-40))
-      );
-      window.sessionStorage.setItem(
-        "dbg_079fbf_last",
-        JSON.stringify(payload)
-      );
-    }
-  } catch {
-    /* ignore */
-  }
-  fetch("http://127.0.0.1:7731/ingest/7d9b9d07-93bb-4158-bd2a-ba90f9b04dfc", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Debug-Session-Id": "079fbf",
-    },
-    body: JSON.stringify(payload),
-  }).catch(() => {});
-  // Also ship to Render so we can poll logs from production (HTTPS-safe).
-  try {
-    fetch(`${API_URL}/api/client-debug`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    }).catch(() => {});
-  } catch {
-    /* ignore */
-  }
-}
-// #endregion
-
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const maxAttempts = 3;
   let lastError: unknown;
@@ -101,30 +46,11 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
         options?.headers as Record<string, string> | undefined,
         !(options?.body instanceof FormData)
       );
-      const hasToken = Boolean(baseHeaders.Authorization);
-      // #region agent log
-      dbgLog("H2", "api.ts:request:start", "request start", {
-        path,
-        method,
-        attempt,
-        hasToken,
-        apiUrl: API_URL,
-      });
-      // #endregion
       const res = await fetch(`${API_URL}${path}`, {
         ...options,
         headers: baseHeaders,
         signal: options?.signal || controller.signal,
       });
-      // #region agent log
-      dbgLog("H1", "api.ts:request:response", "got response", {
-        path,
-        method,
-        attempt,
-        status: res.status,
-        ok: res.ok,
-      });
-      // #endregion
       if (!res.ok) {
         const text = await res.text();
         throw new Error(text || `Request failed: ${res.status}`);
@@ -136,18 +62,6 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
       const isNetwork =
         e instanceof TypeError &&
         /failed to fetch|networkerror|load failed/i.test(e.message);
-
-      // #region agent log
-      dbgLog("H4", "api.ts:request:catch", "request catch", {
-        path,
-        method,
-        attempt,
-        errName: (e as Error)?.name,
-        errMsg: (e as Error)?.message?.slice(0, 200),
-        isAbort,
-        isNetwork,
-      });
-      // #endregion
 
       if (isAbort) {
         throw new Error(
@@ -182,32 +96,15 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 export async function wakeBackend(maxWaitMs = 90_000): Promise<boolean> {
   const started = Date.now();
   let delay = 1500;
-  let tries = 0;
   while (Date.now() - started < maxWaitMs) {
-    tries += 1;
     try {
       const res = await fetch(`${API_URL}/health`, {
         method: "GET",
         cache: "no-store",
       });
-      // #region agent log
-      dbgLog("H1", "api.ts:wakeBackend", "health probe", {
-        tries,
-        status: res.status,
-        ok: res.ok,
-        elapsedMs: Date.now() - started,
-      });
-      // #endregion
       if (res.ok) return true;
-    } catch (e) {
-      // #region agent log
-      dbgLog("H1", "api.ts:wakeBackend", "health probe failed", {
-        tries,
-        errName: (e as Error)?.name,
-        errMsg: (e as Error)?.message?.slice(0, 120),
-        elapsedMs: Date.now() - started,
-      });
-      // #endregion
+    } catch {
+      // still waking / restarting
     }
     await new Promise((r) => setTimeout(r, delay));
     delay = Math.min(delay + 500, 4000);
