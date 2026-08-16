@@ -563,6 +563,12 @@ export const api = {
       method: "DELETE",
     }),
 
+  renameTextbookChat: (chatId: string, title: string) =>
+    request<TextbookChatSummary>(`/api/textbook-chats/${chatId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ title }),
+    }),
+
   appendTextbookChatMessages: (
     chatId: string,
     body: {

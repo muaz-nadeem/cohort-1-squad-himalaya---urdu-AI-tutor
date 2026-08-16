@@ -13,6 +13,8 @@ import {
   Loader2,
   Menu,
   MessageSquarePlus,
+  MoreVertical,
+  Pencil,
   Phone,
   PhoneOff,
   Send,
@@ -238,6 +240,19 @@ export default function ChatPage() {
       }
     } catch (e) {
       setHistoryError(e instanceof Error ? e.message : "Could not delete chat");
+    }
+  }
+
+  async function renameChat(chatId: string, title: string) {
+    const cleaned = title.trim();
+    if (!cleaned) return;
+    try {
+      const updated = await api.renameTextbookChat(chatId, cleaned);
+      setChats((prev) =>
+        prev.map((c) => (c.id === chatId ? { ...c, ...updated } : c))
+      );
+    } catch (e) {
+      setHistoryError(e instanceof Error ? e.message : "Could not rename chat");
     }
   }
 
@@ -502,6 +517,7 @@ export default function ChatPage() {
             loading={loadingChats}
             onOpen={openChat}
             onDelete={removeChat}
+            onRename={renameChat}
           />
         </aside>
 
@@ -541,6 +557,7 @@ export default function ChatPage() {
                 loading={loadingChats}
                 onOpen={openChat}
                 onDelete={removeChat}
+                onRename={renameChat}
               />
             </aside>
           </div>
@@ -726,13 +743,41 @@ function ChatList({
   loading,
   onOpen,
   onDelete,
+  onRename,
 }: {
   chats: TextbookChatSummary[];
   activeChatId: string | null;
   loading: boolean;
   onOpen: (id: string) => void;
   onDelete: (id: string) => void;
+  onRename: (id: string, title: string) => void;
 }) {
+  const [menuId, setMenuId] = useState<string | null>(null);
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState("");
+
+  useEffect(() => {
+    if (!menuId) return;
+    function onDocClick() {
+      setMenuId(null);
+    }
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, [menuId]);
+
+  function startRename(chat: TextbookChatSummary) {
+    setMenuId(null);
+    setRenamingId(chat.id);
+    setRenameValue(chat.title || "New chat");
+  }
+
+  function submitRename(chatId: string) {
+    const next = renameValue.trim();
+    setRenamingId(null);
+    if (!next) return;
+    onRename(chatId, next);
+  }
+
   return (
     <div className="flex-1 overflow-y-auto p-2">
       {loading ? (
@@ -745,30 +790,84 @@ function ChatList({
         <ul className="space-y-1">
           {chats.map((chat) => {
             const active = chat.id === activeChatId;
+            const openMenu = menuId === chat.id;
+            const renaming = renamingId === chat.id;
             return (
-              <li key={chat.id} className="group relative">
-                <button
-                  type="button"
-                  onClick={() => onOpen(chat.id)}
-                  className={`w-full rounded-xl px-3 py-2.5 pr-9 text-left text-sm transition ${
-                    active
-                      ? "bg-brand-50 font-semibold text-brand-700"
-                      : "text-slate-600 hover:bg-slate-50"
-                  }`}
-                >
-                  <span className="line-clamp-2">{chat.title || "New chat"}</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onDelete(chat.id);
-                  }}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-300 opacity-0 transition hover:bg-red-50 hover:text-red-500 group-hover:opacity-100"
-                  title="Delete chat"
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </button>
+              <li key={chat.id} className="relative">
+                {renaming ? (
+                  <form
+                    className="rounded-xl bg-brand-50 px-2 py-1.5"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      submitRename(chat.id);
+                    }}
+                  >
+                    <input
+                      autoFocus
+                      value={renameValue}
+                      onChange={(e) => setRenameValue(e.target.value)}
+                      onBlur={() => submitRename(chat.id)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Escape") setRenamingId(null);
+                      }}
+                      className="w-full rounded-lg border border-brand/30 bg-white px-2 py-1.5 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-brand/20"
+                    />
+                  </form>
+                ) : (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => onOpen(chat.id)}
+                      className={`w-full rounded-xl px-3 py-2.5 pr-10 text-left text-sm transition ${
+                        active
+                          ? "bg-brand-50 font-semibold text-brand-700"
+                          : "text-slate-600 hover:bg-slate-50"
+                      }`}
+                    >
+                      <span className="line-clamp-2">
+                        {chat.title || "New chat"}
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMenuId(openMenu ? null : chat.id);
+                      }}
+                      className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+                      title="Chat options"
+                      aria-label="Chat options"
+                    >
+                      <MoreVertical className="h-4 w-4" />
+                    </button>
+                    {openMenu && (
+                      <div
+                        className="absolute right-1 top-full z-20 mt-1 w-36 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => startRename(chat)}
+                          className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-slate-600 hover:bg-slate-50"
+                        >
+                          <Pencil className="h-3.5 w-3.5" />
+                          Rename
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMenuId(null);
+                            onDelete(chat.id);
+                          }}
+                          className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-red-600 hover:bg-red-50"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
               </li>
             );
           })}

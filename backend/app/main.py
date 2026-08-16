@@ -905,6 +905,37 @@ async def get_textbook_chat(
     return {**chat, "messages": messages}
 
 
+class TextbookChatUpdate(BaseModel):
+    title: Optional[str] = None
+    book_filter: Optional[str] = None
+
+
+@app.patch("/api/textbook-chats/{chat_id}")
+@limiter.limit("30/minute")
+async def patch_textbook_chat(
+    request: Request,
+    chat_id: str,
+    req: Annotated[TextbookChatUpdate, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    title = (req.title or "").strip() if req.title is not None else None
+    if req.title is not None and not title:
+        raise HTTPException(status_code=400, detail="Title cannot be empty")
+    updated = await asyncio.get_event_loop().run_in_executor(
+        None,
+        lambda: db.update_textbook_chat(
+            chat_id,
+            user.user_id,
+            title=title,
+            book_filter=req.book_filter,
+            touch=True,
+        ),
+    )
+    if not updated:
+        raise HTTPException(status_code=404, detail="Chat not found")
+    return updated
+
+
 @app.delete("/api/textbook-chats/{chat_id}")
 @limiter.limit("30/minute")
 async def delete_textbook_chat(
