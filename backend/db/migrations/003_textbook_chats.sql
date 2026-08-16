@@ -52,3 +52,9 @@ create policy textbook_chat_messages_own on textbook_chat_messages
       where c.id = chat_id and c.student_id = auth.uid()
     )
   );
+
+-- API access (service_role bypasses RLS; grants still required for PostgREST)
+grant select, insert, update, delete on table public.textbook_chats to authenticated, service_role;
+grant select, insert, update, delete on table public.textbook_chat_messages to authenticated, service_role;
+
+notify pgrst, 'reload schema';

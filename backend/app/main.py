@@ -847,11 +847,15 @@ async def list_textbook_chats(
         )
         return {"chats": chats}
     except Exception as exc:
-        print(f"  [textbook-chats] list failed: {type(exc).__name__}: {exc}")
-        raise HTTPException(
-            status_code=503,
-            detail="Chat history is unavailable. Run migration 003_textbook_chats.sql in Supabase.",
+        detail = str(exc)
+        print(f"  [textbook-chats] list failed: {type(exc).__name__}: {detail}")
+        hint = (
+            "Chat history DB error. In Supabase SQL editor run "
+            "migrations/004_textbook_chats_api_grants.sql "
+            "(or: NOTIFY pgrst, 'reload schema';). "
+            f"Detail: {detail[:240]}"
         )
+        raise HTTPException(status_code=503, detail=hint)
 
 
 @app.post("/api/textbook-chats")
@@ -872,10 +876,14 @@ async def create_textbook_chat(
         )
         return chat
     except Exception as exc:
-        print(f"  [textbook-chats] create failed: {type(exc).__name__}: {exc}")
+        detail = str(exc)
+        print(f"  [textbook-chats] create failed: {type(exc).__name__}: {detail}")
         raise HTTPException(
             status_code=503,
-            detail="Could not create chat. Run migration 003_textbook_chats.sql in Supabase.",
+            detail=(
+                "Could not create chat. Run 004_textbook_chats_api_grants.sql "
+                f"in Supabase. Detail: {detail[:240]}"
+            ),
         )
 
 
