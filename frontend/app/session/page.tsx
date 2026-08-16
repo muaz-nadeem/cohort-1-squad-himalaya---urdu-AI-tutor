@@ -366,16 +366,6 @@ function SessionInner() {
 
   function markForReview() {
     patchQ(index, { flagged: true });
-    if (!set) return;
-    // Jump to next unanswered after this one.
-    for (let j = 1; j <= set.questions.length; j++) {
-      const i = (index + j) % set.questions.length;
-      const st = qStates[i] ?? EMPTY_Q;
-      if (st.isCorrect === null && i !== index) {
-        goToQuestion(i);
-        return;
-      }
-    }
   }
 
   function toggleFlag() {
@@ -524,14 +514,17 @@ function SessionInner() {
   function boxClass(i: number) {
     const st = qStates[i] ?? EMPTY_Q;
     const isCurrent = i === index;
-    if (isCurrent) {
-      return "border-brand bg-brand text-white ring-2 ring-brand/30";
-    }
+    const currentRing = isCurrent ? " ring-2 ring-offset-1 ring-brand/40" : "";
+
+    // Grade color wins immediately — don't wait until the student leaves the question.
     if (revealColors && st.isCorrect === true) {
-      return "border-emerald-500 bg-emerald-500 text-white";
+      return `border-emerald-500 bg-emerald-500 text-white${currentRing}`;
     }
     if (revealColors && st.isCorrect === false) {
-      return "border-red-500 bg-red-500 text-white";
+      return `border-red-500 bg-red-500 text-white${currentRing}`;
+    }
+    if (isCurrent) {
+      return "border-brand bg-brand text-white ring-2 ring-brand/30";
     }
     if (st.flagged) {
       return "border-amber-400 bg-amber-50 text-amber-800";
@@ -802,19 +795,38 @@ function SessionInner() {
               <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
                 <button
                   type="button"
-                  onClick={markForReview}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-800 hover:bg-amber-100"
+                  onClick={flagged ? toggleFlag : markForReview}
+                  className={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2.5 text-sm font-semibold ${
+                    flagged
+                      ? "border-amber-300 bg-amber-100 text-amber-900"
+                      : "border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100"
+                  }`}
                 >
-                  <Flag className="h-4 w-4" />
-                  Leave for review
+                  <Flag
+                    className={`h-4 w-4 ${flagged ? "fill-current" : ""}`}
+                  />
+                  {flagged ? "Marked for review" : "Leave for review"}
                 </button>
-                <button
-                  type="button"
-                  onClick={requestEnd}
-                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
-                >
-                  Finish Session
-                </button>
+                <div className="flex flex-wrap items-center justify-end gap-3">
+                  <button
+                    type="button"
+                    onClick={requestEnd}
+                    className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                  >
+                    Finish Session
+                  </button>
+                  {flagged && (
+                    <button
+                      type="button"
+                      onClick={nextAfterAnswer}
+                      className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+                    >
+                      {index >= set.questions.length - 1
+                        ? "Finish Session"
+                        : "Next Question →"}
+                    </button>
+                  )}
+                </div>
               </div>
             )}
 
