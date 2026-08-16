@@ -52,7 +52,7 @@ Rules:
 
 URDU_SPEECH_SYSTEM_PROMPT = """You are an Urdu-speaking MDCAT Biology tutor talking to a Pakistani FSc student on a phone call.
 
-You will be given an English tutoring answer. Re-express it as natural bilingual classroom Urdu — the way Pakistani teachers actually speak in FSc/MDCAT coaching (Urdu glue + English science words).
+You will be given an English tutoring answer. Re-express THAT SAME answer as natural bilingual classroom Urdu — the way Pakistani teachers actually speak in FSc/MDCAT coaching (Urdu glue + English science words).
 
 Rules:
 1. Write the explanation in Urdu script (اردو) but keep English key terms inline in Latin letters.
@@ -60,9 +60,11 @@ Rules:
 3. Sentence structure and connecting words in Urdu; science words in English. Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے."
 4. Sound like natural speech, warm and clear — as if explaining out loud to a student.
 5. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
-6. Keep it under 120 words. Do not add new facts that were not in the English answer.
+6. Keep it under 120 words.
 7. No Roman Urdu, no Hindi. Urdu script for the Urdu parts, English for the technical terms.
-8. Output only the narration — no preamble, no labels, no quotes."""
+8. FAITHFULNESS (critical): Only restate what is in the English answer. Do NOT invent a different topic, extra examples, warm-up chatter, or "related" facts that were not written there.
+9. Start immediately with the explanation. No greetings (no السلام علیکم), no "آج ہم بات کریں گے", no preamble about another concept first.
+10. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers."""
 
 RAG_ASK_SYSTEM_PROMPT = f"""You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.
 
@@ -85,9 +87,10 @@ Rules:
 2. Prefer textbook notes when they match this topic; otherwise use your own knowledge.
 3. Never say the textbook/passage/context "doesn't mention" something, or that you lack a passage. Just teach.
 4. Never invent a different question or change the topic. Stick to THIS MCQ only.
-5. Keep it under 100 words. Simple English with brief Urdu/Roman Urdu hints where helpful.
-6. End with one short memory tip if useful.
-7. Do not add a source citation in the body — the app appends that separately."""
+5. Start immediately with THIS MCQ — do not open with a different concept, warm-up, or unrelated textbook aside.
+6. Keep it under 100 words. Simple English with brief Urdu/Roman Urdu hints where helpful.
+7. End with one short memory tip if useful.
+8. Do not add a source citation in the body — the app appends that separately."""
 
 
 @lru_cache
@@ -574,22 +577,44 @@ def to_urdu_speech(english_answer: str) -> str:
         urdu = _chat(
             URDU_SPEECH_SYSTEM_PROMPT,
             (
-                "English tutoring answer:\n"
+                "English tutoring answer (speak ONLY this — do not add other topics):\n"
                 f"{text}\n\n"
-                "Now speak this to the student in natural bilingual classroom Urdu "
-                "(Urdu script + English science terms like nucleus, electron, energy)."
+                "Now restate this exact answer in natural bilingual classroom Urdu "
+                "(Urdu script + English science terms). Start immediately. No greeting."
             ),
             max_tokens=400,
         )
-        return urdu.strip()
+        return sanitize_speech_narration(urdu)
     except Exception:
         return ""
 
 
+def sanitize_speech_narration(text: str) -> str:
+    """Strip labels/greetings so TTS does not speak hallucinated warm-up first."""
+    cleaned = (text or "").strip()
+    if not cleaned:
+        return ""
+    cleaned = re.sub(r"(?i)\b(?:ENGLISH|URDU)\s*:\s*", " ", cleaned)
+    # Common spoken openings that are not part of the written explanation.
+    cleaned = re.sub(
+        r"^(?:السلام[\s\u0600-\u06FF]*[.!۔]?\s*|"
+        r"Assalamu?\s*alaikum[.!]?\s*|"
+        r"(?:Hello|Hi|Hey)[.!,]?\s*)+",
+        "",
+        cleaned,
+        flags=re.IGNORECASE,
+    )
+    cleaned = re.sub(
+        r"^(?:آئیے|چلیے|آج ہم|سب سے پہلے)[^۔.!?]*[۔.!?]\s*",
+        "",
+        cleaned,
+    )
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
+
+
 def _strip_for_speech(text: str) -> str:
     """Remove citations/markdown so the spoken version stays clean."""
-    import re
-
     cleaned = text or ""
     # Drop trailing citation blocks like (FSc Biology Part 1, p. 8 | PTB)
     cleaned = re.sub(r"\((?:[^()]*(?:p\.|page|PTB)[^()]*)\)", " ", cleaned)

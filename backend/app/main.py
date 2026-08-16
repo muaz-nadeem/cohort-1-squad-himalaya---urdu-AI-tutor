@@ -222,7 +222,9 @@ def narration_id(english_answer: str, urdu_text: str) -> Optional[str]:
     Synthesis (~2-3s) then happens while the client is already playing, rather
     than blocking the JSON response.
     """
-    speak_text = urdu_text or llm._strip_for_speech(english_answer)
+    speak_text = llm.sanitize_speech_narration(
+        urdu_text or llm._strip_for_speech(english_answer)
+    )
     return cache_speech(speak_text)
 
 
@@ -849,7 +851,7 @@ async def explain(
     correct_option = (question or {}).get("correct_option") or req.correct_option
 
     cache_key = _answer_key(
-        "explain_v2",
+        "explain_v3",
         req.question_id,
         req.concept,
         req.selected_option,
@@ -911,43 +913,19 @@ async def explain(
 
     mnemonic_ctx = "" if isinstance(mnemonic, Exception) else mnemonic.get("context") or ""
 
-    urdu_text = ""
-    if req.speak:
-        explanation, urdu_text = await loop.run_in_executor(
-            None,
-            lambda: llm.explain_answer_bilingual(
-                concept=q_chapter,
-                selected_option=req.selected_option,
-                correct_option=correct_option,
-                question_text=question_text,
-                context_chunk=context or "",
-                mnemonic_chunk=mnemonic_ctx,
-            ),
-        )
-        if not (explanation or "").strip():
-            explanation = await loop.run_in_executor(
-                None,
-                lambda: llm.explain_answer(
-                    concept=q_chapter,
-                    selected_option=req.selected_option,
-                    correct_option=correct_option,
-                    question_text=question_text,
-                    context_chunk=context or "",
-                    mnemonic_chunk=mnemonic_ctx,
-                ),
-            )
-    else:
-        explanation = await loop.run_in_executor(
-            None,
-            lambda: llm.explain_answer(
-                concept=q_chapter,
-                selected_option=req.selected_option,
-                correct_option=correct_option,
-                question_text=question_text,
-                context_chunk=context or "",
-                mnemonic_chunk=mnemonic_ctx,
-            ),
-        )
+    # English on screen first (MCQ-faithful). Speech is derived FROM that English
+    # so Listen cannot invent a different warm-up topic before the real explanation.
+    explanation = await loop.run_in_executor(
+        None,
+        lambda: llm.explain_answer(
+            concept=q_chapter,
+            selected_option=req.selected_option,
+            correct_option=correct_option,
+            question_text=question_text,
+            context_chunk=context or "",
+            mnemonic_chunk=mnemonic_ctx,
+        ),
+    )
 
     # Build citation from question source metadata as fallback so an explanation
     # always cites *something* correct, even when no textbook chunk matched.
@@ -969,8 +947,11 @@ async def explain(
 
     audio_b64 = None
     speech_id = None
+    urdu_text = ""
     if req.speak:
-        urdu_text = await ensure_urdu(explanation, urdu_text)
+        # Ground TTS in the on-screen English only (same voice path as doctor call).
+        urdu_text = await ensure_urdu(explanation, "")
+        urdu_text = llm.sanitize_speech_narration(urdu_text)
         if req.stream_audio:
             speech_id = narration_id(explanation, urdu_text)
         else:
