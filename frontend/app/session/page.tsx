@@ -405,6 +405,7 @@ function SessionInner() {
 
   const scorePct = answered ? Math.round((score / answered) * 100) : 0;
   const showSidebar = !!(selected && showExplainNow);
+  const graded = isCorrect !== null;
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
@@ -544,7 +545,7 @@ function SessionInner() {
               })}
             </div>
 
-            {selected && showSidebar && (
+            {selected && showSidebar && graded && (
               <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
                 <button
                   type="button"
@@ -570,20 +571,26 @@ function SessionInner() {
             <aside className="space-y-4">
               <div
                 className={`rounded-2xl border p-4 ${
-                  isCorrect
-                    ? "border-emerald-100 bg-emerald-50"
-                    : "border-red-100 bg-red-50"
+                  !graded
+                    ? "border-slate-100 bg-slate-50"
+                    : isCorrect
+                      ? "border-emerald-100 bg-emerald-50"
+                      : "border-red-100 bg-red-50"
                 }`}
               >
                 <div className="flex items-start gap-3">
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-                      isCorrect
-                        ? "bg-emerald-100 text-emerald-600"
-                        : "bg-red-100 text-red-500"
+                      !graded
+                        ? "bg-slate-100 text-slate-400"
+                        : isCorrect
+                          ? "bg-emerald-100 text-emerald-600"
+                          : "bg-red-100 text-red-500"
                     }`}
                   >
-                    {isCorrect ? (
+                    {!graded ? (
+                      <Clock className="h-4 w-4 animate-pulse" />
+                    ) : isCorrect ? (
                       <Smile className="h-4 w-4" />
                     ) : (
                       <Frown className="h-4 w-4" />
@@ -591,12 +598,18 @@ function SessionInner() {
                   </div>
                   <p
                     className={`text-sm leading-relaxed ${
-                      isCorrect ? "text-emerald-800" : "text-red-700"
+                      !graded
+                        ? "text-slate-500"
+                        : isCorrect
+                          ? "text-emerald-800"
+                          : "text-red-700"
                     }`}
                   >
-                    {isCorrect
-                      ? "Nice work. Lock this concept in before you move on."
-                      : "Not quite. Don't worry — even doctors make mistakes in training. Let's understand why."}
+                    {!graded
+                      ? "Checking your answer..."
+                      : isCorrect
+                        ? "Nice work. Lock this concept in before you move on."
+                        : "Not quite. Don't worry — even doctors make mistakes in training. Let's understand why."}
                   </p>
                 </div>
               </div>
