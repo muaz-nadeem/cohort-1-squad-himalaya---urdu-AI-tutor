@@ -108,6 +108,13 @@ def get_concept(concept_id: str) -> Optional[dict[str, Any]]:
 
 
 # ── questions ───────────────────────────────────────────────────────────────
+# Lean columns for practice payloads (answer key stripped later by public_question).
+_PRACTICE_COLUMNS = (
+    "id,concept_id,chapter,difficulty,question_text,options,"
+    "source,source_type,book"
+)
+
+
 def get_questions(
     *,
     chapter: Optional[str] = None,
@@ -117,12 +124,7 @@ def get_questions(
     source_type: Optional[str] = None,
     limit: int = 10,
 ) -> list[dict[str, Any]]:
-    # Lean columns for practice payloads (answer key stripped later anyway).
-    columns = (
-        "id,concept_id,chapter,difficulty,question_text,options,"
-        "source,source_type,book"
-    )
-    q = require_client().table("questions").select(columns)
+    q = require_client().table("questions").select(_PRACTICE_COLUMNS)
     if chapter:
         q = q.eq("chapter", chapter)
     if concept_id:
@@ -133,7 +135,46 @@ def get_questions(
         q = q.eq("book", book)
     if source_type:
         q = q.eq("source_type", source_type)
-    return q.limit(limit).execute().data
+    return q.limit(limit).execute().data or []
+
+
+def _list_question_ids(
+    *,
+    chapter: Optional[str] = None,
+    book: Optional[str] = None,
+    max_ids: int = 800,
+) -> list[str]:
+    """Fetch only question ids (tiny payload) for in-process sampling."""
+    client = require_client()
+    page_size = 1000
+    ids: list[str] = []
+    offset = 0
+    while len(ids) < max_ids:
+        q = client.table("questions").select("id")
+        if chapter:
+            q = q.eq("chapter", chapter)
+        if book:
+            q = q.eq("book", book)
+        rows = (
+            q.range(offset, offset + page_size - 1).execute().data or []
+        )
+        for r in rows:
+            qid = r.get("id")
+            if qid:
+                ids.append(str(qid))
+                if len(ids) >= max_ids:
+                    break
+        if len(rows) < page_size:
+            break
+        offset += page_size
+    return ids
+
+
+def _hydrate_questions(ids: list[str]) -> list[dict[str, Any]]:
+    if not ids:
+        return []
+    by_id = get_questions_by_ids(ids, columns=_PRACTICE_COLUMNS)
+    return [by_id[i] for i in ids if i in by_id]
 
 
 def sample_questions(
@@ -149,13 +190,16 @@ def sample_questions(
     unseen questions are returned first so a re-attempt of the same chapter
     yields fresh MCQs. If the unseen pool is smaller than ``count`` (chapter
     exhausted), the remainder is topped up with a reshuffled set of seen ones.
+
+    Fallback path is id-first (tiny) then hydrate only the chosen rows — keeps
+    free-tier RAM under control even for count=100.
     """
     import random
 
-    exclude = set(exclude_ids or [])
+    exclude = {str(x) for x in (exclude_ids or []) if x}
+    count = max(1, count)
 
     if not exclude:
-        # No personalisation needed — plain random sample (server-side RPC).
         try:
             res = require_client().rpc(
                 "sample_questions",
@@ -166,16 +210,15 @@ def sample_questions(
                 },
             ).execute()
             if res.data:
-                return res.data
+                # RPC may return full rows; re-hydrate lean if oversized risk.
+                ids = [str(r["id"]) for r in res.data if r.get("id")]
+                return _hydrate_questions(ids) or res.data
         except Exception:
             pass
-        pool = get_questions(chapter=chapter, book=book, limit=max(count * 3, 60))
-        random.shuffle(pool)
-        return pool[:count]
+        ids = _list_question_ids(chapter=chapter, book=book)
+        random.shuffle(ids)
+        return _hydrate_questions(ids[:count])
 
-    # Personalised (unseen-first) sampling.
-    # Try an exclusion-aware RPC first (if the maintainer has applied the
-    # optimised sample_questions SQL); fall back to a Python filter otherwise.
     try:
         res = require_client().rpc(
             "sample_questions",
@@ -187,41 +230,18 @@ def sample_questions(
             },
         ).execute()
         if res.data:
-            return res.data
+            ids = [str(r["id"]) for r in res.data if r.get("id")]
+            return _hydrate_questions(ids) or res.data
     except Exception:
         pass
 
-    # DDL-free fallback: fetch a random pool large enough to guarantee `count`
-    # unseen rows when the chapter has them (pigeonhole: pool_size = count +
-    # |seen| means at most |seen| of the pool are seen -> >= count unseen).
-    pool_size = count + len(exclude)
-    try:
-        res = require_client().rpc(
-            "sample_questions",
-            {
-                "match_count": pool_size,
-                "filter_chapter": chapter,
-                "filter_book": book,
-            },
-        ).execute()
-        pool = res.data or []
-    except Exception:
-        pool = get_questions(
-            chapter=chapter, book=book, limit=max(min(pool_size, 150), count)
-        )
-        random.shuffle(pool)
-
-    unseen = [q for q in pool if q.get("id") not in exclude]
-    if len(unseen) >= count:
-        random.shuffle(unseen)
-        return unseen[:count]
-
-    # Chapter (nearly) exhausted for this student — serve all unseen, then
-    # top up with reshuffled seen questions so they still get a full set.
-    seen_rows = [q for q in pool if q.get("id") in exclude]
-    random.shuffle(seen_rows)
-    result = unseen + seen_rows
-    return result[:count]
+    ids = _list_question_ids(chapter=chapter, book=book)
+    unseen = [i for i in ids if i not in exclude]
+    seen = [i for i in ids if i in exclude]
+    random.shuffle(unseen)
+    random.shuffle(seen)
+    picked = (unseen + seen)[:count]
+    return _hydrate_questions(picked)
 
 
 def get_attempted_question_ids(student_id: str) -> list[str]:

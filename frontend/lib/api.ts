@@ -90,13 +90,24 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     : new Error("Request failed");
 }
 
-/** Cheap GET used to wake a sleeping free-tier Render instance. */
-export async function wakeBackend(): Promise<void> {
-  try {
-    await fetch(`${API_URL}/health`, { method: "GET", cache: "no-store" });
-  } catch {
-    // Ignore — real API call will retry.
+/** Poll /health until the free-tier instance is awake (or give up). */
+export async function wakeBackend(maxWaitMs = 90_000): Promise<boolean> {
+  const started = Date.now();
+  let delay = 1500;
+  while (Date.now() - started < maxWaitMs) {
+    try {
+      const res = await fetch(`${API_URL}/health`, {
+        method: "GET",
+        cache: "no-store",
+      });
+      if (res.ok) return true;
+    } catch {
+      // still waking / restarting
+    }
+    await new Promise((r) => setTimeout(r, delay));
+    delay = Math.min(delay + 500, 4000);
   }
+  return false;
 }
 
 
@@ -358,7 +369,7 @@ export const api = {
       `/api/questions/diagnostic?student_id=${studentId}&count=${count}`
     ),
 
-  getChapterPractice: (chapter: string, count = 25, studentId?: string) => {
+  getChapterPractice: (chapter: string, count = 100, studentId?: string) => {
     const q = new URLSearchParams({ chapter, count: String(count) });
     if (studentId) q.set("student_id", studentId);
     return request<QuestionSet>(`/api/questions/chapter?${q.toString()}`);

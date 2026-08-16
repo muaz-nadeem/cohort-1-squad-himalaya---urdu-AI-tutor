@@ -61,6 +61,7 @@ function SessionInner() {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [statusText, setStatusText] = useState("Starting session...");
   const [error, setError] = useState("");
   const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [speakingExplain, setSpeakingExplain] = useState(false);
@@ -77,9 +78,10 @@ function SessionInner() {
   const explainParam = params.get("explain");
   const flpMode = (params.get("flp") as "practice" | "timed") || "practice";
 
-  useEffect(() => {
-    if (startedRef.current) return;
-    startedRef.current = true;
+  async function bootSession() {
+    setLoading(true);
+    setError("");
+    setStatusText("Waking server...");
 
     startedAtRef.current = Date.now();
     window.sessionStorage.setItem(
@@ -92,80 +94,96 @@ function SessionInner() {
     const conceptId = params.get("concept_id") || undefined;
     const customRaw = params.get("custom");
 
-    (async () => {
-      try {
-        const synced = await syncStudentCacheFromSession();
-        const id = synced || getStudentId();
-        if (!id) {
-          router.replace("/login");
-          return;
-        }
-        setStudentId(id);
-
-        // Wake free-tier Render before the heavier chapter/session calls.
-        await wakeBackend();
-
-        // Ensure profile exists before opening a session (FK to students).
-        try {
-          await api.getStudent();
-        } catch {
-          await api.createStudent({
-            name: undefined,
-            level: "just_starting",
-            daily_time: "1hr",
-          });
-        }
-
-        let questionsP: Promise<QuestionSet>;
-        let sessionMode: string | null = null;
-        if (mode === "diagnostic") {
-          questionsP = api.getDiagnostic(id);
-          sessionMode = "diagnostic";
-        } else if (mode === "chapter" && chapter) {
-          questionsP = api.getChapterPractice(chapter, 25, id);
-          sessionMode = "chapter_practice";
-        } else if (mode === "full_length") {
-          questionsP = api.getFullLength(flpMode, id);
-          sessionMode =
-            flpMode === "timed" ? "full_length_timed" : "full_length_practice";
-        } else if (mode === "custom" && customRaw) {
-          const selections = JSON.parse(decodeURIComponent(customRaw));
-          questionsP = api.getCustomQuiz(selections, id);
-          sessionMode = "custom";
-        } else {
-          questionsP = api.getQuestions(id, { chapter, concept_id: conceptId });
-        }
-
-        const qs = await questionsP;
-        if (!qs.questions.length) {
-          setError(
-            "No questions available for this chapter yet. Try another chapter."
-          );
-          setLoading(false);
-          return;
-        }
-        setSet(qs);
-        if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
-
-        const session = await api.startSession({
-          student_id: id,
-          mode: sessionMode || qs.mode,
-          concept_id: conceptId || qs.concept_id,
-          chapter: chapter || qs.chapter,
-        });
-        setSessionId(session.id);
-        sessionIdRef.current = session.id;
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : "Failed to start session";
-        setError(
-          msg === "Failed to fetch"
-            ? "Could not reach the server. Check your connection and try again."
-            : msg
-        );
-      } finally {
-        setLoading(false);
+    try {
+      const synced = await syncStudentCacheFromSession();
+      const id = synced || getStudentId();
+      if (!id) {
+        router.replace("/login");
+        return;
       }
-    })();
+      setStudentId(id);
+
+      const awake = await wakeBackend(90_000);
+      if (!awake) {
+        setError(
+          "Server did not wake up in time. Open the site again in a minute, or check Render / UptimeRobot."
+        );
+        return;
+      }
+
+      setStatusText("Loading your profile...");
+      try {
+        await api.getStudent();
+      } catch {
+        await api.createStudent({
+          name: undefined,
+          level: "just_starting",
+          daily_time: "1hr",
+        });
+      }
+
+      setStatusText(
+        mode === "chapter"
+          ? "Loading chapter MCQs..."
+          : "Loading questions..."
+      );
+
+      let questionsP: Promise<QuestionSet>;
+      let sessionMode: string | null = null;
+      if (mode === "diagnostic") {
+        questionsP = api.getDiagnostic(id);
+        sessionMode = "diagnostic";
+      } else if (mode === "chapter" && chapter) {
+        questionsP = api.getChapterPractice(chapter, 100, id);
+        sessionMode = "chapter_practice";
+      } else if (mode === "full_length") {
+        questionsP = api.getFullLength(flpMode, id);
+        sessionMode =
+          flpMode === "timed" ? "full_length_timed" : "full_length_practice";
+      } else if (mode === "custom" && customRaw) {
+        const selections = JSON.parse(decodeURIComponent(customRaw));
+        questionsP = api.getCustomQuiz(selections, id);
+        sessionMode = "custom";
+      } else {
+        questionsP = api.getQuestions(id, { chapter, concept_id: conceptId });
+      }
+
+      const qs = await questionsP;
+      if (!qs.questions.length) {
+        setError(
+          "No questions available for this chapter yet. Try another chapter."
+        );
+        return;
+      }
+      setSet(qs);
+      if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
+
+      setStatusText("Opening session...");
+      const session = await api.startSession({
+        student_id: id,
+        mode: sessionMode || qs.mode,
+        concept_id: conceptId || qs.concept_id,
+        chapter: chapter || qs.chapter,
+      });
+      setSessionId(session.id);
+      sessionIdRef.current = session.id;
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Failed to start session";
+      setError(
+        msg === "Failed to fetch"
+          ? "Could not reach the server. Tap Try again in a few seconds."
+          : msg
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    void bootSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, router, flpMode]);
 
   useEffect(() => {
@@ -337,12 +355,16 @@ function SessionInner() {
     router.replace("/summary");
   }
 
-  if (loading) return <Centered text="Loading session..." />;
+  if (loading) return <Centered text={statusText || "Loading session..."} />;
   if (error)
     return (
       <Centered
         text={error}
         isError
+        onRetry={() => {
+          startedRef.current = false;
+          void bootSession();
+        }}
         onBack={() => router.replace("/dashboard")}
       />
     );
@@ -635,10 +657,12 @@ function Centered({
   text,
   isError,
   onBack,
+  onRetry,
 }: {
   text: string;
   isError?: boolean;
   onBack?: () => void;
+  onRetry?: () => void;
 }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#F4F7FB] px-4">
@@ -649,11 +673,18 @@ function Centered({
       >
         {text}
       </p>
-      {onBack && (
-        <button onClick={onBack} className="btn-ghost">
-          Back to dashboard
-        </button>
-      )}
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        {onRetry && (
+          <button onClick={onRetry} className="btn-primary">
+            Try again
+          </button>
+        )}
+        {onBack && (
+          <button onClick={onBack} className="btn-ghost">
+            Back to dashboard
+          </button>
+        )}
+      </div>
     </div>
   );
 }
