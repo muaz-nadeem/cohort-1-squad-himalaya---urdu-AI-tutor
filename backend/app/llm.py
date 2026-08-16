@@ -52,12 +52,12 @@ Rules:
 
 URDU_SPEECH_SYSTEM_PROMPT = """You are an Urdu-speaking MDCAT Biology tutor talking to a Pakistani FSc student on a phone call.
 
-You will be given an English tutoring answer. Re-express it as natural bilingual Urdu — the way a Pakistani teacher naturally explains Biology to students.
+You will be given an English tutoring answer. Re-express it as natural bilingual classroom Urdu — the way Pakistani teachers actually speak in FSc/MDCAT coaching (Urdu glue + English science words).
 
 Rules:
-1. Write the explanation in Urdu script (اردو) but freely keep English key terms inline.
-2. Keep ALL scientific and technical terms in English — biology terms (eukaryotic, mitochondria, enzyme, glucose, DNA, ATP, photosynthesis, osmosis), measurements (wavelength, nanometer, frequency), colors (violet, red, indigo), chemical names, units, and any term students learn and use in English. Do NOT transliterate these into Urdu script.
-3. The overall sentence structure and connecting words should be Urdu, but key terms stay English — like how a Pakistani teacher actually speaks in class.
+1. Write the explanation in Urdu script (اردو) but keep English key terms inline in Latin letters.
+2. Keep ALL scientific and technical terms in English — never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, tissue, organ, hormone, virus, bacteria, and any other syllabus term students study in English.
+3. Sentence structure and connecting words in Urdu; science words in English. Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے."
 4. Sound like natural speech, warm and clear — as if explaining out loud to a student.
 5. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
 6. Keep it under 120 words. Do not add new facts that were not in the English answer.
@@ -221,6 +221,30 @@ def answer_question(
     return _chat(ASK_SYSTEM_PROMPT, user_prompt, max_tokens=280)
 
 
+def _explain_user_prompt(
+    concept: str,
+    selected_option: str,
+    correct_option: str,
+    question_text: str = "",
+    context_chunk: str = "",
+    mnemonic_chunk: str = "",
+) -> str:
+    support = ""
+    if context_chunk.strip():
+        support += f"\nHelpful textbook notes (use only if clearly about this same topic):\n{context_chunk}\n"
+    if mnemonic_chunk.strip():
+        support += f"\nMnemonic tip (use only if it fits this topic):\n{mnemonic_chunk}\n"
+
+    return f"""MCQ:
+{question_text or '(see options below)'}
+
+Topic/chapter: {concept}
+Correct option: {correct_option}
+Student selected: {selected_option}
+{support}
+Explain this MCQ clearly. Do not mention missing passages or change the subject."""
+
+
 def explain_answer(
     concept: str,
     selected_option: str,
@@ -230,21 +254,14 @@ def explain_answer(
     mnemonic_chunk: str = "",
 ) -> str:
     """Explain why the correct MCQ option is right and the picked one is wrong."""
-    support = ""
-    if context_chunk.strip():
-        support += f"\nHelpful textbook notes (use only if clearly about this same topic):\n{context_chunk}\n"
-    if mnemonic_chunk.strip():
-        support += f"\nMnemonic tip (use only if it fits this topic):\n{mnemonic_chunk}\n"
-
-    user_prompt = f"""MCQ:
-{question_text or '(see options below)'}
-
-Topic/chapter: {concept}
-Correct option: {correct_option}
-Student selected: {selected_option}
-{support}
-Explain this MCQ clearly. Do not mention missing passages or change the subject."""
-
+    user_prompt = _explain_user_prompt(
+        concept,
+        selected_option,
+        correct_option,
+        question_text,
+        context_chunk,
+        mnemonic_chunk,
+    )
     return _chat(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=220)
 
 
@@ -323,9 +340,10 @@ ENGLISH section rules:
 - Under 120 words. End with one short exam tip when useful.
 
 URDU section rules:
-- Write in Urdu script (اردو) with English key terms kept inline — natural bilingual style, the way a Pakistani teacher actually explains Biology in class.
-- Keep ALL scientific/technical terms in English: biology words (eukaryotic, mitochondria, enzyme, photosynthesis, osmosis), measurements (wavelength, nanometer), colors (violet, indigo), chemical names, units, and any term students learn in English. Do NOT transliterate these into Urdu script.
-- Sentence structure and connecting words in Urdu, key terms in English. Never use Roman Urdu or Hindi.
+- Write in Urdu script (اردو) with English key terms kept inline — natural Pakistani classroom bilingual style (Urdu glue + English science words).
+- Keep ALL scientific/technical terms in English Latin letters. Never translate or transliterate them into Urdu. Must-stay-English examples: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, and any other FSc/MDCAT syllabus term.
+- Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen atom میں electron کی energy En = -13.6 / n² eV ہوتی ہے."
+- Never use Roman Urdu or Hindi.
 - Natural spoken style, as if explaining out loud on a phone call.
 - No citations, page numbers, brackets, bullets or markdown — it will be read aloud.
 - Under 110 words. Add no facts that are absent from the ENGLISH section.
@@ -342,6 +360,37 @@ RAG_BILINGUAL_SYSTEM_PROMPT = _bilingual_prompt(
     "You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.",
     "Prefer the provided textbook passages when they clearly cover the topic; otherwise use your own MDCAT/FSc knowledge.",
 )
+
+EXPLAIN_BILINGUAL_SYSTEM_PROMPT = f"""You are an MDCAT tutor explaining an MCQ to a Pakistani FSc student.
+
+{COURSE_SCOPE}
+
+You produce every reply in TWO sections, in this exact order and format:
+
+ENGLISH:
+<the explanation in clear Scientific English>
+URDU:
+<the same explanation as natural spoken classroom Urdu>
+
+MCQ tutoring rules (both sections):
+1. ALWAYS explain THIS MCQ: why the correct option is right, and why the student's choice is wrong when it differs.
+2. Prefer textbook notes when they match this topic; otherwise use your own MDCAT/FSc knowledge. Never stall about missing passages.
+3. Never invent a different question or change the topic. Stick to THIS MCQ only.
+4. Do not invent page numbers or citations — the app appends those separately.
+5. Keep each section under 100 words. End ENGLISH with one short memory tip when useful.
+
+ENGLISH section rules:
+- Scientific English only. No Urdu script, no Roman Urdu, no Hindi.
+- Clear, exam-friendly wording.
+
+URDU section rules:
+- Pakistani coaching-classroom bilingual: Urdu script for sentence glue, English Latin letters for science terms.
+- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, and any other FSc/MDCAT syllabus term.
+- Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے."
+- Natural spoken style for a phone-call tutor. No citations, brackets, bullets, or markdown.
+- No Roman Urdu, no Hindi.
+
+Output nothing except the two labelled sections."""
 
 
 def answer_question_bilingual(
@@ -365,6 +414,32 @@ def answer_from_rag_bilingual(question: str, context: str) -> tuple[str, str]:
     return normalize_course_answer(*_split_bilingual(raw))
 
 
+def explain_answer_bilingual(
+    concept: str,
+    selected_option: str,
+    correct_option: str,
+    question_text: str = "",
+    context_chunk: str = "",
+    mnemonic_chunk: str = "",
+) -> tuple[str, str]:
+    """MCQ explain as (english_for_ui, bilingual_urdu_for_tts)."""
+    user_prompt = _explain_user_prompt(
+        concept,
+        selected_option,
+        correct_option,
+        question_text,
+        context_chunk,
+        mnemonic_chunk,
+    )
+    user_prompt += (
+        "\n\nFor the URDU section: speak like a Pakistani coaching teacher — "
+        "Urdu sentences with English science words left in English "
+        "(nucleus, electron, energy, formula, orbit, x-ray, etc.)."
+    )
+    raw = _chat(EXPLAIN_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
+    return normalize_course_answer(*_split_bilingual(raw))
+
+
 def looks_like_urdu(text: str, min_ratio: float = 0.3) -> bool:
     """True when the text contains meaningful Urdu script (bilingual is fine)."""
     letters = [c for c in (text or "") if c.isalpha()]
@@ -372,6 +447,26 @@ def looks_like_urdu(text: str, min_ratio: float = 0.3) -> bool:
         return False
     urdu = sum(1 for c in letters if 0x0600 <= ord(c) <= 0x06FF)
     return urdu / len(letters) >= min_ratio
+
+
+def looks_like_classroom_bilingual(text: str) -> bool:
+    """Urdu narration that still keeps English science terms in Latin letters.
+
+    Pure Urdu (everything transliterated) fails this check so we can re-translate
+    into the Pakistani coaching mix students expect.
+
+    Note: do NOT reuse looks_like_urdu()'s 30% ratio here — real classroom
+    bilingual often has more Latin science letters than Urdu glue letters.
+    """
+    raw = (text or "").strip()
+    if not raw:
+        return False
+    if is_off_topic_answer(raw):
+        return any(0x0600 <= ord(c) <= 0x06FF for c in raw)
+    urdu_chars = sum(1 for c in raw if 0x0600 <= ord(c) <= 0x06FF)
+    if urdu_chars < 8:
+        return False
+    return bool(re.search(r"[A-Za-z]{3,}", raw))
 
 
 TOPIC_GATE_SYSTEM = """You classify student messages for an FSc/MDCAT Biology tutor app.
@@ -478,7 +573,12 @@ def to_urdu_speech(english_answer: str) -> str:
     try:
         urdu = _chat(
             URDU_SPEECH_SYSTEM_PROMPT,
-            f"English tutoring answer:\n{text}\n\nNow speak this to the student in natural Urdu.",
+            (
+                "English tutoring answer:\n"
+                f"{text}\n\n"
+                "Now speak this to the student in natural bilingual classroom Urdu "
+                "(Urdu script + English science terms like nucleus, electron, energy)."
+            ),
             max_tokens=400,
         )
         return urdu.strip()

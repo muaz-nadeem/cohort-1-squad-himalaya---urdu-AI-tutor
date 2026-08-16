@@ -172,6 +172,7 @@ export interface ExplainResult {
   answer: string;
   audio: string | null;
   speech_id?: string | null;
+  urdu_text?: string;
   concept: string;
   citation: string | null;
   sources: { concept: string; chapter: string; similarity: number }[];

@@ -187,16 +187,30 @@ async def tts_stream_direct(
 # Ask AI — text + voice
 # ===========================================================================
 async def ensure_urdu(english_answer: str, urdu_text: str) -> str:
-    """Fall back to a dedicated translation if the model drifted to Roman Urdu."""
-    if llm.looks_like_urdu(urdu_text):
+    """Guarantee classroom-bilingual Urdu for TTS (same path for Listen + doctor call).
+
+    Accepts only Urdu-script narration that still keeps English science terms.
+    Otherwise re-translates from the English answer.
+    """
+    if llm.looks_like_classroom_bilingual(urdu_text):
         return urdu_text
     if not english_answer.strip():
         return urdu_text
-    print("  [speak] bilingual Urdu section not Urdu script; re-translating")
+    reason = (
+        "missing/weak English science terms"
+        if llm.looks_like_urdu(urdu_text)
+        else "not Urdu script"
+    )
+    print(f"  [speak] bilingual narration rejected ({reason}); re-translating")
     try:
-        return await asyncio.get_event_loop().run_in_executor(
+        rewritten = await asyncio.get_event_loop().run_in_executor(
             None, llm.to_urdu_speech, english_answer
         )
+        if llm.looks_like_classroom_bilingual(rewritten):
+            return rewritten
+        if llm.looks_like_urdu(rewritten):
+            return rewritten
+        return rewritten or urdu_text
     except Exception as exc:
         print(f"  [speak] Urdu fallback failed: {type(exc).__name__}")
         return urdu_text
@@ -823,7 +837,7 @@ async def explain(
     req: Annotated[ExplainRequest, Body()],
     user: Annotated[AuthUser, Depends(get_current_user)],
 ):
-    """MCQ explanation — teach the question; cite textbook book + page only."""
+    """MCQ explanation — English on screen; same bilingual Urdu TTS as doctor call."""
     loop = asyncio.get_event_loop()
     question = None
     try:
@@ -835,21 +849,39 @@ async def explain(
     correct_option = (question or {}).get("correct_option") or req.correct_option
 
     cache_key = _answer_key(
-        "explain",
+        "explain_v2",
         req.question_id,
         req.concept,
         req.selected_option,
         correct_option,
         req.context_chunk,
+        "speak" if req.speak else "silent",
     )
     cached = _EXPLAIN_CACHE.get(cache_key)
     if cached:
         response = dict(cached)
         if req.speak:
+            urdu = await ensure_urdu(
+                response.get("explanation") or "",
+                response.get("urdu_text") or "",
+            )
+            response["urdu_text"] = urdu
+            # Refresh cache so later Listen hits keep the repaired narration.
+            repaired = dict(response)
+            repaired["audio"] = None
+            repaired["speech_id"] = None
+            _explain_cache_put(cache_key, repaired)
             if req.stream_audio:
-                response["speech_id"] = narration_id(response["explanation"], "")
+                response["speech_id"] = narration_id(
+                    response["explanation"], urdu
+                )
             else:
-                response["audio"] = await voice.text_to_speech(response["explanation"])
+                try:
+                    response["audio"] = await voice.text_to_speech(
+                        urdu or llm._strip_for_speech(response["explanation"])
+                    )
+                except Exception:
+                    response["audio"] = None
         return response
 
     question_text = (question or {}).get("question_text") or ""
@@ -879,17 +911,43 @@ async def explain(
 
     mnemonic_ctx = "" if isinstance(mnemonic, Exception) else mnemonic.get("context") or ""
 
-    explanation = await loop.run_in_executor(
-        None,
-        lambda: llm.explain_answer(
-            concept=q_chapter,
-            selected_option=req.selected_option,
-            correct_option=correct_option,
-            question_text=question_text,
-            context_chunk=context or "",
-            mnemonic_chunk=mnemonic_ctx,
-        ),
-    )
+    urdu_text = ""
+    if req.speak:
+        explanation, urdu_text = await loop.run_in_executor(
+            None,
+            lambda: llm.explain_answer_bilingual(
+                concept=q_chapter,
+                selected_option=req.selected_option,
+                correct_option=correct_option,
+                question_text=question_text,
+                context_chunk=context or "",
+                mnemonic_chunk=mnemonic_ctx,
+            ),
+        )
+        if not (explanation or "").strip():
+            explanation = await loop.run_in_executor(
+                None,
+                lambda: llm.explain_answer(
+                    concept=q_chapter,
+                    selected_option=req.selected_option,
+                    correct_option=correct_option,
+                    question_text=question_text,
+                    context_chunk=context or "",
+                    mnemonic_chunk=mnemonic_ctx,
+                ),
+            )
+    else:
+        explanation = await loop.run_in_executor(
+            None,
+            lambda: llm.explain_answer(
+                concept=q_chapter,
+                selected_option=req.selected_option,
+                correct_option=correct_option,
+                question_text=question_text,
+                context_chunk=context or "",
+                mnemonic_chunk=mnemonic_ctx,
+            ),
+        )
 
     # Build citation from question source metadata as fallback so an explanation
     # always cites *something* correct, even when no textbook chunk matched.
@@ -912,17 +970,21 @@ async def explain(
     audio_b64 = None
     speech_id = None
     if req.speak:
+        urdu_text = await ensure_urdu(explanation, urdu_text)
         if req.stream_audio:
-            speech_id = narration_id(explanation, "")
+            speech_id = narration_id(explanation, urdu_text)
         else:
             try:
-                audio_b64 = await voice.text_to_speech(explanation)
+                audio_b64 = await voice.text_to_speech(
+                    urdu_text or llm._strip_for_speech(explanation)
+                )
             except Exception:
                 pass
 
     response = {
         "explanation": explanation,
         "answer": explanation,
+        "urdu_text": urdu_text,
         "audio": audio_b64,
         "speech_id": speech_id,
         "concept": q_chapter,
@@ -933,6 +995,7 @@ async def explain(
     cacheable = dict(response)
     cacheable["audio"] = None
     cacheable["speech_id"] = None
+    # Keep urdu_text in cache so Listen reuses the same doctor-call narration.
     _explain_cache_put(cache_key, cacheable)
     return response
 
