@@ -71,6 +71,9 @@ class Settings:
         "NOMIC_EMBED_URL", "https://api-atlas.nomic.ai/v1/embedding/text"
     ).strip()
     LLM_MODEL: str = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-versatile")
+    # Ask Textbook + MCQ explanations (OpenAI). gpt-4o-mini is the lightest
+    # production chat model already used for MCQ ingest.
+    EXPLAIN_LLM_MODEL: str = os.getenv("EXPLAIN_LLM_MODEL", "gpt-4o-mini")
     VISION_MODEL: str = os.getenv(
         "GROQ_VISION_MODEL", "qwen/qwen3.6-27b"
     )

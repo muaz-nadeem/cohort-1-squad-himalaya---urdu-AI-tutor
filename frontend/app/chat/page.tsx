@@ -350,9 +350,19 @@ export default function ChatPage() {
         }
       }
 
-      setMessages((prev) =>
-        prev.map((m) => (m.id === botId ? { ...m, streaming: false } : m))
-      );
+      if (!fullText.trim()) {
+        fullText =
+          "I found textbook pages but the AI did not return an answer. This is often a Groq rate limit — wait a few seconds and ask again.";
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === botId ? { ...m, content: fullText, streaming: false } : m
+          )
+        );
+      } else {
+        setMessages((prev) =>
+          prev.map((m) => (m.id === botId ? { ...m, streaming: false } : m))
+        );
+      }
 
       if (chatId && fullText.trim()) {
         await persistTurn(
@@ -951,7 +961,9 @@ function MessageBubble({ message }: { message: Message }) {
               <Loader2 className="h-4 w-4 animate-spin" />
               Searching textbook...
             </div>
-          ) : null}
+          ) : (
+            <p className="text-sm text-slate-400">No answer received. Please ask again.</p>
+          )}
         </div>
 
         {message.sources && message.sources.length > 0 && (

@@ -641,11 +641,47 @@ async def rag_ask_stream(
 
     async def generate():
         yield f"data: {json.dumps({'type': 'sources', 'sources': sources if context else [], 'citation': citation})}\n\n"
-        for token in llm.stream_answer_from_rag(
-            req.question.strip(), context, history=req.history
-        ):
-            yield f"data: {json.dumps({'type': 'text', 'content': token})}\n\n"
-        if citation:
+        produced = False
+        try:
+            for token in llm.stream_answer_from_rag(
+                req.question.strip(), context, history=req.history
+            ):
+                produced = True
+                yield f"data: {json.dumps({'type': 'text', 'content': token})}\n\n"
+        except Exception as exc:
+            print(f"  [rag-ask-stream] Groq stream failed: {type(exc).__name__}: {exc}")
+            fallback = ""
+            try:
+                fallback = llm.answer_from_rag(
+                    req.question.strip(), context, history=req.history
+                )
+            except Exception as fallback_exc:
+                print(
+                    f"  [rag-ask-stream] fallback failed: {type(fallback_exc).__name__}"
+                )
+                yield f"data: {json.dumps({'type': 'text', 'content': friendly_error(exc)})}\n\n"
+                yield "data: [DONE]\n\n"
+                return
+            if fallback.strip():
+                produced = True
+                yield f"data: {json.dumps({'type': 'text', 'content': fallback})}\n\n"
+            else:
+                yield f"data: {json.dumps({'type': 'text', 'content': friendly_error(exc)})}\n\n"
+                yield "data: [DONE]\n\n"
+                return
+        if not produced:
+            print("  [rag-ask-stream] Groq returned no tokens; using non-stream fallback")
+            try:
+                fallback = llm.answer_from_rag(
+                    req.question.strip(), context, history=req.history
+                )
+                if fallback.strip():
+                    yield f"data: {json.dumps({'type': 'text', 'content': fallback})}\n\n"
+                else:
+                    yield f"data: {json.dumps({'type': 'text', 'content': 'I found the textbook pages but could not generate an explanation. Please ask again.'})}\n\n"
+            except Exception as exc:
+                yield f"data: {json.dumps({'type': 'text', 'content': friendly_error(exc)})}\n\n"
+        elif citation:
             yield f"data: {json.dumps({'type': 'text', 'content': f'  ({citation})'})}\n\n"
         yield "data: [DONE]\n\n"
 

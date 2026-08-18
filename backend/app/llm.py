@@ -153,6 +153,33 @@ def _chat(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
     raise RuntimeError("LLM call failed")
 
 
+def _chat_openai(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
+    """Ask Textbook + MCQ explanations via OpenAI (gpt-4o-mini by default)."""
+    if not settings.openai_ready:
+        raise RuntimeError("OPENAI_API_KEY is not set")
+    client = get_openai_client()
+    for attempt in range(2):
+        try:
+            response = client.chat.completions.create(
+                model=settings.EXPLAIN_LLM_MODEL,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                max_tokens=max_tokens,
+                temperature=0.3,
+            )
+            return response.choices[0].message.content or ""
+        except RateLimitError as exc:
+            if attempt == 1:
+                raise
+            delay = _retry_after_seconds(exc, default=2.0)
+            print(f"  [llm-openai] rate limited, retrying once in {delay:.1f}s")
+            time.sleep(delay)
+
+    raise RuntimeError("OpenAI explanation call failed")
+
+
 def _retry_after_seconds(exc: Exception, default: float) -> float:
     """Honour Groq's Retry-After hint, capped so a student never waits long."""
     headers = getattr(getattr(exc, "response", None), "headers", None) or {}
@@ -265,7 +292,7 @@ def explain_answer(
         context_chunk,
         mnemonic_chunk,
     )
-    return _chat(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=220)
+    return _chat_openai(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=220)
 
 
 def answer_from_rag(
@@ -275,7 +302,7 @@ def answer_from_rag(
 ) -> str:
     """Answer a free-form Biology question grounded in multimodal RAG context."""
     user_prompt = _rag_user_prompt(question, context, history)
-    return _chat(RAG_ASK_SYSTEM_PROMPT, user_prompt, max_tokens=350)
+    return _chat_openai(RAG_ASK_SYSTEM_PROMPT, user_prompt, max_tokens=350)
 
 
 def stream_answer_from_rag(
@@ -283,23 +310,39 @@ def stream_answer_from_rag(
     context: str,
     history: Optional[list[dict]] = None,
 ):
-    """Streaming version — yields text chunks as they arrive from Groq."""
-    client = get_groq_client()
+    """Streaming version — yields text chunks from OpenAI gpt-4o-mini."""
+    if not settings.openai_ready:
+        raise RuntimeError("OPENAI_API_KEY is not set")
+    client = get_openai_client()
     user_prompt = _rag_user_prompt(question, context, history)
-    stream = client.chat.completions.create(
-        model=settings.LLM_MODEL,
-        messages=[
-            {"role": "system", "content": RAG_ASK_SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-        max_tokens=350,
-        temperature=0.3,
-        stream=True,
-    )
-    for chunk in stream:
-        delta = chunk.choices[0].delta
-        if delta.content:
-            yield delta.content
+    last_exc: Exception | None = None
+    for attempt in range(2):
+        try:
+            stream = client.chat.completions.create(
+                model=settings.EXPLAIN_LLM_MODEL,
+                messages=[
+                    {"role": "system", "content": RAG_ASK_SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ],
+                max_tokens=350,
+                temperature=0.3,
+                stream=True,
+            )
+            for chunk in stream:
+                delta = chunk.choices[0].delta
+                if delta and delta.content:
+                    yield delta.content
+            return
+        except RateLimitError as exc:
+            last_exc = exc
+            if attempt == 1:
+                raise
+            delay = _retry_after_seconds(exc, default=2.0)
+            print(f"  [llm-stream] rate limited, retrying once in {delay:.1f}s")
+            time.sleep(delay)
+    if last_exc:
+        raise last_exc
+    raise RuntimeError("LLM stream failed")
 
 
 def _rag_user_prompt(
@@ -446,7 +489,7 @@ def answer_from_rag_bilingual(
     history: Optional[list[dict]] = None,
 ) -> tuple[str, str]:
     """Textbook RAG answer as (english, urdu_narration) in one LLM round-trip."""
-    raw = _chat(
+    raw = _chat_openai(
         RAG_BILINGUAL_SYSTEM_PROMPT,
         _rag_user_prompt(question, context, history),
         max_tokens=700,
@@ -476,7 +519,7 @@ def explain_answer_bilingual(
         "Urdu sentences with English science words left in English "
         "(nucleus, electron, energy, formula, orbit, x-ray, etc.)."
     )
-    raw = _chat(EXPLAIN_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
+    raw = _chat_openai(EXPLAIN_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
     return normalize_course_answer(*_split_bilingual(raw))
 
 
@@ -611,7 +654,7 @@ def to_urdu_speech(english_answer: str) -> str:
     if not text:
         return ""
     try:
-        urdu = _chat(
+        urdu = _chat_openai(
             URDU_SPEECH_SYSTEM_PROMPT,
             (
                 "English tutoring answer (speak ONLY this — do not add other topics):\n"
