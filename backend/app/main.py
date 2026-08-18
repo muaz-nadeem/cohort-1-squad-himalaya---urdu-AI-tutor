@@ -126,6 +126,21 @@ def _reject_oversized_audio(audio_bytes: bytes) -> Optional[str]:
 
 
 # ===========================================================================
+# Auth — credential checks go through this API (not the browser → Supabase)
+# ===========================================================================
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+@app.post("/api/auth/login")
+@limiter.limit("10/minute")
+async def login(request: Request, req: Annotated[LoginRequest, Body()]):
+    """Validate credentials on the backend so login fails if this API is down."""
+    return await auth.login_with_password(req.email, req.password)
+
+
+# ===========================================================================
 # Speech cache — lets clients stream audio instead of waiting for it inline
 # ===========================================================================
 _SPEECH_CACHE: "OrderedDict[str, str]" = OrderedDict()

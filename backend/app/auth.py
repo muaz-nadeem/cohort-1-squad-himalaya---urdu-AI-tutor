@@ -130,6 +130,81 @@ def _decode_access_token(token: str) -> AuthUser:
     )
 
 
+async def login_with_password(email: str, password: str) -> dict:
+    """Validate email/password via Supabase Auth. Used by POST /api/auth/login."""
+    email = (email or "").strip()
+    if not email or "@" not in email or not password:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email and password are required.",
+        )
+    base = (settings.SUPABASE_URL or "").rstrip("/")
+    api_key = settings.SUPABASE_SERVICE_ROLE_KEY
+    if not base or not api_key:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Auth is not configured.",
+        )
+    try:
+        async with httpx.AsyncClient(timeout=20.0) as http:
+            res = await http.post(
+                f"{base}/auth/v1/token",
+                params={"grant_type": "password"},
+                headers={
+                    "apikey": api_key,
+                    "Authorization": f"Bearer {api_key}",
+                    "Content-Type": "application/json",
+                },
+                json={"email": email, "password": password},
+            )
+    except httpx.HTTPError:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Could not reach the login service. Try again in a moment.",
+        ) from None
+
+    payload = {}
+    try:
+        payload = res.json() if res.content else {}
+    except ValueError:
+        payload = {}
+
+    if res.status_code != 200:
+        raw = " ".join(
+            str(payload.get(k) or "")
+            for k in ("error_code", "error", "error_description", "msg", "message")
+        ).lower()
+        if "email_not_confirmed" in raw or "email not confirmed" in raw:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Confirm your email before signing in.",
+            )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password.",
+        )
+
+    access_token = payload.get("access_token")
+    refresh_token = payload.get("refresh_token")
+    user = payload.get("user") or {}
+    if not access_token or not refresh_token or not user.get("id"):
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail="Login service returned an incomplete session.",
+        )
+    meta = user.get("user_metadata") or {}
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "expires_in": payload.get("expires_in"),
+        "user": {
+            "id": user.get("id"),
+            "email": user.get("email"),
+            "name": meta.get("name"),
+        },
+    }
+
+
 async def get_current_user(
     credentials: Annotated[
         Optional[HTTPAuthorizationCredentials], Depends(_bearer)
