@@ -56,8 +56,8 @@ You will be given an English tutoring answer. Re-express THAT SAME answer as nat
 
 Rules:
 1. Write the explanation in Urdu script (اردو) but keep English key terms inline in Latin letters.
-2. Keep ALL scientific and technical terms in English — never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, tissue, organ, hormone, virus, bacteria, and any other syllabus term students study in English.
-3. Sentence structure and connecting words in Urdu; science words in English. Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے."
+2. Keep ALL scientific and technical terms in English — never translate or transliterate them into Urdu. This includes formulas and symbols: write O2, H2O, CO2, n2, ATP exactly like that. NEVER write Urdu numbers inside a formula (wrong: O دو, H دو O).
+3. Sentence structure and connecting words in Urdu; science words in English. Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے." Another example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 4. Sound like natural speech, warm and clear — as if explaining out loud to a student.
 5. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
 6. Keep it under 120 words.
@@ -417,7 +417,8 @@ ENGLISH section rules:
 URDU section rules:
 - Write in Urdu script (اردو) with English key terms kept inline — natural Pakistani classroom bilingual style (Urdu glue + English science words).
 - Keep ALL scientific/technical terms in English Latin letters. Never translate or transliterate them into Urdu. Must-stay-English examples: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, and any other FSc/MDCAT syllabus term.
-- Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen atom میں electron کی energy En = -13.6 / n² eV ہوتی ہے."
+- Formulas stay English: write O2, H2O, CO2, n2 — never Urdu digits inside a formula (wrong: O دو / H دو O).
+- Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Never use Roman Urdu or Hindi.
 - Natural spoken style, as if explaining out loud on a phone call.
 - No citations, page numbers, brackets, bullets or markdown — it will be read aloud.
@@ -460,8 +461,9 @@ ENGLISH section rules:
 
 URDU section rules:
 - Pakistani coaching-classroom bilingual: Urdu script for sentence glue, English Latin letters for science terms.
-- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, and any other FSc/MDCAT syllabus term.
-- Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے."
+- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, O2, H2O, CO2, and any other FSc/MDCAT syllabus term.
+- Formulas stay English (O2, H2O). Never write Urdu numbers inside them.
+- Example style: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Natural spoken style for a phone-call tutor. No citations, brackets, bullets, or markdown.
 - No Roman Urdu, no Hindi.
 
@@ -660,7 +662,8 @@ def to_urdu_speech(english_answer: str) -> str:
                 "English tutoring answer (speak ONLY this — do not add other topics):\n"
                 f"{text}\n\n"
                 "Now restate this exact answer in natural bilingual classroom Urdu "
-                "(Urdu script + English science terms). Start immediately. No greeting."
+                "(Urdu script + English science terms). Keep formulas as O2, H2O, CO2 — "
+                "never Urdu digits inside a formula. Start immediately. No greeting."
             ),
             max_tokens=400,
         )

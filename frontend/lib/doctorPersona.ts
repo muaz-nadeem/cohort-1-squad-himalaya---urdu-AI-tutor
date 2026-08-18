@@ -3,35 +3,15 @@
 export type DoctorPersona = {
   title: "Dr";
   name: string;
-  gender: "male" | "female";
-  /** Short label e.g. "Dr. Atif" */
+  gender: "female";
+  /** Short label e.g. "Dr. Ayesha" */
   displayName: string;
   initials: string;
   /** HSL hue 0–360 for avatar background */
   hue: number;
 };
 
-const MALE_NAMES = [
-  "Atif",
-  "Hassan",
-  "Bilal",
-  "Usman",
-  "Hamza",
-  "Ahmed",
-  "Imran",
-  "Faisal",
-  "Omar",
-  "Saad",
-  "Zain",
-  "Asad",
-  "Taha",
-  "Danish",
-  "Nabeel",
-  "Haris",
-  "Rayyan",
-  "Ibrahim",
-];
-
+/** Female-only pool — TTS is a female voice. Same name can repeat after the list wraps. */
 const FEMALE_NAMES = [
   "Ayesha",
   "Fatima",
@@ -51,6 +31,20 @@ const FEMALE_NAMES = [
   "Hafsa",
   "Mahnoor",
   "Eman",
+  "Areeba",
+  "Mehwish",
+  "Nimra",
+  "Hania",
+  "Alina",
+  "Saba",
+  "Farah",
+  "Bushra",
+  "Nadia",
+  "Samina",
+  "Hina",
+  "Komal",
+  "Anam",
+  "Sadia",
 ];
 
 function hashId(id: string): number {
@@ -64,21 +58,19 @@ function hashId(id: string): number {
 
 function buildPersona(studentId: string): DoctorPersona {
   const h = hashId(studentId || "guest");
-  const female = h % 2 === 0;
-  const pool = female ? FEMALE_NAMES : MALE_NAMES;
-  const name = pool[h % pool.length];
+  const name = FEMALE_NAMES[h % FEMALE_NAMES.length];
   const initials = `D${name.charAt(0)}`.toUpperCase();
   return {
     title: "Dr",
     name,
-    gender: female ? "female" : "male",
+    gender: "female",
     displayName: `Dr. ${name}`,
     initials,
     hue: h % 360,
   };
 }
 
-const STORAGE_PREFIX = "uraan_doctor_v1_";
+const STORAGE_PREFIX = "uraan_doctor_v2_";
 
 /** Stable doctor for this student across sessions (localStorage). */
 export function getDoctorPersona(studentId: string | null | undefined): DoctorPersona {
@@ -89,7 +81,12 @@ export function getDoctorPersona(studentId: string | null | undefined): DoctorPe
     const raw = window.localStorage.getItem(key);
     if (raw) {
       const parsed = JSON.parse(raw) as DoctorPersona;
-      if (parsed?.displayName && parsed?.initials != null && parsed?.hue != null) {
+      if (
+        parsed?.displayName &&
+        parsed?.gender === "female" &&
+        parsed?.initials != null &&
+        parsed?.hue != null
+      ) {
         return parsed;
       }
     }

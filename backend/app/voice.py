@@ -8,6 +8,7 @@ from __future__ import annotations
 import asyncio
 import base64
 import io
+import re
 import sys
 from typing import Optional
 
@@ -129,9 +130,62 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
 # TTS helpers
 # ===========================================================================
 
-def clean_for_tts(text: str, limit: int = 600) -> str:
-    """Trim narration so synthesis stays fast (TTS time scales with length)."""
+_DIGIT_WORDS = {
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+}
+
+_SUBSCRIPT_MAP = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
+
+
+def _english_digit_words(digits: str) -> str:
+    return " ".join(_DIGIT_WORDS.get(ch, ch) for ch in digits)
+
+
+def _expand_formula_match(match: re.Match[str]) -> str:
+    """O2 / H2O / CO2 → English letter names so Urdu TTS does not say 'do'."""
+    token = match.group(0)
+    parts: list[str] = []
+    for ch in token:
+        if ch.isalpha():
+            parts.append(ch.upper())
+        elif ch.isdigit():
+            parts.append(_english_digit_words(ch))
+    return " ".join(parts)
+
+
+def prepare_bilingual_tts(text: str) -> str:
+    """Keep science formulas in English while the rest of the line stays Urdu."""
     speak = (text or "").strip()
+    if not speak:
+        return ""
+    speak = speak.translate(_SUBSCRIPT_MAP)
+    # Only rewrite tokens that mix letters and digits (O2, H2O, CO2, n2, Fe2+).
+    speak = re.sub(
+        r"(?<![A-Za-z])(?:[A-Z][a-z]?\d*){1,8}[+\-]?(?![A-Za-z])",
+        lambda m: _expand_formula_match(m) if re.search(r"\d", m.group(0)) else m.group(0),
+        speak,
+    )
+    speak = re.sub(
+        r"\b([A-Za-z]{1,8})(\d+)\b",
+        lambda m: f"{m.group(1)} {_english_digit_words(m.group(2))}",
+        speak,
+    )
+    speak = re.sub(r"\s+", " ", speak).strip()
+    return speak
+
+
+def clean_for_tts(text: str, limit: int = 600) -> str:
+    """Prepare bilingual narration, then trim so synthesis stays fast."""
+    speak = prepare_bilingual_tts(text)
     if len(speak) > limit:
         speak = speak[:limit].rsplit(" ", 1)[0] + "..."
     return speak
