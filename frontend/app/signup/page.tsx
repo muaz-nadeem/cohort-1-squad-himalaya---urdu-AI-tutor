@@ -16,6 +16,34 @@ import { signUp } from "@/lib/auth";
 import { setStudentName } from "@/lib/student";
 import BrandMark from "@/components/BrandMark";
 
+/** Letters, optional digits, optional spaces. Must start with a letter. */
+const SIGNUP_NAME_RE = /^\p{L}[\p{L}\p{N} ]*$/u;
+
+function sanitizeSignupName(raw: string): string {
+  return raw.replace(/[^\p{L}\p{N} ]/gu, "").replace(/^[\p{N}]+/u, "");
+}
+
+function isValidSignupName(name: string): boolean {
+  const trimmed = name.trim();
+  return Boolean(trimmed) && SIGNUP_NAME_RE.test(trimmed);
+}
+
+function passwordError(password: string): string | null {
+  if (password.length < 8) {
+    return "Password must be at least 8 characters.";
+  }
+  if (!/[A-Z]/.test(password)) {
+    return "Password must include at least 1 capital letter.";
+  }
+  if (!/[0-9]/.test(password)) {
+    return "Password must include at least 1 number.";
+  }
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    return "Password must include at least 1 special character.";
+  }
+  return null;
+}
+
 export default function SignupPage() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -27,18 +55,26 @@ export default function SignupPage() {
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
+    const trimmedName = name.trim();
+    if (!isValidSignupName(trimmedName)) {
+      setError(
+        "Name must start with a letter and can only contain letters, numbers, and spaces."
+      );
+      return;
+    }
     if (!email.trim() || !password) {
       setError("Email and password are required.");
       return;
     }
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
+    const pwdError = passwordError(password);
+    if (pwdError) {
+      setError(pwdError);
       return;
     }
     setLoading(true);
     setError("");
     try {
-      const { session, user } = await signUp(email.trim(), password, name || undefined);
+      const { session, user } = await signUp(email.trim(), password, trimmedName);
       if (!session && user) {
         setError(
           "Check your email to confirm your account, then sign in."
@@ -47,12 +83,12 @@ export default function SignupPage() {
         return;
       }
       const student = await api.createStudent({
-        name: name || undefined,
+        name: trimmedName,
         email: email.trim(),
         level: "just_starting",
         daily_time: "1hr",
       });
-      setStudentName(student.name || name || "Student");
+      setStudentName(student.name || trimmedName);
       router.replace("/dashboard");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
@@ -144,11 +180,16 @@ export default function SignupPage() {
                 <input
                   type="text"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setName(sanitizeSignupName(e.target.value))}
                   placeholder="Enter your name"
                   className="!pl-11"
+                  autoComplete="name"
+                  required
                 />
               </div>
+              <p className="mt-1.5 text-xs text-slate-400">
+                Letters only, or letters with numbers. Cannot start with a number.
+              </p>
             </div>
 
             <div>
@@ -180,6 +221,7 @@ export default function SignupPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Create a strong password"
                   className="!pl-11 !pr-11"
+                  autoComplete="new-password"
                 />
                 <button
                   type="button"
@@ -194,7 +236,8 @@ export default function SignupPage() {
                 </button>
               </div>
               <p className="mt-1.5 text-xs text-slate-400">
-                Must be at least 8 characters with a symbol.
+                At least 8 characters, with 1 capital letter, 1 number, and 1
+                special character.
               </p>
             </div>
 
@@ -210,7 +253,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              disabled={loading || !email.trim()}
+              disabled={loading || !email.trim() || !name.trim()}
               className="btn-primary w-full"
             >
               {loading ? "Creating account..." : "Create account →"}
