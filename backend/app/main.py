@@ -190,26 +190,32 @@ async def ensure_urdu(english_answer: str, urdu_text: str) -> str:
     """Guarantee classroom-bilingual Urdu for TTS (same path for Listen + doctor call).
 
     Accepts only Urdu-script narration that still keeps English science terms.
-    Otherwise re-translates from the English answer.
+    Pure Urdu is never kept — re-translate from the English answer instead.
     """
     if llm.looks_like_classroom_bilingual(urdu_text):
         return urdu_text
     if not english_answer.strip():
         return urdu_text
     reason = (
-        "missing/weak English science terms"
+        "pure Urdu / missing English science terms"
         if llm.looks_like_urdu(urdu_text)
         else "not Urdu script"
     )
     print(f"  [speak] bilingual narration rejected ({reason}); re-translating")
     try:
-        rewritten = await asyncio.get_event_loop().run_in_executor(
+        loop = asyncio.get_event_loop()
+        rewritten = await loop.run_in_executor(
             None, llm.to_urdu_speech, english_answer
         )
         if llm.looks_like_classroom_bilingual(rewritten):
             return rewritten
-        if llm.looks_like_urdu(rewritten):
+        print("  [speak] rewrite still not bilingual; retrying stricter")
+        rewritten = await loop.run_in_executor(
+            None, lambda: llm.to_urdu_speech(english_answer, strict=True)
+        )
+        if llm.looks_like_classroom_bilingual(rewritten):
             return rewritten
+        # Never fall back to accepting a fully Urdu narration as "good enough".
         return rewritten or urdu_text
     except Exception as exc:
         print(f"  [speak] Urdu fallback failed: {type(exc).__name__}")
@@ -324,7 +330,7 @@ async def _ask_ai_impl(req: AskRequest):
     """Shared ask pipeline (also used by ask-voice after STT)."""
     mcq_block = req.mcq.summary() if req.mcq else ""
     cache_key = _answer_key(
-        "ask",
+        "ask_v2",
         req.concept,
         req.student_question,
         mcq_block,
@@ -377,9 +383,7 @@ async def _ask_ai_impl(req: AskRequest):
                     "sources": [],
                     "error": "The AI returned an empty answer. Please ask again.",
                 }
-            if req.speak and not llm.is_off_topic_answer(answer_text):
-                urdu_text = await ensure_urdu(answer_text, urdu_text)
-            elif llm.is_off_topic_answer(answer_text):
+            if llm.is_off_topic_answer(answer_text):
                 answer_text, urdu_text = llm.off_topic_reply()
                 sources = []
             if not req.history:
@@ -389,6 +393,10 @@ async def _ask_ai_impl(req: AskRequest):
     if llm.is_off_topic_answer(answer_text):
         sources = []
         answer_text, urdu_text = llm.off_topic_reply()
+    elif req.speak:
+        urdu_text = await ensure_urdu(answer_text, urdu_text)
+        if not req.history:
+            _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
 
     citation = rag.format_citation_short(sources)
     display_answer = f"{answer_text}\n\n({citation})" if citation else answer_text
@@ -1072,7 +1080,7 @@ async def explain(
     correct_option = (question or {}).get("correct_option") or req.correct_option
 
     cache_key = _answer_key(
-        "explain_v3",
+        "explain_v4",
         req.question_id,
         req.concept,
         req.selected_option,

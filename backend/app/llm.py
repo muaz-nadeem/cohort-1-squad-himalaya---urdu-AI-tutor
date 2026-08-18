@@ -64,7 +64,8 @@ Rules:
 7. No Roman Urdu, no Hindi. Urdu script for the Urdu parts, English for the technical terms.
 8. FAITHFULNESS (critical): Only restate what is in the English answer. Do NOT invent a different topic, extra examples, warm-up chatter, or "related" facts that were not written there.
 9. Start immediately with the explanation. No greetings (no السلام علیکم), no "آج ہم بات کریں گے", no preamble about another concept first.
-10. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers."""
+10. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers.
+11. Never write a fully Urdu explanation. Urdu is only sentence glue; science terms and formulas stay English."""
 
 RAG_ASK_SYSTEM_PROMPT = f"""You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.
 
@@ -88,7 +89,7 @@ Rules:
 3. Never say the textbook/passage/context "doesn't mention" something, or that you lack a passage. Just teach.
 4. Never invent a different question or change the topic. Stick to THIS MCQ only.
 5. Start immediately with THIS MCQ — do not open with a different concept, warm-up, or unrelated textbook aside.
-6. Keep it under 100 words. Simple English with brief Urdu/Roman Urdu hints where helpful.
+6. Keep it under 100 words. Scientific English only — no Urdu script, no Roman Urdu.
 7. End with one short memory tip if useful.
 8. Do not add a source citation in the body — the app appends that separately."""
 
@@ -420,6 +421,7 @@ URDU section rules:
 - Formulas stay English: write O2, H2O, CO2, n2 — never Urdu digits inside a formula (wrong: O دو / H دو O).
 - Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Never use Roman Urdu or Hindi.
+- Never write a fully Urdu explanation. Science words stay English in every sentence.
 - Natural spoken style, as if explaining out loud on a phone call.
 - No citations, page numbers, brackets, bullets or markdown — it will be read aloud.
 - Under 110 words. Add no facts that are absent from the ENGLISH section.
@@ -466,6 +468,7 @@ URDU section rules:
 - Example style: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Natural spoken style for a phone-call tutor. No citations, brackets, bullets, or markdown.
 - No Roman Urdu, no Hindi.
+- Never write a fully Urdu explanation. Science words stay English in every sentence.
 
 Output nothing except the two labelled sections."""
 
@@ -481,7 +484,7 @@ def answer_question_bilingual(
     user_prompt = _ask_user_prompt(
         concept, student_question, context_chunk, history, mcq_block
     )
-    raw = _chat(ASK_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
+    raw = _chat_openai(ASK_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
     return normalize_course_answer(*_split_bilingual(raw))
 
 
@@ -534,6 +537,12 @@ def looks_like_urdu(text: str, min_ratio: float = 0.3) -> bool:
     return urdu / len(letters) >= min_ratio
 
 
+# Element symbol + Urdu digit/word (O دو, H۲O) — not classroom bilingual.
+_FORMULA_URDU_NUMBER = re.compile(
+    r"(?<![A-Za-z])[A-Za-z]{1,2}\s*(?:[۰-۹٠-٩]+|دو|تین|چار|پانچ|چھ|سات|آٹھ|نو|ایک|صفر)"
+)
+
+
 def looks_like_classroom_bilingual(text: str) -> bool:
     """Urdu narration that still keeps English science terms in Latin letters.
 
@@ -548,6 +557,8 @@ def looks_like_classroom_bilingual(text: str) -> bool:
         return False
     if is_off_topic_answer(raw):
         return any(0x0600 <= ord(c) <= 0x06FF for c in raw)
+    if _FORMULA_URDU_NUMBER.search(raw):
+        return False
     urdu_chars = sum(1 for c in raw if 0x0600 <= ord(c) <= 0x06FF)
     if urdu_chars < 8:
         return False
@@ -650,11 +661,19 @@ def _split_bilingual(raw: str) -> tuple[str, str]:
     return re.sub(r"(ENGLISH|URDU)\s*:\s*", "", text, flags=re.IGNORECASE).strip(), ""
 
 
-def to_urdu_speech(english_answer: str) -> str:
+def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
     """Turn an English tutoring answer into natural spoken Urdu for TTS."""
     text = _strip_for_speech(english_answer)
     if not text:
         return ""
+    extra = (
+        "CRITICAL: Do not write a fully Urdu explanation. Every science word "
+        "(nucleus, electron, energy, hydrogen, oxygen, molecule, DNA, ATP, "
+        "formula names, and so on) MUST stay English Latin letters. "
+        "Formulas MUST be O2, H2O, CO2 — never O دو or H دو O."
+        if strict
+        else ""
+    )
     try:
         urdu = _chat_openai(
             URDU_SPEECH_SYSTEM_PROMPT,
@@ -663,8 +682,9 @@ def to_urdu_speech(english_answer: str) -> str:
                 f"{text}\n\n"
                 "Now restate this exact answer in natural bilingual classroom Urdu "
                 "(Urdu script + English science terms). Keep formulas as O2, H2O, CO2 — "
-                "never Urdu digits inside a formula. Start immediately. No greeting."
-            ),
+                "never Urdu digits inside a formula. Start immediately. No greeting.\n"
+                f"{extra}"
+            ).strip(),
             max_tokens=400,
         )
         return sanitize_speech_narration(urdu)

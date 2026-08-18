@@ -144,6 +144,25 @@ _DIGIT_WORDS = {
 }
 
 _SUBSCRIPT_MAP = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
+# Urdu-Indic + Arabic-Indic digits → ASCII so O۲ / H٢O expand like O2 / H2O.
+_URDU_DIGIT_MAP = str.maketrans("۰۱۲۳۴۵۶۷۸۹٠١٢٣٤٥٦٧٨٩", "01234567890123456789")
+
+# Longest-first so آٹھ / پانچ match before shorter words.
+_URDU_NUM_WORDS = (
+    ("صفر", "zero"),
+    ("آٹھ", "eight"),
+    ("پانچ", "five"),
+    ("تین", "three"),
+    ("چار", "four"),
+    ("سات", "seven"),
+    ("ایک", "one"),
+    ("چھ", "six"),
+    ("نو", "nine"),
+    ("دس", "ten"),
+    ("دو", "two"),
+)
+_URDU_NUM_PATTERN = "|".join(re.escape(word) for word, _ in _URDU_NUM_WORDS)
+_URDU_NUM_LOOKUP = dict(_URDU_NUM_WORDS)
 
 
 def _english_digit_words(digits: str) -> str:
@@ -151,15 +170,36 @@ def _english_digit_words(digits: str) -> str:
 
 
 def _expand_formula_match(match: re.Match[str]) -> str:
-    """O2 / H2O / CO2 → English letter names so Urdu TTS does not say 'do'."""
+    """O2 / H2O / CO2 → spoken English letters/digits so Urdu TTS does not say 'do'."""
     token = match.group(0)
     parts: list[str] = []
-    for ch in token:
-        if ch.isalpha():
-            parts.append(ch.upper())
-        elif ch.isdigit():
-            parts.append(_english_digit_words(ch))
+    for piece in re.findall(r"[A-Z][a-z]?|\d+|[+\-]", token):
+        if piece.isdigit():
+            parts.append(_english_digit_words(piece))
+        elif piece == "+":
+            parts.append("plus")
+        elif piece == "-":
+            parts.append("minus")
+        else:
+            parts.append(piece)
     return " ".join(parts)
+
+
+def _expand_urdu_formula_numbers(speak: str) -> str:
+    """O دو / H دو O → O two / H two O (only next to element symbols)."""
+
+    def repl(match: re.Match[str]) -> str:
+        left = match.group(1)
+        word = _URDU_NUM_LOOKUP.get(match.group(2), match.group(2))
+        right = match.group(3) or ""
+        return f"{left} {word} {right}".strip()
+
+    return re.sub(
+        rf"(?<![A-Za-z])([A-Za-z]{{1,2}})\s*({_URDU_NUM_PATTERN})"
+        rf"(?:\s*([A-Za-z]{{1,2}}))?(?![A-Za-z])",
+        repl,
+        speak,
+    )
 
 
 def prepare_bilingual_tts(text: str) -> str:
@@ -168,6 +208,8 @@ def prepare_bilingual_tts(text: str) -> str:
     if not speak:
         return ""
     speak = speak.translate(_SUBSCRIPT_MAP)
+    speak = speak.translate(_URDU_DIGIT_MAP)
+    speak = _expand_urdu_formula_numbers(speak)
     # Only rewrite tokens that mix letters and digits (O2, H2O, CO2, n2, Fe2+).
     speak = re.sub(
         r"(?<![A-Za-z])(?:[A-Z][a-z]?\d*){1,8}[+\-]?(?![A-Za-z])",
