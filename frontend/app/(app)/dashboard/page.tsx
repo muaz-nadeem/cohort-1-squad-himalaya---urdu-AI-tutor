@@ -35,6 +35,9 @@ export default function DashboardPage() {
 
   const data = dashQuery.data ?? null;
   const weakSpots = spotsQuery.data ?? [];
+  // The page frame renders immediately; only the numbers wait on the request,
+  // and they show a skeleton rather than a misleading zero.
+  const pending = !data;
   const error =
     dashQuery.error instanceof Error
       ? dashQuery.error.message
@@ -50,13 +53,15 @@ export default function DashboardPage() {
   const hasPractice = (data?.total_attempted ?? 0) > 0;
   const focus = data?.focus || weakSpots[0] || null;
   const chapters = data?.chapters?.slice(0, 3) || [];
-  const missionChapter =
-    primary?.chapter || focus?.chapter || "Start Chapter Practice";
-  const missionReason =
-    primary?.reason ||
-    (focus
-      ? `Recommended today because ${focus.concept} needs attention. Keep drilling until it sticks.`
-      : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
+  const missionChapter = pending
+    ? "Today's mission"
+    : primary?.chapter || focus?.chapter || "Start Chapter Practice";
+  const missionReason = pending
+    ? "Pulling up your plan…"
+    : primary?.reason ||
+      (focus
+        ? `Recommended today because ${focus.concept} needs attention. Keep drilling until it sticks.`
+        : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
 
   return (
     <>
@@ -104,7 +109,7 @@ export default function DashboardPage() {
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-md bg-amber-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-amber-600">
                     <Flame className="h-3 w-3" />
-                    {data?.streak ?? 0} Day Streak
+                    {pending ? "—" : data?.streak ?? 0} Day Streak
                   </span>
                 </div>
 
@@ -176,7 +181,16 @@ export default function DashboardPage() {
                   </Link>
                 </div>
 
-                {chapters.length > 0 ? (
+                {pending ? (
+                  <div className="space-y-4">
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="flex items-center justify-between">
+                        <span className="h-4 w-40 animate-pulse rounded bg-slate-100" />
+                        <span className="h-4 w-20 animate-pulse rounded bg-slate-100" />
+                      </div>
+                    ))}
+                  </div>
+                ) : chapters.length > 0 ? (
                   <div className="space-y-4">
                     {chapters.map((c) => (
                       <div key={c.chapter} className="flex items-center justify-between">
@@ -209,7 +223,11 @@ export default function DashboardPage() {
                       MCQs ATTEMPTED
                     </p>
                     <p className="mt-1 font-display text-2xl font-bold tabular-nums">
-                      {(data?.total_attempted ?? 0).toLocaleString()}
+                      {pending ? (
+                        <span className="inline-block h-6 w-16 animate-pulse rounded bg-white/20 align-middle" />
+                      ) : (
+                        (data?.total_attempted ?? 0).toLocaleString()
+                      )}
                     </p>
                   </div>
                 </div>
@@ -219,7 +237,9 @@ export default function DashboardPage() {
                       FOCUS TODAY
                     </p>
                     <p className="mt-0.5 text-sm font-semibold">
-                      {focus?.concept || focus?.chapter || "Start practising"}
+                      {pending
+                        ? "…"
+                        : focus?.concept || focus?.chapter || "Start practising"}
                     </p>
                   </div>
                   <Flame className="h-4 w-4 text-sky-200" />

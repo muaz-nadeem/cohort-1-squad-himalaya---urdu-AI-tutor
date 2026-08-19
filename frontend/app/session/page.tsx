@@ -170,26 +170,21 @@ function SessionInner() {
     const conceptId = params.get("concept_id") || undefined;
     const customRaw = params.get("custom");
 
+    // Tracked outside the try so a failed boot can close a session it opened.
+    let sessionP: Promise<{ id: string }> | null = null;
+
     try {
-      // localStorage already holds the id on every in-app entry point; verify
-      // against Supabase in parallel rather than blocking the first request.
-      const id = getStudentId();
+      // localStorage already holds the id on every in-app entry point, so only
+      // fall back to waiting on Supabase when there's nothing cached.
+      const cachedId = getStudentId();
       const syncP = syncStudentCacheFromSession();
-      if (!id) {
-        const synced = await syncP;
-        if (!synced) {
-          router.replace("/login");
-          return;
-        }
-        setStudentId(synced);
-      } else {
-        setStudentId(id);
-      }
-      const studentIdForBoot = id || (await syncP);
+      if (cachedId) syncP.catch(() => {});
+      const studentIdForBoot = cachedId || (await syncP);
       if (!studentIdForBoot) {
         router.replace("/login");
         return;
       }
+      setStudentId(studentIdForBoot);
 
       // Only pay for a health poll when we have no recent proof the API is up.
       if (!isBackendLikelyAwake()) {
@@ -236,7 +231,7 @@ function SessionInner() {
 
       // When the mode is known up front, the session row doesn't depend on the
       // question set — open it alongside instead of after, saving a round-trip.
-      const sessionP = sessionMode
+      sessionP = sessionMode
         ? api.startSession({
             student_id: studentIdForBoot,
             mode: sessionMode,
@@ -264,6 +259,7 @@ function SessionInner() {
         }));
       setSessionId(session.id);
       sessionIdRef.current = session.id;
+      sessionP = null;
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Failed to start session";
       setError(
@@ -273,6 +269,13 @@ function SessionInner() {
       );
     } finally {
       setLoading(false);
+      // Opening the session in parallel means a failed boot can leave one
+      // hanging — close it rather than leaving an empty session on the record.
+      if (sessionP) {
+        void sessionP
+          .then((s) => api.endSessionDetached(s.id, { score: 0, total: 0 }))
+          .catch(() => {});
+      }
     }
   }
 

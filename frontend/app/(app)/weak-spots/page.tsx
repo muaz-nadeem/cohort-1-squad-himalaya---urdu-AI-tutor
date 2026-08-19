@@ -10,7 +10,7 @@ import {
   TrendingUp,
   Zap,
 } from "lucide-react";
-import { api } from "@/lib/api";
+import { api, type WeakSpot } from "@/lib/api";
 import { useStudentId } from "@/lib/useStudent";
 import { useQuery } from "@tanstack/react-query";
 

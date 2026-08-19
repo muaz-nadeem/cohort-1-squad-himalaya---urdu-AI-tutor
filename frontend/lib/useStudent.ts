@@ -27,13 +27,18 @@ export function useStudentId({ redirectTo = "/login" }: Options = {}) {
     const cached = getStudentId();
     if (cached) setStudentId(cached);
 
-    void syncStudentCacheFromSession().then((verified) => {
-      if (verified) {
-        setStudentId(verified);
-        return;
-      }
-      router.replace(redirectTo);
-    });
+    void syncStudentCacheFromSession()
+      .then((verified) => {
+        if (verified) {
+          setStudentId(verified);
+          return;
+        }
+        router.replace(redirectTo);
+      })
+      .catch(() => {
+        // Supabase unreachable — keep the cached id rather than bouncing a
+        // signed-in student to the login screen over a blip.
+      });
   }, [router, redirectTo]);
 
   return studentId;

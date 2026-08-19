@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Every page pulls a handful of icons; without this the barrel file drags
+    // in the whole icon set, which slows both dev compiles and route loads.
+    optimizePackageImports: ["lucide-react"],
+  },
   async headers() {
     return [
       {

@@ -12,8 +12,15 @@ export default function LandingPage() {
   const router = useRouter();
 
   useEffect(() => {
+    // Returning students shouldn't sit on the marketing page waiting for
+    // Supabase — the cached id is enough to start moving, and the dashboard
+    // verifies the session for real.
+    if (getStudentId()) {
+      router.replace("/dashboard");
+      return;
+    }
     void syncStudentCacheFromSession().then((id) => {
-      if (id || getStudentId()) router.replace("/dashboard");
+      if (id) router.replace("/dashboard");
     });
   }, [router]);
 
