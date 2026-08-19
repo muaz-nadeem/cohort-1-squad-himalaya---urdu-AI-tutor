@@ -17,7 +17,6 @@ import { syncStudentCacheFromSession } from "@/lib/auth";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 import AskAI from "@/components/AskAI";
 import {
-  BookOpen,
   Bookmark,
   CheckCircle2,
   Clock,
@@ -994,12 +993,6 @@ function SessionInner() {
                       <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
                         {explanation.explanation}
                       </p>
-                      {explanation.citation && (
-                        <div className="mt-4 flex items-start gap-2 rounded-xl bg-sky-50 px-3 py-2.5 text-xs text-brand">
-                          <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                          <span>{explanation.citation}</span>
-                        </div>
-                      )}
                     </>
                   ) : (
                     <p className="text-sm text-slate-500">

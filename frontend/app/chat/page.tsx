@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getStudentId } from "@/lib/student";
+import { getDoctorPersona, type DoctorPersona } from "@/lib/doctorPersona";
+import DoctorAvatar from "@/components/DoctorAvatar";
 import {
   ArrowLeft,
-  BookOpen,
   ChevronDown,
   ChevronUp,
   FileText,
@@ -18,7 +19,6 @@ import {
   Phone,
   PhoneOff,
   Send,
-  Sparkles,
   Trash2,
   Volume2,
   X,
@@ -65,6 +65,7 @@ function historyPayload(messages: Message[]) {
 
 export default function ChatPage() {
   const router = useRouter();
+  const doctor = useMemo(() => getDoctorPersona(getStudentId()), []);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -645,11 +646,11 @@ export default function ChatPage() {
                 Loading conversation…
               </div>
             ) : messages.length === 0 ? (
-              <EmptyState onAsk={handleSend} />
+              <EmptyState doctor={doctor} onAsk={handleSend} />
             ) : (
               <div className="mx-auto max-w-3xl space-y-4">
                 {messages.map((msg) => (
-                  <MessageBubble key={msg.id} message={msg} />
+                  <MessageBubble key={msg.id} doctor={doctor} message={msg} />
                 ))}
                 <div ref={messagesEndRef} />
               </div>
@@ -887,13 +888,18 @@ function ChatList({
   );
 }
 
-function EmptyState({ onAsk }: { onAsk: (q: string) => void }) {
+function EmptyState({
+  doctor,
+  onAsk,
+}: {
+  doctor: DoctorPersona;
+  onAsk: (q: string) => void;
+}) {
   return (
     <div className="mx-auto flex h-full max-w-3xl flex-col items-center justify-center">
-      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand text-white shadow-sm">
-        <Sparkles className="h-6 w-6" />
-      </div>
-      <h2 className="font-display text-2xl font-bold text-brand-700 sm:text-3xl">
+      <DoctorAvatar doctor={doctor} size="lg" />
+      <p className="mt-3 text-sm font-semibold text-brand">{doctor.displayName}</p>
+      <h2 className="mt-2 font-display text-2xl font-bold text-brand-700 sm:text-3xl">
         How can I help with your studies?
       </h2>
       <p className="mt-3 max-w-lg text-center text-sm leading-relaxed text-slate-500">
@@ -917,7 +923,13 @@ function EmptyState({ onAsk }: { onAsk: (q: string) => void }) {
   );
 }
 
-function MessageBubble({ message }: { message: Message }) {
+function MessageBubble({
+  message,
+  doctor,
+}: {
+  message: Message;
+  doctor: DoctorPersona;
+}) {
   const isUser = message.role === "user";
 
   if (isUser) {
@@ -932,9 +944,7 @@ function MessageBubble({ message }: { message: Message }) {
 
   return (
     <div className="flex items-start gap-3">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-50">
-        <BookOpen className="h-4 w-4 text-brand" />
-      </div>
+      <DoctorAvatar doctor={doctor} size="sm" />
       <div className="max-w-[85%] space-y-2">
         <div className="rounded-2xl rounded-tl-md bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
           {message.content ? (

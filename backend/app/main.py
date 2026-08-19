@@ -1106,6 +1106,7 @@ async def explain(
     cached = _EXPLAIN_CACHE.get(cache_key)
     if cached:
         response = dict(cached)
+        response["citation"] = None
         if req.speak:
             urdu = await ensure_urdu(
                 response.get("explanation") or "",
@@ -1135,7 +1136,6 @@ async def explain(
 
     context = req.context_chunk
     sources: list[dict] = []
-    citation = None
 
     search_q = f"{question_text} {correct_option}".strip() or req.concept
     retrieved_task = loop.run_in_executor(
@@ -1153,7 +1153,6 @@ async def explain(
     else:
         context = context or retrieved.get("context") or ""
         sources = retrieved.get("sources") or []
-        citation = rag.format_citation_short(sources)
 
     mnemonic_ctx = "" if isinstance(mnemonic, Exception) else mnemonic.get("context") or ""
 
@@ -1170,24 +1169,6 @@ async def explain(
             mnemonic_chunk=mnemonic_ctx,
         ),
     )
-
-    # Build citation from question source metadata as fallback so an explanation
-    # always cites *something* correct, even when no textbook chunk matched.
-    if not citation and question:
-        q_book = (question or {}).get("book") or ""
-        q_page = (question or {}).get("page_number")
-        q_source = (question or {}).get("source") or ""
-        q_year = (question or {}).get("year")
-        if q_book and q_page:
-            from .textbook_rag.chunk import book_display_name
-            citation = f"{book_display_name(q_book)}, p. {q_page}"
-        elif q_source and q_page:
-            citation = f"{q_source}, p. {q_page}"
-        elif q_source:
-            # e.g. "MDCAT 2018" or "KIPS FLP 3" — the paper the MCQ came from.
-            citation = f"{q_source}{f' ({q_year})' if q_year and str(q_year) not in q_source else ''}"
-        elif q_year:
-            citation = f"Past paper {q_year}"
 
     audio_b64 = None
     speech_id = None
@@ -1213,7 +1194,7 @@ async def explain(
         "audio": audio_b64,
         "speech_id": speech_id,
         "concept": q_chapter,
-        "citation": citation,
+        "citation": None,
         "sources": sources,
         "mnemonics": [],
     }

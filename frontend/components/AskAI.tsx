@@ -5,6 +5,7 @@ import { Send, Phone, PhoneOff, X, Volume2, Loader2 } from "lucide-react";
 import { api, speechStreamUrl, type McqContext } from "@/lib/api";
 import { useVoiceCall } from "@/lib/useVoiceCall";
 import type { DoctorPersona } from "@/lib/doctorPersona";
+import DoctorAvatar from "@/components/DoctorAvatar";
 
 function playAudioUrl(url: string) {
   const audio = new Audio(url);
@@ -14,19 +15,6 @@ function playAudioUrl(url: string) {
 interface Turn {
   role: "user" | "assistant";
   content: string;
-}
-
-function DoctorAvatar({ doctor, size = "md" }: { doctor: DoctorPersona; size?: "sm" | "md" }) {
-  const dim = size === "sm" ? "h-8 w-8 text-[10px]" : "h-10 w-10 text-xs";
-  return (
-    <span
-      className={`inline-flex shrink-0 items-center justify-center rounded-full font-bold text-white ${dim}`}
-      style={{ backgroundColor: `hsl(${doctor.hue} 42% 42%)` }}
-      aria-hidden
-    >
-      {doctor.initials}
-    </span>
-  );
 }
 
 export default function AskAI({

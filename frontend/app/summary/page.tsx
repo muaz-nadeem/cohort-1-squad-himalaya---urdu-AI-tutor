@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  BookOpen,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
@@ -290,12 +289,6 @@ export default function SummaryPage() {
                               <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
                                 {exp.explanation}
                               </p>
-                              {exp.citation && (
-                                <p className="mt-3 inline-flex items-start gap-1.5 text-xs text-brand">
-                                  <BookOpen className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                                  {exp.citation}
-                                </p>
-                              )}
                               <div className="mt-4">
                                 <AskAI
                                   doctor={doctor}
