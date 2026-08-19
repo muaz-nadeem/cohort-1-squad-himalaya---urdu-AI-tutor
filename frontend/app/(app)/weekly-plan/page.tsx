@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 import Link from "next/link";
 import {
   CalendarDays,
@@ -10,22 +9,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { getStudentId } from "@/lib/student";
-import Navbar from "@/components/Navbar";
+import { useStudentId } from "@/lib/useStudent";
 import { useQuery } from "@tanstack/react-query";
 
 export default function WeeklyPlanPage() {
-  const router = useRouter();
-  const [studentId, setStudentId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const id = getStudentId();
-    if (!id) {
-      router.replace("/login");
-      return;
-    }
-    setStudentId(id);
-  }, [router]);
+  const studentId = useStudentId();
 
   const planQuery = useQuery({
     queryKey: ["weekly-plan", studentId],
@@ -56,7 +44,7 @@ export default function WeeklyPlanPage() {
     .toLowerCase();
 
   return (
-    <Navbar>
+    <>
       <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[1.5fr_0.9fr]">
@@ -218,6 +206,6 @@ export default function WeeklyPlanPage() {
           </div>
         </div>
       </div>
-    </Navbar>
+    </>
   );
 }

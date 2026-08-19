@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   api,
+  isBackendLikelyAwake,
   wakeBackend,
   speechStreamUrl,
   type ExplainResult,
@@ -125,10 +126,36 @@ function SessionInner() {
   const reviewAtEndEarly = isTimedExamEarly || explainParam === "end";
   const showExplainNow = !reviewAtEndEarly;
 
+  /**
+   * Make sure a student row exists, but never on the critical path — the
+   * questions and session endpoints create one implicitly when needed, so this
+   * only has to win the race in the rare "brand new account" case.
+   */
+  async function ensureProfileInBackground() {
+    try {
+      await api.getStudent();
+    } catch (profileErr) {
+      const profileMsg = String((profileErr as Error)?.message || profileErr);
+      // 404 "Student not found" is expected until profile is created.
+      if (!/Student not found/i.test(profileMsg) && !/404/.test(profileMsg)) {
+        return;
+      }
+      try {
+        await api.createStudent({
+          name: undefined,
+          level: "just_starting",
+          daily_time: "1hr",
+        });
+      } catch {
+        /* surfaced by the questions call if it actually matters */
+      }
+    }
+  }
+
   async function bootSession() {
     setLoading(true);
     setError("");
-    setStatusText("Waking server...");
+    setStatusText("Loading questions...");
 
     startedAtRef.current = Date.now();
     window.sessionStorage.setItem(
@@ -142,49 +169,39 @@ function SessionInner() {
     const customRaw = params.get("custom");
 
     try {
-      const synced = await syncStudentCacheFromSession();
-      const id = synced || getStudentId();
+      // localStorage already holds the id on every in-app entry point; verify
+      // against Supabase in parallel rather than blocking the first request.
+      const id = getStudentId();
+      const syncP = syncStudentCacheFromSession();
       if (!id) {
+        const synced = await syncP;
+        if (!synced) {
+          router.replace("/login");
+          return;
+        }
+        setStudentId(synced);
+      } else {
+        setStudentId(id);
+      }
+      const studentIdForBoot = id || (await syncP);
+      if (!studentIdForBoot) {
         router.replace("/login");
         return;
       }
-      setStudentId(id);
 
-      const awake = await wakeBackend(90_000);
-      if (!awake) {
-        setError(
-          "Server did not wake up in time. Open the site again in a minute, or check Render / UptimeRobot."
-        );
-        return;
-      }
-
-      setStatusText("Loading your profile...");
-      try {
-        await api.getStudent();
-      } catch (profileErr) {
-        const profileMsg = String(
-          (profileErr as Error)?.message || profileErr
-        );
-        // 404 "Student not found" is expected until profile is created.
-        if (!/Student not found/i.test(profileMsg) && !/404/.test(profileMsg)) {
-          throw profileErr;
-        }
-        try {
-          await api.createStudent({
-            name: undefined,
-            level: "just_starting",
-            daily_time: "1hr",
-          });
-        } catch (createErr) {
-          const createMsg = String(
-            (createErr as Error)?.message || createErr
-          ).slice(0, 300);
-          throw new Error(
-            `Your login works, but creating your student profile failed (${createMsg}). ` +
-              `Check that Render SUPABASE_KEY / SUPABASE_SERVICE_ROLE_KEY is the service_role key.`
+      // Only pay for a health poll when we have no recent proof the API is up.
+      if (!isBackendLikelyAwake()) {
+        setStatusText("Waking server...");
+        const awake = await wakeBackend(90_000);
+        if (!awake) {
+          setError(
+            "Server did not wake up in time. Open the site again in a minute, or check Render / UptimeRobot."
           );
+          return;
         }
       }
+
+      void ensureProfileInBackground();
 
       setStatusText(
         mode === "chapter"
@@ -195,22 +212,36 @@ function SessionInner() {
       let questionsP: Promise<QuestionSet>;
       let sessionMode: string | null = null;
       if (mode === "diagnostic") {
-        questionsP = api.getDiagnostic(id);
+        questionsP = api.getDiagnostic(studentIdForBoot);
         sessionMode = "diagnostic";
       } else if (mode === "chapter" && chapter) {
-        questionsP = api.getChapterPractice(chapter, 100, id);
+        questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot);
         sessionMode = "chapter_practice";
       } else if (mode === "full_length") {
-        questionsP = api.getFullLength(flpMode, id);
+        questionsP = api.getFullLength(flpMode, studentIdForBoot);
         sessionMode =
           flpMode === "timed" ? "full_length_timed" : "full_length_practice";
       } else if (mode === "custom" && customRaw) {
         const selections = JSON.parse(decodeURIComponent(customRaw));
-        questionsP = api.getCustomQuiz(selections, id);
+        questionsP = api.getCustomQuiz(selections, studentIdForBoot);
         sessionMode = "custom";
       } else {
-        questionsP = api.getQuestions(id, { chapter, concept_id: conceptId });
+        questionsP = api.getQuestions(studentIdForBoot, {
+          chapter,
+          concept_id: conceptId,
+        });
       }
+
+      // When the mode is known up front, the session row doesn't depend on the
+      // question set — open it alongside instead of after, saving a round-trip.
+      const sessionP = sessionMode
+        ? api.startSession({
+            student_id: studentIdForBoot,
+            mode: sessionMode,
+            concept_id: conceptId,
+            chapter,
+          })
+        : null;
 
       const qs = await questionsP;
       if (!qs.questions.length) {
@@ -222,13 +253,13 @@ function SessionInner() {
       setSet(qs);
       if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
 
-      setStatusText("Opening session...");
-      const session = await api.startSession({
-        student_id: id,
-        mode: sessionMode || qs.mode,
-        concept_id: conceptId || qs.concept_id,
-        chapter: chapter || qs.chapter,
-      });
+      const session = await (sessionP ??
+        api.startSession({
+          student_id: studentIdForBoot,
+          mode: qs.mode,
+          concept_id: conceptId || qs.concept_id,
+          chapter: chapter || qs.chapter,
+        }));
       setSessionId(session.id);
       sessionIdRef.current = session.id;
     } catch (e) {
@@ -420,21 +451,19 @@ function SessionInner() {
     void finish();
   }
 
-  async function exitSession() {
+  function exitSession() {
     if (exiting) return;
     setExiting(true);
     setConfirmEnd(false);
-    // Properly close the session instead of abandoning it open.
+    // Close the session properly, but as a keepalive request — the student is
+    // leaving and nothing on the dashboard depends on the response, so there's
+    // no reason to hold them behind a round-trip.
     const sid = sessionIdRef.current;
     if (sid) {
-      try {
-        await api.endSession(sid, {
-          score: scoreRef.current,
-          total: answeredRef.current,
-        });
-      } catch {
-        /* ignore — leaving anyway */
-      }
+      void api.endSessionDetached(sid, {
+        score: scoreRef.current,
+        total: answeredRef.current,
+      });
     }
     router.replace("/dashboard");
   }

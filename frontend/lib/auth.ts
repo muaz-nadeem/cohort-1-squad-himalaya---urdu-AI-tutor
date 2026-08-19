@@ -1,5 +1,6 @@
 "use client";
 
+import type { Session } from "@supabase/supabase-js";
 import { getSupabase } from "./supabase";
 import { clearStudent, setStudentId, setStudentName } from "./student";
 
@@ -12,13 +13,74 @@ function setSignedInCookie(on: boolean) {
   }
 }
 
-export async function getSession() {
-  const { data, error } = await getSupabase().auth.getSession();
-  if (error) throw error;
-  return data.session;
+/**
+ * supabase.auth.getSession() takes a cross-tab Web Lock and re-parses storage on
+ * every call, which serialised every API request behind it. Mirror the session in
+ * memory instead and let onAuthStateChange keep it honest.
+ */
+let cachedSession: Session | null = null;
+let sessionListenerReady = false;
+let inflightSession: Promise<Session | null> | null = null;
+let inflightSyncPromise: Promise<string | null> | null = null;
+
+/** Treat a token as unusable this long before it actually expires. */
+const EXPIRY_SKEW_MS = 60_000;
+
+function rememberSession(session: Session | null) {
+  cachedSession = session;
+}
+
+function startSessionListener() {
+  if (sessionListenerReady || typeof window === "undefined") return;
+  sessionListenerReady = true;
+  // Fires immediately with INITIAL_SESSION, then on every refresh/sign-out.
+  getSupabase().auth.onAuthStateChange((_event, session) => {
+    rememberSession(session);
+  });
+}
+
+function usableCachedSession(): Session | null {
+  const session = cachedSession;
+  if (!session?.access_token) return null;
+  const expiresAt = session.expires_at ? session.expires_at * 1000 : 0;
+  if (expiresAt && expiresAt - Date.now() < EXPIRY_SKEW_MS) return null;
+  return session;
+}
+
+/** Drop the memo so the next read goes back to Supabase (used after a 401). */
+export function invalidateSessionCache() {
+  cachedSession = null;
+}
+
+export async function getSession(): Promise<Session | null> {
+  startSessionListener();
+  const cached = usableCachedSession();
+  if (cached) return cached;
+  // Collapse concurrent misses into a single Supabase read.
+  if (!inflightSession) {
+    inflightSession = getSupabase()
+      .auth.getSession()
+      .then(({ data, error }) => {
+        if (error) throw error;
+        rememberSession(data.session);
+        return data.session;
+      })
+      .finally(() => {
+        inflightSession = null;
+      });
+  }
+  return inflightSession;
+}
+
+/** Non-blocking token read — null when nothing valid is memoised yet. */
+export function peekAccessToken(): string | null {
+  startSessionListener();
+  return usableCachedSession()?.access_token ?? null;
 }
 
 export async function getAccessToken(): Promise<string | null> {
+  const fast = peekAccessToken();
+  if (fast) return fast;
   const session = await getSession();
   return session?.access_token ?? null;
 }
@@ -79,12 +141,14 @@ export async function signIn(email: string, password: string) {
         refresh_token: string;
         user?: { id?: string; email?: string; name?: string };
       };
-      const { error } = await getSupabase().auth.setSession({
+      const { data: setData, error } = await getSupabase().auth.setSession({
         access_token: session.access_token,
         refresh_token: session.refresh_token,
       });
       if (error) throw error;
+      rememberSession(setData.session);
       const userId = session.user?.id;
+      inflightSyncPromise = null;
       if (userId) {
         setStudentId(userId);
         setStudentName(
@@ -136,6 +200,7 @@ export async function signUp(
     },
   });
   if (error) throw error;
+  rememberSession(data.session);
   const user = data.user;
   if (user) {
     setStudentId(user.id);
@@ -146,6 +211,8 @@ export async function signUp(
 }
 
 export async function signOut() {
+  invalidateSessionCache();
+  inflightSyncPromise = null;
   await getSupabase().auth.signOut();
   clearStudent();
   setSignedInCookie(false);
@@ -153,18 +220,25 @@ export async function signOut() {
 
 /** Sync local display cache from the current Supabase session. */
 export async function syncStudentCacheFromSession(): Promise<string | null> {
-  const session = await getSession();
-  if (!session?.user) {
-    clearStudent();
-    setSignedInCookie(false);
-    return null;
-  }
-  setStudentId(session.user.id);
-  const name =
-    (session.user.user_metadata?.name as string | undefined) ||
-    session.user.email?.split("@")[0] ||
-    "Student";
-  setStudentName(name);
-  setSignedInCookie(true);
-  return session.user.id;
+  // Pages mount and re-mount often; one verification per session is enough.
+  if (inflightSyncPromise) return inflightSyncPromise;
+  inflightSyncPromise = (async () => {
+    const session = await getSession();
+    if (!session?.user) {
+      clearStudent();
+      setSignedInCookie(false);
+      // Don't memoise a signed-out answer — the user may log in next.
+      inflightSyncPromise = null;
+      return null;
+    }
+    setStudentId(session.user.id);
+    const name =
+      (session.user.user_metadata?.name as string | undefined) ||
+      session.user.email?.split("@")[0] ||
+      "Student";
+    setStudentName(name);
+    setSignedInCookie(true);
+    return session.user.id;
+  })();
+  return inflightSyncPromise;
 }

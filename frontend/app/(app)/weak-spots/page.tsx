@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useMemo } from "react";
 import Link from "next/link";
 import {
   Minus,
@@ -11,29 +10,17 @@ import {
   TrendingUp,
   Zap,
 } from "lucide-react";
-import { api, type WeakSpot } from "@/lib/api";
-import { getStudentId } from "@/lib/student";
-import Navbar from "@/components/Navbar";
+import { api } from "@/lib/api";
+import { useStudentId } from "@/lib/useStudent";
 import { useQuery } from "@tanstack/react-query";
 
 export default function WeakSpotsPage() {
-  const router = useRouter();
-  const [studentId, setStudentId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const id = getStudentId();
-    if (!id) {
-      router.replace("/login");
-      return;
-    }
-    setStudentId(id);
-  }, [router]);
+  const studentId = useStudentId();
 
   const spotsQuery = useQuery({
     queryKey: ["weak-spots", studentId],
     queryFn: () => api.getWeakSpots(studentId!),
     enabled: !!studentId,
-    staleTime: 60_000,
   });
 
   const spots = spotsQuery.data ?? [];
@@ -59,7 +46,7 @@ export default function WeakSpotsPage() {
   const topCritical = groups.critical[0] || spots[0];
 
   return (
-    <Navbar>
+    <>
       <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -161,7 +148,7 @@ export default function WeakSpotsPage() {
           )}
         </div>
       </div>
-    </Navbar>
+    </>
   );
 }
 

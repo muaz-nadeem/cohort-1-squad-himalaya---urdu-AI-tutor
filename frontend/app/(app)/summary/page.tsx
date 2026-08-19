@@ -19,7 +19,6 @@ import {
   type SessionSummary,
 } from "@/lib/api";
 import AskAI from "@/components/AskAI";
-import Navbar from "@/components/Navbar";
 import { getStudentId } from "@/lib/student";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 
@@ -105,7 +104,7 @@ export default function SummaryPage() {
   }
 
   return (
-    <Navbar>
+    <>
       <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
           <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
@@ -339,7 +338,7 @@ export default function SummaryPage() {
           </div>
         </div>
       </div>
-    </Navbar>
+    </>
   );
 }
 

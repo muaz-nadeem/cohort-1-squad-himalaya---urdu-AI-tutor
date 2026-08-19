@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   BookOpen,
@@ -12,71 +11,36 @@ import {
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { api, type WeakSpot } from "@/lib/api";
-import { getStudentId, getStudentName } from "@/lib/student";
-import { syncStudentCacheFromSession } from "@/lib/auth";
-import Navbar from "@/components/Navbar";
-import { useEffect, useState } from "react";
+import { useStudentId, useStudentName } from "@/lib/useStudent";
+import { CHAPTERS_QUERY } from "@/lib/queries";
 
 export default function DashboardPage() {
-  const router = useRouter();
-  const [studentId, setStudentId] = useState<string | null>(null);
-  const [studentName, setStudentName_] = useState("Student");
-
-  useEffect(() => {
-    void syncStudentCacheFromSession().then((id) => {
-      const sid = id || getStudentId();
-      if (!sid) {
-        router.replace("/login");
-        return;
-      }
-      setStudentId(sid);
-      setStudentName_(getStudentName() || "Student");
-    });
-  }, [router]);
+  const studentId = useStudentId();
+  const studentName = useStudentName();
 
   const dashQuery = useQuery({
     queryKey: ["dashboard", studentId],
     queryFn: () => api.getDashboard(studentId!),
     enabled: !!studentId,
-    staleTime: 60_000,
   });
 
   const spotsQuery = useQuery({
     queryKey: ["weak-spots", studentId],
     queryFn: () => api.getWeakSpots(studentId!).catch(() => [] as WeakSpot[]),
     enabled: !!studentId,
-    staleTime: 60_000,
   });
 
-  useQuery({
-    queryKey: ["chapters"],
-    queryFn: () => api.getChapters(),
-    enabled: !!studentId,
-    staleTime: 10 * 60_000,
-  });
+  // Warm the chapter catalogue so /practice and /custom-quiz open with no wait.
+  useQuery({ ...CHAPTERS_QUERY, enabled: !!studentId });
 
   const data = dashQuery.data ?? null;
   const weakSpots = spotsQuery.data ?? [];
-  const loading = !studentId || (dashQuery.isLoading && !data);
   const error =
     dashQuery.error instanceof Error
       ? dashQuery.error.message
       : dashQuery.error
         ? "Failed to load"
         : "";
-
-  if (loading && !data) {
-    return (
-      <Navbar>
-        <div className="flex min-h-[80vh] items-center justify-center">
-          <div className="text-center">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brand border-t-transparent" />
-            <p className="mt-3 text-sm text-slate-400">Loading dashboard...</p>
-          </div>
-        </div>
-      </Navbar>
-    );
-  }
 
   const greeting = getGreeting();
   const firstName = studentName.split(" ")[0];
@@ -95,7 +59,7 @@ export default function DashboardPage() {
       : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
 
   return (
-    <Navbar>
+    <>
       <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           {error && (
@@ -321,7 +285,7 @@ export default function DashboardPage() {
           </footer>
         </div>
       </div>
-    </Navbar>
+    </>
   );
 }
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 import {
   Lightbulb,
   Play,
@@ -10,32 +11,23 @@ import {
   Shuffle,
   Trash2,
 } from "lucide-react";
-import { api, type ChapterInfo } from "@/lib/api";
-import { getStudentId } from "@/lib/student";
-import Navbar from "@/components/Navbar";
+import { CHAPTERS_QUERY } from "@/lib/queries";
+import { useStudentId } from "@/lib/useStudent";
 
 type Row = { chapter: string; book: string; count: number };
 
 export default function CustomQuizPage() {
   const router = useRouter();
-  const [chapters, setChapters] = useState<ChapterInfo[]>([]);
+  useStudentId({ redirectTo: "/" });
+  // Shares the cache with /practice and the dashboard prefetch.
+  const chaptersQuery = useQuery(CHAPTERS_QUERY);
+  const chapters = chaptersQuery.data ?? [];
   const [rows, setRows] = useState<Row[]>([
     { chapter: "", book: "", count: 10 },
     { chapter: "", book: "", count: 15 },
   ]);
   const [touched, setTouched] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (!getStudentId()) {
-      router.replace("/");
-      return;
-    }
-    api
-      .getChapters()
-      .then(setChapters)
-      .catch(() => setChapters([]));
-  }, [router]);
 
   function updateRow(i: number, patch: Partial<Row>) {
     setRows((prev) => prev.map((r, idx) => (idx === i ? { ...r, ...patch } : r)));
@@ -75,7 +67,7 @@ export default function CustomQuizPage() {
   const estimatedMins = Math.max(5, Math.round(total * 1));
 
   return (
-    <Navbar>
+    <>
       <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="mb-8 flex items-start gap-3">
@@ -256,6 +248,6 @@ export default function CustomQuizPage() {
           </div>
         </div>
       </main>
-    </Navbar>
+    </>
   );
 }

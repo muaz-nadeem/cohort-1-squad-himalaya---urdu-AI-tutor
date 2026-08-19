@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -11,47 +10,28 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { api, type ChapterInfo } from "@/lib/api";
-import { getStudentId } from "@/lib/student";
-import { syncStudentCacheFromSession } from "@/lib/auth";
-import Navbar from "@/components/Navbar";
+import { useStudentId } from "@/lib/useStudent";
+import { CHAPTERS_QUERY } from "@/lib/queries";
 import { useQuery } from "@tanstack/react-query";
 
 export default function PracticePage() {
-  const router = useRouter();
   const [bookFilter, setBookFilter] = useState<"all" | "fsc_part1" | "fsc_part2">(
     "all"
   );
-  const [studentId, setStudentId] = useState<string | null>(null);
+  const studentId = useStudentId();
 
-  useEffect(() => {
-    void syncStudentCacheFromSession().then((id) => {
-      const sid = id || getStudentId();
-      if (!sid) {
-        router.replace("/login");
-        return;
-      }
-      setStudentId(sid);
-    });
-  }, [router]);
-
-  const chaptersQuery = useQuery({
-    queryKey: ["chapters"],
-    queryFn: () => api.getChapters(),
-    enabled: !!studentId,
-    staleTime: 10 * 60_000,
-  });
+  // The catalogue is student-independent, so it can load before auth resolves.
+  const chaptersQuery = useQuery(CHAPTERS_QUERY);
 
   const dashQuery = useQuery({
     queryKey: ["dashboard", studentId],
     queryFn: () => api.getDashboard(studentId!),
     enabled: !!studentId,
-    staleTime: 60_000,
   });
 
   const chapters = chaptersQuery.data ?? [];
   const dashboard = dashQuery.data ?? null;
-  const loading =
-    !studentId || (chaptersQuery.isLoading && chapters.length === 0);
+  const loading = chaptersQuery.isLoading && chapters.length === 0;
   const chaptersError =
     chaptersQuery.error instanceof Error
       ? chaptersQuery.error.message
@@ -85,7 +65,7 @@ export default function PracticePage() {
   }).length;
 
   return (
-    <Navbar>
+    <>
       <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <Link
@@ -177,7 +157,7 @@ export default function PracticePage() {
           )}
         </div>
       </main>
-    </Navbar>
+    </>
   );
 }
 

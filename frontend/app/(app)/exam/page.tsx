@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import {
   CheckCircle2,
@@ -15,20 +14,15 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import { getStudentId } from "@/lib/student";
-import Navbar from "@/components/Navbar";
+import { useStudentId } from "@/lib/useStudent";
 
 type ExamMode = "practice" | "timed";
 type PracticeFeedback = "each" | "end";
 
 export default function ExamPage() {
-  const router = useRouter();
+  useStudentId({ redirectTo: "/" });
   const [mode, setMode] = useState<ExamMode>("practice");
   const [feedback, setFeedback] = useState<PracticeFeedback>("each");
-
-  useEffect(() => {
-    if (!getStudentId()) router.replace("/");
-  }, [router]);
 
   function startHref() {
     if (mode === "timed") {
@@ -38,7 +32,7 @@ export default function ExamPage() {
   }
 
   return (
-    <Navbar>
+    <>
       <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-brand">
@@ -253,6 +247,6 @@ export default function ExamPage() {
           </div>
         </div>
       </main>
-    </Navbar>
+    </>
   );
 }

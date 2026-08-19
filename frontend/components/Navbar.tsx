@@ -1,9 +1,11 @@
 "use client";
 
-import { getStudentName } from "@/lib/student";
+import { getStudentId, getStudentName } from "@/lib/student";
 import { signOut } from "@/lib/auth";
+import { prefetchForRoute } from "@/lib/queries";
 import BrandMark from "@/components/BrandMark";
 import Link from "next/link";
+import { useQueryClient } from "@tanstack/react-query";
 import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
@@ -15,7 +17,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -30,6 +32,7 @@ const NAV = [
 export default function Navbar({ children }: { children?: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+  const queryClient = useQueryClient();
   const [name, setName] = useState("Student");
   const [open, setOpen] = useState(false);
 
@@ -44,12 +47,23 @@ export default function Navbar({ children }: { children?: ReactNode }) {
     }
   }, [router]);
 
+  // Hovering a tab is a strong signal it's about to be clicked — start its data
+  // fetch now so the page has something to render the moment it mounts.
+  const warmRoute = useCallback(
+    (href: string) => {
+      router.prefetch(href);
+      prefetchForRoute(queryClient, href, getStudentId());
+    },
+    [router, queryClient]
+  );
+
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   async function handleLogout() {
     await signOut();
+    queryClient.clear();
     router.replace("/");
   }
 
@@ -89,6 +103,9 @@ export default function Navbar({ children }: { children?: ReactNode }) {
               key={href}
               href={href}
               prefetch
+              onMouseEnter={() => warmRoute(href)}
+              onFocus={() => warmRoute(href)}
+              onTouchStart={() => warmRoute(href)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                 active
                   ? "bg-brand-50 text-brand"

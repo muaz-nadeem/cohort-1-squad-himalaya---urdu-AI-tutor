@@ -1,6 +1,6 @@
 "use client";
 
-import { getAccessToken } from "./auth";
+import { getAccessToken, invalidateSessionCache } from "./auth";
 
 const API_URL = resolveApiUrl();
 
@@ -32,10 +32,26 @@ async function authHeaders(
   return headers;
 }
 
+/**
+ * Any successful call proves the instance is up, so the session page can skip
+ * its /health poll instead of paying an extra round-trip before every session.
+ */
+let lastAwakeAt = 0;
+const AWAKE_TTL_MS = 120_000;
+
+export function markBackendAwake() {
+  lastAwakeAt = Date.now();
+}
+
+export function isBackendLikelyAwake(): boolean {
+  return Date.now() - lastAwakeAt < AWAKE_TTL_MS;
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const maxAttempts = 3;
   let lastError: unknown;
   const method = (options?.method || "GET").toUpperCase();
+  let retriedAuth = false;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     const controller = new AbortController();
@@ -52,9 +68,17 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
         signal: options?.signal || controller.signal,
       });
       if (!res.ok) {
+        // The memoised token can go stale ahead of schedule (password change,
+        // revoked session). Drop it and take one clean retry.
+        if (res.status === 401 && !retriedAuth) {
+          retriedAuth = true;
+          invalidateSessionCache();
+          continue;
+        }
         const text = await res.text();
         throw new Error(text || `Request failed: ${res.status}`);
       }
+      markBackendAwake();
       return res.json() as Promise<T>;
     } catch (e) {
       lastError = e;
@@ -94,6 +118,8 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 
 /** Poll /health until the free-tier instance is awake (or give up). */
 export async function wakeBackend(maxWaitMs = 90_000): Promise<boolean> {
+  // Already talked to the backend a moment ago — don't pay for another probe.
+  if (isBackendLikelyAwake()) return true;
   const started = Date.now();
   let delay = 1500;
   while (Date.now() - started < maxWaitMs) {
@@ -102,7 +128,10 @@ export async function wakeBackend(maxWaitMs = 90_000): Promise<boolean> {
         method: "GET",
         cache: "no-store",
       });
-      if (res.ok) return true;
+      if (res.ok) {
+        markBackendAwake();
+        return true;
+      }
     } catch {
       // still waking / restarting
     }
@@ -430,6 +459,27 @@ export const api = {
       method: "POST",
       body: JSON.stringify(body),
     }),
+
+  /**
+   * Close the session without making the student wait for it. `keepalive` lets
+   * the request outlive the page transition (and even a tab close).
+   */
+  endSessionDetached: async (
+    sessionId: string,
+    body: { score?: number; total?: number } = {}
+  ): Promise<void> => {
+    try {
+      const headers = await authHeaders();
+      await fetch(`${API_URL}/api/sessions/${sessionId}/end`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body),
+        keepalive: true,
+      });
+    } catch {
+      /* the student has already left — nothing useful to surface */
+    }
+  },
 
   logAttempt: (body: {
     student_id?: string;

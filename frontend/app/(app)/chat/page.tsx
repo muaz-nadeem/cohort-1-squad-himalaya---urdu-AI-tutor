@@ -2,8 +2,10 @@
 
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getStudentId } from "@/lib/student";
+import { useStudentId } from "@/lib/useStudent";
+import { TEXTBOOK_CHATS_QUERY } from "@/lib/queries";
 import { getDoctorPersona, type DoctorPersona } from "@/lib/doctorPersona";
 import DoctorAvatar from "@/components/DoctorAvatar";
 import {
@@ -30,7 +32,6 @@ import {
   type TextbookChatSummary,
 } from "@/lib/api";
 import { useVoiceCall } from "@/lib/useVoiceCall";
-import Navbar from "@/components/Navbar";
 
 function playAudioUrl(url: string) {
   const audio = new Audio(url);
@@ -64,15 +65,16 @@ function historyPayload(messages: Message[]) {
 }
 
 export default function ChatPage() {
-  const router = useRouter();
+  useStudentId({ redirectTo: "/" });
+  const queryClient = useQueryClient();
   const doctor = useMemo(() => getDoctorPersona(getStudentId()), []);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [bookFilter, setBookFilter] = useState<string | undefined>(undefined);
+  const chatsQuery = useQuery(TEXTBOOK_CHATS_QUERY);
   const [chats, setChats] = useState<TextbookChatSummary[]>([]);
   const [activeChatId, setActiveChatId] = useState<string | null>(null);
-  const [loadingChats, setLoadingChats] = useState(true);
   const [loadingChat, setLoadingChat] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [historyError, setHistoryError] = useState("");
@@ -81,10 +83,6 @@ export default function ChatPage() {
   const bookFilterRef = useRef<string | undefined>(undefined);
   const messagesRef = useRef<Message[]>([]);
   const activeChatIdRef = useRef<string | null>(null);
-
-  useEffect(() => {
-    if (!getStudentId()) router.replace("/");
-  }, [router]);
 
   useEffect(() => {
     bookFilterRef.current = bookFilter;
@@ -110,25 +108,27 @@ export default function ChatPage() {
     inputRef.current?.focus();
   }, [activeChatId]);
 
-  const refreshChats = useCallback(async () => {
-    try {
-      const res = await api.listTextbookChats();
-      setChats(res.chats || []);
-      setHistoryError("");
-    } catch (e) {
-      setHistoryError(
-        e instanceof Error
-          ? e.message
-          : "Chat history unavailable. Run Supabase migration 003."
-      );
-    } finally {
-      setLoadingChats(false);
-    }
-  }, []);
-
+  // The list is served from the React Query cache, so coming back to this tab
+  // paints the sidebar immediately and only revalidates in the background.
   useEffect(() => {
-    void refreshChats();
-  }, [refreshChats]);
+    if (chatsQuery.data?.chats) setChats(chatsQuery.data.chats);
+  }, [chatsQuery.data]);
+
+  // Push local edits (new / renamed / deleted chats) back into the cache so the
+  // next visit doesn't briefly show a stale sidebar.
+  useEffect(() => {
+    if (!chats.length) return;
+    queryClient.setQueryData(TEXTBOOK_CHATS_QUERY.queryKey, { chats });
+  }, [chats, queryClient]);
+
+  const loadingChats = chatsQuery.isLoading && chats.length === 0;
+  const chatsErrorMessage =
+    historyError ||
+    (chatsQuery.error
+      ? chatsQuery.error instanceof Error
+        ? chatsQuery.error.message
+        : "Chat history unavailable. Run Supabase migration 003."
+      : "");
 
   async function ensureChatId(): Promise<string | null> {
     if (activeChatIdRef.current) return activeChatIdRef.current;
@@ -508,7 +508,7 @@ export default function ChatPage() {
     chats.find((c) => c.id === activeChatId)?.title || "New chat";
 
   return (
-    <Navbar>
+    <>
       <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-6xl bg-[#F4F7FB] lg:h-screen">
         {/* Desktop sidebar */}
         <aside className="hidden w-64 shrink-0 flex-col border-r border-slate-200/80 bg-white md:flex">
@@ -633,9 +633,9 @@ export default function ChatPage() {
             </div>
           </div>
 
-          {historyError && (
+          {chatsErrorMessage && (
             <div className="border-b border-amber-100 bg-amber-50 px-4 py-2 text-xs text-amber-800 sm:px-6">
-              {historyError}
+              {chatsErrorMessage}
             </div>
           )}
 
@@ -744,7 +744,7 @@ export default function ChatPage() {
           </div>
         </div>
       </div>
-    </Navbar>
+    </>
   );
 }
 
