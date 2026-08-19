@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   CheckCircle2,
+  Circle,
   Eye,
   EyeOff,
   Info,
@@ -29,20 +30,38 @@ function isValidSignupName(name: string): boolean {
   return Boolean(trimmed) && SIGNUP_NAME_RE.test(trimmed);
 }
 
-function passwordError(password: string): string | null {
-  if (password.length < 8) {
-    return "Password must be at least 8 characters.";
-  }
-  if (!/[A-Z]/.test(password)) {
-    return "Password must include at least 1 capital letter.";
-  }
-  if (!/[0-9]/.test(password)) {
-    return "Password must include at least 1 number.";
-  }
-  if (!/[^A-Za-z0-9]/.test(password)) {
-    return "Password must include at least 1 special character.";
-  }
-  return null;
+const PASSWORD_RULES = [
+  {
+    id: "length",
+    label: "At least 8 characters",
+    test: (p: string) => p.length >= 8,
+  },
+  {
+    id: "capital",
+    label: "1 capital letter",
+    test: (p: string) => /[A-Z]/.test(p),
+  },
+  {
+    id: "number",
+    label: "1 number",
+    test: (p: string) => /[0-9]/.test(p),
+  },
+  {
+    id: "special",
+    label: "1 special character",
+    test: (p: string) => /[^A-Za-z0-9]/.test(p),
+  },
+] as const;
+
+function passwordChecks(password: string) {
+  return PASSWORD_RULES.map((rule) => ({
+    ...rule,
+    done: rule.test(password),
+  }));
+}
+
+function isPasswordReady(password: string): boolean {
+  return passwordChecks(password).every((rule) => rule.done);
 }
 
 export default function SignupPage() {
@@ -54,6 +73,11 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [pendingEmail, setPendingEmail] = useState<string | null>(null);
+
+  const checks = passwordChecks(password);
+  const passwordReady = checks.every((rule) => rule.done);
+  const canSubmit =
+    isValidSignupName(name) && Boolean(email.trim()) && passwordReady && !loading;
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
@@ -68,9 +92,8 @@ export default function SignupPage() {
       setError("Email and password are required.");
       return;
     }
-    const pwdError = passwordError(password);
-    if (pwdError) {
-      setError(pwdError);
+    if (!isPasswordReady(password)) {
+      setError("Password does not meet all the requirements yet.");
       return;
     }
     setLoading(true);
@@ -268,10 +291,23 @@ export default function SignupPage() {
                   )}
                 </button>
               </div>
-              <p className="mt-1.5 text-xs text-slate-400">
-                At least 8 characters, with 1 capital letter, 1 number, and 1
-                special character.
-              </p>
+              <ul className="mt-2 space-y-1">
+                {checks.map((rule) => (
+                  <li
+                    key={rule.id}
+                    className={`flex items-center gap-2 text-xs ${
+                      rule.done ? "text-emerald-600" : "text-slate-400"
+                    }`}
+                  >
+                    {rule.done ? (
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                    ) : (
+                      <Circle className="h-3.5 w-3.5 shrink-0" />
+                    )}
+                    {rule.label}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="flex items-start gap-2.5 rounded-xl border border-sky-100 bg-sky-50 px-4 py-3 text-sm text-slate-600">
@@ -286,7 +322,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              disabled={loading || !email.trim() || !name.trim()}
+              disabled={!canSubmit}
               className="btn-primary w-full"
             >
               {loading ? "Creating account..." : "Create account →"}
