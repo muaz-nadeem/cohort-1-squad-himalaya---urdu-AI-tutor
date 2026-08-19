@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
@@ -17,6 +17,16 @@ export default function LoginPage() {
   const [keepLoggedIn, setKeepLoggedIn] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    if (q.get("confirmed") === "1") {
+      setNotice("Email confirmed. Sign in to continue.");
+    }
+    const linkError = q.get("error");
+    if (linkError) setError(linkError);
+  }, []);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -30,17 +40,15 @@ export default function LoginPage() {
     try {
       await signIn(emailValue, password);
       if (!keepLoggedIn) {
-        // Soft hint only — Supabase still persists; full ephemeral sessions need
-        // a custom storage adapter. Cookie max-age stays short for middleware UX.
         document.cookie =
           "uraan_signed_in=1; path=/; SameSite=Lax; max-age=86400";
       }
-      try {
-        const me = await api.getStudent();
-        setStudentName(me.name || "Student");
-      } catch {
-        /* profile may be missing — send to signup/onboarding later */
-      }
+      // Don't wait on the profile — a cold backend here used to leave the
+      // button stuck on "Signing in…".
+      void api
+        .getStudent()
+        .then((me) => setStudentName(me.name || "Student"))
+        .catch(() => {});
       router.replace("/dashboard");
     } catch (err) {
       setError(
@@ -95,6 +103,11 @@ export default function LoginPage() {
           </p>
 
           <form onSubmit={handleLogin} className="mt-8 space-y-5">
+            {notice && (
+              <p className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-700">
+                {notice}
+              </p>
+            )}
             {error && (
               <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
                 {error}

@@ -16,7 +16,10 @@ export function getSupabase(): SupabaseClient {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: true,
+        // We finish email-confirm on /auth/callback ourselves. Auto-detect
+        // here races the callback, holds the auth Web Lock, and then sign-in
+        // on /login waits forever.
+        detectSessionInUrl: false,
         storageKey: "uraan-auth",
       },
     });

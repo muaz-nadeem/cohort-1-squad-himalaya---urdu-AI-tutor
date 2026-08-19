@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
+  CheckCircle2,
   Eye,
   EyeOff,
   Info,
@@ -52,6 +53,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null);
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
@@ -76,9 +78,12 @@ export default function SignupPage() {
     try {
       const { session, user } = await signUp(email.trim(), password, trimmedName);
       if (!session && user) {
-        setError(
-          "Check your email to confirm your account, then sign in."
-        );
+        setPendingEmail(email.trim());
+        setLoading(false);
+        return;
+      }
+      if (!session && !user) {
+        setError("Could not create the account. Try again.");
         setLoading(false);
         return;
       }
@@ -155,21 +160,49 @@ export default function SignupPage() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="font-display text-3xl font-bold text-brand-700">
-                Create your account
+                {pendingEmail ? "Confirmation email sent" : "Create your account"}
               </h2>
               <p className="mt-2 text-sm text-slate-500">
-                Enter your details to get started.
+                {pendingEmail
+                  ? "Check your inbox, then come back to sign in."
+                  : "Enter your details to get started."}
               </p>
             </div>
-            <Link
-              href="/login"
-              className="hidden shrink-0 text-sm text-slate-500 lg:block"
-            >
-              Already have one?{" "}
-              <span className="font-semibold text-brand">Log In</span>
-            </Link>
+            {!pendingEmail && (
+              <Link
+                href="/login"
+                className="hidden shrink-0 text-sm text-slate-500 lg:block"
+              >
+                Already have one?{" "}
+                <span className="font-semibold text-brand">Log In</span>
+              </Link>
+            )}
           </div>
 
+          {pendingEmail ? (
+            <div className="mt-8 space-y-6">
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-6">
+                <CheckCircle2 className="h-8 w-8 text-emerald-600" />
+                <p className="mt-4 text-sm leading-relaxed text-slate-700">
+                  We sent a confirmation link to{" "}
+                  <span className="font-semibold text-slate-900">
+                    {pendingEmail}
+                  </span>
+                  . Open it to verify your account, then sign in.
+                </p>
+              </div>
+              <Link
+                href="/login"
+                className="btn-primary flex w-full items-center justify-center"
+              >
+                Go to sign in →
+              </Link>
+              <p className="text-center text-xs text-slate-400">
+                Didn&apos;t get it? Check spam, or wait a minute and try signing
+                up again with the same email.
+              </p>
+            </div>
+          ) : (
           <form onSubmit={handleSignup} className="mt-8 space-y-5">
             <div>
               <label className="mb-1.5 block text-sm font-medium text-slate-700">
@@ -269,6 +302,7 @@ export default function SignupPage() {
               .
             </p>
           </form>
+          )}
         </div>
       </div>
     </div>
