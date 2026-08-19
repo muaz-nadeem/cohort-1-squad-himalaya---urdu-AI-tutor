@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { DoctorPersona } from "@/lib/doctorPersona";
 
 export default function DoctorAvatar({
@@ -8,18 +9,19 @@ export default function DoctorAvatar({
   size?: "sm" | "md" | "lg";
 }) {
   const dim =
-    size === "sm"
-      ? "h-8 w-8 text-[10px]"
-      : size === "lg"
-        ? "h-14 w-14 text-lg"
-        : "h-10 w-10 text-xs";
+    size === "sm" ? "h-8 w-8" : size === "lg" ? "h-16 w-16" : "h-10 w-10";
+  const px = size === "sm" ? 64 : size === "lg" ? 128 : 80;
   return (
     <span
-      className={`inline-flex shrink-0 items-center justify-center rounded-full font-bold text-white shadow-sm ${dim}`}
-      style={{ backgroundColor: `hsl(${doctor.hue} 42% 42%)` }}
-      aria-hidden
+      className={`relative inline-flex shrink-0 overflow-hidden rounded-full bg-sky-100 shadow-sm ring-2 ring-white ${dim}`}
     >
-      {doctor.initials}
+      <Image
+        src="/doctor-avatar.png"
+        alt={doctor.displayName}
+        width={px}
+        height={px}
+        className="h-full w-full object-cover object-[center_12%]"
+      />
     </span>
   );
 }
