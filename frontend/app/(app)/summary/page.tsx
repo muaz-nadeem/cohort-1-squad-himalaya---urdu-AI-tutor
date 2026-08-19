@@ -21,6 +21,7 @@ import {
 import AskAI from "@/components/AskAI";
 import { getStudentId } from "@/lib/student";
 import { getDoctorPersona } from "@/lib/doctorPersona";
+import { takePendingSummary } from "@/lib/sessionHandoff";
 
 export default function SummaryPage() {
   const router = useRouter();
@@ -44,6 +45,24 @@ export default function SummaryPage() {
     }
     const parsed = JSON.parse(raw) as SessionSummary;
     setSummary(parsed);
+
+    // /session navigated here on locally computed numbers so the page could
+    // paint immediately — swap in the server's breakdown once it lands.
+    const pending = takePendingSummary();
+    if (pending) {
+      void pending
+        .then((authoritative) => {
+          setSummary(authoritative);
+          window.sessionStorage.setItem(
+            "mdcat_summary",
+            JSON.stringify(authoritative)
+          );
+        })
+        .catch(() => {
+          /* the local summary is already on screen */
+        });
+    }
+
     try {
       const rev = window.sessionStorage.getItem("mdcat_review");
       if (rev) setReview(JSON.parse(rev));

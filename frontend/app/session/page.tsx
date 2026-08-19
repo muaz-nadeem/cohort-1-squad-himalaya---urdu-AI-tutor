@@ -12,9 +12,11 @@ import {
   type QuestionSet,
   type ReviewItem,
   type SessionMode,
+  type SessionSummary,
 } from "@/lib/api";
 import { getStudentId } from "@/lib/student";
 import { syncStudentCacheFromSession } from "@/lib/auth";
+import { setPendingSummary } from "@/lib/sessionHandoff";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 import AskAI from "@/components/AskAI";
 import {
@@ -484,31 +486,60 @@ function SessionInner() {
     audio.play().catch(() => setSpeakingExplain(false));
   }
 
-  async function finish() {
+  /** Score card built from what the client already knows — no server needed. */
+  function localSummary(sessionIdValue: string): SessionSummary {
+    const total = answeredRef.current;
+    const score = scoreRef.current;
+    const byChapter = new Map<string, { attempted: number; correct: number }>();
+    for (const item of reviewRef.current) {
+      const row = byChapter.get(item.chapter) || { attempted: 0, correct: 0 };
+      row.attempted += 1;
+      if (item.is_correct) row.correct += 1;
+      byChapter.set(item.chapter, row);
+    }
+    return {
+      session_id: sessionIdValue,
+      score,
+      total,
+      accuracy_pct: total ? Math.round((score / total) * 100) : 0,
+      concepts: [],
+      chapters: Array.from(byChapter, ([chapter, row]) => ({
+        chapter,
+        attempted: row.attempted,
+        correct: row.correct,
+        accuracy_pct: row.attempted
+          ? Math.round((row.correct / row.attempted) * 100)
+          : 0,
+      })),
+      next_recommendation: null,
+    };
+  }
+
+  function finish() {
     if (exiting) return;
     setExiting(true);
     setConfirmEnd(false);
     const sid = sessionIdRef.current;
+    window.sessionStorage.setItem(
+      "mdcat_review",
+      JSON.stringify(reviewRef.current)
+    );
     if (!sid) {
       router.replace("/dashboard");
       return;
     }
-    try {
-      const summary = await api.endSession(sid, {
+    // Show the summary straight away off local numbers; the server's version
+    // catches up on /summary via the handoff.
+    window.sessionStorage.setItem(
+      "mdcat_summary",
+      JSON.stringify(localSummary(sid))
+    );
+    setPendingSummary(
+      api.endSession(sid, {
         score: scoreRef.current,
         total: answeredRef.current,
-      });
-      window.sessionStorage.setItem("mdcat_summary", JSON.stringify(summary));
-      window.sessionStorage.setItem(
-        "mdcat_review",
-        JSON.stringify(reviewRef.current)
-      );
-    } catch {
-      window.sessionStorage.setItem(
-        "mdcat_review",
-        JSON.stringify(reviewRef.current)
-      );
-    }
+      })
+    );
     router.replace("/summary");
   }
 
