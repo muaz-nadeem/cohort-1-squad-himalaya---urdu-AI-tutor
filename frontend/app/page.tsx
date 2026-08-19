@@ -252,6 +252,7 @@ export default function LandingPage() {
             <Link href="/practice" className="transition hover:text-brand">
               Practice
             </Link>
+            {/* TODO: restore when these pages are ready
             <Link href="#pricing" className="transition hover:text-brand">
               Pricing
             </Link>
@@ -261,6 +262,7 @@ export default function LandingPage() {
             <Link href="#terms" className="transition hover:text-brand">
               Terms
             </Link>
+            */}
           </nav>
 
           <div className="flex items-center gap-3">
