@@ -29,13 +29,25 @@ def build_chapter_practice(
     count: int = CHAPTER_PRACTICE_COUNT,
     student_id: Optional[str] = None,
 ) -> list[dict[str, Any]]:
-    """100 MCQs for one chapter, mixed across all source_types.
+    """Up to 100 unseen MCQs for one chapter, mixed across all source_types.
 
-    When ``student_id`` is given, questions the student has already attempted
-    are pushed out so a re-attempt of the chapter returns fresh MCQs.
+    Already-attempted questions are excluded so finishing a set of 100 yields
+    a fresh next 100 from the remaining bank. Seen questions are only reused
+    when the chapter has no unseen MCQs left (Practice again).
     """
     exclude = db.get_attempted_question_ids(student_id) if student_id else None
-    return db.sample_questions(count=count, chapter=chapter, exclude_ids=exclude)
+    qs = db.sample_questions(
+        count=count, chapter=chapter, exclude_ids=exclude, reuse_seen=False
+    )
+    if qs or not exclude:
+        return qs
+    return db.sample_questions(
+        count=count, chapter=chapter, exclude_ids=exclude, reuse_seen=True
+    )
+
+
+def questions_by_ids(question_ids: list[str]) -> list[dict[str, Any]]:
+    return db.questions_in_order(question_ids)
 
 
 def build_custom(

@@ -18,6 +18,14 @@ import { getStudentId } from "@/lib/student";
 import { syncStudentCacheFromSession } from "@/lib/auth";
 import { setPendingSummary } from "@/lib/sessionHandoff";
 import { getDoctorPersona } from "@/lib/doctorPersona";
+import {
+  clearChapterBatch,
+  firstUnansweredIndex,
+  isBatchComplete,
+  loadChapterBatch,
+  saveChapterBatch,
+  type SavedQState,
+} from "@/lib/chapterBatch";
 import AskAI from "@/components/AskAI";
 import {
   Bookmark,
@@ -96,6 +104,14 @@ function SessionInner() {
   const answeredRef = useRef(0);
   const sessionIdRef = useRef<string | null>(null);
   const startedAtRef = useRef<number>(Date.now());
+  const skipBatchPersistRef = useRef(false);
+  const chapterRef = useRef<string | undefined>(undefined);
+  const qStatesRef = useRef<Record<number, QState>>({});
+  const indexRef = useRef(0);
+  const setRef = useRef<QuestionSet | null>(null);
+  const studentIdRef = useRef<string | null>(null);
+  setRef.current = set;
+  studentIdRef.current = studentId;
 
   const doctor = useMemo(() => getDoctorPersona(studentId), [studentId]);
   const current = qStates[index] ?? EMPTY_Q;
@@ -108,10 +124,69 @@ function SessionInner() {
   } = current;
 
   function patchQ(i: number, patch: Partial<QState>) {
-    setQStates((prev) => ({
-      ...prev,
-      [i]: { ...(prev[i] ?? EMPTY_Q), ...patch },
-    }));
+    setQStates((prev) => {
+      const next = {
+        ...prev,
+        [i]: { ...(prev[i] ?? EMPTY_Q), ...patch },
+      };
+      qStatesRef.current = next;
+      persistChapterProgress(next, indexRef.current);
+      return next;
+    });
+  }
+
+  function compactStates(states: Record<number, QState>): Record<number, SavedQState> {
+    const out: Record<number, SavedQState> = {};
+    for (const [k, v] of Object.entries(states)) {
+      out[Number(k)] = {
+        selected: v.selected,
+        isCorrect: v.isCorrect,
+        revealedCorrect: v.revealedCorrect,
+        flagged: v.flagged,
+      };
+    }
+    return out;
+  }
+
+  function persistChapterProgress(
+    states: Record<number, QState> = qStatesRef.current,
+    idx: number = indexRef.current
+  ) {
+    if (skipBatchPersistRef.current) return;
+    const chapter = chapterRef.current;
+    const currentSet = setRef.current;
+    const sid = studentIdRef.current;
+    if (!sid || !currentSet || currentSet.mode !== "chapter_practice" || !chapter) {
+      return;
+    }
+    saveChapterBatch({
+      studentId: sid,
+      chapter,
+      questionIds: currentSet.questions.map((q) => q.id),
+      qStates: compactStates(states),
+      index: idx,
+    });
+  }
+
+  function restoreReview(
+    questions: Question[],
+    states: Record<number, QState>
+  ) {
+    const items: ReviewItem[] = [];
+    questions.forEach((q, i) => {
+      const st = states[i];
+      if (!st?.selected || st.isCorrect === null) return;
+      items.push({
+        question_id: q.id,
+        question_text: q.question_text,
+        chapter: q.chapter || "Biology",
+        options: q.options,
+        selected_option: st.selected,
+        correct_option: st.revealedCorrect || "",
+        is_correct: st.isCorrect,
+      });
+    });
+    reviewRef.current = items;
   }
 
   function syncScoreFromStates(next: Record<number, QState>) {
@@ -169,6 +244,7 @@ function SessionInner() {
     const chapter = params.get("chapter") || undefined;
     const conceptId = params.get("concept_id") || undefined;
     const customRaw = params.get("custom");
+    chapterRef.current = chapter;
 
     // Tracked outside the try so a failed boot can close a session it opened.
     let sessionP: Promise<{ id: string }> | null = null;
@@ -185,6 +261,7 @@ function SessionInner() {
         return;
       }
       setStudentId(studentIdForBoot);
+      studentIdRef.current = studentIdForBoot;
 
       // Only pay for a health poll when we have no recent proof the API is up.
       if (!isBackendLikelyAwake()) {
@@ -208,11 +285,28 @@ function SessionInner() {
 
       let questionsP: Promise<QuestionSet>;
       let sessionMode: string | null = null;
+      let resumeBatch = null as ReturnType<typeof loadChapterBatch>;
       if (mode === "diagnostic") {
         questionsP = api.getDiagnostic(studentIdForBoot);
         sessionMode = "diagnostic";
       } else if (mode === "chapter" && chapter) {
-        questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot);
+        resumeBatch = loadChapterBatch(studentIdForBoot, chapter);
+        const incomplete =
+          resumeBatch &&
+          !isBatchComplete(resumeBatch.qStates, resumeBatch.questionIds.length);
+        if (incomplete && resumeBatch) {
+          questionsP = api.getQuestionsByIds(
+            resumeBatch.questionIds,
+            chapter,
+            studentIdForBoot
+          );
+        } else {
+          if (resumeBatch) {
+            clearChapterBatch(studentIdForBoot, chapter);
+          }
+          questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot);
+          resumeBatch = null;
+        }
         sessionMode = "chapter_practice";
       } else if (mode === "full_length") {
         questionsP = api.getFullLength(flpMode, studentIdForBoot);
@@ -240,15 +334,49 @@ function SessionInner() {
           })
         : null;
 
-      const qs = await questionsP;
+      let qs = await questionsP;
       if (!qs.questions.length) {
         setError(
-          "No questions available for this chapter yet. Try another chapter."
+          mode === "chapter"
+            ? "No more unseen MCQs in this chapter. Try Practice again, or pick another chapter."
+            : "No questions available for this chapter yet. Try another chapter."
         );
         return;
       }
+      if (resumeBatch && qs.questions.length) {
+        const byId = new Map(qs.questions.map((q) => [q.id, q]));
+        const ordered = resumeBatch.questionIds
+          .map((id) => byId.get(id))
+          .filter((q): q is Question => Boolean(q));
+        if (ordered.length) {
+          qs = { ...qs, questions: ordered };
+        }
+      }
       setSet(qs);
+      setRef.current = qs;
       if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
+
+      if (resumeBatch && qs.mode === "chapter_practice") {
+        const restored: Record<number, QState> = {};
+        for (const [k, saved] of Object.entries(resumeBatch.qStates)) {
+          restored[Number(k)] = { ...EMPTY_Q, ...saved, explanation: null };
+        }
+        qStatesRef.current = restored;
+        setQStates(restored);
+        syncScoreFromStates(restored);
+        restoreReview(qs.questions, restored);
+        const resumeAt = firstUnansweredIndex(restored, qs.questions.length);
+        indexRef.current = resumeAt;
+        setIndex(resumeAt);
+      } else if (qs.mode === "chapter_practice" && chapter) {
+        saveChapterBatch({
+          studentId: studentIdForBoot,
+          chapter,
+          questionIds: qs.questions.map((q) => q.id),
+          qStates: {},
+          index: 0,
+        });
+      }
 
       const session = await (sessionP ??
         api.startSession({
@@ -336,7 +464,18 @@ function SessionInner() {
             explanation: prev[index]?.explanation ?? null,
           },
         };
+        qStatesRef.current = next;
         syncScoreFromStates(next);
+        persistChapterProgress(next, index);
+        if (
+          setRef.current &&
+          isBatchComplete(next, setRef.current.questions.length) &&
+          studentIdRef.current &&
+          chapterRef.current
+        ) {
+          skipBatchPersistRef.current = true;
+          clearChapterBatch(studentIdRef.current, chapterRef.current);
+        }
         return next;
       });
 
@@ -398,7 +537,9 @@ function SessionInner() {
     setSpeakingExplain(false);
     setExplaining(false);
     setConfirmEnd(false);
+    indexRef.current = i;
     setIndex(i);
+    persistChapterProgress(qStatesRef.current, i);
   }
 
   function markForReview() {
@@ -460,6 +601,7 @@ function SessionInner() {
     if (exiting) return;
     setExiting(true);
     setConfirmEnd(false);
+    persistChapterProgress();
     // Close the session properly, but as a keepalive request — the student is
     // leaving and nothing on the dashboard depends on the response, so there's
     // no reason to hold them behind a round-trip.
@@ -522,6 +664,18 @@ function SessionInner() {
     if (exiting) return;
     setExiting(true);
     setConfirmEnd(false);
+    const chapter = chapterRef.current;
+    if (
+      set?.mode === "chapter_practice" &&
+      chapter &&
+      studentId &&
+      isBatchComplete(qStatesRef.current, set.questions.length)
+    ) {
+      skipBatchPersistRef.current = true;
+      clearChapterBatch(studentId, chapter);
+    } else {
+      persistChapterProgress();
+    }
     const sid = sessionIdRef.current;
     window.sessionStorage.setItem(
       "mdcat_review",

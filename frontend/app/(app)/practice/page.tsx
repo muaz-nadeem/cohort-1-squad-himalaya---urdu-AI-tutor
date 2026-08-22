@@ -2,16 +2,11 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  CheckCircle2,
-  Flame,
-  Play,
-  TrendingUp,
-} from "lucide-react";
+import { CheckCircle2, Play } from "lucide-react";
 import { api, type ChapterInfo } from "@/lib/api";
 import { useStudentId } from "@/lib/useStudent";
 import { CHAPTERS_QUERY } from "@/lib/queries";
+import { hasIncompleteChapterBatch } from "@/lib/chapterBatch";
 import { useQuery } from "@tanstack/react-query";
 
 export default function PracticePage() {
@@ -55,26 +50,10 @@ export default function PracticePage() {
   const part1 = filtered.filter((c) => c.book === "fsc_part1");
   const part2 = filtered.filter((c) => c.book === "fsc_part2");
 
-  const started = chapters.filter((c) => {
-    const s = accuracyByChapter.get(c.name);
-    return s && s.attempted > 0;
-  }).length;
-  const completed = chapters.filter((c) => {
-    const s = accuracyByChapter.get(c.name);
-    return s && s.attempted > 0 && s.accuracy_pct >= 85;
-  }).length;
-
   return (
     <>
       <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-          <Link
-            href="/dashboard"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to Dashboard
-          </Link>
-
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
@@ -109,24 +88,6 @@ export default function PracticePage() {
             </div>
           </div>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <StatCard
-              label="Completed"
-              value={`${completed} / ${chapters.length || 0}`}
-              icon={<CheckCircle2 className="h-4 w-4 text-emerald-600" />}
-            />
-            <StatCard
-              label="Started"
-              value={`${started} / ${chapters.length || 0}`}
-              icon={<Play className="h-4 w-4 text-brand" />}
-            />
-            <StatCard
-              label="Avg. Accuracy"
-              value={`${dashboard?.accuracy_pct ?? 0}%`}
-              icon={<TrendingUp className="h-4 w-4 text-brand" />}
-            />
-          </div>
-
           {loading && !chapters.length ? (
             <p className="mt-10 text-sm text-slate-400">Loading chapters...</p>
           ) : chaptersError ? (
@@ -144,6 +105,7 @@ export default function PracticePage() {
                   title="FSc Part 1 (Biology)"
                   chapters={part1}
                   accuracyByChapter={accuracyByChapter}
+                  studentId={studentId}
                 />
               )}
               {bookFilter !== "fsc_part1" && (
@@ -151,6 +113,7 @@ export default function PracticePage() {
                   title="FSc Part 2 (Biology)"
                   chapters={part2}
                   accuracyByChapter={accuracyByChapter}
+                  studentId={studentId}
                 />
               )}
             </div>
@@ -161,38 +124,16 @@ export default function PracticePage() {
   );
 }
 
-function StatCard({
-  label,
-  value,
-  icon,
-}: {
-  label: string;
-  value: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-slate-100 bg-white px-5 py-4 shadow-sm">
-      <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold tracking-wide text-slate-400">
-          {label}
-        </p>
-        {icon}
-      </div>
-      <p className="mt-2 font-display text-2xl font-bold text-brand-700">
-        {value}
-      </p>
-    </div>
-  );
-}
-
 function ChapterSection({
   title,
   chapters,
   accuracyByChapter,
+  studentId,
 }: {
   title: string;
   chapters: ChapterInfo[];
   accuracyByChapter: Map<string, { accuracy_pct: number; attempted: number }>;
+  studentId: string | null;
 }) {
   if (!chapters.length) return null;
 
@@ -207,12 +148,29 @@ function ChapterSection({
         {chapters.map((ch, i) => {
           const stats = accuracyByChapter.get(ch.name);
           const attempted = stats?.attempted ?? 0;
-          const accuracy = stats?.accuracy_pct ?? 0;
           const count = ch.question_count ?? 0;
+          const remaining = Math.max(0, count - attempted);
+          const openBatch = studentId
+            ? hasIncompleteChapterBatch(studentId, ch.name)
+            : false;
           const progress =
-            attempted > 0 ? Math.min(100, Math.max(0, accuracy)) : 0;
-          const status: "start" | "progress" | "done" =
-            attempted === 0 ? "start" : accuracy >= 85 ? "done" : "progress";
+            count > 0
+              ? Math.min(100, Math.round((attempted / count) * 100))
+              : 0;
+          const status: "start" | "progress" | "done" = openBatch
+            ? "progress"
+            : remaining === 0 && attempted > 0
+              ? "done"
+              : attempted > 0
+                ? "progress"
+                : "start";
+          const cta: "none" | "resume" | "next" | "again" = openBatch
+            ? "resume"
+            : status === "done"
+              ? "again"
+              : attempted > 0
+                ? "next"
+                : "none";
 
           return (
             <ChapterCard
@@ -220,6 +178,7 @@ function ChapterSection({
               index={i + 1}
               name={ch.name}
               status={status}
+              cta={cta}
               progress={progress}
               questionCount={count}
             />
@@ -234,12 +193,14 @@ function ChapterCard({
   index,
   name,
   status,
+  cta,
   progress,
   questionCount,
 }: {
   index: number;
   name: string;
   status: "start" | "progress" | "done";
+  cta: "none" | "resume" | "next" | "again";
   progress: number;
   questionCount: number;
 }) {
@@ -250,7 +211,10 @@ function ChapterCard({
       : "No MCQs ingested yet";
 
   return (
-    <div className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+    <Link
+      href={href}
+      className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:border-brand/20 hover:shadow-md"
+    >
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-medium text-slate-400">
@@ -287,42 +251,28 @@ function ChapterCard({
         </div>
       </div>
 
-      <div className="mt-4 flex flex-1 items-end">
-        {status === "done" && (
+      {cta !== "none" && (
+        <div className="mt-4 flex flex-1 items-end">
           <div className="flex w-full items-center justify-between gap-3">
-            <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-emerald-600">
-              COMPLETED
-            </span>
-            <Link
-              href={href}
-              className="rounded-xl bg-brand px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark"
+            <span
+              className={`rounded-md px-2.5 py-1 text-[10px] font-bold tracking-wider ${
+                status === "done"
+                  ? "bg-emerald-50 text-emerald-600"
+                  : "bg-sky-50 text-sky-600"
+              }`}
             >
-              Practice again
-            </Link>
-          </div>
-        )}
-        {status === "progress" && (
-          <div className="flex w-full items-center justify-between gap-3">
-            <span className="rounded-md bg-sky-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-sky-600">
-              IN PROGRESS
+              {status === "done" ? "COMPLETED" : "IN PROGRESS"}
             </span>
-            <Link
-              href={href}
-              className="rounded-xl bg-brand px-3.5 py-2 text-xs font-semibold text-white hover:bg-brand-dark"
-            >
-              Resume
-            </Link>
+            <span className="rounded-xl bg-brand px-3.5 py-2 text-xs font-semibold text-white">
+              {cta === "again"
+                ? "Practice again"
+                : cta === "next"
+                  ? "Next 100"
+                  : "Resume"}
+            </span>
           </div>
-        )}
-        {status === "start" && (
-          <Link
-            href={href}
-            className="inline-flex w-full items-center justify-center rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
-          >
-            Start Practice
-          </Link>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </Link>
   );
 }

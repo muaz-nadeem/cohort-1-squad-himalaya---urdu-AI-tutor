@@ -158,7 +158,7 @@ def _list_question_ids(
     *,
     chapter: Optional[str] = None,
     book: Optional[str] = None,
-    max_ids: int = 800,
+    max_ids: int = 20_000,
 ) -> list[str]:
     """Fetch only question ids (tiny payload) for in-process sampling."""
     client = require_client()
@@ -199,13 +199,15 @@ def sample_questions(
     chapter: Optional[str] = None,
     book: Optional[str] = None,
     exclude_ids: Optional[list[str]] = None,
+    reuse_seen: bool = True,
 ) -> list[dict[str, Any]]:
     """Random sample across the mixed bank (all source_types).
 
     When ``exclude_ids`` is provided (questions the student has already seen),
     unseen questions are returned first so a re-attempt of the same chapter
-    yields fresh MCQs. If the unseen pool is smaller than ``count`` (chapter
-    exhausted), the remainder is topped up with a reshuffled set of seen ones.
+    yields fresh MCQs. If the unseen pool is smaller than ``count`` and
+    ``reuse_seen`` is true (chapter exhausted), the remainder is topped up
+    with a reshuffled set of seen ones.
 
     Fallback path is id-first (tiny) then hydrate only the chosen rows — keeps
     free-tier RAM under control even for count=100.
@@ -215,49 +217,52 @@ def sample_questions(
     exclude = {str(x) for x in (exclude_ids or []) if x}
     count = max(1, count)
 
-    if not exclude:
+    def _from_rpc(extra_exclude: Optional[set[str]]) -> Optional[list[dict[str, Any]]]:
         try:
-            res = require_client().rpc(
-                "sample_questions",
-                {
-                    "match_count": count,
-                    "filter_chapter": chapter,
-                    "filter_book": book,
-                },
-            ).execute()
-            if res.data:
-                # RPC may return full rows; re-hydrate lean if oversized risk.
-                ids = [str(r["id"]) for r in res.data if r.get("id")]
-                return _hydrate_questions(ids) or res.data
+            payload: dict[str, Any] = {
+                "match_count": count,
+                "filter_chapter": chapter,
+                "filter_book": book,
+            }
+            if extra_exclude:
+                payload["exclude_ids"] = list(extra_exclude)
+            res = require_client().rpc("sample_questions", payload).execute()
+            if not res.data:
+                return None
+            ids = [str(r["id"]) for r in res.data if r.get("id")]
+            if extra_exclude and not reuse_seen:
+                ids = [i for i in ids if i not in extra_exclude]
+            return _hydrate_questions(ids) or res.data
         except Exception:
-            pass
+            return None
+
+    if not exclude:
+        picked = _from_rpc(None)
+        if picked:
+            return picked
         ids = _list_question_ids(chapter=chapter, book=book)
         random.shuffle(ids)
         return _hydrate_questions(ids[:count])
 
-    try:
-        res = require_client().rpc(
-            "sample_questions",
-            {
-                "match_count": count,
-                "filter_chapter": chapter,
-                "filter_book": book,
-                "exclude_ids": list(exclude),
-            },
-        ).execute()
-        if res.data:
-            ids = [str(r["id"]) for r in res.data if r.get("id")]
-            return _hydrate_questions(ids) or res.data
-    except Exception:
-        pass
+    picked = _from_rpc(exclude)
+    if picked:
+        return picked
 
     ids = _list_question_ids(chapter=chapter, book=book)
     unseen = [i for i in ids if i not in exclude]
-    seen = [i for i in ids if i in exclude]
     random.shuffle(unseen)
-    random.shuffle(seen)
-    picked = (unseen + seen)[:count]
-    return _hydrate_questions(picked)
+    if reuse_seen:
+        seen = [i for i in ids if i in exclude]
+        random.shuffle(seen)
+        picked_ids = (unseen + seen)[:count]
+    else:
+        picked_ids = unseen[:count]
+    return _hydrate_questions(picked_ids)
+
+
+def questions_in_order(question_ids: list[str]) -> list[dict[str, Any]]:
+    """Hydrate questions in the given order (for resuming a saved batch)."""
+    return _hydrate_questions([str(i) for i in question_ids if i])
 
 
 def get_attempted_question_ids(student_id: str) -> list[str]:

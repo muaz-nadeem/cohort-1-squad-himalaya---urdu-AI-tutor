@@ -428,6 +428,12 @@ export const api = {
     return request<QuestionSet>(`/api/questions/chapter?${q.toString()}`);
   },
 
+  getQuestionsByIds: (ids: string[], chapter?: string, studentId?: string) =>
+    request<QuestionSet>("/api/questions/by-ids", {
+      method: "POST",
+      body: JSON.stringify({ ids, chapter, student_id: studentId }),
+    }),
+
   getCustomQuiz: (
     selections: { chapter: string; book?: string; count: number }[],
     studentId?: string

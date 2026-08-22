@@ -1367,6 +1367,43 @@ async def questions_chapter(
     )
 
 
+class QuestionsByIdsRequest(BaseModel):
+    ids: list[str]
+    chapter: Optional[str] = None
+    student_id: Optional[str] = None
+
+
+@app.post("/api/questions/by-ids")
+@limiter.limit("30/minute")
+async def questions_by_ids(
+    request: Request,
+    req: Annotated[QuestionsByIdsRequest, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    """Restore a saved chapter batch in the original question order."""
+    assert_same_student(user, req.student_id)
+    ids = [i for i in req.ids if i][:100]
+    if not ids:
+        raise HTTPException(status_code=400, detail="No question ids provided")
+    try:
+        qs = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: study.questions_by_ids(ids)
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Could not load questions: {type(exc).__name__}: {exc}",
+        ) from exc
+    return public_question_set(
+        {
+            "mode": "chapter_practice",
+            "chapter": req.chapter,
+            "questions": qs,
+            "timed_seconds": None,
+        }
+    )
+
+
 class CustomQuizRequest(BaseModel):
     selections: list[dict]  # [{ chapter, book?, count }]
     student_id: Optional[str] = None
