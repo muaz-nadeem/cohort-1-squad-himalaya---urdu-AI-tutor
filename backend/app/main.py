@@ -1443,6 +1443,7 @@ async def questions_full_length(
     user: Annotated[AuthUser, Depends(get_current_user)],
     mode: str = "practice",
     student_id: Optional[str] = None,
+    preview: int = 0,
 ):
     """Our own Biology FLP: 81 MCQs mixed from the entire bank — not one FLP PDF."""
     if mode not in ("practice", "timed"):
@@ -1454,10 +1455,13 @@ async def questions_full_length(
     session_mode = (
         "full_length_timed" if mode == "timed" else "full_length_practice"
     )
+    all_ids = [q["id"] for q in qs if q.get("id")]
+    preview_qs = qs[:preview] if 0 < preview < len(qs) else qs
     return public_question_set(
         {
             "mode": session_mode,
-            "questions": qs,
+            "questions": preview_qs,
+            "question_ids": all_ids,
             "timed_seconds": study.FULL_LENGTH_TIMED_SEC if mode == "timed" else None,
             "note": "Platform FLP — mixed from academy tests, FLPs, past papers & most-repeated",
         }

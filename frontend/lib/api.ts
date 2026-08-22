@@ -456,9 +456,10 @@ export const api = {
       body: JSON.stringify({ selections, student_id: studentId }),
     }),
 
-  getFullLength: (mode: "practice" | "timed" = "practice", studentId?: string) => {
+  getFullLength: (mode: "practice" | "timed" = "practice", studentId?: string, preview = 0) => {
     const q = new URLSearchParams({ mode });
     if (studentId) q.set("student_id", studentId);
+    if (preview > 0) q.set("preview", String(preview));
     return request<QuestionSet>(`/api/questions/full-length?${q.toString()}`);
   },
 

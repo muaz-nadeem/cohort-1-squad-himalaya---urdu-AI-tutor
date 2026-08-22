@@ -370,7 +370,7 @@ function SessionInner() {
         }
         sessionMode = "chapter_practice";
       } else if (mode === "full_length") {
-        questionsP = api.getFullLength(flpMode, studentIdForBoot);
+        questionsP = api.getFullLength(flpMode, studentIdForBoot, 5);
         sessionMode =
           flpMode === "timed" ? "full_length_timed" : "full_length_practice";
       } else if (mode === "custom" && customRaw) {
@@ -434,7 +434,7 @@ function SessionInner() {
         });
       }
 
-      if (qs.mode === "chapter_practice" && allIds.length > qs.questions.length) {
+      if (allIds.length > qs.questions.length) {
         void fillRemaining(allIds, qs.questions, chapter, studentIdForBoot, resumeAt);
       }
 
@@ -894,18 +894,6 @@ function SessionInner() {
           </p>
 
           <div className="flex items-center justify-end justify-self-end gap-3">
-            {timerLabel && (
-              <span
-                className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold tabular-nums ${
-                  secondsLeft !== null && secondsLeft < 300
-                    ? "bg-red-50 text-red-600"
-                    : "bg-slate-100 text-slate-700"
-                }`}
-              >
-                <Clock className="h-3.5 w-3.5" />
-                {timerLabel}
-              </span>
-            )}
             <span className="truncate text-right text-xs font-semibold text-brand-700 sm:text-sm">
               {modeLabel(set.mode)}
             </span>
@@ -1278,6 +1266,18 @@ function SessionInner() {
               <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
             </span>
           </div>
+          {timerLabel && (
+            <div
+              className={`mt-4 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-lg font-bold tabular-nums ${
+                secondsLeft !== null && secondsLeft < 300
+                  ? "bg-red-50 text-red-600"
+                  : "bg-slate-100 text-slate-700"
+              }`}
+            >
+              <Clock className="h-5 w-5" />
+              {timerLabel}
+            </div>
+          )}
         </aside>
       </div>
 

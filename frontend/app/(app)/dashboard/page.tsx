@@ -65,7 +65,7 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <div className="min-h-[calc(100vh-3.5rem)] bg-white lg:min-h-screen">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           {error && (
             <div className="mb-4 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
@@ -325,7 +325,7 @@ function getGreeting() {
 }
 
 function getDaysToMdcat() {
-  const exam = new Date("2026-08-16");
+  const exam = new Date("2026-09-20");
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.max(0, Math.ceil((exam.getTime() - today.getTime()) / 86400000));
