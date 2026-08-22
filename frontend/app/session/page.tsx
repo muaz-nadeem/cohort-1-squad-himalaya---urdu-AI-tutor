@@ -1047,6 +1047,12 @@ function SessionInner() {
             })}
           </div>
 
+          {isTimedExam && (
+            <p className="mt-3 text-xs text-slate-400">
+              Once you select an option, you will be taken to the next MCQ automatically.
+            </p>
+          )}
+
           <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
             <button
               type="button"
