@@ -1094,7 +1094,7 @@ function SessionInner() {
           )}
         </div>
 
-        <aside className="w-[15rem] shrink-0 sticky top-20 self-start sm:w-[17.5rem] lg:max-h-[calc(100vh-6.5rem)]">
+        <aside className="w-[19rem] shrink-0 sticky top-20 self-start sm:w-[22rem] lg:w-[26rem] xl:w-[28rem]">
           <p className="text-[10px] font-bold tracking-wider text-slate-400">
             QUESTIONS
           </p>
@@ -1134,8 +1134,8 @@ function SessionInner() {
               </button>
             ))}
           </div>
-          <div className="mt-3 max-h-[min(28rem,60vh)] overflow-y-auto rounded-xl border border-slate-100 bg-white p-2 shadow-sm lg:max-h-[calc(100vh-12rem)]">
-            <div className="grid grid-cols-4 gap-1.5">
+          <div className="mt-3 rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
+            <div className="grid grid-cols-8 gap-1 lg:grid-cols-10">
               {Array.from({ length: totalQ }, (_, i) => {
                 const st = qStates[i] ?? EMPTY_Q;
                 if (navFilter === "flagged" && !st.flagged) return null;
