@@ -913,7 +913,7 @@ function SessionInner() {
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-7xl gap-4 px-4 py-6 sm:gap-6 sm:px-6">
+      <div className="mx-auto flex max-w-7xl gap-8 px-4 py-6 sm:gap-10 sm:px-6">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm font-semibold text-slate-500">
@@ -1157,19 +1157,19 @@ function SessionInner() {
               })}
             </div>
           </div>
-          <div className="mt-3 hidden space-y-1 text-[10px] text-slate-400 lg:block">
-            <p className="inline-flex items-center gap-1">
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
+            <span className="inline-flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
-            </p>
-            <p className="inline-flex items-center gap-1">
+            </span>
+            <span className="inline-flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
-            </p>
-            <p className="inline-flex items-center gap-1">
+            </span>
+            <span className="inline-flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
-            </p>
-            <p className="inline-flex items-center gap-1">
+            </span>
+            <span className="inline-flex items-center gap-1.5">
               <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
-            </p>
+            </span>
           </div>
         </aside>
       </div>
