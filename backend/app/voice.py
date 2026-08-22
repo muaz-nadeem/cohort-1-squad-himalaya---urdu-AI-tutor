@@ -15,7 +15,7 @@ from typing import Optional
 import httpx
 
 from .config import settings
-from .llm import get_groq_client
+from .llm import get_groq_client, restore_english_science_terms, strip_speech_symbols
 
 
 def _safe_print(msg: str) -> None:
@@ -207,6 +207,8 @@ def prepare_bilingual_tts(text: str) -> str:
     speak = (text or "").strip()
     if not speak:
         return ""
+    speak = restore_english_science_terms(speak)
+    speak = strip_speech_symbols(speak)
     speak = speak.translate(_SUBSCRIPT_MAP)
     speak = speak.translate(_URDU_DIGIT_MAP)
     speak = _expand_urdu_formula_numbers(speak)

@@ -26,6 +26,7 @@ import {
   type SavedQState,
 } from "@/lib/chapterBatch";
 import AskAI from "@/components/AskAI";
+import SpeechControls from "@/components/SpeechControls";
 import {
   Bookmark,
   CheckCircle2,
@@ -1144,9 +1145,12 @@ function SessionInner() {
                         Generating explanation...
                       </p>
                     ) : explanation ? (
-                      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
-                        {explanation.explanation}
-                      </p>
+                      <div>
+                        <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+                          {explanation.explanation}
+                        </p>
+                        <SpeechControls speechId={explanation.speech_id} />
+                      </div>
                     ) : (
                       <p className="text-sm text-slate-500">
                         {question.explanation ||

@@ -6,15 +6,12 @@ import { api, speechStreamUrl, type McqContext } from "@/lib/api";
 import { useVoiceCall } from "@/lib/useVoiceCall";
 import type { DoctorPersona } from "@/lib/doctorPersona";
 import DoctorAvatar from "@/components/DoctorAvatar";
-
-function playAudioUrl(url: string) {
-  const audio = new Audio(url);
-  audio.play().catch(() => {});
-}
+import SpeechControls from "@/components/SpeechControls";
 
 interface Turn {
   role: "user" | "assistant";
   content: string;
+  speechUrl?: string | null;
 }
 
 export default function AskAI({
@@ -52,9 +49,13 @@ export default function AskAI({
     historyRef.current = [];
   }, [mcq?.question_text]);
 
-  function pushTurn(role: "user" | "assistant", content: string) {
+  function pushTurn(
+    role: "user" | "assistant",
+    content: string,
+    speechUrl?: string | null
+  ) {
     if (!content) return;
-    setTurns((prev) => [...prev, { role, content }]);
+    setTurns((prev) => [...prev, { role, content, speechUrl }]);
     historyRef.current.push({ role, content });
   }
 
@@ -68,8 +69,8 @@ export default function AskAI({
       }
       setError("");
       if (res.transcript) pushTurn("user", res.transcript);
-      if (res.answer) pushTurn("assistant", res.answer);
       const speechUrl = await speechStreamUrl(res.speech_id);
+      if (res.answer) pushTurn("assistant", res.answer, speechUrl);
       return { audio: res.audio, speechUrl };
     },
     [concept]
@@ -95,9 +96,8 @@ export default function AskAI({
         setError(res.error);
         return;
       }
-      pushTurn("assistant", res.answer);
       const speechUrl = await speechStreamUrl(res.speech_id);
-      if (speechUrl) playAudioUrl(speechUrl);
+      pushTurn("assistant", res.answer, speechUrl);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to ask");
     } finally {
@@ -195,6 +195,9 @@ export default function AskAI({
                 <span className="font-medium">{doctor.name}: </span>
               )}
               {t.content}
+              {t.role === "assistant" && t.speechUrl && (
+                <SpeechControls url={t.speechUrl} />
+              )}
             </div>
           ))}
         </div>

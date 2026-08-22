@@ -65,7 +65,9 @@ Rules:
 8. FAITHFULNESS (critical): Only restate what is in the English answer. Do NOT invent a different topic, extra examples, warm-up chatter, or "related" facts that were not written there.
 9. Start immediately with the explanation. No greetings (no السلام علیکم), no "آج ہم بات کریں گے", no preamble about another concept first.
 10. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers.
-11. Never write a fully Urdu explanation. Urdu is only sentence glue; science terms and formulas stay English."""
+11. Never write a fully Urdu explanation. Urdu is only sentence glue; science terms and formulas stay English.
+12. NEVER write توانائی — always write energy. NEVER write الفا/بیٹا/گاما — write alpha/beta/gamma. NEVER write برقی مقناطیسی — write electromagnetic. NEVER write تابکار/تابکاری — write radioactive/radioactivity. NEVER write شعاعیں — write rays. NEVER write ذرات for science — write particles. NEVER write اخراج — write emission. If it is a syllabus science word, keep the English Latin letters.
+13. Do not include Greek or math symbols (α β γ Δ μ λ π $). Write alpha, beta, gamma, and so on."""
 
 RAG_ASK_SYSTEM_PROMPT = f"""You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.
 
@@ -417,7 +419,8 @@ ENGLISH section rules:
 
 URDU section rules:
 - Write in Urdu script (اردو) with English key terms kept inline — natural Pakistani classroom bilingual style (Urdu glue + English science words).
-- Keep ALL scientific/technical terms in English Latin letters. Never translate or transliterate them into Urdu. Must-stay-English examples: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, and any other FSc/MDCAT syllabus term.
+- Keep ALL scientific/technical terms in English Latin letters. Never translate or transliterate them into Urdu. This includes energy (never توانائی), alpha/beta/gamma (never الفا/بیٹا/گاما), electromagnetic (never برقی مقناطیسی), radioactive, emission, particle, nucleus, atom, molecule, cell, membrane, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, wavelength, frequency, hydrogen, glucose, virus, bacteria, and every other FSc/MDCAT syllabus term.
+- Do not write Greek or math symbols (α β γ Δ). Write the English names: alpha, beta, gamma.
 - Formulas stay English: write O2, H2O, CO2, n2 — never Urdu digits inside a formula (wrong: O دو / H دو O).
 - Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Never use Roman Urdu or Hindi.
@@ -463,7 +466,8 @@ ENGLISH section rules:
 
 URDU section rules:
 - Pakistani coaching-classroom bilingual: Urdu script for sentence glue, English Latin letters for science terms.
-- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. Examples that MUST stay English: nucleus, proton, neutron, electron, energy, formula, orbit, atom, molecule, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, x-ray, wavelength, frequency, hydrogen, glucose, membrane, cell, virus, bacteria, O2, H2O, CO2, and any other FSc/MDCAT syllabus term.
+- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. energy stays energy (never توانائی). alpha, beta, gamma, electromagnetic, radioactive, emission, particle, nucleus, atom, molecule, cell, DNA, RNA, ATP, enzyme, and every other FSc/MDCAT syllabus term stay English Latin letters.
+- Do not write Greek or math symbols. Write alpha, beta, gamma as English words.
 - Formulas stay English (O2, H2O). Never write Urdu numbers inside them.
 - Example style: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
 - Natural spoken style for a phone-call tutor. No citations, brackets, bullets, or markdown.
@@ -522,7 +526,7 @@ def explain_answer_bilingual(
     user_prompt += (
         "\n\nFor the URDU section: speak like a Pakistani coaching teacher — "
         "Urdu sentences with English science words left in English "
-        "(nucleus, electron, energy, formula, orbit, x-ray, etc.)."
+        "(nucleus, electron, energy, alpha, beta, gamma, electromagnetic, formula, orbit, x-ray, etc.)."
     )
     raw = _chat_openai(EXPLAIN_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
     return normalize_course_answer(*_split_bilingual(raw))
@@ -558,6 +562,8 @@ def looks_like_classroom_bilingual(text: str) -> bool:
     if is_off_topic_answer(raw):
         return any(0x0600 <= ord(c) <= 0x06FF for c in raw)
     if _FORMULA_URDU_NUMBER.search(raw):
+        return False
+    if _SCIENCE_LEAK_RE.search(raw):
         return False
     urdu_chars = sum(1 for c in raw if 0x0600 <= ord(c) <= 0x06FF)
     if urdu_chars < 8:
@@ -638,6 +644,8 @@ def normalize_course_answer(english: str, urdu: str = "") -> tuple[str, str]:
     """Force the canonical redirect if the model drifted while refusing."""
     if is_off_topic_answer(english) or is_off_topic_answer(urdu):
         return OFF_TOPIC_ENGLISH, OFF_TOPIC_URDU
+    if urdu:
+        urdu = sanitize_speech_narration(urdu)
     return english, urdu
 
 
@@ -668,9 +676,11 @@ def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
         return ""
     extra = (
         "CRITICAL: Do not write a fully Urdu explanation. Every science word "
-        "(nucleus, electron, energy, hydrogen, oxygen, molecule, DNA, ATP, "
-        "formula names, and so on) MUST stay English Latin letters. "
-        "Formulas MUST be O2, H2O, CO2 — never O دو or H دو O."
+        "(nucleus, electron, energy, alpha, beta, gamma, electromagnetic, "
+        "hydrogen, oxygen, molecule, DNA, ATP, and so on) MUST stay English "
+        "Latin letters. Never write توانائی, الفا, بیٹا, گاما, or برقی مقناطیسی. "
+        "Formulas MUST be O2, H2O, CO2 — never O دو or H دو O. "
+        "Never include Greek symbols — write alpha, beta, gamma."
         if strict
         else ""
     )
@@ -690,6 +700,125 @@ def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
         return sanitize_speech_narration(urdu)
     except Exception:
         return ""
+
+
+# Longest-first: swap leaked Urdu science translations back to English for TTS.
+_SCIENCE_URDU_TO_EN: tuple[tuple[str, str], ...] = (
+    ("برقی مقناطیسی امواج", "electromagnetic waves"),
+    ("برقی مقناطیسی شعاعیں", "electromagnetic rays"),
+    ("برقی مقناطیسی", "electromagnetic"),
+    ("تابکار مادے", "radioactive substances"),
+    ("تابکار مادہ", "radioactive substance"),
+    ("الفا ذرات", "alpha particles"),
+    ("بیٹا ذرات", "beta particles"),
+    ("گاما شعاعیں", "gamma rays"),
+    ("گاما ریز", "gamma rays"),
+    ("ہیلیم مرکزے", "helium nuclei"),
+    ("ایٹمی مرکزے", "atomic nuclei"),
+    ("ایٹمی مرکزہ", "atomic nucleus"),
+    ("ضیائی تالیف", "photosynthesis"),
+    ("طول موج", "wavelength"),
+    ("نیوکلیائی", "nuclear"),
+    ("تابکاری", "radioactivity"),
+    ("تابکار", "radioactive"),
+    ("توانائی", "energy"),
+    ("شعاعیں", "rays"),
+    ("اخراج", "emission"),
+    ("انبعاث", "emission"),
+    ("مرکزے", "nuclei"),
+    ("مرکزہ", "nucleus"),
+    ("ذرات", "particles"),
+    ("الفا", "alpha"),
+    ("بیٹا", "beta"),
+    ("بیتا", "beta"),
+    ("گاما", "gamma"),
+    ("مالیکیولز", "molecules"),
+    ("مالیکیول", "molecule"),
+    ("ایٹم", "atom"),
+    ("خلیے", "cells"),
+    ("خلیہ", "cell"),
+    ("جھلی", "membrane"),
+    ("خمیر", "enzyme"),
+    ("وراثہ", "gene"),
+    ("کروموسوم", "chromosome"),
+    ("ہائیڈروجن", "hydrogen"),
+    ("آکسیجن", "oxygen"),
+    ("نائٹروجن", "nitrogen"),
+    ("گلوکوز", "glucose"),
+    ("پروٹین", "protein"),
+    ("ہارمون", "hormone"),
+    ("وائرس", "virus"),
+    ("بیکٹیریا", "bacteria"),
+    ("مائٹوکونڈریا", "mitochondria"),
+    ("کلوروفل", "chlorophyll"),
+    ("کلوروپلاسٹ", "chloroplast"),
+    ("ڈی این اے", "DNA"),
+    ("آر این اے", "RNA"),
+    ("اے ٹی پی", "ATP"),
+    ("تعدد", "frequency"),
+    ("انحطاط", "decay"),
+)
+
+_SCIENCE_LEAK_RE = re.compile(
+    "|".join(
+        re.escape(w)
+        for w in (
+            "توانائی",
+            "برقی مقناطیسی",
+            "تابکار",
+            "تابکاری",
+            "الفا",
+            "بیٹا",
+            "بیتا",
+            "گاما",
+            "ضیائی تالیف",
+            "اخراج",
+            "انبعاث",
+            "مائٹوکونڈریا",
+            "کلوروفل",
+            "طول موج",
+        )
+    )
+)
+
+_GREEK_TO_EN = str.maketrans({
+    "α": " alpha ",
+    "β": " beta ",
+    "γ": " gamma ",
+    "δ": " delta ",
+    "Δ": " delta ",
+    "μ": " micro ",
+    "λ": " lambda ",
+    "ω": " omega ",
+    "π": " pi ",
+    "σ": " sigma ",
+    "θ": " theta ",
+    "φ": " phi ",
+    "ν": " nu ",
+    "Σ": " sigma ",
+    "Ω": " ohm ",
+})
+
+_SYMBOL_STRIP = re.compile(
+    r"[\$\\{}\^_|~`•·×÷√∑∫≈≠≤≥±∞°′″†‡※←→↔↑↓⟶⟹]+"
+)
+
+
+def strip_speech_symbols(text: str) -> str:
+    """Greek letters become English names; other symbols are dropped so TTS stays clean."""
+    cleaned = (text or "").translate(_GREEK_TO_EN)
+    cleaned = re.sub(r"\$[^$]*\$", " ", cleaned)
+    cleaned = _SYMBOL_STRIP.sub(" ", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def restore_english_science_terms(text: str) -> str:
+    """If the model slipped Urdu translations, put the English syllabus words back."""
+    out = text or ""
+    for urdu, english in _SCIENCE_URDU_TO_EN:
+        if urdu in out:
+            out = out.replace(urdu, f" {english} ")
+    return re.sub(r"\s+", " ", out).strip()
 
 
 def sanitize_speech_narration(text: str) -> str:
@@ -712,6 +841,8 @@ def sanitize_speech_narration(text: str) -> str:
         "",
         cleaned,
     )
+    cleaned = restore_english_science_terms(cleaned)
+    cleaned = strip_speech_symbols(cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned
 

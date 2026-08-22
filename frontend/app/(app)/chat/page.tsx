@@ -22,7 +22,6 @@ import {
   PhoneOff,
   Send,
   Trash2,
-  Volume2,
   X,
 } from "lucide-react";
 import {
@@ -31,12 +30,7 @@ import {
   type RagSource,
   type TextbookChatSummary,
 } from "@/lib/api";
-import { useVoiceCall } from "@/lib/useVoiceCall";
-
-function playAudioUrl(url: string) {
-  const audio = new Audio(url);
-  audio.play().catch(() => {});
-}
+import SpeechControls from "@/components/SpeechControls";
 
 interface Message {
   id: string;
@@ -956,14 +950,7 @@ function MessageBubble({
                 )}
               </p>
               {!message.streaming && message.speechUrl && (
-                <button
-                  type="button"
-                  onClick={() => playAudioUrl(message.speechUrl!)}
-                  className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 text-xs font-medium text-brand transition hover:bg-brand-100"
-                >
-                  <Volume2 className="h-3.5 w-3.5" />
-                  Play audio
-                </button>
+                <SpeechControls url={message.speechUrl} />
               )}
             </div>
           ) : message.streaming ? (
