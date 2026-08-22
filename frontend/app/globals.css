@@ -195,17 +195,15 @@ body {
   transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
 }
 
-.landing-feature-row {
-  transition: background-color 0.25s ease;
+.landing-feature-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.landing-feature-row:hover {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(219, 234, 254, 0.45),
-    transparent
-  );
+.landing-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px -20px rgba(27, 59, 111, 0.45);
 }
 
 .landing-ui-stack > * {
@@ -286,7 +284,8 @@ body {
     transform: none;
   }
   .landing-cta:hover,
-  .landing-cta-invert:hover {
+  .landing-cta-invert:hover,
+  .landing-feature-card:hover {
     transform: none;
   }
 }

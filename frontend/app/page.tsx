@@ -3,7 +3,14 @@
 import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Mic,
+  ListChecks,
+  Timer,
+  SlidersHorizontal,
+  type LucideIcon,
+} from "lucide-react";
 import { getStudentId } from "@/lib/student";
 import { syncStudentCacheFromSession } from "@/lib/auth";
 import BrandMark from "@/components/BrandMark";
@@ -51,7 +58,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Hero */}
+      {/* 1 — Practice loop */}
       <section className="landing-hero relative overflow-hidden">
         <div className="landing-hero-glow" aria-hidden />
         <div className="landing-hero-grid" aria-hidden />
@@ -69,20 +76,22 @@ export default function LandingPage() {
           />
         </svg>
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-16 pt-20 sm:px-8 lg:flex-row lg:items-center lg:gap-4 lg:pb-12 lg:pt-16">
-          <div className="landing-reveal relative z-10 max-w-xl flex-1">
-            <p className="font-urdu text-xl leading-loose text-brand/70 sm:text-2xl">
-              اڑان
+        <div className="relative mx-auto grid min-h-[100svh] max-w-6xl items-center gap-12 px-5 pb-16 pt-24 sm:px-8 lg:grid-cols-2 lg:gap-20 lg:pb-12 lg:pt-20">
+          <div className="landing-reveal relative z-10">
+            <p className="text-xs font-semibold tracking-[0.22em] text-slate-400">
+              INSIDE
             </p>
-            <p className="font-display mt-2 text-[clamp(4rem,12vw,7.5rem)] font-bold leading-[0.82] tracking-tight text-brand">
-              uraan
-            </p>
-            <h1 className="mt-7 text-[1.55rem] font-medium leading-snug tracking-tight text-slate-800 sm:text-[1.85rem]">
-              Practice that finds what you miss.
+            <h1 className="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              Practice.
+              <br />
+              See why.
+              <br />
+              Ask again.
             </h1>
-            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-slate-500">
-              Chapter MCQs, full-length papers, and a tutor you can ask in Urdu
-              — so tonight&apos;s revision isn&apos;t a guess.
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-500">
+              Instant feedback on chapter practice. Explanations in the mix of
+              English and Roman Urdu students actually revise with. Ask AI when
+              an option still doesn&apos;t click.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link href="/signup" className="landing-cta">
@@ -97,89 +106,15 @@ export default function LandingPage() {
               </Link>
             </div>
           </div>
-
-          <div className="landing-reveal-delay relative z-10 mt-12 flex flex-1 justify-center lg:mt-0 lg:justify-end">
-            <div className="landing-phone-orb" aria-hidden />
-            <div className="landing-phone-float relative">
-              <Phone>
-                <ScreenAskUrdu />
-              </Phone>
-            </div>
+          <div className="landing-reveal-delay landing-ui-stack relative z-10 space-y-3">
+            <UiMcq />
+            <UiExplain />
+            <UiVoice />
           </div>
         </div>
       </section>
 
-      {/* Features — clear, editorial list */}
-      <section className="border-t border-slate-200/70 bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-          <p className="text-xs font-semibold tracking-[0.22em] text-slate-400">
-            WHAT YOU GET
-          </p>
-          <h2 className="font-display mt-3 max-w-xl text-3xl font-bold tracking-tight text-slate-900 sm:text-[2.5rem] sm:leading-tight">
-            Everything you need between now and the paper.
-          </h2>
-
-          <ol className="mt-14">
-            <FeatureRow
-              n="01"
-              title="Ask in Urdu"
-              text="Type or tap the mic. Ask like you would a senior — mitochondria, cycles, genetics. Plain Roman Urdu answers, with textbook page cites when the book covers it."
-            />
-            <FeatureRow
-              n="02"
-              title="100 MCQs per chapter"
-              text="Each set mixes KIPS, STEP, FLPs, past papers, and most-repeated banks. Not one academy PDF on loop — closer to how the real paper feels."
-            />
-            <FeatureRow
-              n="03"
-              title="81-question Biology FLP"
-              text="Our own full-length mix from the whole bank. Timed (~70 min) for pressure, or practice mode. Then review every question: answer, explain, Ask AI."
-            />
-            <FeatureRow
-              n="04"
-              title="Build a custom paper"
-              text="Pick Part 1 and Part 2 chapters, set how many from each. Example: Cell Structure 30 + Homeostasis 30 + Genetics 30."
-            />
-            <FeatureRow
-              n="05"
-              title="Weak spots → tomorrow's plan"
-              text="Wrong answers update your map. The daily plan pushes chapters you keep missing — so you stop wasting hours on what you already know."
-            />
-          </ol>
-        </div>
-      </section>
-
-      {/* Product peeks */}
-      <section className="landing-peek border-t border-slate-200/70">
-        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.22em] text-slate-400">
-                INSIDE
-              </p>
-              <h2 className="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Practice.
-                <br />
-                See why.
-                <br />
-                Ask again.
-              </h2>
-              <p className="mt-5 max-w-md text-[15px] leading-relaxed text-slate-500">
-                Instant feedback on chapter practice. Explanations in the mix of
-                English and Roman Urdu students actually revise with. Ask AI when
-                an option still doesn&apos;t click.
-              </p>
-            </div>
-            <div className="landing-ui-stack space-y-3">
-              <UiMcq />
-              <UiExplain />
-              <UiVoice />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FLP */}
+      {/* 2 — FLP */}
       <section className="border-t border-slate-200/70 bg-white">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div className="order-2 flex justify-center lg:order-1 lg:justify-start">
@@ -214,6 +149,48 @@ export default function LandingPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* 3 — Ask in Urdu */}
+      <section className="landing-peek border-t border-slate-200/70">
+        <div className="relative mx-auto flex max-w-6xl flex-col px-5 py-20 sm:px-8 lg:flex-row lg:items-center lg:gap-4 lg:py-28">
+          <div className="relative z-10 max-w-xl flex-1">
+            <h2 className="font-display text-[clamp(2.4rem,5.4vw,4.15rem)] font-bold leading-[0.95] tracking-tight text-brand">
+              practice mcqs and get explanation in urdu
+            </h2>
+            <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-slate-500">
+              Chapter MCQs, full-length papers, and a tutor you can ask in Urdu
+              — so tonight&apos;s revision isn&apos;t a guess.
+            </p>
+          </div>
+          <div className="relative z-10 mt-12 flex flex-1 justify-center lg:mt-0 lg:justify-end">
+            <div className="landing-phone-orb" aria-hidden />
+            <div className="landing-phone-float relative">
+              <Phone>
+                <ScreenAskUrdu />
+              </Phone>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — Features */}
+      <section className="border-t border-slate-200/70 bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 lg:py-28">
+          <p className="text-xs font-semibold tracking-[0.22em] text-slate-400">
+            WHAT YOU GET
+          </p>
+          <h2 className="font-display mt-3 max-w-xl text-3xl font-bold tracking-tight text-slate-900 sm:text-[2.5rem] sm:leading-tight">
+            Everything you need between now and the paper.
+          </h2>
+
+          <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+            <FeatureCard icon={Mic} title="Ask in Urdu" />
+            <FeatureCard icon={ListChecks} title="100 MCQs per chapter" />
+            <FeatureCard icon={Timer} title="81-question Biology FLP" />
+            <FeatureCard icon={SlidersHorizontal} title="Build a custom paper" />
+          </ul>
         </div>
       </section>
 
@@ -313,26 +290,15 @@ export default function LandingPage() {
   );
 }
 
-function FeatureRow({
-  n,
-  title,
-  text,
-}: {
-  n: string;
-  title: string;
-  text: string;
-}) {
+function FeatureCard({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
   return (
-    <li className="landing-feature-row grid gap-3 border-t border-slate-100 py-8 first:border-t-0 sm:grid-cols-[4.5rem_minmax(0,13rem)_1fr] sm:gap-8 sm:py-9">
-      <span className="font-display text-2xl font-bold tabular-nums text-brand/20">
-        {n}
+    <li className="landing-feature-card flex aspect-square flex-col gap-4 rounded-3xl bg-gradient-to-br from-white to-sky-50/80 p-5 ring-1 ring-slate-200/80 sm:gap-5 sm:p-7">
+      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-white shadow-sm shadow-brand/20 sm:h-14 sm:w-14">
+        <Icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
       </span>
-      <h3 className="text-lg font-semibold tracking-tight text-slate-900">
+      <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-slate-900 sm:text-2xl">
         {title}
       </h3>
-      <p className="text-[15px] leading-relaxed text-slate-500 sm:max-w-xl">
-        {text}
-      </p>
     </li>
   );
 }
