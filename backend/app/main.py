@@ -1449,18 +1449,38 @@ async def questions_full_length(
     if mode not in ("practice", "timed"):
         raise HTTPException(status_code=400, detail="mode must be practice or timed")
     sid = assert_same_student(user, student_id)
-    qs = await asyncio.get_event_loop().run_in_executor(
-        None, lambda: study.build_platform_flp(student_id=sid)
-    )
     session_mode = (
         "full_length_timed" if mode == "timed" else "full_length_practice"
     )
+
+    if 0 < preview:
+        # Fast path: single DB call, returns in <1s so the UI opens instantly.
+        # The frontend follows up with preview=0 in the background for the
+        # full stratified set.
+        exclude = None
+        if sid:
+            exclude = await asyncio.get_event_loop().run_in_executor(
+                None, lambda: db.get_attempted_question_ids(sid)
+            )
+        qs = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: db.sample_questions(count=preview, exclude_ids=exclude)
+        )
+        return public_question_set(
+            {
+                "mode": session_mode,
+                "questions": qs,
+                "timed_seconds": study.FULL_LENGTH_TIMED_SEC if mode == "timed" else None,
+            }
+        )
+
+    qs = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: study.build_platform_flp(student_id=sid)
+    )
     all_ids = [q["id"] for q in qs if q.get("id")]
-    preview_qs = qs[:preview] if 0 < preview < len(qs) else qs
     return public_question_set(
         {
             "mode": session_mode,
-            "questions": preview_qs,
+            "questions": qs,
             "question_ids": all_ids,
             "timed_seconds": study.FULL_LENGTH_TIMED_SEC if mode == "timed" else None,
             "note": "Platform FLP — mixed from academy tests, FLPs, past papers & most-repeated",

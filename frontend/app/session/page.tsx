@@ -220,6 +220,36 @@ function SessionInner() {
     }
   }
 
+  async function loadFullFlp(
+    flpModeVal: "practice" | "timed",
+    sid: string,
+    preview: QuestionSet
+  ) {
+    try {
+      const full = await api.getFullLength(flpModeVal, sid, 0);
+      if (fillCancelRef.current || !full.questions.length) return;
+      const previewIds = new Set(preview.questions.map((q) => q.id));
+      const merged = [
+        ...preview.questions,
+        ...full.questions.filter((q) => !previewIds.has(q.id)),
+      ];
+      const allIds =
+        full.question_ids || merged.map((q) => q.id);
+      setSet((prev) => {
+        if (!prev) return prev;
+        const next: QuestionSet = {
+          ...prev,
+          questions: merged,
+          question_ids: allIds,
+        };
+        setRef.current = next;
+        return next;
+      });
+    } catch {
+      /* session continues with the preview questions */
+    }
+  }
+
   function restoreReview(qs: QuestionSet, states: Record<number, QState>) {
     const items: ReviewItem[] = [];
     const n = batchTotal(qs);
@@ -436,6 +466,14 @@ function SessionInner() {
 
       if (allIds.length > qs.questions.length) {
         void fillRemaining(allIds, qs.questions, chapter, studentIdForBoot, resumeAt);
+      }
+
+      // FLP two-phase: the preview=5 request returned fast with a handful of
+      // questions. Now fetch the full stratified set in the background and
+      // merge it in so the student never waits.
+      const isFlp = qs.mode === "full_length_practice" || qs.mode === "full_length_timed";
+      if (isFlp && !qs.question_ids) {
+        void loadFullFlp(flpMode, studentIdForBoot, qs);
       }
 
       const session = await (sessionP ??
@@ -1268,14 +1306,17 @@ function SessionInner() {
           </div>
           {timerLabel && (
             <div
-              className={`mt-4 flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-lg font-bold tabular-nums ${
+              className={`mt-5 flex flex-col items-center justify-center rounded-2xl p-5 shadow-sm ${
                 secondsLeft !== null && secondsLeft < 300
-                  ? "bg-red-50 text-red-600"
-                  : "bg-slate-100 text-slate-700"
+                  ? "bg-red-50 text-red-600 ring-1 ring-red-200"
+                  : "bg-brand-700 text-white"
               }`}
             >
-              <Clock className="h-5 w-5" />
-              {timerLabel}
+              <Clock className={`h-6 w-6 ${secondsLeft !== null && secondsLeft < 300 ? "text-red-400" : "text-sky-200"}`} />
+              <p className="mt-2 text-3xl font-bold tabular-nums">{timerLabel}</p>
+              <p className={`mt-1 text-[11px] font-semibold tracking-wider ${secondsLeft !== null && secondsLeft < 300 ? "text-red-400" : "text-sky-200/80"}`}>
+                TIME REMAINING
+              </p>
             </div>
           )}
         </aside>
