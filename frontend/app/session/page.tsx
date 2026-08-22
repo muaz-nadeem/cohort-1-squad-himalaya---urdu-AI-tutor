@@ -1094,7 +1094,7 @@ function SessionInner() {
           )}
         </div>
 
-        <aside className="w-[10.75rem] shrink-0 sticky top-20 self-start sm:w-[13.5rem] lg:max-h-[calc(100vh-6.5rem)]">
+        <aside className="w-[15rem] shrink-0 sticky top-20 self-start sm:w-[17.5rem] lg:max-h-[calc(100vh-6.5rem)]">
           <p className="text-[10px] font-bold tracking-wider text-slate-400">
             QUESTIONS
           </p>
@@ -1146,7 +1146,7 @@ function SessionInner() {
                     type="button"
                     title={`Question ${i + 1}`}
                     onClick={() => goToQuestion(i)}
-                    className={`relative flex aspect-square w-full items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
+                    className={`relative flex h-7 w-full items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
                   >
                     {i + 1}
                     {st.flagged && i !== index && (
