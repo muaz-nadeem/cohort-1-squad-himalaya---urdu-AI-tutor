@@ -109,7 +109,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
               onMouseEnter={() => warmRoute(href)}
               onFocus={() => warmRoute(href)}
               onTouchStart={() => warmRoute(href)}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+              className={`flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
                 active
                   ? "bg-brand-50 text-brand"
                   : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
@@ -158,7 +158,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
   );
 
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="min-h-dvh overflow-x-hidden bg-surface">
       {/* Desktop sidebar */}
       <div className="fixed inset-y-0 left-0 z-40 hidden lg:block">{sidebar}</div>
 
@@ -167,7 +167,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="rounded-lg p-2 text-slate-600 hover:bg-slate-50"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-50"
           aria-label="Open menu"
         >
           <Menu className="h-5 w-5" />
@@ -195,7 +195,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="absolute right-3 top-4 z-10 rounded-lg p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+                className="absolute right-3 top-4 z-10 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
@@ -206,7 +206,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
         </div>
       )}
 
-      <div className="lg:pl-[240px]">
+      <div className="lg:pl-[240px] min-w-0 overflow-x-hidden">
         {children}
       </div>
     </div>

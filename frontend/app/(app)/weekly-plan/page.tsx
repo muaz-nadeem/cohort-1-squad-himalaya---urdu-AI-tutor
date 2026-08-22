@@ -45,11 +45,11 @@ export default function WeeklyPlanPage() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <div className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[1.5fr_0.9fr]">
             <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+              <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-4xl">
                 Weekly Study Plan
               </h1>
               <p className="mt-2 max-w-2xl text-sm text-slate-500 sm:text-base">
@@ -134,7 +134,7 @@ export default function WeeklyPlanPage() {
                                 <p className="text-xs font-bold uppercase tracking-wider text-brand">
                                   {item.day}
                                 </p>
-                                <p className="mt-1 font-semibold text-slate-900">
+                                <p className="mt-1 min-w-0 break-words font-semibold text-slate-900">
                                   {item.concept}
                                   {item.chapter ? ` · ${item.chapter}` : ""}
                                 </p>

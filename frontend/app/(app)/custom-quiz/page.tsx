@@ -67,14 +67,14 @@ export default function CustomQuizPage() {
 
   return (
     <>
-      <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <main className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="mb-8 flex items-start gap-3">
             <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand">
               <Settings2 className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+              <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-4xl">
                 Build Your Custom Quiz
               </h1>
               <p className="mt-2 max-w-2xl text-sm text-slate-500 sm:text-base">
@@ -102,7 +102,7 @@ export default function CustomQuizPage() {
                         Academic Year
                         <div className="relative mt-1.5">
                           <select
-                            className={`w-full appearance-none rounded-xl border bg-white py-2.5 pl-3 pr-9 text-sm outline-none focus:border-brand ${
+                            className={`w-full appearance-none rounded-xl border bg-white py-2.5 pl-3 pr-9 text-base outline-none focus:border-brand sm:text-sm ${
                               yearError ? "border-red-400" : "border-slate-200"
                             }`}
                             value={row.book}
@@ -130,7 +130,7 @@ export default function CustomQuizPage() {
                         Chapter
                         <div className="relative mt-1.5">
                           <select
-                            className="w-full appearance-none rounded-xl border border-slate-200 bg-white py-2.5 pl-3 pr-9 text-sm outline-none focus:border-brand"
+                            className="w-full appearance-none rounded-xl border border-slate-200 bg-white py-2.5 pl-3 pr-9 text-base outline-none focus:border-brand sm:text-sm"
                             value={row.chapter}
                             onChange={(e) =>
                               updateRow(i, { chapter: e.target.value })
@@ -156,7 +156,7 @@ export default function CustomQuizPage() {
                           type="number"
                           min={1}
                           max={100}
-                          className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand"
+                          className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-base outline-none focus:border-brand sm:text-sm"
                           value={row.count}
                           onChange={(e) =>
                             updateRow(i, {
@@ -169,7 +169,7 @@ export default function CustomQuizPage() {
                       <button
                         type="button"
                         onClick={() => removeRow(i)}
-                        className="mb-0.5 rounded-xl p-2.5 text-slate-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
+                        className="mb-0.5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl p-2.5 text-slate-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
                         disabled={rows.length <= 1}
                         aria-label="Remove row"
                       >

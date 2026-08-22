@@ -32,7 +32,7 @@ export default function LandingPage() {
   }, [router]);
 
   return (
-    <div className="landing min-h-screen text-slate-900">
+    <div className="landing min-h-dvh overflow-x-hidden text-slate-900">
       <header className="absolute inset-x-0 top-0 z-30">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link href="/" className="inline-flex items-center gap-2">
@@ -41,16 +41,16 @@ export default function LandingPage() {
               uraan
             </span>
           </Link>
-          <div className="flex items-center gap-5 text-sm">
+          <div className="flex items-center gap-3 text-sm sm:gap-5">
             <Link
               href="/login"
-              className="font-medium text-slate-600 transition hover:text-brand"
+              className="inline-flex min-h-11 items-center font-medium text-slate-600 transition hover:text-brand"
             >
               Log in
             </Link>
             <Link
               href="/signup"
-              className="bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
+              className="inline-flex min-h-11 items-center bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
             >
               Sign up
             </Link>
@@ -128,7 +128,7 @@ export default function LandingPage() {
             <p className="text-xs font-semibold tracking-[0.22em] text-slate-400">
               FULL-LENGTH
             </p>
-            <h2 className="font-display mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="font-display mt-3 text-2xl font-bold tracking-tight sm:text-4xl">
               Sit a Biology paper before the real one.
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-slate-500">
@@ -196,7 +196,7 @@ export default function LandingPage() {
 
       {/* Close CTA */}
       <section className="bg-brand-700 px-5 py-20 text-center sm:px-8 sm:py-24">
-        <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+        <h2 className="mx-auto max-w-3xl text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
           Ready to secure your white coat?
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base text-slate-300 sm:text-lg">
@@ -296,7 +296,7 @@ function FeatureRow({ icon: Icon, title }: { icon: LucideIcon; title: string }) 
       <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand text-white shadow-sm shadow-brand/20 sm:h-14 sm:w-14">
         <Icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
       </span>
-      <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+      <h3 className="min-w-0 text-xl font-semibold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
         {title}
       </h3>
     </li>

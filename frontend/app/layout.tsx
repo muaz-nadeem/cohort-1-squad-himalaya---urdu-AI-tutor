@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces, Noto_Nastaliq_Urdu } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
@@ -34,6 +34,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-visual",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -44,7 +52,7 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${fraunces.variable} ${notoUrdu.variable}`}
     >
-      <body className="min-h-screen font-sans antialiased">
+      <body className="min-h-dvh overflow-x-hidden font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

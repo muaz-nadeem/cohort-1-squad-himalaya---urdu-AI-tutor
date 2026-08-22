@@ -13,7 +13,7 @@ export default function OnboardingRedirect() {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-dvh items-center justify-center">
       <p className="text-sm text-slate-400">Redirecting...</p>
     </div>
   );

@@ -124,9 +124,9 @@ export default function SummaryPage() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <div className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-          <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+          <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-4xl">
             Session Summary
           </h1>
           <p className="mt-2 text-sm text-slate-500 sm:text-base">
@@ -286,12 +286,12 @@ export default function SummaryPage() {
                               return (
                                 <div
                                   key={opt.key}
-                                  className={`flex items-center gap-3 rounded-xl border px-4 py-3 ${cls}`}
+                                  className={`flex items-start gap-3 rounded-xl border px-4 py-3 sm:items-center ${cls}`}
                                 >
                                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-bold">
                                     {opt.key}
                                   </span>
-                                  <span className="flex-1 text-sm">{opt.text}</span>
+                                  <span className="min-w-0 flex-1 break-words text-sm">{opt.text}</span>
                                   {tag && (
                                     <span className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold ${
                                       isWrongPick ? "bg-red-100 text-red-600" : "bg-emerald-100 text-emerald-700"

@@ -72,7 +72,7 @@ export default function PracticePage() {
 
   return (
     <>
-      <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <main className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div>
               <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-3xl">
@@ -81,8 +81,8 @@ export default function PracticePage() {
             <p className="mt-2 text-sm text-slate-500 sm:text-base">
               Master individual topics with focused MCQ sets.
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="inline-flex shrink-0 rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200">
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+              <div className="inline-flex w-full rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200 sm:w-auto sm:shrink-0">
                 {(
                   [
                     ["all", "All"],
@@ -94,7 +94,7 @@ export default function PracticePage() {
                     key={id}
                     type="button"
                     onClick={() => setBookFilter(id)}
-                    className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    className={`min-h-11 flex-1 rounded-full px-3 py-2 text-sm font-medium transition sm:flex-none sm:px-4 ${
                       bookFilter === id
                         ? "bg-brand text-white"
                         : "text-slate-600 hover:text-slate-900"
@@ -104,14 +104,14 @@ export default function PracticePage() {
                   </button>
                 ))}
               </div>
-              <label className="relative ml-auto block w-44 sm:w-52">
+              <label className="relative block w-full sm:ml-auto sm:w-52">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search..."
-                  className="!py-2 !pl-9 !pr-3"
+                  placeholder="Search chapters..."
+                  className="!py-2.5 !pl-9 !pr-3"
                   aria-label="Search chapters"
                 />
               </label>
@@ -261,7 +261,7 @@ function ChapterCard({
           <p className="text-xs font-medium text-slate-400">
             Chapter {String(unit).padStart(2, "0")}
           </p>
-          <h3 className="mt-1 font-semibold leading-snug text-slate-900">
+          <h3 className="mt-1 min-w-0 break-words font-semibold leading-snug text-slate-900">
             {name}
           </h3>
           <p className="mt-2 text-xs text-slate-500">{countLabel}</p>

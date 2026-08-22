@@ -33,14 +33,14 @@ export default function ExamPage() {
 
   return (
     <>
-      <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <main className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-brand">
             <ShieldCheck className="h-3.5 w-3.5" />
             MDCAT MOCK EXAM
           </div>
 
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+          <h1 className="mt-4 font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-4xl">
             Initialize Exam
           </h1>
           <p className="mt-2 max-w-2xl text-sm text-slate-500 sm:text-base">
@@ -201,7 +201,7 @@ export default function ExamPage() {
             </p>
             <Link
               href={startHref()}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark sm:w-auto"
             >
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15">
                 <Play className="h-3.5 w-3.5 fill-current" />

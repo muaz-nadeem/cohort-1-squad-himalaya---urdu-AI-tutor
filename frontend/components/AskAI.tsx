@@ -161,9 +161,10 @@ export default function AskAI({
             setLoading(false);
             onClose?.();
           }}
-          className="rounded-lg p-1 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+          className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+          aria-label="Close Ask AI"
         >
-          <X className="h-4 w-4" />
+          <X className="h-5 w-5" />
         </button>
       </div>
 
@@ -251,12 +252,12 @@ export default function AskAI({
               onKeyDown={(e) => e.key === "Enter" && !loading && askText()}
               placeholder={`Ask ${doctor.displayName}...`}
               disabled={loading}
-              className="!py-2.5 !text-sm"
+              className="!py-2.5 min-w-0"
             />
             <button
               onClick={askText}
               disabled={loading || !text.trim()}
-              className="rounded-xl bg-brand px-4 text-white transition hover:bg-brand-dark disabled:opacity-50"
+              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-brand px-4 text-white transition hover:bg-brand-dark disabled:opacity-50"
             >
               {loading ? (
                 <Loader2 className="h-4 w-4 animate-spin" />

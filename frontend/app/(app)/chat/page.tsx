@@ -31,6 +31,7 @@ import {
   type TextbookChatSummary,
 } from "@/lib/api";
 import SpeechControls from "@/components/SpeechControls";
+import { useVoiceCall } from "@/lib/useVoiceCall";
 
 interface Message {
   id: string;
@@ -503,7 +504,7 @@ export default function ChatPage() {
 
   return (
     <>
-      <div className="mx-auto flex h-[calc(100vh-3.5rem)] max-w-6xl bg-[#F4F7FB] lg:h-screen">
+      <div className="mx-auto flex h-[calc(100dvh-3.5rem)] min-h-0 max-w-6xl bg-[#F4F7FB] lg:h-dvh">
         {/* Desktop sidebar */}
         <aside className="hidden w-64 shrink-0 flex-col border-r border-slate-200/80 bg-white md:flex">
           <div className="border-b border-slate-100 p-3">
@@ -541,9 +542,9 @@ export default function ChatPage() {
                 <button
                   type="button"
                   onClick={() => setSidebarOpen(false)}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-50"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
               <div className="border-b border-slate-100 p-3">
@@ -568,41 +569,41 @@ export default function ChatPage() {
           </div>
         )}
 
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 bg-white px-4 py-3 sm:px-6">
-            <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+          <div className="flex flex-col gap-3 border-b border-slate-200/80 bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="flex min-w-0 items-center gap-1 sm:gap-3">
               <button
                 type="button"
                 onClick={() => setSidebarOpen(true)}
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-600 md:hidden"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600 md:hidden"
                 aria-label="Open chat history"
               >
                 <Menu className="h-5 w-5" />
               </button>
               <Link
                 href="/dashboard"
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-50 hover:text-slate-600"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <div className="min-w-0">
-                <h1 className="font-display text-lg font-bold text-brand-700">
+                <h1 className="font-display text-base font-bold text-brand-700 sm:text-lg">
                   Ask Textbook
                 </h1>
                 <p className="truncate text-xs text-slate-400">{activeTitle}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex min-w-0 items-center gap-2">
               <button
                 type="button"
                 onClick={startNewChat}
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50 md:hidden"
+                className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-600 hover:bg-slate-50 md:hidden"
               >
                 <MessageSquarePlus className="h-3.5 w-3.5" />
                 New
               </button>
-              <div className="inline-flex rounded-full bg-slate-100 p-1">
+              <div className="inline-flex min-w-0 flex-1 overflow-x-auto rounded-full bg-slate-100 p-1 sm:flex-none">
                 {(
                   [
                     [undefined, "Both"],
@@ -614,7 +615,7 @@ export default function ChatPage() {
                     key={label}
                     type="button"
                     onClick={() => setBookFilter(id)}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition ${
+                    className={`min-h-9 shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold transition sm:px-3.5 ${
                       bookFilter === id
                         ? "bg-brand text-white"
                         : "text-slate-500 hover:text-slate-800"
@@ -633,7 +634,7 @@ export default function ChatPage() {
             </div>
           )}
 
-          <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-6">
             {loadingChat ? (
               <div className="flex h-full items-center justify-center text-sm text-slate-400">
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -651,7 +652,7 @@ export default function ChatPage() {
             )}
           </div>
 
-          <div className="border-t border-slate-200/80 bg-white px-4 py-4 sm:px-6">
+          <div className="border-t border-slate-200/80 bg-white px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6">
             <div className="mx-auto max-w-3xl">
               <p className="mb-2 text-center text-[10px] font-bold tracking-wider text-slate-400">
                 SEARCHING: {searchLabel}
@@ -701,7 +702,7 @@ export default function ChatPage() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about MDCAT syllabus..."
                     disabled={loading}
-                    className="min-w-0 flex-1 !border-0 !bg-transparent !px-3 !py-2 !shadow-none !ring-0 focus:!ring-0"
+                    className="min-w-0 flex-1 !border-0 !bg-transparent !px-3 !py-2.5 !text-base !shadow-none !ring-0 focus:!ring-0 sm:!text-sm"
                   />
                   <button
                     type="button"
@@ -929,7 +930,7 @@ function MessageBubble({
   if (isUser) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[80%] rounded-2xl rounded-tr-md bg-brand px-4 py-3 text-sm text-white">
+        <div className="max-w-[min(85%,24rem)] break-words rounded-2xl rounded-tr-md bg-brand px-4 py-3 text-sm text-white">
           {message.content}
         </div>
       </div>
@@ -939,11 +940,11 @@ function MessageBubble({
   return (
     <div className="flex items-start gap-3">
       <DoctorAvatar doctor={doctor} size="sm" />
-      <div className="max-w-[85%] space-y-2">
+      <div className="min-w-0 max-w-[min(90%,28rem)] space-y-2">
         <div className="rounded-2xl rounded-tl-md bg-white px-4 py-3 shadow-sm ring-1 ring-slate-100">
           {message.content ? (
             <div>
-              <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+              <p className="whitespace-pre-line break-words text-sm leading-relaxed text-slate-700">
                 {message.content}
                 {message.streaming && (
                   <span className="ml-1 inline-block h-4 w-1 animate-pulse bg-brand" />

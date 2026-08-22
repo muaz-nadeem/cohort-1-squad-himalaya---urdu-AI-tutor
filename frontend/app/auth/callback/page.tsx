@@ -47,7 +47,7 @@ export default function AuthCallbackPage() {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F7F9FC]">
+    <div className="flex min-h-dvh items-center justify-center bg-[#F7F9FC]">
       <p className="text-sm text-slate-500">{status}</p>
     </div>
   );

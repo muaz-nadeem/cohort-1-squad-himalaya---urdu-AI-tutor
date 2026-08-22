@@ -33,6 +33,7 @@ import {
   Clock,
   Frown,
   Loader2,
+  Menu,
   Smile,
   Sparkles,
   MessageCircle,
@@ -124,6 +125,7 @@ function SessionInner() {
   const [askOpen, setAskOpen] = useState(false);
   const [insightOpen, setInsightOpen] = useState(true);
   const [exiting, setExiting] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
   const explainAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -648,7 +650,9 @@ function SessionInner() {
   }
 
   function goToQuestion(i: number) {
-    if (!set || i < 0 || i >= batchTotal(set) || i === index) return;
+    if (!set || i < 0 || i >= batchTotal(set)) return;
+    setNavOpen(false);
+    if (i === index) return;
     if (explainAudioRef.current) {
       explainAudioRef.current.pause();
       explainAudioRef.current = null;
@@ -872,7 +876,7 @@ function SessionInner() {
         : `${mm.toString().padStart(2, "0")}:${ss.toString().padStart(2, "0")}`;
 
   return (
-    <div className="min-h-screen bg-[#F4F7FB]">
+    <div className="min-h-dvh overflow-x-hidden bg-[#F4F7FB]">
       {showTimesUp && (
         <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-900/60 backdrop-blur-sm">
           <Clock className="h-14 w-14 text-red-400" />
@@ -927,7 +931,7 @@ function SessionInner() {
         </div>
       )}
       <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center gap-2 px-3 py-2 sm:grid sm:grid-cols-[1fr_auto_1fr] sm:gap-2 sm:px-6 sm:py-3">
           <button
             type="button"
             onClick={() => {
@@ -935,21 +939,25 @@ function SessionInner() {
               setConfirmExit(true);
             }}
             disabled={exiting}
-            className="inline-flex items-center justify-self-start gap-2 text-sm font-medium text-slate-500 hover:text-slate-800 disabled:opacity-60"
+            className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl text-sm font-medium text-slate-500 hover:bg-slate-50 hover:text-slate-800 disabled:opacity-60 sm:justify-self-start sm:px-2"
           >
             {exiting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
               <X className="h-4 w-4" />
             )}
-            {exiting ? "Ending…" : "Exit Session"}
+            <span className="hidden sm:inline">
+              {exiting ? "Ending…" : "Exit Session"}
+            </span>
           </button>
 
-          <p className="min-w-0 max-w-[min(100%,28rem)] truncate text-center text-xs font-semibold sm:text-sm">
+          <p className="min-w-0 flex-1 truncate text-center text-xs font-semibold sm:max-w-[min(100%,28rem)] sm:text-sm">
             <span className="tracking-wider text-slate-700">BIOLOGY</span>
             {question?.chapter ? (
               <>
-                <span className="mx-2 font-normal text-slate-300">·</span>
+                <span className="mx-1.5 font-normal text-slate-300 sm:mx-2">
+                  ·
+                </span>
                 <span className="font-medium text-slate-600">
                   {question.chapter}
                 </span>
@@ -957,7 +965,7 @@ function SessionInner() {
             ) : null}
           </p>
 
-          <div className="flex items-center justify-end justify-self-end gap-3">
+          <div className="hidden items-center justify-end justify-self-end gap-3 sm:flex">
             <span className="truncate text-right text-xs font-semibold text-brand-700 sm:text-sm">
               {modeLabel(set.mode)}
             </span>
@@ -965,8 +973,30 @@ function SessionInner() {
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-7xl gap-8 px-4 py-6 sm:gap-10 sm:px-6">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-4 sm:px-6 sm:py-6 lg:flex-row lg:gap-10">
         <div className="min-w-0 flex-1">
+          <div className="mb-4 flex items-center gap-2 lg:hidden">
+            {timerLabel && (
+              <div
+                className={`flex min-h-11 flex-1 items-center justify-center rounded-xl px-3 text-sm font-bold tabular-nums ${
+                  secondsLeft !== null && secondsLeft < 300
+                    ? "bg-red-50 text-red-600 ring-1 ring-red-200"
+                    : "bg-brand-700 text-white"
+                }`}
+              >
+                <Clock className="mr-2 h-4 w-4 shrink-0" />
+                {timerLabel}
+              </div>
+            )}
+            <button
+              type="button"
+              onClick={() => setNavOpen(true)}
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200"
+            >
+              <Menu className="h-4 w-4" />
+              Questions
+            </button>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm font-semibold text-slate-500">
               Q {index + 1} / {totalQ}
@@ -980,7 +1010,7 @@ function SessionInner() {
             <button
               type="button"
               onClick={toggleFlag}
-              className={`ml-auto inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
+              className={`ml-auto inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                 flagged
                   ? "bg-amber-100 text-amber-800"
                   : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
@@ -1031,12 +1061,12 @@ function SessionInner() {
                   key={opt.key}
                   disabled={!!selected}
                   onClick={() => selectOption(opt.key)}
-                  className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left shadow-sm transition-all ${cls}`}
+                  className={`flex w-full items-start gap-3 rounded-xl border px-4 py-3.5 text-left shadow-sm transition-all sm:items-center sm:gap-4 sm:px-5 sm:py-4 ${cls}`}
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold">
                     {opt.key}
                   </span>
-                  <span className="flex-1 text-sm sm:text-[15px]">
+                  <span className="min-w-0 flex-1 break-words text-sm sm:text-[15px]">
                     {opt.text}
                   </span>
                   {isRight && (
@@ -1054,12 +1084,12 @@ function SessionInner() {
             </p>
           )}
 
-          <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+          <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end sm:gap-3">
             <button
               type="button"
               onClick={() => goToQuestion(index - 1)}
               disabled={exiting || index <= 0}
-              className="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="min-h-11 w-full rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
             >
               ← Previous Question
             </button>
@@ -1068,7 +1098,7 @@ function SessionInner() {
                 type="button"
                 onClick={nextAfterAnswer}
                 disabled={exiting}
-                className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60"
+                className="min-h-11 w-full rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60 sm:w-auto"
               >
                 Next Question →
               </button>
@@ -1105,7 +1135,7 @@ function SessionInner() {
                     )}
                   </div>
                   <p
-                    className={`flex-1 text-sm leading-relaxed ${
+                    className={`min-w-0 flex-1 text-sm leading-relaxed ${
                       !graded
                         ? "text-slate-500"
                         : isCorrect
@@ -1132,7 +1162,7 @@ function SessionInner() {
                     <button
                       type="button"
                       onClick={() => setAskOpen((v) => !v)}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25"
+                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/25"
                     >
                       <MessageCircle className="h-3.5 w-3.5" />
                       {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
@@ -1262,112 +1292,225 @@ function SessionInner() {
           )}
         </div>
 
-        <aside className="w-[19rem] shrink-0 sticky top-20 self-start sm:w-[22rem] lg:w-[26rem] xl:w-[28rem]">
-          <p className="text-[10px] font-bold tracking-wider text-slate-400">
-            QUESTIONS
-          </p>
-          <div className="mt-2 flex flex-wrap gap-1">
-            {(
-              [
-                ["all", "All"],
-                ["flagged", `Review (${flaggedCount})`],
-                ["wrong", `Wrong (${wrongCount})`],
-              ] as const
-            ).map(([id, label]) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => {
-                  setNavFilter(id);
-                  if (id === "flagged" && flaggedCount > 0) {
-                    const first = Array.from({ length: totalQ }, (_, i) => i).find(
-                      (i) => (qStates[i] ?? EMPTY_Q).flagged
-                    );
-                    if (first !== undefined) goToQuestion(first);
-                  }
-                  if (id === "wrong" && wrongCount > 0) {
-                    const first = Array.from({ length: totalQ }, (_, i) => i).find(
-                      (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
-                    );
-                    if (first !== undefined) goToQuestion(first);
-                  }
-                }}
-                className={`rounded-full px-2 py-0.5 text-[10px] font-semibold transition ${
-                  navFilter === id
-                    ? "bg-brand text-white"
-                    : "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <div className="mt-3 rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
-            <div className="grid grid-cols-8 gap-1 lg:grid-cols-10">
-              {Array.from({ length: totalQ }, (_, i) => {
-                const st = qStates[i] ?? EMPTY_Q;
-                if (navFilter === "flagged" && !st.flagged) return null;
-                if (navFilter === "wrong" && st.isCorrect !== false) return null;
-                return (
-                  <button
-                    key={i}
-                    type="button"
-                    title={`Question ${i + 1}`}
-                    onClick={() => goToQuestion(i)}
-                    className={`relative flex h-7 w-full items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
-                  >
-                    {i + 1}
-                    {st.flagged && i !== index && (
-                      <span className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-amber-500" />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
-            </span>
-          </div>
-          {timerLabel && (
-            <div
-              className={`mt-5 flex flex-col items-center justify-center rounded-2xl p-5 shadow-sm ${
-                secondsLeft !== null && secondsLeft < 300
-                  ? "bg-red-50 text-red-600 ring-1 ring-red-200"
-                  : "bg-brand-700 text-white"
-              }`}
-            >
-              <Clock className={`h-6 w-6 ${secondsLeft !== null && secondsLeft < 300 ? "text-red-400" : "text-sky-200"}`} />
-              <p className="mt-2 text-3xl font-bold tabular-nums">{timerLabel}</p>
-              <p className={`mt-1 text-[11px] font-semibold tracking-wider ${secondsLeft !== null && secondsLeft < 300 ? "text-red-400" : "text-sky-200/80"}`}>
-                TIME REMAINING
-              </p>
-            </div>
-          )}
-          {answered > 0 && (
-            <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
-              <p className="text-[10px] font-bold tracking-wider text-slate-400">SCORE</p>
-              <p className="mt-1 text-2xl font-bold tabular-nums text-slate-800">
-                {score}<span className="text-base font-semibold text-slate-400">/{answered}</span>
-                <span className="ml-2 text-sm font-semibold text-brand">{scorePct}%</span>
-              </p>
-            </div>
-          )}
+        <aside className="hidden w-[22rem] shrink-0 sticky top-16 self-start lg:block xl:w-[26rem]">
+          <QuestionNav
+            totalQ={totalQ}
+            flaggedCount={flaggedCount}
+            wrongCount={wrongCount}
+            navFilter={navFilter}
+            setNavFilter={setNavFilter}
+            qStates={qStates}
+            goToQuestion={goToQuestion}
+            boxClass={boxClass}
+            index={index}
+            timerLabel={timerLabel}
+            secondsLeft={secondsLeft}
+            answered={answered}
+            score={score}
+            scorePct={scorePct}
+          />
         </aside>
       </div>
 
+      {navOpen && (
+        <div className="fixed inset-0 z-40 lg:hidden">
+          <button
+            type="button"
+            className="absolute inset-0 bg-slate-900/40"
+            aria-label="Close questions"
+            onClick={() => setNavOpen(false)}
+          />
+          <aside className="absolute inset-x-0 bottom-0 max-h-[85dvh] overflow-y-auto rounded-t-2xl bg-[#F4F7FB] px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3 shadow-2xl">
+            <div className="mx-auto mb-3 h-1 w-10 rounded-full bg-slate-300" />
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-sm font-semibold text-slate-700">Questions</p>
+              <button
+                type="button"
+                onClick={() => setNavOpen(false)}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-slate-400 hover:bg-white hover:text-slate-600"
+                aria-label="Close"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <QuestionNav
+              totalQ={totalQ}
+              flaggedCount={flaggedCount}
+              wrongCount={wrongCount}
+              navFilter={navFilter}
+              setNavFilter={setNavFilter}
+              qStates={qStates}
+              goToQuestion={goToQuestion}
+              boxClass={boxClass}
+              index={index}
+              timerLabel={timerLabel}
+              secondsLeft={secondsLeft}
+              answered={answered}
+              score={score}
+              scorePct={scorePct}
+            />
+          </aside>
+        </div>
+      )}
+
       
     </div>
+  );
+}
+
+function QuestionNav({
+  totalQ,
+  flaggedCount,
+  wrongCount,
+  navFilter,
+  setNavFilter,
+  qStates,
+  goToQuestion,
+  boxClass,
+  index,
+  timerLabel,
+  secondsLeft,
+  answered,
+  score,
+  scorePct,
+}: {
+  totalQ: number;
+  flaggedCount: number;
+  wrongCount: number;
+  navFilter: "all" | "flagged" | "wrong";
+  setNavFilter: (id: "all" | "flagged" | "wrong") => void;
+  qStates: Record<number, QState>;
+  goToQuestion: (i: number) => void;
+  boxClass: (i: number) => string;
+  index: number;
+  timerLabel: string | null;
+  secondsLeft: number | null;
+  answered: number;
+  score: number;
+  scorePct: number;
+}) {
+  return (
+    <>
+      <p className="text-[10px] font-bold tracking-wider text-slate-400">
+        QUESTIONS
+      </p>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {(
+          [
+            ["all", "All"],
+            ["flagged", `Review (${flaggedCount})`],
+            ["wrong", `Wrong (${wrongCount})`],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => {
+              setNavFilter(id);
+              if (id === "flagged" && flaggedCount > 0) {
+                const first = Array.from({ length: totalQ }, (_, i) => i).find(
+                  (i) => (qStates[i] ?? EMPTY_Q).flagged
+                );
+                if (first !== undefined) goToQuestion(first);
+              }
+              if (id === "wrong" && wrongCount > 0) {
+                const first = Array.from({ length: totalQ }, (_, i) => i).find(
+                  (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+                );
+                if (first !== undefined) goToQuestion(first);
+              }
+            }}
+            className={`min-h-9 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+              navFilter === id
+                ? "bg-brand text-white"
+                : "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="mt-3 rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
+        <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-8 lg:grid-cols-10">
+          {Array.from({ length: totalQ }, (_, i) => {
+            const st = qStates[i] ?? EMPTY_Q;
+            if (navFilter === "flagged" && !st.flagged) return null;
+            if (navFilter === "wrong" && st.isCorrect !== false) return null;
+            return (
+              <button
+                key={i}
+                type="button"
+                title={`Question ${i + 1}`}
+                onClick={() => goToQuestion(i)}
+                className={`relative flex min-h-11 w-full items-center justify-center rounded-md border text-xs font-bold tabular-nums transition lg:min-h-8 ${boxClass(i)}`}
+              >
+                {i + 1}
+                {st.flagged && i !== index && (
+                  <span className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-amber-500" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-400">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
+        </span>
+      </div>
+      {timerLabel && (
+        <div
+          className={`mt-5 hidden flex-col items-center justify-center rounded-2xl p-5 shadow-sm lg:flex ${
+            secondsLeft !== null && secondsLeft < 300
+              ? "bg-red-50 text-red-600 ring-1 ring-red-200"
+              : "bg-brand-700 text-white"
+          }`}
+        >
+          <Clock
+            className={`h-6 w-6 ${
+              secondsLeft !== null && secondsLeft < 300
+                ? "text-red-400"
+                : "text-sky-200"
+            }`}
+          />
+          <p className="mt-2 text-3xl font-bold tabular-nums">{timerLabel}</p>
+          <p
+            className={`mt-1 text-[11px] font-semibold tracking-wider ${
+              secondsLeft !== null && secondsLeft < 300
+                ? "text-red-400"
+                : "text-sky-200/80"
+            }`}
+          >
+            TIME REMAINING
+          </p>
+        </div>
+      )}
+      {answered > 0 && (
+        <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+          <p className="text-[10px] font-bold tracking-wider text-slate-400">
+            SCORE
+          </p>
+          <p className="mt-1 text-2xl font-bold tabular-nums text-slate-800">
+            {score}
+            <span className="text-base font-semibold text-slate-400">
+              /{answered}
+            </span>
+            <span className="ml-2 text-sm font-semibold text-brand">
+              {scorePct}%
+            </span>
+          </p>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -1387,7 +1530,7 @@ function Centered({
   onRetry?: () => void;
 }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-[#F4F7FB] px-4">
+    <div className="flex min-h-dvh flex-col items-center justify-center gap-4 bg-[#F4F7FB] px-4">
       <p
         className={`max-w-md text-center text-sm ${
           isError ? "text-red-500" : "text-slate-400"

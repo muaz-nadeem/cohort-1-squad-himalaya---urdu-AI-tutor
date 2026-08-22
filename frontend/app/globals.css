@@ -6,8 +6,12 @@
   color-scheme: light;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
-  @apply bg-surface text-slate-800 antialiased font-sans;
+  @apply bg-surface text-slate-800 antialiased font-sans min-h-dvh overflow-x-hidden;
 }
 
 .font-display {
@@ -39,10 +43,15 @@ body {
 }
 
 @layer components {
+  /* 16px on phones so iOS does not zoom the page on focus */
   input[type="text"],
   input[type="email"],
-  input[type="password"] {
-    @apply w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/10;
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    @apply w-full rounded-xl border border-slate-200 px-4 py-3 text-base outline-none transition-colors focus:border-brand focus:ring-2 focus:ring-brand/10 sm:text-sm;
   }
 }
 
@@ -89,8 +98,8 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 340px;
-  width: 340px;
+  height: min(340px, 85vw);
+  width: min(340px, 85vw);
   translate: -50% -48%;
   border-radius: 9999px;
   background: radial-gradient(

@@ -62,7 +62,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-dvh">
       <div className="relative hidden overflow-hidden bg-brand-700 lg:flex lg:w-[48%] flex-col justify-between px-12 py-10 text-white">
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.18]"
@@ -90,8 +90,19 @@ export default function LoginPage() {
         <p className="relative text-sm text-sky-200/70">MDCAT 2026 Biology</p>
       </div>
 
-      <div className="flex flex-1 flex-col justify-center px-6 py-12 sm:px-12">
+      <div className="flex flex-1 flex-col justify-center px-5 py-10 sm:px-12">
         <div className="mx-auto w-full max-w-md">
+          <div className="mb-8 flex items-center justify-between lg:hidden">
+            <Link href="/" className="flex items-center gap-2.5">
+              <BrandMark className="h-9 w-9" />
+              <span className="font-display text-xl font-bold text-brand">
+                Uraan
+              </span>
+            </Link>
+            <Link href="/signup" className="text-sm font-medium text-brand">
+              Sign up
+            </Link>
+          </div>
           <h2 className="font-display text-2xl font-bold text-slate-900">
             Sign in
           </h2>
@@ -122,7 +133,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-brand/30 focus:ring-2"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-base outline-none ring-brand/30 focus:ring-2 sm:text-sm"
                 autoComplete="email"
                 required
               />
@@ -139,13 +150,13 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Your password"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pr-11 text-sm outline-none ring-brand/30 focus:ring-2"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 pr-12 text-base outline-none ring-brand/30 focus:ring-2 sm:text-sm"
                   autoComplete="current-password"
                   required
                 />
                 <button
                   type="button"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                  className="absolute right-2 top-1/2 inline-flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center text-slate-400"
                   onClick={() => setShowPassword((v) => !v)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >

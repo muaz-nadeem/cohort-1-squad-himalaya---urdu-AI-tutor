@@ -65,7 +65,7 @@ export default function DashboardPage() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-3.5rem)] bg-white lg:min-h-screen">
+      <div className="min-h-[calc(100dvh-3.5rem)] bg-white lg:min-h-dvh">
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
           {error && (
             <div className="mb-4 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
@@ -76,7 +76,7 @@ export default function DashboardPage() {
           {/* Header */}
           <div className="mb-7 flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+              <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-3xl lg:text-4xl">
                 {greeting}, {firstName}
               </h1>
               <p className="mt-2 max-w-xl text-sm text-slate-500 sm:text-base">
@@ -193,11 +193,11 @@ export default function DashboardPage() {
                 ) : chapters.length > 0 ? (
                   <div className="space-y-4">
                     {chapters.map((c) => (
-                      <div key={c.chapter} className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-slate-700">
+                      <div key={c.chapter} className="flex items-center justify-between gap-3">
+                        <span className="min-w-0 truncate text-sm font-medium text-slate-700">
                           {c.chapter}
                         </span>
-                        <span className="text-sm tabular-nums text-slate-500">
+                        <span className="shrink-0 text-sm tabular-nums text-slate-500">
                           {c.attempted} MCQs done
                         </span>
                       </div>
@@ -236,7 +236,7 @@ export default function DashboardPage() {
                     <p className="text-[10px] font-semibold tracking-wider text-sky-200/80">
                       FOCUS TODAY
                     </p>
-                    <p className="mt-0.5 text-sm font-semibold">
+                    <p className="mt-0.5 min-w-0 break-words text-sm font-semibold">
                       {pending
                         ? "…"
                         : focus?.concept || focus?.chapter || "Start practising"}

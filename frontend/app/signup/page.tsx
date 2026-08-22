@@ -125,7 +125,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-dvh">
       {/* Left brand panel */}
       <div className="relative hidden overflow-hidden bg-brand-700 lg:flex lg:w-[48%] flex-col justify-between px-12 py-10 text-white">
         <div
@@ -182,7 +182,7 @@ export default function SignupPage() {
 
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="font-display text-3xl font-bold text-brand-700">
+              <h2 className="font-display text-2xl font-bold text-brand-700 sm:text-3xl">
                 {pendingEmail ? "Confirmation email sent" : "Create your account"}
               </h2>
               <p className="mt-2 text-sm text-slate-500">
@@ -282,7 +282,7 @@ export default function SignupPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  className="absolute right-2 top-1/2 inline-flex min-h-11 min-w-11 -translate-y-1/2 items-center justify-center text-slate-400 hover:text-slate-600"
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" />

@@ -47,11 +47,11 @@ export default function WeakSpotsPage() {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
+      <div className="min-h-[calc(100dvh-3.5rem)] bg-[#F4F7FB] lg:min-h-dvh">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
+              <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-4xl">
                 Weak Spots Analysis
               </h1>
               <p className="mt-2 text-sm text-slate-500 sm:text-base">
@@ -206,7 +206,7 @@ function SpotGroup({
                     Biology
                     {s.chapter ? ` · ${s.chapter}` : ""}
                   </p>
-                  <h3 className="mt-1 font-semibold leading-snug text-slate-900">
+                  <h3 className="mt-1 min-w-0 break-words font-semibold leading-snug text-slate-900">
                     {s.concept}
                   </h3>
                 </div>
