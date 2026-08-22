@@ -16,6 +16,7 @@ import {
   LogOut,
   Menu,
   X,
+  ChevronDown,
 } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
@@ -35,6 +36,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
   const queryClient = useQueryClient();
   const [name, setName] = useState("Student");
   const [open, setOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
 
   useEffect(() => {
     setName(getStudentName() || "Student");
@@ -59,6 +61,7 @@ export default function Navbar({ children }: { children?: ReactNode }) {
 
   useEffect(() => {
     setOpen(false);
+    setAccountOpen(false);
   }, [pathname]);
 
   async function handleLogout() {
@@ -122,22 +125,34 @@ export default function Navbar({ children }: { children?: ReactNode }) {
       </nav>
 
       <div className="border-t border-slate-100 px-3 py-3">
-        <div className="mb-2 flex items-center gap-2.5 rounded-lg px-3 py-2">
+        <button
+          type="button"
+          onClick={() => setAccountOpen((v) => !v)}
+          aria-expanded={accountOpen}
+          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left transition hover:bg-slate-50"
+        >
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-xs font-semibold text-white">
             {initials}
           </div>
-          <p className="truncate text-sm font-medium text-slate-700">
+          <p className="min-w-0 flex-1 truncate text-sm font-medium text-slate-700">
             {name.split(" ")[0]}
           </p>
-        </div>
-        <button
-          type="button"
-          onClick={handleLogout}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition hover:bg-red-50"
-        >
-          <LogOut className="h-4 w-4" />
-          Log out
+          <ChevronDown
+            className={`h-4 w-4 shrink-0 text-slate-400 transition ${
+              accountOpen ? "rotate-180" : ""
+            }`}
+          />
         </button>
+        {accountOpen && (
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="mt-1 flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-500 transition hover:bg-red-50"
+          >
+            <LogOut className="h-4 w-4" />
+            Log out
+          </button>
+        )}
       </div>
     </aside>
   );
