@@ -185,11 +185,11 @@ export default function LandingPage() {
             Everything you need between now and the paper.
           </h2>
 
-          <ul className="mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-            <FeatureCard icon={Mic} title="Ask in Urdu" />
-            <FeatureCard icon={ListChecks} title="100 MCQs per chapter" />
-            <FeatureCard icon={Timer} title="81-question Biology FLP" />
-            <FeatureCard icon={SlidersHorizontal} title="Build a custom paper" />
+          <ul className="mt-14">
+            <FeatureRow icon={Mic} title="Ask in Urdu" />
+            <FeatureRow icon={ListChecks} title="100 MCQs per chapter" />
+            <FeatureRow icon={Timer} title="81-question Biology FLP" />
+            <FeatureRow icon={SlidersHorizontal} title="Build a custom paper" />
           </ul>
         </div>
       </section>
@@ -290,13 +290,13 @@ export default function LandingPage() {
   );
 }
 
-function FeatureCard({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
+function FeatureRow({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
   return (
-    <li className="landing-feature-card flex aspect-square flex-col gap-4 rounded-3xl bg-gradient-to-br from-white to-sky-50/80 p-5 ring-1 ring-slate-200/80 sm:gap-5 sm:p-7">
-      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand text-white shadow-sm shadow-brand/20 sm:h-14 sm:w-14">
+    <li className="landing-feature-row flex items-center gap-5 border-t border-slate-100 py-8 first:border-t-0 sm:gap-8 sm:py-10">
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand text-white shadow-sm shadow-brand/20 sm:h-14 sm:w-14">
         <Icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
       </span>
-      <h3 className="font-display text-lg font-bold leading-tight tracking-tight text-slate-900 sm:text-2xl">
+      <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
         {title}
       </h3>
     </li>
