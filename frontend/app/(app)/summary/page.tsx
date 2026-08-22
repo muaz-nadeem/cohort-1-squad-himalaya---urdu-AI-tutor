@@ -231,12 +231,6 @@ export default function SummaryPage() {
                 {visible.map((item, i) => {
                   const open = openId === item.question_id;
                   const exp = explanations[item.question_id];
-                  const yourOpt = item.options.find(
-                    (o) => o.key === item.selected_option
-                  );
-                  const correctOpt = item.options.find(
-                    (o) => o.key === item.correct_option
-                  );
                   return (
                     <div
                       key={`${item.question_id}-${i}`}
@@ -271,27 +265,43 @@ export default function SummaryPage() {
 
                       {open && (
                         <div className="space-y-4 border-t border-slate-100 bg-slate-50/70 px-4 py-4">
-                          <div className="grid gap-3 sm:grid-cols-2">
-                            <div className="rounded-xl border border-red-200 bg-red-50 p-4">
-                              <p className="text-[10px] font-bold tracking-wider text-red-500">
-                                YOUR ANSWER
-                              </p>
-                              <p className="mt-2 text-sm font-medium text-red-700">
-                                {yourOpt
-                                  ? `${yourOpt.key}) ${yourOpt.text}`
-                                  : item.selected_option}
-                              </p>
-                            </div>
-                            <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-                              <p className="text-[10px] font-bold tracking-wider text-emerald-600">
-                                CORRECT ANSWER
-                              </p>
-                              <p className="mt-2 text-sm font-medium text-emerald-700">
-                                {correctOpt
-                                  ? `${correctOpt.key}) ${correctOpt.text}`
-                                  : item.correct_option}
-                              </p>
-                            </div>
+                          <div className="space-y-2">
+                            {item.options.map((opt) => {
+                              const isCorrect = opt.key === item.correct_option;
+                              const isYours = opt.key === item.selected_option;
+                              const isWrongPick = isYours && !item.is_correct;
+                              let cls = "border-slate-200 bg-white text-slate-600";
+                              let tag = "";
+                              if (isCorrect) {
+                                cls = "border-emerald-300 bg-emerald-50 text-emerald-800";
+                                tag = "Correct";
+                              }
+                              if (isWrongPick) {
+                                cls = "border-red-300 bg-red-50 text-red-800";
+                                tag = "Your answer";
+                              }
+                              if (isYours && item.is_correct) {
+                                tag = "Your answer ✓";
+                              }
+                              return (
+                                <div
+                                  key={opt.key}
+                                  className={`flex items-center gap-3 rounded-xl border px-4 py-3 ${cls}`}
+                                >
+                                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-xs font-bold">
+                                    {opt.key}
+                                  </span>
+                                  <span className="flex-1 text-sm">{opt.text}</span>
+                                  {tag && (
+                                    <span className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold ${
+                                      isWrongPick ? "bg-red-100 text-red-600" : "bg-emerald-100 text-emerald-700"
+                                    }`}>
+                                      {tag}
+                                    </span>
+                                  )}
+                                </div>
+                              );
+                            })}
                           </div>
 
                           {loadingExplain === item.question_id ? (

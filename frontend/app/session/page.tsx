@@ -434,6 +434,12 @@ function SessionInner() {
         );
         return;
       }
+
+      // FLP preview: backend returned a handful of questions without
+      // question_ids. Remember this before allIds fills it in below.
+      const isFlp = qs.mode === "full_length_practice" || qs.mode === "full_length_timed";
+      const isFlpPreview = isFlp && !qs.question_ids;
+
       const allIds =
         resumeBatch?.questionIds ||
         qs.question_ids ||
@@ -464,15 +470,11 @@ function SessionInner() {
         });
       }
 
-      if (allIds.length > qs.questions.length) {
+      if (!isFlpPreview && allIds.length > qs.questions.length) {
         void fillRemaining(allIds, qs.questions, chapter, studentIdForBoot, resumeAt);
       }
 
-      // FLP two-phase: the preview=5 request returned fast with a handful of
-      // questions. Now fetch the full stratified set in the background and
-      // merge it in so the student never waits.
-      const isFlp = qs.mode === "full_length_practice" || qs.mode === "full_length_timed";
-      if (isFlp && !qs.question_ids) {
+      if (isFlpPreview) {
         void loadFullFlp(flpMode, studentIdForBoot, qs);
       }
 
@@ -515,13 +517,15 @@ function SessionInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, router, flpMode]);
 
+  const [showTimesUp, setShowTimesUp] = useState(false);
+
   useEffect(() => {
-    // Timed exam: the clock must keep running even while an answer is selected.
     if (secondsLeft === null) return;
     if (secondsLeft <= 0) {
       if (!timedOutRef.current) {
         timedOutRef.current = true;
-        finish();
+        setShowTimesUp(true);
+        setTimeout(() => finish(), 2500);
       }
       return;
     }
@@ -858,7 +862,18 @@ function SessionInner() {
 
   return (
     <div className="min-h-screen bg-[#F4F7FB]">
-      {exiting && (
+      {showTimesUp && (
+        <div className="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-slate-900/60 backdrop-blur-sm">
+          <Clock className="h-14 w-14 text-red-400" />
+          <p className="mt-4 font-display text-4xl font-bold text-white sm:text-5xl">
+            Time&apos;s Up!
+          </p>
+          <p className="mt-3 text-sm text-slate-300">
+            Your answers have been saved. Viewing results…
+          </p>
+        </div>
+      )}
+      {exiting && !showTimesUp && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/35 backdrop-blur-[1px]">
           <div className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-4 text-sm font-semibold text-slate-700 shadow-lg">
             <Loader2 className="h-5 w-5 animate-spin text-brand" />
@@ -1316,6 +1331,15 @@ function SessionInner() {
               <p className="mt-2 text-3xl font-bold tabular-nums">{timerLabel}</p>
               <p className={`mt-1 text-[11px] font-semibold tracking-wider ${secondsLeft !== null && secondsLeft < 300 ? "text-red-400" : "text-sky-200/80"}`}>
                 TIME REMAINING
+              </p>
+            </div>
+          )}
+          {answered > 0 && (
+            <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
+              <p className="text-[10px] font-bold tracking-wider text-slate-400">SCORE</p>
+              <p className="mt-1 text-2xl font-bold tabular-nums text-slate-800">
+                {score}<span className="text-base font-semibold text-slate-400">/{answered}</span>
+                <span className="ml-2 text-sm font-semibold text-brand">{scorePct}%</span>
               </p>
             </div>
           )}
