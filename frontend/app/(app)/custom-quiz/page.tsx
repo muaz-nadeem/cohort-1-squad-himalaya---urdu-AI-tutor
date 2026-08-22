@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import {
+  ChevronDown,
   Lightbulb,
   Play,
   Plus,
   Settings2,
-  Shuffle,
   Trash2,
 } from "lucide-react";
 import { CHAPTERS_QUERY } from "@/lib/queries";
@@ -64,7 +64,6 @@ export default function CustomQuizPage() {
     (s, r) => s + (r.book && r.chapter ? r.count : 0),
     0
   );
-  const estimatedMins = Math.max(5, Math.round(total * 1));
 
   return (
     <>
@@ -87,15 +86,9 @@ export default function CustomQuizPage() {
 
           <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
             <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-display text-xl font-bold text-brand-700">
-                  Curate Questions
-                </h2>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 px-3 py-1.5 text-xs font-semibold text-brand">
-                  <Shuffle className="h-3.5 w-3.5" />
-                  Mix and match topics
-                </span>
-              </div>
+              <h2 className="font-display text-xl font-bold text-brand-700">
+                Pick Your Chapters
+              </h2>
 
               <div className="mt-6 space-y-4">
                 {rows.map((row, i) => {
@@ -107,22 +100,25 @@ export default function CustomQuizPage() {
                     >
                       <label className="text-xs font-medium text-slate-500">
                         Academic Year
-                        <select
-                          className={`mt-1.5 w-full rounded-xl border bg-white px-3 py-2.5 text-sm outline-none focus:border-brand ${
-                            yearError ? "border-red-400" : "border-slate-200"
-                          }`}
-                          value={row.book}
-                          onChange={(e) =>
-                            updateRow(i, {
-                              book: e.target.value,
-                              chapter: "",
-                            })
-                          }
-                        >
-                          <option value="">Select Year</option>
-                          <option value="fsc_part1">1st Year</option>
-                          <option value="fsc_part2">2nd Year</option>
-                        </select>
+                        <div className="relative mt-1.5">
+                          <select
+                            className={`w-full appearance-none rounded-xl border bg-white py-2.5 pl-3 pr-9 text-sm outline-none focus:border-brand ${
+                              yearError ? "border-red-400" : "border-slate-200"
+                            }`}
+                            value={row.book}
+                            onChange={(e) =>
+                              updateRow(i, {
+                                book: e.target.value,
+                                chapter: "",
+                              })
+                            }
+                          >
+                            <option value="">Select Year</option>
+                            <option value="fsc_part1">1st Year</option>
+                            <option value="fsc_part2">2nd Year</option>
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                        </div>
                         {yearError && (
                           <span className="mt-1 block text-[11px] italic text-red-500">
                             Please select a year
@@ -131,24 +127,27 @@ export default function CustomQuizPage() {
                       </label>
 
                       <label className="text-xs font-medium text-slate-500">
-                        Target Chapter
-                        <select
-                          className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand"
-                          value={row.chapter}
-                          onChange={(e) =>
-                            updateRow(i, { chapter: e.target.value })
-                          }
-                          disabled={!row.book}
-                        >
-                          <option value="">Select Chapter</option>
-                          {chapters
-                            .filter((c) => c.book === row.book)
-                            .map((c) => (
-                              <option key={c.id} value={c.name}>
-                                {c.name}
-                              </option>
-                            ))}
-                        </select>
+                        Chapter
+                        <div className="relative mt-1.5">
+                          <select
+                            className="w-full appearance-none rounded-xl border border-slate-200 bg-white py-2.5 pl-3 pr-9 text-sm outline-none focus:border-brand"
+                            value={row.chapter}
+                            onChange={(e) =>
+                              updateRow(i, { chapter: e.target.value })
+                            }
+                            disabled={!row.book}
+                          >
+                            <option value="">Select Chapter</option>
+                            {chapters
+                              .filter((c) => c.book === row.book)
+                              .map((c) => (
+                                <option key={c.id} value={c.name}>
+                                  {c.name}
+                                </option>
+                              ))}
+                          </select>
+                          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                        </div>
                       </label>
 
                       <label className="text-xs font-medium text-slate-500">
@@ -204,10 +203,6 @@ export default function CustomQuizPage() {
                       {String(selectedChapters).padStart(2, "0")}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                    <dt className="text-sky-200/90">Estimated Time</dt>
-                    <dd className="font-semibold">{estimatedMins} mins</dd>
-                  </div>
                 </dl>
 
                 <div className="mt-6">
@@ -222,7 +217,8 @@ export default function CustomQuizPage() {
                 <button
                   type="button"
                   onClick={start}
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent-blue px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-600"
+                  disabled={selectedChapters === 0 || total === 0}
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent-blue px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Play className="h-4 w-4 fill-current" />
                   Start Quiz

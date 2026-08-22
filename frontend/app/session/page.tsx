@@ -957,7 +957,7 @@ function SessionInner() {
           <div className="mt-5 space-y-3">
             {(question?.options ?? []).map((opt) => {
               const isSel = selected === opt.key;
-              const shouldHighlight = showSidebar && explanation;
+              const shouldHighlight = showSidebar && graded;
               const isRight =
                 shouldHighlight &&
                 !!revealedCorrect &&
