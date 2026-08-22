@@ -56,6 +56,14 @@ const EMPTY_Q: QState = {
 };
 
 const FILL_CHUNK = 20;
+const FLP_TOTAL = 81;
+const PENDING_ID = (i: number) => `__pending_${i}`;
+
+function padQuestionIds(ids: string[], total: number) {
+  const out = ids.slice(0, total);
+  while (out.length < total) out.push(PENDING_ID(out.length));
+  return out;
+}
 
 function batchTotal(qs: QuestionSet) {
   return qs.question_ids?.length || qs.questions.length;
@@ -228,13 +236,14 @@ function SessionInner() {
     try {
       const full = await api.getFullLength(flpModeVal, sid, 0);
       if (fillCancelRef.current || !full.questions.length) return;
-      const previewIds = new Set(preview.questions.map((q) => q.id));
-      const merged = [
-        ...preview.questions,
-        ...full.questions.filter((q) => !previewIds.has(q.id)),
-      ];
-      const allIds =
-        full.question_ids || merged.map((q) => q.id);
+      const previewQs = preview.questions;
+      const previewIds = new Set(previewQs.map((q) => q.id));
+      const extra = full.questions.filter((q) => !previewIds.has(q.id));
+      const merged = [...previewQs, ...extra].slice(0, FLP_TOTAL);
+      const allIds = padQuestionIds(
+        merged.map((q) => q.id),
+        FLP_TOTAL
+      );
       setSet((prev) => {
         if (!prev) return prev;
         const next: QuestionSet = {
@@ -440,10 +449,11 @@ function SessionInner() {
       const isFlp = qs.mode === "full_length_practice" || qs.mode === "full_length_timed";
       const isFlpPreview = isFlp && !qs.question_ids;
 
-      const allIds =
-        resumeBatch?.questionIds ||
-        qs.question_ids ||
-        qs.questions.map((q) => q.id);
+      const allIds = isFlpPreview
+        ? padQuestionIds(qs.questions.map((q) => q.id), FLP_TOTAL)
+        : resumeBatch?.questionIds ||
+          qs.question_ids ||
+          qs.questions.map((q) => q.id);
       qs = { ...qs, question_ids: allIds };
       setSet(qs);
       setRef.current = qs;
