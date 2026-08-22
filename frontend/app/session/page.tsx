@@ -1005,16 +1005,6 @@ function SessionInner() {
             >
               ← Previous Question
             </button>
-            {showSidebar && !insightOpen && (
-              <button
-                type="button"
-                onClick={() => setInsightOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-brand shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"
-              >
-                <Sparkles className="h-4 w-4" />
-                View explanation
-              </button>
-            )}
             {selected || flagged ? (
               <button
                 type="button"
@@ -1026,6 +1016,123 @@ function SessionInner() {
               </button>
             ) : null}
           </div>
+
+          {showSidebar && question && (
+            <div className="mt-6 rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <div
+                className={`rounded-t-2xl px-4 py-3 ${
+                  !graded
+                    ? "bg-slate-50"
+                    : isCorrect
+                      ? "bg-emerald-50"
+                      : "bg-red-50"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+                      !graded
+                        ? "bg-slate-100 text-slate-400"
+                        : isCorrect
+                          ? "bg-emerald-100 text-emerald-600"
+                          : "bg-red-100 text-red-500"
+                    }`}
+                  >
+                    {!graded ? (
+                      <Clock className="h-4 w-4 animate-pulse" />
+                    ) : isCorrect ? (
+                      <Smile className="h-4 w-4" />
+                    ) : (
+                      <Frown className="h-4 w-4" />
+                    )}
+                  </div>
+                  <p
+                    className={`flex-1 text-sm leading-relaxed ${
+                      !graded
+                        ? "text-slate-500"
+                        : isCorrect
+                          ? "text-emerald-800"
+                          : "text-red-700"
+                    }`}
+                  >
+                    {!graded
+                      ? "Checking your answer..."
+                      : isCorrect
+                        ? "Nice work. Lock this concept in before you move on."
+                        : "Not quite. Let's understand why."}
+                  </p>
+                </div>
+              </div>
+
+              {insightOpen && (
+                <>
+                  <div className="flex items-center justify-between bg-brand-700 px-4 py-2.5 text-white">
+                    <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
+                      <Sparkles className="h-3.5 w-3.5" />
+                      AI INSIGHT
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setAskOpen((v) => !v)}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25"
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" />
+                      {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
+                    </button>
+                  </div>
+
+                  <div className="p-4">
+                    {explaining ? (
+                      <p className="text-sm text-slate-400">
+                        Generating explanation...
+                      </p>
+                    ) : explanation ? (
+                      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+                        {explanation.explanation}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-slate-500">
+                        {question.explanation ||
+                          "Review this concept in your textbook."}
+                      </p>
+                    )}
+                  </div>
+
+                  {askOpen && (
+                    <AskAI
+                      embedded
+                      doctor={doctor}
+                      concept={conceptName}
+                      onClose={() => setAskOpen(false)}
+                      mcq={{
+                        question_text: question.question_text,
+                        options: question.options,
+                        selected_option: selected || "",
+                        correct_option: revealedCorrect || "",
+                        explanation:
+                          explanation?.explanation ||
+                          question.explanation ||
+                          "",
+                      }}
+                    />
+                  )}
+                </>
+              )}
+
+              {!insightOpen && (
+                <div className="px-4 py-3">
+                  <button
+                    type="button"
+                    onClick={() => setInsightOpen(true)}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-brand-dark"
+                  >
+                    <Sparkles className="h-4 w-4" />
+                    View explanation
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
 
           {confirmEnd && (
             <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
@@ -1174,126 +1281,7 @@ function SessionInner() {
         </aside>
       </div>
 
-      {showSidebar && question && insightOpen && (
-        <div className="fixed inset-0 z-40 flex items-end justify-center p-4 sm:items-center">
-          <button
-            type="button"
-            className="absolute inset-0 bg-slate-900/40"
-            aria-label="Close explanation"
-            onClick={() => {
-              setAskOpen(false);
-              setInsightOpen(false);
-            }}
-          />
-          <div className="relative z-10 flex max-h-[88vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
-            <div
-              className={`px-4 py-3 ${
-                !graded
-                  ? "bg-slate-50"
-                  : isCorrect
-                    ? "bg-emerald-50"
-                    : "bg-red-50"
-              }`}
-            >
-              <div className="flex items-start gap-3">
-                <div
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-                    !graded
-                      ? "bg-slate-100 text-slate-400"
-                      : isCorrect
-                        ? "bg-emerald-100 text-emerald-600"
-                        : "bg-red-100 text-red-500"
-                  }`}
-                >
-                  {!graded ? (
-                    <Clock className="h-4 w-4 animate-pulse" />
-                  ) : isCorrect ? (
-                    <Smile className="h-4 w-4" />
-                  ) : (
-                    <Frown className="h-4 w-4" />
-                  )}
-                </div>
-                <p
-                  className={`flex-1 pt-1.5 text-sm leading-relaxed ${
-                    !graded
-                      ? "text-slate-500"
-                      : isCorrect
-                        ? "text-emerald-800"
-                        : "text-red-700"
-                  }`}
-                >
-                  {!graded
-                    ? "Checking your answer..."
-                    : isCorrect
-                      ? "Nice work. Lock this concept in before you move on."
-                      : "Not quite. Let's understand why."}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setAskOpen(false);
-                    setInsightOpen(false);
-                  }}
-                  className="rounded-lg p-1 text-slate-400 hover:bg-white/80 hover:text-slate-600"
-                  aria-label="Close"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between bg-brand-700 px-4 py-3 text-white">
-              <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
-                <Sparkles className="h-3.5 w-3.5" />
-                AI INSIGHT
-              </div>
-              <button
-                type="button"
-                onClick={() => setAskOpen((v) => !v)}
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25"
-              >
-                <MessageCircle className="h-3.5 w-3.5" />
-                {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
-              </button>
-            </div>
-
-            <div className="min-h-0 flex-1 overflow-y-auto">
-              <div className="p-4">
-                {explaining ? (
-                  <p className="text-sm text-slate-400">
-                    Generating explanation...
-                  </p>
-                ) : explanation ? (
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
-                    {explanation.explanation}
-                  </p>
-                ) : (
-                  <p className="text-sm text-slate-500">
-                    {question.explanation ||
-                      "Review this concept in your textbook."}
-                  </p>
-                )}
-              </div>
-              {askOpen && (
-                <AskAI
-                  embedded
-                  doctor={doctor}
-                  concept={conceptName}
-                  onClose={() => setAskOpen(false)}
-                  mcq={{
-                    question_text: question.question_text,
-                    options: question.options,
-                    selected_option: selected || "",
-                    correct_option: revealedCorrect || "",
-                    explanation:
-                      explanation?.explanation || question.explanation || "",
-                  }}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }
