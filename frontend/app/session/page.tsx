@@ -863,7 +863,7 @@ function SessionInner() {
         </div>
       )}
       <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-2 px-4 py-3 sm:px-6">
           <button
             type="button"
             onClick={() => {
@@ -871,7 +871,7 @@ function SessionInner() {
               setConfirmExit(true);
             }}
             disabled={exiting}
-            className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800 disabled:opacity-60"
+            className="inline-flex items-center justify-self-start gap-2 text-sm font-medium text-slate-500 hover:text-slate-800 disabled:opacity-60"
           >
             {exiting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -881,7 +881,19 @@ function SessionInner() {
             {exiting ? "Ending…" : "Exit Session"}
           </button>
 
-          <div className="flex items-center gap-2">
+          <p className="min-w-0 max-w-[min(100%,28rem)] truncate text-center text-xs font-semibold sm:text-sm">
+            <span className="tracking-wider text-slate-700">BIOLOGY</span>
+            {question?.chapter ? (
+              <>
+                <span className="mx-2 font-normal text-slate-300">·</span>
+                <span className="font-medium text-slate-600">
+                  {question.chapter}
+                </span>
+              </>
+            ) : null}
+          </p>
+
+          <div className="flex items-center justify-end justify-self-end gap-3">
             {timerLabel && (
               <span
                 className={`inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold tabular-nums ${
@@ -894,24 +906,25 @@ function SessionInner() {
                 {timerLabel}
               </span>
             )}
+            <span className="truncate text-right text-xs font-semibold text-brand-700 sm:text-sm">
+              {modeLabel(set.mode)}
+            </span>
           </div>
         </div>
       </header>
 
       <div className="mx-auto flex max-w-7xl gap-4 px-4 py-6 sm:gap-6 sm:px-6">
         <div className="min-w-0 flex-1">
-          <h1 className="font-display text-xl font-bold tracking-tight text-brand-700 sm:text-2xl">
-            {modeLabel(set.mode)}
-          </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
-              BIOLOGY
-            </span>
-            {question?.chapter && (
-              <span className="rounded-md bg-sky-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-brand">
-                {question.chapter}
-              </span>
-            )}
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-sm font-semibold text-slate-500">
+              Q {index + 1} / {totalQ}
+              {!reviewAtEnd && (
+                <span className="ml-3 font-medium text-brand">
+                  Score {score}/{answered || 0}
+                  {answered > 0 ? ` (${scorePct}%)` : ""}
+                </span>
+              )}
+            </p>
             <button
               type="button"
               onClick={toggleFlag}
@@ -927,15 +940,6 @@ function SessionInner() {
               {flagged ? "Marked for review" : "Mark for review"}
             </button>
           </div>
-          <p className="mt-4 text-sm font-semibold text-slate-500">
-            Q {index + 1} / {totalQ}
-            {!reviewAtEnd && (
-              <span className="ml-3 font-medium text-brand">
-                Score {score}/{answered || 0}
-                {answered > 0 ? ` (${scorePct}%)` : ""}
-              </span>
-            )}
-          </p>
 
           {question ? (
             <p className="mt-5 text-base font-medium leading-relaxed text-slate-800 sm:text-lg">
@@ -993,6 +997,14 @@ function SessionInner() {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+            <button
+              type="button"
+              onClick={() => goToQuestion(index - 1)}
+              disabled={exiting || index <= 0}
+              className="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              ← Previous Question
+            </button>
             {showSidebar && !insightOpen && (
               <button
                 type="button"
@@ -1134,7 +1146,7 @@ function SessionInner() {
                     type="button"
                     title={`Question ${i + 1}`}
                     onClick={() => goToQuestion(i)}
-                    className={`relative flex h-7 w-7 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
+                    className={`relative flex aspect-square w-full items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
                   >
                     {i + 1}
                     {st.flagged && i !== index && (
