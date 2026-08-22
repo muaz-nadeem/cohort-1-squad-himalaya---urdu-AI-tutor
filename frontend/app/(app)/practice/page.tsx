@@ -81,18 +81,7 @@ export default function PracticePage() {
             <p className="mt-2 text-sm text-slate-500 sm:text-base">
               Master individual topics with focused MCQ sets.
             </p>
-            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <label className="relative block w-full max-w-md">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search a chapter..."
-                  className="!py-2.5 pl-10 pr-3"
-                  aria-label="Search chapters"
-                />
-              </label>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
               <div className="inline-flex shrink-0 rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200">
                 {(
                   [
@@ -115,6 +104,17 @@ export default function PracticePage() {
                   </button>
                 ))}
               </div>
+              <label className="relative ml-auto block w-44 sm:w-52">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search..."
+                  className="!py-2 !pl-9 !pr-3"
+                  aria-label="Search chapters"
+                />
+              </label>
             </div>
           </div>
 
