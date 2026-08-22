@@ -13,6 +13,7 @@ from .chapters import list_chapters
 
 DIAGNOSTIC_COUNT = 25
 CHAPTER_PRACTICE_COUNT = 100
+CHAPTER_PRACTICE_PREVIEW = 5
 FULL_LENGTH_BIOLOGY = 81
 DRILL_TIME_LIMIT_SEC = 20 * 60
 DRILL_MASTERY_STREAK = 3
@@ -28,22 +29,23 @@ def build_chapter_practice(
     chapter: str,
     count: int = CHAPTER_PRACTICE_COUNT,
     student_id: Optional[str] = None,
-) -> list[dict[str, Any]]:
-    """Up to 100 unseen MCQs for one chapter, mixed across all source_types.
-
-    Already-attempted questions are excluded so finishing a set of 100 yields
-    a fresh next 100 from the remaining bank. Seen questions are only reused
-    when the chapter has no unseen MCQs left (Practice again).
+    preview: int = CHAPTER_PRACTICE_PREVIEW,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Unseen MCQs for one chapter. Hydrate ``preview`` rows and return all ids
+    so the client can open quickly and load the rest in the background.
     """
     exclude = db.get_attempted_question_ids(student_id) if student_id else None
-    qs = db.sample_questions(
+    ids = db.sample_question_ids(
         count=count, chapter=chapter, exclude_ids=exclude, reuse_seen=False
     )
-    if qs or not exclude:
-        return qs
-    return db.sample_questions(
-        count=count, chapter=chapter, exclude_ids=exclude, reuse_seen=True
-    )
+    if not ids and exclude:
+        ids = db.sample_question_ids(
+            count=count, chapter=chapter, exclude_ids=exclude, reuse_seen=True
+        )
+    if not ids:
+        return [], []
+    n_preview = len(ids) if preview <= 0 else min(max(preview, 1), len(ids))
+    return db.questions_in_order(ids[:n_preview]), ids
 
 
 def questions_by_ids(question_ids: list[str]) -> list[dict[str, Any]]:
@@ -150,7 +152,7 @@ def next_questions_for_student(
         return {
             "mode": "chapter_practice",
             "chapter": chapter,
-            "questions": build_chapter_practice(chapter),
+            "questions": build_chapter_practice(chapter, preview=0)[0],
         }
 
     focus = weak_spots.recommended_focus(student_id)

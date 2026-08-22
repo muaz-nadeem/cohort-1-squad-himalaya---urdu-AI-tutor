@@ -186,6 +186,9 @@ export interface QuestionSet {
   chapter?: string;
   recommended?: WeakSpot;
   questions: Question[];
+  /** Full batch order. Present for chapter practice so the UI can open
+   *  after a short preview while the rest hydrate in the background. */
+  question_ids?: string[];
   timed_seconds?: number | null;
   note?: string;
 }
@@ -329,6 +332,7 @@ export interface ChapterInfo {
   id: string;
   name: string;
   book: string;
+  unit?: string;
   has_questions: boolean;
   question_count?: number;
 }
@@ -422,8 +426,17 @@ export const api = {
       `/api/questions/diagnostic?student_id=${studentId}&count=${count}`
     ),
 
-  getChapterPractice: (chapter: string, count = 100, studentId?: string) => {
-    const q = new URLSearchParams({ chapter, count: String(count) });
+  getChapterPractice: (
+    chapter: string,
+    count = 100,
+    studentId?: string,
+    preview = 5
+  ) => {
+    const q = new URLSearchParams({
+      chapter,
+      count: String(count),
+      preview: String(preview),
+    });
     if (studentId) q.set("student_id", studentId);
     return request<QuestionSet>(`/api/questions/chapter?${q.toString()}`);
   },

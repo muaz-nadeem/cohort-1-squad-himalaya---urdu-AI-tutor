@@ -21,14 +21,19 @@ export default function AskAI({
   concept,
   mcq,
   doctor,
+  embedded = false,
+  onClose,
 }: {
   concept: string;
   /** The MCQ on screen, so follow-ups stay anchored to this question. */
   mcq?: McqContext;
   /** Persistent Pakistani doctor persona for this student. */
   doctor: DoctorPersona;
+  /** Render chat+call inside a parent card (no launcher, no extra outer card). */
+  embedded?: boolean;
+  onClose?: () => void;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(embedded);
   const [text, setText] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [loading, setLoading] = useState(false);
@@ -101,6 +106,7 @@ export default function AskAI({
   }
 
   if (!open) {
+    if (embedded) return null;
     return (
       <button
         onClick={() => setOpen(true)}
@@ -130,7 +136,13 @@ export default function AskAI({
           : "Connecting…";
 
   return (
-    <div className="rounded-2xl border border-brand/20 bg-white p-5 shadow-sm">
+    <div
+      className={
+        embedded
+          ? "border-t border-slate-100 bg-slate-50/90 p-4"
+          : "rounded-2xl border border-brand/20 bg-white p-5 shadow-sm"
+      }
+    >
       <div className="mb-4 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2.5">
           <DoctorAvatar doctor={doctor} />
@@ -147,6 +159,7 @@ export default function AskAI({
             call.endCall();
             setOpen(false);
             setLoading(false);
+            onClose?.();
           }}
           className="rounded-lg p-1 text-slate-400 hover:bg-slate-50 hover:text-slate-600"
         >
@@ -154,7 +167,7 @@ export default function AskAI({
         </button>
       </div>
 
-      {mcq?.question_text && (
+      {mcq?.question_text && !embedded && (
         <div className="mb-3 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
           <p className="text-[10px] font-bold tracking-wider text-slate-400">
             DISCUSSING THIS QUESTION

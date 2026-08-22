@@ -2,17 +2,34 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, Play } from "lucide-react";
+import { CheckCircle2, Play, Search } from "lucide-react";
 import { api, type ChapterInfo } from "@/lib/api";
 import { useStudentId } from "@/lib/useStudent";
 import { CHAPTERS_QUERY } from "@/lib/queries";
 import { hasIncompleteChapterBatch } from "@/lib/chapterBatch";
 import { useQuery } from "@tanstack/react-query";
+import ChapterCover from "@/components/ChapterCover";
+
+function matchesChapter(ch: ChapterInfo, query: string) {
+  if (!query) return true;
+  const q = query.trim().toLowerCase();
+  const unit = (ch.unit || "").toLowerCase();
+  const unitPad = unit.padStart(2, "0");
+  return (
+    ch.name.toLowerCase().includes(q) ||
+    ch.id.replace(/_/g, " ").includes(q) ||
+    unit === q ||
+    unitPad === q ||
+    `chapter ${unit}`.includes(q) ||
+    `ch ${unitPad}`.includes(q)
+  );
+}
 
 export default function PracticePage() {
   const [bookFilter, setBookFilter] = useState<"all" | "fsc_part1" | "fsc_part2">(
     "all"
   );
+  const [search, setSearch] = useState("");
   const studentId = useStudentId();
 
   // The catalogue is student-independent, so it can load before auth resolves.
@@ -45,46 +62,59 @@ export default function PracticePage() {
   }, [dashboard]);
 
   const filtered = chapters.filter(
-    (c) => bookFilter === "all" || c.book === bookFilter
+    (c) =>
+      (bookFilter === "all" || c.book === bookFilter) &&
+      matchesChapter(c, search)
   );
   const part1 = filtered.filter((c) => c.book === "fsc_part1");
   const part2 = filtered.filter((c) => c.book === "fsc_part2");
+  const noSearchHits = !loading && !chaptersError && chapters.length > 0 && filtered.length === 0;
 
   return (
     <>
       <main className="min-h-[calc(100vh-3.5rem)] bg-[#F4F7FB] lg:min-h-screen">
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-brand-700 sm:text-4xl">
-                Chapter Practice
-              </h1>
-              <p className="mt-2 text-sm text-slate-500 sm:text-base">
-                Master individual topics with focused MCQ sets.
-              </p>
-            </div>
-
-            <div className="inline-flex rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200">
-              {(
-                [
-                  ["all", "All"],
-                  ["fsc_part1", "1st Year"],
-                  ["fsc_part2", "2nd Year"],
-                ] as const
-              ).map(([id, label]) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setBookFilter(id)}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                    bookFilter === id
-                      ? "bg-brand text-white"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
+          <div>
+              <h1 className="font-display text-2xl font-bold tracking-tight text-brand-700 sm:text-3xl">
+              Chapter Practice
+            </h1>
+            <p className="mt-2 text-sm text-slate-500 sm:text-base">
+              Master individual topics with focused MCQ sets.
+            </p>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <label className="relative block w-full max-w-md">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search a chapter..."
+                  className="!py-2.5 pl-10 pr-3"
+                  aria-label="Search chapters"
+                />
+              </label>
+              <div className="inline-flex shrink-0 rounded-full bg-white p-1 shadow-sm ring-1 ring-slate-200">
+                {(
+                  [
+                    ["all", "All"],
+                    ["fsc_part1", "1st Year"],
+                    ["fsc_part2", "2nd Year"],
+                  ] as const
+                ).map(([id, label]) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setBookFilter(id)}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                      bookFilter === id
+                        ? "bg-brand text-white"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -97,6 +127,10 @@ export default function PracticePage() {
           ) : !chapters.length ? (
             <p className="mt-10 text-sm text-slate-400">
               No chapters returned from the API. Try signing out and back in.
+            </p>
+          ) : noSearchHits ? (
+            <p className="mt-10 text-sm text-slate-400">
+              No chapters match “{search.trim()}”.
             </p>
           ) : (
             <div className="mt-10 space-y-10">
@@ -168,14 +202,17 @@ function ChapterSection({
             ? "resume"
             : status === "done"
               ? "again"
-              : attempted > 0
+              : attempted >= 100 && remaining > 0
                 ? "next"
-                : "none";
+                : attempted > 0
+                  ? "resume"
+                  : "none";
 
           return (
             <ChapterCard
               key={ch.id}
-              index={i + 1}
+              id={ch.id}
+              unit={ch.unit || String(i + 1)}
               name={ch.name}
               status={status}
               cta={cta}
@@ -190,14 +227,16 @@ function ChapterSection({
 }
 
 function ChapterCard({
-  index,
+  id,
+  unit,
   name,
   status,
   cta,
   progress,
   questionCount,
 }: {
-  index: number;
+  id: string;
+  unit: string;
   name: string;
   status: "start" | "progress" | "done";
   cta: "none" | "resume" | "next" | "again";
@@ -213,12 +252,14 @@ function ChapterCard({
   return (
     <Link
       href={href}
-      className="flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:border-brand/20 hover:shadow-md"
+      className="flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-brand/20 hover:shadow-md"
     >
+      <ChapterCover id={id} unit={unit} />
+      <div className="flex flex-1 flex-col p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-medium text-slate-400">
-            Chapter {String(index).padStart(2, "0")}
+            Chapter {String(unit).padStart(2, "0")}
           </p>
           <h3 className="mt-1 font-semibold leading-snug text-slate-900">
             {name}
@@ -273,6 +314,7 @@ function ChapterCard({
           </div>
         </div>
       )}
+      </div>
     </Link>
   );
 }

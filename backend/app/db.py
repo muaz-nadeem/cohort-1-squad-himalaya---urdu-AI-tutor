@@ -265,6 +265,36 @@ def questions_in_order(question_ids: list[str]) -> list[dict[str, Any]]:
     return _hydrate_questions([str(i) for i in question_ids if i])
 
 
+def sample_question_ids(
+    *,
+    count: int = 25,
+    chapter: Optional[str] = None,
+    book: Optional[str] = None,
+    exclude_ids: Optional[list[str]] = None,
+    reuse_seen: bool = True,
+) -> list[str]:
+    """Pick question ids only — no row hydrate. Used so chapter practice can
+    open after the first few MCQs and load the rest in the background.
+    """
+    import random
+
+    exclude = {str(x) for x in (exclude_ids or []) if x}
+    count = max(1, count)
+    ids = _list_question_ids(chapter=chapter, book=book)
+    if not ids:
+        return []
+    if not exclude:
+        random.shuffle(ids)
+        return ids[:count]
+    unseen = [i for i in ids if i not in exclude]
+    random.shuffle(unseen)
+    if not reuse_seen:
+        return unseen[:count]
+    seen = [i for i in ids if i in exclude]
+    random.shuffle(seen)
+    return (unseen + seen)[:count]
+
+
 def get_attempted_question_ids(student_id: str) -> list[str]:
     """All question_ids a student has ever attempted (for unseen-first sampling)."""
     if not student_id:

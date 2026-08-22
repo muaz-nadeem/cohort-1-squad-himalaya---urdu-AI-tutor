@@ -6,7 +6,6 @@ import {
   api,
   isBackendLikelyAwake,
   wakeBackend,
-  speechStreamUrl,
   type ExplainResult,
   type Question,
   type QuestionSet,
@@ -31,12 +30,11 @@ import {
   Bookmark,
   CheckCircle2,
   Clock,
-  Flag,
   Frown,
   Loader2,
   Smile,
   Sparkles,
-  Volume2,
+  MessageCircle,
   X,
   XCircle,
 } from "lucide-react";
@@ -56,6 +54,24 @@ const EMPTY_Q: QState = {
   explanation: null,
   flagged: false,
 };
+
+const FILL_CHUNK = 20;
+
+function batchTotal(qs: QuestionSet) {
+  return qs.question_ids?.length || qs.questions.length;
+}
+
+function questionAt(qs: QuestionSet, i: number): Question | undefined {
+  const id = qs.question_ids?.[i];
+  if (id) return qs.questions.find((q) => q.id === id);
+  return qs.questions[i];
+}
+
+function mergeLoaded(prev: QuestionSet, incoming: Question[]): QuestionSet {
+  const byId = new Map(prev.questions.map((q) => [q.id, q]));
+  for (const q of incoming) byId.set(q.id, q);
+  return { ...prev, questions: Array.from(byId.values()) };
+}
 
 function modeLabel(mode: SessionMode) {
   switch (mode) {
@@ -95,6 +111,9 @@ function SessionInner() {
     "all"
   );
   const [confirmEnd, setConfirmEnd] = useState(false);
+  const [confirmExit, setConfirmExit] = useState(false);
+  const [askOpen, setAskOpen] = useState(false);
+  const [insightOpen, setInsightOpen] = useState(true);
   const [exiting, setExiting] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
@@ -110,6 +129,7 @@ function SessionInner() {
   const indexRef = useRef(0);
   const setRef = useRef<QuestionSet | null>(null);
   const studentIdRef = useRef<string | null>(null);
+  const fillCancelRef = useRef(false);
   setRef.current = set;
   studentIdRef.current = studentId;
 
@@ -162,20 +182,51 @@ function SessionInner() {
     saveChapterBatch({
       studentId: sid,
       chapter,
-      questionIds: currentSet.questions.map((q) => q.id),
+      questionIds: currentSet.question_ids?.length
+        ? currentSet.question_ids
+        : currentSet.questions.map((q) => q.id),
       qStates: compactStates(states),
       index: idx,
     });
   }
 
-  function restoreReview(
-    questions: Question[],
-    states: Record<number, QState>
+  async function fillRemaining(
+    ids: string[],
+    already: Question[],
+    chapterName: string | undefined,
+    sid: string,
+    startAt = 0
   ) {
+    const loaded = new Set(already.map((q) => q.id));
+    const pending = [
+      ...ids.slice(startAt).filter((id) => !loaded.has(id)),
+      ...ids.slice(0, startAt).filter((id) => !loaded.has(id)),
+    ];
+    for (let i = 0; i < pending.length; i += FILL_CHUNK) {
+      if (fillCancelRef.current) return;
+      const chunk = pending.slice(i, i + FILL_CHUNK);
+      try {
+        const more = await api.getQuestionsByIds(chunk, chapterName, sid);
+        if (fillCancelRef.current) return;
+        setSet((prev) => {
+          if (!prev) return prev;
+          const next = mergeLoaded(prev, more.questions);
+          setRef.current = next;
+          return next;
+        });
+      } catch {
+        /* keep filling later chunks */
+      }
+    }
+  }
+
+  function restoreReview(qs: QuestionSet, states: Record<number, QState>) {
     const items: ReviewItem[] = [];
-    questions.forEach((q, i) => {
+    const n = batchTotal(qs);
+    for (let i = 0; i < n; i++) {
       const st = states[i];
-      if (!st?.selected || st.isCorrect === null) return;
+      const q = questionAt(qs, i);
+      if (!q || !st?.selected || st.isCorrect === null) continue;
       items.push({
         question_id: q.id,
         question_text: q.question_text,
@@ -185,7 +236,7 @@ function SessionInner() {
         correct_option: st.revealedCorrect || "",
         is_correct: st.isCorrect,
       });
-    });
+    }
     reviewRef.current = items;
   }
 
@@ -286,6 +337,8 @@ function SessionInner() {
       let questionsP: Promise<QuestionSet>;
       let sessionMode: string | null = null;
       let resumeBatch = null as ReturnType<typeof loadChapterBatch>;
+      let resumeAt = 0;
+      fillCancelRef.current = false;
       if (mode === "diagnostic") {
         questionsP = api.getDiagnostic(studentIdForBoot);
         sessionMode = "diagnostic";
@@ -295,8 +348,16 @@ function SessionInner() {
           resumeBatch &&
           !isBatchComplete(resumeBatch.qStates, resumeBatch.questionIds.length);
         if (incomplete && resumeBatch) {
+          resumeAt = firstUnansweredIndex(
+            resumeBatch.qStates,
+            resumeBatch.questionIds.length
+          );
+          const initialIds = resumeBatch.questionIds.slice(
+            resumeAt,
+            resumeAt + 5
+          );
           questionsP = api.getQuestionsByIds(
-            resumeBatch.questionIds,
+            initialIds.length ? initialIds : resumeBatch.questionIds.slice(0, 5),
             chapter,
             studentIdForBoot
           );
@@ -304,7 +365,7 @@ function SessionInner() {
           if (resumeBatch) {
             clearChapterBatch(studentIdForBoot, chapter);
           }
-          questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot);
+          questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot, 5);
           resumeBatch = null;
         }
         sessionMode = "chapter_practice";
@@ -343,15 +404,11 @@ function SessionInner() {
         );
         return;
       }
-      if (resumeBatch && qs.questions.length) {
-        const byId = new Map(qs.questions.map((q) => [q.id, q]));
-        const ordered = resumeBatch.questionIds
-          .map((id) => byId.get(id))
-          .filter((q): q is Question => Boolean(q));
-        if (ordered.length) {
-          qs = { ...qs, questions: ordered };
-        }
-      }
+      const allIds =
+        resumeBatch?.questionIds ||
+        qs.question_ids ||
+        qs.questions.map((q) => q.id);
+      qs = { ...qs, question_ids: allIds };
       setSet(qs);
       setRef.current = qs;
       if (qs.timed_seconds) setSecondsLeft(qs.timed_seconds);
@@ -364,18 +421,21 @@ function SessionInner() {
         qStatesRef.current = restored;
         setQStates(restored);
         syncScoreFromStates(restored);
-        restoreReview(qs.questions, restored);
-        const resumeAt = firstUnansweredIndex(restored, qs.questions.length);
+        restoreReview(qs, restored);
         indexRef.current = resumeAt;
         setIndex(resumeAt);
       } else if (qs.mode === "chapter_practice" && chapter) {
         saveChapterBatch({
           studentId: studentIdForBoot,
           chapter,
-          questionIds: qs.questions.map((q) => q.id),
+          questionIds: allIds,
           qStates: {},
           index: 0,
         });
+      }
+
+      if (qs.mode === "chapter_practice" && allIds.length > qs.questions.length) {
+        void fillRemaining(allIds, qs.questions, chapter, studentIdForBoot, resumeAt);
       }
 
       const session = await (sessionP ??
@@ -411,6 +471,9 @@ function SessionInner() {
     if (startedRef.current) return;
     startedRef.current = true;
     void bootSession();
+    return () => {
+      fillCancelRef.current = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, router, flpMode]);
 
@@ -432,7 +495,8 @@ function SessionInner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secondsLeft]);
 
-  const question: Question | undefined = set?.questions[index];
+  const question: Question | undefined = set ? questionAt(set, index) : undefined;
+  const totalQ = set ? batchTotal(set) : 0;
   const conceptName = explanation?.concept || question?.chapter || "Biology";
 
   const isTimedExam = set?.mode === "full_length_timed";
@@ -469,7 +533,7 @@ function SessionInner() {
         persistChapterProgress(next, index);
         if (
           setRef.current &&
-          isBatchComplete(next, setRef.current.questions.length) &&
+          isBatchComplete(next, batchTotal(setRef.current)) &&
           studentIdRef.current &&
           chapterRef.current
         ) {
@@ -495,6 +559,8 @@ function SessionInner() {
       else reviewRef.current.push(item);
 
       if (showExplainNow) {
+        setAskOpen(false);
+        setInsightOpen(true);
         setExplaining(true);
         try {
           const exp = await api.explain({
@@ -529,7 +595,7 @@ function SessionInner() {
   }
 
   function goToQuestion(i: number) {
-    if (!set || i < 0 || i >= set.questions.length || i === index) return;
+    if (!set || i < 0 || i >= batchTotal(set) || i === index) return;
     if (explainAudioRef.current) {
       explainAudioRef.current.pause();
       explainAudioRef.current = null;
@@ -537,13 +603,11 @@ function SessionInner() {
     setSpeakingExplain(false);
     setExplaining(false);
     setConfirmEnd(false);
+    setAskOpen(false);
+    setInsightOpen(true);
     indexRef.current = i;
     setIndex(i);
     persistChapterProgress(qStatesRef.current, i);
-  }
-
-  function markForReview() {
-    patchQ(index, { flagged: true });
   }
 
   function toggleFlag() {
@@ -558,21 +622,19 @@ function SessionInner() {
     setSpeakingExplain(false);
     if (!set) return;
     if (navFilter === "flagged" || navFilter === "wrong") {
-      const pool =
-        navFilter === "flagged"
-          ? set.questions
-              .map((_, i) => i)
-              .filter((i) => (qStates[i] ?? EMPTY_Q).flagged)
-          : set.questions
-              .map((_, i) => i)
-              .filter((i) => (qStates[i] ?? EMPTY_Q).isCorrect === false);
+      const pool = Array.from({ length: batchTotal(set) }, (_, i) => i).filter(
+        (i) =>
+          navFilter === "flagged"
+            ? (qStates[i] ?? EMPTY_Q).flagged
+            : (qStates[i] ?? EMPTY_Q).isCorrect === false
+      );
       const next = pool.find((i) => i > index) ?? pool.find((i) => i < index);
       if (next !== undefined) {
         goToQuestion(next);
         return;
       }
     }
-    if (index >= set.questions.length - 1) {
+    if (index >= batchTotal(set) - 1) {
       requestEnd();
     } else {
       goToQuestion(index + 1);
@@ -584,11 +646,11 @@ function SessionInner() {
       void finish();
       return;
     }
-    const wrongN = set.questions.filter(
-      (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+    const wrongN = Array.from({ length: batchTotal(set) }, (_, i) => i).filter(
+      (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
     ).length;
-    const flagN = set.questions.filter(
-      (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+    const flagN = Array.from({ length: batchTotal(set) }, (_, i) => i).filter(
+      (i) => (qStates[i] ?? EMPTY_Q).flagged
     ).length;
     if (wrongN > 0 || flagN > 0) {
       setConfirmEnd(true);
@@ -600,6 +662,7 @@ function SessionInner() {
   function exitSession() {
     if (exiting) return;
     setExiting(true);
+    setConfirmExit(false);
     setConfirmEnd(false);
     persistChapterProgress();
     // Close the session properly, but as a keepalive request — the student is
@@ -613,22 +676,6 @@ function SessionInner() {
       });
     }
     router.replace("/dashboard");
-  }
-
-  async function playExplanation() {
-    const id = explanation?.speech_id;
-    if (!id) return;
-    const url = await speechStreamUrl(id);
-    if (!url) return;
-    if (explainAudioRef.current) {
-      explainAudioRef.current.pause();
-    }
-    const audio = new Audio(url);
-    explainAudioRef.current = audio;
-    setSpeakingExplain(true);
-    audio.onended = () => setSpeakingExplain(false);
-    audio.onerror = () => setSpeakingExplain(false);
-    audio.play().catch(() => setSpeakingExplain(false));
   }
 
   /** Score card built from what the client already knows — no server needed. */
@@ -669,7 +716,7 @@ function SessionInner() {
       set?.mode === "chapter_practice" &&
       chapter &&
       studentId &&
-      isBatchComplete(qStatesRef.current, set.questions.length)
+      isBatchComplete(qStatesRef.current, batchTotal(set))
     ) {
       skipBatchPersistRef.current = true;
       clearChapterBatch(studentId, chapter);
@@ -713,7 +760,7 @@ function SessionInner() {
         onBack={() => router.replace("/dashboard")}
       />
     );
-  if (!question || !set)
+  if (!set)
     return (
       <Centered text="No questions." onBack={() => router.replace("/dashboard")} />
     );
@@ -728,11 +775,11 @@ function SessionInner() {
   const showSidebar = !!(selected && showExplainNow);
   const graded = isCorrect !== null;
   const revealColors = !reviewAtEnd;
-  const flaggedCount = set.questions.filter(
-    (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+  const flaggedCount = Array.from({ length: totalQ }, (_, i) => i).filter(
+    (i) => (qStates[i] ?? EMPTY_Q).flagged
   ).length;
-  const wrongCount = set.questions.filter(
-    (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+  const wrongCount = Array.from({ length: totalQ }, (_, i) => i).filter(
+    (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
   ).length;
 
   function boxClass(i: number) {
@@ -781,11 +828,48 @@ function SessionInner() {
           </div>
         </div>
       )}
-      <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+      {confirmExit && !exiting && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <button
             type="button"
-            onClick={exitSession}
+            className="absolute inset-0 bg-slate-900/40"
+            aria-label="Cancel exit"
+            onClick={() => setConfirmExit(false)}
+          />
+          <div className="relative z-10 w-full max-w-sm rounded-2xl bg-white p-5 shadow-2xl">
+            <p className="text-base font-semibold text-slate-800">
+              Are you sure you want to exit?
+            </p>
+            <p className="mt-1 text-sm text-slate-500">
+              You can come back and pick up where you left off.
+            </p>
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setConfirmExit(false)}
+                className="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={exitSession}
+                className="rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+              >
+                Yes, exit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <button
+            type="button"
+            onClick={() => {
+              if (exiting) return;
+              setConfirmExit(true);
+            }}
             disabled={exiting}
             className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-800 disabled:opacity-60"
           >
@@ -796,10 +880,6 @@ function SessionInner() {
             )}
             {exiting ? "Ending…" : "Exit Session"}
           </button>
-
-          <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-brand">
-            {modeLabel(set.mode)}
-          </span>
 
           <div className="flex items-center gap-2">
             {timerLabel && (
@@ -818,41 +898,195 @@ function SessionInner() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
-        <div className="mb-6 space-y-4">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-[10px] font-bold tracking-wider text-slate-400">
-                PROGRESS
-              </p>
-              <p className="mt-1 text-sm font-semibold text-slate-800">
-                Q {index + 1} / {set.questions.length}
+      <div className="mx-auto flex max-w-7xl gap-4 px-4 py-6 sm:gap-6 sm:px-6">
+        <div className="min-w-0 flex-1">
+          <h1 className="font-display text-xl font-bold tracking-tight text-brand-700 sm:text-2xl">
+            {modeLabel(set.mode)}
+          </h1>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
+              BIOLOGY
+            </span>
+            {question?.chapter && (
+              <span className="rounded-md bg-sky-50 px-2.5 py-1 text-[10px] font-bold tracking-wider text-brand">
+                {question.chapter}
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={toggleFlag}
+              className={`ml-auto inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
+                flagged
+                  ? "bg-amber-100 text-amber-800"
+                  : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
+              }`}
+            >
+              <Bookmark
+                className={`h-3.5 w-3.5 ${flagged ? "fill-current" : ""}`}
+              />
+              {flagged ? "Marked for review" : "Mark for review"}
+            </button>
+          </div>
+          <p className="mt-4 text-sm font-semibold text-slate-500">
+            Q {index + 1} / {totalQ}
+            {!reviewAtEnd && (
+              <span className="ml-3 font-medium text-brand">
+                Score {score}/{answered || 0}
+                {answered > 0 ? ` (${scorePct}%)` : ""}
+              </span>
+            )}
+          </p>
+
+          {question ? (
+            <p className="mt-5 text-base font-medium leading-relaxed text-slate-800 sm:text-lg">
+              {question.question_text}
+            </p>
+          ) : (
+            <div className="mt-8 flex min-h-[120px] flex-col items-center justify-center gap-3">
+              <Loader2 className="h-6 w-6 animate-spin text-brand" />
+              <p className="text-sm font-medium text-slate-500">
+                Loading question...
               </p>
             </div>
-            {!reviewAtEnd && (
-              <div className="text-right">
-                <p className="text-[10px] font-bold tracking-wider text-slate-400">
-                  Current Score
-                </p>
-                <p className="mt-1 text-sm font-semibold text-brand">
-                  {score}/{answered || 0}
-                  {answered > 0 ? ` (${scorePct}%)` : ""}
-                </p>
-              </div>
-            )}
-            {reviewAtEnd && (
-              <div className="text-right">
-                <p className="text-[10px] font-bold tracking-wider text-slate-400">
-                  Answered
-                </p>
-                <p className="mt-1 text-sm font-semibold text-slate-800">
-                  {answered}/{set.questions.length}
-                </p>
-              </div>
-            )}
+          )}
+
+          <div className="mt-5 space-y-3">
+            {(question?.options ?? []).map((opt) => {
+              const isSel = selected === opt.key;
+              const shouldHighlight = showSidebar && explanation;
+              const isRight =
+                shouldHighlight &&
+                !!revealedCorrect &&
+                opt.key === revealedCorrect;
+              const isWrongPick =
+                shouldHighlight && isSel && isCorrect === false;
+              let cls =
+                "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
+              if (selected) {
+                if (isRight) cls = "border-brand bg-sky-50 text-brand-700";
+                else if (isWrongPick)
+                  cls = "border-red-400 bg-red-50 text-red-800";
+                else if (isSel && reviewAtEnd)
+                  cls = "border-brand bg-brand-50 text-brand";
+                else cls = "border-slate-200 bg-white opacity-50";
+              }
+              return (
+                <button
+                  key={opt.key}
+                  disabled={!!selected}
+                  onClick={() => selectOption(opt.key)}
+                  className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left shadow-sm transition-all ${cls}`}
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold">
+                    {opt.key}
+                  </span>
+                  <span className="flex-1 text-sm sm:text-[15px]">
+                    {opt.text}
+                  </span>
+                  {isRight && (
+                    <CheckCircle2 className="h-5 w-5 text-brand" />
+                  )}
+                  {isWrongPick && <XCircle className="h-5 w-5 text-red-500" />}
+                </button>
+              );
+            })}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+            {showSidebar && !insightOpen && (
+              <button
+                type="button"
+                onClick={() => setInsightOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-brand shadow-sm ring-1 ring-slate-200 hover:bg-slate-50"
+              >
+                <Sparkles className="h-4 w-4" />
+                View explanation
+              </button>
+            )}
+            {selected || flagged ? (
+              <button
+                type="button"
+                onClick={nextAfterAnswer}
+                disabled={exiting}
+                className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60"
+              >
+                Next Question →
+              </button>
+            ) : null}
+          </div>
+
+          {confirmEnd && (
+            <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <p className="text-sm font-semibold text-slate-800">
+                Review before you quit?
+              </p>
+              <p className="mt-1 text-xs text-slate-500">
+                You can jump back to marked or wrong questions first.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {flaggedCount > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setConfirmEnd(false);
+                      setNavFilter("flagged");
+                      const first = Array.from(
+                        { length: totalQ },
+                        (_, i) => i
+                      ).find((i) => (qStates[i] ?? EMPTY_Q).flagged);
+                      if (first !== undefined) goToQuestion(first);
+                    }}
+                    className="rounded-xl bg-amber-100 px-3 py-2 text-xs font-semibold text-amber-900"
+                  >
+                    Review marked ({flaggedCount})
+                  </button>
+                )}
+                {wrongCount > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setConfirmEnd(false);
+                      setNavFilter("wrong");
+                      const first = Array.from(
+                        { length: totalQ },
+                        (_, i) => i
+                      ).find(
+                        (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+                      );
+                      if (first !== undefined) goToQuestion(first);
+                    }}
+                    className="rounded-xl bg-red-100 px-3 py-2 text-xs font-semibold text-red-800"
+                  >
+                    Review wrong ({wrongCount})
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setConfirmEnd(false);
+                    void finish();
+                  }}
+                  className="rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white"
+                >
+                  End anyway
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirmEnd(false)}
+                  className="rounded-xl px-3 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-50"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <aside className="w-[10.75rem] shrink-0 sticky top-20 self-start sm:w-[13.5rem] lg:max-h-[calc(100vh-6.5rem)]">
+          <p className="text-[10px] font-bold tracking-wider text-slate-400">
+            QUESTIONS
+          </p>
+          <div className="mt-2 flex flex-wrap gap-1">
             {(
               [
                 ["all", "All"],
@@ -866,19 +1100,19 @@ function SessionInner() {
                 onClick={() => {
                   setNavFilter(id);
                   if (id === "flagged" && flaggedCount > 0) {
-                    const first = set.questions.findIndex(
-                      (_, i) => (qStates[i] ?? EMPTY_Q).flagged
+                    const first = Array.from({ length: totalQ }, (_, i) => i).find(
+                      (i) => (qStates[i] ?? EMPTY_Q).flagged
                     );
-                    if (first >= 0) goToQuestion(first);
+                    if (first !== undefined) goToQuestion(first);
                   }
                   if (id === "wrong" && wrongCount > 0) {
-                    const first = set.questions.findIndex(
-                      (_, i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
+                    const first = Array.from({ length: totalQ }, (_, i) => i).find(
+                      (i) => (qStates[i] ?? EMPTY_Q).isCorrect === false
                     );
-                    if (first >= 0) goToQuestion(first);
+                    if (first !== undefined) goToQuestion(first);
                   }
                 }}
-                className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                className={`rounded-full px-2 py-0.5 text-[10px] font-semibold transition ${
                   navFilter === id
                     ? "bg-brand text-white"
                     : "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50"
@@ -887,25 +1121,10 @@ function SessionInner() {
                 {label}
               </button>
             ))}
-            <span className="ml-auto hidden items-center gap-3 text-[10px] text-slate-400 sm:inline-flex">
-              <span className="inline-flex items-center gap-1">
-                <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
-              </span>
-            </span>
           </div>
-
-          <div className="max-h-36 overflow-y-auto rounded-xl border border-slate-100 bg-white p-2 shadow-sm sm:max-h-none">
-            <div className="flex flex-wrap gap-1.5">
-              {set.questions.map((_, i) => {
+          <div className="mt-3 max-h-[min(28rem,60vh)] overflow-y-auto rounded-xl border border-slate-100 bg-white p-2 shadow-sm lg:max-h-[calc(100vh-12rem)]">
+            <div className="grid grid-cols-4 gap-1.5">
+              {Array.from({ length: totalQ }, (_, i) => {
                 const st = qStates[i] ?? EMPTY_Q;
                 if (navFilter === "flagged" && !st.flagged) return null;
                 if (navFilter === "wrong" && st.isCorrect !== false) return null;
@@ -915,7 +1134,7 @@ function SessionInner() {
                     type="button"
                     title={`Question ${i + 1}`}
                     onClick={() => goToQuestion(i)}
-                    className={`relative flex h-7 w-7 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition sm:h-8 sm:w-8 sm:text-[11px] ${boxClass(i)}`}
+                    className={`relative flex h-7 w-7 items-center justify-center rounded-md border text-[10px] font-bold tabular-nums transition ${boxClass(i)}`}
                   >
                     {i + 1}
                     {st.flagged && i !== index && (
@@ -926,316 +1145,143 @@ function SessionInner() {
               })}
             </div>
           </div>
-        </div>
+          <div className="mt-3 hidden space-y-1 text-[10px] text-slate-400 lg:block">
+            <p className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Correct
+            </p>
+            <p className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Wrong
+            </p>
+            <p className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-sm bg-brand" /> Current
+            </p>
+            <p className="inline-flex items-center gap-1">
+              <span className="h-2.5 w-2.5 rounded-sm bg-amber-400" /> Review
+            </p>
+          </div>
+        </aside>
+      </div>
 
-        <div
-          className={`grid gap-6 ${
-            showSidebar ? "lg:grid-cols-[1.45fr_0.9fr]" : ""
-          }`}
-        >
-          <div>
-            <div className="mb-4 flex flex-wrap items-center gap-2">
-              <span className="rounded-md bg-brand px-2.5 py-1 text-[10px] font-bold tracking-wider text-white">
-                BIOLOGY
-              </span>
-              {question.chapter && (
-                <span className="text-xs font-medium uppercase tracking-wide text-slate-400">
-                  {question.chapter}
-                </span>
-              )}
+      {showSidebar && question && insightOpen && (
+        <div className="fixed inset-0 z-40 flex items-end justify-center p-4 sm:items-center">
+          <button
+            type="button"
+            className="absolute inset-0 bg-slate-900/40"
+            aria-label="Close explanation"
+            onClick={() => {
+              setAskOpen(false);
+              setInsightOpen(false);
+            }}
+          />
+          <div className="relative z-10 flex max-h-[88vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div
+              className={`px-4 py-3 ${
+                !graded
+                  ? "bg-slate-50"
+                  : isCorrect
+                    ? "bg-emerald-50"
+                    : "bg-red-50"
+              }`}
+            >
+              <div className="flex items-start gap-3">
+                <div
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+                    !graded
+                      ? "bg-slate-100 text-slate-400"
+                      : isCorrect
+                        ? "bg-emerald-100 text-emerald-600"
+                        : "bg-red-100 text-red-500"
+                  }`}
+                >
+                  {!graded ? (
+                    <Clock className="h-4 w-4 animate-pulse" />
+                  ) : isCorrect ? (
+                    <Smile className="h-4 w-4" />
+                  ) : (
+                    <Frown className="h-4 w-4" />
+                  )}
+                </div>
+                <p
+                  className={`flex-1 pt-1.5 text-sm leading-relaxed ${
+                    !graded
+                      ? "text-slate-500"
+                      : isCorrect
+                        ? "text-emerald-800"
+                        : "text-red-700"
+                  }`}
+                >
+                  {!graded
+                    ? "Checking your answer..."
+                    : isCorrect
+                      ? "Nice work. Lock this concept in before you move on."
+                      : "Not quite. Let's understand why."}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAskOpen(false);
+                    setInsightOpen(false);
+                  }}
+                  className="rounded-lg p-1 text-slate-400 hover:bg-white/80 hover:text-slate-600"
+                  aria-label="Close"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between bg-brand-700 px-4 py-3 text-white">
+              <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
+                <Sparkles className="h-3.5 w-3.5" />
+                AI INSIGHT
+              </div>
               <button
                 type="button"
-                onClick={toggleFlag}
-                className={`ml-auto inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold transition ${
-                  flagged
-                    ? "bg-amber-100 text-amber-800"
-                    : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
-                }`}
+                onClick={() => setAskOpen((v) => !v)}
+                className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25"
               >
-                <Bookmark
-                  className={`h-3.5 w-3.5 ${flagged ? "fill-current" : ""}`}
-                />
-                {flagged ? "Marked for review" : "Mark for review"}
+                <MessageCircle className="h-3.5 w-3.5" />
+                {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
               </button>
             </div>
 
-            <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">
-              <p className="text-base font-medium leading-relaxed text-slate-800 sm:text-lg">
-                {question.question_text}
-              </p>
-            </div>
-
-            <div className="mt-4 space-y-3">
-              {question.options.map((opt) => {
-                const isSel = selected === opt.key;
-                const shouldHighlight = showSidebar && explanation;
-                const isRight =
-                  shouldHighlight &&
-                  !!revealedCorrect &&
-                  opt.key === revealedCorrect;
-                const isWrongPick =
-                  shouldHighlight && isSel && isCorrect === false;
-                let cls =
-                  "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50";
-                if (selected) {
-                  if (isRight) cls = "border-brand bg-sky-50 text-brand-700";
-                  else if (isWrongPick)
-                    cls = "border-red-400 bg-red-50 text-red-800";
-                  else if (isSel && reviewAtEnd)
-                    cls = "border-brand bg-brand-50 text-brand";
-                  else cls = "border-slate-200 bg-white opacity-50";
-                }
-                return (
-                  <button
-                    key={opt.key}
-                    disabled={!!selected}
-                    onClick={() => selectOption(opt.key)}
-                    className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all ${cls}`}
-                  >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold">
-                      {opt.key}
-                    </span>
-                    <span className="flex-1 text-sm sm:text-[15px]">
-                      {opt.text}
-                    </span>
-                    {isRight && (
-                      <CheckCircle2 className="h-5 w-5 text-brand" />
-                    )}
-                    {isWrongPick && <XCircle className="h-5 w-5 text-red-500" />}
-                  </button>
-                );
-              })}
-            </div>
-
-            {selected && showSidebar && graded && (
-              <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={requestEnd}
-                  disabled={exiting}
-                  className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50 disabled:opacity-60"
-                >
-                  Finish Session
-                </button>
-                <button
-                  type="button"
-                  onClick={nextAfterAnswer}
-                  disabled={exiting}
-                  className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark disabled:opacity-60"
-                >
-                  {index >= set.questions.length - 1
-                    ? "Finish Session"
-                    : "Next Question →"}
-                </button>
-              </div>
-            )}
-
-            {!selected && (
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={flagged ? toggleFlag : markForReview}
-                  className={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2.5 text-sm font-semibold ${
-                    flagged
-                      ? "border-amber-300 bg-amber-100 text-amber-900"
-                      : "border-amber-200 bg-amber-50 text-amber-800 hover:bg-amber-100"
-                  }`}
-                >
-                  <Flag
-                    className={`h-4 w-4 ${flagged ? "fill-current" : ""}`}
-                  />
-                  {flagged ? "Marked for review" : "Leave for review"}
-                </button>
-                <div className="flex flex-wrap items-center justify-end gap-3">
-                  <button
-                    type="button"
-                    onClick={requestEnd}
-                    className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
-                  >
-                    Finish Session
-                  </button>
-                  {flagged && (
-                    <button
-                      type="button"
-                      onClick={nextAfterAnswer}
-                      className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
-                    >
-                      {index >= set.questions.length - 1
-                        ? "Finish Session"
-                        : "Next Question →"}
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {confirmEnd && (
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-sm font-semibold text-slate-800">
-                  Review before you quit?
-                </p>
-                <p className="mt-1 text-xs text-slate-500">
-                  You can jump back to marked or wrong questions first.
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {flaggedCount > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setConfirmEnd(false);
-                        setNavFilter("flagged");
-                        const first = set.questions.findIndex(
-                          (_, i) => (qStates[i] ?? EMPTY_Q).flagged
-                        );
-                        if (first >= 0) goToQuestion(first);
-                      }}
-                      className="rounded-xl bg-amber-100 px-3 py-2 text-xs font-semibold text-amber-900"
-                    >
-                      Review marked ({flaggedCount})
-                    </button>
-                  )}
-                  {wrongCount > 0 && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setConfirmEnd(false);
-                        setNavFilter("wrong");
-                        const first = set.questions.findIndex(
-                          (_, i) =>
-                            (qStates[i] ?? EMPTY_Q).isCorrect === false
-                        );
-                        if (first >= 0) goToQuestion(first);
-                      }}
-                      className="rounded-xl bg-red-100 px-3 py-2 text-xs font-semibold text-red-800"
-                    >
-                      Review wrong ({wrongCount})
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setConfirmEnd(false);
-                      void finish();
-                    }}
-                    className="rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white"
-                  >
-                    End anyway
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setConfirmEnd(false)}
-                    className="rounded-xl px-3 py-2 text-xs font-semibold text-slate-500 hover:bg-slate-50"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {showSidebar && (
-            <aside className="space-y-4">
-              <div
-                className={`rounded-2xl border p-4 ${
-                  !graded
-                    ? "border-slate-100 bg-slate-50"
-                    : isCorrect
-                      ? "border-emerald-100 bg-emerald-50"
-                      : "border-red-100 bg-red-50"
-                }`}
-              >
-                <div className="flex items-start gap-3">
-                  <div
-                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-                      !graded
-                        ? "bg-slate-100 text-slate-400"
-                        : isCorrect
-                          ? "bg-emerald-100 text-emerald-600"
-                          : "bg-red-100 text-red-500"
-                    }`}
-                  >
-                    {!graded ? (
-                      <Clock className="h-4 w-4 animate-pulse" />
-                    ) : isCorrect ? (
-                      <Smile className="h-4 w-4" />
-                    ) : (
-                      <Frown className="h-4 w-4" />
-                    )}
-                  </div>
-                  <p
-                    className={`text-sm leading-relaxed ${
-                      !graded
-                        ? "text-slate-500"
-                        : isCorrect
-                          ? "text-emerald-800"
-                          : "text-red-700"
-                    }`}
-                  >
-                    {!graded
-                      ? "Checking your answer..."
-                      : isCorrect
-                        ? "Nice work. Lock this concept in before you move on."
-                        : "Not quite. Don't worry — even doctors make mistakes in training. Let's understand why."}
+            <div className="min-h-0 flex-1 overflow-y-auto">
+              <div className="p-4">
+                {explaining ? (
+                  <p className="text-sm text-slate-400">
+                    Generating explanation...
                   </p>
-                </div>
+                ) : explanation ? (
+                  <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
+                    {explanation.explanation}
+                  </p>
+                ) : (
+                  <p className="text-sm text-slate-500">
+                    {question.explanation ||
+                      "Review this concept in your textbook."}
+                  </p>
+                )}
               </div>
-
-              <div className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-                <div className="flex items-center justify-between bg-brand-700 px-4 py-3 text-white">
-                  <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
-                    <Sparkles className="h-3.5 w-3.5" />
-                    AI INSIGHT
-                  </div>
-                  {explanation?.speech_id ? (
-                    <button
-                      type="button"
-                      onClick={playExplanation}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold text-white hover:bg-white/25 disabled:opacity-60"
-                      disabled={speakingExplain}
-                    >
-                      <Volume2 className="h-3.5 w-3.5" />
-                      {speakingExplain ? "Playing..." : "Listen"}
-                    </button>
-                  ) : (
-                    <span className="text-[10px] text-sky-200">Uraan AI</span>
-                  )}
-                </div>
-                <div className="p-4">
-                  {explaining ? (
-                    <p className="text-sm text-slate-400">
-                      Generating explanation...
-                    </p>
-                  ) : explanation ? (
-                    <>
-                      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
-                        {explanation.explanation}
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-sm text-slate-500">
-                      {question.explanation ||
-                        "Review this concept in your textbook."}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <AskAI
-                doctor={doctor}
-                concept={conceptName}
-                mcq={{
-                  question_text: question.question_text,
-                  options: question.options,
-                  selected_option: selected || "",
-                  correct_option: revealedCorrect || "",
-                  explanation:
-                    explanation?.explanation || question.explanation || "",
-                }}
-              />
-            </aside>
-          )}
+              {askOpen && (
+                <AskAI
+                  embedded
+                  doctor={doctor}
+                  concept={conceptName}
+                  onClose={() => setAskOpen(false)}
+                  mcq={{
+                    question_text: question.question_text,
+                    options: question.options,
+                    selected_option: selected || "",
+                    correct_option: revealedCorrect || "",
+                    explanation:
+                      explanation?.explanation || question.explanation || "",
+                  }}
+                />
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

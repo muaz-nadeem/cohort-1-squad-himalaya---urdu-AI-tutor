@@ -1343,14 +1343,19 @@ async def questions_chapter(
     user: Annotated[AuthUser, Depends(get_current_user)],
     chapter: str,
     count: int = 100,
+    preview: int = 5,
     student_id: Optional[str] = None,
 ):
     """Chapter practice: mix from ALL sources (tests, FLPs, past papers, repeated)."""
     sid = assert_same_student(user, student_id)
     n = max(1, min(count, 100))
+    preview = max(0, min(preview, n))
     try:
-        qs = await asyncio.get_event_loop().run_in_executor(
-            None, lambda: study.build_chapter_practice(chapter, count=n, student_id=sid)
+        qs, ids = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: study.build_chapter_practice(
+                chapter, count=n, student_id=sid, preview=preview or n
+            ),
         )
     except Exception as exc:
         raise HTTPException(
@@ -1362,6 +1367,7 @@ async def questions_chapter(
             "mode": "chapter_practice",
             "chapter": chapter,
             "questions": qs,
+            "question_ids": ids,
             "timed_seconds": None,
         }
     )
