@@ -11,7 +11,7 @@ import time
 from functools import lru_cache
 from typing import Optional
 
-from openai import OpenAI, RateLimitError
+from openai import NotFoundError, OpenAI, RateLimitError
 
 from .config import settings
 
@@ -148,28 +148,48 @@ def get_gemini_client() -> OpenAI:
     )
 
 
+# Groq replacements after 2026-08-16 deprecations (llama-3.3-70b / llama-3.1-8b).
+_LLM_FALLBACK = "openai/gpt-oss-120b"
+_GATE_FALLBACK = "openai/gpt-oss-20b"
+
+
+def _model_candidates(primary: str, fallback: str) -> list[str]:
+    """Try the configured model first, then Groq's documented replacement."""
+    if primary == fallback:
+        return [primary]
+    return [primary, fallback]
+
+
 def _chat(system_prompt: str, user_prompt: str, max_tokens: int) -> str:
     client = get_groq_client()
     # One quick retry rides out a momentary tokens-per-minute spike. Beyond
     # that we fail fast rather than making the student stare at a spinner.
-    for attempt in range(2):
-        try:
-            response = client.chat.completions.create(
-                model=settings.LLM_MODEL,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                max_tokens=max_tokens,
-                temperature=0.3,
-            )
-            return response.choices[0].message.content or ""
-        except RateLimitError as exc:
-            if attempt == 1:
+    for model in _model_candidates(settings.LLM_MODEL, _LLM_FALLBACK):
+        for attempt in range(2):
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    max_tokens=max_tokens,
+                    temperature=0.3,
+                )
+                return response.choices[0].message.content or ""
+            except NotFoundError:
+                if model != _LLM_FALLBACK:
+                    print(
+                        f"  [llm] model {model!r} not found, falling back to {_LLM_FALLBACK!r}"
+                    )
+                    break
                 raise
-            delay = _retry_after_seconds(exc, default=2.0)
-            print(f"  [llm] rate limited, retrying once in {delay:.1f}s")
-            time.sleep(delay)
+            except RateLimitError as exc:
+                if attempt == 1:
+                    raise
+                delay = _retry_after_seconds(exc, default=2.0)
+                print(f"  [llm] rate limited, retrying once in {delay:.1f}s")
+                time.sleep(delay)
 
     raise RuntimeError("LLM call failed")
 
@@ -740,17 +760,27 @@ Greetings, thanks, and small talk are NO."""
 
     try:
         client = get_groq_client()
-        response = client.chat.completions.create(
-            model=settings.TOPIC_GATE_MODEL,
-            messages=[
-                {"role": "system", "content": TOPIC_GATE_SYSTEM},
-                {"role": "user", "content": user},
-            ],
-            max_tokens=3,
-            temperature=0,
-        )
-        verdict = (response.choices[0].message.content or "").strip().upper()
-        return verdict.startswith("Y")
+        for model in _model_candidates(settings.TOPIC_GATE_MODEL, _GATE_FALLBACK):
+            try:
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {"role": "system", "content": TOPIC_GATE_SYSTEM},
+                        {"role": "user", "content": user},
+                    ],
+                    max_tokens=3,
+                    temperature=0,
+                )
+                verdict = (response.choices[0].message.content or "").strip().upper()
+                return verdict.startswith("Y")
+            except NotFoundError:
+                if model != _GATE_FALLBACK:
+                    print(
+                        f"  [topic-gate] model {model!r} not found, "
+                        f"falling back to {_GATE_FALLBACK!r}"
+                    )
+                    continue
+                raise
     except Exception as exc:
         # Greetings/tiny chat stay closed. Substantial Biology-looking
         # questions still fail open so a gate outage does not block tutoring.

@@ -20,7 +20,7 @@ from fastapi import Body, Depends, FastAPI, File, Form, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import StreamingResponse
-from openai import APIConnectionError, APITimeoutError, RateLimitError
+from openai import APIConnectionError, APITimeoutError, NotFoundError, RateLimitError
 from pydantic import BaseModel
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -264,6 +264,10 @@ def friendly_error(exc: Exception) -> str:
         return "The AI is busy right now (rate limit). Wait a few seconds and ask again."
     if isinstance(exc, (APITimeoutError, APIConnectionError)):
         return "The AI took too long to respond. Please ask again."
+    if isinstance(exc, NotFoundError):
+        return (
+            "The AI model is temporarily unavailable. Please try again in a moment."
+        )
     return f"Understood your question but the AI response failed ({type(exc).__name__})."
 
 

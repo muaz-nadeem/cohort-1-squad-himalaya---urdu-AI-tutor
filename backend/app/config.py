@@ -70,14 +70,16 @@ class Settings:
     NOMIC_EMBED_URL: str = os.getenv(
         "NOMIC_EMBED_URL", "https://api-atlas.nomic.ai/v1/embedding/text"
     ).strip()
-    LLM_MODEL: str = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-versatile")
+    # Groq retired llama-3.3-70b-versatile on 2026-08-16; gpt-oss-120b is the replacement.
+    LLM_MODEL: str = os.getenv("GROQ_LLM_MODEL", "openai/gpt-oss-120b")
     # Ask Textbook + MCQ explanations (OpenAI). gpt-4o-mini is the lightest
     # production chat model already used for MCQ ingest.
     EXPLAIN_LLM_MODEL: str = os.getenv("EXPLAIN_LLM_MODEL", "gpt-4o-mini")
     VISION_MODEL: str = os.getenv(
         "GROQ_VISION_MODEL", "qwen/qwen3.6-27b"
     )
-    TOPIC_GATE_MODEL: str = os.getenv("TOPIC_GATE_MODEL", "llama-3.1-8b-instant")
+    # Groq retired llama-3.1-8b-instant on 2026-08-16; gpt-oss-20b is the replacement.
+    TOPIC_GATE_MODEL: str = os.getenv("TOPIC_GATE_MODEL", "openai/gpt-oss-20b")
     MCQ_TEXT_MODEL: str = os.getenv("MCQ_TEXT_MODEL", "gpt-4o-mini")
     MCQ_VISION_MODEL: str = os.getenv("MCQ_VISION_MODEL", "gpt-4o-mini")
     WHISPER_MODEL: str = "whisper-large-v3"
