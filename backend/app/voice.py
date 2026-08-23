@@ -63,8 +63,9 @@ async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> st
     try:
         transcript = await _uplift_stt(audio_bytes, filename)
         if transcript and transcript.strip():
-            _safe_print(f"  [stt] Uplift success ({len(transcript)} chars)")
-            return transcript.strip()
+            out = prefer_urdu_script(transcript.strip())
+            _safe_print(f"  [stt] Uplift success ({len(out)} chars)")
+            return out
     except Exception as exc:
         _safe_print(f"  [stt] Uplift unexpected: {type(exc).__name__}: {exc}")
 
@@ -76,8 +77,9 @@ async def speech_to_text(audio_bytes: bytes, filename: str = "audio.webm") -> st
             None, _whisper_stt, audio_bytes, filename
         )
         if transcript and transcript.strip():
-            _safe_print(f"  [stt] Whisper success ({len(transcript)} chars)")
-            return transcript.strip()
+            out = prefer_urdu_script(transcript.strip())
+            _safe_print(f"  [stt] Whisper success ({len(out)} chars)")
+            return out
     except Exception as exc:
         _safe_print(f"  [stt] Whisper unexpected: {type(exc).__name__}: {exc}")
 
@@ -98,7 +100,10 @@ async def _uplift_stt(audio_bytes: bytes, filename: str) -> str:
                 f"{settings.UPLIFT_BASE}/transcriptions",
                 headers={"Authorization": f"Bearer {settings.UPLIFT_API_KEY}"},
                 files={"file": (filename, audio_bytes, mime)},
-                data={"model": "uplift-stt-1"},
+                data={
+                    "model": "uplift-stt-1",
+                    "language": settings.WHISPER_LANGUAGE,
+                },
             )
         if resp.status_code == 200:
             data = resp.json()
@@ -124,11 +129,162 @@ def _whisper_stt(audio_bytes: bytes, filename: str) -> str:
         result = client.audio.transcriptions.create(
             model=settings.WHISPER_MODEL,
             file=buffer,
+            language=settings.WHISPER_LANGUAGE,
+            prompt=(
+                "اردو نستعلیق میں لکھیں۔ Biology کے الفاظ انگریزی میں رہیں۔ "
+                "Hindi یا Devanagari مت لکھیں۔"
+            ),
         )
         return getattr(result, "text", "") or ""
     except Exception as exc:
         _safe_print(f"  [stt] Whisper error: {type(exc).__name__}: {exc}")
         return ""
+
+
+_DEVANAGARI_INDEPENDENT = {
+    "अ": "ا",
+    "आ": "آ",
+    "इ": "ا",
+    "ई": "ای",
+    "उ": "ا",
+    "ऊ": "او",
+    "ए": "اے",
+    "ऐ": "اے",
+    "ओ": "او",
+    "औ": "او",
+    "ऋ": "ر",
+}
+_DEVANAGARI_CONSONANTS = {
+    "क": "ک",
+    "ख": "کھ",
+    "ग": "گ",
+    "घ": "گھ",
+    "ङ": "ن",
+    "च": "چ",
+    "छ": "چھ",
+    "ज": "ج",
+    "झ": "جھ",
+    "ञ": "ن",
+    "ट": "ٹ",
+    "ठ": "ٹھ",
+    "ड": "ڈ",
+    "ढ": "ڈھ",
+    "ण": "ن",
+    "त": "ت",
+    "थ": "تھ",
+    "द": "د",
+    "ध": "دھ",
+    "न": "ن",
+    "प": "پ",
+    "फ": "پھ",
+    "ब": "ب",
+    "भ": "بھ",
+    "म": "م",
+    "य": "ی",
+    "र": "ر",
+    "ल": "ل",
+    "व": "و",
+    "ळ": "ل",
+    "श": "ش",
+    "ष": "ش",
+    "स": "س",
+    "ह": "ہ",
+    "क़": "ق",
+    "ख़": "خ",
+    "ग़": "غ",
+    "ज़": "ز",
+    "फ़": "ف",
+    "ड़": "ڑ",
+    "ढ़": "ڑھ",
+}
+_DEVANAGARI_MATRAS = {
+    "ा": "ا",
+    "ि": "ِ",
+    "ी": "ی",
+    "ु": "ُ",
+    "ू": "و",
+    "े": "ے",
+    "ै": "ے",
+    "ो": "و",
+    "ौ": "و",
+    "ृ": "ر",
+}
+_DEVANAGARI_MISC = str.maketrans(
+    {
+        "ं": "ں",
+        "ँ": "ں",
+        "ः": "ہ",
+        "।": "۔",
+        "॥": "۔",
+        "०": "0",
+        "१": "1",
+        "२": "2",
+        "३": "3",
+        "४": "4",
+        "५": "5",
+        "६": "6",
+        "७": "7",
+        "८": "8",
+        "९": "9",
+    }
+)
+
+
+def looks_like_devanagari(text: str) -> bool:
+    return any(0x0900 <= ord(c) <= 0x097F for c in (text or ""))
+
+
+def _devanagari_to_urdu(text: str) -> str:
+    """Map Hindi script to Urdu letters when STT still leaks Devanagari."""
+    out: list[str] = []
+    i = 0
+    n = len(text)
+    while i < n:
+        ch = text[i]
+        nxt = text[i + 1] if i + 1 < n else ""
+        if ch in _DEVANAGARI_INDEPENDENT:
+            out.append(_DEVANAGARI_INDEPENDENT[ch])
+            i += 1
+            continue
+        if ch in _DEVANAGARI_CONSONANTS:
+            cons = _DEVANAGARI_CONSONANTS[ch]
+            if nxt == "्" and i + 2 < n and text[i + 2] in _DEVANAGARI_CONSONANTS:
+                out.append(cons)
+                i += 2
+                continue
+            if nxt == "्":
+                out.append(cons)
+                i += 2
+                continue
+            if nxt in _DEVANAGARI_MATRAS:
+                out.append(cons + _DEVANAGARI_MATRAS[nxt])
+                i += 2
+                continue
+            out.append(cons)
+            i += 1
+            continue
+        if ch == "्":
+            i += 1
+            continue
+        if ch in _DEVANAGARI_MATRAS:
+            out.append(_DEVANAGARI_MATRAS[ch])
+            i += 1
+            continue
+        out.append(ch.translate(_DEVANAGARI_MISC))
+        i += 1
+    converted = "".join(out)
+    converted = converted.replace("اؤر", "اور").replace("مےں", "میں")
+    return re.sub(r"\s+", " ", converted).strip()
+
+
+def prefer_urdu_script(text: str) -> str:
+    """Keep transcripts in Urdu script; rewrite leftover Hindi Devanagari."""
+    raw = (text or "").strip()
+    if not raw or not looks_like_devanagari(raw):
+        return raw
+    rewritten = _devanagari_to_urdu(raw)
+    _safe_print("  [stt] Devanagari transcript rewritten to Urdu script")
+    return rewritten or raw
 
 
 # ===========================================================================

@@ -42,8 +42,11 @@ COURSE_SCOPE = f"""SCOPE (critical):
 BILINGUAL_CLASSROOM_RULES = """PROPER bilingual classroom Urdu (critical — a TTS voice will read this aloud):
 - Urdu script is ONLY sentence glue: ہے، ہیں، میں، کا، کے، کی، سے، اور، لیکن، کیونکہ، ہوتا ہے، بناتا ہے، کرتی ہے، والا، والے.
 - Every Biology word stays in ENGLISH Latin letters, spelled exactly as in the textbook/exam. This includes organs and body parts: intestine, large intestine, small intestine, stomach, liver, pancreas, kidney, lung, heart, blood, bile, vitamin, bacteria, enzyme, hormone, cell, nucleus, membrane, absorption, digestion, respiration, energy, molecule, DNA, ATP, and every other FSc/MDCAT term.
-- NEVER translate those words into Urdu. Wrong: آنت / آنتیں / امعاء (intestine), معدہ (stomach), جگر (liver), لبلبہ (pancreas), گردہ (kidney), پھیپھڑے (lungs), توانائی (energy), خلیہ (cell).
+- NEVER translate those words into Urdu. Wrong: آنت / آنتیں / امعاء (intestine), معدہ (stomach), جگر (liver), لبلبہ (pancreas), گردہ (kidney), پھیپھڑے (lungs), توانائی (energy), خلیہ (cell), نیم مائع / نیم مادہ (semi-liquid), بلغم (mucus), کیموس (chyme).
 - NEVER write English words in Urdu letters (transliteration). Wrong: انٹسٹائن, انٹیسٹائن, وٹامن, بیکٹیریا, انرجی, سیل. TTS then says garbage like "testine". Write intestine, vitamin, bacteria, energy, cell.
+- Descriptive science words stay English too: bolus, chyme, mucus, semi-liquid, semi-solid — never نیم مائع, نیم مادہ, بلغم, کیموس, بلوس.
+- Right: "Bolus chew ہونے کے بعد chyme ایک semi-liquid mixture بن جاتا ہے، mucus lining کو protect کرتا ہے۔"
+- Wrong: "بلوس چبانے کے بعد کیموس نیم مادہ بن جاتا ہے۔"
 - Right: "Vitamin K large intestine میں bacteria کی activity سے بنتا ہے۔"
 - Wrong: "وٹامن کے بڑی آنت میں بیکٹیریا کی سرگرمی سے بنتا ہے۔"
 - Wrong: "Vitamin K بڑی انٹسٹائن میں ..."
@@ -923,6 +926,18 @@ _SCIENCE_URDU_TO_EN: tuple[tuple[str, str], ...] = (
     ("جگر", "liver"),
     ("تعدد", "frequency"),
     ("انحطاط", "decay"),
+    ("نیم مائعہ", "semi-liquid"),
+    ("نیم مائع", "semi-liquid"),
+    ("نیم مادہ", "semi-liquid"),
+    ("نیم مادی", "semi-solid"),
+    ("کیموس", "chyme"),
+    ("کائم", "chyme"),
+    ("بلغم", "mucus"),
+    ("میوکس", "mucus"),
+    ("میوکوس", "mucus"),
+    ("بلوس", "bolus"),
+    ("لقمہ", "bolus"),
+    ("مائع", "liquid"),
 )
 
 _SCIENCE_LEAK_RE = re.compile(
@@ -956,6 +971,12 @@ _SCIENCE_LEAK_RE = re.compile(
             "غذائی نالی",
             "ہاضمہ",
             "وٹامن",
+            "نیم مائع",
+            "نیم مادہ",
+            "کیموس",
+            "بلغم",
+            "بلوس",
+            "میوکس",
         )
     )
 )

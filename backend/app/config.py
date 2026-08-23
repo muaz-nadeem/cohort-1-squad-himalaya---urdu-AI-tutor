@@ -81,6 +81,9 @@ class Settings:
     MCQ_TEXT_MODEL: str = os.getenv("MCQ_TEXT_MODEL", "gpt-4o-mini")
     MCQ_VISION_MODEL: str = os.getenv("MCQ_VISION_MODEL", "gpt-4o-mini")
     WHISPER_MODEL: str = "whisper-large-v3"
+    # Same as server/assistant-config.js stt.default.language — without this,
+    # Whisper auto-detects Urdu speech as Hindi and writes Devanagari.
+    WHISPER_LANGUAGE: str = os.getenv("WHISPER_LANGUAGE", "ur")
 
     UPLIFT_BASE: str = "https://api.upliftai.org/v1"
 

@@ -737,8 +737,8 @@ def _is_meaningful_question(text: str) -> bool:
         return False
     if llm.looks_like_social_talk(cleaned):
         return True
-    # Keep letters from Latin + Arabic/Urdu scripts
-    letters = re.sub(r"[^\w\u0600-\u06FF]", "", cleaned, flags=re.UNICODE)
+    # Keep letters from Latin + Arabic/Urdu + Devanagari (STT sometimes leaks Hindi).
+    letters = re.sub(r"[^\w\u0600-\u06FF\u0900-\u097F]", "", cleaned, flags=re.UNICODE)
     letters = letters.replace("_", "")
     if len(letters) < 3:
         return False
