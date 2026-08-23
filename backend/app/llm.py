@@ -44,7 +44,9 @@ BILINGUAL_CLASSROOM_RULES = """PROPER bilingual classroom Urdu (critical — a T
 - Every Biology word stays in ENGLISH Latin letters, spelled exactly as in the textbook/exam. This includes organs and body parts: intestine, large intestine, small intestine, stomach, liver, pancreas, kidney, lung, heart, blood, bile, vitamin, bacteria, enzyme, hormone, cell, nucleus, membrane, absorption, digestion, respiration, energy, molecule, DNA, ATP, and every other FSc/MDCAT term.
 - NEVER translate those words into Urdu. Wrong: آنت / آنتیں / امعاء (intestine), معدہ (stomach), جگر (liver), لبلبہ (pancreas), گردہ (kidney), پھیپھڑے (lungs), توانائی (energy), خلیہ (cell), نیم مائع / نیم مادہ (semi-liquid), بلغم (mucus), کیموس (chyme).
 - NEVER write English words in Urdu letters (transliteration). Wrong: انٹسٹائن, انٹیسٹائن, وٹامن, بیکٹیریا, انرجی, سیل. TTS then says garbage like "testine". Write intestine, vitamin, bacteria, energy, cell.
-- Descriptive science words stay English too: bolus, chyme, mucus, semi-liquid, semi-solid — never نیم مائع, نیم مادہ, بلغم, کیموس, بلوس.
+- Descriptive science words stay English too: bolus, chyme, mucus, semi-liquid, semi-solid, contract, contracts, relax, absorb, secrete — never نیم مائع, نیم مادہ, بلغم, کیموس, بلوس, سکڑتا.
+- Right: "Muscle fibres contract ہو کر chyme کو aage push کرتی ہیں۔"
+- Wrong: "پٹھے سکڑتے ہیں اور کیموس کو آگے دھکیلتے ہیں۔"
 - Right: "Bolus chew ہونے کے بعد chyme ایک semi-liquid mixture بن جاتا ہے، mucus lining کو protect کرتا ہے۔"
 - Wrong: "بلوس چبانے کے بعد کیموس نیم مادہ بن جاتا ہے۔"
 - Right: "Vitamin K large intestine میں bacteria کی activity سے بنتا ہے۔"
@@ -815,10 +817,11 @@ def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
         "CRITICAL: Proper bilingual only. Urdu is glue words. Every science word "
         "(intestine, large intestine, stomach, liver, pancreas, vitamin, bacteria, "
         "nucleus, electron, energy, alpha, beta, gamma, electromagnetic, "
-        "hydrogen, oxygen, molecule, DNA, ATP, and so on) MUST stay English "
+        "hydrogen, oxygen, molecule, DNA, ATP, contract, relax, absorb, "
+        "and so on) MUST stay English "
         "Latin letters. Never write آنت, آنتیں, امعاء, انٹسٹائن, انٹیسٹائن, "
         "معدہ, جگر, لبلبہ, وٹامن, بیکٹیریا, توانائی, الفا, بیٹا, گاما, "
-        "or برقی مقناطیسی. Formulas MUST be O2, H2O, CO2 — never O دو or H دو O. "
+        "برقی مقناطیسی, سکڑتا, or سکڑنا. Formulas MUST be O2, H2O, CO2 — never O دو or H دو O. "
         "Never include Greek symbols — write alpha, beta, gamma."
         if strict
         else ""
@@ -938,6 +941,10 @@ _SCIENCE_URDU_TO_EN: tuple[tuple[str, str], ...] = (
     ("بلوس", "bolus"),
     ("لقمہ", "bolus"),
     ("مائع", "liquid"),
+    ("سکڑتے", "contract"),
+    ("سکڑتا", "contracts"),
+    ("سکڑنا", "contract"),
+    ("انقباض", "contraction"),
 )
 
 _SCIENCE_LEAK_RE = re.compile(
@@ -977,6 +984,10 @@ _SCIENCE_LEAK_RE = re.compile(
             "بلغم",
             "بلوس",
             "میوکس",
+            "سکڑتا",
+            "سکڑتے",
+            "سکڑنا",
+            "انقباض",
         )
     )
 )

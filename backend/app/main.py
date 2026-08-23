@@ -346,7 +346,7 @@ async def _ask_ai_impl(req: AskRequest):
     """Shared ask pipeline (also used by ask-voice after STT)."""
     mcq_block = req.mcq.summary() if req.mcq else ""
     cache_key = _answer_key(
-        "ask_v2",
+        "ask_v3",
         req.concept,
         req.student_question,
         mcq_block,
@@ -411,7 +411,10 @@ async def _ask_ai_impl(req: AskRequest):
         sources = []
         answer_text, urdu_text = llm.off_topic_reply()
     elif req.speak:
+        # Same as Listen: English answer first, then to_urdu_speech from that
+        # English (urdu_text is empty on a fresh generate).
         urdu_text = await ensure_urdu(answer_text, urdu_text)
+        urdu_text = llm.sanitize_speech_narration(urdu_text)
         if not req.history:
             _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
 
@@ -472,29 +475,18 @@ async def _generate_ask_answer(
             print(f"  [ask] RAG failed: {type(exc).__name__}: {exc}")
 
     urdu_text = ""
-    if req.speak:
-        # One call for both languages instead of answer-then-translate.
-        answer_text, urdu_text = await loop.run_in_executor(
-            None,
-            lambda: llm.answer_question_bilingual(
-                concept=req.concept,
-                student_question=req.student_question,
-                context_chunk=context or "",
-                history=req.history,
-                mcq_block=mcq_block,
-            ),
-        )
-    else:
-        answer_text = await loop.run_in_executor(
-            None,
-            lambda: llm.answer_question(
-                concept=req.concept,
-                student_question=req.student_question,
-                context_chunk=context or "",
-                history=req.history,
-                mcq_block=mcq_block,
-            ),
-        )
+    # English on screen first. Spoken Urdu is derived from that English
+    # (same as the MCQ Listen button) so the call cannot leak textbook Urdu verbs.
+    answer_text = await loop.run_in_executor(
+        None,
+        lambda: llm.answer_question(
+            concept=req.concept,
+            student_question=req.student_question,
+            context_chunk=context or "",
+            history=req.history,
+            mcq_block=mcq_block,
+        ),
+    )
     return answer_text, urdu_text, sources
 
 
@@ -836,11 +828,12 @@ async def rag_ask_voice(
         sources = retrieved["sources"]
         citation = rag.format_citation(sources) if context else None
 
-        # One LLM call yields English text and the Urdu narration together.
-        answer_text, urdu_text = await loop.run_in_executor(
-            None, lambda: llm.answer_from_rag_bilingual(transcript.strip(), context)
+        # English on screen first; spoken Urdu is rewritten from that English
+        # (same pipeline as the MCQ Listen button).
+        answer_text = await loop.run_in_executor(
+            None, lambda: llm.answer_from_rag(transcript.strip(), context)
         )
-        answer_text, urdu_text = llm.normalize_course_answer(answer_text, urdu_text)
+        answer_text, urdu_text = llm.normalize_course_answer(answer_text, "")
         if llm.is_off_topic_answer(answer_text):
             answer_text, urdu_text = llm.off_topic_reply()
             speech_id = narration_id(answer_text, urdu_text)
@@ -865,7 +858,8 @@ async def rag_ask_voice(
                 "citation": None,
                 "error": "The AI returned an empty answer. Please ask again.",
             }
-        urdu_text = await ensure_urdu(answer_text, urdu_text)
+        urdu_text = await ensure_urdu(answer_text, "")
+        urdu_text = llm.sanitize_speech_narration(urdu_text)
 
         display_answer = answer_text
         if citation and citation not in display_answer:
