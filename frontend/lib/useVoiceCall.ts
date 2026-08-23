@@ -383,7 +383,7 @@ export function useVoiceCall({
       let pending: Blob | null = null;
 
       while (inCallRef.current && cycleRef.current === myCycle) {
-        let blob = pending;
+        let blob: Blob | null = pending;
         pending = null;
 
         if (!blob) {
@@ -406,7 +406,10 @@ export function useVoiceCall({
         abortRef.current = ac;
 
         setStatus("processing");
-        const work = onClip(blob, ac.signal).catch((e: unknown) => {
+        const work: Promise<VoiceCallResult | void> = onClip(
+          blob,
+          ac.signal
+        ).catch((e: unknown) => {
           if ((e as Error)?.name === "AbortError" || ac.signal.aborted) {
             return undefined;
           }
@@ -414,11 +417,18 @@ export function useVoiceCall({
           return undefined;
         });
 
-        const duringProcess = await raceBargeOrWork(work, stream, myCycle, {
-          threshold,
-          minSpeechMs: 220,
-          ignoreMs: 180,
-        });
+        const duringProcess:
+          | { kind: "barge"; blob: Blob }
+          | { kind: "work"; result: VoiceCallResult | void } = await raceBargeOrWork(
+          work,
+          stream,
+          myCycle,
+          {
+            threshold,
+            minSpeechMs: 220,
+            ignoreMs: 180,
+          }
+        );
 
         if (!inCallRef.current || cycleRef.current !== myCycle) {
           ac.abort();
