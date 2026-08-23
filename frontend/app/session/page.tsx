@@ -854,13 +854,6 @@ function SessionInner() {
       <Centered text="No questions." onBack={() => router.replace("/dashboard")} />
     );
 
-  const answered = Object.values(qStates).filter(
-    (s) => s.isCorrect !== null
-  ).length;
-  const score = Object.values(qStates).filter(
-    (s) => s.isCorrect === true
-  ).length;
-  const scorePct = answered ? Math.round((score / answered) * 100) : 0;
   const showSidebar = !!(selected && showExplainNow);
   const graded = isCorrect !== null;
   const revealColors = !reviewAtEnd;
@@ -1032,12 +1025,6 @@ function SessionInner() {
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm font-semibold text-slate-500">
               Q {index + 1} / {totalQ}
-              {!reviewAtEnd && (
-                <span className="ml-3 font-medium text-brand">
-                  Score {score}/{answered || 0}
-                  {answered > 0 ? ` (${scorePct}%)` : ""}
-                </span>
-              )}
             </p>
             <button
               type="button"
@@ -1343,9 +1330,6 @@ function SessionInner() {
             index={index}
             timerLabel={timerLabel}
             secondsLeft={secondsLeft}
-            answered={answered}
-            score={score}
-            scorePct={scorePct}
           />
         </aside>
       </div>
@@ -1383,9 +1367,6 @@ function SessionInner() {
               index={index}
               timerLabel={timerLabel}
               secondsLeft={secondsLeft}
-              answered={answered}
-              score={score}
-              scorePct={scorePct}
             />
           </aside>
         </div>
@@ -1408,9 +1389,6 @@ function QuestionNav({
   index,
   timerLabel,
   secondsLeft,
-  answered,
-  score,
-  scorePct,
 }: {
   totalQ: number;
   flaggedCount: number;
@@ -1423,9 +1401,6 @@ function QuestionNav({
   index: number;
   timerLabel: string | null;
   secondsLeft: number | null;
-  answered: number;
-  score: number;
-  scorePct: number;
 }) {
   return (
     <>
@@ -1529,22 +1504,6 @@ function QuestionNav({
             }`}
           >
             TIME REMAINING
-          </p>
-        </div>
-      )}
-      {answered > 0 && (
-        <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm">
-          <p className="text-[10px] font-bold tracking-wider text-slate-400">
-            SCORE
-          </p>
-          <p className="mt-1 text-2xl font-bold tabular-nums text-slate-800">
-            {score}
-            <span className="text-base font-semibold text-slate-400">
-              /{answered}
-            </span>
-            <span className="ml-2 text-sm font-semibold text-brand">
-              {scorePct}%
-            </span>
           </p>
         </div>
       )}
