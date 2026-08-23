@@ -15,7 +15,12 @@ from typing import Optional
 import httpx
 
 from .config import settings
-from .llm import get_groq_client, restore_english_science_terms, strip_speech_symbols
+from .llm import (
+    get_groq_client,
+    restore_english_science_terms,
+    strip_brackets_for_speech,
+    strip_speech_symbols,
+)
 
 
 def _safe_print(msg: str) -> None:
@@ -202,6 +207,66 @@ def _expand_urdu_formula_numbers(speak: str) -> str:
     )
 
 
+# Classroom stress for words Urdu TTS flattens (innate → "inate").
+# Longest match first. Hyphens make the engine hold the stressed part.
+_TEACHER_SAY: tuple[tuple[str, str], ...] = (
+    (r"\bphotosynthesis\b", "fo-to-SIN-thuh-sis"),
+    (r"\bphagocytosis\b", "FAG-oh-sy-TOE-sis"),
+    (r"\bmitochondria\b", "my-toh-KON-dree-a"),
+    (r"\bmitochondrion\b", "my-toh-KON-dree-on"),
+    (r"\bhomeostasis\b", "ho-mee-oh-STAY-sis"),
+    (r"\bheterozygous\b", "het-uh-ro-ZY-gus"),
+    (r"\bhomozygous\b", "ho-mo-ZY-gus"),
+    (r"\bacetylcholine\b", "uh-seet-il-KOH-leen"),
+    (r"\bendoplasmic\b", "en-doh-PLAZ-mik"),
+    (r"\bglycolysis\b", "gly-KOL-uh-sis"),
+    (r"\bnucleotide\b", "NEW-klee-oh-tide"),
+    (r"\bprokaryote(?:s)?\b", "pro-KARY-ote"),
+    (r"\beukaryote(?:s)?\b", "you-KARY-ote"),
+    (r"\bchromosome(?:s)?\b", "KRO-mo-sohm"),
+    (r"\bchloroplast(?:s)?\b", "KLOR-oh-plast"),
+    (r"\bchlorophyll\b", "KLOR-oh-fill"),
+    (r"\blymphocyte(?:s)?\b", "LIM-fo-site"),
+    (r"\bneutrophil(?:s)?\b", "NEW-tro-fill"),
+    (r"\bmacrophage(?:s)?\b", "MACK-ro-fage"),
+    (r"\bphagocyte(?:s)?\b", "FAG-oh-site"),
+    (r"\bribosome(?:s)?\b", "RY-bo-sohm"),
+    (r"\blysosome(?:s)?\b", "LY-so-sohm"),
+    (r"\bcytoplasm\b", "SY-toh-plazm"),
+    (r"\bphenotype\b", "FEE-no-type"),
+    (r"\bgenotype\b", "JEE-no-type"),
+    (r"\bpolymerase\b", "po-LIM-er-ace"),
+    (r"\binnately\b", "INN-ate-ly"),
+    (r"\binnate\b", "INN-ate"),
+    (r"\balleles?\b", "uh-LEEL"),
+    (r"\bmitosis\b", "my-TOE-sis"),
+    (r"\bmeiosis\b", "my-OH-sis"),
+    (r"\benzymes?\b", "EN-zime"),
+    (r"\bnuclei\b", "NEW-klee-eye"),
+    (r"\bnucleus\b", "NEW-klee-us"),
+    (r"\baerobic\b", "air-OH-bik"),
+    (r"\banaerobic\b", "an-air-OH-bik"),
+    (r"\bpathogen(?:s)?\b", "PATH-oh-jen"),
+    (r"\bantigen(?:s)?\b", "AN-ti-jen"),
+    (r"\bosmosis\b", "oz-MO-sis"),
+    (r"\bvacuole(?:s)?\b", "VAK-you-ole"),
+    (r"\bxylem\b", "ZY-lem"),
+    (r"\bphloem\b", "FLO-em"),
+    (r"\bgamete(?:s)?\b", "GAM-eet"),
+    (r"\bzygote(?:s)?\b", "ZY-goat"),
+    (r"\bdiploid\b", "DIP-loyd"),
+    (r"\bhaploid\b", "HAP-loyd"),
+)
+
+
+def _teacher_pronounce(speak: str) -> str:
+    """Respell science words so TTS stresses them like a classroom teacher."""
+    out = speak
+    for pattern, said in _TEACHER_SAY:
+        out = re.sub(pattern, said, out, flags=re.IGNORECASE)
+    return out
+
+
 def prepare_bilingual_tts(text: str) -> str:
     """Keep science formulas in English while the rest of the line stays Urdu."""
     speak = (text or "").strip()
@@ -223,13 +288,14 @@ def prepare_bilingual_tts(text: str) -> str:
         lambda m: f"{m.group(1)} {_english_digit_words(m.group(2))}",
         speak,
     )
+    speak = _teacher_pronounce(speak)
     speak = re.sub(r"\s+", " ", speak).strip()
     return speak
 
 
 def clean_for_tts(text: str, limit: int = 600) -> str:
     """Prepare bilingual narration, then trim so synthesis stays fast."""
-    speak = prepare_bilingual_tts(text)
+    speak = prepare_bilingual_tts(strip_brackets_for_speech(text))
     if len(speak) > limit:
         speak = speak[:limit].rsplit(" ", 1)[0] + "..."
     return speak

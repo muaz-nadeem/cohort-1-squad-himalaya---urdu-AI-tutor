@@ -398,42 +398,21 @@ def list_distinct_chapters() -> list[str]:
     return list(chapter_question_counts().keys())
 
 
-def _chapter_counts_via_rpc() -> Optional[dict[str, int]]:
-    """Single grouped query if the optional chapter_counts() RPC is applied."""
-    try:
-        res = require_client().rpc("chapter_counts", {}).execute()
-        rows = res.data or []
-        if not rows:
-            return None
-        counts: dict[str, int] = {}
-        for r in rows:
-            ch = (r.get("chapter") or "").strip()
-            if ch and not is_excluded_chapter(ch):
-                counts[ch] = int(r.get("n") or r.get("count") or 0)
-        return counts or None
-    except Exception:
-        return None
-
-
 @lru_cache(maxsize=1)
 def chapter_question_counts() -> dict[str, int]:
-    """How many MCQs exist per chapter name in the bank.
+    """Biology-only MCQ counts per chapter name.
 
-    Prefers a grouped chapter_counts() RPC (one round-trip). Without it, pages
-    the ``chapter`` column concurrently — PostgREST caps at 1000 rows/request,
-    so fetching pages in parallel keeps this well under a second instead of the
-    ~9s a sequential loop took on the full bank.
+    The grouped chapter_counts() RPC counts every row, including leftover
+    Physics. Practice already drops those via is_non_biology, so the cards
+    must use the same filter or the "MCQs in bank" numbers stay inflated.
     """
-    rpc_counts = _chapter_counts_via_rpc()
-    if rpc_counts is not None:
-        return rpc_counts
-
+    import time
     from concurrent.futures import ThreadPoolExecutor
 
     client = require_client()
     page_size = 1000
+    fields = "id,chapter,question_text,options,explanation,source"
 
-    # Total rows so we know how many pages to fetch in parallel.
     total = (
         client.table("questions").select("id", count="exact").limit(1).execute().count
         or 0
@@ -442,20 +421,30 @@ def chapter_question_counts() -> dict[str, int]:
 
     def fetch_page(page: int) -> list[dict[str, Any]]:
         start = page * page_size
-        return (
-            require_client()
-            .table("questions")
-            .select("chapter")
-            .range(start, start + page_size - 1)
-            .execute()
-            .data
-            or []
-        )
+        last_exc: Exception | None = None
+        for attempt in range(3):
+            try:
+                return (
+                    require_client()
+                    .table("questions")
+                    .select(fields)
+                    .range(start, start + page_size - 1)
+                    .execute()
+                    .data
+                    or []
+                )
+            except Exception as exc:
+                last_exc = exc
+                time.sleep(0.4 * (attempt + 1))
+        assert last_exc is not None
+        raise last_exc
 
     counts: dict[str, int] = {}
-    with ThreadPoolExecutor(max_workers=min(num_pages, 10)) as pool:
+    with ThreadPoolExecutor(max_workers=min(num_pages, 4)) as pool:
         for rows in pool.map(fetch_page, range(num_pages)):
             for r in rows:
+                if is_non_biology(r):
+                    continue
                 ch = (r.get("chapter") or "").strip()
                 if ch and not is_excluded_chapter(ch):
                     counts[ch] = counts.get(ch, 0) + 1
@@ -505,10 +494,20 @@ def quarantine_questions(question_ids: list[str]) -> int:
     updated = 0
     for i in range(0, len(ids), 200):
         chunk = ids[i : i + 200]
-        client.table("questions").update({"chapter": EXCLUDED_CHAPTER}).in_(
-            "id", chunk
-        ).execute()
-        updated += len(chunk)
+        res = (
+            client.table("questions")
+            .update({"chapter": EXCLUDED_CHAPTER})
+            .in_("id", chunk)
+            .execute()
+        )
+        wrote = len(res.data or [])
+        if wrote == 0:
+            raise RuntimeError(
+                "Could not quarantine questions — Supabase returned no updated "
+                "rows. The anon key cannot UPDATE the bank; set "
+                "SUPABASE_SERVICE_ROLE_KEY."
+            )
+        updated += wrote
     chapter_question_counts.cache_clear()
     list_distinct_chapters.cache_clear()
     return updated

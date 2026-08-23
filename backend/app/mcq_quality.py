@@ -8,10 +8,18 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
+from pathlib import Path
 from typing import Any, Optional
 
 # Quarantined rows keep this chapter so sampling / chapter counts skip them.
 EXCLUDED_CHAPTER = "__excluded_non_biology"
+
+# LLM-flagged Physics IDs that never stuck in Supabase (anon key cannot UPDATE).
+# Counts and sampling still skip these so the bank numbers stay Biology-only.
+_EXCLUDED_IDS_PATH = (
+    Path(__file__).resolve().parents[1] / "data" / "excluded_non_biology_ids.txt"
+)
 
 _KEY_LINE = re.compile(r"^KEY:\s*([A-D])\b", re.IGNORECASE)
 
@@ -104,9 +112,37 @@ def is_excluded_chapter(chapter: Optional[str]) -> bool:
     return name == EXCLUDED_CHAPTER or name.startswith("__excluded")
 
 
+@lru_cache(maxsize=1)
+def excluded_question_ids() -> frozenset[str]:
+    if not _EXCLUDED_IDS_PATH.exists():
+        return frozenset()
+    return frozenset(
+        line.strip()
+        for line in _EXCLUDED_IDS_PATH.read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    )
+
+
+def add_excluded_ids(question_ids: list[str]) -> int:
+    """Append newly found Physics IDs to the local exclusion list."""
+    existing = set(excluded_question_ids())
+    new = [i for i in dict.fromkeys(question_ids) if i and i not in existing]
+    if not new:
+        return 0
+    _EXCLUDED_IDS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with _EXCLUDED_IDS_PATH.open("a", encoding="utf-8") as f:
+        for qid in new:
+            f.write(qid + "\n")
+    excluded_question_ids.cache_clear()
+    return len(new)
+
+
 def is_non_biology(row: dict[str, Any]) -> bool:
     """True when this MCQ is Physics (or already quarantined)."""
     if is_excluded_chapter(row.get("chapter")):
+        return True
+    qid = str(row.get("id") or "").strip()
+    if qid and qid in excluded_question_ids():
         return True
     source = str(row.get("source") or "")
     if _PHYSICS_SOURCE_RE.search(source):

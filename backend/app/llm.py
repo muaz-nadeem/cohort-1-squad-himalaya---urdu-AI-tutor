@@ -962,11 +962,25 @@ def restore_english_science_terms(text: str) -> str:
     return re.sub(r"\s+", " ", out).strip()
 
 
+def strip_brackets_for_speech(text: str) -> str:
+    """Drop parenthetical asides so TTS does not speak (NK) or (second line)."""
+    cleaned = text or ""
+    for _ in range(3):
+        nxt = re.sub(r"[\(\（][^()（）]*[\)\）]", " ", cleaned)
+        if nxt == cleaned:
+            break
+        cleaned = nxt
+    cleaned = re.sub(r"\[[^\[\]]*\]", " ", cleaned)
+    cleaned = re.sub(r"\s+([,.!?;:۔])", r"\1", cleaned)
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
 def sanitize_speech_narration(text: str) -> str:
     """Strip labels/greetings so TTS does not speak hallucinated warm-up first."""
     cleaned = (text or "").strip()
     if not cleaned:
         return ""
+    cleaned = strip_brackets_for_speech(cleaned)
     cleaned = re.sub(r"(?i)\b(?:ENGLISH|URDU)\s*:\s*", " ", cleaned)
     # Common spoken openings that are not part of the written explanation.
     cleaned = re.sub(
@@ -990,9 +1004,7 @@ def sanitize_speech_narration(text: str) -> str:
 
 def _strip_for_speech(text: str) -> str:
     """Remove citations/markdown so the spoken version stays clean."""
-    cleaned = text or ""
-    # Drop trailing citation blocks like (FSc Biology Part 1, p. 8 | PTB)
-    cleaned = re.sub(r"\((?:[^()]*(?:p\.|page|PTB)[^()]*)\)", " ", cleaned)
-    cleaned = re.sub(r"[*_#`>\[\]]", " ", cleaned)
+    cleaned = strip_brackets_for_speech(text or "")
+    cleaned = re.sub(r"[*_#`>]", " ", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned)
     return cleaned.strip()

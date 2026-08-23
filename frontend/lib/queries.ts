@@ -13,7 +13,7 @@ import { api } from "./api";
 export const CHAPTERS_QUERY = {
   queryKey: ["chapters"] as const,
   queryFn: () => api.getChapters(),
-  staleTime: 30 * 60_000,
+  staleTime: 60_000,
 };
 
 export const dashboardQuery = (studentId: string) => ({

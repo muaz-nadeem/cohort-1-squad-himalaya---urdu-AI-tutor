@@ -20,6 +20,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from app import db, llm  # noqa: E402
 from app.mcq_quality import (  # noqa: E402
     EXCLUDED_CHAPTER,
+    add_excluded_ids,
     format_options,
     is_excluded_chapter,
     is_non_biology,
@@ -121,11 +122,17 @@ def main() -> None:
     if len(physics) > 15:
         print(f"  ... {len(physics) - 15} more")
 
+    if physics:
+        add_excluded_ids([r["id"] for r in physics])
     if args.apply and physics:
-        n = db.quarantine_questions([r["id"] for r in physics])
-        print(f"Quarantined {n} rows as chapter={EXCLUDED_CHAPTER}")
+        try:
+            n = db.quarantine_questions([r["id"] for r in physics])
+            print(f"Quarantined {n} rows as chapter={EXCLUDED_CHAPTER}")
+        except RuntimeError as exc:
+            print(f"DB quarantine skipped: {exc}")
+            print("IDs were still added to data/excluded_non_biology_ids.txt")
     elif physics:
-        print("Dry-run: Physics not hidden yet. Re-run with --apply.")
+        print("Dry-run: Physics not hidden in DB yet. Re-run with --apply.")
 
     if not args.keys:
         return
@@ -163,8 +170,12 @@ def main() -> None:
             if verdict["subject"] == "physics":
                 extra_physics += 1
                 print(f"  [{i}/{len(pool)}] PHYSICS  {qid}")
+                add_excluded_ids([qid])
                 if client:
-                    db.quarantine_questions([qid])
+                    try:
+                        db.quarantine_questions([qid])
+                    except RuntimeError as exc:
+                        print(f"    DB quarantine skipped: {exc}")
                 mark_done(qid)
                 continue
             key = verdict["correct_option"]

@@ -113,7 +113,9 @@ language sql stable
 as $$
   select chapter, count(*) as n
   from questions
-  where chapter is not null and chapter <> ''
+  where chapter is not null
+    and chapter <> ''
+    and chapter not like '\_\_excluded%' escape '\'
   group by chapter;
 $$;
 
