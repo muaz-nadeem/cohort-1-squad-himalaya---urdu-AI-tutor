@@ -78,6 +78,8 @@ export default function ChatPage() {
   const bookFilterRef = useRef<string | undefined>(undefined);
   const messagesRef = useRef<Message[]>([]);
   const activeChatIdRef = useRef<string | null>(null);
+  const streamAbortRef = useRef<AbortController | null>(null);
+  const reqSeqRef = useRef(0);
 
   useEffect(() => {
     bookFilterRef.current = bookFilter;
@@ -178,7 +180,10 @@ export default function ChatPage() {
   }
 
   async function startNewChat() {
-    if (loading || loadingChat) return;
+    if (loadingChat) return;
+    streamAbortRef.current?.abort();
+    reqSeqRef.current += 1;
+    setLoading(false);
     setMessages([]);
     setActiveChatId(null);
     activeChatIdRef.current = null;
@@ -261,10 +266,17 @@ export default function ChatPage() {
 
   async function handleSend(question?: string) {
     const q = (question || input).trim();
-    if (!q || loading) return;
+    if (!q) return;
 
-    const prior = historyPayload(messagesRef.current);
-    const isFirst = messagesRef.current.length === 0;
+    streamAbortRef.current?.abort();
+    const ac = new AbortController();
+    streamAbortRef.current = ac;
+    const seq = ++reqSeqRef.current;
+
+    const prior = historyPayload(
+      messagesRef.current.filter((m) => !m.streaming)
+    );
+    const isFirst = messagesRef.current.filter((m) => !m.streaming).length === 0;
 
     const userMsg: Message = {
       id: crypto.randomUUID(),
@@ -280,20 +292,28 @@ export default function ChatPage() {
       streaming: true,
     };
 
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+    setMessages((prev) => [
+      ...prev.filter((m) => !m.streaming),
+      userMsg,
+      botMsg,
+    ]);
     setInput("");
     setLoading(true);
 
     const chatId = await ensureChatId();
 
     try {
-      const res = await api.ragAskStream({
-        question: q,
-        book: bookFilter,
-        top_k: 3,
-        history: prior,
-      });
+      const res = await api.ragAskStream(
+        {
+          question: q,
+          book: bookFilter,
+          top_k: 3,
+          history: prior,
+        },
+        ac.signal
+      );
 
+      if (ac.signal.aborted || seq !== reqSeqRef.current) return;
       if (!res.ok) throw new Error(await res.text());
 
       const reader = res.body?.getReader();
@@ -306,6 +326,10 @@ export default function ChatPage() {
       let finalCitation: string | null = null;
 
       while (true) {
+        if (ac.signal.aborted || seq !== reqSeqRef.current) {
+          await reader.cancel();
+          return;
+        }
         const { done, value } = await reader.read();
         if (done) break;
 
@@ -346,6 +370,8 @@ export default function ChatPage() {
         }
       }
 
+      if (ac.signal.aborted || seq !== reqSeqRef.current) return;
+
       if (!fullText.trim()) {
         fullText =
           "I found textbook pages but the AI did not return an answer. This is often a Groq rate limit — wait a few seconds and ask again.";
@@ -373,6 +399,14 @@ export default function ChatPage() {
         );
       }
     } catch (e) {
+      if (ac.signal.aborted || seq !== reqSeqRef.current) {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return;
+      }
+      if ((e as Error)?.name === "AbortError") {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return;
+      }
       setMessages((prev) =>
         prev.map((m) =>
           m.id === botId
@@ -387,23 +421,37 @@ export default function ChatPage() {
         )
       );
     } finally {
-      setLoading(false);
-      inputRef.current?.focus();
+      if (seq === reqSeqRef.current) {
+        setLoading(false);
+        inputRef.current?.focus();
+      }
     }
   }
 
-  const handleClip = useCallback(async (blob: Blob) => {
+  const handleClip = useCallback(async (blob: Blob, signal: AbortSignal) => {
+    streamAbortRef.current?.abort();
+    const seq = ++reqSeqRef.current;
     const botId = crypto.randomUUID();
-    const prior = historyPayload(messagesRef.current);
-    const isFirst = messagesRef.current.length === 0;
+    const prior = historyPayload(messagesRef.current.filter((m) => !m.streaming));
+    const isFirst = messagesRef.current.filter((m) => !m.streaming).length === 0;
     setMessages((prev) => [
-      ...prev,
+      ...prev.filter((m) => !m.streaming),
       { id: botId, role: "assistant", content: "", streaming: true },
     ]);
 
     try {
       const chatId = await ensureChatId();
-      const res = await api.ragAskVoice(blob, bookFilterRef.current, 3);
+      const res = await api.ragAskVoice(
+        blob,
+        bookFilterRef.current,
+        3,
+        signal
+      );
+
+      if (signal.aborted || seq !== reqSeqRef.current) {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return { audio: null };
+      }
 
       if (res.no_speech) {
         setMessages((prev) => prev.filter((m) => m.id !== botId));
@@ -442,6 +490,10 @@ export default function ChatPage() {
       }));
 
       const speechUrl = await speechStreamUrl(res.speech_id);
+      if (signal.aborted || seq !== reqSeqRef.current) {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return { audio: null };
+      }
       const answer = res.answer || "No answer received.";
 
       setMessages((prev) =>
@@ -473,6 +525,14 @@ export default function ChatPage() {
 
       return { audio: res.audio, speechUrl };
     } catch (e) {
+      if (
+        signal.aborted ||
+        seq !== reqSeqRef.current ||
+        (e as Error)?.name === "AbortError"
+      ) {
+        setMessages((prev) => prev.filter((m) => m.id !== botId));
+        return { audio: null };
+      }
       setMessages((prev) =>
         prev.map((m) =>
           m.id === botId
@@ -686,6 +746,9 @@ export default function ChatPage() {
                       }}
                     />
                   </div>
+                  <p className="mt-2 text-center text-[11px] text-slate-500">
+                    Ask a new question anytime — the latest one is answered.
+                  </p>
                 </div>
               ) : (
                 <form
@@ -701,13 +764,16 @@ export default function ChatPage() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask about MDCAT syllabus..."
-                    disabled={loading}
                     className="min-w-0 flex-1 !border-0 !bg-transparent !px-3 !py-2.5 !text-base !shadow-none !ring-0 focus:!ring-0 sm:!text-sm"
                   />
                   <button
                     type="button"
-                    onClick={call.startCall}
-                    disabled={loading}
+                    onClick={() => {
+                      streamAbortRef.current?.abort();
+                      reqSeqRef.current += 1;
+                      setLoading(false);
+                      call.startCall();
+                    }}
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand transition hover:bg-brand hover:text-white disabled:opacity-40"
                     title="Ask by voice (Urdu)"
                     aria-label="Ask by voice"
@@ -716,7 +782,7 @@ export default function ChatPage() {
                   </button>
                   <button
                     type="submit"
-                    disabled={loading || !input.trim()}
+                    disabled={!input.trim()}
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white transition hover:bg-brand-dark disabled:opacity-40"
                   >
                     {loading ? (

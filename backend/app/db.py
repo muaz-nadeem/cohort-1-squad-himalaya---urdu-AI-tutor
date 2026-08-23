@@ -11,6 +11,7 @@ from typing import Any, Optional
 from supabase import Client, create_client
 
 from .config import settings
+from .mcq_quality import EXCLUDED_CHAPTER, is_excluded_chapter, is_non_biology
 
 
 @lru_cache
@@ -151,7 +152,8 @@ def get_questions(
         q = q.eq("book", book)
     if source_type:
         q = q.eq("source_type", source_type)
-    return q.limit(limit).execute().data or []
+    rows = q.limit(limit).execute().data or []
+    return [r for r in rows if not is_non_biology(r)]
 
 
 def _list_question_ids(
@@ -166,7 +168,7 @@ def _list_question_ids(
     ids: list[str] = []
     offset = 0
     while len(ids) < max_ids:
-        q = client.table("questions").select("id")
+        q = client.table("questions").select("id").neq("chapter", EXCLUDED_CHAPTER)
         if chapter:
             q = q.eq("chapter", chapter)
         if book:
@@ -190,7 +192,7 @@ def _hydrate_questions(ids: list[str]) -> list[dict[str, Any]]:
     if not ids:
         return []
     by_id = get_questions_by_ids(ids, columns=_PRACTICE_COLUMNS)
-    return [by_id[i] for i in ids if i in by_id]
+    return [by_id[i] for i in ids if i in by_id and not is_non_biology(by_id[i])]
 
 
 def sample_questions(
@@ -239,14 +241,21 @@ def sample_questions(
     if not exclude:
         picked = _from_rpc(None)
         if picked:
-            return picked
+            return _top_up_biology(picked, count, chapter=chapter, book=book)
         ids = _list_question_ids(chapter=chapter, book=book)
         random.shuffle(ids)
-        return _hydrate_questions(ids[:count])
+        return _top_up_biology(
+            _hydrate_questions(ids[: count + 12]),
+            count,
+            chapter=chapter,
+            book=book,
+        )
 
     picked = _from_rpc(exclude)
     if picked:
-        return picked
+        return _top_up_biology(
+            picked, count, chapter=chapter, book=book, exclude=exclude
+        )
 
     ids = _list_question_ids(chapter=chapter, book=book)
     unseen = [i for i in ids if i not in exclude]
@@ -254,10 +263,16 @@ def sample_questions(
     if reuse_seen:
         seen = [i for i in ids if i in exclude]
         random.shuffle(seen)
-        picked_ids = (unseen + seen)[:count]
+        picked_ids = (unseen + seen)[: count + 12]
     else:
-        picked_ids = unseen[:count]
-    return _hydrate_questions(picked_ids)
+        picked_ids = unseen[: count + 12]
+    return _top_up_biology(
+        _hydrate_questions(picked_ids),
+        count,
+        chapter=chapter,
+        book=book,
+        exclude=exclude,
+    )
 
 
 def questions_in_order(question_ids: list[str]) -> list[dict[str, Any]]:
@@ -285,14 +300,26 @@ def sample_question_ids(
         return []
     if not exclude:
         random.shuffle(ids)
-        return ids[:count]
-    unseen = [i for i in ids if i not in exclude]
-    random.shuffle(unseen)
-    if not reuse_seen:
-        return unseen[:count]
-    seen = [i for i in ids if i in exclude]
-    random.shuffle(seen)
-    return (unseen + seen)[:count]
+        pool = ids
+    else:
+        unseen = [i for i in ids if i not in exclude]
+        random.shuffle(unseen)
+        if not reuse_seen:
+            pool = unseen
+        else:
+            seen = [i for i in ids if i in exclude]
+            random.shuffle(seen)
+            pool = unseen + seen
+    # Hydrate a slightly larger slice so Physics rows can be dropped
+    # without shrinking the batch the student sees.
+    hydrated = _hydrate_questions(pool[: max(count + 20, count)])
+    kept = [r["id"] for r in hydrated]
+    if len(kept) >= count:
+        return kept[:count]
+    extra = [i for i in pool if i not in set(kept)]
+    more = _hydrate_questions(extra[:80])
+    kept.extend(r["id"] for r in more)
+    return kept[:count]
 
 
 def get_attempted_question_ids(student_id: str) -> list[str]:
@@ -323,7 +350,37 @@ def get_attempted_question_ids(student_id: str) -> list[str]:
     return ids
 
 
+def _top_up_biology(
+    picked: list[dict[str, Any]],
+    count: int,
+    *,
+    chapter: Optional[str] = None,
+    book: Optional[str] = None,
+    exclude: Optional[set[str]] = None,
+) -> list[dict[str, Any]]:
+    """Drop Physics / quarantined rows, then fill until ``count``."""
+    kept = [r for r in picked if not is_non_biology(r)]
+    if len(kept) >= count:
+        return kept[:count]
+    seen = {str(r.get("id")) for r in kept}
+    if exclude:
+        seen |= exclude
+    ids = [i for i in _list_question_ids(chapter=chapter, book=book) if i not in seen]
+    import random
+
+    random.shuffle(ids)
+    extra = _hydrate_questions(ids[: max(40, count - len(kept) + 12)])
+    for row in extra:
+        if is_non_biology(row):
+            continue
+        kept.append(row)
+        if len(kept) >= count:
+            break
+    return kept[:count]
+
+
 def insert_questions(rows: list[dict[str, Any]]) -> int:
+    rows = [r for r in rows if not is_non_biology(r)]
     if not rows:
         return 0
     client = require_client()
@@ -351,7 +408,7 @@ def _chapter_counts_via_rpc() -> Optional[dict[str, int]]:
         counts: dict[str, int] = {}
         for r in rows:
             ch = (r.get("chapter") or "").strip()
-            if ch:
+            if ch and not is_excluded_chapter(ch):
                 counts[ch] = int(r.get("n") or r.get("count") or 0)
         return counts or None
     except Exception:
@@ -400,7 +457,7 @@ def chapter_question_counts() -> dict[str, int]:
         for rows in pool.map(fetch_page, range(num_pages)):
             for r in rows:
                 ch = (r.get("chapter") or "").strip()
-                if ch:
+                if ch and not is_excluded_chapter(ch):
                     counts[ch] = counts.get(ch, 0) + 1
     return counts
 
@@ -424,9 +481,37 @@ def catalog_question_counts() -> dict[str, int]:
     raw = chapter_question_counts()
     out: dict[str, int] = {}
     for name, n in raw.items():
+        if is_excluded_chapter(name):
+            continue
         key = CHAPTER_COUNT_ALIASES.get(name, name)
         out[key] = out.get(key, 0) + n
     return out
+
+
+def update_correct_option(question_id: str, correct_option: str) -> None:
+    key = (correct_option or "").strip().upper()[:1]
+    if not question_id or key not in {"A", "B", "C", "D"}:
+        return
+    require_client().table("questions").update({"correct_option": key}).eq(
+        "id", question_id
+    ).execute()
+
+
+def quarantine_questions(question_ids: list[str]) -> int:
+    ids = [i for i in dict.fromkeys(question_ids) if i]
+    if not ids:
+        return 0
+    client = require_client()
+    updated = 0
+    for i in range(0, len(ids), 200):
+        chunk = ids[i : i + 200]
+        client.table("questions").update({"chapter": EXCLUDED_CHAPTER}).in_(
+            "id", chunk
+        ).execute()
+        updated += len(chunk)
+    chapter_question_counts.cache_clear()
+    list_distinct_chapters.cache_clear()
+    return updated
 
 
 def get_question(question_id: str) -> Optional[dict[str, Any]]:

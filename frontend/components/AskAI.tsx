@@ -38,6 +38,7 @@ export default function AskAI({
 
   const historyRef = useRef<{ role: string; content: string }[]>([]);
   const abortRef = useRef<AbortController | null>(null);
+  const reqSeqRef = useRef(0);
   const mcqRef = useRef<McqContext | undefined>(mcq);
 
   useEffect(() => {
@@ -60,18 +61,32 @@ export default function AskAI({
   }
 
   const handleClip = useCallback(
-    async (blob: Blob) => {
-      const res = await api.askVoice(blob, concept, mcqRef.current);
-      if (res.no_speech) return { audio: null, noSpeech: true };
-      if (res.error) {
-        setError(res.error);
-        return { audio: null };
+    async (blob: Blob, signal: AbortSignal) => {
+      const seq = ++reqSeqRef.current;
+      try {
+        const res = await api.askVoice(blob, concept, mcqRef.current, signal);
+        if (signal.aborted || seq !== reqSeqRef.current) return { audio: null };
+        if (res.no_speech) return { audio: null, noSpeech: true };
+        if (res.error) {
+          setError(res.error);
+          return { audio: null };
+        }
+        setError("");
+        if (res.transcript) pushTurn("user", res.transcript);
+        const speechUrl = await speechStreamUrl(res.speech_id);
+        if (signal.aborted || seq !== reqSeqRef.current) return { audio: null };
+        if (res.answer) pushTurn("assistant", res.answer, speechUrl);
+        return { audio: res.audio, speechUrl };
+      } catch (e) {
+        if (
+          signal.aborted ||
+          seq !== reqSeqRef.current ||
+          (e as Error)?.name === "AbortError"
+        ) {
+          return { audio: null };
+        }
+        throw e;
       }
-      setError("");
-      if (res.transcript) pushTurn("user", res.transcript);
-      const speechUrl = await speechStreamUrl(res.speech_id);
-      if (res.answer) pushTurn("assistant", res.answer, speechUrl);
-      return { audio: res.audio, speechUrl };
     },
     [concept]
   );
@@ -79,29 +94,42 @@ export default function AskAI({
   const call = useVoiceCall({ onClip: handleClip });
 
   async function askText() {
-    if (!text.trim() || loading) return;
+    const question = text.trim();
+    if (!question) return;
+
+    abortRef.current?.abort();
+    const ac = new AbortController();
+    abortRef.current = ac;
+    const seq = ++reqSeqRef.current;
+
     setLoading(true);
     setError("");
-    const question = text;
     setText("");
     pushTurn("user", question);
     try {
-      const res = await api.ask({
-        concept,
-        student_question: question,
-        history: historyRef.current.slice(-6),
-        mcq: mcqRef.current,
-      });
+      const res = await api.ask(
+        {
+          concept,
+          student_question: question,
+          history: historyRef.current.slice(-6),
+          mcq: mcqRef.current,
+        },
+        ac.signal
+      );
+      if (ac.signal.aborted || seq !== reqSeqRef.current) return;
       if (res.error) {
         setError(res.error);
         return;
       }
       const speechUrl = await speechStreamUrl(res.speech_id);
+      if (ac.signal.aborted || seq !== reqSeqRef.current) return;
       pushTurn("assistant", res.answer, speechUrl);
     } catch (e) {
+      if (ac.signal.aborted || seq !== reqSeqRef.current) return;
+      if ((e as Error)?.name === "AbortError") return;
       setError(e instanceof Error ? e.message : "Failed to ask");
     } finally {
-      setLoading(false);
+      if (seq === reqSeqRef.current) setLoading(false);
     }
   }
 
@@ -156,6 +184,7 @@ export default function AskAI({
         <button
           onClick={() => {
             abortRef.current?.abort();
+            reqSeqRef.current += 1;
             call.endCall();
             setOpen(false);
             setLoading(false);
@@ -239,7 +268,7 @@ export default function AskAI({
             <PhoneOff className="h-4 w-4" /> End call
           </button>
           <p className="mt-2 text-center text-[11px] text-slate-500">
-            Sawal poochein — jawab Urdu mein sunaya jayega. Call chalti rahegi.
+            Naya sawal poochein — pehla jawab rok kar latest ka jawab milega.
           </p>
         </div>
       ) : (
@@ -249,14 +278,13 @@ export default function AskAI({
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && !loading && askText()}
+              onKeyDown={(e) => e.key === "Enter" && askText()}
               placeholder={`Ask ${doctor.displayName}...`}
-              disabled={loading}
               className="!py-2.5 min-w-0"
             />
             <button
               onClick={askText}
-              disabled={loading || !text.trim()}
+              disabled={!text.trim()}
               className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-brand px-4 text-white transition hover:bg-brand-dark disabled:opacity-50"
             >
               {loading ? (
@@ -268,9 +296,13 @@ export default function AskAI({
           </div>
 
           <button
-            onClick={call.startCall}
-            disabled={loading}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50"
+            onClick={() => {
+              abortRef.current?.abort();
+              reqSeqRef.current += 1;
+              setLoading(false);
+              call.startCall();
+            }}
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
           >
             <Phone className="h-4 w-4" /> Call {doctor.displayName} (Urdu)
           </button>

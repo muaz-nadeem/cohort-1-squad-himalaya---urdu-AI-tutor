@@ -16,25 +16,42 @@ from openai import OpenAI, RateLimitError
 from .config import settings
 
 OFF_TOPIC_ENGLISH = (
-    "Please ask me something from your course — FSc / MDCAT Biology. "
-    "I only help with your Biology syllabus and textbook topics."
+    "Please ask a relevant Biology question. I only help with FSc / MDCAT Biology."
 )
 
 OFF_TOPIC_URDU = (
-    "براہِ کرم اپنے کورس سے کچھ پوچھیں — FSc / MDCAT Biology۔ "
-    "میں صرف آپ کے Biology syllabus اور textbook topics میں مدد دیتا ہوں۔"
+    "براہِ کرم ایک relevant Biology question پوچھیں۔ "
+    "میں صرف FSc / MDCAT Biology میں مدد دیتا ہوں۔"
 )
 
-COURSE_SCOPE = """SCOPE (critical):
+COURSE_SCOPE = f"""SCOPE (critical):
 - You ONLY tutor FSc / MDCAT Biology (Punjab Textbook Board syllabus and related exam practice).
 - On-topic includes: Biology concepts, textbook pages, MCQs, diagrams, definitions, comparisons,
   exam tips, and short follow-ups about a Biology question already being discussed
   (e.g. "explain more", "why is B wrong", "in simple words").
-- Off-topic includes: other subjects (unless tightly Biology), sports, politics, coding, jokes,
-  recipes, celebrity talk, personal chat, general knowledge, and anything not Biology course work.
-- If the request is off-topic, do NOT answer it. Reply with EXACTLY this English sentence and nothing else:
-  "Please ask me something from your course — FSc / MDCAT Biology. I only help with your Biology syllabus and textbook topics."
+- Off-topic includes: greetings and small talk (hi, hello, assalamualaikum, how are you, thanks, bye),
+  other subjects (unless tightly Biology), sports, politics, coding, jokes, recipes, celebrity talk,
+  personal chat, general knowledge, and anything not Biology course work.
+- Never greet the student back. Never chit-chat. If the request is off-topic — including greetings —
+  do NOT answer it. Reply with EXACTLY this English sentence and nothing else:
+  "{OFF_TOPIC_ENGLISH}"
 """
+
+# Shared by every spoken-Urdu prompt. TTS misreads Urdu translations/transliterations
+# of syllabus words (آنت / انٹسٹائن → garbled "testine").
+BILINGUAL_CLASSROOM_RULES = """PROPER bilingual classroom Urdu (critical — a TTS voice will read this aloud):
+- Urdu script is ONLY sentence glue: ہے، ہیں، میں، کا، کے، کی، سے، اور، لیکن، کیونکہ، ہوتا ہے، بناتا ہے، کرتی ہے، والا، والے.
+- Every Biology word stays in ENGLISH Latin letters, spelled exactly as in the textbook/exam. This includes organs and body parts: intestine, large intestine, small intestine, stomach, liver, pancreas, kidney, lung, heart, blood, bile, vitamin, bacteria, enzyme, hormone, cell, nucleus, membrane, absorption, digestion, respiration, energy, molecule, DNA, ATP, and every other FSc/MDCAT term.
+- NEVER translate those words into Urdu. Wrong: آنت / آنتیں / امعاء (intestine), معدہ (stomach), جگر (liver), لبلبہ (pancreas), گردہ (kidney), پھیپھڑے (lungs), توانائی (energy), خلیہ (cell).
+- NEVER write English words in Urdu letters (transliteration). Wrong: انٹسٹائن, انٹیسٹائن, وٹامن, بیکٹیریا, انرجی, سیل. TTS then says garbage like "testine". Write intestine, vitamin, bacteria, energy, cell.
+- Right: "Vitamin K large intestine میں bacteria کی activity سے بنتا ہے۔"
+- Wrong: "وٹامن کے بڑی آنت میں بیکٹیریا کی سرگرمی سے بنتا ہے۔"
+- Wrong: "Vitamin K بڑی انٹسٹائن میں ..."
+- Right: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
+- Do not write Greek or math symbols (α β γ Δ). Write the English names: alpha, beta, gamma.
+- Formulas stay English: write O2, H2O, CO2, n2 — never Urdu digits inside a formula (wrong: O دو / H دو O).
+- Never use Roman Urdu or Hindi.
+- Never write a fully Urdu explanation. Every sentence must keep its science words in English Latin letters."""
 
 ASK_SYSTEM_PROMPT = f"""You are a friendly, expert MDCAT Biology tutor for Pakistani FSc students.
 
@@ -50,24 +67,19 @@ Rules:
 7. End with one memorable exam tip when useful.
 8. Do not invent page numbers. The app may append a citation separately."""
 
-URDU_SPEECH_SYSTEM_PROMPT = """You are an Urdu-speaking MDCAT Biology tutor talking to a Pakistani FSc student on a phone call.
+URDU_SPEECH_SYSTEM_PROMPT = f"""You are an Urdu-speaking MDCAT Biology tutor talking to a Pakistani FSc student on a phone call.
 
 You will be given an English tutoring answer. Re-express THAT SAME answer as natural bilingual classroom Urdu — the way Pakistani teachers actually speak in FSc/MDCAT coaching (Urdu glue + English science words).
 
-Rules:
-1. Write the explanation in Urdu script (اردو) but keep English key terms inline in Latin letters.
-2. Keep ALL scientific and technical terms in English — never translate or transliterate them into Urdu. This includes formulas and symbols: write O2, H2O, CO2, n2, ATP exactly like that. NEVER write Urdu numbers inside a formula (wrong: O دو, H دو O).
-3. Sentence structure and connecting words in Urdu; science words in English. Example style: "Electron کی total energy nth orbit میں En = -13.6 / n² eV ہوتی ہے." Another example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
-4. Sound like natural speech, warm and clear — as if explaining out loud to a student.
-5. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
-6. Keep it under 120 words.
-7. No Roman Urdu, no Hindi. Urdu script for the Urdu parts, English for the technical terms.
-8. FAITHFULNESS (critical): Only restate what is in the English answer. Do NOT invent a different topic, extra examples, warm-up chatter, or "related" facts that were not written there.
-9. Start immediately with the explanation. No greetings (no السلام علیکم), no "آج ہم بات کریں گے", no preamble about another concept first.
-10. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers.
-11. Never write a fully Urdu explanation. Urdu is only sentence glue; science terms and formulas stay English.
-12. NEVER write توانائی — always write energy. NEVER write الفا/بیٹا/گاما — write alpha/beta/gamma. NEVER write برقی مقناطیسی — write electromagnetic. NEVER write تابکار/تابکاری — write radioactive/radioactivity. NEVER write شعاعیں — write rays. NEVER write ذرات for science — write particles. NEVER write اخراج — write emission. If it is a syllabus science word, keep the English Latin letters.
-13. Do not include Greek or math symbols (α β γ Δ μ λ π $). Write alpha, beta, gamma, and so on."""
+{BILINGUAL_CLASSROOM_RULES}
+
+Rewrite rules:
+1. Sound like natural speech, warm and clear — as if explaining out loud to a student.
+2. Do NOT read out citations, page numbers, book names, brackets, bullet symbols, or markdown.
+3. Keep it under 120 words.
+4. FAITHFULNESS (critical): Only restate what is in the English answer. Do NOT invent a different topic, extra examples, warm-up chatter, or "related" facts that were not written there.
+5. Start immediately with the explanation. No greetings (no السلام علیکم), no "آج ہم بات کریں گے", no preamble about another concept first.
+6. Output only the narration — no preamble, no labels, no quotes, no ENGLISH:/URDU: markers."""
 
 RAG_ASK_SYSTEM_PROMPT = f"""You are an expert MDCAT Biology tutor for FSc Punjab Textbook Board (PTB) students.
 
@@ -86,14 +98,15 @@ Rules:
 EXPLAIN_SYSTEM_PROMPT = """You are an MDCAT tutor explaining an MCQ to a Pakistani FSc student.
 
 Rules:
-1. ALWAYS explain the question itself. Why the correct option is right, and why the student's choice is wrong.
+1. ALWAYS explain the question itself. Why the scientifically correct option is right, and why the student's choice is wrong if it differs.
 2. Prefer textbook notes when they match this topic; otherwise use your own knowledge.
 3. Never say the textbook/passage/context "doesn't mention" something, or that you lack a passage. Just teach.
 4. Never invent a different question or change the topic. Stick to THIS MCQ only.
-5. Start immediately with THIS MCQ — do not open with a different concept, warm-up, or unrelated textbook aside.
-6. Keep it under 100 words. Scientific English only — no Urdu script, no Roman Urdu.
-7. End with one short memory tip if useful.
-8. Do not add a source citation in the body — the app appends that separately."""
+5. First line MUST be exactly: KEY: A   (or B, C, or D) — the scientifically correct option letter from the given choices. If the stored key looks wrong, use the scientific letter anyway. Do not mention a key error.
+6. Then explain THIS MCQ. Do not open with a different concept, warm-up, or unrelated textbook aside.
+7. Keep the explanation under 100 words. Scientific English only — no Urdu script, no Roman Urdu.
+8. End with one short memory tip if useful.
+9. Do not add a source citation in the body — the app appends that separately."""
 
 
 @lru_cache
@@ -215,19 +228,17 @@ def _ask_user_prompt(
 
 """
         focus_rule = (
-            " The student's question is a follow-up about the MCQ above. "
-            "Stay strictly on that MCQ's topic. If the textbook notes are about a different topic, ignore them "
+            " If the student is asking about the MCQ above, stay strictly on that MCQ's topic. "
+            "If the textbook notes are about a different topic, ignore them "
             "and rely on your own knowledge of THIS MCQ. Never explain a different question or a different concept."
-            " This MCQ discussion is always on-topic course material."
         )
-        scope_rule = ""
     else:
         focus_block = ""
         focus_rule = ""
-        scope_rule = (
-            f" If the student question is NOT about FSc/MDCAT Biology course material, "
-            f"reply with EXACTLY: {OFF_TOPIC_ENGLISH}"
-        )
+    scope_rule = (
+        f" If the student is greeting you, making small talk, or asking anything that is NOT "
+        f"FSc/MDCAT Biology course material, reply with EXACTLY: {OFF_TOPIC_ENGLISH}"
+    )
 
     user_prompt = f"""{focus_block}Optional textbook notes (may be empty — only use when relevant to Biology):
 {context_chunk if context_chunk else '(none)'}
@@ -261,21 +272,23 @@ def _explain_user_prompt(
     question_text: str = "",
     context_chunk: str = "",
     mnemonic_chunk: str = "",
+    options_block: str = "",
 ) -> str:
     support = ""
     if context_chunk.strip():
         support += f"\nHelpful textbook notes (use only if clearly about this same topic):\n{context_chunk}\n"
     if mnemonic_chunk.strip():
         support += f"\nMnemonic tip (use only if it fits this topic):\n{mnemonic_chunk}\n"
+    options = f"\nOptions:\n{options_block}\n" if options_block.strip() else ""
 
     return f"""MCQ:
 {question_text or '(see options below)'}
-
+{options}
 Topic/chapter: {concept}
-Correct option: {correct_option}
+Stored key (may be wrong): {correct_option}
 Student selected: {selected_option}
 {support}
-Explain this MCQ clearly. Do not mention missing passages or change the subject."""
+Start with KEY: X then explain the scientifically correct option. Do not mention missing passages or change the subject."""
 
 
 def explain_answer(
@@ -285,6 +298,7 @@ def explain_answer(
     question_text: str = "",
     context_chunk: str = "",
     mnemonic_chunk: str = "",
+    options_block: str = "",
 ) -> str:
     """Explain why the correct MCQ option is right and the picked one is wrong."""
     user_prompt = _explain_user_prompt(
@@ -294,8 +308,9 @@ def explain_answer(
         question_text,
         context_chunk,
         mnemonic_chunk,
+        options_block,
     )
-    return _chat_openai(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=220)
+    return _chat_openai(EXPLAIN_SYSTEM_PROMPT, user_prompt, max_tokens=240)
 
 
 def answer_from_rag(
@@ -418,13 +433,7 @@ ENGLISH section rules:
 - Under 120 words. End with one short exam tip when useful.
 
 URDU section rules:
-- Write in Urdu script (اردو) with English key terms kept inline — natural Pakistani classroom bilingual style (Urdu glue + English science words).
-- Keep ALL scientific/technical terms in English Latin letters. Never translate or transliterate them into Urdu. This includes energy (never توانائی), alpha/beta/gamma (never الفا/بیٹا/گاما), electromagnetic (never برقی مقناطیسی), radioactive, emission, particle, nucleus, atom, molecule, cell, membrane, DNA, RNA, ATP, enzyme, mitochondria, photosynthesis, osmosis, wavelength, frequency, hydrogen, glucose, virus, bacteria, and every other FSc/MDCAT syllabus term.
-- Do not write Greek or math symbols (α β γ Δ). Write the English names: alpha, beta, gamma.
-- Formulas stay English: write O2, H2O, CO2, n2 — never Urdu digits inside a formula (wrong: O دو / H دو O).
-- Sentence structure and connecting words in Urdu, key terms in English. Example: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
-- Never use Roman Urdu or Hindi.
-- Never write a fully Urdu explanation. Science words stay English in every sentence.
+{BILINGUAL_CLASSROOM_RULES}
 - Natural spoken style, as if explaining out loud on a phone call.
 - No citations, page numbers, brackets, bullets or markdown — it will be read aloud.
 - Under 110 words. Add no facts that are absent from the ENGLISH section.
@@ -465,14 +474,8 @@ ENGLISH section rules:
 - Clear, exam-friendly wording.
 
 URDU section rules:
-- Pakistani coaching-classroom bilingual: Urdu script for sentence glue, English Latin letters for science terms.
-- Keep ALL scientific/technical terms in English. Never translate or transliterate them into Urdu. energy stays energy (never توانائی). alpha, beta, gamma, electromagnetic, radioactive, emission, particle, nucleus, atom, molecule, cell, DNA, RNA, ATP, enzyme, and every other FSc/MDCAT syllabus term stay English Latin letters.
-- Do not write Greek or math symbols. Write alpha, beta, gamma as English words.
-- Formulas stay English (O2, H2O). Never write Urdu numbers inside them.
-- Example style: "Hydrogen H2 oxygen O2 کے ساتھ react کر کے H2O بناتا ہے۔"
+{BILINGUAL_CLASSROOM_RULES}
 - Natural spoken style for a phone-call tutor. No citations, brackets, bullets, or markdown.
-- No Roman Urdu, no Hindi.
-- Never write a fully Urdu explanation. Science words stay English in every sentence.
 
 Output nothing except the two labelled sections."""
 
@@ -525,8 +528,10 @@ def explain_answer_bilingual(
     )
     user_prompt += (
         "\n\nFor the URDU section: speak like a Pakistani coaching teacher — "
-        "Urdu sentences with English science words left in English "
-        "(nucleus, electron, energy, alpha, beta, gamma, electromagnetic, formula, orbit, x-ray, etc.)."
+        "Urdu sentence glue only, English science words left in English Latin letters "
+        "(intestine, stomach, liver, vitamin, bacteria, nucleus, electron, energy, "
+        "alpha, beta, gamma, electromagnetic, formula, orbit, x-ray, etc.). "
+        "Never write آنت, انٹسٹائن, معدہ, or any other translated/transliterated syllabus word."
     )
     raw = _chat_openai(EXPLAIN_BILINGUAL_SYSTEM_PROMPT, user_prompt, max_tokens=600)
     return normalize_course_answer(*_split_bilingual(raw))
@@ -578,11 +583,85 @@ YES = about Biology, FSc/MDCAT Biology syllabus, textbook content, MCQs, diagram
 definitions, exam tips, or a short follow-up about Biology already being discussed
 (e.g. "explain more", "why", "in simple words", "aur detail mein batao").
 
-NO = other school subjects (Math/Physics/Chemistry unless it is clearly Biology),
-sports, politics, coding, jokes, recipes, celebrities, weather, personal chat,
-general knowledge, or anything not Biology course work.
+NO = greetings and small talk (hi, hello, hey, assalamualaikum, salam, how are you,
+thanks, bye, who are you), other school subjects (Math/Physics/Chemistry unless it
+is clearly Biology), sports, politics, coding, jokes, recipes, celebrities, weather,
+personal chat, general knowledge, or anything not Biology course work.
 
-If unsure but it could be Biology, answer YES."""
+A greeting or thanks by itself is always NO — even if an MCQ is on screen.
+If a greeting is followed by a real Biology question, answer YES.
+If unsure, answer NO unless the message is clearly Biology or a Biology follow-up."""
+
+
+_HONORIFIC = r"(?:\s+(?:sir|madam|ma'?am|ji|bhai|doctor|doc|yaar))*"
+
+_SOCIAL_CORE = r"""
+    (?:
+        hi+|hello+|he+y+|yo+|hiya|howdy|
+        (?:ass?alamu?\s*-?\s*(?:o\s+)?(?:alaikum|alikum|alaekum)?)|
+        (?:as-?salam)|
+        salam+|salaam+|
+        aoa|a\.?o\.?a\.?|
+        السلام(?:\s*علیکم)?|
+        سلام|
+        good\s*(?:morning|afternoon|evening|night)|
+        how\s+are\s+you(?:\s+doing)?|
+        how'?s\s+it\s+going|
+        what'?s\s+up|
+        (?:kya|kia)\s+haal(?:\s+hai)?|
+        k(?:ai|e)se\s+ho|
+        کیا\s*حال(?:\s*ہے)?|
+        کیسے\s*(?:ہو|ہیں)|
+        آپ\s*کیسے\s*ہیں|
+        thanks?(?:\s+you)?(?:\s+so\s+much)?|
+        thx|
+        shukr(?:iya|ia)|
+        jazak(?:allah)?|
+        شکریہ|
+        ok(?:ay)?|
+        theek\s*hai|ٹھیک\s*ہے|
+        acha+|اچھا|
+        bye|goodbye|see\s+you|
+        (?:khuda|allah)\s*hafiz|
+        (?:خدا|اللہ)\s*حافظ|
+        who\s+are\s+you|
+        what'?s\s+your\s+name|
+        what\s+can\s+you\s+do|
+        nice\s+to\s+(?:meet|see)\s+you
+    )
+"""
+
+_SOCIAL_FULL = re.compile(
+    rf"^(?:{_SOCIAL_CORE}{_HONORIFIC}[\s!.?,۔!?-]*)+$",
+    re.IGNORECASE | re.VERBOSE | re.UNICODE,
+)
+
+_BIO_FOLLOWUP = re.compile(
+    r"(?:"
+    r"\b(?:explain|detail|more|why|how|wrong|correct|right|option|"
+    r"simple|meaning|define|difference|compare|example|"
+    r"kyun|kyon|kaise|kese|matlab|samjhao|batao)\b|"
+    r"کیا\s*ہے|سمجھا|بتا"
+    r")",
+    re.IGNORECASE | re.UNICODE,
+)
+
+_BIO_HINT = re.compile(
+    r"\b(?:cell|dna|rna|enzyme|mitosis|meiosis|photosynthesis|respiration|"
+    r"heart|kidney|liver|blood|hormone|protein|lipid|vitamin|bacteria|"
+    r"plant|animal|tissue|organ|nucleus|membrane|chromosome|gene|"
+    r"biology|mdcat|fsc|chapter|mcq|diagram|textbook|osmosis|"
+    r"diffusion|neuron|alveoli|stomata|chloroplast)\b",
+    re.IGNORECASE,
+)
+
+
+def looks_like_social_talk(question: str) -> bool:
+    """True when the whole message is a greeting, thanks, or small talk."""
+    q = (question or "").strip()
+    if not q:
+        return True
+    return bool(_SOCIAL_FULL.match(q))
 
 
 def is_course_related(
@@ -592,11 +671,16 @@ def is_course_related(
     has_mcq: bool = False,
 ) -> bool:
     """Fast YES/NO gate so off-topic prompts never get a full tutoring answer."""
-    if has_mcq:
-        return True
     q = (question or "").strip()
     if not q:
         return False
+    if looks_like_social_talk(q):
+        return False
+
+    # Short Biology follow-ups ("why?", "explain more") stay on-course when
+    # an MCQ or prior tutoring turn is already in context.
+    if (has_mcq or history) and _BIO_FOLLOWUP.search(q) and len(q.split()) <= 8:
+        return True
 
     history_bits = ""
     if history:
@@ -608,7 +692,8 @@ def is_course_related(
 
     user = f"""{history_bits}Student message: {q}
 
-Is this about FSc/MDCAT Biology course material? Reply YES or NO only."""
+Is this about FSc/MDCAT Biology course material? Reply YES or NO only.
+Greetings, thanks, and small talk are NO."""
 
     try:
         client = get_groq_client()
@@ -624,16 +709,27 @@ Is this about FSc/MDCAT Biology course material? Reply YES or NO only."""
         verdict = (response.choices[0].message.content or "").strip().upper()
         return verdict.startswith("Y")
     except Exception as exc:
-        # Fail open on gate errors so a rate-limit on the tiny model does not
-        # block real Biology questions; the main prompt still enforces scope.
-        print(f"  [topic-gate] failed open: {type(exc).__name__}")
+        # Greetings/tiny chat stay closed. Substantial Biology-looking
+        # questions still fail open so a gate outage does not block tutoring.
+        print(f"  [topic-gate] failed: {type(exc).__name__}")
+        if _BIO_HINT.search(q) or ((has_mcq or history) and _BIO_FOLLOWUP.search(q)):
+            return True
+        if len(q.split()) <= 3:
+            return False
         return True
 
 
 def is_off_topic_answer(text: str) -> bool:
     """Detect the fixed redirect phrase (or close variants) in a model reply."""
-    t = (text or "").lower()
-    return "ask me something from your course" in t or "اپنے کورس سے کچھ پوچھ" in (text or "")
+    raw = text or ""
+    t = raw.lower()
+    return (
+        "ask a relevant" in t
+        or "ask me something from your course" in t
+        or "relevant biology question" in t
+        or "اپنے کورس سے کچھ پوچھ" in raw
+        or "relevant Biology question پوچھ" in raw
+    )
 
 
 def off_topic_reply() -> tuple[str, str]:
@@ -675,11 +771,13 @@ def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
     if not text:
         return ""
     extra = (
-        "CRITICAL: Do not write a fully Urdu explanation. Every science word "
-        "(nucleus, electron, energy, alpha, beta, gamma, electromagnetic, "
+        "CRITICAL: Proper bilingual only. Urdu is glue words. Every science word "
+        "(intestine, large intestine, stomach, liver, pancreas, vitamin, bacteria, "
+        "nucleus, electron, energy, alpha, beta, gamma, electromagnetic, "
         "hydrogen, oxygen, molecule, DNA, ATP, and so on) MUST stay English "
-        "Latin letters. Never write توانائی, الفا, بیٹا, گاما, or برقی مقناطیسی. "
-        "Formulas MUST be O2, H2O, CO2 — never O دو or H دو O. "
+        "Latin letters. Never write آنت, آنتیں, امعاء, انٹسٹائن, انٹیسٹائن, "
+        "معدہ, جگر, لبلبہ, وٹامن, بیکٹیریا, توانائی, الفا, بیٹا, گاما, "
+        "or برقی مقناطیسی. Formulas MUST be O2, H2O, CO2 — never O دو or H دو O. "
         "Never include Greek symbols — write alpha, beta, gamma."
         if strict
         else ""
@@ -690,9 +788,11 @@ def to_urdu_speech(english_answer: str, *, strict: bool = False) -> str:
             (
                 "English tutoring answer (speak ONLY this — do not add other topics):\n"
                 f"{text}\n\n"
-                "Now restate this exact answer in natural bilingual classroom Urdu "
-                "(Urdu script + English science terms). Keep formulas as O2, H2O, CO2 — "
-                "never Urdu digits inside a formula. Start immediately. No greeting.\n"
+                "Now restate this exact answer in PROPER bilingual classroom Urdu "
+                "(Urdu glue + English Latin science words). Write intestine, vitamin, "
+                "bacteria — never آنت, انٹسٹائن, وٹامن, or بیکٹیریا. Keep formulas as "
+                "O2, H2O, CO2 — never Urdu digits inside a formula. Start immediately. "
+                "No greeting.\n"
                 f"{extra}"
             ).strip(),
             max_tokens=400,
@@ -716,6 +816,13 @@ _SCIENCE_URDU_TO_EN: tuple[tuple[str, str], ...] = (
     ("ہیلیم مرکزے", "helium nuclei"),
     ("ایٹمی مرکزے", "atomic nuclei"),
     ("ایٹمی مرکزہ", "atomic nucleus"),
+    ("امعاے صغریٰ", "small intestine"),
+    ("امعاے کبریٰ", "large intestine"),
+    ("امعاء صغری", "small intestine"),
+    ("امعاء کبری", "large intestine"),
+    ("چھوٹی آنت", "small intestine"),
+    ("بڑی آنت", "large intestine"),
+    ("غذائی نالی", "oesophagus"),
     ("ضیائی تالیف", "photosynthesis"),
     ("طول موج", "wavelength"),
     ("نیوکلیائی", "nuclear"),
@@ -747,14 +854,35 @@ _SCIENCE_URDU_TO_EN: tuple[tuple[str, str], ...] = (
     ("گلوکوز", "glucose"),
     ("پروٹین", "protein"),
     ("ہارمون", "hormone"),
-    ("وائرس", "virus"),
     ("بیکٹیریا", "bacteria"),
+    ("وائرس", "virus"),
     ("مائٹوکونڈریا", "mitochondria"),
     ("کلوروفل", "chlorophyll"),
     ("کلوروپلاسٹ", "chloroplast"),
     ("ڈی این اے", "DNA"),
     ("آر این اے", "RNA"),
     ("اے ٹی پی", "ATP"),
+    ("انٹیسٹائن", "intestine"),
+    ("انٹسٹائن", "intestine"),
+    ("انٹیسٹین", "intestine"),
+    ("انٹسٹین", "intestine"),
+    ("آنتیں", "intestines"),
+    ("آنت", "intestine"),
+    ("امعاے", "intestine"),
+    ("امعاء", "intestine"),
+    ("امعہ", "intestine"),
+    ("معدہ", "stomach"),
+    ("لبلبہ", "pancreas"),
+    ("پتتاشے", "gallbladder"),
+    ("پھیپھڑے", "lungs"),
+    ("پھیپھڑا", "lung"),
+    ("گردے", "kidneys"),
+    ("گردہ", "kidney"),
+    ("ہاضمہ", "digestion"),
+    ("تنفس", "respiration"),
+    ("صفرا", "bile"),
+    ("وٹامن", "vitamin"),
+    ("جگر", "liver"),
     ("تعدد", "frequency"),
     ("انحطاط", "decay"),
 )
@@ -777,6 +905,19 @@ _SCIENCE_LEAK_RE = re.compile(
             "مائٹوکونڈریا",
             "کلوروفل",
             "طول موج",
+            "آنت",
+            "امعاء",
+            "امعہ",
+            "امعاے",
+            "انٹسٹائن",
+            "انٹیسٹائن",
+            "انٹسٹین",
+            "انٹیسٹین",
+            "معدہ",
+            "لبلبہ",
+            "غذائی نالی",
+            "ہاضمہ",
+            "وٹامن",
         )
     )
 )

@@ -47,6 +47,23 @@ export function isBackendLikelyAwake(): boolean {
   return Date.now() - lastAwakeAt < AWAKE_TTL_MS;
 }
 
+function mergeAbortSignals(
+  signals: (AbortSignal | undefined | null)[]
+): AbortSignal {
+  const live = signals.filter((s): s is AbortSignal => !!s);
+  if (live.length === 1) return live[0];
+  if (typeof AbortSignal.any === "function") return AbortSignal.any(live);
+  const merged = new AbortController();
+  for (const s of live) {
+    if (s.aborted) {
+      merged.abort();
+      return merged.signal;
+    }
+    s.addEventListener("abort", () => merged.abort(), { once: true });
+  }
+  return merged.signal;
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const maxAttempts = 3;
   let lastError: unknown;
@@ -65,7 +82,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
       const res = await fetch(`${API_URL}${path}`, {
         ...options,
         headers: baseHeaders,
-        signal: options?.signal || controller.signal,
+        signal: mergeAbortSignals([options?.signal, controller.signal]),
       });
       if (!res.ok) {
         // The memoised token can go stale ahead of schedule (password change,
@@ -88,6 +105,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
         /failed to fetch|networkerror|load failed/i.test(e.message);
 
       if (isAbort) {
+        if (options?.signal?.aborted) throw e;
         throw new Error(
           "Request timed out. On the free Render plan the backend may be waking from sleep — wait a few seconds and try again."
         );
@@ -209,6 +227,7 @@ export interface ExplainResult {
   citation: string | null;
   sources: { concept: string; chapter: string; similarity: number }[];
   mnemonics?: { topic?: string; page_number?: number; snippet?: string }[];
+  verified_correct_option?: string;
 }
 
 export interface AskResult {
@@ -524,21 +543,26 @@ export const api = {
       body: JSON.stringify(body),
     }),
 
-  ask: (body: {
-    concept: string;
-    student_question: string;
-    history?: { role: string; content: string }[];
-    mcq?: McqContext;
-  }) =>
+  ask: (
+    body: {
+      concept: string;
+      student_question: string;
+      history?: { role: string; content: string }[];
+      mcq?: McqContext;
+    },
+    signal?: AbortSignal
+  ) =>
     request<AskResult>("/api/ask", {
       method: "POST",
       body: JSON.stringify(body),
+      signal,
     }),
 
   askVoice: async (
     audio: Blob,
     concept: string,
-    mcq?: McqContext
+    mcq?: McqContext,
+    signal?: AbortSignal
   ): Promise<AskResult> => {
     const form = new FormData();
     const mime = audio.type || "audio/webm";
@@ -562,12 +586,13 @@ export const api = {
         method: "POST",
         headers,
         body: form,
-        signal: controller.signal,
+        signal: mergeAbortSignals([signal, controller.signal]),
       });
       if (!res.ok) throw new Error(await res.text());
       return res.json();
     } catch (e) {
       if ((e as Error)?.name === "AbortError") {
+        if (signal?.aborted) throw e;
         throw new Error("Voice request timed out. Try a shorter question.");
       }
       throw e;
@@ -602,17 +627,21 @@ export const api = {
       body: JSON.stringify(body),
     }),
 
-  ragAskStream: async (body: {
-    question: string;
-    book?: string;
-    top_k?: number;
-    history?: { role: string; content: string }[];
-  }) => {
+  ragAskStream: async (
+    body: {
+      question: string;
+      book?: string;
+      top_k?: number;
+      history?: { role: string; content: string }[];
+    },
+    signal?: AbortSignal
+  ) => {
     const headers = await authHeaders();
     return fetch(`${API_URL}/api/rag/ask-stream`, {
       method: "POST",
       headers,
       body: JSON.stringify(body),
+      signal,
     });
   },
 
@@ -662,7 +691,8 @@ export const api = {
   ragAskVoice: async (
     audio: Blob,
     book?: string,
-    top_k = 3
+    top_k = 3,
+    signal?: AbortSignal
   ): Promise<RagVoiceResult> => {
     const form = new FormData();
     const mime = audio.type || "audio/webm";
@@ -686,7 +716,7 @@ export const api = {
         method: "POST",
         headers,
         body: form,
-        signal: controller.signal,
+        signal: mergeAbortSignals([signal, controller.signal]),
       });
       if (!res.ok) {
         const text = await res.text();
@@ -695,6 +725,7 @@ export const api = {
       return res.json();
     } catch (e) {
       if ((e as Error)?.name === "AbortError") {
+        if (signal?.aborted) throw e;
         throw new Error(
           "Voice request timed out. Try a shorter question or use text."
         );

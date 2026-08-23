@@ -29,6 +29,7 @@ from slowapi.util import get_remote_address
 from . import auth, db, llm, planner, rag, study, voice, weak_spots
 from .auth import AuthUser, assert_same_student, get_current_user, public_question_set
 from .config import settings
+from .mcq_quality import format_options, option_keys, parse_explain_key
 
 
 def _rate_limit_key(request: Request) -> str:
@@ -669,6 +670,8 @@ async def rag_ask_stream(
             for token in llm.stream_answer_from_rag(
                 req.question.strip(), context, history=req.history
             ):
+                if await request.is_disconnected():
+                    return
                 produced = True
                 yield f"data: {json.dumps({'type': 'text', 'content': token})}\n\n"
         except Exception as exc:
@@ -712,10 +715,16 @@ async def rag_ask_stream(
 
 
 def _is_meaningful_question(text: str) -> bool:
-    """Reject silence / STT garbage like '.', '...', single letters."""
+    """Reject silence / STT garbage like '.', '...', single letters.
+
+    Greetings are treated as real speech so the topic gate can refuse them
+    with the fixed 'ask a relevant question' reply (not a 'no speech' miss).
+    """
     cleaned = (text or "").strip()
     if not cleaned:
         return False
+    if llm.looks_like_social_talk(cleaned):
+        return True
     # Keep letters from Latin + Arabic/Urdu scripts
     letters = re.sub(r"[^\w\u0600-\u06FF]", "", cleaned, flags=re.UNICODE)
     letters = letters.replace("_", "")
@@ -1095,7 +1104,7 @@ async def explain(
     correct_option = (question or {}).get("correct_option") or req.correct_option
 
     cache_key = _answer_key(
-        "explain_v4",
+        "explain_v5",
         req.question_id,
         req.concept,
         req.selected_option,
@@ -1158,6 +1167,7 @@ async def explain(
 
     # English on screen first (MCQ-faithful). Speech is derived FROM that English
     # so Listen cannot invent a different warm-up topic before the real explanation.
+    options_block = format_options((question or {}).get("options"))
     explanation = await loop.run_in_executor(
         None,
         lambda: llm.explain_answer(
@@ -1167,8 +1177,26 @@ async def explain(
             question_text=question_text,
             context_chunk=context or "",
             mnemonic_chunk=mnemonic_ctx,
+            options_block=options_block,
         ),
     )
+    verified_key, explanation = parse_explain_key(explanation)
+    allowed = option_keys(question or {})
+    if verified_key and allowed and verified_key not in allowed:
+        verified_key = None
+    if (
+        verified_key
+        and question
+        and verified_key != str(question.get("correct_option") or "").strip().upper()
+    ):
+        try:
+            await loop.run_in_executor(
+                None, lambda: db.update_correct_option(req.question_id, verified_key)
+            )
+        except Exception as exc:
+            print(f"  [explain] could not persist key fix: {exc}")
+    if verified_key:
+        correct_option = verified_key
 
     audio_b64 = None
     speech_id = None
@@ -1197,6 +1225,7 @@ async def explain(
         "citation": None,
         "sources": sources,
         "mnemonics": [],
+        "verified_correct_option": verified_key or correct_option,
     }
     cacheable = dict(response)
     cacheable["audio"] = None

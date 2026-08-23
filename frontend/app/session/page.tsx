@@ -625,7 +625,39 @@ function SessionInner() {
             correct_option: optionText(question, res.correct_option),
             speak: true,
           });
-          patchQ(index, { explanation: exp });
+          const verified = (exp.verified_correct_option || "").toUpperCase();
+          if (verified && verified !== res.correct_option) {
+            const actuallyCorrect = key === verified;
+            setQStates((prev) => {
+              const next = {
+                ...prev,
+                [index]: {
+                  ...(prev[index] ?? EMPTY_Q),
+                  selected: key,
+                  isCorrect: actuallyCorrect,
+                  revealedCorrect: verified,
+                  flagged: prev[index]?.flagged ?? false,
+                  explanation: exp,
+                },
+              };
+              qStatesRef.current = next;
+              syncScoreFromStates(next);
+              persistChapterProgress(next, index);
+              return next;
+            });
+            const riFix = reviewRef.current.findIndex(
+              (r) => r.question_id === question.id
+            );
+            if (riFix >= 0) {
+              reviewRef.current[riFix] = {
+                ...reviewRef.current[riFix],
+                correct_option: verified,
+                is_correct: actuallyCorrect,
+              };
+            }
+          } else {
+            patchQ(index, { explanation: exp });
+          }
         } catch {
           patchQ(index, {
             explanation: {

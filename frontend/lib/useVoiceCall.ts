@@ -13,7 +13,7 @@ export interface VoiceCallResult {
 
 interface UseVoiceCallOptions {
   /** Send the recorded clip to the backend and return the audio to play back. */
-  onClip: (blob: Blob) => Promise<VoiceCallResult | void>;
+  onClip: (blob: Blob, signal: AbortSignal) => Promise<VoiceCallResult | void>;
   /** Silence (ms) after speech before the clip is auto-submitted. */
   silenceMs?: number;
   /** Hard cap on a single utterance. */
@@ -21,6 +21,8 @@ interface UseVoiceCallOptions {
   /** Volume threshold (0-1 RMS) treated as speech. */
   threshold?: number;
 }
+
+type ListenMode = "utterance" | "bargein";
 
 function pickMimeType(): string {
   if (typeof MediaRecorder === "undefined") return "";
@@ -51,8 +53,11 @@ export function useVoiceCall({
   const analyserRef = useRef<AnalyserNode | null>(null);
   const rafRef = useRef<number | null>(null);
   const playerRef = useRef<HTMLAudioElement | null>(null);
+  const playResolveRef = useRef<(() => void) | null>(null);
   const inCallRef = useRef(false);
   const cycleRef = useRef(0);
+  const listenIdRef = useRef(0);
+  const abortRef = useRef<AbortController | null>(null);
 
   const cleanupAudioGraph = useCallback(() => {
     if (rafRef.current !== null) {
@@ -66,9 +71,39 @@ export function useVoiceCall({
     }
   }, []);
 
+  const stopCurrentRecorder = useCallback(() => {
+    const recorder = recorderRef.current;
+    if (recorder && recorder.state !== "inactive") {
+      try {
+        recorder.stop();
+      } catch {
+        /* ignore */
+      }
+    }
+  }, []);
+
+  const interruptPlayback = useCallback(() => {
+    if (playerRef.current) {
+      try {
+        playerRef.current.pause();
+        playerRef.current.removeAttribute("src");
+        playerRef.current.load();
+      } catch {
+        /* ignore */
+      }
+      playerRef.current = null;
+    }
+    const resolve = playResolveRef.current;
+    playResolveRef.current = null;
+    resolve?.();
+  }, []);
+
   const stopEverything = useCallback(() => {
     inCallRef.current = false;
     cycleRef.current += 1;
+    listenIdRef.current += 1;
+    abortRef.current?.abort();
+    abortRef.current = null;
 
     const recorder = recorderRef.current;
     recorderRef.current = null;
@@ -81,18 +116,14 @@ export function useVoiceCall({
       }
     }
 
-    if (playerRef.current) {
-      playerRef.current.pause();
-      playerRef.current = null;
-    }
-
+    interruptPlayback();
     cleanupAudioGraph();
 
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((t) => t.stop());
       streamRef.current = null;
     }
-  }, [cleanupAudioGraph]);
+  }, [cleanupAudioGraph, interruptPlayback]);
 
   const endCall = useCallback(() => {
     stopEverything();
@@ -101,55 +132,81 @@ export function useVoiceCall({
     setLevel(0);
   }, [stopEverything]);
 
-  const playAudio = useCallback((base64: string) => {
-    return new Promise<void>((resolve) => {
-      try {
-        const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
-        const blob = new Blob([bytes], { type: "audio/mpeg" });
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        playerRef.current = audio;
-        const done = () => {
-          URL.revokeObjectURL(url);
-          playerRef.current = null;
+  const playAudio = useCallback(
+    (base64: string) => {
+      return new Promise<void>((resolve) => {
+        interruptPlayback();
+        playResolveRef.current = resolve;
+        try {
+          const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+          const blob = new Blob([bytes], { type: "audio/mpeg" });
+          const url = URL.createObjectURL(blob);
+          const audio = new Audio(url);
+          playerRef.current = audio;
+          const done = () => {
+            URL.revokeObjectURL(url);
+            if (playerRef.current === audio) playerRef.current = null;
+            const r = playResolveRef.current;
+            playResolveRef.current = null;
+            r?.();
+          };
+          audio.onended = done;
+          audio.onerror = done;
+          audio.play().catch(done);
+        } catch {
+          playResolveRef.current = null;
           resolve();
-        };
-        audio.onended = done;
-        audio.onerror = done;
-        audio.play().catch(done);
-      } catch {
-        resolve();
-      }
-    });
-  }, []);
+        }
+      });
+    },
+    [interruptPlayback]
+  );
 
   /**
    * Play narration straight from a URL. The browser starts playback as soon as
    * the first MP3 chunks arrive, so we never wait for full synthesis.
    */
-  const playStream = useCallback((url: string) => {
-    return new Promise<void>((resolve) => {
-      try {
-        const audio = new Audio();
-        audio.preload = "auto";
-        audio.src = url;
-        playerRef.current = audio;
-        const done = () => {
-          playerRef.current = null;
+  const playStream = useCallback(
+    (url: string) => {
+      return new Promise<void>((resolve) => {
+        interruptPlayback();
+        playResolveRef.current = resolve;
+        try {
+          const audio = new Audio();
+          audio.preload = "auto";
+          audio.src = url;
+          playerRef.current = audio;
+          const done = () => {
+            if (playerRef.current === audio) playerRef.current = null;
+            const r = playResolveRef.current;
+            playResolveRef.current = null;
+            r?.();
+          };
+          audio.onended = done;
+          audio.onerror = done;
+          audio.play().catch(done);
+        } catch {
+          playResolveRef.current = null;
           resolve();
-        };
-        audio.onended = done;
-        audio.onerror = done;
-        audio.play().catch(done);
-      } catch {
-        resolve();
-      }
-    });
-  }, []);
+        }
+      });
+    },
+    [interruptPlayback]
+  );
 
   /** Record one utterance, auto-stopping after trailing silence. */
   const recordUtterance = useCallback(
-    (stream: MediaStream, myCycle: number): Promise<Blob | null> => {
+    (
+      stream: MediaStream,
+      myCycle: number,
+      listenId: number,
+      opts: {
+        mode: ListenMode;
+        threshold: number;
+        minSpeechMs?: number;
+        ignoreMs?: number;
+      }
+    ): Promise<Blob | null> => {
       return new Promise((resolve) => {
         const mimeType = pickMimeType();
         let recorder: MediaRecorder;
@@ -194,12 +251,14 @@ export function useVoiceCall({
           return;
         }
 
-        // ---- voice activity detection ----
         const analyser = analyserRef.current;
         const startedAt = Date.now();
         let speechDetected = false;
+        let speechStartedAt = 0;
         let lastLoudAt = Date.now();
         const data = analyser ? new Uint8Array(analyser.fftSize) : null;
+        const minSpeechMs = opts.minSpeechMs ?? 0;
+        const ignoreMs = opts.ignoreMs ?? 0;
 
         const stopRecorder = () => {
           if (recorder.state !== "inactive") {
@@ -217,7 +276,11 @@ export function useVoiceCall({
         };
 
         const tick = () => {
-          if (cycleRef.current !== myCycle || !inCallRef.current) {
+          if (
+            cycleRef.current !== myCycle ||
+            !inCallRef.current ||
+            listenIdRef.current !== listenId
+          ) {
             stopRecorder();
             return;
           }
@@ -235,27 +298,33 @@ export function useVoiceCall({
             setLevel(rms);
           }
 
-          if (rms > threshold) {
-            speechDetected = true;
-            lastLoudAt = now;
+          const elapsed = now - startedAt;
+          if (elapsed >= ignoreMs && rms > opts.threshold) {
+            if (!speechStartedAt) speechStartedAt = now;
+            if (now - speechStartedAt >= minSpeechMs) {
+              speechDetected = true;
+              lastLoudAt = now;
+            }
+          } else if (!speechDetected) {
+            speechStartedAt = 0;
           }
 
-          const elapsed = now - startedAt;
           const quietFor = now - lastLoudAt;
 
-          // Auto-submit once the student stops talking
           if (speechDetected && quietFor > silenceMs) {
             stopRecorder();
             return;
           }
-          // Nobody spoke at all — recycle the listener so we don't record silence forever
-          if (!speechDetected && elapsed > 10000) {
-            stopRecorder();
-            return;
-          }
-          if (elapsed > maxUtteranceMs) {
-            stopRecorder();
-            return;
+          if (opts.mode === "utterance") {
+            // Nobody spoke at all — recycle the listener so we don't record silence forever
+            if (!speechDetected && elapsed > 10000) {
+              stopRecorder();
+              return;
+            }
+            if (elapsed > maxUtteranceMs) {
+              stopRecorder();
+              return;
+            }
           }
 
           rafRef.current = requestAnimationFrame(tick);
@@ -264,46 +333,137 @@ export function useVoiceCall({
         rafRef.current = requestAnimationFrame(tick);
       });
     },
-    [maxUtteranceMs, silenceMs, threshold]
+    [maxUtteranceMs, silenceMs]
   );
 
-  /** Main conversation loop: listen -> send -> speak -> listen again. */
+  const raceBargeOrWork = useCallback(
+    async <T,>(
+      work: Promise<T>,
+      stream: MediaStream,
+      myCycle: number,
+      opts: { threshold: number; minSpeechMs: number; ignoreMs: number }
+    ): Promise<
+      { kind: "barge"; blob: Blob } | { kind: "work"; result: T }
+    > => {
+      const listenId = ++listenIdRef.current;
+      let workFinished = false;
+
+      const bargeP = recordUtterance(stream, myCycle, listenId, {
+        mode: "bargein",
+        threshold: opts.threshold,
+        minSpeechMs: opts.minSpeechMs,
+        ignoreMs: opts.ignoreMs,
+      }).then((blob) => {
+        if (workFinished) return { kind: "late" as const };
+        if (blob && blob.size >= 1200) return { kind: "barge" as const, blob };
+        return { kind: "empty" as const };
+      });
+
+      const workP = work.then((result) => {
+        workFinished = true;
+        if (listenIdRef.current === listenId) {
+          listenIdRef.current += 1;
+          stopCurrentRecorder();
+        }
+        return { kind: "work" as const, result };
+      });
+
+      const first = await Promise.race([bargeP, workP]);
+      if (first.kind === "barge") return first;
+      if (first.kind === "work") return first;
+      return workP;
+    },
+    [recordUtterance, stopCurrentRecorder]
+  );
+
+  /** Main conversation loop: listen -> send -> speak -> listen again.
+   *  A new utterance during processing or speaking cancels the old reply. */
   const runLoop = useCallback(
     async (stream: MediaStream, myCycle: number) => {
+      let pending: Blob | null = null;
+
       while (inCallRef.current && cycleRef.current === myCycle) {
-        setStatus("listening");
-        const blob = await recordUtterance(stream, myCycle);
+        let blob = pending;
+        pending = null;
+
+        if (!blob) {
+          setStatus("listening");
+          const listenId = ++listenIdRef.current;
+          blob = await recordUtterance(stream, myCycle, listenId, {
+            mode: "utterance",
+            threshold,
+          });
+        }
         if (!inCallRef.current || cycleRef.current !== myCycle) break;
 
         setLevel(0);
 
-        // Too short / silence — just listen again
         if (!blob || blob.size < 1200) continue;
 
+        abortRef.current?.abort();
+        interruptPlayback();
+        const ac = new AbortController();
+        abortRef.current = ac;
+
         setStatus("processing");
-        let result: VoiceCallResult | void;
-        try {
-          result = await onClip(blob);
-        } catch {
+        const work = onClip(blob, ac.signal).catch((e: unknown) => {
+          if ((e as Error)?.name === "AbortError" || ac.signal.aborted) {
+            return undefined;
+          }
           setError("Could not reach the tutor. Retrying...");
-          result = undefined;
+          return undefined;
+        });
+
+        const duringProcess = await raceBargeOrWork(work, stream, myCycle, {
+          threshold,
+          minSpeechMs: 220,
+          ignoreMs: 180,
+        });
+
+        if (!inCallRef.current || cycleRef.current !== myCycle) {
+          ac.abort();
+          break;
         }
 
-        if (!inCallRef.current || cycleRef.current !== myCycle) break;
+        if (duringProcess.kind === "barge") {
+          ac.abort();
+          interruptPlayback();
+          pending = duringProcess.blob;
+          continue;
+        }
 
-        const speechUrl = result && "speechUrl" in result ? result.speechUrl : null;
+        const result = duringProcess.result;
+        const speechUrl =
+          result && "speechUrl" in result ? result.speechUrl : null;
         const audio = result && "audio" in result ? result.audio : null;
-        if (speechUrl) {
+        if (speechUrl || audio) {
           setStatus("speaking");
-          await playStream(speechUrl);
-        } else if (audio) {
-          setStatus("speaking");
-          await playAudio(audio);
+          const playP = speechUrl
+            ? playStream(speechUrl)
+            : playAudio(audio as string);
+          const duringSpeak = await raceBargeOrWork(playP, stream, myCycle, {
+            threshold: Math.max(threshold * 2.6, 0.04),
+            minSpeechMs: 380,
+            ignoreMs: 450,
+          });
+          if (!inCallRef.current || cycleRef.current !== myCycle) break;
+          if (duringSpeak.kind === "barge") {
+            interruptPlayback();
+            pending = duringSpeak.blob;
+            continue;
+          }
         }
-        if (!inCallRef.current || cycleRef.current !== myCycle) break;
       }
     },
-    [onClip, playAudio, playStream, recordUtterance]
+    [
+      interruptPlayback,
+      onClip,
+      playAudio,
+      playStream,
+      raceBargeOrWork,
+      recordUtterance,
+      threshold,
+    ]
   );
 
   const startCall = useCallback(async () => {

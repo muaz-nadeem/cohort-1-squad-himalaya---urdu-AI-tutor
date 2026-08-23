@@ -23,6 +23,7 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 from app.chapters import classify_question_chapter, infer_chapter_from_text  # noqa: E402
 from app.config import settings  # noqa: E402
 from app.db import insert_questions  # noqa: E402
+from app.mcq_quality import is_non_biology  # noqa: E402
 from app.mcq_ingest import (  # noqa: E402
     extract_pdf_mcqs,
     infer_source_type,
@@ -95,7 +96,11 @@ def ingest_one(
 
     db_rows = []
     classified = 0
+    skipped_physics = 0
     for r in rows_raw:
+        if is_non_biology(r):
+            skipped_physics += 1
+            continue
         # Per-question classification: use question content first, then
         # fall back to the PDF-level chapter hint
         q_chapter = classify_question_chapter(
@@ -116,6 +121,8 @@ def ingest_one(
                 "difficulty": 2,
             }
         )
+    if skipped_physics:
+        print(f"    skipped {skipped_physics} non-Biology MCQ(s)")
     if classified:
         print(f"    per-question classification: {classified}/{len(db_rows)} reclassified from '{ch}'")
 
