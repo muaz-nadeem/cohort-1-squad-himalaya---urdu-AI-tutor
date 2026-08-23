@@ -580,8 +580,13 @@ TOPIC_GATE_SYSTEM = """You classify student messages for an FSc/MDCAT Biology tu
 Reply with only YES or NO.
 
 YES = about Biology, FSc/MDCAT Biology syllabus, textbook content, MCQs, diagrams,
-definitions, exam tips, or a short follow-up about Biology already being discussed
-(e.g. "explain more", "why", "in simple words", "aur detail mein batao").
+definitions, exam tips, comparisons between biology concepts, or a follow-up about
+Biology already being discussed (e.g. "explain more", "why", "in simple words",
+"aur detail mein batao", "فرق بتا دیں", "ڈفرنس کیا ہے").
+
+Students often ask in Urdu script, Roman Urdu, or English. Biology terms may appear
+in English OR Urdu transliteration (e.g. endoskeleton / اینڈوسکیلیٹن,
+exoskeleton / ایگزوسکیلیٹن, cell / خلیہ). These are YES when asking about the concept.
 
 NO = greetings and small talk (hi, hello, hey, assalamualaikum, salam, how are you,
 thanks, bye, who are you), other school subjects (Math/Physics/Chemistry unless it
@@ -590,7 +595,8 @@ personal chat, general knowledge, or anything not Biology course work.
 
 A greeting or thanks by itself is always NO — even if an MCQ is on screen.
 If a greeting is followed by a real Biology question, answer YES.
-If unsure, answer NO unless the message is clearly Biology or a Biology follow-up."""
+If the message asks about a biology/science concept (in any language or script), YES.
+If unsure between NO and YES for an academic-looking question, answer YES."""
 
 
 _HONORIFIC = r"(?:\s+(?:sir|madam|ma'?am|ji|bhai|doctor|doc|yaar))*"
@@ -640,20 +646,44 @@ _BIO_FOLLOWUP = re.compile(
     r"(?:"
     r"\b(?:explain|detail|more|why|how|wrong|correct|right|option|"
     r"simple|meaning|define|difference|compare|example|"
-    r"kyun|kyon|kaise|kese|matlab|samjhao|batao)\b|"
-    r"کیا\s*ہے|سمجھا|بتا"
+    r"kyun|kyon|kaise|kese|matlab|samjhao|batao|farq|wazahat)\b|"
+    r"کیا\s*ہے|سمجھا|بتا|فرق|ڈفرنس|وضاحت|بتائ|سمجھائ"
     r")",
     re.IGNORECASE | re.UNICODE,
 )
 
-_BIO_HINT = re.compile(
-    r"\b(?:cell|dna|rna|enzyme|mitosis|meiosis|photosynthesis|respiration|"
+_BIO_TERM_EN = re.compile(
+    r"\b(?:"
+    r"endoskeleton|exoskeleton|hydrostatic|skeleton|axial|appendicular|"
+    r"cytoskeleton|cartilage|bone|joint|muscle|ligament|tendon|"
+    r"cell|dna|rna|enzyme|mitosis|meiosis|photosynthesis|respiration|"
     r"heart|kidney|liver|blood|hormone|protein|lipid|vitamin|bacteria|"
     r"plant|animal|tissue|organ|nucleus|membrane|chromosome|gene|"
     r"biology|mdcat|fsc|chapter|mcq|diagram|textbook|osmosis|"
-    r"diffusion|neuron|alveoli|stomata|chloroplast)\b",
+    r"diffusion|neuron|alveoli|stomata|chloroplast|ecosystem|species|"
+    r"evolution|genetics|embryo|fertilization|virus|fungi|organelle|"
+    r"mitochondria|ribosome|vacuole|molecule|glucose|ATP"
+    r")\b",
     re.IGNORECASE,
 )
+
+# Urdu-script transliterations of common FSc/MDCAT Biology terms.
+_BIO_TERM_UR = re.compile(
+    r"(?:"
+    r"اینڈوسکیلیٹن|ایگزوسکیلیٹن|اینڈو\s*اسکیلیٹن|ایگزو\s*اسکیلیٹن|"
+    r"اسکیلیٹن|ہائڈرو\s*اسٹیٹک|خلیہ|خلیوں|کروموسوم|جین|انزائم|"
+    r"ہارمون|بیکٹیریا|وائرس|پروٹین|وٹامن|تنفس|حیاتیات|"
+    r"مائٹوسس|نیوکلئس|ممبرین|آرگن|ٹشو"
+    r")",
+    re.UNICODE | re.IGNORECASE,
+)
+
+_BIO_HINT = _BIO_TERM_EN
+
+
+def _has_bio_term(text: str) -> bool:
+    q = text or ""
+    return bool(_BIO_TERM_EN.search(q) or _BIO_TERM_UR.search(q))
 
 
 def looks_like_social_talk(question: str) -> bool:
@@ -669,6 +699,7 @@ def is_course_related(
     *,
     history: Optional[list[dict]] = None,
     has_mcq: bool = False,
+    mcq_context: str = "",
 ) -> bool:
     """Fast YES/NO gate so off-topic prompts never get a full tutoring answer."""
     q = (question or "").strip()
@@ -677,9 +708,12 @@ def is_course_related(
     if looks_like_social_talk(q):
         return False
 
-    # Short Biology follow-ups ("why?", "explain more") stay on-course when
-    # an MCQ or prior tutoring turn is already in context.
-    if (has_mcq or history) and _BIO_FOLLOWUP.search(q) and len(q.split()) <= 8:
+    # Recognized Biology vocabulary (English or Urdu transliteration) → on course.
+    if _has_bio_term(q):
+        return True
+
+    # Follow-ups during an MCQ or tutoring chat ("why?", "فرق بتا دیں", etc.).
+    if (has_mcq or history or mcq_context.strip()) and _BIO_FOLLOWUP.search(q):
         return True
 
     history_bits = ""
@@ -690,7 +724,11 @@ def is_course_related(
         )
         history_bits = f"\nRecent conversation:\n{history_bits}\n"
 
-    user = f"""{history_bits}Student message: {q}
+    mcq_bits = ""
+    if mcq_context.strip():
+        mcq_bits = f"\nMCQ on screen:\n{mcq_context.strip()}\n"
+
+    user = f"""{mcq_bits}{history_bits}Student message: {q}
 
 Is this about FSc/MDCAT Biology course material? Reply YES or NO only.
 Greetings, thanks, and small talk are NO."""
@@ -712,7 +750,7 @@ Greetings, thanks, and small talk are NO."""
         # Greetings/tiny chat stay closed. Substantial Biology-looking
         # questions still fail open so a gate outage does not block tutoring.
         print(f"  [topic-gate] failed: {type(exc).__name__}")
-        if _BIO_HINT.search(q) or ((has_mcq or history) and _BIO_FOLLOWUP.search(q)):
+        if _has_bio_term(q) or ((has_mcq or history) and _BIO_FOLLOWUP.search(q)):
             return True
         if len(q.split()) <= 3:
             return False

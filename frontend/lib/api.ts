@@ -569,6 +569,7 @@ export const api = {
     audio: Blob,
     concept: string,
     mcq?: McqContext,
+    history?: { role: string; content: string }[],
     signal?: AbortSignal
   ): Promise<AskResult> => {
     const form = new FormData();
@@ -584,6 +585,7 @@ export const api = {
     form.append("audio", audio, `question.${ext}`);
     form.append("concept", concept);
     if (mcq?.question_text) form.append("mcq", JSON.stringify(mcq));
+    if (history?.length) form.append("history", JSON.stringify(history));
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 90000);

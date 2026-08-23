@@ -364,6 +364,7 @@ async def _ask_ai_impl(req: AskRequest):
                 req.student_question,
                 history=req.history,
                 has_mcq=bool(mcq_block),
+                mcq_context=mcq_block,
             ),
         )
         if not on_course:
@@ -506,6 +507,7 @@ async def ask_voice(
     concept: str = Form(...),
     context_chunk: str = Form(""),
     mcq: str = Form(""),
+    history: str = Form(""),
 ):
     """Audio -> STT -> RAG (anchored on the MCQ) -> English answer + Urdu audio."""
     # `audio` is a Starlette UploadFile; avoid annotating UploadFile (breaks under
@@ -545,6 +547,15 @@ async def ask_voice(
         except Exception:
             mcq_ctx = None
 
+    history_ctx: Optional[list[dict]] = None
+    if history:
+        try:
+            parsed = json.loads(history)
+            if isinstance(parsed, list):
+                history_ctx = parsed
+        except Exception:
+            history_ctx = None
+
     try:
         result = await _ask_ai_impl(
             AskRequest(
@@ -552,6 +563,7 @@ async def ask_voice(
                 student_question=transcript,
                 context_chunk=context_chunk,
                 mcq=mcq_ctx,
+                history=history_ctx,
             )
         )
         result["transcript"] = transcript

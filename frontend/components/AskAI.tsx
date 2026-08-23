@@ -64,7 +64,13 @@ export default function AskAI({
     async (blob: Blob, signal: AbortSignal) => {
       const seq = ++reqSeqRef.current;
       try {
-        const res = await api.askVoice(blob, concept, mcqRef.current, signal);
+        const res = await api.askVoice(
+          blob,
+          concept,
+          mcqRef.current,
+          historyRef.current.slice(-6),
+          signal
+        );
         if (signal.aborted || seq !== reqSeqRef.current) return { audio: null };
         if (res.no_speech) return { audio: null, noSpeech: true };
         if (res.error) {
