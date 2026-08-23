@@ -1,8 +1,8 @@
-"""Quarantine Physics MCQs and optionally repair swapped answer keys.
+"""Quarantine Physics/Chemistry MCQs and optionally repair swapped answer keys.
 
 Usage (from backend/):
-  python -m scripts.clean_mcq_bank                  # dry-run Physics scan
-  python -m scripts.clean_mcq_bank --apply          # hide Physics from the bank
+  python -m scripts.clean_mcq_bank                  # dry-run non-Biology scan
+  python -m scripts.clean_mcq_bank --apply          # hide non-Biology from the bank
   python -m scripts.clean_mcq_bank --keys --apply   # write high-confidence key fixes
   python -m scripts.clean_mcq_bank --keys --apply --resume
 """
@@ -36,6 +36,7 @@ Return JSON only:
 {"subject":"biology"|"physics"|"chemistry"|"english"|"other","correct_option":"A"|"B"|"C"|"D","confidence":"high"|"medium"|"low"}
 Rules:
 - subject=physics for mechanics, electricity, waves, optics, modern physics — not Biology.
+- subject=chemistry for mole concept, bonding, organic/inorganic chemistry — not Biology.
 - correct_option is the scientifically correct letter from the given options.
 - If unsure, confidence=low. Do not guess a key."""
 
@@ -115,7 +116,7 @@ def main() -> None:
     physics = [r for r in live if is_non_biology(r)]
     print(f"Total: {len(rows)}")
     print(f"Already quarantined: {len(rows) - len(live)}")
-    print(f"Physics / non-Biology to hide: {len(physics)}")
+    print(f"Physics / Chemistry / non-Biology to hide: {len(physics)}")
     for row in physics[:15]:
         stem = (row.get("question_text") or "").replace("\n", " ")[:90]
         print(f"  - {row.get('id')}: {stem}")
@@ -132,7 +133,7 @@ def main() -> None:
             print(f"DB quarantine skipped: {exc}")
             print("IDs were still added to data/excluded_non_biology_ids.txt")
     elif physics:
-        print("Dry-run: Physics not hidden in DB yet. Re-run with --apply.")
+        print("Dry-run: non-Biology rows not hidden in DB yet. Re-run with --apply.")
 
     if not args.keys:
         return

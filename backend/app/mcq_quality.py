@@ -1,8 +1,8 @@
 """Detect off-syllabus MCQs and parse a verified answer key from explanations.
 
-Academy PDFs mix Biology with Physics. The live app is Biology-only, so these
-helpers keep non-Biology items out of practice and recover swapped answer keys
-that OCR/ingest attached to the wrong letter.
+Academy PDFs mix Biology with Physics and Chemistry. The live app is Biology-only,
+so these helpers keep non-Biology items out of practice and recover swapped answer
+keys that OCR/ingest attached to the wrong letter.
 """
 from __future__ import annotations
 
@@ -72,13 +72,148 @@ _PHYSICS_RE = re.compile(
         a\s+body\s+of\s+mass |
         an\s+object\s+(?:is\s+)?(?:thrown|projected|dropped) |
         resistance\s+of\s+(?:a\s+)?wire |
-        current\s+through\s+(?:a\s+)?(?:resistor|wire|circuit)
+        current\s+through\s+(?:a\s+)?(?:resistor|wire|circuit) |
+        magnetic\s+field |
+        electric\s+charge |
+        focal\s+length\s+of\s+(?:a\s+)?(?:lens|mirror|convex|concave) |
+        image\s+distance |
+        object\s+distance |
+        \bf\s*=\s*ma\b |
+        \be\s*=\s*mc\s*\^?\s*2\b |
+        nuclear\s+(?:fission|fusion|reactor) |
+        semiconductor |
+        photon\s+energy |
+        parallel\s+wires |
+        (?:half|full)[\s-]+wave\s+rectifier |
+        permanent\s+magnet |
+        laser\s+light |
+        direct\s+current |
+        alternating\s+current |
+        time\s+of\s+flight |
+        sound\s+waves? |
+        decay\s+constant |
+        kinetic\s+energ |
+        work\s+done |
+        momentum\s+of\s+(?:a\s+)?photon |
+        acceleration\s+of\s+(?:the\s+)?(?:car|body|object|particle) |
+        (?:masses?|bodies)\s+.*\s+dropped\s+from |
+        \d+\s*V\s+to\s+\d+\s*V |
+        \d+\s*ohm |
+        \d+\s*volts? |
+        product\s+of\s+P\s+and\s+V |
+        ideal\s+gas |
+        boyle(?:'?s)?\s+law |
+        charles(?:'?s)?\s+law |
+        angular\s+velocity |
+        circular\s+motion |
+        uniform\s+circular |
+        PN\s+junction |
+        centre\s+of\s+gravity |
+        center\s+of\s+gravity |
+        equivalent\s+resistance |
+        stopping\s+potential |
+        radioactive\s+nucleus |
+        potential\s+difference |
+        linear\s+velocity\s+of\s+a\s+body\s+moving\s+in\s+a\s+circle
     )\b
     """,
     re.IGNORECASE | re.VERBOSE,
 )
 
 _PHYSICS_SOURCE_RE = re.compile(r"\bphysic", re.IGNORECASE)
+
+# Strong Chemistry markers. Keep conservative so Biology (pH, enzymes, ATP,
+# oxidation in respiration, isotopes in medicine) is not swept out.
+_CHEMISTRY_RE = re.compile(
+    r"""
+    \b(?:
+        avogadro(?:'?s)? |
+        molar(?:ity|mass)? |
+        molality |
+        mole\s+(?:ratio|concept|fraction) |
+        stoichiometr |
+        empirical\s+formula |
+        molecular\s+formula |
+        lewis\s+structure |
+        hybridization |
+        sp3|sp2|sp\s*hybrid |
+        benzene |
+        alkane|alkene|alkyne |
+        functional\s+group |
+        iupac |
+        carboxylic\s+acid |
+        esterification |
+        saponification |
+        titration |
+        equivalence\s+point |
+        normality |
+        galvanic\s+cell |
+        electrolytic\s+cell |
+        electrolysis |
+        nernst |
+        oxidation\s+(?:number|state) |
+        redox\s+(?:reaction|equation) |
+        ionization\s+energy |
+        electron\s+affinity |
+        electronegativity |
+        periodic\s+(?:table|law|trend) |
+        chemical\s+equilibrium |
+        rate\s+law |
+        order\s+of\s+reaction |
+        organic\s+compound |
+        inorganic\s+compound |
+        valency |
+        covalent\s+bond |
+        ionic\s+bond |
+        metallic\s+bond |
+        mole\s+of |
+        grams?\s+to\s+moles? |
+        molar\s+volume |
+        standard\s+molar |
+        buffer\s+solution |
+        acid\s+base\s+titration |
+        pH\s+of\s+(?:a\s+)?(?:solution|HCl|NaOH|acid|base) |
+        chemical\s+kinetics |
+        activation\s+energy\s+of\s+(?:a\s+)?reaction |
+        catalyst\s+(?:speeds|increases\s+rate\s+of\s+(?:a\s+)?chemical)
+    )\b
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
+
+_CHEMISTRY_SOURCE_RE = re.compile(r"\bchem(?:istry|ical)?\b", re.IGNORECASE)
+
+# If the stem is clearly Biology, never drop the MCQ based on option wording alone
+# (e.g. synapse MCQs may mention electric current / potential difference).
+_BIOLOGY_STEM_RE = re.compile(
+    r"\b(?:"
+    r"cell|cells|dna|rna|enzyme|organism|plant|animal|heart|kidney|liver|"
+    r"lung|lungs|pleural|alveol|trachea|bronch|diaphragm|chest\s+cavity|"
+    r"neuron|synapse|mitosis|meiosis|photosynthesis|hormone|bacteria|virus|"
+    r"tissue|organ|species|ecosystem|embryo|fertilization|chromosome|gene|"
+    r"protein|membrane|macromolecule|carbohydrate|lipid|amino|nucleotide|"
+    r"ATP|respiration|digestion|blood|muscle|bone|skin|leaf|root|stem|flower|"
+    r"seed|pancreatic|insulin|glucose|antibody|immune|vaccine|inheritance|"
+    r"sucrose|lactose|maltose|enzyme|hydrolysis|condensation|osmosis|diffusion|"
+    r"homeostasis|excretion|reproduction|evolution|ecology|food\s+chain|"
+    r"biomolecule|nucleus|cytoplasm|chloroplast|mitochondria|ribosome"
+    r")\b",
+    re.IGNORECASE,
+)
+
+# Broader option-level terms for when the stem is vague but all choices are Phy/Chem.
+_OPTION_SUBJECT_RE = re.compile(
+    r"\b(?:"
+    r"force|work|power|energy|current|voltage|resistance|entropy|enthalpy|"
+    r"capacitance|inductance|frequency|wavelength|amplitude|velocity|"
+    r"acceleration|momentum|impulse|torque|pressure|density|conductivity|"
+    r"resistivity|molarity|molality|normality|alkane|alkene|alkyne|benzene|"
+    r"electron|proton|neutron|isotope|half[\s-]life|decay|fusion|fission|"
+    r"photon|quantum|relativity|magnet|electric\s+field|potential\s+difference|"
+    r"equivalent\s+resistance|PN\s+junction|diode|rectifier|transformer"
+    r")\b",
+    re.IGNORECASE,
+)
 
 
 def _options_text(options: Any) -> str:
@@ -103,6 +238,20 @@ def question_blob(row: dict[str, Any]) -> str:
             str(row.get("explanation") or ""),
             str(row.get("source") or ""),
             str(row.get("chapter") or ""),
+        ]
+    )
+
+
+def subject_blob(row: dict[str, Any]) -> str:
+    """Text used to detect Physics/Chemistry — stem + source only.
+
+    Options often list chemistry terms (e.g. esterification, molecular formula)
+    as Biology distractors, so they must not drive subject classification.
+    """
+    return " ".join(
+        [
+            str(row.get("question_text") or ""),
+            str(row.get("source") or ""),
         ]
     )
 
@@ -137,17 +286,48 @@ def add_excluded_ids(question_ids: list[str]) -> int:
     return len(new)
 
 
-def is_non_biology(row: dict[str, Any]) -> bool:
-    """True when this MCQ is Physics (or already quarantined)."""
+def _options_non_biology_hits(row: dict[str, Any]) -> int:
+    """How many options look Physics/Chemistry (needs 2+ to classify the MCQ)."""
+    opts = row.get("options")
+    if not isinstance(opts, list):
+        return 0
+    hits = 0
+    for opt in opts:
+        text = opt.get("text", "") if isinstance(opt, dict) else str(opt)
+        if (
+            _PHYSICS_RE.search(text)
+            or _CHEMISTRY_RE.search(text)
+            or _OPTION_SUBJECT_RE.search(text)
+        ):
+            hits += 1
+    return hits
+
+
+def matches_non_biology_content(row: dict[str, Any]) -> bool:
+    """Regex/source signal that a row is Physics or Chemistry (ignores ID blocklist)."""
     if is_excluded_chapter(row.get("chapter")):
         return True
+    blob = subject_blob(row)
+    source = str(row.get("source") or "")
+    if _PHYSICS_SOURCE_RE.search(source) or _CHEMISTRY_SOURCE_RE.search(source):
+        return True
+    if _PHYSICS_RE.search(blob) or _CHEMISTRY_RE.search(blob):
+        return True
+    stem = str(row.get("question_text") or "")
+    if _BIOLOGY_STEM_RE.search(stem):
+        return False
+    # Some stems are vague but every option is Physics/Chemistry (e.g. transformer MCQs).
+    # Require 2+ option hits so a single bio distractor (esterification, molecular formula)
+    # does not drop an otherwise Biology question.
+    return _options_non_biology_hits(row) >= 2
+
+
+def is_non_biology(row: dict[str, Any]) -> bool:
+    """True when this MCQ is Physics, Chemistry, or already quarantined."""
     qid = str(row.get("id") or "").strip()
     if qid and qid in excluded_question_ids():
         return True
-    source = str(row.get("source") or "")
-    if _PHYSICS_SOURCE_RE.search(source):
-        return True
-    return bool(_PHYSICS_RE.search(question_blob(row)))
+    return matches_non_biology_content(row)
 
 
 def format_options(options: Any) -> str:
