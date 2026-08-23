@@ -58,6 +58,24 @@ export function useVoiceCall({
   const cycleRef = useRef(0);
   const listenIdRef = useRef(0);
   const abortRef = useRef<AbortController | null>(null);
+  const noSpeechStreakRef = useRef(0);
+
+  const ensureAudioReady = useCallback(async (ctx: AudioContext) => {
+    if (ctx.state === "suspended") {
+      await ctx.resume();
+    }
+    // Unlock HTML5 audio for later async TTS playback in the same call.
+    try {
+      const silent = new Audio(
+        "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkZXNj"
+      );
+      silent.volume = 0.001;
+      await silent.play();
+      silent.pause();
+    } catch {
+      /* ignore — resume above is the critical part */
+    }
+  }, []);
 
   const cleanupAudioGraph = useCallback(() => {
     if (rafRef.current !== null) {
@@ -174,7 +192,7 @@ export function useVoiceCall({
         try {
           const audio = new Audio();
           audio.preload = "auto";
-          audio.src = url;
+          audio.crossOrigin = "anonymous";
           playerRef.current = audio;
           const done = () => {
             if (playerRef.current === audio) playerRef.current = null;
@@ -183,9 +201,17 @@ export function useVoiceCall({
             r?.();
           };
           audio.onended = done;
-          audio.onerror = done;
-          audio.play().catch(done);
+          audio.onerror = () => {
+            setError("Could not play the tutor's voice. Try ending the call and starting again.");
+            done();
+          };
+          audio.src = url;
+          void audio.play().catch(() => {
+            setError("Could not play the tutor's voice. Check your browser audio settings.");
+            done();
+          });
         } catch {
+          setError("Could not play the tutor's voice.");
           playResolveRef.current = null;
           resolve();
         }
@@ -223,6 +249,7 @@ export function useVoiceCall({
         chunksRef.current = [];
 
         let settled = false;
+        let hadSpeech = false;
         const finish = (blob: Blob | null) => {
           if (settled) return;
           settled = true;
@@ -237,10 +264,15 @@ export function useVoiceCall({
           if (e.data && e.data.size > 0) chunksRef.current.push(e.data);
         };
         recorder.onstop = () => {
+          if (!hadSpeech) {
+            chunksRef.current = [];
+            finish(null);
+            return;
+          }
           const type = recorder.mimeType || mimeType || "audio/webm";
           const blob = new Blob(chunksRef.current, { type });
           chunksRef.current = [];
-          finish(blob);
+          finish(blob.size >= 1200 ? blob : null);
         };
         recorder.onerror = () => finish(null);
 
@@ -303,6 +335,7 @@ export function useVoiceCall({
             if (!speechStartedAt) speechStartedAt = now;
             if (now - speechStartedAt >= minSpeechMs) {
               speechDetected = true;
+              hadSpeech = true;
               lastLoudAt = now;
             }
           } else if (!speechDetected) {
@@ -398,7 +431,18 @@ export function useVoiceCall({
 
         setLevel(0);
 
-        if (!blob || blob.size < 1200) continue;
+        if (!blob || blob.size < 1200) {
+          noSpeechStreakRef.current += 1;
+          if (noSpeechStreakRef.current >= 3) {
+            setError(
+              "Couldn't hear you. Speak clearly for 2 seconds, or check mic permission."
+            );
+            noSpeechStreakRef.current = 0;
+          }
+          continue;
+        }
+        noSpeechStreakRef.current = 0;
+        setError("");
 
         abortRef.current?.abort();
         interruptPlayback();
@@ -424,9 +468,9 @@ export function useVoiceCall({
           stream,
           myCycle,
           {
-            threshold,
-            minSpeechMs: 220,
-            ignoreMs: 180,
+            threshold: Math.max(threshold * 2.2, 0.035),
+            minSpeechMs: 320,
+            ignoreMs: 350,
           }
         );
 
@@ -452,9 +496,9 @@ export function useVoiceCall({
             ? playStream(speechUrl)
             : playAudio(audio as string);
           const duringSpeak = await raceBargeOrWork(playP, stream, myCycle, {
-            threshold: Math.max(threshold * 2.6, 0.04),
-            minSpeechMs: 380,
-            ignoreMs: 450,
+            threshold: Math.max(threshold * 2.8, 0.045),
+            minSpeechMs: 420,
+            ignoreMs: 500,
           });
           if (!inCallRef.current || cycleRef.current !== myCycle) break;
           if (duringSpeak.kind === "barge") {
@@ -462,6 +506,8 @@ export function useVoiceCall({
             pending = duringSpeak.blob;
             continue;
           }
+        } else if (result && "noSpeech" in result && result.noSpeech) {
+          continue;
         }
       }
     },
@@ -479,6 +525,7 @@ export function useVoiceCall({
   const startCall = useCallback(async () => {
     if (inCallRef.current) return;
     setError("");
+    noSpeechStreakRef.current = 0;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 },
@@ -491,6 +538,7 @@ export function useVoiceCall({
           .webkitAudioContext;
       const ctx = new Ctx();
       audioCtxRef.current = ctx;
+      await ensureAudioReady(ctx);
       const source = ctx.createMediaStreamSource(stream);
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 1024;
@@ -501,6 +549,7 @@ export function useVoiceCall({
       cycleRef.current += 1;
       const myCycle = cycleRef.current;
       setInCall(true);
+      setStatus("listening");
 
       runLoop(stream, myCycle).finally(() => {
         if (cycleRef.current === myCycle) {
@@ -514,7 +563,7 @@ export function useVoiceCall({
       setStatus("idle");
       setInCall(false);
     }
-  }, [runLoop, stopEverything]);
+  }, [ensureAudioReady, runLoop, stopEverything]);
 
   useEffect(() => stopEverything, [stopEverything]);
 

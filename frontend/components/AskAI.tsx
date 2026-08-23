@@ -79,9 +79,16 @@ export default function AskAI({
         }
         setError("");
         if (res.transcript) pushTurn("user", res.transcript);
-        const speechUrl = await speechStreamUrl(res.speech_id);
+        const speechUrl = res.speech_id
+          ? await speechStreamUrl(res.speech_id)
+          : null;
         if (signal.aborted || seq !== reqSeqRef.current) return { audio: null };
         if (res.answer) pushTurn("assistant", res.answer, speechUrl);
+        if (res.answer && res.speech_id && !speechUrl) {
+          setError(
+            "Answer is ready below, but voice playback could not start. Use Listen on the reply."
+          );
+        }
         return { audio: res.audio, speechUrl };
       } catch (e) {
         if (
