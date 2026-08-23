@@ -66,6 +66,14 @@ export function isBatchComplete(
   return true;
 }
 
+function isAnswered(
+  st: { isCorrect: boolean | null; selected?: string | null } | undefined
+): boolean {
+  if (!st) return false;
+  if (st.isCorrect !== null && st.isCorrect !== undefined) return true;
+  return Boolean(st.selected);
+}
+
 export function firstUnansweredIndex(
   qStates: Record<number, { isCorrect: boolean | null }>,
   total: number
@@ -76,6 +84,23 @@ export function firstUnansweredIndex(
     }
   }
   return Math.max(0, total - 1);
+}
+
+/** Continue after the furthest answered question, not the last one viewed. */
+export function nextResumeIndex(
+  qStates: Record<
+    number,
+    { isCorrect: boolean | null; selected?: string | null }
+  >,
+  total: number
+): number {
+  let lastAnswered = -1;
+  for (let i = 0; i < total; i++) {
+    if (isAnswered(qStates[i])) lastAnswered = i;
+  }
+  if (lastAnswered < 0) return 0;
+  const next = lastAnswered + 1;
+  return next >= total ? Math.max(0, total - 1) : next;
 }
 
 export function hasIncompleteChapterBatch(

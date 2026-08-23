@@ -19,9 +19,9 @@ import { setPendingSummary } from "@/lib/sessionHandoff";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 import {
   clearChapterBatch,
-  firstUnansweredIndex,
   isBatchComplete,
   loadChapterBatch,
+  nextResumeIndex,
   saveChapterBatch,
   type SavedQState,
 } from "@/lib/chapterBatch";
@@ -161,7 +161,7 @@ function SessionInner() {
         [i]: { ...(prev[i] ?? EMPTY_Q), ...patch },
       };
       qStatesRef.current = next;
-      persistChapterProgress(next, indexRef.current);
+      persistChapterProgress(next);
       return next;
     });
   }
@@ -180,8 +180,7 @@ function SessionInner() {
   }
 
   function persistChapterProgress(
-    states: Record<number, QState> = qStatesRef.current,
-    idx: number = indexRef.current
+    states: Record<number, QState> = qStatesRef.current
   ) {
     if (skipBatchPersistRef.current) return;
     const chapter = chapterRef.current;
@@ -190,14 +189,18 @@ function SessionInner() {
     if (!sid || !currentSet || currentSet.mode !== "chapter_practice" || !chapter) {
       return;
     }
+    const questionIds = currentSet.question_ids?.length
+      ? currentSet.question_ids
+      : currentSet.questions.map((q) => q.id);
+    const compact = compactStates(states);
     saveChapterBatch({
       studentId: sid,
       chapter,
-      questionIds: currentSet.question_ids?.length
-        ? currentSet.question_ids
-        : currentSet.questions.map((q) => q.id),
-      qStates: compactStates(states),
-      index: idx,
+      questionIds,
+      qStates: compact,
+      // Always store the next unattempted slot so reviewing an older MCQ
+      // does not become the resume point after Exit.
+      index: nextResumeIndex(compact, questionIds.length),
     });
   }
 
@@ -390,7 +393,7 @@ function SessionInner() {
           resumeBatch &&
           !isBatchComplete(resumeBatch.qStates, resumeBatch.questionIds.length);
         if (incomplete && resumeBatch) {
-          resumeAt = firstUnansweredIndex(
+          resumeAt = nextResumeIndex(
             resumeBatch.qStates,
             resumeBatch.questionIds.length
           );
@@ -585,7 +588,7 @@ function SessionInner() {
         };
         qStatesRef.current = next;
         syncScoreFromStates(next);
-        persistChapterProgress(next, index);
+        persistChapterProgress(next);
         if (
           setRef.current &&
           isBatchComplete(next, batchTotal(setRef.current)) &&
@@ -642,7 +645,7 @@ function SessionInner() {
               };
               qStatesRef.current = next;
               syncScoreFromStates(next);
-              persistChapterProgress(next, index);
+              persistChapterProgress(next);
               return next;
             });
             const riFix = reviewRef.current.findIndex(
@@ -696,7 +699,7 @@ function SessionInner() {
     setInsightOpen(true);
     indexRef.current = i;
     setIndex(i);
-    persistChapterProgress(qStatesRef.current, i);
+    persistChapterProgress(qStatesRef.current);
   }
 
   function toggleFlag() {
