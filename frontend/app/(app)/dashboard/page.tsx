@@ -85,7 +85,7 @@ export default function DashboardPage() {
             </div>
             <div className="inline-flex items-center gap-2 rounded-full bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm">
               <Clock className="h-4 w-4" />
-              {daysToMdcat} Days to MDCAT
+              {daysToMdcat} {daysToMdcat === 1 ? "Day" : "Days"} to MDCAT
             </div>
           </div>
 
@@ -325,8 +325,11 @@ function getGreeting() {
 }
 
 function getDaysToMdcat() {
-  const exam = new Date("2026-09-20");
+  // Local calendar days until 20 Sep 2026. Date-only ISO strings parse as UTC
+  // and inflate the count by one day in Pakistan (UTC+5).
+  const exam = new Date(2026, 8, 20);
   const today = new Date();
+  exam.setHours(0, 0, 0, 0);
   today.setHours(0, 0, 0, 0);
-  return Math.max(0, Math.ceil((exam.getTime() - today.getTime()) / 86400000));
+  return Math.max(0, Math.round((exam.getTime() - today.getTime()) / 86_400_000));
 }

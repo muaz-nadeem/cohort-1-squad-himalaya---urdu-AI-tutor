@@ -27,9 +27,11 @@ function notify() {
 export default function SpeechControls({
   url,
   speechId,
+  variant = "subtle",
 }: {
   url?: string | null;
   speechId?: string | null;
+  variant?: "subtle" | "primary";
 }) {
   const [resolved, setResolved] = useState(url || "");
   const [state, setState] = useState<"idle" | "playing" | "paused">("idle");
@@ -126,14 +128,26 @@ export default function SpeechControls({
     setState("idle");
   }
 
+  const primary =
+    "inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-dark disabled:opacity-50";
+  const subtle =
+    "inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-2 text-xs font-semibold text-brand transition hover:bg-brand-100 disabled:opacity-50";
+  const btn = variant === "primary" ? primary : subtle;
+
   return (
-    <div className="mt-2 flex flex-wrap items-center gap-1.5">
+    <div
+      className={
+        variant === "primary"
+          ? "flex flex-wrap items-center gap-1.5"
+          : "mt-2 flex flex-wrap items-center gap-1.5"
+      }
+    >
       {state === "idle" || state === "paused" ? (
         <button
           type="button"
           onClick={() => void listen()}
           disabled={loading}
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-2 text-xs font-semibold text-brand transition hover:bg-brand-100 disabled:opacity-50"
+          className={btn}
         >
           {loading ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -146,7 +160,7 @@ export default function SpeechControls({
         <button
           type="button"
           onClick={pause}
-          className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-2 text-xs font-semibold text-brand transition hover:bg-brand-100"
+          className={btn}
         >
           <Pause className="h-3.5 w-3.5" />
           Pause

@@ -1186,19 +1186,26 @@ function SessionInner() {
 
               {insightOpen && (
                 <>
-                  <div className="flex items-center justify-between bg-brand-700 px-4 py-2.5 text-white">
-                    <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider">
-                      <Sparkles className="h-3.5 w-3.5" />
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-white px-4 py-2.5">
+                    <p className="text-xs font-bold tracking-wider text-slate-600">
                       AI INSIGHT
+                    </p>
+                    <div className="flex shrink-0 items-center gap-2">
+                      {explanation?.speech_id ? (
+                        <SpeechControls
+                          speechId={explanation.speech_id}
+                          variant="primary"
+                        />
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={() => setAskOpen((v) => !v)}
+                        className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-brand px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-brand-dark"
+                      >
+                        <MessageCircle className="h-3.5 w-3.5" />
+                        {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => setAskOpen((v) => !v)}
-                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white hover:bg-white/25"
-                    >
-                      <MessageCircle className="h-3.5 w-3.5" />
-                      {askOpen ? "Hide chat" : `Ask ${doctor.displayName}`}
-                    </button>
                   </div>
 
                   <div className="p-4">
@@ -1211,7 +1218,6 @@ function SessionInner() {
                         <p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">
                           {explanation.explanation}
                         </p>
-                        <SpeechControls speechId={explanation.speech_id} />
                       </div>
                     ) : (
                       <p className="text-sm text-slate-500">
