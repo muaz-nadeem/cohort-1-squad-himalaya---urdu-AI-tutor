@@ -1079,6 +1079,121 @@ async def append_textbook_chat_messages(
 
 
 # ===========================================================================
+# Saved MCQs — bookmark from practice with answer + AI explanation
+# ===========================================================================
+class SavedMcqCreate(BaseModel):
+    question_id: str
+    selected_option: str
+    correct_option: str
+    is_correct: bool
+    chapter: Optional[str] = None
+    explanation: Optional[dict] = None
+
+
+class SavedMcqReviewed(BaseModel):
+    reviewed: bool = True
+
+
+@app.get("/api/saved-mcqs")
+@limiter.limit("60/minute")
+async def list_saved_mcqs(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    try:
+        items = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: db.list_saved_mcqs(user.user_id)
+        )
+        return {"items": items}
+    except Exception as exc:
+        detail = str(exc)
+        print(f"  [saved-mcqs] list failed: {type(exc).__name__}: {detail}")
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Saved MCQs DB error. Run backend/db/migrations/005_saved_mcqs.sql "
+                f"in Supabase. Detail: {detail[:240]}"
+            ),
+        )
+
+
+@app.get("/api/saved-mcqs/ids")
+@limiter.limit("60/minute")
+async def saved_mcq_ids(
+    request: Request,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    try:
+        ids = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: list(db.saved_mcq_question_ids(user.user_id))
+        )
+        return {"question_ids": ids}
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=str(exc)[:240])
+
+
+@app.post("/api/saved-mcqs")
+@limiter.limit("60/minute")
+async def save_mcq(
+    request: Request,
+    req: Annotated[SavedMcqCreate, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    try:
+        row = await asyncio.get_event_loop().run_in_executor(
+            None,
+            lambda: db.upsert_saved_mcq(
+                user.user_id,
+                {
+                    "question_id": req.question_id,
+                    "selected_option": req.selected_option,
+                    "correct_option": req.correct_option,
+                    "is_correct": req.is_correct,
+                    "chapter": req.chapter,
+                    "explanation": req.explanation,
+                },
+            ),
+        )
+        return {"ok": True, "id": row.get("id"), "question_id": row.get("question_id")}
+    except Exception as exc:
+        detail = str(exc)
+        print(f"  [saved-mcqs] save failed: {type(exc).__name__}: {detail}")
+        raise HTTPException(status_code=503, detail=detail[:240])
+
+
+@app.delete("/api/saved-mcqs/{question_id}")
+@limiter.limit("60/minute")
+async def unsave_mcq(
+    request: Request,
+    question_id: str,
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    await asyncio.get_event_loop().run_in_executor(
+        None, lambda: db.delete_saved_mcq(user.user_id, question_id)
+    )
+    return {"ok": True}
+
+
+@app.patch("/api/saved-mcqs/{question_id}")
+@limiter.limit("60/minute")
+async def patch_saved_mcq(
+    request: Request,
+    question_id: str,
+    req: Annotated[SavedMcqReviewed, Body()],
+    user: Annotated[AuthUser, Depends(get_current_user)],
+):
+    row = await asyncio.get_event_loop().run_in_executor(
+        None,
+        lambda: db.mark_saved_mcq_reviewed(
+            user.user_id, question_id, reviewed=req.reviewed
+        ),
+    )
+    if not row:
+        raise HTTPException(status_code=404, detail="Saved MCQ not found")
+    return {"ok": True, "reviewed": row.get("reviewed")}
+
+
+# ===========================================================================
 # Explain a wrong/right answer
 # ===========================================================================
 class ExplainRequest(BaseModel):

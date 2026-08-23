@@ -341,6 +341,20 @@ export interface ReviewItem {
   is_correct: boolean;
 }
 
+export interface SavedMcq {
+  id: string;
+  question_id: string;
+  question_text: string;
+  chapter: string;
+  options: Option[];
+  selected_option: string;
+  correct_option: string;
+  is_correct: boolean;
+  explanation: ExplainResult | null;
+  reviewed: boolean;
+  saved_at?: string;
+}
+
 export interface WeeklyPlan {
   id: string;
   week_start: string;
@@ -696,6 +710,39 @@ export const api = {
       method: "POST",
       body: JSON.stringify(body),
     }),
+
+  listSavedMcqs: () =>
+    request<{ items: SavedMcq[] }>("/api/saved-mcqs"),
+
+  savedMcqIds: () =>
+    request<{ question_ids: string[] }>("/api/saved-mcqs/ids"),
+
+  saveMcq: (body: {
+    question_id: string;
+    selected_option: string;
+    correct_option: string;
+    is_correct: boolean;
+    chapter?: string;
+    explanation?: ExplainResult | null;
+  }) =>
+    request<{ ok: boolean; question_id: string }>("/api/saved-mcqs", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  unsaveMcq: (questionId: string) =>
+    request<{ ok: boolean }>(`/api/saved-mcqs/${questionId}`, {
+      method: "DELETE",
+    }),
+
+  markSavedMcqReviewed: (questionId: string, reviewed = true) =>
+    request<{ ok: boolean; reviewed: boolean }>(
+      `/api/saved-mcqs/${questionId}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify({ reviewed }),
+      }
+    ),
 
   ragAskVoice: async (
     audio: Blob,

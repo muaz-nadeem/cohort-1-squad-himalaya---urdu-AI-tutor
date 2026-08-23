@@ -886,3 +886,109 @@ def append_textbook_chat_messages(
         )
     res = require_client().table("textbook_chat_messages").insert(rows).execute()
     return res.data or rows
+
+
+# ── saved MCQs ───────────────────────────────────────────────────────────────
+def list_saved_mcqs(student_id: str, limit: int = 200) -> list[dict[str, Any]]:
+    rows = (
+        require_client()
+        .table("saved_mcqs")
+        .select("*")
+        .eq("student_id", student_id)
+        .order("updated_at", desc=True)
+        .limit(limit)
+        .execute()
+        .data
+        or []
+    )
+    if not rows:
+        return []
+    q_map = get_questions_by_ids(
+        [r["question_id"] for r in rows if r.get("question_id")],
+        columns="id,question_text,options,chapter,explanation",
+    )
+    out: list[dict[str, Any]] = []
+    for r in rows:
+        q = q_map.get(r["question_id"], {})
+        out.append(
+            {
+                "id": r["id"],
+                "question_id": r["question_id"],
+                "question_text": q.get("question_text") or "",
+                "chapter": r.get("chapter") or q.get("chapter") or "Biology",
+                "options": q.get("options") or [],
+                "selected_option": r.get("selected_option"),
+                "correct_option": r.get("correct_option"),
+                "is_correct": bool(r.get("is_correct")),
+                "explanation": r.get("explanation"),
+                "reviewed": bool(r.get("reviewed")),
+                "saved_at": r.get("updated_at") or r.get("created_at"),
+            }
+        )
+    return out
+
+
+def saved_mcq_question_ids(student_id: str) -> set[str]:
+    rows = (
+        require_client()
+        .table("saved_mcqs")
+        .select("question_id")
+        .eq("student_id", student_id)
+        .execute()
+        .data
+        or []
+    )
+    return {str(r["question_id"]) for r in rows if r.get("question_id")}
+
+
+def upsert_saved_mcq(student_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    import datetime as dt
+
+    row = {
+        "student_id": student_id,
+        "question_id": payload["question_id"],
+        "selected_option": payload["selected_option"],
+        "correct_option": payload["correct_option"],
+        "is_correct": payload["is_correct"],
+        "chapter": payload.get("chapter"),
+        "explanation": payload.get("explanation"),
+        "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+    }
+    res = (
+        require_client()
+        .table("saved_mcqs")
+        .upsert(row, on_conflict="student_id,question_id")
+        .execute()
+    )
+    if not res.data:
+        raise RuntimeError("Saved MCQ upsert returned no rows")
+    return res.data[0]
+
+
+def delete_saved_mcq(student_id: str, question_id: str) -> bool:
+    require_client().table("saved_mcqs").delete().eq("student_id", student_id).eq(
+        "question_id", question_id
+    ).execute()
+    return True
+
+
+def mark_saved_mcq_reviewed(
+    student_id: str, question_id: str, reviewed: bool = True
+) -> Optional[dict[str, Any]]:
+    import datetime as dt
+
+    res = (
+        require_client()
+        .table("saved_mcqs")
+        .update(
+            {
+                "reviewed": reviewed,
+                "updated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+            }
+        )
+        .eq("student_id", student_id)
+        .eq("question_id", question_id)
+        .execute()
+    )
+    return res.data[0] if res.data else None
+

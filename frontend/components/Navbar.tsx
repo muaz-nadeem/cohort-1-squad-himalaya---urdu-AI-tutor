@@ -13,6 +13,7 @@ import {
   Timer,
   Puzzle,
   MessageCircle,
+  Bookmark,
   LogOut,
   Menu,
   X,
@@ -27,6 +28,7 @@ const NAV = [
   { href: "/exam", label: "Full-length", icon: Timer },
   { href: "/custom-quiz", label: "Custom quiz", icon: Puzzle },
   { href: "/chat", label: "Ask Textbook", icon: MessageCircle },
+  { href: "/saved", label: "Saved MCQs", icon: Bookmark },
   { href: "/weak-spots", label: "Weak Spots", icon: Target },
   // { href: "/weekly-plan", label: "Weekly Plan", icon: CalendarDays },
 ] as const;

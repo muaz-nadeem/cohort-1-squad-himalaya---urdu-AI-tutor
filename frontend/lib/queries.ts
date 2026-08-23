@@ -16,6 +16,12 @@ export const CHAPTERS_QUERY = {
   staleTime: 60_000,
 };
 
+export const SAVED_MCQS_QUERY = {
+  queryKey: ["saved-mcqs"] as const,
+  queryFn: () => api.listSavedMcqs(),
+  staleTime: 60_000,
+};
+
 export const WEAK_SPOTS_QUERY = (studentId: string) => ({
   queryKey: ["weak-spots", studentId] as const,
   queryFn: () => api.getWeakSpots(studentId),
@@ -39,6 +45,9 @@ export function prefetchForRoute(
   studentId: string | null
 ) {
   switch (href) {
+    case "/saved":
+      void client.prefetchQuery(SAVED_MCQS_QUERY);
+      break;
     case "/weak-spots":
       if (studentId) void client.prefetchQuery(WEAK_SPOTS_QUERY(studentId));
       break;

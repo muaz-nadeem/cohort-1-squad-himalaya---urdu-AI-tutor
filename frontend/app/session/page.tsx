@@ -31,6 +31,7 @@ import AskAI from "@/components/AskAI";
 import SpeechControls from "@/components/SpeechControls";
 import {
   Bookmark,
+  BookmarkCheck,
   CheckCircle2,
   Clock,
   Frown,
@@ -128,6 +129,8 @@ function SessionInner() {
   const [insightOpen, setInsightOpen] = useState(true);
   const [exiting, setExiting] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
+  const [saveBusy, setSaveBusy] = useState(false);
   const startedRef = useRef(false);
   const timedOutRef = useRef(false);
   const explainAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -143,8 +146,10 @@ function SessionInner() {
   const setRef = useRef<QuestionSet | null>(null);
   const studentIdRef = useRef<string | null>(null);
   const fillCancelRef = useRef(false);
+  const savedIdsRef = useRef<Set<string>>(new Set());
   setRef.current = set;
   studentIdRef.current = studentId;
+  savedIdsRef.current = savedIds;
 
   const doctor = useMemo(() => getDoctorPersona(studentId), [studentId]);
   const current = qStates[index] ?? EMPTY_Q;
@@ -528,6 +533,14 @@ function SessionInner() {
   }
 
   useEffect(() => {
+    if (!studentId) return;
+    void api
+      .savedMcqIds()
+      .then((res) => setSavedIds(new Set(res.question_ids)))
+      .catch(() => {});
+  }, [studentId]);
+
+  useEffect(() => {
     if (startedRef.current) return;
     startedRef.current = true;
     void bootSession();
@@ -666,6 +679,13 @@ function SessionInner() {
           } else {
             patchQ(index, { explanation: exp });
           }
+          void persistSavedSnapshot(
+            question,
+            key,
+            verified && verified !== res.correct_option ? verified : res.correct_option,
+            verified && verified !== res.correct_option ? key === verified : res.is_correct,
+            exp
+          );
         } catch {
           patchQ(index, {
             explanation: {
@@ -709,6 +729,65 @@ function SessionInner() {
 
   function toggleFlag() {
     patchQ(index, { flagged: !flagged });
+  }
+
+  async function persistSavedSnapshot(
+    q: Question,
+    sel: string,
+    correct: string,
+    correctFlag: boolean,
+    exp: ExplainResult | null
+  ) {
+    if (!savedIdsRef.current.has(q.id)) return;
+    try {
+      await api.saveMcq({
+        question_id: q.id,
+        selected_option: sel,
+        correct_option: correct,
+        is_correct: correctFlag,
+        chapter: q.chapter,
+        explanation: exp,
+      });
+    } catch {
+      /* background sync only */
+    }
+  }
+
+  async function toggleSaveMcq() {
+    if (
+      !question ||
+      !studentId ||
+      isCorrect === null ||
+      !selected ||
+      !revealedCorrect
+    ) {
+      return;
+    }
+    setSaveBusy(true);
+    try {
+      if (savedIds.has(question.id)) {
+        await api.unsaveMcq(question.id);
+        setSavedIds((prev) => {
+          const next = new Set(prev);
+          next.delete(question.id);
+          return next;
+        });
+      } else {
+        await api.saveMcq({
+          question_id: question.id,
+          selected_option: selected,
+          correct_option: revealedCorrect,
+          is_correct: isCorrect === true,
+          chapter: question.chapter,
+          explanation: explanation,
+        });
+        setSavedIds((prev) => new Set(prev).add(question.id));
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Could not update saved MCQ");
+    } finally {
+      setSaveBusy(false);
+    }
   }
 
   function nextAfterAnswer() {
@@ -870,6 +949,7 @@ function SessionInner() {
 
   const showSidebar = !!(selected && showExplainNow);
   const graded = isCorrect !== null;
+  const isSaved = question ? savedIds.has(question.id) : false;
   const revealColors = !reviewAtEnd;
   const flaggedCount = Array.from({ length: totalQ }, (_, i) => i).filter(
     (i) => (qStates[i] ?? EMPTY_Q).flagged
@@ -1043,7 +1123,7 @@ function SessionInner() {
             <button
               type="button"
               onClick={toggleFlag}
-              className={`ml-auto inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition ${
                 flagged
                   ? "bg-amber-100 text-amber-800"
                   : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
@@ -1054,6 +1134,23 @@ function SessionInner() {
               />
               {flagged ? "Marked for review" : "Mark for review"}
             </button>
+            {graded && (
+              <button
+                type="button"
+                onClick={() => void toggleSaveMcq()}
+                disabled={saveBusy}
+                className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition disabled:opacity-60 ${
+                  isSaved
+                    ? "bg-brand-100 text-brand"
+                    : "bg-white text-slate-500 ring-1 ring-slate-200 hover:bg-slate-50"
+                }`}
+              >
+                <BookmarkCheck
+                  className={`h-3.5 w-3.5 ${isSaved ? "fill-current" : ""}`}
+                />
+                {isSaved ? "Saved" : "Save MCQ"}
+              </button>
+            )}
           </div>
 
           {question ? (
