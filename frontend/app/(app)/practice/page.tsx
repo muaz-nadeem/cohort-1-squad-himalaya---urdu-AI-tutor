@@ -9,6 +9,7 @@ import { CHAPTERS_QUERY } from "@/lib/queries";
 import { hasIncompleteChapterBatch } from "@/lib/chapterBatch";
 import { useQuery } from "@tanstack/react-query";
 import ChapterCover from "@/components/ChapterCover";
+import { TrendIcon, accuracyTone, trendLabel, type Trend } from "@/lib/trends";
 
 function matchesChapter(ch: ChapterInfo, query: string) {
   if (!query) return true;
@@ -51,11 +52,15 @@ export default function PracticePage() {
         ? "Failed to load chapters"
         : null;
   const accuracyByChapter = useMemo(() => {
-    const map = new Map<string, { accuracy_pct: number; attempted: number }>();
+    const map = new Map<
+      string,
+      { accuracy_pct: number; attempted: number; trend?: Trend }
+    >();
     for (const c of dashboard?.chapters || []) {
       map.set(c.chapter, {
         accuracy_pct: c.accuracy_pct,
         attempted: c.attempted,
+        trend: c.trend,
       });
     }
     return map;
@@ -218,6 +223,9 @@ function ChapterSection({
               cta={cta}
               progress={progress}
               questionCount={count}
+              attempted={attempted}
+              accuracyPct={stats?.accuracy_pct}
+              trend={stats?.trend}
             />
           );
         })}
@@ -234,6 +242,9 @@ function ChapterCard({
   cta,
   progress,
   questionCount,
+  attempted,
+  accuracyPct,
+  trend,
 }: {
   id: string;
   unit: string;
@@ -242,12 +253,21 @@ function ChapterCard({
   cta: "none" | "resume" | "next" | "again";
   progress: number;
   questionCount: number;
+  attempted: number;
+  accuracyPct?: number;
+  trend?: Trend;
 }) {
   const href = `/session?mode=chapter&chapter=${encodeURIComponent(name)}`;
   const countLabel =
     questionCount > 0
       ? `${questionCount} MCQ${questionCount === 1 ? "" : "s"} in bank`
       : "No MCQs ingested yet";
+  const statsLabel =
+    attempted > 0 && accuracyPct != null
+      ? `${accuracyPct}% accuracy · ${attempted} done`
+      : attempted > 0
+        ? `${attempted} MCQ${attempted === 1 ? "" : "s"} done`
+        : null;
 
   return (
     <Link
@@ -265,6 +285,19 @@ function ChapterCard({
             {name}
           </h3>
           <p className="mt-2 text-xs text-slate-500">{countLabel}</p>
+          {statsLabel && (
+            <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+              {trend && <TrendIcon trend={trend} />}
+              <p
+                className={`text-xs font-medium ${
+                  accuracyPct != null ? accuracyTone(accuracyPct) : "text-slate-500"
+                }`}
+              >
+                {statsLabel}
+                {trend ? ` · ${trendLabel(trend)}` : ""}
+              </p>
+            </div>
+          )}
         </div>
         <div
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${

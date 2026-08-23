@@ -9,6 +9,7 @@ import {
   ChevronUp,
   Clock,
   Sparkles,
+  Target,
   Trophy,
   XCircle,
 } from "lucide-react";
@@ -22,6 +23,7 @@ import AskAI from "@/components/AskAI";
 import { getStudentId } from "@/lib/student";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 import { takePendingSummary } from "@/lib/sessionHandoff";
+import { accuracyTone } from "@/lib/trends";
 
 export default function SummaryPage() {
   const router = useRouter();
@@ -86,16 +88,30 @@ export default function SummaryPage() {
     }
   }, [router]);
 
-  if (!summary) return null;
+  if (!summary) {
+    return (
+      <div className="flex min-h-[calc(100dvh-3.5rem)] items-center justify-center bg-[#F4F7FB] lg:min-h-dvh">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand border-t-transparent" />
+      </div>
+    );
+  }
 
   const wrongCount = review.filter((r) => !r.is_correct).length;
   const visible =
     filter === "wrong" ? review.filter((r) => !r.is_correct) : review;
+  const weakChapters =
+    summary.weak_chapters?.length
+      ? summary.weak_chapters
+      : (summary.chapters || [])
+          .filter((c) => c.attempted >= 2 && c.accuracy_pct < 65)
+          .sort((a, b) => a.accuracy_pct - b.accuracy_pct);
   const focusChapter =
+    weakChapters[0]?.chapter ||
     summary.chapters?.slice().sort((a, b) => a.accuracy_pct - b.accuracy_pct)[0]
       ?.chapter ||
     review[0]?.chapter ||
     "Biology";
+  const next = summary.next_recommendation;
 
   async function toggleReview(item: ReviewItem) {
     const key = item.question_id;
@@ -194,6 +210,64 @@ export default function SummaryPage() {
               </p>
             </div>
           </div>
+
+          {weakChapters.length > 0 && (
+            <div className="mt-6 rounded-2xl border border-amber-100 bg-amber-50/70 p-5 shadow-sm sm:p-6">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
+                  <Target className="h-5 w-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-lg font-semibold text-slate-900">
+                    Weak areas this session
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-600">
+                    These chapters need another pass before exam day.
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {weakChapters.map((c) => (
+                      <li
+                        key={c.chapter}
+                        className="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-white/80 px-4 py-3"
+                      >
+                        <span className="font-medium text-slate-800">
+                          {c.chapter}
+                        </span>
+                        <span
+                          className={`text-sm font-semibold tabular-nums ${accuracyTone(c.accuracy_pct)}`}
+                        >
+                          {c.accuracy_pct}% · {c.attempted} Qs
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/session?mode=chapter&chapter=${encodeURIComponent(weakChapters[0].chapter)}`}
+                    className="mt-4 inline-flex items-center rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+                  >
+                    Drill {weakChapters[0].chapter} →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {next?.chapter && (
+            <div className="mt-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm">
+              <p className="text-[10px] font-bold tracking-wider text-slate-400">
+                NEXT UP
+              </p>
+              <p className="mt-2 font-semibold text-slate-900">
+                {next.chapter} — {next.accuracy_pct}% overall accuracy
+              </p>
+              <Link
+                href={`/session?mode=chapter&chapter=${encodeURIComponent(next.chapter)}`}
+                className="mt-3 inline-flex text-sm font-semibold text-brand hover:underline"
+              >
+                Continue with recommended chapter →
+              </Link>
+            </div>
+          )}
 
           {review.length > 0 && (
             <div className="mt-8 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6">

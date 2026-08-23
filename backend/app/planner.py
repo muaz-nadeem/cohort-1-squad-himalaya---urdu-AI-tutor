@@ -26,7 +26,9 @@ def _next_monday(today: dt.date | None = None) -> dt.date:
 
 
 def generate_plan(student_id: str) -> dict[str, Any]:
-    report = weak_spots.ranked_report(student_id)
+    report = weak_spots.ranked_chapter_report(student_id) or weak_spots.ranked_report(
+        student_id
+    )
     targets = report[:5]
 
     plan_items = []
@@ -34,15 +36,20 @@ def generate_plan(student_id: str) -> dict[str, Any]:
         if i < len(targets):
             t = targets[i]
             minutes = _minutes_for(t.get("priority_score", 0))
+            label = t.get("concept") or t.get("chapter") or "Biology"
             plan_items.append(
                 {
                     "day": day,
-                    "concept_id": t["concept_id"],
-                    "concept": t["concept"],
+                    "concept_id": t.get("concept_id"),
+                    "concept": label,
                     "chapter": t.get("chapter"),
                     "minutes": minutes,
                     "question_count": max(5, minutes // 3),
-                    "reason": f"Focus on {t['concept']} — keep drilling until it sticks",
+                    "reason": (
+                        f"Drill {t['chapter']} — {t['accuracy_pct']:.0f}% accuracy so far"
+                        if t.get("chapter")
+                        else f"Focus on {label} — keep drilling until it sticks"
+                    ),
                 }
             )
         else:
@@ -68,57 +75,7 @@ def generate_plan(student_id: str) -> dict[str, Any]:
 def generate_daily_plan(student_id: str, plan_date: dt.date | None = None) -> dict[str, Any]:
     """Build today's plan from weak chapters — practice those first."""
     plan_date = plan_date or dt.date.today()
-    report = weak_spots.ranked_report(student_id)
-
-    # Collapse to chapter-level weak spots from concept report
-    by_chapter: dict[str, dict[str, Any]] = {}
-    for r in report:
-        ch = r.get("chapter") or "Biology"
-        bucket = by_chapter.setdefault(
-            ch,
-            {
-                "chapter": ch,
-                "accuracy_pct": r.get("accuracy_pct", 0),
-                "priority_score": r.get("priority_score", 0),
-                "concept": r.get("concept"),
-                "concept_id": r.get("concept_id"),
-            },
-        )
-        if r.get("priority_score", 0) > bucket["priority_score"]:
-            bucket.update(
-                {
-                    "accuracy_pct": r.get("accuracy_pct", 0),
-                    "priority_score": r.get("priority_score", 0),
-                    "concept": r.get("concept"),
-                    "concept_id": r.get("concept_id"),
-                }
-            )
-
-    # Fallback: chapter accuracy from attempts (MCQ bank often has chapter, no concept_id)
-    if not by_chapter:
-        attempts = db.get_attempts(student_id)
-        chapters: dict[str, dict[str, int]] = {}
-        for a in attempts:
-            q = db.get_question(a["question_id"]) if a.get("question_id") else None
-            ch = (q or {}).get("chapter")
-            if not ch:
-                continue
-            b = chapters.setdefault(ch, {"attempted": 0, "correct": 0})
-            b["attempted"] += 1
-            if a.get("is_correct"):
-                b["correct"] += 1
-        for ch, b in chapters.items():
-            acc = round(b["correct"] / b["attempted"] * 100, 1) if b["attempted"] else 0
-            failures = b["attempted"] - b["correct"]
-            by_chapter[ch] = {
-                "chapter": ch,
-                "accuracy_pct": acc,
-                "priority_score": round((1 - acc / 100) * 50 + min(failures, 10) * 3, 2),
-            }
-
-    ranked = sorted(
-        by_chapter.values(), key=lambda x: x["priority_score"], reverse=True
-    )[:4]
+    ranked = weak_spots.ranked_chapter_report(student_id)[:4]
 
     items: list[dict[str, Any]] = []
     if ranked:
@@ -131,7 +88,10 @@ def generate_daily_plan(student_id: str, plan_date: dt.date | None = None) -> di
                     "concept_id": t.get("concept_id"),
                     "minutes": minutes,
                     "question_count": min(100, max(15, minutes)),
-                    "reason": "You keep missing questions here — focus this chapter today",
+                    "reason": (
+                        f"Do {t['chapter']} — {t['accuracy_pct']:.0f}% accuracy. "
+                        "Keep drilling until it sticks."
+                    ),
                     "action": "chapter_practice",
                 }
             )
@@ -146,7 +106,7 @@ def generate_daily_plan(student_id: str, plan_date: dt.date | None = None) -> di
             }
         )
 
-    if by_chapter:
+    if ranked:
         items.append(
             {
                 "chapter": None,

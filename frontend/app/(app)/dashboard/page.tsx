@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import {
   BookOpen,
   Clock,
@@ -13,6 +14,11 @@ import { useQuery } from "@tanstack/react-query";
 import { api, type WeakSpot } from "@/lib/api";
 import { useStudentId, useStudentName } from "@/lib/useStudent";
 import { CHAPTERS_QUERY } from "@/lib/queries";
+import { accuracyTone } from "@/lib/trends";
+import {
+  pickDashboardResumeChapter,
+  type DashboardResume,
+} from "@/lib/chapterBatch";
 
 export default function DashboardPage() {
   const studentId = useStudentId();
@@ -31,9 +37,36 @@ export default function DashboardPage() {
   });
 
   // Warm the chapter catalogue so /practice and /custom-quiz open with no wait.
-  useQuery({ ...CHAPTERS_QUERY, enabled: !!studentId });
+  const chaptersQuery = useQuery({ ...CHAPTERS_QUERY, enabled: !!studentId });
+  const allChapters = chaptersQuery.data ?? [];
 
   const data = dashQuery.data ?? null;
+
+  const statsByChapter = useMemo(() => {
+    const map = new Map<string, { attempted: number; accuracy_pct?: number }>();
+    for (const c of data?.chapters ?? []) {
+      map.set(c.chapter, {
+        attempted: c.attempted,
+        accuracy_pct: c.accuracy_pct,
+      });
+    }
+    return map;
+  }, [data?.chapters]);
+
+  const [resumeMission, setResumeMission] = useState<DashboardResume | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!studentId || !allChapters.length) {
+      setResumeMission(null);
+      return;
+    }
+    setResumeMission(
+      pickDashboardResumeChapter(studentId, allChapters, statsByChapter)
+    );
+  }, [studentId, allChapters, statsByChapter]);
+
   const weakSpots = spotsQuery.data ?? [];
   // The page frame renders immediately; only the numbers wait on the request,
   // and they show a skeleton rather than a misleading zero.
@@ -53,15 +86,41 @@ export default function DashboardPage() {
   const hasPractice = (data?.total_attempted ?? 0) > 0;
   const focus = data?.focus || weakSpots[0] || null;
   const chapters = data?.chapters?.slice(0, 3) || [];
-  const missionChapter = pending
-    ? "Today's mission"
-    : primary?.chapter || focus?.chapter || "Start Chapter Practice";
-  const missionReason = pending
-    ? "Pulling up your plan…"
-    : primary?.reason ||
-      (focus
-        ? `Recommended today because ${focus.concept} needs attention. Keep drilling until it sticks.`
-        : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
+  const missionChapter = resumeMission?.chapter
+    ? resumeMission.chapter
+    : pending
+      ? "Today's mission"
+      : primary?.chapter ||
+        focus?.chapter ||
+        focus?.concept ||
+        "Start Chapter Practice";
+  const missionAccuracy =
+    resumeMission?.chapter
+      ? statsByChapter.get(resumeMission.chapter)?.accuracy_pct
+      : focus?.accuracy_pct ??
+        (primary?.chapter
+          ? data?.chapters?.find((c) => c.chapter === primary.chapter)
+              ?.accuracy_pct
+          : undefined);
+  const missionReason = resumeMission?.reason
+    ? resumeMission.reason
+    : pending
+      ? "Pulling up your plan…"
+      : primary?.reason ||
+        (focus?.chapter && missionAccuracy != null
+          ? `Do ${focus.chapter} — ${missionAccuracy}% accuracy. Keep drilling until it sticks.`
+          : focus?.chapter || focus?.concept
+            ? `Recommended today because ${focus.chapter || focus.concept} needs attention.`
+            : "Pick a chapter and start MCQs. Wrong answers teach us your weak spots — then we adapt your plan.");
+  const continueHref =
+    resumeMission?.href ||
+    (hasPractice
+      ? primary?.chapter
+        ? `/session?mode=chapter&chapter=${encodeURIComponent(primary.chapter)}`
+        : focus?.chapter
+          ? `/session?mode=chapter&chapter=${encodeURIComponent(focus.chapter)}`
+          : planHref(primary)
+      : "/practice");
 
   return (
     <>
@@ -116,15 +175,22 @@ export default function DashboardPage() {
                 <h2 className="relative mt-4 font-display text-2xl font-bold text-brand-700 sm:text-3xl">
                   {missionChapter}
                 </h2>
+                {missionAccuracy != null && !pending && (
+                  <p
+                    className={`relative mt-1 text-sm font-semibold tabular-nums ${accuracyTone(missionAccuracy)}`}
+                  >
+                    {missionAccuracy}% accuracy so far
+                  </p>
+                )}
                 <p className="relative mt-2 max-w-xl text-sm leading-relaxed text-slate-500">
                   {missionReason}
                 </p>
 
                 <Link
-                  href={hasPractice ? planHref(primary) : "/practice"}
+                  href={continueHref}
                   className="relative mt-6 inline-flex items-center rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-dark"
                 >
-                  {hasPractice ? "Continue Practice →" : "Start Practice →"}
+                  {hasPractice || resumeMission ? "Continue Practice →" : "Start Practice →"}
                 </Link>
               </div>
 
@@ -198,7 +264,7 @@ export default function DashboardPage() {
                           {c.chapter}
                         </span>
                         <span className="shrink-0 text-sm tabular-nums text-slate-500">
-                          {c.attempted} MCQs done
+                          {c.accuracy_pct}% · {c.attempted} done
                         </span>
                       </div>
                     ))}
@@ -239,12 +305,52 @@ export default function DashboardPage() {
                     <p className="mt-0.5 min-w-0 break-words text-sm font-semibold">
                       {pending
                         ? "…"
-                        : focus?.concept || focus?.chapter || "Start practising"}
+                        : focus?.chapter || focus?.concept || "Start practising"}
                     </p>
+                    {!pending && focus?.accuracy_pct != null && (
+                      <p className={`text-xs font-medium tabular-nums ${accuracyTone(focus.accuracy_pct)}`}>
+                        {focus.accuracy_pct}% accuracy
+                      </p>
+                    )}
                   </div>
                   <Flame className="h-4 w-4 text-sky-200" />
                 </div>
               </div>
+
+              {weakSpots.length > 0 && (
+                <div className="rounded-2xl border border-red-100 bg-red-50/60 p-5 shadow-sm">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] font-bold tracking-wider text-red-500">
+                        WEAK SPOTS
+                      </p>
+                      <h3 className="mt-1 font-semibold text-slate-900">
+                        {weakSpots[0].chapter || weakSpots[0].concept}
+                      </h3>
+                      <p className="mt-1 text-sm text-slate-600">
+                        {weakSpots[0].accuracy_pct}% accuracy across{" "}
+                        {weakSpots[0].attempts} attempts — drill this chapter next.
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    href={
+                      weakSpots[0].chapter
+                        ? `/session?mode=chapter&chapter=${encodeURIComponent(weakSpots[0].chapter)}`
+                        : "/weak-spots"
+                    }
+                    className="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-dark"
+                  >
+                    Drill now →
+                  </Link>
+                  <Link
+                    href="/weak-spots"
+                    className="mt-2 block text-center text-xs font-medium text-brand hover:underline"
+                  >
+                    View all weak spots
+                  </Link>
+                </div>
+              )}
 
               <div className="relative overflow-hidden rounded-2xl bg-[#E8F1FB] p-5 shadow-sm">
                 <span className="rounded-md bg-white/80 px-2 py-0.5 text-[10px] font-bold tracking-wider text-brand">
@@ -291,7 +397,6 @@ export default function DashboardPage() {
                 </Link>
               </div>
 
-{/* Weak Spot Alert — hidden until weak-spot analysis is wired */}
             </aside>
           </div>
 

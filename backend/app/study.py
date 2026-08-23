@@ -213,13 +213,15 @@ def session_summary(student_id: str, session_id: str) -> dict[str, Any]:
         b["accuracy_pct"] = round(b["correct"] / b["attempted"] * 100, 1)
 
     focus = weak_spots.recommended_focus(student_id)
+    chapter_rows = list(chapters.values())
     return {
         "session_id": session_id,
         "score": correct,
         "total": total,
         "accuracy_pct": round(correct / total * 100, 1) if total else 0,
         "concepts": list(per_concept.values()),
-        "chapters": list(chapters.values()),
+        "chapters": chapter_rows,
+        "weak_chapters": weak_spots.session_weak_chapters(student_id, chapter_rows),
         "next_recommendation": focus,
     }
 

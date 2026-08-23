@@ -1713,40 +1713,9 @@ async def dashboard(
     total = len(attempts)
     correct = sum(1 for a in attempts if a.get("is_correct"))
 
-    concepts = {c["id"]: c for c in db.list_concepts()}
-
-    # Batch-fetch every question referenced by attempts in one round-trip
-    # (previously an N+1 get_question per attempt made the dashboard ~4s).
-    needed_qids = [
-        a["question_id"]
-        for a in attempts
-        if a.get("question_id") and not concepts.get(a.get("concept_id"))
-    ]
-    q_map = (
-        await loop.run_in_executor(
-            None, lambda: db.get_questions_by_ids(needed_qids, columns="id,chapter")
-        )
-        if needed_qids
-        else {}
+    chapter_rows = await loop.run_in_executor(
+        None, weak_spots.chapter_progress, student_id
     )
-
-    chapters: dict[str, dict] = {}
-    for a in attempts:
-        concept = concepts.get(a.get("concept_id"))
-        chapter = None
-        if concept:
-            chapter = concept.get("chapter", "Unknown")
-        else:
-            q = q_map.get(a.get("question_id"))
-            chapter = (q or {}).get("chapter") or "Unknown"
-        bucket = chapters.setdefault(
-            chapter, {"chapter": chapter, "attempted": 0, "correct": 0}
-        )
-        bucket["attempted"] += 1
-        if a.get("is_correct"):
-            bucket["correct"] += 1
-    for b in chapters.values():
-        b["accuracy_pct"] = round(b["correct"] / b["attempted"] * 100, 1)
 
     import datetime as dt
 
@@ -1762,7 +1731,7 @@ async def dashboard(
         "accuracy_pct": round(correct / total * 100, 1) if total else 0,
         "total_attempted": total,
         "streak": streak,
-        "chapters": list(chapters.values()),
+        "chapters": chapter_rows,
         "focus": focus,
         "diagnostic_done": bool(student and student.get("diagnostic_done")),
         "daily_plan": daily,

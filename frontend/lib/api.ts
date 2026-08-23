@@ -261,8 +261,8 @@ export interface McqContext {
 }
 
 export interface WeakSpot {
-  concept_id: string;
-  concept: string;
+  concept_id?: string;
+  concept?: string;
   chapter?: string;
   accuracy_pct: number;
   attempts: number;
@@ -297,6 +297,7 @@ export interface Dashboard {
     attempted: number;
     correct: number;
     accuracy_pct: number;
+    trend?: "improving" | "stuck" | "getting_worse";
   }[];
   focus: WeakSpot | null;
   diagnostic_done?: boolean;
@@ -316,6 +317,12 @@ export interface SessionSummary {
     accuracy_pct: number;
   }[];
   chapters?: {
+    chapter: string;
+    attempted: number;
+    correct: number;
+    accuracy_pct: number;
+  }[];
+  weak_chapters?: {
     chapter: string;
     attempted: number;
     correct: number;

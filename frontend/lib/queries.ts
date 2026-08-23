@@ -16,14 +16,15 @@ export const CHAPTERS_QUERY = {
   staleTime: 60_000,
 };
 
+export const WEAK_SPOTS_QUERY = (studentId: string) => ({
+  queryKey: ["weak-spots", studentId] as const,
+  queryFn: () => api.getWeakSpots(studentId),
+  staleTime: 60_000,
+});
+
 export const dashboardQuery = (studentId: string) => ({
   queryKey: ["dashboard", studentId] as const,
   queryFn: () => api.getDashboard(studentId),
-});
-
-export const weakSpotsQuery = (studentId: string) => ({
-  queryKey: ["weak-spots", studentId] as const,
-  queryFn: () => api.getWeakSpots(studentId),
 });
 
 export const TEXTBOOK_CHATS_QUERY = {
@@ -38,10 +39,13 @@ export function prefetchForRoute(
   studentId: string | null
 ) {
   switch (href) {
+    case "/weak-spots":
+      if (studentId) void client.prefetchQuery(WEAK_SPOTS_QUERY(studentId));
+      break;
     case "/dashboard":
       if (studentId) {
         void client.prefetchQuery(dashboardQuery(studentId));
-        void client.prefetchQuery(weakSpotsQuery(studentId));
+        void client.prefetchQuery(WEAK_SPOTS_QUERY(studentId));
       }
       break;
     case "/practice":

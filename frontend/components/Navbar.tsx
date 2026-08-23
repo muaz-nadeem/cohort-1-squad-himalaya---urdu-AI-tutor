@@ -17,6 +17,7 @@ import {
   Menu,
   X,
   ChevronDown,
+  Target,
 } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 
@@ -26,7 +27,7 @@ const NAV = [
   { href: "/exam", label: "Full-length", icon: Timer },
   { href: "/custom-quiz", label: "Custom quiz", icon: Puzzle },
   { href: "/chat", label: "Ask Textbook", icon: MessageCircle },
-  // { href: "/weak-spots", label: "Weak Spots", icon: Target },
+  { href: "/weak-spots", label: "Weak Spots", icon: Target },
   // { href: "/weekly-plan", label: "Weekly Plan", icon: CalendarDays },
 ] as const;
 

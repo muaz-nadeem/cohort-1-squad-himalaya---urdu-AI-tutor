@@ -19,8 +19,10 @@ import { setPendingSummary } from "@/lib/sessionHandoff";
 import { getDoctorPersona } from "@/lib/doctorPersona";
 import {
   clearChapterBatch,
+  clearChapterRoundComplete,
   isBatchComplete,
   loadChapterBatch,
+  markChapterRoundComplete,
   nextResumeIndex,
   saveChapterBatch,
   type SavedQState,
@@ -408,6 +410,7 @@ function SessionInner() {
           );
         } else {
           if (resumeBatch) {
+            markChapterRoundComplete(studentIdForBoot, chapter);
             clearChapterBatch(studentIdForBoot, chapter);
           }
           questionsP = api.getChapterPractice(chapter, 100, studentIdForBoot, 5);
@@ -477,6 +480,7 @@ function SessionInner() {
         indexRef.current = resumeAt;
         setIndex(resumeAt);
       } else if (qs.mode === "chapter_practice" && chapter) {
+        clearChapterRoundComplete(studentIdForBoot, chapter);
         saveChapterBatch({
           studentId: studentIdForBoot,
           chapter,
@@ -596,6 +600,7 @@ function SessionInner() {
           chapterRef.current
         ) {
           skipBatchPersistRef.current = true;
+          markChapterRoundComplete(studentIdRef.current, chapterRef.current);
           clearChapterBatch(studentIdRef.current, chapterRef.current);
         }
         return next;
@@ -781,20 +786,25 @@ function SessionInner() {
       if (item.is_correct) row.correct += 1;
       byChapter.set(item.chapter, row);
     }
+    const chapters = Array.from(byChapter, ([chapter, row]) => ({
+      chapter,
+      attempted: row.attempted,
+      correct: row.correct,
+      accuracy_pct: row.attempted
+        ? Math.round((row.correct / row.attempted) * 100)
+        : 0,
+    }));
+    const weak_chapters = chapters
+      .filter((c) => c.attempted >= 2 && c.accuracy_pct < 65)
+      .sort((a, b) => a.accuracy_pct - b.accuracy_pct);
     return {
       session_id: sessionIdValue,
       score,
       total,
       accuracy_pct: total ? Math.round((score / total) * 100) : 0,
       concepts: [],
-      chapters: Array.from(byChapter, ([chapter, row]) => ({
-        chapter,
-        attempted: row.attempted,
-        correct: row.correct,
-        accuracy_pct: row.attempted
-          ? Math.round((row.correct / row.attempted) * 100)
-          : 0,
-      })),
+      chapters,
+      weak_chapters,
       next_recommendation: null,
     };
   }
@@ -811,6 +821,7 @@ function SessionInner() {
       isBatchComplete(qStatesRef.current, batchTotal(set))
     ) {
       skipBatchPersistRef.current = true;
+      markChapterRoundComplete(studentId, chapter);
       clearChapterBatch(studentId, chapter);
     } else {
       persistChapterProgress();
