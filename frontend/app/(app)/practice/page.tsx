@@ -171,7 +171,10 @@ function ChapterSection({
 }: {
   title: string;
   chapters: ChapterInfo[];
-  accuracyByChapter: Map<string, { accuracy_pct: number; attempted: number }>;
+  accuracyByChapter: Map<
+    string,
+    { accuracy_pct: number; attempted: number; trend?: Trend }
+  >;
   studentId: string | null;
 }) {
   if (!chapters.length) return null;
