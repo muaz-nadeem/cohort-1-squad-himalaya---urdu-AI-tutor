@@ -391,7 +391,9 @@ async def _ask_ai_impl(req: AskRequest):
                     "sources": [],
                     "error": friendly_error(exc),
                 }
-            answer_text, urdu_text = llm.normalize_course_answer(answer_text, urdu_text)
+            answer_text, urdu_text = llm.normalize_course_answer(
+                answer_text, urdu_text, honor_redirect=False
+            )
             if not answer_text.strip():
                 print("  [ask] model returned an empty answer")
                 return {
@@ -404,9 +406,6 @@ async def _ask_ai_impl(req: AskRequest):
                     "sources": [],
                     "error": "The AI returned an empty answer. Please ask again.",
                 }
-            if llm.is_off_topic_answer(answer_text):
-                answer_text, urdu_text = llm.off_topic_reply()
-                sources = []
             if not req.history:
                 _answer_cache_put(cache_key, (answer_text, urdu_text, sources))
 
@@ -619,9 +618,9 @@ async def rag_ask(
     answer_text = llm.answer_from_rag(
         req.question.strip(), context, history=req.history
     )
-    answer_text, _ = llm.normalize_course_answer(answer_text, "")
-    if llm.is_off_topic_answer(answer_text):
-        return {"answer": answer_text, "sources": [], "citation": None}
+    answer_text, _ = llm.normalize_course_answer(
+        answer_text, "", honor_redirect=False
+    )
 
     citation = rag.format_citation(sources) if context else None
     if citation and citation not in answer_text:
@@ -752,6 +751,7 @@ async def rag_ask_voice(
     audio=File(...),
     book: Optional[str] = Form(None),
     top_k: int = Form(5),
+    history: str = Form(""),
 ):
     """Audio -> STT -> textbook RAG search -> English answer + TTS audio."""
     audio_bytes = await audio.read()
@@ -801,10 +801,22 @@ async def rag_ask_voice(
             "error": None,
         }
 
+    history_ctx: Optional[list[dict]] = None
+    if history:
+        try:
+            parsed = json.loads(history)
+            if isinstance(parsed, list):
+                history_ctx = parsed
+        except Exception:
+            history_ctx = None
+
     try:
         loop = asyncio.get_event_loop()
         on_course = await loop.run_in_executor(
-            None, lambda: llm.is_course_related(transcript.strip())
+            None,
+            lambda: llm.is_course_related(
+                transcript.strip(), history=history_ctx
+            ),
         )
         if not on_course:
             answer_text, urdu_text = llm.off_topic_reply()
@@ -835,21 +847,14 @@ async def rag_ask_voice(
         # English on screen first; spoken Urdu is rewritten from that English
         # (same pipeline as the MCQ Listen button).
         answer_text = await loop.run_in_executor(
-            None, lambda: llm.answer_from_rag(transcript.strip(), context)
+            None,
+            lambda: llm.answer_from_rag(
+                transcript.strip(), context, history=history_ctx
+            ),
         )
-        answer_text, urdu_text = llm.normalize_course_answer(answer_text, "")
-        if llm.is_off_topic_answer(answer_text):
-            answer_text, urdu_text = llm.off_topic_reply()
-            speech_id = narration_id(answer_text, urdu_text)
-            return {
-                "transcript": transcript,
-                "answer": answer_text,
-                "audio": None,
-                "speech_id": speech_id,
-                "urdu_text": urdu_text,
-                "sources": [],
-                "citation": None,
-            }
+        answer_text, urdu_text = llm.normalize_course_answer(
+            answer_text, "", honor_redirect=False
+        )
         if not answer_text.strip():
             print("  [rag-ask-voice] model returned an empty answer")
             return {

@@ -445,7 +445,8 @@ export default function ChatPage() {
         blob,
         bookFilterRef.current,
         3,
-        signal
+        signal,
+        prior
       );
 
       if (signal.aborted || seq !== reqSeqRef.current) {
@@ -519,9 +520,6 @@ export default function ChatPage() {
           isFirst
         );
       }
-
-      // history currently unused by voice endpoint; kept for future wiring
-      void prior;
 
       return { audio: res.audio, speechUrl };
     } catch (e) {

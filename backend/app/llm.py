@@ -29,12 +29,17 @@ COURSE_SCOPE = f"""SCOPE (critical):
 - On-topic includes: Biology concepts, textbook pages, MCQs, diagrams, definitions, comparisons,
   exam tips, and short follow-ups about a Biology question already being discussed
   (e.g. "explain more", "why is B wrong", "in simple words").
+- Voice/STT questions may be messy Urdu, Roman Urdu, or misspelled Biology terms. Infer the
+  intended Biology concept and answer it. Do not refuse a question just because wording is rough.
 - Off-topic includes: greetings and small talk (hi, hello, assalamualaikum, how are you, thanks, bye),
   other subjects (unless tightly Biology), sports, politics, coding, jokes, recipes, celebrity talk,
   personal chat, general knowledge, and anything not Biology course work.
-- Never greet the student back. Never chit-chat. If the request is off-topic — including greetings —
-  do NOT answer it. Reply with EXACTLY this English sentence and nothing else:
+- Never greet the student back. Never chit-chat. If the request is clearly off-topic — including
+  greetings with no Biology question — do NOT answer it. Reply with EXACTLY this English sentence
+  and nothing else:
   "{OFF_TOPIC_ENGLISH}"
+- If it could reasonably be a Biology question, answer it. Never mention the redirect sentence
+  inside a real Biology explanation.
 """
 
 # Shared by every spoken-Urdu prompt. TTS misreads Urdu translations/transliterations
@@ -685,9 +690,14 @@ _BIO_TERM_EN = re.compile(
     r"heart|kidney|liver|blood|hormone|protein|lipid|vitamin|bacteria|"
     r"plant|animal|tissue|organ|nucleus|membrane|chromosome|gene|"
     r"biology|mdcat|fsc|chapter|mcq|diagram|textbook|osmosis|"
-    r"diffusion|neuron|alveoli|stomata|chloroplast|ecosystem|species|"
+    r"diffusion|neuron|alveoli|stomata|chloroplast|chlorophyll|ecosystem|species|"
     r"evolution|genetics|embryo|fertilization|virus|fungi|organelle|"
-    r"mitochondria|ribosome|vacuole|molecule|glucose|ATP"
+    r"mitochondria|ribosome|vacuole|molecule|glucose|ATP|"
+    r"intestine|stomach|pancreas|digestion|digestive|absorption|"
+    r"circulation|excretion|nervous|immunity|immune|ecology|"
+    r"taxonomy|kingdom|phylum|genotype|phenotype|"
+    r"transcription|translation|replication|mutation|allele|"
+    r"xylem|phloem|homeostasis"
     r")\b",
     re.IGNORECASE,
 )
@@ -705,10 +715,29 @@ _BIO_TERM_UR = re.compile(
 
 _BIO_HINT = _BIO_TERM_EN
 
+# "X kya hai" / "function of X" shape — typical spoken Biology questions.
+_ACADEMIC_ASK = re.compile(
+    r"(?:"
+    r"\b(?:what|why|how|explain|define|describe|function|difference|compare|"
+    r"meaning|which|where|kya|kyun|kyon|kaise|kese|matlab|samjhao|batao|farq)\b|"
+    r"کیا\s*(?:ہے|ہیں)|کیوں|کیسے|سمجھا|بتا|فرق|وضاحت|کام\s*کرت"
+    r")",
+    re.IGNORECASE | re.UNICODE,
+)
+
 
 def _has_bio_term(text: str) -> bool:
     q = text or ""
-    return bool(_BIO_TERM_EN.search(q) or _BIO_TERM_UR.search(q))
+    if _BIO_TERM_EN.search(q) or _BIO_TERM_UR.search(q):
+        return True
+    # Textbook Urdu/English science words used elsewhere for TTS cleanup.
+    low = q.lower()
+    for ur, en in _SCIENCE_URDU_TO_EN:
+        if ur and ur in q:
+            return True
+        if en and re.search(rf"\b{re.escape(en.lower())}\b", low):
+            return True
+    return False
 
 
 def looks_like_social_talk(question: str) -> bool:
@@ -741,6 +770,10 @@ def is_course_related(
     if (has_mcq or history or mcq_context.strip()) and _BIO_FOLLOWUP.search(q):
         return True
 
+    # Spoken classroom questions ("chlorophyll kya hai", "function of intestine").
+    if _ACADEMIC_ASK.search(q) and len(q) >= 8:
+        return True
+
     history_bits = ""
     if history:
         recent = history[-3:]
@@ -762,17 +795,31 @@ Greetings, thanks, and small talk are NO."""
         client = get_groq_client()
         for model in _model_candidates(settings.TOPIC_GATE_MODEL, _GATE_FALLBACK):
             try:
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=[
+                create_kwargs: dict = {
+                    "model": model,
+                    "messages": [
                         {"role": "system", "content": TOPIC_GATE_SYSTEM},
                         {"role": "user", "content": user},
                     ],
-                    max_tokens=3,
-                    temperature=0,
-                )
+                    # gpt-oss spends completion tokens on hidden reasoning.
+                    # max_tokens=3 returned empty content and classified every
+                    # non-keyword question as off-topic.
+                    "max_tokens": 32,
+                    "temperature": 0,
+                }
+                if "gpt-oss" in model:
+                    create_kwargs["extra_body"] = {"reasoning_effort": "low"}
+                response = client.chat.completions.create(**create_kwargs)
                 verdict = (response.choices[0].message.content or "").strip().upper()
-                return verdict.startswith("Y")
+                if verdict.startswith("Y") or verdict.startswith("YES"):
+                    return True
+                if verdict.startswith("N") or verdict.startswith("NO"):
+                    return False
+                print(
+                    f"  [topic-gate] unclear verdict {verdict!r}; "
+                    "treating as on-course"
+                )
+                return True
             except NotFoundError:
                 if model != _GATE_FALLBACK:
                     print(
@@ -782,26 +829,35 @@ Greetings, thanks, and small talk are NO."""
                     continue
                 raise
     except Exception as exc:
-        # Greetings/tiny chat stay closed. Substantial Biology-looking
-        # questions still fail open so a gate outage does not block tutoring.
+        # Social talk already returned False. A gate outage must not block tutoring.
         print(f"  [topic-gate] failed: {type(exc).__name__}")
-        if _has_bio_term(q) or ((has_mcq or history) and _BIO_FOLLOWUP.search(q)):
-            return True
-        if len(q.split()) <= 3:
-            return False
         return True
 
 
 def is_off_topic_answer(text: str) -> bool:
-    """Detect the fixed redirect phrase (or close variants) in a model reply."""
-    raw = text or ""
-    t = raw.lower()
+    """True only when the whole reply is the course-scope redirect.
+
+    Do not match the phrase inside a real tutoring answer (models sometimes
+    say "this is a relevant Biology question" and then explain the concept).
+    """
+    raw = (text or "").strip()
+    if not raw:
+        return False
+    t = " ".join(raw.lower().split())
+    canon = OFF_TOPIC_ENGLISH.lower()
+    if t == canon or t.startswith(canon):
+        return True
+    urdu_canon = " ".join(OFF_TOPIC_URDU.split())
+    compact = " ".join(raw.split())
+    if compact == urdu_canon or compact.startswith(urdu_canon):
+        return True
+    if len(t) > len(canon) + 40:
+        return False
     return (
-        "ask a relevant" in t
+        "ask a relevant biology question" in t
         or "ask me something from your course" in t
-        or "relevant biology question" in t
         or "اپنے کورس سے کچھ پوچھ" in raw
-        or "relevant Biology question پوچھ" in raw
+        or "relevant biology question پوچھ" in raw
     )
 
 
@@ -809,9 +865,11 @@ def off_topic_reply() -> tuple[str, str]:
     return OFF_TOPIC_ENGLISH, OFF_TOPIC_URDU
 
 
-def normalize_course_answer(english: str, urdu: str = "") -> tuple[str, str]:
+def normalize_course_answer(
+    english: str, urdu: str = "", *, honor_redirect: bool = True
+) -> tuple[str, str]:
     """Force the canonical redirect if the model drifted while refusing."""
-    if is_off_topic_answer(english) or is_off_topic_answer(urdu):
+    if honor_redirect and (is_off_topic_answer(english) or is_off_topic_answer(urdu)):
         return OFF_TOPIC_ENGLISH, OFF_TOPIC_URDU
     if urdu:
         urdu = sanitize_speech_narration(urdu)

@@ -748,7 +748,8 @@ export const api = {
     audio: Blob,
     book?: string,
     top_k = 3,
-    signal?: AbortSignal
+    signal?: AbortSignal,
+    history?: { role: string; content: string }[]
   ): Promise<RagVoiceResult> => {
     const form = new FormData();
     const mime = audio.type || "audio/webm";
@@ -763,6 +764,7 @@ export const api = {
     form.append("audio", audio, `question.${ext}`);
     if (book) form.append("book", book);
     form.append("top_k", String(top_k));
+    if (history?.length) form.append("history", JSON.stringify(history));
 
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 90000);
